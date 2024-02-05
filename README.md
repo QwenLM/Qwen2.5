@@ -23,7 +23,7 @@ Visit our Hugging Face or ModelScope organization (click links above), search ch
 
 
 ## Introduction
-This time, we upgrade Qwen to Qwen1.5. Similar to Qwen, it is still a decoder-only transformer model with SwiGLU activation, RoPE, multi-head attention. At this moment, we have achieved:
+This time, we upgrade Qwen to Qwen1.5, the beta version of Qwen1.5. Similar to Qwen, it is still a decoder-only transformer model with SwiGLU activation, RoPE, multi-head attention. At this moment, we have achieved:
 * 6 model sizes: 0.5B, 1.8B, 4B, 7B, 14B, and 72B;
 * Significant model quality improvements in chat models;
 * Strengthened multilingual capabilities in both base and chat models;
@@ -96,8 +96,8 @@ Download our provided GGUF files or create them by yourself, and you can directl
 #### Ollama
 We are now on Ollama, and you can use `pull` and `run` to make things work.
 ```shell
-ollama pull Qwen1.5
-ollama run Qwen1.5
+ollama pull qwen1.5
+ollama run qwen1.5
 ```
 You can also add things like `::14B` to choose different models. Visit [ollama.ai](https://ollama.ai/) for more information.
 
@@ -190,7 +190,7 @@ print(state["answer_1"])
 ```
 
 ## Finetuning
-We provide a colab notebook for you to experience the simplest way of finetuning. However, we advise you to turn to more advanced training frameworks, including [Axolotl](https://github.com/OpenAccess-AI-Collective/axolotl), [Llama-Factory](https://github.com/hiyouga/LLaMA-Factory), [Swift](https://github.com/modelscope/swift), etc.
+We advise you to use training frameworks, including [Axolotl](https://github.com/OpenAccess-AI-Collective/axolotl), [Llama-Factory](https://github.com/hiyouga/LLaMA-Factory), [Swift](https://github.com/modelscope/swift), etc., to finetune your models with SFT, DPO, PPO, etc.
 
 
 ## License Agreement
