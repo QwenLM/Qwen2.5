@@ -12,6 +12,10 @@
 <a href="assets/wechat.png">WeChat (微信)</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>&nbsp&nbsp ｜  &nbsp&nbsp<a href="https://dashscope.aliyun.com">API</a> 
 </p>
 
+<p align="center">
+    <img src="https://qianwen-res.oss-accelerate.aliyuncs.com/assets/blog/qwen2-beta/logo_qwen2.jpg" width="400"/>
+<p>
+
 Visit our Hugging Face or ModelScope organization (click links above), search checkpoints with names starting with `Qwen2-beta-`, and you will find all you need! Enjoy!
 
 
