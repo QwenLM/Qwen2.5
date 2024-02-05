@@ -85,7 +85,7 @@ For quantized models, we advise you to use the GPTQ, AWQ, and GGUF correspondent
 ### 🤖 ModelScope
 We strongly advise users especially those in mainland China to use ModelScope. `snapshot_download` can help you solve issues concerning downloading checkpoints.
 
-### Run locally
+### 💻 Run locally
 
 #### llama.cpp
 Download our provided GGUF files or create them by yourself, and you can directly use them with the latest `llama.cpp` with a one-line command:
