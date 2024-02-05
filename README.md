@@ -1,9 +1,9 @@
 
 
-# Qwen1.5
+# Qwen2-beta
 
 <p align="center">
-    <img src="https://qianwen-res.oss-accelerate.aliyuncs.com/assets/blog/qwen2-beta/logo_qwen1.5.jpg" width="400"/>
+    <img src="https://qianwen-res.oss-accelerate.aliyuncs.com/assets/blog/qwen1.5/logo_qwen1.5.jpg" width="400"/>
 <p>
 
 
@@ -18,12 +18,12 @@
 </p>
 
 
-Visit our Hugging Face or ModelScope organization (click links above), search checkpoints with names starting with `Qwen1.5-`, and you will find all you need! Enjoy!
+Visit our Hugging Face or ModelScope organization (click links above), search checkpoints with names starting with `Qwen2-beta-`, and you will find all you need! Enjoy!
 
 
 
 ## Introduction
-This time, we upgrade Qwen to Qwen1.5, the beta version of Qwen2. Similar to Qwen, it is still a decoder-only transformer model with SwiGLU activation, RoPE, multi-head attention. At this moment, we have achieved:
+This time, we upgrade Qwen to Qwen2-beta, the beta version of Qwen2. Similar to Qwen, it is still a decoder-only transformer model with SwiGLU activation, RoPE, multi-head attention. At this moment, we have achieved:
 * 6 model sizes: 0.5B, 1.8B, 4B, 7B, 14B, and 72B;
 * Significant model quality improvements in chat models;
 * Strengthened multilingual capabilities in both base and chat models;
@@ -35,7 +35,7 @@ We have not integrated GQA and mixture of SWA and full attention in this version
 
 
 ## News
-* 2024.02.05: We released the Qwen1.5 series.
+* 2024.02.05: We released the Qwen2-beta series.
 
 ## Performance
 Detailed evaluation results are reported in this <a href="https://qwenlm.github.io"> 📑 blog</a>.
@@ -59,31 +59,23 @@ For a quickstart, I advise you to use chat models. We often use base models only
 from transformers import AutoModelForCausalLM, AutoTokenizer
 device = "cuda" # the device to load the model onto
 
-model = AutoModelForCausalLM.from_pretrained(
-    "Qwen/Qwen1.5-7B-Chat-GPTQ-Int8",
-    device_map="auto"
-)
-tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen1.5-7B-Chat-GPTQ-Int8")
+model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen2-beta-7B-Chat", device_map="auto")
+tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2-beta-7B-Chat")
 
 prompt = "Give me a short introduction to large language model."
+
 messages = [
     {"role": "system", "content": "You are a helpful assistant."},
     {"role": "user", "content": prompt}
 ]
-text = tokenizer.apply_chat_template(
-    messages,
-    tokenize=False,
-    add_generation_prompt=True
-)
+
+text = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+
 model_inputs = tokenizer([text], return_tensors="pt").to(device)
 
-generated_ids = model.generate(
-    model_inputs.input_ids,
-    max_new_tokens=512
-)
-generated_ids = [
-    output_ids[len(input_ids):] for input_ids, output_ids in zip(model_inputs.input_ids, generated_ids)
-]
+generated_ids = model.generate(model_inputs.input_ids, max_new_tokens=512, do_sample=True)
+
+generated_ids = [output_ids[len(input_ids):] for input_ids, output_ids in zip(model_inputs.input_ids, generated_ids)]
 
 response = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0]
 ```
@@ -104,20 +96,20 @@ Download our provided GGUF files or create them by yourself, and you can directl
 #### Ollama
 We are now on Ollama, and you can use `pull` and `run` to make things work.
 ```shell
-ollama pull qwen1.5
-ollama run qwen1.5
+ollama pull qwen2-beta
+ollama run qwen2-beta
 ```
 You can also add things like `::14B` to choose different models. Visit [ollama.ai](https://ollama.ai/) for more information.
 
 #### LMStudio
-Qwen1.5 has already been supported by [lmstudio.ai](https://lmstudio.ai/). You can directly use LMStudio with our GGUF files.
+Qwen2-beta has already been supported by [lmstudio.ai](https://lmstudio.ai/). You can directly use LMStudio with our GGUF files.
 
 
 
 ## Web UI
 
 #### Text generation web UI
-You can directly use `text-generation-webui` for creating a web UI demo. If you use GGUF, remember to install the latest wheel of `llama.cpp` with the support of Qwen1.5.
+You can directly use `text-generation-webui` for creating a web UI demo. If you use GGUF, remember to install the latest wheel of `llama.cpp` with the support of Qwen2-beta.
 
 
 #### llamafile
@@ -125,12 +117,12 @@ Clone [`llamafile`](https://github.com/Mozilla-Ocho/llamafile), run source insta
 
 
 ## Deployment
-Now, Qwen1.5 is supported by multiple inference frameworks. Here we demonstrate the usage of `vLLM` and `SGLang`.
+Now, Qwen2-beta is supported by multiple inference frameworks. Here we demonstrate the usage of `vLLM` and `SGLang`.
 
 ### vLLM
-We advise you to use `vLLM>=0.3.0` to build OpenAI-compatible API service. Start the server with a chat model, e.g. `Qwen1.5-7B-Chat`:
+We advise you to use `vLLM>=0.3.0` to build OpenAI-compatible API service. Start the server with a chat model, e.g. `Qwen2-beta-7B-Chat`:
 ```shell
-python -m vllm.entrypoints.openai.api_server --model Qwen/Qwen1.5-7B-Chat
+python -m vllm.entrypoints.openai.api_server --model Qwen/Qwen2-beta-7B-Chat
 ```
 
 Then use the chat API as demonstrated below:
@@ -139,7 +131,7 @@ Then use the chat API as demonstrated below:
 curl http://localhost:8000/v1/chat/completions \
     -H "Content-Type: application/json" \
     -d '{
-    "model": "Qwen/Qwen1.5-7B-Chat",
+    "model": "Qwen/Qwen2-beta-7B-Chat",
     "messages": [
     {"role": "system", "content": "You are a helpful assistant."},
     {"role": "user", "content": "Tell me something about large language models."}
@@ -158,7 +150,7 @@ client = OpenAI(
 )
 
 chat_response = client.chat.completions.create(
-    model="Qwen/Qwen1.5-7B-Chat",
+    model="Qwen/Qwen2-beta-7B-Chat",
     messages=[
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": "Tell me something about large language models."},
@@ -170,7 +162,7 @@ print("Chat response:", chat_response)
 ### SGLang
 Please install `SGLang` from source. Similar to `vLLM`, you need to launch a server and use OpenAI-compatible API service. Start the server first:
 ```shell
-python -m sglang.launch_server --model-path Qwen/Qwen1.5-7B-Chat --port 30000
+python -m sglang.launch_server --model-path Qwen/Qwen2-beta-7B-Chat --port 30000
 ```
 You can use it in Python as shown below:
 ```python
