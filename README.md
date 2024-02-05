@@ -16,7 +16,7 @@ Visit our Hugging Face or ModelScope organization (click links above), search ch
 
 
 ## Introduction
-This time, we upgrade Qwen to Qwen1.5, the beta version of Qwen1.5. Similar to Qwen, it is still a decoder-only transformer model with SwiGLU activation, RoPE, multi-head attention. At this moment, we have achieved:
+This time, we upgrade Qwen to Qwen1.5, the beta version of Qwen2. Similar to Qwen, it is still a decoder-only transformer model with SwiGLU activation, RoPE, multi-head attention. At this moment, we have achieved:
 * 6 model sizes: 0.5B, 1.8B, 4B, 7B, 14B, and 72B;
 * Significant model quality improvements in chat models;
 * Strengthened multilingual capabilities in both base and chat models;
