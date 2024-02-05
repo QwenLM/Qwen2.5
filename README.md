@@ -33,7 +33,7 @@ We have not integrated GQA and mixture of SWA and full attention in this version
 <br>
 
 ## Performance
-Detailed Evaluation results are reported in this blog.
+Detailed evaluation results are reported in this <a href="https://qwenlm.github.io"> 📑 blog</a>.
 
 
 ## Requirements
