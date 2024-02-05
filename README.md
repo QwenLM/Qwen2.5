@@ -12,9 +12,9 @@
 </p> -->
 
 <p align="center">
-        🤗 <a href="https://huggingface.co/Qwen">Hugging Face</a>&nbsp&nbsp | &nbsp&nbsp🤖 <a href="https://modelscope.cn/organization/qwen">ModelScope</a>&nbsp&nbsp | &nbsp&nbsp 📑 <a href="https://qwenlm.github.io">Blog</a> &nbsp&nbsp ｜ &nbsp&nbsp🖥️ <a href="https://modelscope.cn/studios/qwen/Qwen-72B-Chat-Demo/summary">Demo</a>
+        🤗 <a href="https://huggingface.co/Qwen">Hugging Face</a>&nbsp&nbsp | &nbsp&nbsp🤖 <a href="https://modelscope.cn/organization/qwen">ModelScope</a>&nbsp&nbsp | &nbsp&nbsp 📑 <a href="https://qwenlm.github.io">Blog</a> &nbsp&nbsp ｜ &nbsp&nbsp🖥️ <a href="https://huggingface.co/spaces/Qwen/Qwen1.5-72B-Chat">Demo</a>
 <br>
-<a href="assets/wechat.png">WeChat (微信)</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>&nbsp&nbsp ｜  &nbsp&nbsp<a href="https://dashscope.aliyun.com">API</a> 
+<a href="https://github.com/QwenLM/Qwen/blob/main/assets/wechat.png">WeChat (微信)</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>&nbsp&nbsp ｜  &nbsp&nbsp<a href="https://dashscope.aliyun.com">API</a> 
 </p>
 
 
@@ -47,7 +47,7 @@ Detailed evaluation results are reported in this <a href="https://qwenlm.github.
 > [!Warning]
 > <div align="center">
 > <b>
-> 🚨 This is a must because `transformers` integrated Qwen1.5 codes in `4.37.0`.
+> 🚨 This is a must because `transformers` integrated Qwen2 codes since `4.37.0`.
 > </b>
 > </div>
 
@@ -88,7 +88,7 @@ We strongly advise users especially those in mainland China to use ModelScope. `
 ### 💻 Run locally
 
 #### llama.cpp
-Download our provided GGUF files or create them by yourself, and you can directly use them with the latest `llama.cpp` with a one-line command:
+Download our provided GGUF files or create them by yourself, and you can directly use them with the latest [`llama.cpp`](https://github.com/ggerganov/llama.cpp) with a one-line command:
 ```shell
 ./main -m <path-to-file> -n 512 --color -i -cml -f prompts/chat-with-qwen.txt
 ```
@@ -109,7 +109,7 @@ Qwen1.5 has already been supported by [lmstudio.ai](https://lmstudio.ai/). You c
 ## Web UI
 
 #### Text generation web UI
-You can directly use `text-generation-webui` for creating a web UI demo. If you use GGUF, remember to install the latest wheel of `llama.cpp` with the support of Qwen1.5.
+You can directly use [`text-generation-webui`](https://github.com/oobabooga/text-generation-webui) for creating a web UI demo. If you use GGUF, remember to install the latest wheel of `llama.cpp` with the support of Qwen1.5.
 
 
 #### llamafile
@@ -190,7 +190,7 @@ print(state["answer_1"])
 ```
 
 ## Finetuning
-We provide a colab notebook for you to experience the simplest way of finetuning. However, we advise you to turn to more advanced training frameworks, including [Axolotl](https://github.com/OpenAccess-AI-Collective/axolotl), [Llama-Factory](https://github.com/hiyouga/LLaMA-Factory), [Swift](https://github.com/modelscope/swift), etc.
+We advise you to use training frameworks, including [Axolotl](https://github.com/OpenAccess-AI-Collective/axolotl), [Llama-Factory](https://github.com/hiyouga/LLaMA-Factory), [Swift](https://github.com/modelscope/swift), etc., to finetune your models with SFT, DPO, PPO, etc.
 
 
 ## License Agreement
