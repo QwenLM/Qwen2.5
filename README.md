@@ -49,14 +49,18 @@ Detailed evaluation results are reported in this <a href="https://qwenlm.github.
 ## Quickstart
 
 ### 🤗 Hugging Face Transformers
+
+Here we show a code snippet to show you how to use the chat model with `transformers`:
+
+```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
 device = "cuda" # the device to load the model onto
 
 model = AutoModelForCausalLM.from_pretrained(
-    "Qwen/Qwen1.5-7B-Chat",
+    "Qwen/Qwen1.5-72B-Chat",
     device_map="auto"
 )
-tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen1.5-7B-Chat")
+tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen1.5-72B-Chat")
 
 prompt = "Give me a short introduction to large language model."
 messages = [
@@ -81,7 +85,7 @@ generated_ids = [
 response = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0]
 ```
 
-For quantized models, we advise you to use the GPTQ, AWQ, and GGUF correspondents, namely `Qwen-beta-7B-Chat-GPTQ`, `Qwen-beta-7B-Chat-AWQ`. 
+For quantized models, we advise you to use the GPTQ and AWQ correspondents, namely `Qwen1.5-7B-Chat-GPTQ-Int8`, `Qwen1.5-7B-Chat-AWQ`. 
 
 ### 🤖 ModelScope
 We strongly advise users especially those in mainland China to use ModelScope. `snapshot_download` can help you solve issues concerning downloading checkpoints.
@@ -97,8 +101,7 @@ Download our provided GGUF files or create them by yourself, and you can directl
 #### Ollama
 We are now on Ollama, and you can use `pull` and `run` to make things work.
 ```shell
-ollama pull qwen1.5
-ollama run qwen1.5
+ollama run qwen
 ```
 You can also add things like `::14B` to choose different models. Visit [ollama.ai](https://ollama.ai/) for more information.
 
@@ -193,6 +196,8 @@ print(state["answer_1"])
 ## Finetuning
 We advise you to use training frameworks, including [Axolotl](https://github.com/OpenAccess-AI-Collective/axolotl), [Llama-Factory](https://github.com/hiyouga/LLaMA-Factory), [Swift](https://github.com/modelscope/swift), etc., to finetune your models with SFT, DPO, PPO, etc.
 
+## API
+Qwen1.5 models are now deployed on both [DashScope](https://dashscope.aliyun.com/) and [Together](https://api.together.ai/). Check [this](https://api.together.xyz/playground/chat/Qwen/Qwen1.5-72B-Chat) out and have fun with Qwen1.5-72B-Chat!
 
 ## License Agreement
 Check the license of each model inside its HF repo. It is NOT necessary for you to submit a request for commercial usage.
