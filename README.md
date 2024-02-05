@@ -3,7 +3,7 @@
 # Qwen2-beta
 
 <p align="center">
-    <img src="https://qianwen-res.oss-accelerate.aliyuncs.com/assets/blog/qwen2-beta/logo_qwen2.jpg" width="400"/>
+    <img src="https://qianwen-res.oss-accelerate.aliyuncs.com/assets/blog/qwen2-beta/logo_qwen1.5.jpg" width="400"/>
 <p>
 
 
