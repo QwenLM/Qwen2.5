@@ -2,6 +2,11 @@
 
 # Qwen2-beta
 
+<p align="center">
+    <img src="https://qianwen-res.oss-accelerate.aliyuncs.com/assets/blog/qwen2-beta/logo_qwen2.jpg" width="400"/>
+<p>
+
+
 <!-- <p align="left">
     <a href="https://huggingface.co/Qwen">Hugging Face</a>&nbsp&nbsp | &nbsp&nbsp <a href="https://modelscope.cn/organization/qwen">ModelScope</a>&nbsp&nbsp |  &nbsp&nbsp <a href="https://qwenlm.github.io">Blog</a>&nbsp&nbsp |  &nbsp&nbsp <a href="assets/wechat.png">WeChat</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>&nbsp&nbsp
 </p> -->
@@ -12,9 +17,6 @@
 <a href="assets/wechat.png">WeChat (微信)</a>&nbsp&nbsp | &nbsp&nbsp<a href="https://discord.gg/z3GAxXZ9Ce">Discord</a>&nbsp&nbsp ｜  &nbsp&nbsp<a href="https://dashscope.aliyun.com">API</a> 
 </p>
 
-<p align="center">
-    <img src="https://qianwen-res.oss-accelerate.aliyuncs.com/assets/blog/qwen2-beta/logo_qwen2.jpg" width="400"/>
-<p>
 
 Visit our Hugging Face or ModelScope organization (click links above), search checkpoints with names starting with `Qwen2-beta-`, and you will find all you need! Enjoy!
 
