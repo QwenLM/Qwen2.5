@@ -28,9 +28,8 @@ This time, we upgrade Qwen to Qwen2-beta, the beta version of Qwen2. Similar to 
 We have not integrated GQA and mixture of SWA and full attention in this version and we will add the features in the future version.
 
 
-## News and Updates
+## News
 * 2024.02.05: We released the Qwen2-beta series.
-<br>
 
 ## Performance
 Detailed evaluation results are reported in this <a href="https://qwenlm.github.io"> 📑 blog</a>.
@@ -48,7 +47,7 @@ Detailed evaluation results are reported in this <a href="https://qwenlm.github.
 
 ## Quickstart
 
-### Hugging Face Transformers
+### 🤗 Hugging Face Transformers
 For a quickstart, I advise you to use chat models. We often use base models only for post-training. Here is a simple code snippet:
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -77,7 +76,7 @@ response = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0]
 
 For quantized models, we advise you to use the GPTQ, AWQ, and GGUF correspondents, namely `Qwen-beta-7B-Chat-GPTQ`, `Qwen-beta-7B-Chat-AWQ`. 
 
-### ModelScope
+### 🤖 ModelScope
 We strongly advise users especially those in mainland China to use ModelScope. `snapshot_download` can help you solve issues concerning downloading checkpoints.
 
 ### Run locally
