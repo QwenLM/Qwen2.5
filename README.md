@@ -121,7 +121,10 @@ Clone [`llamafile`](https://github.com/Mozilla-Ocho/llamafile), run source insta
 ## Deployment
 Now, Qwen1.5 is supported by multiple inference frameworks. Here we demonstrate the usage of `vLLM` and `SGLang`.
 
-> NOTE: Neither the vLLM nor SGLang APIs currently offer built-in support for **function calling**. If you require function calling capabilities, please refer to the **[Qwen-Agent](https://github.com/QwenLM/Qwen-Agent)** project, which provides a wrapper around these APIs to support function calling.
+> [!Note]
+> <div align="center">
+> Neither vLLM nor SGLang currently offer built-in support for <b>function calling</b>. If you require tool use capabilities, please refer to <a href="https://github.com/QwenLM/Qwen-Agent">Qwen-Agent</a>, which provides a wrapper around these APIs to support function calling.
+> </div>
 
 ### vLLM
 We advise you to use `vLLM>=0.3.0` to build OpenAI-compatible API service. Start the server with a chat model, e.g. `Qwen1.5-7B-Chat`:
