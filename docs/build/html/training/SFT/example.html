@@ -1,0 +1,531 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="prev" title="SFT" href="index.html" />
+
+    <!-- Generated with Sphinx 7.2.6 and Furo 2024.01.29 -->
+        <title>Supervised Finetuning Example - Qwen</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=36a5483c" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Qwen</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><div class="sidebar-scroll"><a class="sidebar-brand" href="../../index.html">
+  
+  
+  <span class="sidebar-brand-text">Qwen</span>
+  
+</a><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/quickstart.html">Quickstart</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Inference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../inference/chat.html">Using Transformers to Chat</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Run Locally</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../run_locally/llama.cpp.html">llama.cpp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../run_locally/ollama.html">Ollama</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Web UI</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web_ui/text_generation_webui.html">Text Generation Web UI</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quantization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quantization/awq.html">AWQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantization/gptq.html">Quantization with GPTQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../quantization/gguf.html">GGUF</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Deployment</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../deployment/vllm.html">vLLM</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Training</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="index.html">SFT</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of SFT</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Supervised Finetuning Example</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="supervised-finetuning-example">
+<h1>Supervised Finetuning Example<a class="headerlink" href="#supervised-finetuning-example" title="Link to this heading">#</a></h1>
+<p>Here we provide a very simple script, which is revised from the training
+script in <a class="reference external" href="https://github.com/lm-sys/FastChat">Fastchat</a>. The
+script is used to finetune Qwen with Hugging Face Trainer. You can check
+the script
+<a class="reference external" href="https://github.com/QwenLM/Qwen1.5/blob/main/finetune.py">here</a>. This
+script for supervised finetuning (SFT) has the following features:</p>
+<ul class="simple">
+<li><p>Support single-GPU and multi-GPU training;</p></li>
+<li><p>Support full-parameter tuning,
+<a class="reference external" href="https://arxiv.org/abs/2106.09685">LoRA</a>, and
+<a class="reference external" href="https://arxiv.org/abs/2305.14314">Q-LoRA</a>.</p></li>
+</ul>
+<p>In the following, we introduce more details about the usage of the
+script.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h2>
+<p>Before you start, make sure you have installed the following packages:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>peft<span class="w"> </span>deepspeed<span class="w"> </span>optimum<span class="w"> </span>accelerate
+</pre></div>
+</div>
+</section>
+<section id="data-preparation">
+<h2>Data Preparation<a class="headerlink" href="#data-preparation" title="Link to this heading">#</a></h2>
+<p>For data preparation, we advise you to organize the data in a jsonl
+file, where each line is a dictionary as demonstrated below:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;chatml&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;messages&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;system&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;You are a helpful assistant.&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Tell me something about large language models.&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;assistant&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Large language models are a type of language model that is trained on a large corpus of text data. They are capable of generating human-like text and are used in a variety of natural language processing tasks...&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unknown&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;chatml&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;messages&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;system&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;You are a helpful assistant.&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;What is your name?&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;assistant&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;content&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;My name is Qwen.&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;self-made&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Above are two examples of each data sample in the dataset. Each sample
+is a JSON object with the following fields: <code class="docutils literal notranslate"><span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">messages</span></code> and
+<code class="docutils literal notranslate"><span class="pre">source</span></code>. <code class="docutils literal notranslate"><span class="pre">messages</span></code> is required while the others are optional for
+you to label your data format and data source. The <code class="docutils literal notranslate"><span class="pre">messages</span></code> field is
+a list of JSON objects, each of which has two fields: <code class="docutils literal notranslate"><span class="pre">role</span></code> and
+<code class="docutils literal notranslate"><span class="pre">content</span></code>. <code class="docutils literal notranslate"><span class="pre">role</span></code> can be <code class="docutils literal notranslate"><span class="pre">system</span></code>, <code class="docutils literal notranslate"><span class="pre">user</span></code>, or <code class="docutils literal notranslate"><span class="pre">assistant</span></code>.
+<code class="docutils literal notranslate"><span class="pre">content</span></code> is the text of the message. <code class="docutils literal notranslate"><span class="pre">source</span></code> is the source of the
+data, which can be <code class="docutils literal notranslate"><span class="pre">self-made</span></code>, <code class="docutils literal notranslate"><span class="pre">alpaca</span></code>, <code class="docutils literal notranslate"><span class="pre">open-hermes</span></code>, or any
+other string.</p>
+<p>To make the jsonl file, you can use <code class="docutils literal notranslate"><span class="pre">json</span></code> to save a list of
+dictionaries to the jsonl file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data.jsonl&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="n">samples</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="quickstart">
+<h2>Quickstart<a class="headerlink" href="#quickstart" title="Link to this heading">#</a></h2>
+<p>For you to start finetuning quickly, we directly provide shell scripts
+for you to run without paying attention to details. While you need
+different hyperparameters for different types of training, e.g.,
+single-GPU / multi-GPU training, full-parameter tuning, LoRA, or Q-LoRA.</p>
+<p>The scripts are demonstrated below. Choose one based on your
+requirements:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bash<span class="w"> </span>finetune/&lt;script_path&gt;<span class="w"> </span>-m<span class="w"> </span>&lt;model_path&gt;<span class="w"> </span>-d<span class="w"> </span>&lt;data_path&gt;<span class="w"> </span>--deepspeed<span class="w"> </span>&lt;config_path&gt;
+</pre></div>
+</div>
+<p>Specify the <code class="docutils literal notranslate"><span class="pre">&lt;script_path&gt;</span></code> for your training:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">full.sh</span></code>: full-parameter tuning;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lora.sh</span></code>: LoRA;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">qlora.sh</span></code>: Q-LoRA.</p></li>
+</ul>
+<p>Specify the <code class="docutils literal notranslate"><span class="pre">&lt;model_path&gt;</span></code> for your model, <code class="docutils literal notranslate"><span class="pre">&lt;data_path&gt;</span></code> for your
+data, and <code class="docutils literal notranslate"><span class="pre">&lt;config_path&gt;</span></code> for your deepspeed configuration. This is
+the simplest way to start finetuning. If you want to change more
+hyperparameters, you can dive into the script and modify those
+parameters.</p>
+</section>
+<section id="advanced-usages">
+<h2>Advanced Usages<a class="headerlink" href="#advanced-usages" title="Link to this heading">#</a></h2>
+<p>In this section, we introduce the details of the scripts, including the
+core python script as well as the corresponding shell scripts.</p>
+<section id="shell-scripts">
+<h3>Shell Scripts<a class="headerlink" href="#shell-scripts" title="Link to this heading">#</a></h3>
+<p>Before we introduce the python code, we provide a brief introduction to
+the shell script with commands. We provide some guidance inside the
+shell script and here we take <code class="docutils literal notranslate"><span class="pre">lora.sh</span></code> as an example.</p>
+<p>To set up the environment variables for distributed training (or
+single-GPU training), specify the following variables:
+<code class="docutils literal notranslate"><span class="pre">GPUS_PER_NODE</span></code>, <code class="docutils literal notranslate"><span class="pre">NNODES</span></code>, <code class="docutils literal notranslate"><span class="pre">NODE_RANK</span></code>, <code class="docutils literal notranslate"><span class="pre">MASTER_ADDR</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">MASTER_PORT</span></code>. No need to worry too much about them as we provide the
+default settings for you. In the command, you can pass in the argument
+<code class="docutils literal notranslate"><span class="pre">-m</span></code> and <code class="docutils literal notranslate"><span class="pre">-d</span></code> to specify the model path and data path, respectively.
+You can also pass in the argument <code class="docutils literal notranslate"><span class="pre">--deepspeed</span></code> to specify the
+deepspeed configuration file. We provide two configuration files for
+ZeRO2 and ZeRO3, and you can choose one based on your requirements. In
+most cases, we recommend using ZeRO3 for multi-GPU training except for
+Q-LoRA, where we recommend using ZeRO2.</p>
+<p>There are a series of hyperparameters to tune. Passing in <code class="docutils literal notranslate"><span class="pre">--bf16</span></code> or
+<code class="docutils literal notranslate"><span class="pre">--fp16</span></code> to specify the precision for mixed precision training. Note
+that if you use GPTQ models for Q-LoRA, you need to specify <code class="docutils literal notranslate"><span class="pre">--fp16</span></code>.
+The other significant hyperparameters include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--output_dir</span></code>: the path of your output models or adapters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--num_train_epochs</span></code>: the number of training epochs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--gradient_accumulation_steps</span></code>: the number of gradient
+accumulation steps.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--per_device_train_batch_size</span></code>: the batch size per GPU for
+training, and the total batch size is equalt to
+<code class="docutils literal notranslate"><span class="pre">per_device_train_batch_size</span></code> <span class="math notranslate nohighlight">\(\times\)</span> <code class="docutils literal notranslate"><span class="pre">number_of_gpus</span></code>
+<span class="math notranslate nohighlight">\(\times\)</span> <code class="docutils literal notranslate"><span class="pre">gradient_accumulation_steps</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--learning_rate</span></code>: the learning rate.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--warmup_steps</span></code>: the number of warmup steps.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--lr_scheduler_type</span></code>: the type of learning rate scheduler.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--weight_decay</span></code>: the value of weight decay.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--adam_beta2</span></code>: the value of <span class="math notranslate nohighlight">\(\beta_2\)</span> in Adam.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--model_max_length</span></code>: the maximum sequence length.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--use_lora</span></code>: whether to use LoRA. Adding <code class="docutils literal notranslate"><span class="pre">--q_lora</span></code> can enable
+Q-LoRA.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--gradient_checkpointing</span></code>: whether to use gradient checkpointing.</p></li>
+</ul>
+</section>
+<section id="python-script">
+<h3>Python Script<a class="headerlink" href="#python-script" title="Link to this heading">#</a></h3>
+<p>In this script, we mainly use <code class="docutils literal notranslate"><span class="pre">trainer</span></code> from HF and <code class="docutils literal notranslate"><span class="pre">peft</span></code> to train
+our models. We also use <code class="docutils literal notranslate"><span class="pre">deepspeed</span></code> to accelerate the training
+process. The script is very simple and easy to understand.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">TrainingArguments</span><span class="p">(</span><span class="n">transformers</span><span class="o">.</span><span class="n">TrainingArguments</span><span class="p">):</span>
+    <span class="n">cache_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">optim</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s2">&quot;adamw_torch&quot;</span><span class="p">)</span>
+    <span class="n">model_max_length</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+        <span class="n">default</span><span class="o">=</span><span class="mi">8192</span><span class="p">,</span>
+        <span class="n">metadata</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">&quot;help&quot;</span><span class="p">:</span> <span class="s2">&quot;Maximum sequence length. Sequences will be right padded (and possibly truncated).&quot;</span>
+        <span class="p">},</span>
+    <span class="p">)</span>
+    <span class="n">use_lora</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+
+
+<span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">LoraArguments</span><span class="p">:</span>
+    <span class="n">lora_r</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">64</span>
+    <span class="n">lora_alpha</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">16</span>
+    <span class="n">lora_dropout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.05</span>
+    <span class="n">lora_target_modules</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span>
+        <span class="n">default_factory</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;q_proj&quot;</span><span class="p">,</span> <span class="s2">&quot;k_proj&quot;</span><span class="p">,</span> <span class="s2">&quot;v_proj&quot;</span><span class="p">,</span> <span class="s2">&quot;o_proj&quot;</span><span class="p">,</span> <span class="s2">&quot;up_proj&quot;</span><span class="p">,</span> <span class="s2">&quot;gate_proj&quot;</span><span class="p">,</span> <span class="s2">&quot;down_proj&quot;</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="n">lora_weight_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">lora_bias</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span>
+    <span class="n">q_lora</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<p>The classes for arguments allow you to specify hyperparameters for
+model, data, training, and additionally LoRA if you use LoRA or Q-LoRA
+to train your model. Specifically, <code class="docutils literal notranslate"><span class="pre">model-max-length</span></code> is a key
+hyperparameter that determines your maximum sequence length of your
+training data.</p>
+<p><code class="docutils literal notranslate"><span class="pre">LoRAArguments</span></code> includes the hyperparameters for LoRA or Q-LoRA:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lora_r</span></code>: the rank for LoRA;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lora_alpha</span></code>: the alpha value for LoRA;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lora_dropout</span></code>: the dropout rate for LoRA;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lora_target_modules</span></code>: the target modules for LoRA. By default we
+tune all linear layers;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lora_weight_path</span></code>: the path to the weight file for LoRA;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lora_bias</span></code>: the bias for LoRA;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">q_lora</span></code>: whether to use Q-LoRA. This is the key hyperparameter for
+Q-LoRA. Pay attention to the base language model that you use. We
+advise you to use our provided GPTQ or AWQ models, but you can also
+use the base model with <code class="docutils literal notranslate"><span class="pre">bitsandbytes</span></code>.</p></li>
+</ul>
+<p>The method <code class="docutils literal notranslate"><span class="pre">safe_save_model_for_hf_trainer</span></code>, which uses
+<code class="docutils literal notranslate"><span class="pre">get_peft_state_maybe_zero_3</span></code>, helps tackle the problems in saving
+models trained either with or without ZeRO3.</p>
+<p>For data preprocessing, we use <code class="docutils literal notranslate"><span class="pre">preprocess</span></code> to organize the data.
+Specifically, we apply our ChatML template to the texts. If you prefer
+other chat templates, you can use others, e.g., by still applying
+<code class="docutils literal notranslate"><span class="pre">apply_chat_template()</span></code> with another tokenizer. The chat template is
+stored in the <code class="docutils literal notranslate"><span class="pre">tokenizer_config.json</span></code> in the HF repo. Additionally, we
+pad the sequence of each sample to the maximum length for training.</p>
+<p>Then we utilize <code class="docutils literal notranslate"><span class="pre">make_supervised_data_module</span></code> by using
+<code class="docutils literal notranslate"><span class="pre">SupervisedDataset</span></code> or <code class="docutils literal notranslate"><span class="pre">LazySupervisedDataset</span></code> to build the dataset.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">train</span></code> method is the key to the training. In general, it loads
+the tokenizer and model with <code class="docutils literal notranslate"><span class="pre">AutoTokenizer.from_pretrained()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">AutoModelForCausalLM.from_pretrained()</span></code>. If we use LoRA, the method
+will initialize LoRA configuration with <code class="docutils literal notranslate"><span class="pre">LoraConfig</span></code>. If we apply
+Q-LoRA, we should use <code class="docutils literal notranslate"><span class="pre">prepare_model_for_kbit_training</span></code>. Then we leave
+the following efforts to <code class="docutils literal notranslate"><span class="pre">trainer</span></code> and have a cup of coffee!</p>
+</section>
+</section>
+<section id="next-step">
+<h2>Next Step<a class="headerlink" href="#next-step" title="Link to this heading">#</a></h2>
+<p>Now, you are able to use a very simple script to perform different types
+of SFT. Alternatively, you can use more advanced training libraries,
+such as
+<a class="reference external" href="https://github.com/OpenAccess-AI-Collective/axolotl">Axolotl</a> or
+<a class="reference external" href="https://github.com/hiyouga/LLaMA-Factory">LLaMA-Factory</a>, to enjoy
+more functionalities. To take a step forward, after SFT, you can
+consider RLHF to align your model to human preferences! Stay tuned for
+our next tutorial on RLHF!</p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          <a class="prev-page" href="index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">SFT</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2024, Qwen Team
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Supervised Finetuning Example</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#data-preparation">Data Preparation</a></li>
+<li><a class="reference internal" href="#quickstart">Quickstart</a></li>
+<li><a class="reference internal" href="#advanced-usages">Advanced Usages</a><ul>
+<li><a class="reference internal" href="#shell-scripts">Shell Scripts</a></li>
+<li><a class="reference internal" href="#python-script">Python Script</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#next-step">Next Step</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=32e29ea5"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=a5fa425f"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </body>
+</html>
