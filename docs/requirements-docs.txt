@@ -1,0 +1,4 @@
+sphinx
+sphinx-book-theme
+sphinx-copybutton
+furo
