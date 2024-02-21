@@ -1,4 +1,4 @@
-Quantization with GPTQ
+GPTQ
 ======================
 
 `GPTQ <https://arxiv.org/abs/2210.17323>`__ is a quantization method for
