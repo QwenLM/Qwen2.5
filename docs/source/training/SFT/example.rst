@@ -1,4 +1,4 @@
-Supervised Finetuning
+Example
 ====================================================
 
 Here we provide a very simple script for supervised finetuning, which is revised from the training
