@@ -1,0 +1,306 @@
+# Copyright (C) 2024, Qwen Team, Alibaba Group.
+# This file is distributed under the same license as the Qwen package.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-21 21:08+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.14.0\n"
+
+#: ../../source/training/SFT/example.rst:2 691e3f2b49604b49a99b0d62c21ab625
+msgid "Example"
+msgstr "示例"
+
+#: ../../source/training/SFT/example.rst:4 ad35293ab62442db89b6b6d2334b0415
+msgid ""
+"Here we provide a very simple script for supervised finetuning, which is "
+"revised from the training script in ```Fastchat`` <https://github.com/lm-"
+"sys/FastChat>`__. The script is used to finetune Qwen with Hugging Face "
+"Trainer. You can check the script `here "
+"<https://github.com/QwenLM/Qwen1.5/blob/main/finetune.py>`__. This script"
+" for supervised finetuning (SFT) has the following features:"
+msgstr "在这里，我们提供了一个非常简单的有监督微调脚本，该脚本是基于 `Fastchat <https://github.com/lm-sys/FastChat>`__ 的训练脚本修改而来的。这个脚本用于使用Hugging Face Trainer 对Qwen模型进行微调。你可以在以下链接查看这个脚本： `这里 <https://github.com/QwenLM/Qwen1.5/blob/main/finetune.py>`__ 。这个脚本具有以下特点："
+
+#: ../../source/training/SFT/example.rst:11 d058261c295d4c62ab51212928663d67
+msgid "Support single-GPU and multi-GPU training;"
+msgstr "支持单卡和多卡分布式训练"
+
+#: ../../source/training/SFT/example.rst:12 73732e5202a048ad9bd628046779d3a2
+msgid ""
+"Support full-parameter tuning, `LoRA "
+"<https://arxiv.org/abs/2106.09685>`__, and `Q-LoRA "
+"<https://arxiv.org/abs/2305.14314>`__."
+msgstr "支持全参数微调、 `LoRA <https://arxiv.org/abs/2106.09685>`__ 以及 `Q-LoRA <https://arxiv.org/abs/2305.14314>`__  。"
+
+#: ../../source/training/SFT/example.rst:16 4691f21f4b19470ba7c587c0a2c21f49
+msgid "In the following, we introduce more details about the usage of the script."
+msgstr "下面，我们介绍脚本的更多细节。"
+
+#: ../../source/training/SFT/example.rst:20 fe662acf1951448c959543a3c74c8417
+msgid "Installation"
+msgstr "安装"
+
+#: ../../source/training/SFT/example.rst:22 e412d1f6dda44df3b6792975b6124c10
+msgid "Before you start, make sure you have installed the following packages:"
+msgstr "开始之前，确保你已经安装了以下代码库："
+
+#: ../../source/training/SFT/example.rst:29 4cf9efbe517045778d847fd3adef663a
+msgid "Data Preparation"
+msgstr "准备数据"
+
+#: ../../source/training/SFT/example.rst:31 07e875e969504388b10b7ada5b4c3c7d
+msgid ""
+"For data preparation, we advise you to organize the data in a jsonl file,"
+" where each line is a dictionary as demonstrated below:"
+msgstr "我们建议你放在jsonl文件中，每一行是一个如下所示的字典："
+
+#: ../../source/training/SFT/example.rst:76 652ddb9b02594421bde769f553d29a3e
+msgid ""
+"Above are two examples of each data sample in the dataset. Each sample is"
+" a JSON object with the following fields: ``type``, ``messages`` and "
+"``source``. ``messages`` is required while the others are optional for "
+"you to label your data format and data source. The ``messages`` field is "
+"a list of JSON objects, each of which has two fields: ``role`` and "
+"``content``. ``role`` can be ``system``, ``user``, or ``assistant``. "
+"``content`` is the text of the message. ``source`` is the source of the "
+"data, which can be ``self-made``, ``alpaca``, ``open-hermes``, or any "
+"other string."
+msgstr "以上提供了该数据集中的每个样本的两个示例。每个样本都是一个JSON对象，包含以下字段： ``type`` 、 ``messages`` 和 ``source`` 。其中， ``messages`` 是必填字段，而其他字段则是供您标记数据格式和数据来源的可选字段。 ``messages`` 字段是一个JSON对象列表，每个对象都包含两个字段： ``role`` 和 ``content`` 。其中， ``role`` 可以是 ``system`` 、 ``user`` 或 ``assistant`` ，表示消息的角色； ``content`` 则是消息的文本内容。而 ``source`` 字段代表了数据来源，可能包括 ``self-made`` 、 ``alpaca`` 、 ``open-hermes`` 或其他任意字符串。"
+
+#: ../../source/training/SFT/example.rst:86 9271b908bb19400d8dfe56f1ef0ce1b5
+msgid ""
+"To make the jsonl file, you can use ``json`` to save a list of "
+"dictionaries to the jsonl file:"
+msgstr "你需要用 ``json`` 将一个字典列表存入jsonl文件中："
+
+#: ../../source/training/SFT/example.rst:98 6c36700445c340bfa6feeadd6c1bdb1c
+msgid "Quickstart"
+msgstr "快速开始"
+
+#: ../../source/training/SFT/example.rst:100 0e86c01757e74bdabfc3bca0e4265481
+msgid ""
+"For you to start finetuning quickly, we directly provide a shell script "
+"for you to run without paying attention to details. You need "
+"different hyperparameters for different types of training, e.g., single-"
+"GPU / multi-GPU training, full-parameter tuning, LoRA, or Q-LoRA."
+msgstr "为了让您能够快速开始微调，我们直接提供了一个shell脚本，您可以无需关注具体细节即可运行。针对不同类型的训练（例如单GPU训练、多GPU训练、全参数微调、LoRA或Q-LoRA），您可能需要不同的超参数设置。"
+
+#: ../../source/training/SFT/example.rst:113 6967058d5e504f3f87a084f8b6756224
+msgid ""
+"Specify the ``<model_path>`` for your model, ``<data_path>`` for your "
+"data, and ``<config_path>`` for your deepspeed configuration. If you use "
+"LoRA or Q-LoRA, just add ``--use_lora True`` or ``--q_lora True`` based "
+"on your requirements. This is the simplest way to start finetuning. If "
+"you want to change more hyperparameters, you can dive into the script and"
+" modify those parameters."
+msgstr "为您的模型指定 ``<model_path>`` ，为您的数据指定 ``<data_path>`` ，并为您的Deepspeed配置指定 ``<config_path>`` 。如果您使用LoRA或Q-LoRA，只需根据您的需求添加 ``--use_lora True`` 或 ``--q_lora True`` 。这是开始微调的最简单方式。如果您想更改更多超参数，您可以深入脚本并修改这些参数。"
+
+#: ../../source/training/SFT/example.rst:122 9ce4446fa109470188c3a6f849c51a23
+msgid "Advanced Usages"
+msgstr "高级用法"
+
+#: ../../source/training/SFT/example.rst:124 a5b1894b1348461dae32eafa7193b325
+msgid ""
+"In this section, we introduce the details of the scripts, including the "
+"core python script as well as the corresponding shell script."
+msgstr "在这个部分中，我们介绍python脚本以及shell脚本的相关细节"
+
+#: ../../source/training/SFT/example.rst:128 7df17cdd0ceb42eb9d7f1734b317c3b9
+msgid "Shell Script"
+msgstr "Shell脚本"
+
+#: ../../source/training/SFT/example.rst:130 9da15ddce8994ea29a9562b498bebb4c
+msgid ""
+"Before we introduce the python code, we provide a brief introduction to "
+"the shell script with commands. We provide some guidance inside the shell"
+" script and here we take ``finetune.sh`` as an example."
+msgstr "在展示Python代码之前，我们先对包含命令的Shell脚本做一个简单的介绍。我们在Shell脚本中提供了一些指南，并且此处将以 ``finetune.sh`` 这个脚本为例进行解释说明。"
+
+#: ../../source/training/SFT/example.rst:134 407c05f4ef174a40a986fb9fcc994466
+msgid ""
+"To set up the environment variables for distributed training (or single-"
+"GPU training), specify the following variables: ``GPUS_PER_NODE``, "
+"``NNODES``, ``NODE_RANK``, ``MASTER_ADDR``, and ``MASTER_PORT``. No need "
+"to worry too much about them as we provide the default settings for you. "
+"In the command, you can pass in the argument ``-m`` and ``-d`` to specify"
+" the model path and data path, respectively. You can also pass in the "
+"argument ``--deepspeed`` to specify the deepspeed configuration file. We "
+"provide two configuration files for ZeRO2 and ZeRO3, and you can choose "
+"one based on your requirements. In most cases, we recommend using ZeRO3 "
+"for multi-GPU training except for Q-LoRA, where we recommend using ZeRO2."
+msgstr "要为分布式训练（或单GPU训练）设置环境变量，请指定以下变量： ``GPUS_PER_NODE`` 、 ``NNODES、NODE_RANK`` 、 ``MASTER_ADDR`` 和 ``MASTER_PORT`` 。不必过于担心这些变量，因为我们为您提供了默认设置。在命令行中，您可以通过传入参数 ``-m`` 和 ``-d`` 来分别指定模型路径和数据路径。您还可以通过传入参数 ``--deepspeed`` 来指定Deepspeed配置文件。我们为您提供针对ZeRO2和ZeRO3的两种配置文件，您可以根据需求选择其中之一。在大多数情况下，我们建议在多GPU训练中使用ZeRO3，但针对Q-LoRA，我们推荐使用ZeRO2。"
+
+#: ../../source/training/SFT/example.rst:146 3253db51858e4ed9936299f01a35fb8b
+msgid ""
+"There are a series of hyperparameters to tune. Passing in ``--bf16`` or "
+"``--fp16`` to specify the precision for mixed precision training. "
+"The other significant hyperparameters include:"
+msgstr "有一系列需要调节的超参数。您可以向程序传递 ``--bf16`` 或 ``--fp16`` 参数来指定混合精度训练所采用的精度级别。此外，还有其他一些重要的超参数如下："
+
+#: ../../source/training/SFT/example.rst:151 4a971f83ddd140e295c719e1938306b0
+msgid "``--output_dir``: the path of your output models or adapters."
+msgstr " ``--output_dir`` ：模型或者adapter的输出路径；."
+
+#: ../../source/training/SFT/example.rst:152 e69801659a8c4bcba41cdcdc4a2fd5fc
+msgid "``--num_train_epochs``: the number of training epochs."
+msgstr " ``--num_train_epochs`` : 训练轮数；"
+
+#: ../../source/training/SFT/example.rst:153 7c12854b98524812a8b4760588a62776
+msgid ""
+"``--gradient_accumulation_steps``: the number of gradient accumulation "
+"steps."
+msgstr " ``--gradient_accumulation_steps`` ：梯度累积；"
+
+#: ../../source/training/SFT/example.rst:155 99dce5d00f63497297bcb9f81490803d
+msgid ""
+"``--per_device_train_batch_size``: the batch size per GPU for training, "
+"and the total batch size is equalt to ``per_device_train_batch_size`` "
+":math:`\\times` ``number_of_gpus`` :math:`\\times` "
+"``gradient_accumulation_steps``."
+msgstr " ``--per_device_train_batch_size`` 参数表示每个GPU在训练时的批次大小，而总批次大小等于 ``per_device_train_batch_size`` 乘以 GPU 的数量，再乘以 ``gradient_accumulation_steps`` ；"
+
+#: ../../source/training/SFT/example.rst:159 475e6a55c72243cb99358dcd2c465910
+msgid "``--learning_rate``: the learning rate."
+msgstr " ``--learning_rate`` ：学习率；"
+
+#: ../../source/training/SFT/example.rst:160 d375b81b4a4b450f8204af76a598f07f
+msgid "``--warmup_steps``: the number of warmup steps."
+msgstr " ``--warmup_steps`` ：warmup的步数；"
+
+#: ../../source/training/SFT/example.rst:161 315ccca447354e63b97336b9c8439317
+msgid "``--lr_scheduler_type``: the type of learning rate scheduler."
+msgstr " ``--lr_scheduler_type`` ：learning rate scheduler类型；"
+
+#: ../../source/training/SFT/example.rst:162 338b6abfcb684c87a5c64323712c015e
+msgid "``--weight_decay``: the value of weight decay."
+msgstr " ``--weight_decay``：weight decay的值；"
+
+#: ../../source/training/SFT/example.rst:163 092f57e35db9472f80881e60395a6fd9
+msgid "``--adam_beta2``: the value of :math:`\\beta_2` in Adam."
+msgstr " ``--adam_beta2`` ：Adam :math:`\\beta_2` "
+
+#: ../../source/training/SFT/example.rst:164 1b3dd161a9e74cbb9d5ea69c7e7e027d
+msgid "``--model_max_length``: the maximum sequence length."
+msgstr " ``--model_max_length`` ：最大长度；"
+
+#: ../../source/training/SFT/example.rst:165 c8679770b7894a28aae2d37f74fe793b
+msgid ""
+"``--use_lora``: whether to use LoRA. Adding ``--q_lora`` can enable "
+"Q-LoRA."
+msgstr " ``--use_lora`` ：是否使用LoRA，加上 ``--q_lora`` 即可启用Q-LoRA。""
+
+#: ../../source/training/SFT/example.rst:167 19559d935a3a4b5ca489bac858a1a370
+msgid "``--gradient_checkpointing``: whether to use gradient checkpointing."
+msgstr " ``--gradient_checkpointing`` ：是否使用gradient checkpointing；"
+
+#: ../../source/training/SFT/example.rst:170 1b7c0668912844a8ac5d659cff28a3ca
+msgid "Python Script"
+msgstr "Python脚本"
+
+#: ../../source/training/SFT/example.rst:172 56fefe47f8f84599ad5ef2a3a757b6b9
+msgid ""
+"In this script, we mainly use ``trainer`` from HF and ``peft`` to train "
+"our models. We also use ``deepspeed`` to accelerate the training process."
+" The script is very simple and easy to understand."
+msgstr "在本脚本中，我们主要使用来自HF的 ``trainer`` 和 ``peft`` 来训练我们的模型。同时，我们也利用 ``deepspeed`` 来加速训练过程。该脚本非常简洁且易于理解。"
+
+#: ../../source/training/SFT/example.rst:228 39088ec5d7014e1388276b552acfba08
+msgid ""
+"The classes for arguments allow you to specify hyperparameters for model,"
+" data, training, and additionally LoRA if you use LoRA or Q-LoRA to train"
+" your model. Specifically, ``model-max-length`` is a key hyperparameter "
+"that determines your maximum sequence length of your training data."
+msgstr "参数类允许你为模型、数据和训练指定超参数，如果使用LoRA或Q-LoRA训练模型，还会包含这两个方法的相关超参数。具体来说， ``model-max-length`` 是一个关键的超参数，它决定了训练数据的最大序列长度。"
+
+#: ../../source/training/SFT/example.rst:234 fe78a42c209d43e2bb6bb05eeef07f6a
+msgid "``LoRAArguments`` includes the hyperparameters for LoRA or Q-LoRA:"
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:236 1d4398fa2e54447e9ebab4b86d880a40
+msgid "``lora_r``: the rank for LoRA;"
+msgstr " ``LoRAArguments`` 包含了用于LoRA或Q-LoRA的超参数："
+
+#: ../../source/training/SFT/example.rst:237 a885bf1a19ab4d05b3d1727b1fe45f23
+msgid "``lora_alpha``: the alpha value for LoRA;"
+msgstr " `lora_alpha`` ：LoRA的alpha值；"
+
+#: ../../source/training/SFT/example.rst:238 f77081bd15d440299d74c8fae5b14952
+msgid "``lora_dropout``: the dropout rate for LoRA;"
+msgstr " ``lora_dropout`` ：LoRA的Dropout；"
+
+#: ../../source/training/SFT/example.rst:239 ed286b58fe1143a88e18430a2e0faa2a
+msgid ""
+"``lora_target_modules``: the target modules for LoRA. By default we tune "
+"all linear layers;"
+msgstr " ``lora_target_modules`` ：LoRA的目标模块，默认情况下，我们对所有线性层进行调优；"
+
+#: ../../source/training/SFT/example.rst:241 245ff8c677174e4b80486a2b7bc54b1e
+msgid "``lora_weight_path``: the path to the weight file for LoRA;"
+msgstr " ``lora_weight_path``：LoRA的权重路径；"
+
+#: ../../source/training/SFT/example.rst:242 441ef87612c647518633090a3889360d
+msgid "``lora_bias``: the bias for LoRA;"
+msgstr " ``lora_bias`` ：LoRA的bias"
+
+#: ../../source/training/SFT/example.rst:243 95776633d70841efb4187ad9408ffb23
+msgid "``q_lora``: whether to use Q-LoRA."
+msgstr " ``q_lora`` 是否使用Q-LoRA。""
+
+#: ../../source/training/SFT/example.rst:301 8842a7bafb2d4d77a63590bdd79195ce
+msgid ""
+"The method ``safe_save_model_for_hf_trainer``, which uses "
+"``get_peft_state_maybe_zero_3``, helps tackle the problems in saving "
+"models trained either with or without ZeRO3."
+msgstr "方法 ``safe_save_model_for_hf_trainer`` 通过使用 ``get_peft_state_maybe_zero_3`` 有助于解决在保存采用或未采用ZeRO3技术训练的模型时遇到的问题。"
+
+#: ../../source/training/SFT/example.rst:335 7850340690ee4a4ebc65de95cd04ccd6
+msgid ""
+"For data preprocessing, we use ``preprocess`` to organize the data. "
+"Specifically, we apply our ChatML template to the texts. If you prefer "
+"other chat templates, you can use others, e.g., by still applying "
+"``apply_chat_template()`` with another tokenizer. The chat template is "
+"stored in the ``tokenizer_config.json`` in the HF repo. Additionally, we "
+"pad the sequence of each sample to the maximum length for training."
+msgstr "在数据预处理阶段，我们使用 ``preprocess`` 来整理数据。具体来说，我们应用ChatML模板对文本进行处理。如果您倾向于使用其他chat模板，您也可以选择其他的，例如，仍然通过``apply_chat_template()``函数配合另一个tokenizer进行应用。Chat模板存储在HF仓库中的 ``tokenizer_config.json`` 文件中。此外，我们还将每个样本的序列填充到最大长度，以便于训练。"
+
+#: ../../source/training/SFT/example.rst:432 c308fd832bd747a48ac896a9ffaa9804
+msgid ""
+"Then we utilize ``make_supervised_data_module`` by using "
+"``SupervisedDataset`` or ``LazySupervisedDataset`` to build the dataset."
+msgstr "然后我们利用 ``make_supervised_data_module`` ，通过使用 ``SupervisedDataset`` 或 ``LazySupervisedDataset`` 来构建数据集。"
+
+#: ../../source/training/SFT/example.rst:555 2245d0d984224d9dbc8ddbb43160c596
+msgid ""
+"The ``train`` method is the key to the training. In general, it loads the"
+" tokenizer and model with ``AutoTokenizer.from_pretrained()`` and "
+"``AutoModelForCausalLM.from_pretrained()``. If we use LoRA, the method "
+"will initialize LoRA configuration with ``LoraConfig``. If we apply "
+"Q-LoRA, we should use ``prepare_model_for_kbit_training``. Note that for "
+"now it still does not support resume for LoRA. Then we leave the "
+"following efforts to ``trainer`` and have a cup of coffee!"
+msgstr "``train`` 方法是训练过程的关键所在。通常情况下，它会通过 ``AutoTokenizer.from_pretrained()`` 和 ``AutoModelForCausalLM.from_pretrained()`` 来加载tokenizer和模型。如果使用了LoRA，该方法将会用 ``LoraConfig`` 初始化LoRA配置。若应用Q-LoRA，则应当采用 ``prepare_model_for_kbit_training`` 。请注意，目前还不支持对LoRA的续训（resume）。接下来的任务就交给trainer处理，此时不妨喝杯咖啡稍作休息！"
+
+#: ../../source/training/SFT/example.rst:564 5224efdee6424eec88b1fdf0a99e4694
+msgid "Next Step"
+msgstr "下一步"
+
+#: ../../source/training/SFT/example.rst:566 2f2432fcec6e42758b92c50f6c7855bd
+msgid ""
+"Now, you are able to use a very simple script to perform different types "
+"of SFT. Alternatively, you can use more advanced training libraries, such"
+" as `Axolotl <https://github.com/OpenAccess-AI-Collective/axolotl>`__ or "
+"`LLaMA-Factory <https://github.com/hiyouga/LLaMA-Factory>`__, to enjoy "
+"more functionalities. To take a step forward, after SFT, you can consider"
+" RLHF to align your model to human preferences! Stay tuned for our next "
+"tutorial on RLHF!"
+msgstr "现在，您可以使用一个非常简单的脚本来执行不同类型的SFT。另外，您还可以选择使用更高级的训练库，例如 `Axolotl <https://github.com/OpenAccess-AI-Collective/axolotl>`__ 或 `LLaMA-Factory <https://github.com/hiyouga/LLaMA-Factory>`__ ，以享受更多的功能。进一步来说，在完成SFT之后，您可以考虑采用RLHF（强化学习与人类反馈）来使您的模型更好地与人类偏好对齐！请继续关注我们接下来关于RLHF的教程！"
+

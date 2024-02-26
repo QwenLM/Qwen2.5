@@ -1,0 +1,121 @@
+# Copyright (C) 2024, Qwen Team, Alibaba Group.
+# This file is distributed under the same license as the Qwen package.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-21 21:08+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.14.0\n"
+
+#: ../../source/getting_started/quickstart.rst:2
+#: 0d59f700095e438687bc5ef12625a233
+msgid "Quickstart"
+msgstr "快速开始"
+
+#: ../../source/getting_started/quickstart.rst:4
+#: 34c301da60d148e391e99560081c476f
+msgid ""
+"This guide helps you quickly start using Qwen1.5. We provide examples of "
+"`Hugging Face Transformers "
+"<https://github.com/huggingface/transformers>`__ as well as `ModelScope "
+"<https://github.com/modelscope/modelscope>`__, and `vLLM "
+"<https://github.com/vllm-project/vllm>`__ for deployment."
+msgstr "本指南帮助您快速上手Qwen1.5的使用，并提供了如下示例： `Hugging Face Transformers <https://github.com/huggingface/transformers>`__ 以及 `ModelScope <https://github.com/modelscope/modelscope>`__ 和 `vLLM <https://github.com/vllm-project/vllm>`__ 在部署时的应用实例。"
+
+#: ../../source/getting_started/quickstart.rst:10
+#: 4a4d501b6a8243348c451132208ff369
+msgid "Hugging Face Transformers & ModelScope"
+msgstr "Hugging Face Transformers & ModelScope"
+
+#: ../../source/getting_started/quickstart.rst:12
+#: 73463ba21bec4384bd2db9e3deb03ec9
+msgid ""
+"To get a quick start with Qwen1.5, we advise you to try with the "
+"inference with ``transformers`` first. Make sure that you have installed "
+"``transformers>=4.37.0``. The following is a very simple code snippet "
+"showing how to run Qwen1.5-Chat, with an example of Qwen1.5-7B-Chat:"
+msgstr "要快速上手Qwen1.5，我们建议您首先尝试使用transformers进行推理。请确保已安装了 ``transformers>=4.37.0`` 版本。以下是一个非常简单的代码片段示例，展示如何运行Qwen1.5-Chat模型，其中包含 ``Qwen1.5-7B-Chat`` 的实例："
+
+#: ../../source/getting_started/quickstart.rst:56
+#: 02d8873c2f4944bd8e555b1a7ca0bd83
+msgid ""
+"Previously, we use ``model.chat()`` (see ``modeling_qwen.py`` in previous"
+" Qwen models for more information). Now, we follow the practice of "
+"``transformers`` and directly use ``model.generate()`` with "
+"``apply_chat_template()`` in tokenizer."
+msgstr "以前，我们使用 ``model.chat()`` （有关更多详细信息，请参阅先前Qwen模型中的 ``modeling_qwen.py`` ）。现在，我们遵循 ``transformers`` 的实践，直接使用 ``model.generate()`` 配合tokenizer中的 ``apply_chat_template()`` 方法。"
+
+#: ../../source/getting_started/quickstart.rst:61
+#: 69a7184639c842a3b3036eb4ed564746
+msgid ""
+"To tackle with downloading issues, we advise you to try with from "
+"ModelScope, just changing the first line of code above to the following:"
+msgstr "为了解决下载问题，我们建议您尝试从 ModelScope 进行下载，只需将上述代码的第一行更改为以下内容："
+
+#: ../../source/getting_started/quickstart.rst:68
+#: 74ec66c1e58444509705de8097aa3f93
+msgid ""
+"Streaming mode for model chat is simple with the help of "
+"``TextStreamer``. Below we show you an example of how to use it:"
+msgstr "借助 ``TextStreamer`` ，chat的流式模式变得非常简单。下面我们将展示一个如何使用它的示例："
+
+#: ../../source/getting_started/quickstart.rst:84
+#: fedfd60540414413ba87cdc77dde4f3a
+msgid "vLLM for Deployment"
+msgstr "使用vLLM部署"
+
+#: ../../source/getting_started/quickstart.rst:86
+#: 0306956b41b04d2a9c349942abd29743
+msgid ""
+"To deploy Qwen1.5, we advise you to use vLLM. vLLM is a fast and easy-to-"
+"use framework for LLM inference and serving. In the following, we "
+"demonstrate how to build a OpenAI-API compatible API service with vLLM."
+msgstr "要部署Qwen1.5，我们建议您使用vLLM。vLLM是一个用于LLM推理和服务的快速且易于使用的框架。以下，我们将展示如何使用vLLM构建一个与OpenAI API兼容的API服务。"
+
+#: ../../source/getting_started/quickstart.rst:91
+#: ea047884429444f69cf13fa20a9a1226
+msgid "First, make sure you have installed ``vLLM>=0.3.0``:"
+msgstr "首先，确保你已经安装 ``vLLM>=0.3.0`` ："
+
+#: ../../source/getting_started/quickstart.rst:97
+#: fa3653a7e100405a9150d61cbc7aa0bf
+msgid ""
+"Run the following code to build up a vllm service. Here we take Qwen1.5"
+"-7B-Chat as an example:"
+msgstr "运行以下代码以构建vllm服务。此处我们以Qwen1.5-7B-Chat为例："
+
+#: ../../source/getting_started/quickstart.rst:104
+#: 3ca1e2527a2f4f359ca353cf02e394c5
+msgid ""
+"Then, you can use the `create chat interface "
+"<https://platform.openai.com/docs/api-"
+"reference/chat/completions/create>`__ to communicate with Qwen:"
+msgstr "然后，您可以使用 `create chat interface <https://platform.openai.com/docs/api-reference/chat/completions/create>`__ 来与Qwen进行交流："
+
+#: ../../source/getting_started/quickstart.rst:118
+#: 903bf1697ebc472fa96655cd6eefaf94
+msgid ""
+"or you can use python client with ``openai`` python package as shown "
+"below:"
+msgstr "或者您可以按照下面所示的方式，使用 ``openai`` Python 包中的Python 客户端："
+
+#: ../../source/getting_started/quickstart.rst:143
+#: 930fecfab8b64a33ab1807427ca1ffe9
+msgid "Next Step"
+msgstr "下一步"
+
+#: ../../source/getting_started/quickstart.rst:145
+#: dc8967f0befe41f781a22ada80e0a361
+msgid ""
+"Now, you can have fun with Qwen models. Would love to know more about its"
+" usages? Feel free to check other documents in this documentation."
+msgstr "现在，您可以尽情探索Qwen模型的各种用途。若想了解更多，请随时查阅本文档中的其他内容。"
+

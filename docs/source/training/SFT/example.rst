@@ -98,7 +98,7 @@ Quickstart
 ----------
 
 For you to start finetuning quickly, we directly provide a shell script
-for you to run without paying attention to details. While you need
+for you to run without paying attention to details. You need
 different hyperparameters for different types of training, e.g.,
 single-GPU / multi-GPU training, full-parameter tuning, LoRA, or Q-LoRA.
 
@@ -122,14 +122,14 @@ Advanced Usages
 ---------------
 
 In this section, we introduce the details of the scripts, including the
-core python script as well as the corresponding shell scripts.
+core python script as well as the corresponding shell script.
 
 Shell Script
 ~~~~~~~~~~~~~
 
 Before we introduce the python code, we provide a brief introduction to
 the shell script with commands. We provide some guidance inside the
-shell script and here we take ``lora.sh`` as an example.
+shell script and here we take ``finetune.sh`` as an example.
 
 To set up the environment variables for distributed training (or
 single-GPU training), specify the following variables:
@@ -144,8 +144,7 @@ most cases, we recommend using ZeRO3 for multi-GPU training except for
 Q-LoRA, where we recommend using ZeRO2.
 
 There are a series of hyperparameters to tune. Passing in ``--bf16`` or
-``--fp16`` to specify the precision for mixed precision training. Note
-that if you use GPTQ models for Q-LoRA, you need to specify ``--fp16``.
+``--fp16`` to specify the precision for mixed precision training. 
 The other significant hyperparameters include:
 
 -  ``--output_dir``: the path of your output models or adapters.

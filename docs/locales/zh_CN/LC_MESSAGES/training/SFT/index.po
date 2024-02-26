@@ -1,0 +1,21 @@
+# Copyright (C) 2024, Qwen Team, Alibaba Group.
+# This file is distributed under the same license as the Qwen package.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-21 21:08+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.14.0\n"
+
+#: ../../source/training/SFT/index.rst:2 7c5733b15e73491ca46e02dcd6a501f8
+msgid "SFT"
+msgstr "有监督微调"
+

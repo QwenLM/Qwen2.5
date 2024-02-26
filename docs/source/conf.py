@@ -34,7 +34,7 @@ extensions = [
     "sphinx.ext.napoleon",
     "sphinx.ext.viewcode",
     "sphinx.ext.intersphinx",
-    "sphinx_copybutton",
+    # "sphinx_copybutton",
     "sphinx.ext.autodoc",
     "sphinx.ext.autosummary",
 ]
@@ -59,11 +59,11 @@ copybutton_prompt_is_regexp = True
 html_title = project
 html_theme = 'furo'
 # html_logo = 'assets/logo/qwen.png'
-html_theme_options = {
-    'path_to_docs': 'docs/source',
-    'repository_url': 'https://github.com/QwenLM/Qwen1.5',
-    'use_repository_button': True,
-}
+# html_theme_options = {
+#     'path_to_docs': 'docs/source',
+#     'repository_url': 'https://github.com/QwenLM/Qwen1.5',
+#     # 'use_repository_button': True,
+# }
 html_sidebars = {
     "**": [
         "sidebar/scroll-start.html",
@@ -73,6 +73,12 @@ html_sidebars = {
         "sidebar/scroll-end.html",
     ]
 }
+
+# multi-language docs
+language = 'en'
+locale_dirs = ['../locales/']   # path is example but recommended.
+gettext_compact = False  # optional.
+gettext_uuid = True  # optional.
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

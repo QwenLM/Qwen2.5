@@ -1,0 +1,109 @@
+# Copyright (C) 2024, Qwen Team, Alibaba Group.
+# This file is distributed under the same license as the Qwen package.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-21 21:08+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.14.0\n"
+
+#: ../../source/quantization/gptq.rst:2 41077c7d75ad44bba5cff56fef7a54bd
+msgid "GPTQ"
+msgstr "GPTQ"
+
+#: ../../source/quantization/gptq.rst:4 c291d8c4012b4ac58b42b37c04ac3f05
+msgid ""
+"`GPTQ <https://arxiv.org/abs/2210.17323>`__ is a quantization method for "
+"GPT-like LLMs, which uses one-shot weight quantization based on "
+"approximate second-order information. In this document, we show you how "
+"to use the quantized model with transformers and also how to quantize "
+"your own model with `AutoGPTQ <https://github.com/AutoGPTQ/AutoGPTQ>`__."
+msgstr "`GPTQ <https://arxiv.org/abs/2210.17323>`__ 是一种针对类GPT大型语言模型的量化方法，它基于近似二阶信息进行一次性权重量化。在本文档中，我们将向您展示如何使用 ``transformers`` 库加载并应用量化后的模型，同时也会指导您如何通过 `AutoGPTQ <https://github.com/AutoGPTQ/AutoGPTQ>`__ 来对您自己的模型进行量化处理。"
+
+#: ../../source/quantization/gptq.rst:11 ba8f325751ea460b8d3b9d8665f82e7c
+msgid "Usage of GPTQ Models with Transformers"
+msgstr "在Transformers中使用GPTQ模型"
+
+#: ../../source/quantization/gptq.rst:13 290140b39fd24e9698933f1a4b3e140f
+msgid ""
+"Now, Transformers has officially supported AutoGPTQ, which means that you"
+" can directly use the quantized model with Transformers. The following is"
+" a very simple code snippet showing how to run ``Qwen1.5-7B-Chat-GPTQ-"
+"Int8`` (note that for each size of Qwen1.5, we provide both Int4 and Int8"
+" quantized models) with the quantized model:"
+msgstr "现在，Transformers 正式支持了AutoGPTQ，这意味着您能够直接在Transformers中使用量化后的模型。以下是一个非常简单的代码片段示例，展示如何运行  ``Qwen1.5-7B-Chat-GPTQ-Int8`` （请注意，对于每种大小的Qwen1.5模型，我们都提供了Int4和Int8两种量化版本）："
+
+#: ../../source/quantization/gptq.rst:53 fea96fa1c4344b37a5492a2136f38667
+msgid "Usage of GPTQ Quantized Models with vLLM"
+msgstr "在vLLM中使用GPTQ量化模型"
+
+#: ../../source/quantization/gptq.rst:55 0f8eee84b4664c6db0e2383b44f92ca1
+msgid ""
+"vLLM has supported GPTQ, which means that you can directly use our "
+"provided GPTQ models or those trained with ``AutoGPTQ`` with vLLM. "
+"Actually, the usage is the same with the basic usage of vLLM. We provide "
+"a simple example of how to launch OpenAI-API compatible API with vLLM and"
+" ``Qwen1.5-7B-Chat-GPTQ-Int8``:"
+msgstr "vLLM 已经支持了GPTQ，这意味着您可以直接使用我们提供的GPTQ模型，或者那些通过AutoGPTQ训练得到的模型与vLLM结合使用。实际上，其用法与vLLM的基本用法相同。我们提供了一个简单的示例，展示了如何使用vLLM以及 ``Qwen1.5-7B-Chat-GPTQ-Int8`` 模型启动与OpenAI API兼容的API："
+
+#: ../../source/quantization/gptq.rst:75 66259f71f06f437d83e467853aad4e91
+msgid ""
+"or you can use python client with ``openai`` python package as shown "
+"below:"
+msgstr "或者你可以按照下面所示的方式，使用 ``openai`` Python包中的Python客户端："
+
+#: ../../source/quantization/gptq.rst:100 ebb1ebce02da4f78aa2d9dbce73a92d5
+msgid "Quantize Your Own Model with AutoGPTQ"
+msgstr "使用AutoGPTQ量化你的模型"
+
+#: ../../source/quantization/gptq.rst:102 e0e9185eec504db59ae92b48cbb5f039
+msgid ""
+"If you want to quantize your own model to GPTQ quantized models, we "
+"advise you to use AutoGPTQ. It is suggested installing the latest version"
+" of the package by installing from source code:"
+msgstr "如果你想将自定义模型量化为GPTQ量化模型，我们建议你使用AutoGPTQ工具。推荐通过安装源代码的方式获取并安装最新版本的该软件包。"
+
+#: ../../source/quantization/gptq.rst:112 2f85adf755994b5c8566acdcd9b40bdb
+msgid ""
+"Suppose you have finetuned a model based on ``Qwen1.5-7B``, which is "
+"named ``Qwen1.5-7B-finetuned``, with your own dataset, e.g., Alpaca. To "
+"build your own GPTQ quantized model, you need to use the training data "
+"for calibration. Below, we provide a simple demonstration for you to run:"
+msgstr "假设你已经基于 ``Qwen1.5-7B`` 模型进行了微调，并将该微调后的模型命名为 ``Qwen1.5-7B-finetuned`` ，且使用的是自己的数据集，比如Alpaca。要构建你自己的GPTQ量化模型，你需要使用训练数据进行校准。以下是一个简单的演示示例，供你参考运行："
+
+#: ../../source/quantization/gptq.rst:143 1a0c345f405c44c7b59710cafa099951
+msgid ""
+"Then you need to prepare your data for calibaration. What you need to do "
+"is just put samples into a list, each of which is a text. As we directly "
+"use our finetuning data for calibration, we first format it with ChatML "
+"template. For example:"
+msgstr "接下来，你需要准备数据进行校准。你需要做的是将样本放入一个列表中，其中每个样本都是一段文本。由于我们直接使用微调数据进行校准，所以我们首先使用ChatML模板对它进行格式化处理。例如："
+
+#: ../../source/quantization/gptq.rst:158 58188538413049bcbe47270f9eb40d68
+msgid "where each ``msg`` is a typical chat message as shown below:"
+msgstr "接下来，你需要准备数据以进行校准。你需要做的就是将样本放入一个列表中，其中每个样本都是文本。由于我们直接使用微调数据来进行校准，所以我们首先使用ChatML模板来格式化它。例如："
+
+#: ../../source/quantization/gptq.rst:168 e42b03c4aeeb41caac04a7fbfd2e5925
+msgid "Then just run the calibration process by one line of code:"
+msgstr "然后只需通过一行代码运行校准过程："
+
+#: ../../source/quantization/gptq.rst:177 edcb18775f864566b47befa8e03b6277
+msgid "Finally, save the quantized model:"
+msgstr "最后，保存量化模型："
+
+#: ../../source/quantization/gptq.rst:184 ea6f6d3200904260b4e67cf5e7b29467
+msgid ""
+"It is unfortunate that the ``save_quantized`` method does not support "
+"sharding. For sharding, you need to load the model and use "
+"``save_pretrained`` from transformers to save and shard the model. Except"
+" for this, everything is so simple. Enjoy!"
+msgstr "很遗憾， ``save_quantized`` 方法不支持模型分片。若要实现模型分片，您需要先加载模型，然后使用来自 ``transformers`` 库的 ``save_pretrained`` 方法来保存并分片模型。除此之外，一切操作都非常简单。祝您使用愉快！"
+

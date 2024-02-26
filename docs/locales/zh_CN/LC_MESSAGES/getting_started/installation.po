@@ -1,0 +1,47 @@
+# Copyright (C) 2024, Qwen Team, Alibaba Group.
+# This file is distributed under the same license as the Qwen package.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-21 21:08+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.14.0\n"
+
+#: ../../source/getting_started/installation.rst:2
+#: deb8f437f6fa43f58a37268ecf29e339
+msgid "Installation"
+msgstr "安装"
+
+#: ../../source/getting_started/installation.rst:4
+#: 522d89ca22b3435382fbb514205c2dcd
+msgid ""
+"To get a quick start with Qwen1.5, you can install the ``transformers`` "
+"library from Hugging Face and use models in the `Qwen1.5 collection "
+"<https://huggingface.co/collections/Qwen/qwen15-65c0a2f577b1ecb76d786524>`__."
+" We advise you to install the latest ``transformers`` or at least version"
+" 4.37.0."
+msgstr "要快速上手Qwen1.5，您可以从Hugging Face安装 ``transformers`` 库，并使用 `Qwen1.5 Collection <https://huggingface.co/collections/Qwen/qwen15-65c0a2f577b1ecb76d786524>`__ 中的模型。我们建议您安装最新版本的 ``transformers`` 库，或者至少安装4.37.0版本。"
+
+#: ../../source/getting_started/installation.rst:11
+#: 514b20d297d345ebaaf16381b6ce1d4e
+msgid "Install with Pip"
+msgstr "Pip安装"
+
+#: ../../source/getting_started/installation.rst:18
+#: 892ae185130049779862b4b91425d9de
+msgid "Install with Conda"
+msgstr "Conda安装"
+
+#: ../../source/getting_started/installation.rst:24
+#: a7db48bd0a4f49e3b24a7a44cca4defd
+msgid "We advise you to use Python 3.8 or higher, and Pytorch 2.0 or higher."
+msgstr "我们建议您使用Python3.8及以上版本和Pytorch 2.0及以上版本。"
+

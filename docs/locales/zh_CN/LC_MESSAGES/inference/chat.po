@@ -1,0 +1,85 @@
+# Copyright (C) 2024, Qwen Team, Alibaba Group.
+# This file is distributed under the same license as the Qwen package.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-21 21:08+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.14.0\n"
+
+#: ../../source/inference/chat.rst:2 3d10dc3916e94e8da08d26f3cec394e8
+msgid "Using Transformers to Chat"
+msgstr "使用Transformers实现Chat"
+
+#: ../../source/inference/chat.rst:4 ae560ca3c52141a2b7f62c37c2ef620a
+msgid ""
+"The most significant but also the simplest usage of Qwen1.5 is to chat "
+"with it using the ``transformers`` library. In this document, we show how"
+" to chat with ``Qwen1.5-7B-Chat``, in either streaming mode or not."
+msgstr "Qwen1.5 最重要同时也最简单的用途是通过transformers库实现Chat功能。在本文档中，我们将展示如何在流式模式或非流式模式下与Qwen1.5-7B-Chat进行对话。"
+
+#: ../../source/inference/chat.rst:9 0b04962cd6f94353ad675ee83fdaa2a0
+msgid "Basic Usage"
+msgstr "基本用法"
+
+#: ../../source/inference/chat.rst:11 cff73f0ce0bd4c53b18ff8be21a2ad4a
+msgid ""
+"You can just write several lines of code with ``transformers`` to chat "
+"with Qwen1.5-Chat. Essentially, we build the tokenizer and the model with"
+" ``from_pretrained`` method, and we use ``generate`` method to perform "
+"chatting with the help of chat template provided by the tokenizer. Below "
+"is an example of how to chat with Qwen1.5-7B-Chat:"
+msgstr "你只需借助 ``transformers`` 库编写几行代码，就能与Qwen1.5-Chat进行对话。实质上，我们通过from_pretrained方法构建tokenizer和模型，然后利用 ``generate`` 方法，在tokenizer提供的chat template的辅助下进行chat。以下是一个如何与Qwen1.5-7B-Chat进行对话的示例："
+
+#: ../../source/inference/chat.rst:56 804addcd484b4988a72f67e272294c4b
+msgid ""
+"Note that the previous method in the original Qwen repo ``chat()`` is now"
+" replaced by ``generate()``. The ``apply_chat_template()`` function is "
+"used to convert the messages into a format that the model can understand."
+" The ``add_generation_prompt`` argument is used to add a generation "
+"prompt, which refers to ``<|im_start|>assistant\\n`` to the input. Notably,"
+" we apply ChatML template for chat models following our previous "
+"practice. The ``max_new_tokens`` argument is used to set the maximum "
+"length of the response. The ``tokenizer.batch_decode()`` function is used"
+" to decode the response. In terms of the input, the above ``messages`` is"
+" an example to show how to format your dialog history and system prompt. "
+"By default, if you do not specify system prompt, we directly use ``You "
+"are a helpful assistant.``."
+msgstr "请注意，原Qwen仓库中的旧方法 ``chat()`` 现在已被 ``generate()`` 方法替代。这里使用了 ``apply_chat_template()`` 函数将消息转换为模型能够理解的格式。其中的 ``add_generation_prompt`` 参数用于在输入中添加生成提示，该提示指向 ``<|im_start|>assistant\\n`` 。尤其需要注意的是，我们遵循先前实践，对chat模型应用ChatML模板。而 ``max_new_tokens`` 参数则用于设置响应的最大长度。此外，通过 ``tokenizer.batch_decode()`` 函数对响应进行解码。关于输入部分，上述的 ``messages`` 是一个示例，展示了如何格式化对话历史记录和系统提示。默认情况下，如果您没有指定系统提示，我们将直接使用 ``You are a helpful assistant.`` 作为系统提示。"
+
+#: ../../source/inference/chat.rst:70 97b15b98fc784700bad1298d1604e8dd
+msgid "Streaming Mode"
+msgstr "流式输出"
+
+#: ../../source/inference/chat.rst:72 3b1052923dd141b8b7b49451c2fa53db
+msgid ""
+"With the help of ``TextStreamer``, you can modify your chatting with Qwen"
+" to streaming mode. Below we show you an example of how to use it:"
+msgstr "借助 ``TextStreamer`` ，您可以将与Qwen的对话切换到流式传输模式。下面是一个关于如何使用它的示例："
+
+#: ../../source/inference/chat.rst:89 95d10848cede405f884341ed0379849b
+msgid ""
+"Besides using ``TextStreamer``, we can also use ``TextIteratorStreamer`` "
+"which stores print-ready text in a queue, to be used by a downstream "
+"application as an iterator:"
+msgstr "除了使用 ``TextStreamer`` 之外，我们还可以使用 ``TextIteratorStreamer`` ，它将可打印的文本存储在一个队列中，以便下游应用程序作为迭代器来使用："
+
+#: ../../source/inference/chat.rst:111 910e04c17dd04c8e91691aff386fff2b
+msgid "Next Step"
+msgstr "下一步"
+
+#: ../../source/inference/chat.rst:113 3df342c8e1af454994600742e06e7bc9
+msgid ""
+"Now you can chat with Qwen1.5 in either streaming mode or not. Continue "
+"to read the documentation and try to figure out more advanced usages of "
+"model inference!"
+msgstr "现在，你可以选择流式模式或非流式模式与Qwen1.5进行对话。继续阅读文档，并尝试探索模型推理的更多高级用法！""
+

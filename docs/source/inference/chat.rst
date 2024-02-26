@@ -57,7 +57,7 @@ Note that the previous method in the original Qwen repo ``chat()`` is
 now replaced by ``generate()``. The ``apply_chat_template()`` function
 is used to convert the messages into a format that the model can
 understand. The ``add_generation_prompt`` argument is used to add a
-generation prompt, which refers to ``<im_start>assistant\n`` to the input. 
+generation prompt, which refers to ``<|im_start|>assistant\n`` to the input. 
 Notably, we apply ChatML template for chat models following our previous 
 practice. The ``max_new_tokens`` argument is used to set the maximum length 
 of the response. The ``tokenizer.batch_decode()`` function is used to 

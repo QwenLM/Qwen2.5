@@ -1,0 +1,109 @@
+# Copyright (C) 2024, Qwen Team, Alibaba Group.
+# This file is distributed under the same license as the Qwen package.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-21 21:08+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.14.0\n"
+
+#: ../../source/quantization/awq.rst:2 bab75f352096428a9dee89930ab02e7a
+msgid "AWQ"
+msgstr "AWQ"
+
+#: ../../source/quantization/awq.rst:4 517d6f4ca69247f7b08087dd995cf1a6
+msgid ""
+"For quantized models, one of our recommendations is the usage of `AWQ "
+"<https://arxiv.org/abs/2306.00978>`__ with `AutoAWQ <https://github.com"
+"/casper-hansen/AutoAWQ>`__. AWQ refers to Activation-aware Weight "
+"Quantization, a hardware-friendly approach for LLM low-bit weight-only "
+"quantization. AutoAWQ is an easy-to-use package for 4-bit quantized "
+"models. AutoAWQ speeds up models by 3x and reduces memory requirements by"
+" 3x compared to FP16. AutoAWQ implements the Activation-aware Weight "
+"Quantization (AWQ) algorithm for quantizing LLMs. In this document, we "
+"show you how to use the quantized model with Transformers and also how to"
+" quantize your own model."
+msgstr "对于量化模型，我们推荐使用 `AWQ <https://arxiv.org/abs/2306.00978>`__ 结合 `AutoAWQ <https://github.com/casper-hansen/AutoAWQ>`__ 。AWQ即激活感知权重量化，是一种针对LLM的低比特权重量化的硬件友好方法。而AutoAWQ是一个易于使用的工具包，专门用于4比特量化模型。相较于FP16，AutoAWQ能够将模型的运行速度提升3倍，并将内存需求降低至原来的1/3。AutoAWQ实现了激活感知权重量化（AWQ）算法，可用于LLM的量化处理。在本文档中，我们将向您展示如何在Transformers框架下使用量化模型，以及如何对您自己的模型进行量化。"
+
+#: ../../source/quantization/awq.rst:16 4f843dc502354b71ba29fdc918bdff73
+msgid "Usage of AWQ Quantized Models with Transformers"
+msgstr "如何在Transformers中使用AWQ量化模型"
+
+#: ../../source/quantization/awq.rst:18 0984fc07bb83453ba4dcfe68e7e4ff76
+msgid ""
+"Now, Transformers has officially supported AutoAWQ, which means that you "
+"can directly use the quantized model with Transformers. The following is "
+"a very simple code snippet showing how to run ``Qwen1.5-7B-Chat-AWQ`` "
+"with the quantized model:"
+msgstr "现在，Transformers已经正式支持AutoAWQ，这意味着您可以直接在Transformers中使用量化模型。以下是一个非常简单的代码片段，展示如何运行量化模型 ``Qwen1.5-7B-Chat-AWQ`` ："
+
+#: ../../source/quantization/awq.rst:57 e0eb738bce98432ea115745392b5e826
+msgid "Usage of AWQ Quantized Models with vLLM"
+msgstr "如何在vLLM中使用AWQ量化模型"
+
+#: ../../source/quantization/awq.rst:59 9e96a6878cda41ef935fe77629492c60
+msgid ""
+"vLLM has supported AWQ, which means that you can directly use our "
+"provided AWQ models or those trained with ``AutoAWQ`` with vLLM. "
+"Actually, the usage is the same with the basic usage of vLLM. We provide "
+"a simple example of how to launch OpenAI-API compatible API with vLLM and"
+" ``Qwen1.5-7B-Chat-AWQ``:"
+msgstr "vLLM 已经支持了AWQ，这意味着您可以直接使用我们提供的AWQ模型，或者是通过AutoAWQ训练得到的与vLLM兼容的模型。实际上，其用法与vLLM的基本用法相同。我们提供了一个简单的示例，展示了如何通过vLLM启动与OpenAI API兼容的接口，并使用 ``Qwen1.5-7B-Chat-AWQ`` 模型："
+
+#: ../../source/quantization/awq.rst:79 4143e0d33e5044ee9cb5f712c6fa0b3a
+msgid ""
+"or you can use python client with ``openai`` python package as shown "
+"below:"
+msgstr "或者你可以按照下面所示的方式，使用 ``openai`` Python包中的Python客户端："
+
+#: ../../source/quantization/awq.rst:104 6a6eb6b49b864b9483b8b7e75a644eaa
+msgid "Quantize Your Own Model with AutoAWQ"
+msgstr "使用AutoAWQ量化你的模型"
+
+#: ../../source/quantization/awq.rst:106 883826b500fe44c2bf8cfe1c6e817f85
+msgid ""
+"If you want to quantize your own model to AWQ quantized models, we advise"
+" you to use AutoAWQ. It is suggested installing the latest version of the"
+" package by installing from source code:"
+msgstr "如果您希望将自定义模型量化为AWQ量化模型，我们建议您使用AutoAWQ。推荐通过安装源代码来获取并安装该工具包的最新版本："
+
+#: ../../source/quantization/awq.rst:116 b70a51920b4444abac3843c56f0b1a6a
+msgid ""
+"Suppose you have finetuned a model based on ``Qwen1.5-7B``, which is "
+"named ``Qwen1.5-7B-finetuned``, with your own dataset, e.g., Alpaca. To "
+"build your own AWQ quantized model, you need to use the training data for"
+" calibration. Below, we provide a simple demonstration for you to run:"
+msgstr "假设你已经基于 ``Qwen1.5-7B`` 模型进行了微调，并将其命名为 ``Qwen1.5-7B-finetuned`` ，且使用的是你自己的数据集，比如Alpaca。若要构建你自己的AWQ量化模型，你需要使用训练数据进行校准。以下，我们将为你提供一个简单的演示示例以便运行："
+
+#: ../../source/quantization/awq.rst:136 d9f8d6987a2e436d8a50d57ff36cfa30
+msgid ""
+"Then you need to prepare your data for calibaration. What you need to do "
+"is just put samples into a list, each of which is a text. As we directly "
+"use our finetuning data for calibration, we first format it with ChatML "
+"template. For example:"
+msgstr "接下来，您需要准备数据以进行校准。您需要做的就是将样本放入一个列表中，其中每个样本都是一段文本。由于我们直接使用微调数据来进行校准，所以我们首先使用ChatML模板对其进行格式化。例如："
+
+#: ../../source/quantization/awq.rst:149 635319f729684f319b0ec092ad8e40d6
+msgid "where each ``msg`` is a typical chat message as shown below:"
+msgstr "其中每个 ``msg`` 是一个典型的聊天消息，如下所示："
+
+#: ../../source/quantization/awq.rst:159 b324715402c94122a01cacbb1b312d88
+msgid "Then just run the calibration process by one line of code:"
+msgstr "然后只需通过一行代码运行校准过程："
+
+#: ../../source/quantization/awq.rst:165 e5d0fe0d78fa4ee3933913c9d8fb004c
+msgid "Finally, save the quantized model:"
+msgstr "最后，保存量化模型："
+
+#: ../../source/quantization/awq.rst:172 4de18a17e5c548bcb9aa6b464ce5a473
+msgid "Then you can obtain your own AWQ quantized model for deployment. Enjoy!"
+msgstr "然后你就可以得到一个可以用于部署的AWQ量化模型。玩得开心！"
+

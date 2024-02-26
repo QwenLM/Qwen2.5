@@ -29,7 +29,11 @@ below.
 
 .. code:: python
 
+   from transformers import AutoTokenizer
    from vllm import LLM, SamplingParams
+
+   # Initialize the tokenizer
+   tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen1.5-7B-Chat")
 
    # Pass the default decoding hyperparameters of Qwen1.5-7B-Chat
    # max_tokens is for the maximum length for generation.

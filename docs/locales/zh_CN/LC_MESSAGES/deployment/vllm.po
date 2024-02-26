@@ -1,0 +1,159 @@
+# Copyright (C) 2024, Qwen Team, Alibaba Group.
+# This file is distributed under the same license as the Qwen package.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-21 21:08+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.14.0\n"
+
+#: ../../source/deployment/vllm.rst:2 c78a51ede5ef46d182efb0495820be10
+msgid "vLLM"
+msgstr "vLLM"
+
+#: ../../source/deployment/vllm.rst:4 39eba3f4176443e3bea91397e9ede435
+msgid ""
+"We recommend you trying with `vLLM <https://github.com/vllm-"
+"project/vllm>`__ for your deployement of Qwen. It is simple to use, and "
+"it is fast with state-of-the-art serving throughtput, efficienct "
+"management of attention key value memory with PagedAttention, continuous "
+"batching of input requests, optimized CUDA kernels, etc. To learn more "
+"about vLLM, please refer to the `paper "
+"<https://arxiv.org/abs/2309.06180>`__ and `documentation "
+"<https://vllm.readthedocs.io/>`__."
+msgstr "我们建议您在部署Qwen时尝试使用 `vLLM <https://github.com/vllm-project/vllm>`__ 。它易于使用，且具有最先进的服务吞吐量、高效的注意力键值内存管理（通过PagedAttention实现）、连续批处理输入请求、优化的CUDA内核等功能。要了解更多关于vLLM的信息，请参阅 `论文 <https://arxiv.org/abs/2309.06180>`__ 和 `文档 <https://vllm.readthedocs.io/>`__ 。"
+
+#: ../../source/deployment/vllm.rst:14 824e70bf8dff4879bbb0eb51c038b6d6
+msgid "Installation"
+msgstr "安装"
+
+#: ../../source/deployment/vllm.rst:16 5f1f51379ca84bb7a5b5362b7e7d9e82
+msgid ""
+"By default, you can install ``vLLM`` by pip: ``pip install vLLM>=0.3.0``,"
+" but if you are using CUDA 11.8, check the note in the official document "
+"for installation (`link "
+"<https://docs.vllm.ai/en/latest/getting_started/installation.html>`__) "
+"for some help. We also advise you to install ray by ``pip install ray`` "
+"for distributed serving."
+msgstr "默认情况下，你可以通过 ``pip`` 来安装vLLM ：``pip install vLLM>=0.3.0`` ， 但如果你正在使用 CUDA 11.8，请查看官方文档中的注意事项 以获取有关安装的帮助（ `链接 <https://docs.vllm.ai/en/latest/getting_started/installation.html>`__ ）。 我们也建议你通过 ``pip install ray`` 安装ray， 以便支持分布式服务。"
+
+#: ../../source/deployment/vllm.rst:24 b7cda8f24f53482b89940ec7ea1b747f
+msgid "Offline Batched Inference"
+msgstr "离线推理"
+
+#: ../../source/deployment/vllm.rst:26 2aeda0988c284b4083e64fb11ac48472
+msgid ""
+"Models supported by Qwen2 codes, e.g., Qwen1.5, are supported by vLLM. "
+"The simplest usage of vLLM is offline batched inference as demonstrated "
+"below."
+msgstr "Qwen2代码支持的模型，例如Qwen1.5，都被vLLM所支持。 vLLM最简单的使用方式是通过以下演示进行离线批量推理。"
+
+#: ../../source/deployment/vllm.rst:63 f79753fdb5aa4b0686e2457925ed83ba
+msgid "OpenAI-API Compatible API Service"
+msgstr "适配OpenAI-API的API服务"
+
+#: ../../source/deployment/vllm.rst:65 8418e661aa044763b45a114d6231ca12
+msgid ""
+"It is easy to build an OpenAI-API compatible API service with vLLM, which"
+" can be deployed as a server that implements OpenAI API protocol. By "
+"default, it starts the server at ``http://localhost:8000``. You can "
+"specify the address with ``--host`` and ``--port`` arguments. Run the "
+"command as shown below:"
+msgstr "借助vLLM，构建一个与OpenAI API兼容的API服务十分简便，该服务可以作为实现OpenAI API协议的服务器进行部署。默认情况下，它将在 `http://localhost:8000 <http://localhost:8000>`__ 启动服务器。您可以通过 ``--host`` 和 ``--port`` 参数来自定义地址。请按照以下所示运行命令："
+
+#: ../../source/deployment/vllm.rst:76 671f946fbe424b2086e1dcce4df7d156
+msgid ""
+"You don’t need to worry about chat template as it by default uses the "
+"chat template provided by the tokenizer."
+msgstr "你无需担心chat模板，因为它默认会使用由tokenizer提供的chat模板。"
+
+#: ../../source/deployment/vllm.rst:79 9ac8c5901cae46d0b406fdd7f2da6feb
+msgid ""
+"Then, you can use the `create chat interface "
+"<https://platform.openai.com/docs/api-"
+"reference/chat/completions/create>`__ to communicate with Qwen:"
+msgstr "然后，您可以利用 `create chat interface <https://platform.openai.com/docs/api-reference/chat/completions/create>`__ 来与Qwen进行对话："
+
+#: ../../source/deployment/vllm.rst:93 72eaebe10a8d4769a9ce15f68f5aaef5
+msgid ""
+"or you can use python client with ``openai`` python package as shown "
+"below:"
+msgstr "或者您可以如下面所示使用 ``openai`` Python 包中的 Python 客户端："
+
+#: ../../source/deployment/vllm.rst:118 3d91f5241559497b92f1215723526ce5
+msgid "Multi-GPU Distributred Serving"
+msgstr "多卡分布式部署"
+
+#: ../../source/deployment/vllm.rst:120 de0f6109c6c54ec498dad7572dbc03bb
+msgid ""
+"To scale up your serving throughputs, distributed serving helps you by "
+"leveraging more GPU devices. Besides, for large models like ``Qwen1.5"
+"-72B-Chat``, it is impossible to serve it on a single GPU. Here, we "
+"demonstrate how to run ``Qwen1.5-72B-Chat`` with tensor parallelism just "
+"by passing in the argument ``tensor_parallel_size``:"
+msgstr "要提高模型的处理吞吐量，分布式服务可以通过利用更多的GPU设备来帮助您。特别是对于像 ``Qwen1.5-72B-Chat`` 这样的大模型，单个GPU无法支撑其在线服务。在这里，我们通过演示如何仅通过传入参数 ``tensor_parallel_size`` ，来使用张量并行来运行 ``Qwen1.5-72B-Chat`` 模型："
+
+#: ../../source/deployment/vllm.rst:131 8a8342a0388e4e6e9af7e67d1b664049
+msgid ""
+"You can run multi-GPU serving by passing in the argument ``--tensor-"
+"parallel-size``:"
+msgstr "您可以通过传递参数 ``--tensor-parallel-size`` 来运行多GPU服务："
+
+#: ../../source/deployment/vllm.rst:141 1b322fc6beda485d85073871e8d79009
+msgid "Serving Quantized Models"
+msgstr "部署量化模型"
+
+#: ../../source/deployment/vllm.rst:143 f78f39a1d50e428b8f9a46880afc33db
+msgid ""
+"vLLM supports different types of quantized models, including AWQ, GPTQ, "
+"SqueezeLLM, etc. Here we show how to deploy AWQ and GPTQ models. The "
+"usage is almost the same as above except for an additional argument for "
+"quantization. For example, to run an AWQ model. e.g., ``Qwen1.5-7B-Chat-"
+"AWQ``:"
+msgstr "vLLM 支持多种类型的量化模型，例如 AWQ、GPTQ、SqueezeLLM 等。这里我们将展示如何部署 AWQ 和 GPTQ 模型。使用方法与上述基本相同，只不过需要额外指定一个量化参数。例如，要运行一个 AWQ 模型，例如 ``Qwen1.5-7B-Chat-AWQ`` ："
+
+#: ../../source/deployment/vllm.rst:154 828cb96a6d4543aba4145552c9b0c5b2
+msgid "or GPTQ models like ``Qwen1.5-7B-Chat-GPTQ-Int8``:"
+msgstr "或者是GPTQ模型比如 ``Qwen1.5-7B-Chat-GPTQ-Int8`` ："
+
+#: ../../source/deployment/vllm.rst:160 7869bd5c2bb542f393215ab5f85315f3
+msgid ""
+"Similarly, you can run serving adding the argument ``--quantization`` as "
+"shown below:"
+msgstr "同样地，您可以在运行服务时添加 ``--quantization`` 参数，如下所示："
+
+#: ../../source/deployment/vllm.rst:169 dca42b48bef043cf81c89efa5ed2663c
+msgid "or"
+msgstr "或者"
+
+#: ../../source/deployment/vllm.rst:177 27cc85ab1f474328bbd863413ba83883
+msgid ""
+"Additionally, vLLM supports the combination of AWQ or GPTQ models with KV"
+" cache quantization, namely FP8 E5M2 KV Cache. For example:"
+msgstr "此外，vLLM支持将AWQ或GPTQ模型与KV缓存量化相结合，即FP8 E5M2 KV Cache方案。例如："
+
+#: ../../source/deployment/vllm.rst:192 fa4a78593b0347d89685a3317e382560
+msgid "Troubleshooting"
+msgstr "常见问题"
+
+#: ../../source/deployment/vllm.rst:194 303b60dd7fa14134aa8bc2db5d2d2a19
+msgid ""
+"You may encounter OOM issues that are pretty annoying. We recommend two "
+"arguments for you to make some fix. The first one is ``--max-model-len``."
+" Our provided default ``max_postiion_embedding`` is ``32768`` and thus "
+"the maximum length for the serving is also this value, leading to higher "
+"requirements of memory. Reducing it to a proper length for yourself often"
+" helps with the OOM issue. Another argument you can pay attention to is "
+"``--gpu-memory-utilization``. By default it is ``0.9`` and you can level "
+"it up to tackle the OOM problem. This is also why you find a vLLM service"
+" always takes so much memory."
+msgstr "您可能会遇到令人烦恼的OOM（内存溢出）问题。我们推荐您尝试两个参数进行修复。第一个参数是 ``--max-model-len`` 。我们提供的默认最大位置嵌入（max_position_embedding）为32768，因此服务时的最大长度也是这个值，这会导致更高的内存需求。将此值适当减小通常有助于解决OOM问题。另一个您可以关注的参数是 ``--gpu-memory-utilization`` 。默认情况下，该值为 ``0.9`` ，您可以将其调高以应对OOM问题。这也是为什么您发现一个大型语言模型服务总是占用大量内存的原因。"
+

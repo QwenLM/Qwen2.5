@@ -1,0 +1,134 @@
+# Copyright (C) 2024, Qwen Team, Alibaba Group.
+# This file is distributed under the same license as the Qwen package.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-21 21:08+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.14.0\n"
+
+#: ../../source/run_locally/llama.cpp.rst:2 cf4c0b101c624e9ca80f66c0c9d8d59e
+msgid "llama.cpp"
+msgstr "llama.cpp"
+
+#: ../../source/run_locally/llama.cpp.rst:4 0c5aa6f39b3f4769a450415c0b0a3d4e
+msgid ""
+"`llama.cpp <https://github.com/ggerganov/llama.cpp>`__ is a C++ library "
+"for LLM inference with mimimal setup. It enables running Qwen on your "
+"local machine. It is a plain C/C++ implementation without dependencies, "
+"and it has AVX, AVX2 and AVX512 support for x86 architectures. It "
+"provides 2, 3, 4, 5, 6, and 8-bit quantization for faster inference and "
+"reduced memory footprint. CPU+GPU hybrid inference to partially "
+"accelerate models larger than the total VRAM capacity is also supported. "
+"Essentially, the usage of llama.cpp is to run the GGUF (GPT-Generated "
+"Unified Format ) models. For more information, please refer to the "
+"official GitHub repo. Here we demonstrate how to run Qwen with llama.cpp."
+msgstr "`llama.cpp <https://github.com/ggerganov/llama.cpp>`__ 是一个C++库，用于简化LLM推理的设置。它使得在本地机器上运行Qwen成为可能。该库是一个纯C/C++实现，不依赖任何外部库，并且针对x86架构提供了AVX、AVX2和AVX512加速支持。此外，它还提供了2、3、4、5、6以及8位量化功能，以加快推理速度并减少内存占用。对于大于总VRAM容量的大规模模型，该库还支持CPU+GPU混合推理模式进行部分加速。本质上，llama.cpp的用途在于运行GGUF（由GPT生成的统一格式）模型。欲了解更多详情，请参阅官方GitHub仓库。以下我们将演示如何使用llama.cpp运行Qwen。"
+
+#: ../../source/run_locally/llama.cpp.rst:17 4b830c36181b49168898dd70965585e8
+msgid "Prerequisites"
+msgstr "准备"
+
+#: ../../source/run_locally/llama.cpp.rst:19 ed85b561ffeb48359b78f3c4318c2073
+msgid ""
+"This example is for the usage on Linux or MacOS. For the first step, "
+"clone the repo and enter the directory:"
+msgstr "这个示例适用于Linux或MacOS系统。第一步操作是： “克隆仓库并进入该目录："
+
+#: ../../source/run_locally/llama.cpp.rst:27 9627e1c6d10f463090503223543a0cf1
+msgid "Then use ``make``:"
+msgstr "然后运行 ``make`` 命令："
+
+#: ../../source/run_locally/llama.cpp.rst:33 55006e9bc8f747299c76cfbf1dd7d62e
+msgid "Then you can run GGUF files with ``llama.cpp``."
+msgstr "然后你就能使用 ``llama.cpp`` 运行GGUF文件。"
+
+#: ../../source/run_locally/llama.cpp.rst:36 4036760b18144d4aaca0e1433e97f845
+msgid "Running Qwen GGUF Files"
+msgstr "运行Qwen的GGUF文件"
+
+#: ../../source/run_locally/llama.cpp.rst:38 d625112dfa2641aa9f3e56a96c49dbf0
+msgid ""
+"We provide a series of GGUF models in our Hugging Face organization, and "
+"to search for what you need you can search the repo names with ``-GGUF``."
+" Download the GGUF model that you want with ``huggingface-cli`` (you need"
+" to install it first with ``pip install huggingface_hub``):"
+msgstr "我们在Hugging Face组织中提供了一系列GGUF模型，为了找到您需要的模型，您可以搜索仓库名称中包含 ``-GGUF`` 的部分。要下载所需的GGUF模型，请使用  ``huggingface-cli`` （首先需要通过命令 ``pip install huggingface_hub`` 安装它）："
+
+#: ../../source/run_locally/llama.cpp.rst:48 76291abcddf6486e9dd174e1aaa1f2fe
+msgid "for example:"
+msgstr "比如："
+
+#: ../../source/run_locally/llama.cpp.rst:54 e736d431754849a4b6cea6323dee56e9
+msgid "Then you can run the model with the following command:"
+msgstr "然后你可以用如下命令运行模型："
+
+#: ../../source/run_locally/llama.cpp.rst:60 88998eb35547472ab4ca0c7810fe5e35
+msgid ""
+"where ``-n`` refers to the maximum number of tokens to generate. There "
+"are other hyperparameters for you to choose and you can run"
+msgstr "``-n`` 指的是要生成的最大token数量。这里还有其他超参数供你选择，并且你可以运行"
+
+#: ../../source/run_locally/llama.cpp.rst:67 0f1b784e30474b779ffe6be5ce9658dc
+msgid "to figure them out."
+msgstr "以了解它们。"
+
+#: ../../source/run_locally/llama.cpp.rst:70 8ce8a2d53fe04fea8727e097db67a310
+msgid "Make Your GGUF Files"
+msgstr "生成你的GGUF文件"
+
+#: ../../source/run_locally/llama.cpp.rst:72 4b7da707e2e74eb68847c8efe74bd7c7
+msgid ""
+"We introduce the method of creating and quantizing GGUF files in "
+"`quantization/llama.cpp <../quantization/gguf.rst>`__. You can refer to "
+"that document for more information."
+msgstr "我们在 `quantization/llama.cpp <../quantization/gguf.rst>`__ 中介绍了创建和量化GGUF文件的方法。您可以参考该文档获取更多信息。"
+
+#: ../../source/run_locally/llama.cpp.rst:77 e65cb451dcd142068c1a644fc44cd5d9
+msgid "Perplexity Evaluation"
+msgstr "PPL评测"
+
+#: ../../source/run_locally/llama.cpp.rst:79 d6c8fbb155a24085a53d85da3a620bba
+msgid ""
+"``llama.cpp`` provides methods for us to evaluate the perplexity "
+"performance of the GGUF models. To do this, you need to prepare the "
+"dataset, say \"wiki test\". Here we demonstrate an example to run the "
+"test."
+msgstr "llama.cpp为我们提供了评估GGUF模型PPL性能的方法。为了实现这一点，你需要准备一个数据集，比如“wiki测试”。这里我们展示了一个运行测试的例子。"
+
+#: ../../source/run_locally/llama.cpp.rst:84 3e93b0f93fab42e9b39e0b782843dd59
+msgid "For the first step, download the dataset:"
+msgstr "第一步，下载数据集："
+
+#: ../../source/run_locally/llama.cpp.rst:91 429f929b50c54d2a9c247aa44f7cb116
+msgid "Then you can run the test with the following command:"
+msgstr "然后你可以用如下命令运行测试："
+
+#: ../../source/run_locally/llama.cpp.rst:97 c1a3c4db31cb422ebc1160203b9fae0c
+msgid "where the output is like"
+msgstr "输出如下所示"
+
+#: ../../source/run_locally/llama.cpp.rst:105 0bb913dc74744a5a8d55e369139e7473
+msgid "Wait for some time and you will get the perplexity of the model."
+msgstr "稍等一段时间你将得到模型的PPL评测结果。"
+
+#: ../../source/run_locally/llama.cpp.rst:108 0f596c4a7d1145a28abc6ba0be09fb2a
+msgid "Use GGUF with LM Studio"
+msgstr "在LM Studio使用GGUF"
+
+#: ../../source/run_locally/llama.cpp.rst:110 7248c2cf34a949ada4bc072f57c8bf12
+msgid ""
+"If you still find it difficult to use ``llama.cpp``, I advise you to play"
+" with `LM Studio <https://lmstudio.ai/>`__, which is a platform for your "
+"to search and run local LLMs. Qwen1.5 has already been officially part of"
+" LM Studio. Have fun!"
+msgstr "如果你仍然觉得使用llama.cpp有困难，我建议你尝试一下 `LM Studio <https://lmstudio.ai/>`__ 这个平台，它允许你搜索和运行本地的大规模语言模型。Qwen1.5已经正式成为LM Studio的一部分。祝你使用愉快！"
+
