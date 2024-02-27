@@ -77,7 +77,7 @@ Qwen to streaming mode. Below we show you an example of how to use it:
    # Repeat the code above before model.generate()
    # Starting here, we add streamer for text generation.
    from transformers import TextStreamer
-   streamer = Texstreamer(tokenizer, skip_prompt=True, skip_special_tokens=True)
+   streamer = TextStreamer(tokenizer, skip_prompt=True, skip_special_tokens=True)
 
    # This will print the output in the streaming mode.
    generated_ids = model.generate(
