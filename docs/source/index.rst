@@ -13,7 +13,8 @@ Welcome to Qwen!
   :class: no-scaled-link
 
 
-Qwen is the large language model and large multimodal model series of the Qwen Team, Alibaba Group. Now the large language moels are upgraded to Qwen1.5. Both language models and multimodal models are pretrained on large-scale multilingual and multimodal data and post-trained on quality data for aligning to human preferences. Qwen is capable of natural language understanding, text generation, vision understanding, audio understanding, tool use, role play, playing as AI agent, etc. 
+Qwen is the large language model and large multimodal model series of the Qwen Team, Alibaba Group. Now the large language models have been upgraded to Qwen1.5. Both language models and multimodal models are pretrained on large-scale multilingual and multimodal data and post-trained on quality data for aligning to human preferences. 
+Qwen is capable of natural language understanding, text generation, vision understanding, audio understanding, tool use, role play, playing as AI agent, etc. 
 
 The latest version, Qwen1.5, has the following features:
 
