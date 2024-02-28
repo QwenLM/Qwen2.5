@@ -70,7 +70,7 @@ Make Your GGUF Files
 --------------------
 
 We introduce the method of creating and quantizing GGUF files in
-`quantization/llama.cpp <../quantization/gguf.rst>`__. You can refer
+`quantization/llama.cpp <../quantization/gguf.html>`__. You can refer
 to that document for more information.
 
 Perplexity Evaluation

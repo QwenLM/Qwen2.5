@@ -90,7 +90,7 @@ msgid ""
 "We introduce the method of creating and quantizing GGUF files in "
 "`quantization/llama.cpp <../quantization/gguf.rst>`__. You can refer to "
 "that document for more information."
-msgstr "我们在 `quantization/llama.cpp <../quantization/gguf.rst>`__ 中介绍了创建和量化GGUF文件的方法。您可以参考该文档获取更多信息。"
+msgstr "我们在 `quantization/llama.cpp <../quantization/gguf.html>`__ 中介绍了创建和量化GGUF文件的方法。您可以参考该文档获取更多信息。"
 
 #: ../../source/run_locally/llama.cpp.rst:77 e65cb451dcd142068c1a644fc44cd5d9
 msgid "Perplexity Evaluation"
