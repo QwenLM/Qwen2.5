@@ -138,7 +138,7 @@ You can run multi-GPU serving by passing in the argument
 .. code:: bash
 
    python -m vllm.entrypoints.api_server \
-       --model Qwen1.5-72B-Chat \
+       --model Qwen/Qwen1.5-72B-Chat \
        --tensor-parallel-size 4
 
 Serving Quantized Models
@@ -153,13 +153,13 @@ quantization. For example, to run an AWQ model. e.g.,
 .. code:: python
 
    from vllm import LLM, SamplingParams
-   llm = LLM(model="Qwen1.5-7B-Chat-AWQ", quantization="awq")
+   llm = LLM(model="Qwen/Qwen1.5-7B-Chat-AWQ", quantization="awq")
 
 or GPTQ models like ``Qwen1.5-7B-Chat-GPTQ-Int8``:
 
 .. code:: python
 
-   llm = LLM(model="Qwen1.5-7B-Chat-GPTQ-Int4", quantization="gptq")
+   llm = LLM(model="Qwen/Qwen1.5-7B-Chat-GPTQ-Int4", quantization="gptq")
 
 Similarly, you can run serving adding the argument ``--quantization`` as
 shown below:
