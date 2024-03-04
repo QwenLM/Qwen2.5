@@ -130,7 +130,7 @@ Now, Qwen1.5 is supported by multiple inference frameworks. Here we demonstrate 
 ### vLLM
 We advise you to use `vLLM>=0.3.0` to build OpenAI-compatible API service. Start the server with a chat model, e.g. `Qwen1.5-7B-Chat`:
 ```shell
-python -m vllm.entrypoints.openai.api_server --model Qwen/Qwen1.5-7B-Chat
+python -m vllm.entrypoints.openai.api_server --served-model-name Qwen1.5-7B-Chat --model Qwen/Qwen1.5-7B-Chat 
 ```
 
 Then use the chat API as demonstrated below:
@@ -139,7 +139,7 @@ Then use the chat API as demonstrated below:
 curl http://localhost:8000/v1/chat/completions \
     -H "Content-Type: application/json" \
     -d '{
-    "model": "Qwen/Qwen1.5-7B-Chat",
+    "model": "Qwen1.5-7B-Chat",
     "messages": [
     {"role": "system", "content": "You are a helpful assistant."},
     {"role": "user", "content": "Tell me something about large language models."}
@@ -158,7 +158,7 @@ client = OpenAI(
 )
 
 chat_response = client.chat.completions.create(
-    model="Qwen/Qwen1.5-7B-Chat",
+    model="Qwen1.5-7B-Chat",
     messages=[
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": "Tell me something about large language models."},
