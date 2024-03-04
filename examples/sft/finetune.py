@@ -185,7 +185,7 @@ class SupervisedDataset(Dataset):
     def __getitem__(self, i) -> Dict[str, torch.Tensor]:
         return dict(
             input_ids=self.input_ids[i],
-            labels=self.labels[i],
+            labels=self.target_ids[i],
             attention_mask=self.attention_mask[i],
         )
 
