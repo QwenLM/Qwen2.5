@@ -107,6 +107,9 @@ You can also add things like `::14B` to choose different models. Visit [ollama.a
 #### LMStudio
 Qwen1.5 has already been supported by [lmstudio.ai](https://lmstudio.ai/). You can directly use LMStudio with our GGUF files.
 
+#### OpenVINO
+Qwen1.5 has already been supported by [OpenVINO toolkit](https://docs.openvino.ai/2023.3/gen_ai_guide.html). You can install and run this [example notebook](https://github.com/openvinotoolkit/openvino_notebooks/tree/main/notebooks/254-llm-chatbot) with Intel CPU, integrated GPU or discrete GPU. 
+
 
 
 ## Web UI
