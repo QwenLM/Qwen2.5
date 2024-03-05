@@ -84,3 +84,9 @@ Documentation
    :caption: Training
 
    training/SFT/index
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Application
+
+   application/LlamaIndex
