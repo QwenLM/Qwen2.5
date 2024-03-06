@@ -8,10 +8,8 @@ Preparation
 --------------------------------------
 
 To implement RAG, 
-we advise you to download Qwen1.5-Chat and install the LlamaIndex-related packages first. 
-Qwen1.5-Chat supports conversations in multiple languages, including English and Chinese.
-We recommend using the ``bge-base-en-v1.5`` model to retrieve from English documents, and you can also download the ``bge-base-zh-v1.5`` model to retrieve from Chinese documents. 
-You can also choose ``bge-large`` or ``bge-small`` as the embedding model depending on your computing resources.
+we advise you to install the LlamaIndex-related packages first. 
+
 The following is a simple code snippet showing how to do this:
 
 .. code:: bash
@@ -20,17 +18,13 @@ The following is a simple code snippet showing how to do this:
    pip install llama-index-llms-huggingface
    pip install llama-index-readers-web
 
-.. code:: python
-
-  from modelscope import snapshot_download
-  qwen_dir = snapshot_download('qwen/Qwen1.5-7B-Chat',cache_dir=".)
-  embed_dir = snapshot_download('AI-ModelScope/bge-base-en-v1.5',cache_dir=".")
-
 Set Parameters
 --------------------------------------
 
-Now we can set up LLM, embedding model, and the related configurations.                               
-You can modify the context window size or text chunk size, depending on your computational resources.
+Now we can set up LLM, embedding model, and the related configurations.  
+Qwen1.5-Chat supports conversations in multiple languages, including English and Chinese.
+We recommend using the ``bge-base-en-v1.5`` model to retrieve from English documents, and you can download the ``bge-base-zh-v1.5`` model to retrieve from Chinese documents. 
+You can also choose ``bge-large`` or ``bge-small`` as the embedding model or modify the context window size or text chunk size depending on your computing resources.
 Qwen 1.5 model families support a maximum of 32K context window size.
 
 .. code:: python
@@ -45,29 +39,29 @@ Qwen 1.5 model families support a maximum of 32K context window size.
     from llama_index.core import PromptTemplate
   
     def completion_to_prompt(completion):
-        return f"<|system|>\n</s>\n<|user|>\n{completion}</s>\n<|assistant|>\n"
+       return f"<|im_start|>system\n<|im_end|>\n<|im_start|>user\n{completion}<|im_end|>\n<|im_start|>assistant\n"
     
     def messages_to_prompt(messages):
         prompt = ""
         for message in messages:
             if message.role == "system":
-                prompt += f"<|system|>\n{message.content}</s>\n"
+                prompt += f"<|im_start|>system\n{message.content}<|im_end|>\n"
             elif message.role == "user":
-                prompt += f"<|user|>\n{message.content}</s>\n"
+                prompt += f"<|im_start|>user\n{message.content}<|im_end|>\n"
             elif message.role == "assistant":
-                prompt += f"<|assistant|>\n{message.content}</s>\n"
+                prompt += f"<|im_start|>assistant\n{message.content}<|im_end|>\n"
     
-        if not prompt.startswith("<|system|>\n"):
-            prompt = "<|system|>\n</s>\n" + prompt
+        if not prompt.startswith("<|im_start|>system"):
+            prompt = "<|im_start|>system\n" + prompt
     
-        prompt = prompt + "<|assistant|>\n"
+        prompt = prompt + "<|im_start|>assistant\n"
     
         return prompt
     
     # Set Qwen1.5 as the language model and set generation config
     Settings.llm = HuggingFaceLLM(
-        model_name=qwen_dir,
-        tokenizer_name=qwen_dir,
+        model_name="Qwen/Qwen1.5-7B-Chat",
+        tokenizer_name="Qwen/Qwen1.5-7B-Chat",
         context_window=30000,
         max_new_tokens=2000,
         generate_kwargs={"temperature": 0.7, "top_k": 50, "top_p": 0.95},
@@ -78,7 +72,7 @@ Qwen 1.5 model families support a maximum of 32K context window size.
 
     # Set embedding model                       
     Settings.embed_model = HuggingFaceEmbedding(
-        model_name = embed_dir
+        model_name = "BAAI/bge-base-en-v1.5"
     )
 
     # Set the size of the text chunk for retrieval
@@ -98,7 +92,7 @@ The following code snippet demonstrates how to build an index for files (regardl
     documents = SimpleDirectoryReader("./document").load_data()
     index = VectorStoreIndex.from_documents(
         documents,
-        embed_model=embed_model, 
+        embed_model=Settings.embed_model,
         transformations=Settings.transformations
     )
 
@@ -114,7 +108,7 @@ The following code snippet demonstrates how to build an index for the content in
     )
     index = VectorStoreIndex.from_documents(
         documents,
-        embed_model=embed_model, 
+        embed_model=Settings.embed_model, 
         transformations=Settings.transformations
     )
 
