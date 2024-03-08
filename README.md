@@ -55,11 +55,11 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 device = "cuda" # the device to load the model onto
 
 model = AutoModelForCausalLM.from_pretrained(
-    "Qwen/Qwen1.5-72B-Chat",
+    "Qwen/Qwen1.5-7B-Chat",
     torch_dtype="auto",
     device_map="auto"
 )
-tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen1.5-72B-Chat")
+tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen1.5-7B-Chat")
 
 prompt = "Give me a short introduction to large language model."
 messages = [
