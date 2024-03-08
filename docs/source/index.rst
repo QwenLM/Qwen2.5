@@ -80,6 +80,12 @@ Documentation
    deployment/vllm
 
 .. toctree::
+   :maxdepth: 1
+   :caption: Langchain
+
+   langchain/retrieval
+
+.. toctree::
    :maxdepth: 2
    :caption: Training
 
