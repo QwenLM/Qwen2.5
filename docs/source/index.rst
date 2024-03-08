@@ -90,3 +90,5 @@ Documentation
    :caption: Application
 
    application/LlamaIndex
+   application/Langchain
+
