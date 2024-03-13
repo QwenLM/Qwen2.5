@@ -87,8 +87,9 @@ Documentation
 
 .. toctree::
    :maxdepth: 1
-   :caption: Application
+   :caption: Framework
 
-   application/LlamaIndex
-   application/Langchain
-
+   framework/function_call
+   framework/qwen_agent
+   framework/LlamaIndex
+   framework/Langchain

@@ -137,8 +137,10 @@ run:
    max_len = 8192
 
    # Load your tokenizer and model with AutoGPTQ
+   # To learn about loading model to multiple GPUs,
+   # visit https://github.com/AutoGPTQ/AutoGPTQ/blob/main/docs/tutorial/02-Advanced-Model-Loading-and-Best-Practice.md
    tokenizer = AutoTokenizer.from_pretrained(model_path)
-   model = AutoGPTQForCausalLM.from_pretrained(model_path, device_map="auto", safetensors=True)
+   model = AutoGPTQForCausalLM.from_pretrained(model_path, safetensors=True)
 
 Then you need to prepare your data for calibaration. What you need to do
 is just put samples into a list, each of which is a text. As we directly

@@ -7,7 +7,7 @@
 <p align="center">
         🤗 <a href="https://huggingface.co/Qwen">Hugging Face</a>&nbsp&nbsp | &nbsp&nbsp🤖 <a href="https://modelscope.cn/organization/qwen">ModelScope</a>&nbsp&nbsp | &nbsp&nbsp 📑 <a href="https://qwenlm.github.io">Blog</a> &nbsp&nbsp ｜ &nbsp&nbsp📖 <a href="https://qwen.readthedocs.io/">Documentation</a>
 <br>
-🖥️ <a href="https://huggingface.co/spaces/Qwen/Qwen1.5-72B-Chat">Demo</a>&nbsp&nbsp | &nbsp&nbsp💬 <a href="https://github.com/QwenLM/Qwen/blob/main/assets/wechat.png">WeChat (微信)</a>&nbsp&nbsp | &nbsp&nbsp🫨 <a href="https://discord.gg/yPEP2vHTu4">Discord</a>&nbsp&nbsp
+🖥️ <a href="https://huggingface.co/spaces/Qwen/Qwen1.5-72B-Chat">Demo</a>&nbsp&nbsp | &nbsp&nbsp💬 <a href="https://github.com/QwenLM/Qwen/blob/main/assets/wechat.png">WeChat (微信)</a>&nbsp&nbsp | &nbsp&nbsp🫨 <a href="https://discord.gg/CV4E9rpNSD">Discord</a>&nbsp&nbsp
 </p>
 
 
@@ -91,22 +91,56 @@ We strongly advise users especially those in mainland China to use ModelScope. `
 
 ### 💻 Run locally
 
+#### Ollama
+
+> [!NOTE]
+> <div align="center">
+> Ollama provides an <a href="https://github.com/ollama/ollama/blob/main/docs/openai.md">OpenAI-compatible API</a>, which however does NOT support <b>function calling</b>. For tool use capabilities, consider using <a href="https://github.com/QwenLM/Qwen-Agent">Qwen-Agent</a>, which offers a wrapper for function calling over the API.
+> </div>
+
+After [installing ollama](https://github.com/ollama/ollama/blob/main/README.md), you can initiate the ollama service with the following command:
+```shell
+ollama serve
+# You need to keep this service running whenever you are using ollama
+```
+
+To pull a model checkpoint and run the model, use the `ollama run` command. You can specify a model size by adding a suffix to `qwen`, such as `:0.5b`, `:1.8b`, `:4b`, `:7b`, `:14b`, or `:72b`:
+```shell
+ollama run qwen:4b
+# To exit, type "/bye" and press ENTER
+```
+
+You can also access the ollama service via its OpenAI-compatible API. Please note that you need to (1) keep `ollama serve` running while using the API, and (2) execute `ollama run qwen:4b` before utilizing this API to ensure that the model checkpoint is prepared.
+```py
+from openai import OpenAI
+client = OpenAI(
+    base_url='http://localhost:11434/v1/',
+    api_key='ollama',  # required but ignored
+)
+chat_completion = client.chat.completions.create(
+    messages=[
+        {
+            'role': 'user',
+            'content': 'Say this is a test',
+        }
+    ],
+    model='qwen:4b',
+)
+```
+
+For additional details, please visit [ollama.ai](https://ollama.ai/).
+
 #### llama.cpp
 Download our provided GGUF files or create them by yourself, and you can directly use them with the latest [`llama.cpp`](https://github.com/ggerganov/llama.cpp) with a one-line command:
 ```shell
 ./main -m <path-to-file> -n 512 --color -i -cml -f prompts/chat-with-qwen.txt
 ```
 
-#### Ollama
-We are now on Ollama, and you can use `pull` and `run` to make things work.
-```shell
-ollama run qwen
-```
-You can also add things like `::14B` to choose different models. Visit [ollama.ai](https://ollama.ai/) for more information.
-
 #### LMStudio
 Qwen1.5 has already been supported by [lmstudio.ai](https://lmstudio.ai/). You can directly use LMStudio with our GGUF files.
 
+#### OpenVINO
+Qwen1.5 has already been supported by [OpenVINO toolkit](https://github.com/openvinotoolkit). You can install and run this [example notebook](https://github.com/openvinotoolkit/openvino_notebooks/tree/main/notebooks/254-llm-chatbot) with Intel CPU, integrated GPU or discrete GPU. 
 
 
 ## Web UI
@@ -122,9 +156,9 @@ Clone [`llamafile`](https://github.com/Mozilla-Ocho/llamafile), run source insta
 ## Deployment
 Now, Qwen1.5 is supported by multiple inference frameworks. Here we demonstrate the usage of `vLLM` and `SGLang`.
 
-> [!Note]
+> [!Warning]
 > <div align="center">
-> Neither vLLM nor SGLang currently offer built-in support for <b>function calling</b>. If you require tool use capabilities, please refer to <a href="https://github.com/QwenLM/Qwen-Agent">Qwen-Agent</a>, which provides a wrapper around these APIs to support function calling.
+> The OpenAI-compatible APIs provided by vLLM and SGLang currently do NOT support <b>function calling</b>. For tool use capabilities, <a href="https://github.com/QwenLM/Qwen-Agent">Qwen-Agent</a> provides a wrapper around these APIs to support function calling.
 > </div>
 
 ### vLLM
