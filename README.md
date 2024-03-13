@@ -91,12 +91,6 @@ We strongly advise users especially those in mainland China to use ModelScope. `
 
 ### 💻 Run locally
 
-#### llama.cpp
-Download our provided GGUF files or create them by yourself, and you can directly use them with the latest [`llama.cpp`](https://github.com/ggerganov/llama.cpp) with a one-line command:
-```shell
-./main -m <path-to-file> -n 512 --color -i -cml -f prompts/chat-with-qwen.txt
-```
-
 #### Ollama
 
 > [!NOTE]
@@ -140,12 +134,17 @@ chat_completion = client.chat.completions.create(
 
 For additional details, please visit [ollama.ai](https://ollama.ai/).
 
+#### llama.cpp
+Download our provided GGUF files or create them by yourself, and you can directly use them with the latest [`llama.cpp`](https://github.com/ggerganov/llama.cpp) with a one-line command:
+```shell
+./main -m <path-to-file> -n 512 --color -i -cml -f prompts/chat-with-qwen.txt
+```
+
 #### LMStudio
 Qwen1.5 has already been supported by [lmstudio.ai](https://lmstudio.ai/). You can directly use LMStudio with our GGUF files.
 
 #### OpenVINO
 Qwen1.5 has already been supported by [OpenVINO toolkit](https://github.com/openvinotoolkit). You can install and run this [example notebook](https://github.com/openvinotoolkit/openvino_notebooks/tree/main/notebooks/254-llm-chatbot) with Intel CPU, integrated GPU or discrete GPU. 
-
 
 
 ## Web UI
