@@ -101,17 +101,13 @@ We strongly advise users especially those in mainland China to use ModelScope. `
 After [installing ollama](https://github.com/ollama/ollama/blob/main/README.md), you can initiate the ollama service with the following command:
 ```shell
 ollama serve
+# You need to keep this service running whenever you are using ollama
 ```
 
-To pull a model checkpoint and run the model, use the `ollama run` command:
-```shell
-ollama run qwen
-# To exit, type "/bye" and press ENTER
-```
-
-You can specify a model size by adding a suffix, such as `:0.5b`, `:1.8b`, `:4b`, `:7b`, `:14b`, or `:72b`:
+To pull a model checkpoint and run the model, use the `ollama run` command. You can specify a model size by adding a suffix to `qwen`, such as `:0.5b`, `:1.8b`, `:4b`, `:7b`, `:14b`, or `:72b`:
 ```shell
 ollama run qwen:4b
+# To exit, type "/bye" and press ENTER
 ```
 
 You can also access the ollama service via its OpenAI-compatible API. Please note that you need to (1) keep `ollama serve` running while using the API, and (2) execute `ollama run qwen:4b` before utilizing this API to ensure that the model checkpoint is prepared.
