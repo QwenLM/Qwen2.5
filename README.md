@@ -101,7 +101,7 @@ Download our provided GGUF files or create them by yourself, and you can directl
 
 > [!NOTE]
 > <div align="center">
-> Ollama provides an <a href="https://github.com/ollama/ollama/blob/main/docs/openai.md">OpenAI-compatible API</a>, which however does not support function calling. For tool use capabilities, consider using <a href="https://github.com/QwenLM/Qwen-Agent">Qwen-Agent</a>, which offers a wrapper for function calling over the API.
+> Ollama provides an <a href="https://github.com/ollama/ollama/blob/main/docs/openai.md">OpenAI-compatible API</a>, which however does NOT support <b>function calling</b>. For tool use capabilities, consider using <a href="https://github.com/QwenLM/Qwen-Agent">Qwen-Agent</a>, which offers a wrapper for function calling over the API.
 > </div>
 
 After [installing ollama](https://github.com/ollama/ollama/blob/main/README.md), you can initiate the ollama service with the following command:
@@ -145,7 +145,7 @@ Now, Qwen1.5 is supported by multiple inference frameworks. Here we demonstrate 
 
 > [!Warning]
 > <div align="center">
-> Neither vLLM nor SGLang currently support <b>function calling</b>. If you require tool use capabilities, please refer to <a href="https://github.com/QwenLM/Qwen-Agent">Qwen-Agent</a>, which provides a wrapper around these APIs to support function calling.
+> The OpenAI-compatible APIs provided by vLLM and SGLang currently do NOT support <b>function calling</b>. If you require tool use capabilities, please refer to <a href="https://github.com/QwenLM/Qwen-Agent">Qwen-Agent</a>, which provides a wrapper around these APIs to support function calling.
 > </div>
 
 ### vLLM
