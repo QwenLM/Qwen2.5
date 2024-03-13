@@ -84,3 +84,10 @@ Documentation
    :caption: Training
 
    training/SFT/index
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Framework
+
+   framework/qwen_agent
+   framework/function_call
