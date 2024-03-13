@@ -109,12 +109,12 @@ ollama run qwen
 # To exit, type "/bye" and press ENTER
 ```
 
-You can specify a model size by adding a suffix, such as `:4b`:
+You can specify a model size by adding a suffix, such as `:0.5b`, `:1.8b`, `:4b`, `:7b`, `:14b`, or `:72b`:
 ```shell
 ollama run qwen:4b
 ```
 
-You can also access the ollama service via its OpenAI-compatible API. Note that you need to keep `ollama serve` running when using the API.
+You can also access the ollama service via its OpenAI-compatible API. Please note that you need to (1) keep `ollama serve` running while using the API, and (2) execute `ollama run qwen:4b` before utilizing this API to ensure that the model checkpoint is prepared.
 ```py
 from openai import OpenAI
 client = OpenAI(
