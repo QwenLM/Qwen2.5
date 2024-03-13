@@ -98,11 +98,29 @@ Download our provided GGUF files or create them by yourself, and you can directl
 ```
 
 #### Ollama
-We are now on Ollama, and you can use `pull` and `run` to make things work.
+
+> [!NOTE]
+> <div align="center">
+> Ollama provides an <a href="https://github.com/ollama/ollama/blob/main/docs/openai.md">OpenAI-compatible API</a>, which however does not support function calling. For tool use capabilities, consider using <a href="https://github.com/QwenLM/Qwen-Agent">Qwen-Agent</a>, which offers a wrapper for function calling over the API.
+> </div>
+
+After [installing ollama](https://github.com/ollama/ollama/blob/main/README.md), you can initiate the ollama service with the following command:
+```shell
+ollama serve
+```
+
+To pull a model checkpoint and run the model, use the `ollama run` command:
 ```shell
 ollama run qwen
+# To exit, type "/bye" and press ENTER
 ```
-You can also add things like `::14B` to choose different models. Visit [ollama.ai](https://ollama.ai/) for more information.
+
+You can specify a model size by adding a suffix, such as `:14b`:
+```shell
+ollama run qwen:14b
+```
+
+For additional details, please visit [ollama.ai](https://ollama.ai/).
 
 #### LMStudio
 Qwen1.5 has already been supported by [lmstudio.ai](https://lmstudio.ai/). You can directly use LMStudio with our GGUF files.
@@ -125,9 +143,9 @@ Clone [`llamafile`](https://github.com/Mozilla-Ocho/llamafile), run source insta
 ## Deployment
 Now, Qwen1.5 is supported by multiple inference frameworks. Here we demonstrate the usage of `vLLM` and `SGLang`.
 
-> [!Note]
+> [!Warning]
 > <div align="center">
-> Neither vLLM nor SGLang currently offer built-in support for <b>function calling</b>. If you require tool use capabilities, please refer to <a href="https://github.com/QwenLM/Qwen-Agent">Qwen-Agent</a>, which provides a wrapper around these APIs to support function calling.
+> Neither vLLM nor SGLang currently support <b>function calling</b>. If you require tool use capabilities, please refer to <a href="https://github.com/QwenLM/Qwen-Agent">Qwen-Agent</a>, which provides a wrapper around these APIs to support function calling.
 > </div>
 
 ### vLLM
