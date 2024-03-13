@@ -145,7 +145,7 @@ Now, Qwen1.5 is supported by multiple inference frameworks. Here we demonstrate 
 
 > [!Warning]
 > <div align="center">
-> The OpenAI-compatible APIs provided by vLLM and SGLang currently do NOT support <b>function calling</b>. If you require tool use capabilities, please refer to <a href="https://github.com/QwenLM/Qwen-Agent">Qwen-Agent</a>, which provides a wrapper around these APIs to support function calling.
+> The OpenAI-compatible APIs provided by vLLM and SGLang currently do NOT support <b>function calling</b>. For tool use capabilities, <a href="https://github.com/QwenLM/Qwen-Agent">Qwen-Agent</a> provides a wrapper around these APIs to support function calling.
 > </div>
 
 ### vLLM
