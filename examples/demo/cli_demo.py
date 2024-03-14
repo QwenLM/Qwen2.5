@@ -14,7 +14,6 @@ from threading import Thread
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, TextIteratorStreamer
-from transformers.generation import GenerationConfig
 from transformers.trainer_utils import set_seed
 
 DEFAULT_CKPT_PATH = 'Qwen/Qwen1.5-7B-Chat'
