@@ -73,7 +73,7 @@ Streaming mode for model chat is simple with the help of
    ...
    # Reuse the code before `model.generate()` in the last code snippet
    from transformers import TextStreamer
-   streamer = Texstreamer(tokenizer, skip_prompt=True, skip_special_tokens=True)
+   streamer = TextStreamer(tokenizer, skip_prompt=True, skip_special_tokens=True)
    generated_ids = model.generate(
        model_inputs.input_ids,
        max_new_tokens=512,
