@@ -171,7 +171,7 @@ def _launch_demo(args, model, tokenizer):
 
     with gr.Blocks() as demo:
         gr.Markdown("""\
-<p align="center"><img src="https://qianwen-res.oss-cn-beijing.aliyuncs.com/logo_qwen.jpg" style="height: 80px"/><p>""")
+<p align="center"><img src="https://qianwen-res.oss-accelerate-overseas.aliyuncs.com/logo_qwen1.5.jpg" style="height: 80px"/><p>""")
         gr.Markdown("""<center><font size=8>Qwen1.5-Chat Bot</center>""")
         gr.Markdown(
             """\
