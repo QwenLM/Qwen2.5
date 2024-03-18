@@ -1,0 +1,47 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Qwen Team
+# This file is distributed under the same license as the Qwen package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-18 18:18+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/framework/.ipynb_checkpoints/qwen_agent-checkpoint.rst:2
+#: 02894368957e44429bc79e5bd81df719
+msgid "Qwen-Agent"
+msgstr ""
+
+#: ../../source/framework/.ipynb_checkpoints/qwen_agent-checkpoint.rst:4
+#: 65bceed1eccd4640817efe262cae708f
+msgid "`Qwen-Agent <https://github.com/QwenLM/Qwen-Agent>`__ is a framework for developing LLM applications based on the instruction following, tool usage, planning, and memory capabilities of Qwen. It also comes with example applications such as Browser Assistant, Code Interpreter, and Custom Assistant."
+msgstr ""
+
+#: ../../source/framework/.ipynb_checkpoints/qwen_agent-checkpoint.rst:11
+#: 472f46d97ca349148fa82d7c0f1e9778
+msgid "Installation"
+msgstr ""
+
+#: ../../source/framework/.ipynb_checkpoints/qwen_agent-checkpoint.rst:20
+#: f07cde08194b4415929099474492b334
+msgid "Developing Your Own Agent"
+msgstr ""
+
+#: ../../source/framework/.ipynb_checkpoints/qwen_agent-checkpoint.rst:22
+#: 41a7ae8289a24c1aa03e8b7049ef2951
+msgid "Qwen-Agent provides atomic components such as LLMs and prompts, as well as high-level components such as Agents. The example below uses the Assistant component as an illustration, demonstrating how to add custom tools and quickly develop an agent that uses tools."
+msgstr ""
+
+#: ../../source/framework/.ipynb_checkpoints/qwen_agent-checkpoint.rst:91
+#: e9657ecdde8140cda14a615c83600bf0
+msgid "The framework also provides more atomic components for developers to combine. For additional showcases, please refer to `examples <https://github.com/QwenLM/Qwen-Agent/tree/main/examples>`__."
+msgstr ""

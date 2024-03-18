@@ -1,0 +1,92 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Qwen Team
+# This file is distributed under the same license as the Qwen package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-18 18:18+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/run_locally/ollama.rst:2
+#: b6397509b4b44561849fa9336b11c71b
+msgid "Ollama"
+msgstr ""
+
+#: ../../source/run_locally/ollama.rst:4
+#: c786076f18974c6faad30ba8a9d533d1
+msgid "`Ollama <https://ollama.com/>`__ helps you run LLMs locally with only a few commands. It is available at MacOS, Linux, and Windows. Now, Qwen1.5 is officially on Ollama, and you can run it with one command:"
+msgstr ""
+
+#: ../../source/run_locally/ollama.rst:12
+#: acc0a83eb0604fd5a134d2bd716451a2
+msgid "Next, we introduce more detailed usages of Ollama for running Qwen models."
+msgstr ""
+
+#: ../../source/run_locally/ollama.rst:16
+#: b086adb361024bb2b9760da875653c3d
+msgid "Quickstart"
+msgstr ""
+
+#: ../../source/run_locally/ollama.rst:18
+#: c8917d128ab7479f8d83c7afafd2e018
+msgid "Visit the official website `Ollama <https://ollama.com/>`__ and click download to install Ollama on your device. You can also search models in the website, where you can find the Qwen1.5 models. Except for the default one, you can choose to run Qwen1.5-Chat models of different sizes by:"
+msgstr ""
+
+#: ../../source/run_locally/ollama.rst:24
+#: 39c4d3b240ea4f8195e81e9a5cc58e91
+msgid "``ollama run qwen:0.5b``"
+msgstr ""
+
+#: ../../source/run_locally/ollama.rst:25
+#: 6949ee95c58a4057aada2c234c2e7b38
+msgid "``ollama run qwen:1.8b``"
+msgstr ""
+
+#: ../../source/run_locally/ollama.rst:26
+#: 5a7870f3da3f44cd949081f230bf16dc
+msgid "``ollama run qwen:4b``"
+msgstr ""
+
+#: ../../source/run_locally/ollama.rst:27
+#: 577a5e944b4540e6837be6456c8b3e32
+msgid "``ollama run qwen:7b``"
+msgstr ""
+
+#: ../../source/run_locally/ollama.rst:28
+#: 6989dea18969433d8b9c621dfb5cd204
+msgid "``ollama run qwen:14b``"
+msgstr ""
+
+#: ../../source/run_locally/ollama.rst:29
+#: b519936989e8417f84474e174826de7f
+msgid "``ollama run qwen:72b``"
+msgstr ""
+
+#: ../../source/run_locally/ollama.rst:32
+#: e10b514678644fdea933cdb016ed13a2
+msgid "Run Ollama with Your GGUF Files"
+msgstr ""
+
+#: ../../source/run_locally/ollama.rst:34
+#: 8bafc7d150df4dba85e8a9ecb3862b7a
+msgid "Sometimes you don't want to pull models and you just want to use Ollama with your own GGUF files. Suppose you have a GGUF file of Qwen, ``qwen1_5-7b-chat-q4_0.gguf``. For the first step, you need to create a file called ``Modelfile``. The content of the file is shown below:"
+msgstr ""
+
+#: ../../source/run_locally/ollama.rst:61
+#: 52b3f19ae6844f0985da1e1a6404590d
+msgid "Then create the ollama model by running:"
+msgstr ""
+
+#: ../../source/run_locally/ollama.rst:67
+#: 215bb112e74c46af90b0f8651f37fbaa
+msgid "Once it is finished, you can run your ollama model by:"
+msgstr ""

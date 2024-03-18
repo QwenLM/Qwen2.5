@@ -1,0 +1,127 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Qwen Team
+# This file is distributed under the same license as the Qwen package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-18 18:18+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/run_locally/llama.cpp.rst:2
+#: 4fe88ef54eb3434d9a45e743a9f71ca6
+msgid "llama.cpp"
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.rst:4
+#: 08b3949c025b4ed5bc4de0bd43198b78
+msgid "`llama.cpp <https://github.com/ggerganov/llama.cpp>`__ is a C++ library for LLM inference with mimimal setup. It enables running Qwen on your local machine. It is a plain C/C++ implementation without dependencies, and it has AVX, AVX2 and AVX512 support for x86 architectures. It provides 2, 3, 4, 5, 6, and 8-bit quantization for faster inference and reduced memory footprint. CPU+GPU hybrid inference to partially accelerate models larger than the total VRAM capacity is also supported. Essentially, the usage of llama.cpp is to run the GGUF (GPT-Generated Unified Format ) models. For more information, please refer to the official GitHub repo. Here we demonstrate how to run Qwen with llama.cpp."
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.rst:17
+#: 09e97494552d407eb8e396c73b922743
+msgid "Prerequisites"
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.rst:19
+#: 730ae1128d214dadacf9631b9176306b
+msgid "This example is for the usage on Linux or MacOS. For the first step, clone the repo and enter the directory:"
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.rst:27
+#: f7726fc011ff4fa6a00fd016d96dea5a
+msgid "Then use ``make``:"
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.rst:33
+#: 9b0aed0010354a3abfc43a5870750c8a
+msgid "Then you can run GGUF files with ``llama.cpp``."
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.rst:36
+#: 750317097dda46879bfd721519af3a76
+msgid "Running Qwen GGUF Files"
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.rst:38
+#: 9d4b6e1a1f144a5e9bc49ea872e19e71
+msgid "We provide a series of GGUF models in our Hugging Face organization, and to search for what you need you can search the repo names with ``-GGUF``. Download the GGUF model that you want with ``huggingface-cli`` (you need to install it first with ``pip install huggingface_hub``):"
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.rst:48
+#: a06d58a2448c4c819533d75d8af5966d
+msgid "for example:"
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.rst:54
+#: ae4509f4e7eb4482a6fa1800cc5207bc
+msgid "Then you can run the model with the following command:"
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.rst:60
+#: 734704da02954d298cc4d74dd686bb1f
+msgid "where ``-n`` refers to the maximum number of tokens to generate. There are other hyperparameters for you to choose and you can run"
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.rst:67
+#: 84fd40cafd194daabc8b643d08e84383
+msgid "to figure them out."
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.rst:70
+#: d011fffba6454558a4cc3d72bb3fcb17
+msgid "Make Your GGUF Files"
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.rst:72
+#: ec5fb75893f848ceab04c509f8a4f38e
+msgid "We introduce the method of creating and quantizing GGUF files in `quantization/llama.cpp <../quantization/gguf.html>`__. You can refer to that document for more information."
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.rst:77
+#: 9f37047b3746405ca33d72f8de2fabbf
+msgid "Perplexity Evaluation"
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.rst:79
+#: 00dabeb9e55142998c3639fc57df2047
+msgid "``llama.cpp`` provides methods for us to evaluate the perplexity performance of the GGUF models. To do this, you need to prepare the dataset, say \"wiki test\". Here we demonstrate an example to run the test."
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.rst:84
+#: 66a7f936a51e4ed8a36d49326a53435a
+msgid "For the first step, download the dataset:"
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.rst:91
+#: 32dda79d38fe46cb81728f0132689bcb
+msgid "Then you can run the test with the following command:"
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.rst:97
+#: 1886feb8f7bd423db2ece055bfe2fa3a
+msgid "where the output is like"
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.rst:105
+#: 885f689b9a994b77a4abe262078ae3a3
+msgid "Wait for some time and you will get the perplexity of the model."
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.rst:108
+#: 96b396fd4b28455087c460a9374eed64
+msgid "Use GGUF with LM Studio"
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.rst:110
+#: f02bd3426007454d9ee2f354806dc401
+msgid "If you still find it difficult to use ``llama.cpp``, I advise you to play with `LM Studio <https://lmstudio.ai/>`__, which is a platform for your to search and run local LLMs. Qwen1.5 has already been officially part of LM Studio. Have fun!"
+msgstr ""

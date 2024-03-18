@@ -1,0 +1,87 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Qwen Team
+# This file is distributed under the same license as the Qwen package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-18 18:47+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/framework/.ipynb_checkpoints/LlamaIndex-checkpoint.rst:2
+#: 74be144345254a42951cff5652af9290
+msgid "LlamaIndex"
+msgstr ""
+
+#: ../../source/framework/.ipynb_checkpoints/LlamaIndex-checkpoint.rst:4
+#: eb274504efd0477786c265ffc73d3304
+msgid "To connect Qwen1.5. with external data, such as documents, web pages, etc., we offer a tutorial on `LlamaIndex <https://www.llamaindex.ai/>`__. This guide helps you quickly implement retrieval-augmented generation (RAG) using LlamaIndex with Qwen1.5."
+msgstr ""
+
+#: ../../source/framework/.ipynb_checkpoints/LlamaIndex-checkpoint.rst:8
+#: ef45c656831e4a81b1cf6862eb1dc93c
+msgid "Preparation"
+msgstr ""
+
+#: ../../source/framework/.ipynb_checkpoints/LlamaIndex-checkpoint.rst:10
+#: 81ccf502533a4d59a7cb5ca92dca112e
+msgid "To implement RAG, we advise you to install the LlamaIndex-related packages first."
+msgstr ""
+
+#: ../../source/framework/.ipynb_checkpoints/LlamaIndex-checkpoint.rst:13
+#: b7119f15574f428e8353c271f1fd61ca
+msgid "The following is a simple code snippet showing how to do this:"
+msgstr ""
+
+#: ../../source/framework/.ipynb_checkpoints/LlamaIndex-checkpoint.rst:22
+#: b3b8fd741e3c45428010813f37cfc038
+msgid "Set Parameters"
+msgstr ""
+
+#: ../../source/framework/.ipynb_checkpoints/LlamaIndex-checkpoint.rst:24
+#: 08e1e600464e42798d837fe223cd11b7
+msgid "Now we can set up LLM, embedding model, and the related configurations. Qwen1.5-Chat supports conversations in multiple languages, including English and Chinese. You can use the ``bge-base-en-v1.5`` model to retrieve from English documents, and you can download the ``bge-base-zh-v1.5`` model to retrieve from Chinese documents. You can also choose ``bge-large`` or ``bge-small`` as the embedding model or modify the context window size or text chunk size depending on your computing resources. Qwen 1.5 model families support a maximum of 32K context window size."
+msgstr ""
+
+#: ../../source/framework/.ipynb_checkpoints/LlamaIndex-checkpoint.rst:82
+#: c0b07bf2f46e4d9fb94c20bd6660846a
+msgid "Build Index"
+msgstr ""
+
+#: ../../source/framework/.ipynb_checkpoints/LlamaIndex-checkpoint.rst:84
+#: ca27a880cf224a33ad59c5914706a5ca
+msgid "Now we can build index from documents or websites."
+msgstr ""
+
+#: ../../source/framework/.ipynb_checkpoints/LlamaIndex-checkpoint.rst:86
+#: d8d25dd120f54e48b9c3a45c7e8e5368
+msgid "The following code snippet demonstrates how to build an index for files (regardless of whether they are in PDF or TXT format) in a local folder named 'document'."
+msgstr ""
+
+#: ../../source/framework/.ipynb_checkpoints/LlamaIndex-checkpoint.rst:99
+#: f59b0f19acf24ca79d65e3e88098ec5f
+msgid "The following code snippet demonstrates how to build an index for the content in a list of websites."
+msgstr ""
+
+#: ../../source/framework/.ipynb_checkpoints/LlamaIndex-checkpoint.rst:115
+#: aea335f42a2144e0a1723eab9c16fcb5
+msgid "To save and load the index, you can use the following code snippet."
+msgstr ""
+
+#: ../../source/framework/.ipynb_checkpoints/LlamaIndex-checkpoint.rst:129
+#: efecbf145a034834aefd91f69afcdac5
+msgid "RAG"
+msgstr ""
+
+#: ../../source/framework/.ipynb_checkpoints/LlamaIndex-checkpoint.rst:131
+#: d3e0c5b5ecc14c9c8165548880a78da2
+msgid "Now you can perform queries, and Qwen1.5 will answer based on the content of the indexed documents."
+msgstr ""

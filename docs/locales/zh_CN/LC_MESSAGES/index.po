@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-04 15:21+0800\n"
+"POT-Creation-Date: 2024-03-18 18:18+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -45,15 +45,19 @@ msgstr "部署"
 msgid "Training"
 msgstr "训练"
 
-#: ../../source/index.rst:7 2d3747ef5e9a463ebdd4f47fa4fd614b
+#: ../../source/index.rst:88
+msgid "Framework"
+msgstr ""
+
+#: ../../source/index.rst:7 02fbc005870f4a709cfd2c566525a66d
 msgid "Welcome to Qwen!"
 msgstr "欢迎来到Qwen"
 
-#: ../../source/index.rst:-1 261ac6a5ed984af08f173e4e317239f0
+#: ../../source/index.rst:-1 1c7896727d294c54942b837ec9730a22
 msgid "Qwen"
 msgstr ""
 
-#: ../../source/index.rst:16 a75ccce7dbae42528044bd349bec2406
+#: ../../source/index.rst:16 3edd8d598e9a4a64aa2967816d5d3a6f
 #, fuzzy
 msgid ""
 "Qwen is the large language model and large multimodal model series of the"
@@ -68,53 +72,53 @@ msgstr ""
 "Qwen是阿里巴巴集团Qwen团队研发的大语言模型和大型多模态模型系列。目前，大语言模型已升级至Qwen1.5版本。无论是语言模型还是多模态模型，均在大规模多语言和多模态数据上进行预训练，并通过高质量数据进行后期微调以贴近人类偏好。Qwen具备自然语言理解、文本生成、视觉理解、音频理解、工具使用、角色扮演、作为AI"
 " Agent进行互动等多种能力。"
 
-#: ../../source/index.rst:19 3491cf32758549fb9178f7f6ec74c568
+#: ../../source/index.rst:19 be21edb0c3d248b4b1a70ae24b658f73
 msgid "The latest version, Qwen1.5, has the following features:"
 msgstr "最新版本Qwen1.5有以下特点："
 
-#: ../../source/index.rst:21 31a2e69fd9894077b1121a7112b219a2
+#: ../../source/index.rst:21 d6fb0064d3224c83865a93596ba216f4
 msgid "6 model sizes, including 0.5B, 1.8B, 4B, 7B, 14B, and 72B;"
 msgstr "6种模型规模，包括0.5B、1.8B、4B、7B、14B和72B；"
 
-#: ../../source/index.rst:22 eb837bd71db8400792a68d6ca470ac3a
+#: ../../source/index.rst:22 3ef8466165cc4607b024d9529f1403bb
 msgid ""
 "Base and chat models for each size, with the chat models aligned for "
 "human preferences;"
 msgstr "针对每种尺寸提供基础模型和Chat模型，并确保聊天模型按照人类偏好进行校准；"
 
-#: ../../source/index.rst:23 0d1bfd621aac4df6a53213d90492c39b
+#: ../../source/index.rst:23 d9c4ae71d74b4360a96a6b4390407384
 msgid "Multilingual support of both base and chat models;"
 msgstr "对基础模型和Chat模型的多语言支持"
 
-#: ../../source/index.rst:24 7ff10a8a6e724630b7a92d32c84566d3
+#: ../../source/index.rst:24 ad591b6c2c5946f397442e9620aaa844
 msgid "Stable support of 32K context length for models of all sizes"
 msgstr "基础模型和聊天模型都支持多种语言；"
 
-#: ../../source/index.rst:25 9ab7e4b426d445a0bd59a7560ec98475
+#: ../../source/index.rst:25 104b01a7b3cc4c5fa1c4ba7be953815e
 msgid "Supporting tool use, RAG, role play, and playing as AI agent;"
 msgstr "支持工具调用、RAG（检索增强文本生成）、角色扮演、AI Agent等；"
 
-#: ../../source/index.rst:27 c6fc5c5e004644daba19e91be5da82cc
+#: ../../source/index.rst:27 2cfd5c2cb3204d708263dc7b0a7ff944
 msgid "For more information, please visit our:"
 msgstr "想了解更多信息，欢迎访问："
 
-#: ../../source/index.rst:29 99d292a28a794301b7cb202e0f928db7
+#: ../../source/index.rst:29 df5f3d2b5acb4c07aa9d353f1f68d339
 msgid "`Blog <https://qwenlm.github.io/>`__"
 msgstr "`博客 <https://qwenlm.github.io/>`__"
 
-#: ../../source/index.rst:30 0ca51a3b64c94734af59c09a69f1456b
+#: ../../source/index.rst:30 3acf81fd436149d9b0f0d251ed947aee
 msgid "`GitHub <https://github.com/QwenLM>`__"
 msgstr "`GitHub <https://github.com/QwenLM>`__"
 
-#: ../../source/index.rst:31 836732175cf0403da8537a94ad181757
+#: ../../source/index.rst:31 9d76dc9bdf5d48be8358dde897c2da4e
 msgid "`Hugging Face <https://huggingface.co/Qwen>`__"
 msgstr "`Hugging Face <https://huggingface.co/Qwen>`__"
 
-#: ../../source/index.rst:32 bea79b7409ad42bc9b555ab671bce948
+#: ../../source/index.rst:32 fc09c79fd6f1493fb025eb5a199152ff
 msgid "`ModelScope <https://modelscope.cn/organization/qwen>`__"
 msgstr "`ModelScope <https://modelscope.cn/organization/qwen>`__"
 
-#: ../../source/index.rst:33 e304df6f68b44519b8ae3df43f939c5b
+#: ../../source/index.rst:33 daf8ba41040d4cc190459f8e416575da
 msgid ""
 "`Qwen1.5 Collection "
 "<https://huggingface.co/collections/Qwen/qwen15-65c0a2f577b1ecb76d786524>`__"
@@ -122,7 +126,7 @@ msgstr ""
 "`Qwen1.5 Collection "
 "<https://huggingface.co/collections/Qwen/qwen15-65c0a2f577b1ecb76d786524>`__"
 
-#: ../../source/index.rst:35 ec007374bc394c24a365c4459d9b0021
+#: ../../source/index.rst:35 b4dc206825484204b90820d39d5e78a3
 msgid ""
 "Join our community by joining our `Discord "
 "<https://discord.gg/yPEP2vHTu4>`__ and `WeChat "
@@ -132,7 +136,7 @@ msgstr ""
 "加入社区，加入 `Discord <https://discord.gg/yPEP2vHTu4>`__ 和 `微信群 "
 "<https://github.com/QwenLM/Qwen/blob/main/assets/wechat.png>`__ 。很期待见到你们！"
 
-#: ../../source/index.rst:40 5659ef68386e4ec392fde8f9e276e5d0
+#: ../../source/index.rst:40 59a2db043ffe46c99a6bc2b9b23eda39
 msgid "Documentation"
 msgstr "文档"
 

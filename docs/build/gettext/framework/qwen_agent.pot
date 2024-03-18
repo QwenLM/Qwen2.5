@@ -1,0 +1,47 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Qwen Team
+# This file is distributed under the same license as the Qwen package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-18 18:18+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/framework/qwen_agent.rst:2
+#: 53aa75a8daf2481cbeef43478a28e8a0
+msgid "Qwen-Agent"
+msgstr ""
+
+#: ../../source/framework/qwen_agent.rst:4
+#: 8d7f40e131654f2789d382223137d371
+msgid "`Qwen-Agent <https://github.com/QwenLM/Qwen-Agent>`__ is a framework for developing LLM applications based on the instruction following, tool usage, planning, and memory capabilities of Qwen. It also comes with example applications such as Browser Assistant, Code Interpreter, and Custom Assistant."
+msgstr ""
+
+#: ../../source/framework/qwen_agent.rst:11
+#: b070f438dec14dbf817b1d4fb84799b4
+msgid "Installation"
+msgstr ""
+
+#: ../../source/framework/qwen_agent.rst:20
+#: 16ce1e0a61514df786d75fd335d96013
+msgid "Developing Your Own Agent"
+msgstr ""
+
+#: ../../source/framework/qwen_agent.rst:22
+#: e84fb00cbe94490f8d3ae7d78debf7bd
+msgid "Qwen-Agent provides atomic components such as LLMs and prompts, as well as high-level components such as Agents. The example below uses the Assistant component as an illustration, demonstrating how to add custom tools and quickly develop an agent that uses tools."
+msgstr ""
+
+#: ../../source/framework/qwen_agent.rst:91
+#: a6dcb5bae37748f78b738bcf10ed049d
+msgid "The framework also provides more atomic components for developers to combine. For additional showcases, please refer to `examples <https://github.com/QwenLM/Qwen-Agent/tree/main/examples>`__."
+msgstr ""

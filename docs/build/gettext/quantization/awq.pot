@@ -1,0 +1,92 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Qwen Team
+# This file is distributed under the same license as the Qwen package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-18 18:18+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/quantization/awq.rst:2
+#: 70665433104f4d36a23c9ef93814d170
+msgid "AWQ"
+msgstr ""
+
+#: ../../source/quantization/awq.rst:4
+#: c459ba96dbfe4940a568c01ff9ad82b1
+msgid "For quantized models, one of our recommendations is the usage of `AWQ <https://arxiv.org/abs/2306.00978>`__ with `AutoAWQ <https://github.com/casper-hansen/AutoAWQ>`__. AWQ refers to Activation-aware Weight Quantization, a hardware-friendly approach for LLM low-bit weight-only quantization. AutoAWQ is an easy-to-use package for 4-bit quantized models. AutoAWQ speeds up models by 3x and reduces memory requirements by 3x compared to FP16. AutoAWQ implements the Activation-aware Weight Quantization (AWQ) algorithm for quantizing LLMs. In this document, we show you how to use the quantized model with Transformers and also how to quantize your own model."
+msgstr ""
+
+#: ../../source/quantization/awq.rst:16
+#: 01978a4d7a80453f8103bc9aa3f9ff93
+msgid "Usage of AWQ Quantized Models with Transformers"
+msgstr ""
+
+#: ../../source/quantization/awq.rst:18
+#: 127b65f7164b4bdd814932edbc11f378
+msgid "Now, Transformers has officially supported AutoAWQ, which means that you can directly use the quantized model with Transformers. The following is a very simple code snippet showing how to run ``Qwen1.5-7B-Chat-AWQ`` with the quantized model:"
+msgstr ""
+
+#: ../../source/quantization/awq.rst:57
+#: 0677ba5d570a4729bbaee6be1ff379d6
+msgid "Usage of AWQ Quantized Models with vLLM"
+msgstr ""
+
+#: ../../source/quantization/awq.rst:59
+#: 5fcabb542e834b72854cef66f48621bf
+msgid "vLLM has supported AWQ, which means that you can directly use our provided AWQ models or those trained with ``AutoAWQ`` with vLLM. Actually, the usage is the same with the basic usage of vLLM. We provide a simple example of how to launch OpenAI-API compatible API with vLLM and ``Qwen1.5-7B-Chat-AWQ``:"
+msgstr ""
+
+#: ../../source/quantization/awq.rst:79
+#: 6318e584939b494f957343dc65787216
+msgid "or you can use python client with ``openai`` python package as shown below:"
+msgstr ""
+
+#: ../../source/quantization/awq.rst:104
+#: 9c65d145c83d433285dc866778d94563
+msgid "Quantize Your Own Model with AutoAWQ"
+msgstr ""
+
+#: ../../source/quantization/awq.rst:106
+#: e9c971ffbba04771af66b9c2faa2aa8b
+msgid "If you want to quantize your own model to AWQ quantized models, we advise you to use AutoAWQ. It is suggested installing the latest version of the package by installing from source code:"
+msgstr ""
+
+#: ../../source/quantization/awq.rst:116
+#: 68ef4f9332a94cabbe676d2e2da2bddf
+msgid "Suppose you have finetuned a model based on ``Qwen1.5-7B``, which is named ``Qwen1.5-7B-finetuned``, with your own dataset, e.g., Alpaca. To build your own AWQ quantized model, you need to use the training data for calibration. Below, we provide a simple demonstration for you to run:"
+msgstr ""
+
+#: ../../source/quantization/awq.rst:136
+#: dc6682f436c34855a26cd0aa81986771
+msgid "Then you need to prepare your data for calibaration. What you need to do is just put samples into a list, each of which is a text. As we directly use our finetuning data for calibration, we first format it with ChatML template. For example:"
+msgstr ""
+
+#: ../../source/quantization/awq.rst:149
+#: aaa4ab97e3394d8c96e4162d4fd80a99
+msgid "where each ``msg`` is a typical chat message as shown below:"
+msgstr ""
+
+#: ../../source/quantization/awq.rst:159
+#: d67417b4065c4b898e08de5414348145
+msgid "Then just run the calibration process by one line of code:"
+msgstr ""
+
+#: ../../source/quantization/awq.rst:165
+#: 2baedab472eb448bab8249782ff3d6e6
+msgid "Finally, save the quantized model:"
+msgstr ""
+
+#: ../../source/quantization/awq.rst:172
+#: 858c8eb4f324451e92fc113af6e7ead1
+msgid "Then you can obtain your own AWQ quantized model for deployment. Enjoy!"
+msgstr ""

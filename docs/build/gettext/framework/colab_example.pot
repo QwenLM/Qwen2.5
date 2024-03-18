@@ -1,0 +1,32 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Qwen Team
+# This file is distributed under the same license as the Qwen package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-18 18:18+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/framework/colab_example.rst:2
+#: 0beb04b507e34a3ebc00522962e803d2
+msgid "Colab Example"
+msgstr ""
+
+#: ../../source/framework/colab_example.rst:4
+#: 8b90d9ff7e6549f490ea2815bdcecf0e
+msgid "We provide a Colab example page, which you can quickly use online with the following URL to access the Qwen-Chat model."
+msgstr ""
+
+#: ../../source/framework/colab_example.rst:6
+#: 32e3864bf231406cba40e85f3a959f65
+msgid "https://colab.research.google.com/drive/1JKwh-Xd2zoWeikOUPlfKp54_5niYvqvG?usp=sharing"
+msgstr ""

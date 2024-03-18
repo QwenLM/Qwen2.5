@@ -1,0 +1,32 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Qwen Team
+# This file is distributed under the same license as the Qwen package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-18 18:18+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/framework/function_call.rst:2
+#: 1d7dd558cf874ea5abe483ea0b2a69f4
+msgid "Function Calling"
+msgstr ""
+
+#: ../../source/framework/function_call.rst:4
+#: 7611540418aa4051beedae463ed1fdba
+msgid "We offer a wrapper for function calling over the dashscope API and the OpenAI API in `Qwen-Agent <https://github.com/QwenLM/Qwen-Agent>`__."
+msgstr ""
+
+#: ../../source/framework/function_call.rst:8
+#: ab450be5b90d45809e1450be5e648062
+msgid "Use Case"
+msgstr ""

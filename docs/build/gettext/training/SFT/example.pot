@@ -1,0 +1,262 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Qwen Team
+# This file is distributed under the same license as the Qwen package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-18 18:18+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../source/training/SFT/example.rst:2
+#: 10e258757a3b4987be08ca486c7d0f7a
+msgid "Example"
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:4
+#: 2c4d114e532442578ca951c290e6211e
+msgid "Here we provide a very simple script for supervised finetuning, which is revised from the training script in ```Fastchat`` <https://github.com/lm-sys/FastChat>`__. The script is used to finetune Qwen with Hugging Face Trainer. You can check the script `here <https://github.com/QwenLM/Qwen1.5/blob/main/finetune.py>`__. This script for supervised finetuning (SFT) has the following features:"
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:11
+#: 256e3b7d83d1496798f3865530b638bc
+msgid "Support single-GPU and multi-GPU training;"
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:12
+#: 4a0e4463011047bf8d82a62cda7bd15c
+msgid "Support full-parameter tuning, `LoRA <https://arxiv.org/abs/2106.09685>`__, and `Q-LoRA <https://arxiv.org/abs/2305.14314>`__."
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:16
+#: acb9a54f515245eb9762217a1bd30e78
+msgid "In the following, we introduce more details about the usage of the script."
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:20
+#: 148da623a7b847899dbbdf5792a18b7e
+msgid "Installation"
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:22
+#: c8c998ca77ef418eb3e90b06b2c85575
+msgid "Before you start, make sure you have installed the following packages:"
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:29
+#: 24cdc08425234572af74a594f6c027f3
+msgid "Data Preparation"
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:31
+#: d0dd1f2721234a5a972214c137a1c7d3
+msgid "For data preparation, we advise you to organize the data in a jsonl file, where each line is a dictionary as demonstrated below:"
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:76
+#: cd296eb99456424db95b95e744792768
+msgid "Above are two examples of each data sample in the dataset. Each sample is a JSON object with the following fields: ``type``, ``messages`` and ``source``. ``messages`` is required while the others are optional for you to label your data format and data source. The ``messages`` field is a list of JSON objects, each of which has two fields: ``role`` and ``content``. ``role`` can be ``system``, ``user``, or ``assistant``. ``content`` is the text of the message. ``source`` is the source of the data, which can be ``self-made``, ``alpaca``, ``open-hermes``, or any other string."
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:86
+#: b6a950614a0540038a427d7c7c840c64
+msgid "To make the jsonl file, you can use ``json`` to save a list of dictionaries to the jsonl file:"
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:98
+#: 8da35e18c065481e9095e6081614af4f
+msgid "Quickstart"
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:100
+#: b8127b5bb6554e4b974c5965755a564a
+msgid "For you to start finetuning quickly, we directly provide a shell script for you to run without paying attention to details. You need different hyperparameters for different types of training, e.g., single-GPU / multi-GPU training, full-parameter tuning, LoRA, or Q-LoRA."
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:113
+#: f59a294669fd41cbb76f8ed0377c86c9
+msgid "Specify the ``<model_path>`` for your model, ``<data_path>`` for your data, and ``<config_path>`` for your deepspeed configuration. If you use LoRA or Q-LoRA, just add ``--use_lora True`` or ``--q_lora True`` based on your requirements. This is the simplest way to start finetuning. If you want to change more hyperparameters, you can dive into the script and modify those parameters."
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:122
+#: 572cdcb5324c47c78a2e08b44b3cb329
+msgid "Advanced Usages"
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:124
+#: 65691926b0c14aa7baa154a068af6d8d
+msgid "In this section, we introduce the details of the scripts, including the core python script as well as the corresponding shell script."
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:128
+#: 97ebb4186d2843179feab36934f56a9b
+msgid "Shell Script"
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:130
+#: a7f6331b60eb479ab230cc6a965f98c0
+msgid "Before we introduce the python code, we provide a brief introduction to the shell script with commands. We provide some guidance inside the shell script and here we take ``finetune.sh`` as an example."
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:134
+#: 89da7846995b435a9250ec36caecb00d
+msgid "To set up the environment variables for distributed training (or single-GPU training), specify the following variables: ``GPUS_PER_NODE``, ``NNODES``, ``NODE_RANK``, ``MASTER_ADDR``, and ``MASTER_PORT``. No need to worry too much about them as we provide the default settings for you. In the command, you can pass in the argument ``-m`` and ``-d`` to specify the model path and data path, respectively. You can also pass in the argument ``--deepspeed`` to specify the deepspeed configuration file. We provide two configuration files for ZeRO2 and ZeRO3, and you can choose one based on your requirements. In most cases, we recommend using ZeRO3 for multi-GPU training except for Q-LoRA, where we recommend using ZeRO2."
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:146
+#: 67e4c3a4a0364db7b4ad5b9ada2919ab
+msgid "There are a series of hyperparameters to tune. Passing in ``--bf16`` or ``--fp16`` to specify the precision for mixed precision training. The other significant hyperparameters include:"
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:150
+#: a1f1008bbfab4295ad4dd2a6ebcb4257
+msgid "``--output_dir``: the path of your output models or adapters."
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:151
+#: bf85bcd1897742f280bc84955cc4420c
+msgid "``--num_train_epochs``: the number of training epochs."
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:152
+#: 5dd932bdf4da434c9f1bc5e73b7ce7c3
+msgid "``--gradient_accumulation_steps``: the number of gradient accumulation steps."
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:154
+#: f80e91f556dc4dd8a83f5bc5ea704f2f
+msgid "``--per_device_train_batch_size``: the batch size per GPU for training, and the total batch size is equalt to ``per_device_train_batch_size`` :math:`\\times` ``number_of_gpus`` :math:`\\times` ``gradient_accumulation_steps``."
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:158
+#: 98c80252c4ed4e138bf75aba91231649
+msgid "``--learning_rate``: the learning rate."
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:159
+#: d711c7899c4b4e3f87bd9f0a4ab9ac38
+msgid "``--warmup_steps``: the number of warmup steps."
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:160
+#: 80e5c716df01482faa41f46eff7d8e57
+msgid "``--lr_scheduler_type``: the type of learning rate scheduler."
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:161
+#: 245350eff4e2419e943973324a2542d8
+msgid "``--weight_decay``: the value of weight decay."
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:162
+#: 1d99a741ea4846e98743cefbb339f660
+msgid "``--adam_beta2``: the value of :math:`\\beta_2` in Adam."
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:163
+#: d945bb51badd472b86d55621d5c02d2e
+msgid "``--model_max_length``: the maximum sequence length."
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:164
+#: 859bf91d215b41f8ab7816b3e8715d49
+msgid "``--use_lora``: whether to use LoRA. Adding ``--q_lora`` can enable Q-LoRA."
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:166
+#: b98562c235a44179988ea9c06d09a495
+msgid "``--gradient_checkpointing``: whether to use gradient checkpointing."
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:169
+#: 1c08dbbfa6b1451a816658a2e21395f3
+msgid "Python Script"
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:171
+#: 06fd5b86f2ac413fb78a76dd5e20404c
+msgid "In this script, we mainly use ``trainer`` from HF and ``peft`` to train our models. We also use ``deepspeed`` to accelerate the training process. The script is very simple and easy to understand."
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:227
+#: 8b65a405d2424588b8657a034bc13222
+msgid "The classes for arguments allow you to specify hyperparameters for model, data, training, and additionally LoRA if you use LoRA or Q-LoRA to train your model. Specifically, ``model-max-length`` is a key hyperparameter that determines your maximum sequence length of your training data."
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:233
+#: 02304acf3c2c4f20b46670989eddd372
+msgid "``LoRAArguments`` includes the hyperparameters for LoRA or Q-LoRA:"
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:235
+#: 21eeaa5ea67d4d60aeca738c99c65abf
+msgid "``lora_r``: the rank for LoRA;"
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:236
+#: d3e4def138f44618af61c4df84b0932f
+msgid "``lora_alpha``: the alpha value for LoRA;"
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:237
+#: 33467d958ded4812a6d486e0e3b04722
+msgid "``lora_dropout``: the dropout rate for LoRA;"
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:238
+#: ed04c30410ab43e1bf3656d240931a6c
+msgid "``lora_target_modules``: the target modules for LoRA. By default we tune all linear layers;"
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:240
+#: 83da47ba814b43c2b3300da7f0e9e8ce
+msgid "``lora_weight_path``: the path to the weight file for LoRA;"
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:241
+#: 66b96f06649c4a3da0ef6281d33e474b
+msgid "``lora_bias``: the bias for LoRA;"
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:242
+#: ac3a65c5a51e4b3699b8e177c968dabf
+msgid "``q_lora``: whether to use Q-LoRA."
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:300
+#: c0a6d1211d784380b955b98c01d3792c
+msgid "The method ``safe_save_model_for_hf_trainer``, which uses ``get_peft_state_maybe_zero_3``, helps tackle the problems in saving models trained either with or without ZeRO3."
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:334
+#: 0016520a140d484b8119b31ce8ad676e
+msgid "For data preprocessing, we use ``preprocess`` to organize the data. Specifically, we apply our ChatML template to the texts. If you prefer other chat templates, you can use others, e.g., by still applying ``apply_chat_template()`` with another tokenizer. The chat template is stored in the ``tokenizer_config.json`` in the HF repo. Additionally, we pad the sequence of each sample to the maximum length for training."
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:431
+#: 6581d2dd194a42c4a2f98b21e663bcb4
+msgid "Then we utilize ``make_supervised_data_module`` by using ``SupervisedDataset`` or ``LazySupervisedDataset`` to build the dataset."
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:554
+#: e031e7fd049f4e8aa7ee05c8e4bc0c2a
+msgid "The ``train`` method is the key to the training. In general, it loads the tokenizer and model with ``AutoTokenizer.from_pretrained()`` and ``AutoModelForCausalLM.from_pretrained()``. If we use LoRA, the method will initialize LoRA configuration with ``LoraConfig``. If we apply Q-LoRA, we should use ``prepare_model_for_kbit_training``. Note that for now it still does not support resume for LoRA. Then we leave the following efforts to ``trainer`` and have a cup of coffee!"
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:563
+#: b87b31662baf430b84e8e9c621b675c0
+msgid "Next Step"
+msgstr ""
+
+#: ../../source/training/SFT/example.rst:565
+#: bdde8cc913534e11a696c5525b00cbcf
+msgid "Now, you are able to use a very simple script to perform different types of SFT. Alternatively, you can use more advanced training libraries, such as `Axolotl <https://github.com/OpenAccess-AI-Collective/axolotl>`__ or `LLaMA-Factory <https://github.com/hiyouga/LLaMA-Factory>`__, to enjoy more functionalities. To take a step forward, after SFT, you can consider RLHF to align your model to human preferences! Stay tuned for our next tutorial on RLHF!"
+msgstr ""
