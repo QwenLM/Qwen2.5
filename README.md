@@ -237,6 +237,14 @@ We advise you to use training frameworks, including [Axolotl](https://github.com
 ## API
 Qwen1.5 models are now deployed on both [DashScope](https://dashscope.aliyun.com/) and [Together](https://api.together.ai/). Check [this](https://api.together.xyz/playground/chat/Qwen/Qwen1.5-72B-Chat) out and have fun with Qwen1.5-72B-Chat!
 
+## 🐳 Docker
+
+To simplify the deployment process, we provide docker images with pre-built environments: [qwenllm/qwen](https://hub.docker.com/r/qwenllm/qwen). You only need to install the driver and download model files to launch demos and finetune the model.
+
+```bash
+docker run --gpus all --ipc=host --network=host --rm --name qwen1.5 -it qwenllm/qwen:1.5-cu121 bash
+```
+
 ## License Agreement
 Check the license of each model inside its HF repo. It is NOT necessary for you to submit a request for commercial usage.
 
