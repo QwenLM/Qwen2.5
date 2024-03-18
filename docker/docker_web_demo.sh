@@ -3,7 +3,7 @@
 # This script will automatically pull docker image from DockerHub, and start a daemon container to run the Qwen-Chat web-demo.
 
 IMAGE_NAME=qwenllm/qwen:1.5-cu121
-QWEN_CHECKPOINT_PATH=/path/to/Qwen-7B-Chat
+QWEN_CHECKPOINT_PATH=/path/to/Qwen1.5-Chat
 PORT=8901
 CONTAINER_NAME=qwen1.5
 
