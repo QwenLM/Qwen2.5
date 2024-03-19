@@ -1,0 +1,57 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Qwen Team
+# This file is distributed under the same license as the Qwen package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-18 18:18+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.14.0\n"
+
+#: ../../source/framework/qwen_agent.rst:2 53aa75a8daf2481cbeef43478a28e8a0
+msgid "Qwen-Agent"
+msgstr "Qwen-Agent"
+
+#: ../../source/framework/qwen_agent.rst:4 8d7f40e131654f2789d382223137d371
+msgid ""
+"`Qwen-Agent <https://github.com/QwenLM/Qwen-Agent>`__ is a framework for "
+"developing LLM applications based on the instruction following, tool "
+"usage, planning, and memory capabilities of Qwen. It also comes with "
+"example applications such as Browser Assistant, Code Interpreter, and "
+"Custom Assistant."
+msgstr "`Qwen-Agent <https://github.com/QwenLM/Qwen-Agent>`__ 是一个基于 Qwen 的指令跟随、工具使用、计划和记忆能力来开发 LLM 应用程序的框架。它还附带了一些示例应用程序，例如浏览器助手、代码解释器和自定义助手。"
+
+#: ../../source/framework/qwen_agent.rst:11 b070f438dec14dbf817b1d4fb84799b4
+msgid "Installation"
+msgstr "安装"
+
+#: ../../source/framework/qwen_agent.rst:20 16ce1e0a61514df786d75fd335d96013
+msgid "Developing Your Own Agent"
+msgstr "开发您自己的智能体"
+
+#: ../../source/framework/qwen_agent.rst:22 e84fb00cbe94490f8d3ae7d78debf7bd
+msgid ""
+"Qwen-Agent provides atomic components such as LLMs and prompts, as well "
+"as high-level components such as Agents. The example below uses the "
+"Assistant component as an illustration, demonstrating how to add custom "
+"tools and quickly develop an agent that uses tools."
+msgstr "Qwen-Agent 提供包括语言模型和提示词等原子级组件，及智能体等高级组件在内的多种组件。以下示例选取助理组件进行展示，阐述了如何整合自定义工具以及如何迅速开发出一个能够应用这些工具的代理程序。"
+
+#: ../../source/framework/qwen_agent.rst:91 a6dcb5bae37748f78b738bcf10ed049d
+msgid ""
+"The framework also provides more atomic components for developers to "
+"combine. For additional showcases, please refer to `examples "
+"<https://github.com/QwenLM/Qwen-Agent/tree/main/examples>`__."
+msgstr "该框架还为开发者提供了更多的原子组件以供组合使用。欲了解更多示例，请参见 `examples <https://github.com/QwenLM/Qwen-Agent/tree/main/examples>`__。"
+

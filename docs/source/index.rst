@@ -89,5 +89,7 @@ Documentation
    :maxdepth: 1
    :caption: Framework
 
-   framework/qwen_agent
    framework/function_call
+   framework/qwen_agent
+   framework/LlamaIndex
+   framework/Langchain
