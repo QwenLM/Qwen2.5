@@ -1,15 +1,13 @@
-Using Langchain to Retrieval
+Langchain
 ==========================
 
-This guide helps you to build a question-answering application based 
+This guide helps you build a question-answering application based 
 on a local knowledge base using ``Qwen1.5-7B-Chat`` with ``langchain``.
-The goal is to establish a knowledge base Q&A solution that is friendly 
-to many scenarios and open-source models, and that can run offline.
+The goal is to establish a knowledge base Q&A solution.
 
 Basic Usage
 -----------
 
-You can just use your document with ``langchain`` to build a question-answering application.
 The implementation process of this project includes 
 loading files -> reading text -> segmenting text -> vectorizing text -> vectorizing questions 
 -> matching the top k most similar text vectors with the question vectors -> 
@@ -26,7 +24,6 @@ Below is an example:
    from langchain.callbacks.manager import CallbackManagerForLLMRun
    device = "cuda" # the device to load the model onto
 
-   # Now you do not need to add "trust_remote_code=True"
    model = AutoModelForCausalLM.from_pretrained(
        "Qwen/Qwen1.5-7B-Chat",
        torch_dtype="auto",
@@ -89,8 +86,8 @@ Below is an example:
                     "top_p": self.top_p,
                     "history_len": self.history_len}
 
-After load the Qwen1.5-7B-Chat model, you should specify txt file 
-that needs retrieval for knowledge-based Q&A.
+After loading the Qwen1.5-7B-Chat model, you should specify the txt file 
+for retrieval.
 
 .. code:: python
 

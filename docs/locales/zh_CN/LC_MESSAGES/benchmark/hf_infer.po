@@ -1,0 +1,1094 @@
+# Copyright (C) 2024, Qwen Team, Alibaba Group.
+# This file is distributed under the same license as the Qwen package.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-21 18:08+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.14.0\n"
+
+#: ../../source/benchmark/hf_infer.rst:2 303e07b4db4a4d49b9fc286a5401f444
+msgid "HF Transformers Inference"
+msgstr "使用HF Transformers推理"
+
+#: ../../source/benchmark/hf_infer.rst:4 7e57b9395cd64dc6b5eda4aec84d9b73
+msgid ""
+"This section reports the performance of bf16 models and Int4 quantized "
+"models (including GPTQ and AWQ) of the Qwen1.5 series. Specifically, we "
+"report the inference speed (tokens/s) as well as memory footprint (GB) "
+"under the conditions of different context lengths. In terms of inference "
+"speed, we report those with or without Flash Attention 2."
+msgstr ""
+"本部分报告了Qwen1.5系列模型的bf16版本以及Int4量化模型（包括GPTQ和AWQ）的性能。具体来说，我们报告了在不同上下文长度条件下推理速度（tokens/s）以及内存占用（GB）。关于推理速度，我们分别报告了采用Flash"
+" Attention 2技术与未采用该技术时的数据。"
+
+#: ../../source/benchmark/hf_infer.rst:10 449e9132b2aa4976afe39258497ba8f3
+msgid "The environment of the performance evaluation is:"
+msgstr "测试的环境如下："
+
+#: ../../source/benchmark/hf_infer.rst:12 e0d8e82de1db41f4add0cf96687cceec
+msgid "NVIDIA A100 80GB"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:13 b0f15bfb20bf4390b9572ec7825c5cfe
+msgid "CUDA 12.3"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:14 1449dd14683847cdb3147083cb42ca26
+msgid "Pytorch 2.1.2+cu118"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:15 fa38e6d55e81458cab126b376552466f
+msgid "Flash Attention 2.5.6"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:17 54f3b95c67984b2c8cfe7456c81e01fc
+msgid ""
+"Note that we use the batch size of 1 and the least number of GPUs as "
+"possible for the evalution. We test the speed and memory of generating "
+"2048 tokens with the input lengths of 1, 6144, 14336, and 30720 tokens"
+msgstr ""
+"请注意，我们在评估时使用了尽可能小的批量大小（batch "
+"size为1）和最少的GPU数量。我们测试了在输入长度分别为1、6144、14336和30720个token的情况下生成2048个token的速度和内存占用情况。"
+
+#: ../../source/benchmark/hf_infer.rst:21 99ecb553c958448586c9dc0a8c4c8536
+msgid "0.5B:"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:24
+#: ../../source/benchmark/hf_infer.rst:54
+#: ../../source/benchmark/hf_infer.rst:84
+#: ../../source/benchmark/hf_infer.rst:103
+#: ../../source/benchmark/hf_infer.rst:122
+#: ../../source/benchmark/hf_infer.rst:141 1e8bb630e34441928745c8bd11667589
+#: 33b479432cf0430ca90f7772714a5824 38d2e1c02a6b41beb92de4a73a5bc0c8
+#: 3cef01d9d71243419936075d75610307 56679f46141e4dfb8307f64a95e873ac
+#: 85551642957d43ccb29f80ed146bb7c3
+msgid "Model"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:24
+#: ../../source/benchmark/hf_infer.rst:54
+#: ../../source/benchmark/hf_infer.rst:84
+#: ../../source/benchmark/hf_infer.rst:103
+#: ../../source/benchmark/hf_infer.rst:122
+#: ../../source/benchmark/hf_infer.rst:141 08f74fac0b5f40879d276af69c559889
+#: 2d241ab503f649cf889b149d036d7967 393ae57d1a5940269c2179b31174fcef
+#: 4ba6c86b465d43c5a3a38d85c701076c 817c31a8fda045af96132d7f4237b1f4
+#: ad722e5eccca49ec9bd75ae2b1733780
+msgid "Num. GPU"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:24
+#: ../../source/benchmark/hf_infer.rst:54
+#: ../../source/benchmark/hf_infer.rst:84
+#: ../../source/benchmark/hf_infer.rst:103
+#: ../../source/benchmark/hf_infer.rst:122
+#: ../../source/benchmark/hf_infer.rst:141 11fa1dc130b945b2b6e513e450520e50
+#: 51936783519a454c83b86d354c1ef017 7927df9bb5134d98b7033546f4a2090c
+#: b7ac33f2dd6d48fcbb581c889bf577d7 c67b520aa18840e297f9294fe632ebb4
+#: ce23eb6e321d4185928f7f91c4301283
+msgid "Input Length"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:24
+#: ../../source/benchmark/hf_infer.rst:54
+#: ../../source/benchmark/hf_infer.rst:84
+#: ../../source/benchmark/hf_infer.rst:103
+#: ../../source/benchmark/hf_infer.rst:122
+#: ../../source/benchmark/hf_infer.rst:141 351cba299c404dafa85695b20380d12d
+#: 437ee9081f5e4cceb9624b977f193a70 5d84ce4f7b9840c5a449da930d070dce
+#: b3631314f87d403bb9d50a6f1397c41e bf90030a700b4792996347fa50a5e9bd
+#: cd1bc3e0965e4ea88ee0146d665e144f
+msgid "Speed (w/wo FA2)"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:24
+#: ../../source/benchmark/hf_infer.rst:54
+#: ../../source/benchmark/hf_infer.rst:84
+#: ../../source/benchmark/hf_infer.rst:103
+#: ../../source/benchmark/hf_infer.rst:122
+#: ../../source/benchmark/hf_infer.rst:141 20ea263ecf284333ad3bf09771bceb72
+#: 2c5faefc48b04e76b20b44270f121983 5561a46725fa4ec6928b4059d62b7c6e
+#: 59bed44381784f5db97738866fdad57f 754f8c8b63894f0c89f13949e2c528c8
+#: b812491a60084f7b82087d9a3ff2b933
+msgid "Memory"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:26
+#: ../../source/benchmark/hf_infer.rst:28
+#: ../../source/benchmark/hf_infer.rst:30
+#: ../../source/benchmark/hf_infer.rst:32 41ca056e81bc44c4bb58810d9a3fe2ac
+#: 4d99c69b78a045ceb264d8029d17ef9d 92df48ee64b149dea3e174212009d322
+#: a619e7217a774158bfb11e8dd33c62be
+msgid "Qwen1.5-0.5B-Chat"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:26
+#: ../../source/benchmark/hf_infer.rst:28
+#: ../../source/benchmark/hf_infer.rst:30
+#: ../../source/benchmark/hf_infer.rst:32
+#: ../../source/benchmark/hf_infer.rst:34
+#: ../../source/benchmark/hf_infer.rst:36
+#: ../../source/benchmark/hf_infer.rst:38
+#: ../../source/benchmark/hf_infer.rst:40
+#: ../../source/benchmark/hf_infer.rst:42
+#: ../../source/benchmark/hf_infer.rst:44
+#: ../../source/benchmark/hf_infer.rst:46
+#: ../../source/benchmark/hf_infer.rst:48
+#: ../../source/benchmark/hf_infer.rst:56
+#: ../../source/benchmark/hf_infer.rst:58
+#: ../../source/benchmark/hf_infer.rst:60
+#: ../../source/benchmark/hf_infer.rst:62
+#: ../../source/benchmark/hf_infer.rst:64
+#: ../../source/benchmark/hf_infer.rst:66
+#: ../../source/benchmark/hf_infer.rst:68
+#: ../../source/benchmark/hf_infer.rst:70
+#: ../../source/benchmark/hf_infer.rst:72
+#: ../../source/benchmark/hf_infer.rst:74
+#: ../../source/benchmark/hf_infer.rst:76
+#: ../../source/benchmark/hf_infer.rst:78
+#: ../../source/benchmark/hf_infer.rst:86
+#: ../../source/benchmark/hf_infer.rst:87
+#: ../../source/benchmark/hf_infer.rst:88
+#: ../../source/benchmark/hf_infer.rst:89
+#: ../../source/benchmark/hf_infer.rst:90
+#: ../../source/benchmark/hf_infer.rst:91
+#: ../../source/benchmark/hf_infer.rst:92
+#: ../../source/benchmark/hf_infer.rst:93
+#: ../../source/benchmark/hf_infer.rst:94
+#: ../../source/benchmark/hf_infer.rst:95
+#: ../../source/benchmark/hf_infer.rst:96
+#: ../../source/benchmark/hf_infer.rst:97
+#: ../../source/benchmark/hf_infer.rst:105
+#: ../../source/benchmark/hf_infer.rst:106
+#: ../../source/benchmark/hf_infer.rst:107
+#: ../../source/benchmark/hf_infer.rst:108
+#: ../../source/benchmark/hf_infer.rst:109
+#: ../../source/benchmark/hf_infer.rst:110
+#: ../../source/benchmark/hf_infer.rst:111
+#: ../../source/benchmark/hf_infer.rst:112
+#: ../../source/benchmark/hf_infer.rst:113
+#: ../../source/benchmark/hf_infer.rst:114
+#: ../../source/benchmark/hf_infer.rst:115
+#: ../../source/benchmark/hf_infer.rst:116
+#: ../../source/benchmark/hf_infer.rst:124
+#: ../../source/benchmark/hf_infer.rst:125
+#: ../../source/benchmark/hf_infer.rst:126
+#: ../../source/benchmark/hf_infer.rst:128
+#: ../../source/benchmark/hf_infer.rst:129
+#: ../../source/benchmark/hf_infer.rst:130
+#: ../../source/benchmark/hf_infer.rst:132
+#: ../../source/benchmark/hf_infer.rst:133
+#: ../../source/benchmark/hf_infer.rst:134
+#: ../../source/benchmark/hf_infer.rst:143
+#: ../../source/benchmark/hf_infer.rst:147
+#: ../../source/benchmark/hf_infer.rst:151 0187a400cc684c0eb2d501b79282ebbb
+#: 0250e88179e840039c112520e88e0c85 0cc3ce6a9be94d01bee582a3fb0eab19
+#: 1009c177ac9c4552af845d6302d05017 126aa338115840f2bbaccd3175aaa08c
+#: 141facc2b6734bdebbfbe3fdb7309f6c 148240d6de2f456ba6708bf9567b41a0
+#: 1b50866eb6fa4d5f89d695f9785ea356 1cc97807f74c4840bf8eaf3911765ea3
+#: 2325b43fdb2b49f09610538468069997 24342737d5e7481e9094839b7cd45768
+#: 26693b8b60b5465a82e5b7ad34b9d935 26832a7f0ace400a8a40c8e34ba8b3b6
+#: 2c2b186e4e784b9bbbee4a0de9380777 2e56cd82924743f397b2fcc1db33a174
+#: 3096ffefc97b42ac9d92b391a540b577 3895160195694615a681217608dedd22
+#: 39bdb4054919488ca9e6ac0ae0ddc4a0 3af50c1d943843e3abbcfa4c7d60a0d7
+#: 412111ae821347169cd619546be62ca6 443fec1b962b4acabf43788914308b61
+#: 49b7b8d52c9446a9b166ee1a692600ad 4cbc13fbaf614b138625b2e2f36828b0
+#: 4f1cf40fb06641bbb30ace099a0df223 5536c66ae9234bff806f71739c346c19
+#: 564a1d6846de4ec58c1b6489dead005b 5836ac55e85f4fd9ba9fb0460be6e0fe
+#: 5af0b9adcae74c5fa9a2adac5d2d8887 5ffb72130b144760ab842d5ae8119fde
+#: 615626d465fe4e8394c72e1a96301f79 642dabb43ed541398dff6e46b24208c1
+#: 65c61fd7354b4dbeb8f7f6b302aa45ac 669339a7ee6441f4aaa7f9320ed1302e
+#: 68946b7d163a42cf9a91d4e044749236 6f58c67156434448a5a97c72c0ca41b6
+#: 738cc50dcbdd4b9a8354b299e286cff3 7470000194b841218fcacf053cd02049
+#: 7d4ad7589b854f40a798ca210837af6f 8112f1d058d6467fac30128aef9cf705
+#: 8426c82f3c214958a2daa739c00cc8ee 886b925871e4480291e3562d00e40ea4
+#: 92807a8286b04a3e8a070b09571d8505 9701d00de913461dbbdf2aac098d0bc1
+#: 972df34159eb495089c44eba829dbc51 977798ece62f4018a812d0e111405597
+#: ad7498307012458fbeeff7249755a86a aec2aedee91a4f68801305667069a342
+#: b31c508747cc41d5adb4057a3389dcd5 b68d220be8f34278a43c87da3d628950
+#: b7a9123105394a7eb40b7ebb9bed6372 b93292d59b97439d8c3d88c801317b1d
+#: bb40697b05e347d391c07746c4862751 bb5bdb2422764fd5b71c062bde1fe7b7
+#: bc0fe58223f94bad988a36c7d0ebb3d0 bdbe14189904458b98b8e082f99a2953
+#: becae847fd9443a6b775926f7fb030be bfabe2f8a99243b5b61590394e3c11da
+#: ca3e052ee096440592faa1f6e17b8bdb cefe793f0fb643f4a48142d8e4c8e892
+#: d122d83695024afa92cdff700ce5ebbb d3a5d9f3102c406a9c788ec7bd553739
+#: d880641f1e0046699a033a6784497bbb da07cab68cde478cad68d8f1bbccfb88
+#: dc3cd18ec4ec4dfeab5fef799ee446ba de94fa98cfe54685ba37e5366edd0399
+#: dedd9f89b14a4e678aee6eaab5c59116 e1b773331e274307bce02092b089c1cb
+#: ef64ebdc79834e4a8e197faf923a5e2f f703d11f962c46668ec65dd8fa4f7d24
+#: f89a7b464ceb4fd1bab84f9afd684806 f8ac86c4928a4e1c8b183a90faad6aa3
+#: fcab74a55e9f4af383860fc6e3904d35 fd27ae6c90794e2899705a02ee6075fd
+#: fd48ffea01484be49c6e1a5512c8a14a fdcc8815e6e14857a1b1973105d7ce02
+#: fee8e8711c5b40af8d62e38dca8a734c ffd28e9b2a5241cd8ed75ded44249128
+msgid "1"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:26 ef3b7f4340f84608b934c44288ff5989
+msgid "58.54 / 61.34"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:26 7731dd51319b4277b5b6d22c7e698aac
+msgid "1.46"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:28
+#: ../../source/benchmark/hf_infer.rst:36
+#: ../../source/benchmark/hf_infer.rst:44
+#: ../../source/benchmark/hf_infer.rst:58
+#: ../../source/benchmark/hf_infer.rst:66
+#: ../../source/benchmark/hf_infer.rst:74
+#: ../../source/benchmark/hf_infer.rst:87
+#: ../../source/benchmark/hf_infer.rst:91
+#: ../../source/benchmark/hf_infer.rst:95
+#: ../../source/benchmark/hf_infer.rst:106
+#: ../../source/benchmark/hf_infer.rst:110
+#: ../../source/benchmark/hf_infer.rst:114
+#: ../../source/benchmark/hf_infer.rst:125
+#: ../../source/benchmark/hf_infer.rst:129
+#: ../../source/benchmark/hf_infer.rst:133
+#: ../../source/benchmark/hf_infer.rst:144
+#: ../../source/benchmark/hf_infer.rst:148
+#: ../../source/benchmark/hf_infer.rst:152 1922cd217c764ca7ac8aac00aee8c2ac
+#: 1c0dd21410ef430b8bfac757546c5985 2d818578057d4aecb376a22d61a0cf5f
+#: 2df0174ec2f04680bf69ca53e68a719b 34e2d416ae84425a9d82614e7d6b5349
+#: 4916d5fd91a94065ab460d5655bfbe4a 77039de022014087b8212ee2c5aa9ed4
+#: 86ba15fcc8214531be84181663296e43 9468718f1e7348b3b7623faef3444fb3
+#: a5328c6f3f5e4ca9854ac4da3162ad19 c2aa5609b98148a395403d1ac4bc04d2
+#: c3489641223741b49b2a7db5e02d23f3 c519236219f54f1cbfc166c71477207b
+#: c72c16ca2c364593a5aa71ce9a95e8a2 ce670ea5cbdf442694d67173909481c2
+#: d8e8790b1a894577890b4354998bc27f de9672d7c2884003b56ace4ba7612598
+#: fd833c5b110f48979f327ab3fbac38f4
+msgid "6144"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:28 0057b92925e8490a9c0f2b70f1d66d24
+msgid "57.93 / 63.57"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:28 6922470a2228439380b1c20ea39eda80
+msgid "6.87"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:30
+#: ../../source/benchmark/hf_infer.rst:38
+#: ../../source/benchmark/hf_infer.rst:46
+#: ../../source/benchmark/hf_infer.rst:60
+#: ../../source/benchmark/hf_infer.rst:68
+#: ../../source/benchmark/hf_infer.rst:76
+#: ../../source/benchmark/hf_infer.rst:88
+#: ../../source/benchmark/hf_infer.rst:92
+#: ../../source/benchmark/hf_infer.rst:96
+#: ../../source/benchmark/hf_infer.rst:107
+#: ../../source/benchmark/hf_infer.rst:111
+#: ../../source/benchmark/hf_infer.rst:115
+#: ../../source/benchmark/hf_infer.rst:126
+#: ../../source/benchmark/hf_infer.rst:130
+#: ../../source/benchmark/hf_infer.rst:134
+#: ../../source/benchmark/hf_infer.rst:145
+#: ../../source/benchmark/hf_infer.rst:149
+#: ../../source/benchmark/hf_infer.rst:153 1f371d870b4441eb95cf2aab67b1e33e
+#: 3081046119b24f0294cd445cf7e3b83d 47b453ccf0e04b18bfed653f009a9371
+#: 5ac465e759d84a2084dc13c11fe56da9 7ed48e00fba749c3a209575af07b1767
+#: 93ecfe569abe480fb08d96635dec274b 94f0f7f798cd48ccb89ef2895d25378c
+#: ab5e3deab57348b992e68eb5fedf3a4b b4483ea673df4e51baf39b5718fa951a
+#: b99cd1fd5c1f4d95b7670a5e82f82d7e bb7ed9a4ef5d4837b2e18b613c7419b9
+#: cb43a986c54c476594061c69d96485b9 d22f6d4bd1434aebace2433c53a709c1
+#: e340cdf0f9bb4a72ba7885f345265b95 e746fe2a79d24483b740a1a9b7336147
+#: e78c4a5d33c64774bd14b4785cf953be f6e645b7408747df87a2a29e60a6ad2c
+#: fcac6d2377fd4ca48315f1fdc00228a4
+msgid "14336"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:30 683d27432955486cbb9f176990d57e42
+msgid "59.48 / 60.18"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:30 526000b879b4475cbe9563e93a525205
+msgid "14.59"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:32
+#: ../../source/benchmark/hf_infer.rst:40
+#: ../../source/benchmark/hf_infer.rst:48
+#: ../../source/benchmark/hf_infer.rst:62
+#: ../../source/benchmark/hf_infer.rst:70
+#: ../../source/benchmark/hf_infer.rst:78
+#: ../../source/benchmark/hf_infer.rst:89
+#: ../../source/benchmark/hf_infer.rst:93
+#: ../../source/benchmark/hf_infer.rst:97
+#: ../../source/benchmark/hf_infer.rst:108
+#: ../../source/benchmark/hf_infer.rst:112
+#: ../../source/benchmark/hf_infer.rst:116
+#: ../../source/benchmark/hf_infer.rst:127
+#: ../../source/benchmark/hf_infer.rst:131
+#: ../../source/benchmark/hf_infer.rst:135
+#: ../../source/benchmark/hf_infer.rst:146
+#: ../../source/benchmark/hf_infer.rst:150
+#: ../../source/benchmark/hf_infer.rst:154 03f4e11fed224e73ae343413e08f29bf
+#: 0c2506581b5f4626abf57bfc3ffca97e 1981ce48272a4e09bb17143a476a6ac3
+#: 27c2aeb178724787ad96980e55ec73a9 2f9c3050c8f9459da77643e026778044
+#: 52a92c2836d141de8cc4ea875c88cd7f 73e18b32f1194fc9b43acf66bd3e378c
+#: 7cb4d31e4aed4883ad3c590fefc0d849 8ac1391d40534b2380941f398befb10c
+#: 92b795b344464c81bf9816e8c2409b80 aa4b6906177e4230aeafab4729c06148
+#: b169328f81784ae9aada347bfae6927e ba81e2b62c2143d1ad2101803dce8783
+#: d395b945016247418790f84bc32b5e48 dfdb86dfb28849a483702f6f73105108
+#: e4ce39b8c9894085b2bbab75c3461586 f87b205785f645cfaa970d24fa27d259
+#: fe45034171724fa793aacb7a50ba9c6f
+msgid "30720"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:32 9b99c21dd05a4ff7b1152084115355b4
+msgid "47.65 / 35.44"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:32 8bac8125e36c4e35b077d5973c8424d9
+msgid "30.04"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:34
+#: ../../source/benchmark/hf_infer.rst:36
+#: ../../source/benchmark/hf_infer.rst:38
+#: ../../source/benchmark/hf_infer.rst:40 08710313518f4dd783abbeecef952b17
+#: 7f3338b7d2fc494390f82dbd82d5eb66 aeae0c18df5e49198c24f914ab0b220d
+#: f268653f2bc944998bae50d948719ad8
+msgid "Qwen1.5-0.5B-Chat-GPTQ-Int4"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:34 46d85387583b4c2cb83ba585dc7ba648
+msgid "57.18 / 63.67"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:34 7eb20b54e0684baca0d78dd3f8c9df59
+msgid "1.03"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:36 b33676f9aefd423cbe83456fb216a2b7
+msgid "57.47 / 63.31"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:36 869d59bb6059401c850ac30b8827e784
+msgid "6.44"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:38 2c53bd0d0e4549bb963a5e1505218012
+msgid "57.57 / 52.19"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:38 539453c1da9a49359350c4b836988267
+msgid "14.16"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:40 0a56dc279c6846f0b1dfc57b13397547
+msgid "41.84 / 32.58"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:40 effbb8c52d8f450192df3caa553e4b9f
+msgid "29.60"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:42
+#: ../../source/benchmark/hf_infer.rst:44
+#: ../../source/benchmark/hf_infer.rst:46
+#: ../../source/benchmark/hf_infer.rst:48 3c4af77e73b04feaa0aa43ae1cdf71c9
+#: 49d0279d269d4972b4cd23edcbb28aa8 eaf0db5d38584f0eb217aa3bbe72524d
+#: fe81c4d2d2cc4741b896e1c0c30bdeee
+msgid "Qwen1.5-0.5B-Chat-AWQ"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:42 8ad2a624932b4162bafbb434921be032
+msgid "45.04 / 48.54"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:42 2e5f39b72cb04d57b1edf7b9594dc38f
+msgid "1.02"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:44 32869af455a1494a836364f70ca4b3b9
+msgid "43.30 / 47.62"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:44 e4dc528b2ba1432aa828ae732543c40f
+msgid "6.43"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:46 19894ca7fbc7464ca79e73a9b7c5d32d
+msgid "42.98 / 48.05"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:46 9f9d6470fc044e2b9cbd501e8dadffee
+msgid "14.15"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:48 d5ad6c63b721452ba40f9541227730c1
+msgid "42.18 / 33.58"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:48 dc6741b16e784d9d804b08409580cb59
+msgid "29.59"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:51 a88cfaa314b44f608a0c31887b0ac780
+msgid "1.8B:"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:56
+#: ../../source/benchmark/hf_infer.rst:58
+#: ../../source/benchmark/hf_infer.rst:60
+#: ../../source/benchmark/hf_infer.rst:62 48fb5ea6de7d497a8edde7444d8a1048
+#: 8a8e109261e347fb9423a0c176ec0d29 9801b89e8c4b4d40994471e64c51d44b
+#: f3ec81bbca244d698ba75dd2a8336e7b
+msgid "Qwen1.5-1.8B-Chat"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:56 22e158889a394187a45e8f86b8e5c79d
+msgid "51.82 / 54.01"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:56 858fa231ebd04c189f58d7fd57a7e892
+msgid "4.60"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:58 4a90473c02b14bee915983c578742c14
+msgid "51.56 / 51.45"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:58 288e6530147845df8a01c3995be51873
+msgid "10.21"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:60 a1451a0d4a1142d08e4b5eb96306b58e
+msgid "45.17 / 30.53"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:60 117322db74f243819a97c88aa170e0b9
+msgid "18.69"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:62 5abb07973011475dba17e1e6785ce944
+msgid "29.21 / 16.70"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:62 b0fe047079964035ac8b1d2ec50c21e2
+msgid "35.67"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:64
+#: ../../source/benchmark/hf_infer.rst:66
+#: ../../source/benchmark/hf_infer.rst:68
+#: ../../source/benchmark/hf_infer.rst:70 5df6210dddb349cdb7ba7b3f3ddf4ff8
+#: b0fe9129b24946539ed2b54f3e8a2828 c0969259fa2e430da38cf1d396408e22
+#: ef3931f1d2e24c5fbca23106be0f83c7
+msgid "Qwen1.5-1.8B-Chat-GPTQ-Int4"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:64 e9e2a5d0669b4bb99322826048f971a0
+msgid "58.83 / 65.21"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:64 2879db1f204143788af135dbb301dff0
+msgid "2.91"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:66 bd5fd56d5e47407a969e7d5f0d802772
+msgid "54.82 / 46.31"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:66 72e0878a671347e4a8b17a0d6bf2ea27
+msgid "8.52"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:68 ed8a8bb109b74c7a8b5cd3f50613ff6a
+msgid "41.56 / 28.64"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:68 8930272eab1d484ca25ed38298c4d58c
+msgid "17.01"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:70 7ff3a355c56a4f409ab6bcfe219ae5bb
+msgid "26.88 / 16.13"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:70 0e14412d44f743c88c1f8b5e167f5d15
+msgid "33.98"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:72
+#: ../../source/benchmark/hf_infer.rst:74
+#: ../../source/benchmark/hf_infer.rst:76
+#: ../../source/benchmark/hf_infer.rst:78 3039a290791c473fb4fca1693d7c3685
+#: 97b73b7e0ce24a729d867014ff7b72c2 cc6d5904725342faabd91ac2e008ed30
+#: d01a7f70935d42c6bf696d3122fba0a9
+msgid "Qwen1.5-1.8B-Chat-AWQ"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:72 fdecb820cb7643efb8ac40d5d6befd0b
+msgid "45.78 / 48.02"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:72 40c983dc7f054352958c6ac2a3058f23
+msgid "2.89"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:74 dd00fb57991649a0bd310f41af0b04e1
+msgid "44.95 / 47.64"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:74 2206699606c64e64a2ddf5a2ffdc3041
+msgid "8.50"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:76 30f9e8d3ed6e456fa280f7b175c2c61d
+msgid "42.44 / 29.48"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:76 66ab7ce0d3764050a42c64740c8002c3
+msgid "16.98"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:78 72a8302d4c344e15ab7740ff72af1209
+msgid "28.34 / 16.38"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:78 2eba7979a5814db08eaeda03c38ff828
+msgid "33.96"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:81 4f087b9f347e43feae38bfe31fb55d7c
+msgid "4B:"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:86
+#: ../../source/benchmark/hf_infer.rst:87
+#: ../../source/benchmark/hf_infer.rst:88
+#: ../../source/benchmark/hf_infer.rst:89 3c125784130a4cd39f1808b874477d28
+#: 9ad29b7914e043b28cbc01ba4e4eff76 b08798c5da514986aad687ef32eededb
+#: df1dc05a9e324b838efc7061f2af4d75
+msgid "Qwen1.5-4B-Chat"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:86 d6dbc40da18f409d822e65b231313b5e
+msgid "30.32 / 32.59"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:86 9758bbe4603d433f94ee26c4f351efa5
+msgid "9.59"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:87 360ea38dd6a34711b9582b3b2e6bd82b
+msgid "30.72 / 28.61"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:87 5ea8c85856314caaa3d643a5c5acaee7
+msgid "16.19"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:88 3e02e7f9ffd74c91aaf02fcbe8f86ffe
+msgid "23.46 / 16.96"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:88 406fe0eda4a44d269ee22b21ee6e20d7
+msgid "27.08"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:89 73d139438eed4445babd8dc88d641ee3
+msgid "14.76 / 9.19"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:89 79ee1dd505624bd7bea862787df4fe28
+msgid "48.85"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:90
+#: ../../source/benchmark/hf_infer.rst:91
+#: ../../source/benchmark/hf_infer.rst:92
+#: ../../source/benchmark/hf_infer.rst:93 0ccbddf785b0462a873826015df9355f
+#: 3bb5a0225fca4309a245ca26418fdf6f a29fa5dfa7aa4f4fb8f739453d879d39
+#: f06cafa5f6334c788b140fe5013feafc
+msgid "Qwen1.5-4B-Chat-GPTQ-Int4"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:90 0e9efa5586ef4bf9b6c98b3681fce28c
+msgid "33.63 / 36.67"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:90 d2a1380c0055429d9591f07624ea585f
+msgid "5.65"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:91 c88d4978d19b43ae94e2ea4ad5f2a7cd
+msgid "33.93 / 30.66"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:91 e4145403cb7c4d98a6a739388942da6a
+msgid "12.25"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:92 76d845fab3e34870915ebf765cf915c4
+msgid "25.01 / 17.48"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:92 6982319b21c24823b199e4ebd2cd15d9
+msgid "23.14"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:93 269cb7cefc8341d9bfdef6f9c62eee41
+msgid "15.28 / 9.35"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:93 59814c70eb834b67a211f934169be2e0
+msgid "44.91"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:94
+#: ../../source/benchmark/hf_infer.rst:95
+#: ../../source/benchmark/hf_infer.rst:96
+#: ../../source/benchmark/hf_infer.rst:97 28fe16f08a0245eebd4e637c0e303bed
+#: 33a743f9079c413aa23b87b7fc373e2d 509b6cee12c2454cb27db354a2eeaba7
+#: 7b4a41cea7e044b1bc3f258e21525521
+msgid "Qwen1.5-4B-Chat-AWQ"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:94 b37846f117f04ea6b7898264731e1a02
+msgid "28.09 / 28.64"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:94 0fc6dad9e212473db15aec9887798c6f
+msgid "5.19"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:95 77cfb38de0dd441e8d041cab45903a3e
+msgid "28.00 / 27.83"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:95 a7ce5269421a413185e74bc972169c90
+msgid "11.79"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:96 14217c9ae48c460dbe3e5ce7285f6857
+msgid "22.95 / 16.49"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:96 0ef47e4dcc4748a1af07ed90de733000
+msgid "22.67"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:97 c7782d697951498f8ece7b787b1a37c2
+msgid "14.50 / 9.06"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:97 98a5a2d14bb04afa94c8e65b084e31be
+msgid "44.45"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:100 81d11341d66d4469b44801bfadf41304
+msgid "7B:"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:105
+#: ../../source/benchmark/hf_infer.rst:106
+#: ../../source/benchmark/hf_infer.rst:107
+#: ../../source/benchmark/hf_infer.rst:108 6a25591a3b194ffcb011ed1d03283770
+#: 70d720246ece432a829036be7efacc8c b924ec8530ee4b8d8d93948a0a1464f0
+#: e4755da20237444f9014e3ce39eb2519
+msgid "Qwen1.5-7B-Chat"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:105 2d2b8d4c33b14c11ab37ea1ba0e58db7
+msgid "37.07 / 40.05"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:105 0c0a9d268a1e46db9901e0e52b303ee1
+msgid "16.90"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:106 9c3a446586ce49928bfe7ee91e6817d1
+msgid "29.29 / 26.95"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:106 9e2746dfc4ff4a4a9a27a09ffdfe9605
+msgid "24.37"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:107 90f8c16190a34a3e89e193411384971f
+msgid "19.93 / 16.18"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:107 c420668c3ad242719800b5b742c14ccc
+msgid "37.01"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:108 621172df331b494a9b3b8bc1f342fcd3
+msgid "12.04 / 8.89"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:108 8ff5a5f3b750449cb05d145f9f4be326
+msgid "62.29"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:109
+#: ../../source/benchmark/hf_infer.rst:110
+#: ../../source/benchmark/hf_infer.rst:111
+#: ../../source/benchmark/hf_infer.rst:112 41487a71cdc947f284f8bea940e48cdc
+#: 768477a2b98f4d47b50f11f92a285ca4 f931aa8e3e154cfe818bf7d9b1e50e79
+#: fd8d37696a184db992f2c2762bb84446
+msgid "Qwen1.5-7B-Chat-GPTQ-Int4"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:109 619b8ec9ed2b4c6da082f3c7b51ecb10
+msgid "38.73 / 46.46"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:109 dcc65d2acb974f9ba8c43cd0caac2d17
+msgid "8.78"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:110 32876eb9568f470ebf5240f3be707017
+msgid "34.33 / 30.76"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:110 e3703c75de6146829f629280a02d56d2
+msgid "16.26"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:111 b85fc2d748cc4da4940c4f49308dbaa8
+msgid "22.04 / 17.46"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:111 3355c4b647c1475c95f9894d1fa06348
+msgid "28.90"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:112 957c26ecbfe941e3b58b905749916bda
+msgid "12.82 / 9.26"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:112 20946b890593468fa497dd032294441b
+msgid "54.17"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:113
+#: ../../source/benchmark/hf_infer.rst:114
+#: ../../source/benchmark/hf_infer.rst:115
+#: ../../source/benchmark/hf_infer.rst:116 20ad1d05b3f54a3ca1aa8df57ca09da5
+#: 5d7093d843df40daa7c5663fd280b46b 7a561e3e02f84a9fb22b068fd977f7f8
+#: bc6501a0b4f04735b29054dfdc49d091
+msgid "Qwen1.5-7B-Chat-AWQ"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:113 117b64bf2a12486bae0e460c264215b8
+msgid "32.59 / 36.74"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:113 ecf69b33151a433ea41eae22e5729685
+msgid "8.02"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:114 9c90f8b02c404b1194fc02c3e26e4211
+msgid "29.13 / 26.91"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:114 5cd55d11ce2241bba917981f300d28aa
+msgid "15.49"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:115 5881519e24e3434898f20f01fbc2bf2c
+msgid "19.98 / 16.14"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:115 f5401055caea4eaeaedcd007752e7871
+msgid "28.13"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:116 81a1660e4e084466848a2be78c0f04ec
+msgid "12.10 / 8.86"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:116 435563f1447143a4b1ad11cd0a9ed8f5
+msgid "53.40"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:119 37d03c5de8f04f71b0ec8a63fcb93672
+msgid "14B:"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:124
+#: ../../source/benchmark/hf_infer.rst:125
+#: ../../source/benchmark/hf_infer.rst:126
+#: ../../source/benchmark/hf_infer.rst:127 1b9197c95a6c4367b3b6522297b57b24
+#: 63f8b8a24e914e28a239fdbc4dde7cd0 97257d9323b54fe3b7e931722c0d63c7
+#: dab668a03f75432ba406deba92a1f9fb
+msgid "Qwen1.5-14B-Chat"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:124 03f6e0fe8ca347d08d4e15f905b0859e
+msgid "26.89 / 31.36"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:124 e6d824c5400d4aa3ba43e9e96ad4bebf
+msgid "30.18"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:125 515458f33cc44e8a9b7a2c578d81a904
+msgid "19.17 / 18.03"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:125 a8c24e6c655a4cfd8f2709c6dc6f9c84
+msgid "39.91"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:126 ab32b91cc3ad410788298f873776d3b7
+msgid "12.91 / 11.01"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:126 d0c5cadc33574686ab5266e6e95d3470
+msgid "57.05"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:127
+#: ../../source/benchmark/hf_infer.rst:131
+#: ../../source/benchmark/hf_infer.rst:135
+#: ../../source/benchmark/hf_infer.rst:143
+#: ../../source/benchmark/hf_infer.rst:148
+#: ../../source/benchmark/hf_infer.rst:152 3ca5c2c9758a408a8ede58d12b781a28
+#: 3ffb3ed7e18347b79a493c8435dbb0a4 6874966ac45e4742b1fe72d2c58065c6
+#: b9460d685bbe4aef9418e1875c42126e c1ac2b8ea2a74bb7b1efbd5179edfaf9
+#: e6307c9db2cf40e68c329a060c5992d6
+msgid "2"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:127 cece62e375a944fd9341d92c5d887583
+msgid "7.68 / 6.09"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:127 f6ae486b392f4a28952f8e5c4ef7df1e
+msgid "101.65"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:128
+#: ../../source/benchmark/hf_infer.rst:129
+#: ../../source/benchmark/hf_infer.rst:130
+#: ../../source/benchmark/hf_infer.rst:131 062c621e054e43588ce3cdabe20a11ce
+#: 869814436e8946bca8a9f5698e5c0908 8bb4c939d4114e7aa72c05e766dc987d
+#: a5d925be3e8646628252159033e92f5e
+msgid "Qwen1.5-14B-Chat-GPTQ-Int4"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:128 849d7bce2dca43cd9cc0a39cc066e141
+msgid "32.79 / 36.88"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:128 0c8dc499a83e4a3d8cc597d6d6ab3692
+msgid "13.87"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:129 1edfa1a5877a4fd6891b95a971743d8f
+msgid "23.30 / 21.49"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:129 a6a51a0149c74e6a88368222a38a90f8
+msgid "23.59"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:130 976005810aa548cd8d7e36eed0c58455
+msgid "14.69 / 12.21"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:130 1153758b81534c70a71f9d53b73ace4d
+msgid "40.74"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:131 f4381d886c4c4a00b5ab573e2101fc83
+msgid "8.14 / 7.68"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:132
+#: ../../source/benchmark/hf_infer.rst:133
+#: ../../source/benchmark/hf_infer.rst:134
+#: ../../source/benchmark/hf_infer.rst:135 20dee7ec61ba4a80907ffd526221201e
+#: 9faa1335016f42edae698bbd9eb4c39b b0d0236608454494ace241273b97a148
+#: f60c610542f742139846650d0f2d3a0c
+msgid "Qwen1.5-14B-Chat-AWQ"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:132 a36c4da97bf043608b3ab1784e7aa8c8
+msgid "27.51 / 29.50"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:132 1d68773b384c458d998d306ec2296d2d
+msgid "12.88"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:133 df7b81faf159432fb68dfda227fe13d1
+msgid "20.37 / 19.03"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:133 fbcfca7413f54ff8be9f0bdde108170c
+msgid "22.61"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:134 144b64fe92234f1dbd19fb2aa1174ec1
+msgid "13.50 / 11.35"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:134 f5811d2637f04ed69e41444b1c9d8226
+msgid "39.76"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:135 eec66a1ecde74dfaa705cf09a93054c0
+msgid "7.74 / 6.03"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:138 33706d0b4940494f8c07c6bb27ba2386
+msgid "72B:"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:143
+#: ../../source/benchmark/hf_infer.rst:144
+#: ../../source/benchmark/hf_infer.rst:145
+#: ../../source/benchmark/hf_infer.rst:146 4d78503a51f84578a314bbbcf49fd653
+#: 53fe30ec6fd4478f8c24a828f648a3ae b5cde86755ad440991a7e5ed0fb944ee
+#: d44ba3561497451d9e885b8df682acdc
+msgid "Qwen1.5-72B-Chat"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:143 4502b362b9824424ba0d130f81b3a2bb
+msgid "8.13 / 7.24"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:143 46458321e0fa4ec59f2d4b9cdce19350
+msgid "142.39"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:144
+#: ../../source/benchmark/hf_infer.rst:149
+#: ../../source/benchmark/hf_infer.rst:153 2791baec51e8459686a42bb27dbbc12e
+#: 76ab26740abd49749873791e452a686a a85d6bb57ce8403d9b9fff550b55add4
+msgid "3"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:144 e5cd041784524c1a896e5eece15574ed
+msgid "4.82 / 4.89"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:144 0ce37b3072414edf9cf7bd37f91a1797
+msgid "174.66"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:145
+#: ../../source/benchmark/hf_infer.rst:150
+#: ../../source/benchmark/hf_infer.rst:154 d41ea8e04c5d4d47b9632c35d72fdbe1
+#: ea76fac3f33d43a9be74c6dcbb7193e3 f5989f6a14004cbf822e77b3012f3a3b
+msgid "4"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:145 00ce7083f21d420e8a5a9c85066c81b8
+msgid "3.13 / 3.37"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:145 ef0691759e954a1fad9e5cc15c752fd6
+msgid "233.00"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:146 7b8848eda9b4458da19fefd99c79b106
+msgid "5"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:146 c8531de4f051498a9f0c4e06bc65d278
+msgid "2.00 / 2.17"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:146 23dcc4121251425fba720d18bb22a17c
+msgid "344.17"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:147
+#: ../../source/benchmark/hf_infer.rst:148
+#: ../../source/benchmark/hf_infer.rst:149
+#: ../../source/benchmark/hf_infer.rst:150 15c905cf4bea411eb18efa65fd16dbb4
+#: 6159b789018340daa403e68f5be960af 8334dd1ef38944e19063f65f241d3b49
+#: fdf201fe8dab4a36b7853d531156b3ae
+msgid "Qwen1.5-72B-Chat-GPTQ-Int4"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:147 09f7b6fd089b42d1876b3d800e749140
+msgid "10.25 / 9.32"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:147 fbdeccb86aab4bc1825bf5ebb70db075
+msgid "50.09"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:148 51f5f781ceaf48e1ae04a9c9503e03aa
+msgid "5.84 / 5.87"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:148 d227992ac7204f6dada2358a630a0cd7
+msgid "97.38"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:149 7fe1f3af893a4242b34e7f275879a0d1
+msgid "3.60 / 3.86"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:149 0405b9c351d94d0ca27d80d48ba6a819
+msgid "146.17"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:150 68f4c63f91f44f2aa82be088ae7ff204
+msgid "2.06 / 2.31"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:150 45476a43ef55471480cf767167e49ce7
+msgid "238.17"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:151
+#: ../../source/benchmark/hf_infer.rst:152
+#: ../../source/benchmark/hf_infer.rst:153
+#: ../../source/benchmark/hf_infer.rst:154 084cf8629a754e5b9142d1e1206ff9c7
+#: 5b439a8741be422aa0a5c740670e1a2e 93a654944fed4791bd57f54d594d8417
+#: aa531084d3a54ccb969f709ba7822c13
+msgid "Qwen1.5-72B-Chat-AWQ"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:151 ede00e89b1474ea5bb3cac3da645953c
+msgid "12.06 / 10.59"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:151 c93d664831024bc99b48102c88782194
+msgid "49.68"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:152 b5b69b77e3f345e7bb55689656105af8
+msgid "6.41 / 6.47"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:153 22dfe8645ae34a7c9ef768c265a27c80
+msgid "3.78 / 4.09"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:154 80094cd0c082411ab2494d83186f89b6
+msgid "2.10 / 2.35"
+msgstr ""
+
+#: ../../source/benchmark/hf_infer.rst:157 71d547e066bb4ace8c351bb89045c426
+msgid ""
+"(Note: we had problems with the statistics of memory footprint of AWQ "
+"models on multiple devices and thus we do not report the results. Also, "
+"the memory footprint of Qwen1.5-14B in the context of 32768 tokens is "
+"also inconsistent with our expectation and we don’t report here.)"
+msgstr "（注：我们在多卡条件下对AWQ模型的内存占用统计遇到了问题，因此我们未报告相关结果。此外，对于32768个token的情况下，Qwen1.5-14B模型的内存占用情况也不符合我们的预期，故在此未进行报告。）"
+

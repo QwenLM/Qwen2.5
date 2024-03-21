@@ -93,3 +93,9 @@ Documentation
    framework/qwen_agent
    framework/LlamaIndex
    framework/Langchain
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Benchmark
+
+   benchmark/hf_infer
