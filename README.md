@@ -28,7 +28,7 @@ We have not integrated GQA and mixture of SWA and full attention in this version
 
 
 ## News
-* 2024.03.28: We released the first MoE model of Qwen: Qwen1.5-MoE-A2.7B! Temporarily, only HF transformers and vLLM support the model. We will soon add the support of llama.cpp, mlx-lm, etc.
+* 2024.03.28: We released the first MoE model of Qwen: Qwen1.5-MoE-A2.7B! Temporarily, only HF transformers and vLLM support the model. We will soon add the support of llama.cpp, mlx-lm, etc. Check our [blog](https://qwenlm.github.io/blog/qwen-moe/) for more information!
 * 2024.02.05: We released the Qwen1.5 series.
 
 ## Performance
