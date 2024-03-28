@@ -17,7 +17,7 @@ Visit our Hugging Face or ModelScope organization (click links above), search ch
 
 ## Introduction
 This time, we upgrade Qwen to Qwen1.5, the beta version of Qwen2. Similar to Qwen, it is still a decoder-only transformer model with SwiGLU activation, RoPE, multi-head attention. At this moment, we have achieved:
-* 6 model sizes: 0.5B, 1.8B, 4B, 7B, 14B, and 72B;
+* 7 model sizes: 0.5B, 1.8B, 4B, 7B, 14B, and 72B models, plus a 14B (A2.7B) MoE model;
 * Significant model quality improvements in chat models;
 * Strengthened multilingual capabilities in both base and chat models;
 * All models support the context length of `32768` tokens;
@@ -28,6 +28,7 @@ We have not integrated GQA and mixture of SWA and full attention in this version
 
 
 ## News
+* 2024.03.28: We released the first MoE model of Qwen: Qwen1.5-MoE-A2.7B! Temporarily, only HF transformers and vLLM support the model. We will soon add the support of llama.cpp, mlx-lm, etc.
 * 2024.02.05: We released the Qwen1.5 series.
 
 ## Performance
@@ -35,7 +36,8 @@ Detailed evaluation results are reported in this <a href="https://qwenlm.github.
 
 
 ## Requirements
-* `transformers>=4.37.0`. 
+* `transformers>=4.37.0` for Qwen1.5 dense models.
+* For Qwen1.5-MoE models, you should clone `transformers` and install from source.
 
 > [!Warning]
 > <div align="center">
