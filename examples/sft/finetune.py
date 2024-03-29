@@ -22,6 +22,8 @@ from accelerate.utils import DistributedType
 
 IGNORE_TOKEN_ID = LabelSmoother.ignore_index
 
+TEMPLATE = "{% for message in messages %}{% if loop.first and messages[0]['role'] != 'system' %}{{ '<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n' }}{% endif %}{{'<|im_start|>' + message['role'] + '\n' + message['content']}}{% if loop.last %}{{ '<|im_end|>'}}{% else %}{{ '<|im_end|>\n' }}{% endif %}{% endfor %}"
+
 local_rank = None
 
 
@@ -146,6 +148,7 @@ def preprocess(
         texts.append(
             tokenizer.apply_chat_template(
                 msg,
+                chat_template=TEMPLATE,
                 tokenize=True,
                 add_generation_prompt=False,
                 padding=True,
