@@ -12,7 +12,7 @@ Install with Pip
 
 .. code:: bash
 
-   pip install transformers
+   pip install transformers -U
 
 Install with Conda
 ~~~~~~~~~~~~~~~~~~
@@ -20,5 +20,12 @@ Install with Conda
 .. code:: bash
 
    conda install conda-forge::transformers
+
+Install from Source
+~~~~~~~~~~~~~~~~~~~
+
+.. code:: bash
+
+   pip install git+https://github.com/huggingface/transformers
 
 We advise you to use Python 3.8 or higher, and Pytorch 2.0 or higher.

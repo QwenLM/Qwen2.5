@@ -53,6 +53,17 @@ Below is an example of how to chat with Qwen1.5-7B-Chat:
 
    response = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0]
 
+If you would like to apply Flash Attention 2, you can load the model as shown below:
+
+.. code:: python
+
+    model = AutoModelForCausalLM.from_pretrained(
+       "Qwen/Qwen1.5-7B-Chat",
+       torch_dtype="auto",
+       device_map="auto",
+       attn_implementation="flash_attention_2",
+   )
+
 Note that the previous method in the original Qwen repo ``chat()`` is
 now replaced by ``generate()``. The ``apply_chat_template()`` function
 is used to convert the messages into a format that the model can

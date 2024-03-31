@@ -1,5 +1,5 @@
 HF Transformers Inference
-============
+=========================
 
 This section reports the performance of bf16 models and Int4 quantized
 models (including GPTQ and AWQ) of the Qwen1.5 series. Specifically, we
@@ -97,6 +97,21 @@ Qwen1.5-4B-Chat-AWQ       1        14336        22.95 / 16.49    22.67
 Qwen1.5-4B-Chat-AWQ       1        30720        14.50 / 9.06     44.45
 ========================= ======== ============ ================ ======
 
+-  MoE-A2.7B:
+
+================================ ======== ============ ================ ======
+Model                            Num. GPU Input Length Speed (w/wo FA2) Memory
+================================ ======== ============ ================ ======
+Qwen1.5-MoE-A2.7B-Chat           1        1            8.49 / 8.52      27.82
+Qwen1.5-MoE-A2.7B-Chat           1        6144         8.73 / 8.41      33.43
+Qwen1.5-MoE-A2.7B-Chat           1        14336        8.30 / 7.43      41.91
+Qwen1.5-MoE-A2.7B-Chat           1        30720        7.40 / 6.34      58.89
+Qwen1.5-MoE-A2.7B-Chat-GPTQ-Int4 1        1            8.17 / 8.67      9.23
+Qwen1.5-MoE-A2.7B-Chat-GPTQ-Int4 1        6144         8.64 / 8.30      14.84
+Qwen1.5-MoE-A2.7B-Chat-GPTQ-Int4 1        14336        8.16 / 7.39      23.32
+Qwen1.5-MoE-A2.7B-Chat-GPTQ-Int4 1        30720        7.11 / 6.16      40.30
+================================ ======== ============ ================ ======
+
 -  7B:
 
 ========================= ======== ============ ================ ======
@@ -157,4 +172,6 @@ Qwen1.5-72B-Chat-AWQ       4        30720        2.35 / 2.10      -
 (Note: we had problems with the statistics of memory footprint of AWQ
 models on multiple devices and thus we do not report the results. Also,
 the memory footprint of Qwen1.5-14B in the context of 32768 tokens is
-also inconsistent with our expectation and we don’t report here.)
+also inconsistent with our expectation and we don’t report here. Additionally,
+due to the implementation in our HF code, the MoE model runs much slower than 
+expectation. Intead, we advise users to deploy the MoE model with vLLM.)
