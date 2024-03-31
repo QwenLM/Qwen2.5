@@ -56,7 +56,18 @@ showing how to run Qwen1.5-Chat, with an example of Qwen1.5-7B-Chat:
 Previously, we use ``model.chat()`` (see ``modeling_qwen.py`` in
 previous Qwen models for more information). Now, we follow the practice
 of ``transformers`` and directly use ``model.generate()`` with
-``apply_chat_template()`` in tokenizer.
+``apply_chat_template()`` in tokenizer. 
+
+If you would like to apply Flash Attention 2, you can load the model as shown below:
+
+.. code:: python
+
+    model = AutoModelForCausalLM.from_pretrained(
+       "Qwen/Qwen1.5-7B-Chat",
+       torch_dtype="auto",
+       device_map="auto",
+       attn_implementation="flash_attention_2",
+   )
 
 To tackle with downloading issues, we advise you to try with from
 ModelScope, just changing the first line of code above to the following:

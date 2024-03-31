@@ -1,0 +1,212 @@
+# Copyright (C) 2024, Qwen Team, Alibaba Group.
+# This file is distributed under the same license as the Qwen package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-31 22:41+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.14.0\n"
+
+#: ../../source/deployment/skypilot.rst:2 71725b7c0c88448bb8ce8d00b9f7e547
+msgid "SkyPilot"
+msgstr "SkyPilot"
+
+#: ../../source/deployment/skypilot.rst:5 ae72c08e94ce4a66811094c1735a9857
+msgid "What is SkyPilot"
+msgstr "SkyPilot是什么"
+
+#: ../../source/deployment/skypilot.rst:7 36d1a3d2e2ff41879ff79169e4e7fab5
+msgid ""
+"SkyPilot is a framework for running LLMs, AI, and batch jobs on any "
+"cloud, offering maximum cost savings, highest GPU availability, and "
+"managed execution. Its features include:"
+msgstr ""
+"SkyPilot "
+"是一个可以在任何云上运行LLM、AI应用以及批量任务的框架，旨在实现最大程度的成本节省、最高的GPU可用性以及受管理的执行过程。其特性包括："
+
+#: ../../source/deployment/skypilot.rst:11 6e64cb9fcce14f6383cbb126807412ae
+msgid ""
+"Get the best GPU availability by utilizing multiple resources pools "
+"across multiple regions and clouds."
+msgstr "通过跨区域和跨云充分利用多个资源池，以获得最佳的GPU可用性。"
+
+#: ../../source/deployment/skypilot.rst:13 4e51d6445e504387890b6410bd8b18c8
+msgid ""
+"Pay absolute minimum — SkyPilot picks the cheapest resources across "
+"regions and clouds. No managed solution markups."
+msgstr "把费用降到最低—— SkyPilot在各区域和云平台中为您挑选最便宜的资源。无需任何托管解决方案的额外加价。"
+
+#: ../../source/deployment/skypilot.rst:15 bb61f276a422468b9799c5e70b6a7923
+msgid ""
+"Scale up to multiple replicas across different locations and "
+"accelerators, all served with a single endpoint"
+msgstr "将服务扩展到多个副本上，所有副本通过单一endpoint对外提供服务"
+
+#: ../../source/deployment/skypilot.rst:17 879aaf76a88a44f1aecd8a07a45c3222
+msgid "Everything stays in your cloud account (your VMs & buckets)"
+msgstr "所有内容均保存在您的云账户中（包括您的虚拟机和bucket）"
+
+#: ../../source/deployment/skypilot.rst:18 f63a1d4c30654004aec461e269d71f26
+msgid "Completely private - no one else sees your chat history"
+msgstr "完全私密 - 没有其他人能看到您的聊天记录"
+
+#: ../../source/deployment/skypilot.rst:21 347e220ae6fd4c3b8834fac1630ce323
+msgid "Install SkyPilot"
+msgstr "安装SkyPilot"
+
+#: ../../source/deployment/skypilot.rst:23 a26dd70f6979441780aabba0eb1fcd82
+msgid ""
+"We advise you to follow the `instruction "
+"<https://skypilot.readthedocs.io/en/latest/getting-"
+"started/installation.html>`__ to install Skypilot. Here we provide a "
+"simple example of using ``pip`` for the installation as shown below."
+msgstr ""
+"我们建议您按照 `指示 <https://skypilot.readthedocs.io/en/latest/getting-"
+"started/installation.html>`__ 安装SkyPilot。以下为您提供了一个使用 ``pip`` 进行安装的简单示例："
+
+#: ../../source/deployment/skypilot.rst:49 905f2e156d5f4b78b60e9148210a4fe1
+msgid "or you can install it in this way if you use more than one cloud:"
+msgstr "如果使用多个云，您也可以这么安装："
+
+#: ../../source/deployment/skypilot.rst:55 7aaad7ee14d6499db76f2258371af53b
+msgid "After that, you need to verify cloud access with a command like:"
+msgstr "随后，您需要用如下命令确认是否能使用云："
+
+#: ../../source/deployment/skypilot.rst:61 573e3e1a73c94184afa3df78d4450b82
+msgid ""
+"For more information, check the official document and see if you have "
+"setup your cloud accounts corerctly."
+msgstr "若需更多信息，请查阅官方文档，确认您的云账户设置是否正确无误。"
+
+#: ../../source/deployment/skypilot.rst:64 c221deecb73b4ceebf7606202f38c4ac
+msgid ""
+"Alternatively, you can also use the official docker image with SkyPilot "
+"main branch automatically cloned by running:"
+msgstr "或者，您也可以使用官方提供的docker镜像，可以自动克隆SkyPilot的主分支："
+
+#: ../../source/deployment/skypilot.rst:80 2c84950e21284034bc5e81b0cdd2053e
+msgid "Running Qwen1.5-72B-Chat with SkyPilot"
+msgstr "使用SkyPilot运行Qwen1.5-72B-Chat"
+
+#: ../../source/deployment/skypilot.rst:82 69671f036ab54dbe8c799b445fd17b55
+msgid ""
+"Start serving Qwen1.5-72B-Chat on a single instance with any available "
+"GPU in the list specified in `serve-72b.yaml <https://github.com"
+"/skypilot-org/skypilot/blob/master/llm/qwen/serve-72b.yaml>`__ with a "
+"vLLM powered OpenAI-compatible endpoint:"
+msgstr ""
+"您可以使用 `serve-72b.yaml <https://github.com/skypilot-"
+"org/skypilot/blob/master/llm/qwen/serve-72b.yaml>`__ 中的可用的 GPU 来在单个实例上部署 "
+"Qwen1.5-72B-Chat的基于vLLM的适配OpenAI API的服务"
+
+#: ../../source/deployment/skypilot.rst:91 6c4a9755b7a44048b78cb02ec4b23436
+msgid "Send a request to the endpoint for completion:"
+msgstr "向该endpoint发送续写请求："
+
+#: ../../source/deployment/skypilot.rst:105 6231c63a773d4fa0ab820ce11662728b
+msgid "Send a request for chat completion:"
+msgstr "向该endpoint发送 chat 请求"
+
+#: ../../source/deployment/skypilot.rst:127 1200d1658f2f4118b0b39e466229183c
+msgid "Scale up the service with SkyServe"
+msgstr "使用SkyServe扩展服务规模"
+
+#: ../../source/deployment/skypilot.rst:129 a3f45fac9ca1489c88303081faffb658
+msgid ""
+"With `SkyPilot Serving <https://skypilot.readthedocs.io/en/latest/serving"
+"/sky-serve.html>`__, a serving library built on top of SkyPilot, scaling "
+"up the Qwen service is as simple as running:"
+msgstr ""
+"使用 `SkyPilot Serving <https://skypilot.readthedocs.io/en/latest/serving"
+"/sky-serve.html>`__ 扩展Qwen的服务规模非常容易，只需运行："
+
+#: ../../source/deployment/skypilot.rst:138 e8ebdce602464a2390aed5e08bea383e
+msgid ""
+"This will start the service with multiple replicas on the cheapest "
+"available locations and accelerators. SkyServe will automatically manage "
+"the replicas, monitor their health, autoscale based on load, and restart "
+"them when needed."
+msgstr ""
+"这将启动服务，使用多个副本部署在最经济的可用位置和加速器上。 SkyServe "
+"将自动管理这些副本，监控其健康状况，根据负载进行自动伸缩，并在必要时重启它们。"
+
+#: ../../source/deployment/skypilot.rst:143 03f741e3de8341a59f0a7b1252131783
+msgid ""
+"A single endpoint will be returned and any request sent to the endpoint "
+"will be routed to the ready replicas."
+msgstr "将返回一个endpoint，所有发送至该endpoint的请求都将被路由至就绪状态的副本。"
+
+#: ../../source/deployment/skypilot.rst:146 a80a95c9338644548971f5f2b569a46f
+msgid "To check the status of the service, run:"
+msgstr "运行如下命令检查服务的状态："
+
+#: ../../source/deployment/skypilot.rst:152 c30540678bd84abeabdfc8c1f2873587
+msgid "After a while, you will see the following output:"
+msgstr "很快，您将看到如下输出："
+
+#: ../../source/deployment/skypilot.rst:165 97228c81b2254f97bcef862ad8f97a72
+msgid ""
+"As shown, the service is now backed by 2 replicas, one on Azure and one "
+"on GCP, and the accelerator type is chosen to be **the cheapest available"
+" one** on the clouds. That said, it maximizes the availability of the "
+"service while minimizing the cost."
+msgstr "如下所示：该服务现由两个副本提供支持，一个位于Azure平台，另一个位于GCP平台。同时，已为服务选择云服务商提供的最经济实惠的加速器类型。这样既最大限度地提升了服务的可用性，又尽可能降低了成本。"
+
+#: ../../source/deployment/skypilot.rst:170 d3980a3f93e2465da3135314403c79cd
+msgid ""
+"To access the model, we use a ``curl -L`` command (``-L`` to follow "
+"redirect) to send the request to the endpoint:"
+msgstr "要访问模型，我们使用带有 ``curl -L`` （用于跟随重定向），将请求发送到endpoint："
+
+#: ../../source/deployment/skypilot.rst:195 a5550e504bb748a1af2e8823dcd54400
+msgid "Accessing Qwen1.5 with Chat GUI"
+msgstr "使用Chat GUI调用Qwen1.5"
+
+#: ../../source/deployment/skypilot.rst:197 f509032b9af94f6fb680c7f1d8409bd7
+msgid ""
+"It is also possible to access the Qwen1.5 service with a GUI using "
+"`FastChat <https://github.com/lm-sys/FastChat>`__."
+msgstr ""
+"可以通过 `FastChat <https://github.com/lm-sys/FastChat>`__ 来使用GUI调用Qwen1.5 "
+"的服务："
+
+#: ../../source/deployment/skypilot.rst:200 6f9008b636d34377bf3ed523c1459a6c
+#, fuzzy
+msgid "Start the Chat Web UI:"
+msgstr "开启一个Chat Web UI"
+
+#: ../../source/deployment/skypilot.rst:206 5e7ae1aa33784dd583583bed93b73508
+msgid "Then, we can access the GUI at the returned gradio link:"
+msgstr "随后，我们可以通过返回的gradio链接来访问GUI ："
+
+#: ../../source/deployment/skypilot.rst:212 5779466952b6496ead6c0b378db6f416
+msgid ""
+"Note that you may get better results to use a different temperature and "
+"top_p value."
+msgstr "你可以通过使用不同的温度和top_p值来尝试取得更好的结果。"
+
+#: ../../source/deployment/skypilot.rst:216 8a206c3151764ab2a2401846648ae512
+msgid "Summary"
+msgstr "总结"
+
+#: ../../source/deployment/skypilot.rst:218 408b5a022975495e96fea9f10f628956
+msgid ""
+"With SkyPilot, it is easy for you to deploy Qwen1.5 on any cloud. We "
+"advise you to read the official doc for more usages and more updates. "
+"Check `this <https://skypilot.readthedocs.io/>`__ out!"
+msgstr ""
+"通过SkyPilot，你可以轻松地在任何云上部署Qwen1.5。我们建议您阅读 `官方文档 "
+"<https://skypilot.readthedocs.io/>`__ 了解更多用法和最新进展。"
+
+#~ msgid "Skypilot"
+#~ msgstr ""
+

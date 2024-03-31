@@ -78,6 +78,7 @@ Documentation
    :caption: Deployment
 
    deployment/vllm
+   deployment/skypilot
 
 .. toctree::
    :maxdepth: 2
