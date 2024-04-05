@@ -27,30 +27,9 @@ for the installation as shown below.
 
 .. code:: bash
 
-   git clone https://github.com/skypilot-org/skypilot.git
-   cd skypilot
-
-   # Choose your cloud:
-
-   pip install -e ".[aws]"
-   pip install -e ".[gcp]"
-   pip install -e ".[azure]"
-   pip install -e ".[oci]"
-   pip install -e ".[lambda]"
-   pip install -e ".[runpod]"
-   pip install -e ".[fluidstack]"
-   pip install -e ".[cudo]"
-   pip install -e ".[ibm]"
-   pip install -e ".[scp]"
-   pip install -e ".[vsphere]"
-   pip install -e ".[kubernetes]"
-   pip install -e ".[all]"
-
-or you can install it in this way if you use more than one cloud:
-
-.. code:: bash
-
-   pip install -e ".[aws,gcp]"
+   # You can use any of the following clouds that you have access to:
+   # aws, gcp, azure, oci, lamabda, runpod, fluidstack, paperspace, cudo, ibm, scp, vsphere, kubernetes
+   pip install "skypilot-nightly[aws,gcp]"
 
 After that, you need to verify cloud access with a command like:
 
@@ -58,11 +37,11 @@ After that, you need to verify cloud access with a command like:
 
    sky check
 
-For more information, check the official document and see if you have
-setup your cloud accounts corerctly.
+For more information, check the [official document](https://skypilot.readthedocs.io/en/latest/getting-started/installation.html) and see if you have
+set up your cloud accounts correctly.
 
 Alternatively, you can also use the official docker image with SkyPilot
-main branch automatically cloned by running:
+master branch automatically cloned by running:
 
 .. code:: bash
 
@@ -82,7 +61,7 @@ Running Qwen1.5-72B-Chat with SkyPilot
 1. Start serving Qwen1.5-72B-Chat on a single instance with any
    available GPU in the list specified in
    `serve-72b.yaml <https://github.com/skypilot-org/skypilot/blob/master/llm/qwen/serve-72b.yaml>`__
-   with a vLLM powered OpenAI-compatible endpoint:
+   with a vLLM-powered OpenAI-compatible endpoint:
 
 .. code:: bash
 
@@ -123,11 +102,11 @@ Running Qwen1.5-72B-Chat with SkyPilot
          "max_tokens": 512
      }' | jq -r '.choices[0].message.content'
 
-Scale up the service with SkyServe
-----------------------------------
+Scale up the service with SkyPilot Serve
+----------------------------------------
 
 1. With `SkyPilot
-   Serving <https://skypilot.readthedocs.io/en/latest/serving/sky-serve.html>`__,
+   Serve <https://skypilot.readthedocs.io/en/latest/serving/sky-serve.html>`__,
    a serving library built on top of SkyPilot, scaling up the Qwen
    service is as simple as running:
 
@@ -194,8 +173,9 @@ of the service while minimizing the cost.
 Accessing Qwen1.5 with Chat GUI
 ---------------------------------------------
 
-It is also possible to access the Qwen1.5 service with a GUI using
-`FastChat <https://github.com/lm-sys/FastChat>`__.
+It is also possible to access the Qwen1.5 service with GUI by connecting a
+`FastChat GUI server <https://github.com/lm-sys/FastChat>`__ to the endpoint launched
+above (see `gui.yaml <https://github.com/skypilot-org/skypilot/blob/master/llm/qwen/gui.yaml>`__).
 
 1. Start the Chat Web UI:
 
@@ -209,8 +189,7 @@ It is also possible to access the Qwen1.5 service with a GUI using
 
    | INFO | stdout | Running on public URL: https://6141e84201ce0bb4ed.gradio.live
 
-Note that you may get better results to use a different temperature and
-top_p value.
+Note that you may get better results by using a different temperature and top_p value.
 
 Summary
 -------
