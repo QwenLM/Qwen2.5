@@ -38,7 +38,7 @@ After that, you need to verify cloud access with a command like:
 
    sky check
 
-For more information, check the official document <https://skypilot.readthedocs.io/en/latest/getting-started/installation.html>`__ and see if you have
+For more information, check the `official document <https://skypilot.readthedocs.io/en/latest/getting-started/installation.html>`__ and see if you have
 set up your cloud accounts correctly.
 
 Alternatively, you can also use the official docker image with SkyPilot
