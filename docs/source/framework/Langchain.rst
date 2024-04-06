@@ -127,7 +127,7 @@ for retrieval.
             fout.close()
 
             
-    def seperate_list(ls: List[int]) -> List[List[int]]:
+    def separate_list(ls: List[int]) -> List[List[int]]:
         lists = []
         ls1 = [ls[0]]
         for i in range(1, len(ls)):
@@ -185,7 +185,7 @@ for retrieval.
             if len(id_set) == 0 and self.score_threshold > 0:
                 return []
             id_list = sorted(list(id_set))
-            id_lists = seperate_list(id_list)
+            id_lists = separate_list(id_list)
             for id_seq in id_lists:
                 for id in id_seq:
                     if id == id_seq[0]:
