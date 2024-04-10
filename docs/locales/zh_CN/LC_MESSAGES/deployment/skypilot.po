@@ -78,7 +78,6 @@ msgid "After that, you need to verify cloud access with a command like:"
 msgstr "随后，您需要用如下命令确认是否能使用云："
 
 #: ../../source/deployment/skypilot.rst:41 948783c87625427a92a67efbce19b2a8
-#, fuzzy
 msgid ""
 "For more information, check the `official document "
 "<https://skypilot.readthedocs.io/en/latest/getting-"
@@ -87,7 +86,6 @@ msgid ""
 msgstr "若需更多信息，请查阅官方文档，确认您的云账户设置是否正确无误。"
 
 #: ../../source/deployment/skypilot.rst:44 f5e2beeef9214fc8b66e43c4fe6d9220
-#, fuzzy
 msgid ""
 "Alternatively, you can also use the official docker image with SkyPilot "
 "master branch automatically cloned by running:"
