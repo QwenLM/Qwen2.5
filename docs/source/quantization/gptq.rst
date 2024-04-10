@@ -140,7 +140,18 @@ run:
    # To learn about loading model to multiple GPUs,
    # visit https://github.com/AutoGPTQ/AutoGPTQ/blob/main/docs/tutorial/02-Advanced-Model-Loading-and-Best-Practice.md
    tokenizer = AutoTokenizer.from_pretrained(model_path)
-   model = AutoGPTQForCausalLM.from_pretrained(model_path, safetensors=True)
+   model = AutoGPTQForCausalLM.from_pretrained(model_path, quantize_config)
+
+However, if you would like to load the model on multiple GPUs, you need to use ``max_memory`` instead of ``device_map``. 
+Here is an example:
+
+.. code:: python
+
+    model = AutoGPTQForCausalLM.from_pretrained(
+        model_path,
+        quantize_config,
+        max_memory={i:"20GB" for i in range(4)}
+    )
 
 Then you need to prepare your data for calibaration. What you need to do
 is just put samples into a list, each of which is a text. As we directly
@@ -149,9 +160,10 @@ template. For example:
 
 .. code:: python
 
+   import torch
+
    data = []
    for msg in messages:
-       msg = c['messages']
        text = tokenizer.apply_chat_template(msg, tokenize=False, add_generation_prompt=False)
        model_inputs = tokenizer([text])
        input_ids = torch.tensor(model_inputs.input_ids[:max_len], dtype=torch.int)
@@ -170,6 +182,8 @@ where each ``msg`` is a typical chat message as shown below:
 Then just run the calibration process by one line of code:
 
 .. code:: python
+
+   import logging
 
    logging.basicConfig(
        format="%(asctime)s %(levelname)s [%(name)s] %(message)s", level=logging.INFO, datefmt="%Y-%m-%d %H:%M:%S"
