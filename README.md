@@ -142,7 +142,7 @@ Download our provided GGUF files or create them by yourself, and you can directl
 Qwen1.5 has already been supported by [lmstudio.ai](https://lmstudio.ai/). You can directly use LMStudio with our GGUF files.
 
 #### OpenVINO
-Qwen1.5 has already been supported by [OpenVINO toolkit](https://github.com/openvinotoolkit). You can install and run this [example notebook](https://github.com/openvinotoolkit/openvino_notebooks/tree/main/notebooks/254-llm-chatbot) with Intel CPU, integrated GPU or discrete GPU. 
+Qwen1.5 has already been supported by [OpenVINO toolkit](https://github.com/openvinotoolkit). You can install and run this [chatbot example](https://github.com/OpenVINO-dev-contest/Qwen2.openvino) with Intel CPU, integrated GPU or discrete GPU. 
 
 
 ## Web UI
