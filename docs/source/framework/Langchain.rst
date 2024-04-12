@@ -15,6 +15,11 @@ incorporating the matched text as context along with the question into the promp
 submitting to the Qwen1.5-7B-Chat to generate an answer.
 Below is an example:
 
+.. code:: bash
+
+   pip install langchain==0.0.174
+   pip install faiss-gpu
+
 .. code:: python
 
    from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -92,6 +97,7 @@ for retrieval.
 .. code:: python
 
     import os
+    import re
     import torch
     import argparse
     from langchain.vectorstores import FAISS
@@ -99,15 +105,35 @@ for retrieval.
     from typing import List, Tuple
     import numpy as np
     from langchain.document_loaders import TextLoader
-    from chinese_text_splitter import ChineseTextSplitter
+    from langchain.text_splitter import CharacterTextSplitter
     from langchain.docstore.document import Document
     from langchain.prompts.prompt import PromptTemplate
     from langchain.chains import RetrievalQA
+    
+    class ChineseTextSplitter(CharacterTextSplitter):
+        def __init__(self, pdf: bool = False, **kwargs):
+            super().__init__(**kwargs)
+            self.pdf = pdf
+
+        def split_text(self, text: str) -> List[str]:
+            if self.pdf:
+                text = re.sub(r"\n{3,}", "\n", text)
+                text = re.sub('\s', ' ', text)
+                text = text.replace("\n\n", "")
+            sent_sep_pattern = re.compile(
+                '([﹒﹔﹖﹗．。！？]["’”」』]{0,2}|(?=["‘“「『]{1,2}|$))') 
+            sent_list = []
+            for ele in sent_sep_pattern.split(text):
+                if sent_sep_pattern.match(ele) and sent_list:
+                    sent_list[-1] += ele
+                elif ele:
+                    sent_list.append(ele)
+            return sent_list
 
 
-    def load_file(filepath, sentence_size=100):
+    def load_file(filepath):
         loader = TextLoader(filepath, autodetect_encoding=True)
-        textsplitter = ChineseTextSplitter(pdf=False, sentence_size=sentence_size)
+        textsplitter = ChineseTextSplitter(pdf=False)
         docs = loader.load_and_split(textsplitter)
         write_check_file(filepath, docs)
         return docs
@@ -215,15 +241,14 @@ for retrieval.
         EMBEDDING_DEVICE = "cuda"
         # return top-k text chunk from vector store
         VECTOR_SEARCH_TOP_K = 3
-        SENTENCE_SIZE = 50
         CHAIN_TYPE = 'stuff'
         embedding_model_dict = {
             "text2vec": "your text2vec model path",
         }
-        llm = QWen()
+        llm = Qwen()
         embeddings = HuggingFaceEmbeddings(model_name=embedding_model_dict[EMBEDDING_MODEL],model_kwargs={'device': EMBEDDING_DEVICE})
         
-        docs = load_file(filepath, sentence_size=SENTENCE_SIZE)
+        docs = load_file(filepath)
         
         docsearch = FAISSWrapper.from_documents(docs, embeddings)
         
