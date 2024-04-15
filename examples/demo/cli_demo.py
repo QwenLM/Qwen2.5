@@ -78,6 +78,7 @@ def _load_model_tokenizer(args):
 
     model = AutoModelForCausalLM.from_pretrained(
         args.checkpoint_path,
+        torch_dtype="auto",
         device_map=device_map,
         resume_download=True,
     ).eval()
