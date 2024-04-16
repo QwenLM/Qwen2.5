@@ -18,6 +18,8 @@ from transformers import Trainer, BitsAndBytesConfig, deepspeed
 from transformers.trainer_pt_utils import LabelSmoother
 from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
 from accelerate.utils import DistributedType
+from deepspeed.utils import set_z3_leaf_modules
+from transformers.models.qwen2_moe.modeling_qwen2_moe import Qwen2MoeSparseMoeBlock
 
 
 IGNORE_TOKEN_ID = LabelSmoother.ignore_index
@@ -317,6 +319,11 @@ def train():
         else None,
         **model_load_kwargs,
     )
+    
+    # Set z3 flag to make sparse MoE layer compatible with Zero3,
+    # following https://github.com/microsoft/DeepSpeed/pull/5008
+    set_z3_leaf_modules(model, [Qwen2MoeSparseMoeBlock])
+    
     tokenizer = AutoTokenizer.from_pretrained(
         model_args.model_name_or_path,
         cache_dir=training_args.cache_dir,
