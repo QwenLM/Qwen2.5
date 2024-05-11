@@ -151,7 +151,7 @@ def preprocess(
                 chat_template=TEMPLATE,
                 tokenize=True,
                 add_generation_prompt=False,
-                padding=True,
+                padding="max_length",
                 max_length=max_len,
                 truncation=True,
             )
