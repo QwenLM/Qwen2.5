@@ -123,7 +123,7 @@ to communicate with Qwen:
        "messages": [
        {"role": "system", "content": "You are a helpful assistant."},
        {"role": "user", "content": "Tell me something about large language models."}
-       ],
+       ]
        }'
 
 or you can use python client with ``openai`` python package as shown
