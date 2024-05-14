@@ -135,7 +135,7 @@ Execute the following training command:
        --master_port $MASTER_PORT
      "
 
-   torchrun $DISTRIBUTED_ARGS src/train_bash.py \
+   torchrun $DISTRIBUTED_ARGS src/train.py \
        --deepspeed $DS_CONFIG_PATH \
        --stage sft \
        --do_train \
@@ -178,10 +178,10 @@ merging of LoRA adapters.
 
 .. code:: bash
 
-   CUDA_VISIBLE_DEVICES=0 python src/export_model.py \
+   CUDA_VISIBLE_DEVICES=0 llamafactory-cli export \
        --model_name_or_path path_to_base_model \
        --adapter_name_or_path path_to_adapter \
-       --template default \
+       --template qwen \
        --finetuning_type lora \
        --export_dir path_to_export \
        --export_size 2 \
