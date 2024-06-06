@@ -31,7 +31,7 @@ msgid ""
 "checkpoints that you can directly use with it."
 msgstr ""
 "`mlx-lm <https://github.com/ml-explore/mlx-examples/tree/main/llms>`__ "
-"能让你在Apple Silicon上运行大型语言模型，适用于MacOS。``mlx-lm``已支持Qwen模型，"
+"能让你在Apple Silicon上运行大型语言模型，适用于MacOS。``mlx-lm`` 已支持Qwen模型，"
 "此次我们提供直接可用的模型文件。"
 
 #: ../../source/run_locally/mlx-lm.rst:9 41cb684fde614a7b964fd9e470ea972b

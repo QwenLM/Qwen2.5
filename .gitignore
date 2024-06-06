@@ -1,3 +1,4 @@
 # Sphinx documentation
 docs/_build/
 docs/build/
+docs/**/*.mo
