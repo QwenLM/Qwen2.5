@@ -121,7 +121,7 @@ ollama serve
 
 To pull a model checkpoint and run the model, use the `ollama run` command. You can specify a model size by adding a suffix to `qwen2`, such as `:0.5b`, `:1.5b`, `:7b`, or `:72b`:
 ```shell
-ollama run qwen:7b
+ollama run qwen2:7b
 # To exit, type "/bye" and press ENTER
 ```
 
