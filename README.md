@@ -41,6 +41,7 @@ After months of efforts, we are pleased to announce the evolution from Qwen1.5 t
 * 2024.02.05: We released the Qwen1.5 series.
 
 ## Performance
+
 Detailed evaluation results are reported in this <a href="https://qwenlm.github.io"> 📑 blog</a>.
 
 
@@ -53,6 +54,8 @@ Detailed evaluation results are reported in this <a href="https://qwenlm.github.
 > 🚨 This is a must because `transformers` integrated Qwen2 codes since `4.37.0` and Qwen2Moe code since `4.40.0`.
 > </b>
 > </div>
+
+For requirements on GPU memory and the respective througput, see results [here](https://qwen.readthedocs.io/en/latest/benchmark/speed_benchmark.html).
 
 ## Quickstart
 
