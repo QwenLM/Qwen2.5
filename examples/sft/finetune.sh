@@ -1,6 +1,5 @@
 #!/bin/bash
 export CUDA_DEVICE_MAX_CONNECTIONS=1
-DIR=`pwd`
 
 # Guide:
 # This script supports distributed training on multi-gpu workers (as well as single-worker training).
@@ -23,17 +22,17 @@ MASTER_ADDR=${MASTER_ADDR:-localhost}
 # The port for communication
 MASTER_PORT=${MASTER_PORT:-6001}
 
-MODEL="Qwen/Qwen1.5-7B" # Set the path if you do not want to load from huggingface directly
+MODEL="Qwen/Qwen2-7B" # Set the path if you do not want to load from huggingface directly
 # ATTENTION: specify the path to your training data, which should be a json file consisting of a list of conversations.
-# See the section for finetuning in README for more information.
-DATA="path_to_data"
-DS_CONFIG_PATH="finetune/ds_config_zero3.json"
+# See https://qwen.readthedocs.io/en/latest/training/SFT/example.html#data-preparation for more information.
+DATA="example_data.jsonl"
+DS_CONFIG_PATH="ds_config_zero3.json"
 USE_LORA=False
 Q_LORA=False
 
 function usage() {
     echo '
-Usage: bash finetune/finetune_lora_ds.sh [-m MODEL_PATH] [-d DATA_PATH] [--deepspeed DS_CONFIG_PATH] [--use_lora USE_LORA] [--q_lora Q_LORA]
+Usage: bash finetune.sh [-m MODEL_PATH] [-d DATA_PATH] [--deepspeed DS_CONFIG_PATH] [--use_lora USE_LORA] [--q_lora Q_LORA]
 '
 }
 
