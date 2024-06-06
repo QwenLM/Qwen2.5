@@ -57,6 +57,7 @@ Documentation
    :caption: Run Locally
 
    run_locally/llama.cpp
+   run_locally/mlx-lm
    run_locally/ollama
 
 .. toctree::

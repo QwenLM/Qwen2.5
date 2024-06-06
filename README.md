@@ -103,12 +103,55 @@ We strongly advise users especially those in mainland China to use ModelScope. `
 
 ### 💻 Run locally
 
+#### Ollama
+
+> [!NOTE]
+> <div align="center">
+> Ollama provides an <a href="https://github.com/ollama/ollama/blob/main/docs/openai.md">OpenAI-compatible API</a>, which however does NOT support <b>function calling</b>. For tool use capabilities, consider using <a href="https://github.com/QwenLM/Qwen-Agent">Qwen-Agent</a>, which offers a wrapper for function calling over the API.
+> </div>
+
+After [installing ollama](https://github.com/ollama/ollama/blob/main/README.md), you can initiate the ollama service with the following command:
+```shell
+ollama serve
+# You need to keep this service running whenever you are using ollama
+```
+
+To pull a model checkpoint and run the model, use the `ollama run` command. You can specify a model size by adding a suffix to `qwen2`, such as `:0.5b`, `:1.5b`, `:7b`, or `:72b`:
+```shell
+ollama run qwen:7b
+# To exit, type "/bye" and press ENTER
+```
+
+You can also access the ollama service via its OpenAI-compatible API. Please note that you need to (1) keep `ollama serve` running while using the API, and (2) execute `ollama run qwen2:7b` before utilizing this API to ensure that the model checkpoint is prepared.
+```py
+from openai import OpenAI
+client = OpenAI(
+    base_url='http://localhost:11434/v1/',
+    api_key='ollama',  # required but ignored
+)
+chat_completion = client.chat.completions.create(
+    messages=[
+        {
+            'role': 'user',
+            'content': 'Say this is a test',
+        }
+    ],
+    model='qwen2:7b',
+)
+```
+
+For additional details, please visit [ollama.ai](https://ollama.ai/).
+
 #### llama.cpp
 
 Download our provided GGUF files or create them by yourself, and you can directly use them with the latest [`llama.cpp`](https://github.com/ggerganov/llama.cpp) with a one-line command:
 ```shell
 ./main -m <path-to-file> -n 512 --color -i -cml -f prompts/chat-with-qwen.txt
 ```
+
+#### MLX-LM
+
+If you are running on Apple Silicon, we have also provided checkpoints compatible with [`mlx-lm`](https://github.com/ml-explore/mlx-examples/blob/main/llms/README.md). Look for models ending with MLX on HuggingFace Hub, like [Qwen2-7B-Instruct-MLX](https://huggingface.co/Qwen/Qwen2-7B-Instruct-MLX).
 
 #### LMStudio
 
