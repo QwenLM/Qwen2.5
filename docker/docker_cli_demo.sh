@@ -2,13 +2,13 @@
 #
 # This script will automatically pull docker image from DockerHub, and start a container to run the Qwen-Chat cli-demo.
 
-IMAGE_NAME=qwenllm/qwen:1.5-cu121
-QWEN_CHECKPOINT_PATH=/path/to/Qwen1.5-Chat
-CONTAINER_NAME=qwen1.5
+IMAGE_NAME=qwenllm/qwen:2-cu121
+QWEN_CHECKPOINT_PATH=/path/to/Qwen-Instruct
+CONTAINER_NAME=qwen2
 
 function usage() {
     echo '
-Usage: bash docker/docker_cli_demo.sh [-i IMAGE_NAME] -c [/path/to/Qwen-Chat] [-n CONTAINER_NAME]
+Usage: bash docker/docker_cli_demo.sh [-i IMAGE_NAME] -c [/path/to/Qwen-Instruct] [-n CONTAINER_NAME]
 '
 }
 
@@ -49,6 +49,6 @@ sudo docker pull ${IMAGE_NAME} || {
 }
 
 sudo docker run --gpus all --rm --name ${CONTAINER_NAME} \
-    --mount type=bind,source=${QWEN_CHECKPOINT_PATH},target=/data/shared/Qwen/Qwen-Chat \
+    --mount type=bind,source=${QWEN_CHECKPOINT_PATH},target=/data/shared/Qwen/Qwen-Instruct \
     -it ${IMAGE_NAME} \
-    python cli_demo.py -c /data/shared/Qwen/Qwen-Chat/
+    python cli_demo.py -c /data/shared/Qwen/Qwen-Instruct/
