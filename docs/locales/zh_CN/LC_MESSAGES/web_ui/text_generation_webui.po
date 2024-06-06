@@ -106,8 +106,8 @@ msgid ""
 msgstr ""
 "对于requirements中的 ``bitsandbytes`` 和 ``llama-cpp-python`` ，我建议您直接通过 "
 "``pip`` "
-"进行安装。但是，暂时请不要使用GGUF，因为其与TGW配合时的性能表现不佳。在完成所需包的安装之后，您需要准备模型，将模型文件或目录放在``./models``文件夹中。"
-"例如，您应按照以下方式将``Qwen2-7B-Chat``的transformers模型目录放置到相应位置。"
+"进行安装。但是，暂时请不要使用GGUF，因为其与TGW配合时的性能表现不佳。在完成所需包的安装之后，您需要准备模型，将模型文件或目录放在 ``./models`` 文件夹中。"
+"例如，您应按照以下方式将 ``Qwen2-7B-Instruct`` 的transformers模型目录放置到相应位置。" 
 
 #: ../../source/web_ui/text_generation_webui.rst:76
 #: 9860e39a2b264e2e924b60bf7a09691e
