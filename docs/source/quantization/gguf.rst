@@ -16,12 +16,12 @@ Quantize Your Models and Make GGUF Files
 Before you move to quantization, make sure you have followed the
 instruction and started to use llama.cpp. The following guidance will
 NOT provide instructions about installation and building. Now, suppose
-you would like to quantize ``Qwen1.5-7B-Chat``. You need to first make a
+you would like to quantize ``Qwen2-7B-Instruct``. You need to first make a
 GGUF file for the fp16 model as shown below:
 
 .. code:: bash
 
-   python convert-hf-to-gguf.py Qwen/Qwen1.5-7B-Chat --outfile models/7B/qwen1_5-7b-chat-fp16.gguf
+   python convert-hf-to-gguf.py Qwen/Qwen2-7B-Instruct --outfile models/7B/qwen2-7b-instruct-fp16.gguf
 
 where the first argument refers to the path to the HF model directory or
 the HF model name, and the second argument refers to the path of your
@@ -33,7 +33,7 @@ of quantizing the model to 4 bits is shown below:
 
 .. code:: bash
 
-   ./quantize models/7B/qwen1_5-7b-chat-fp16.gguf models/7B/qwen1_5-7b-chat-q4_0.gguf q4_0
+   ./quantize models/7B/qwen2-7b-instruct-fp16.gguf models/7B/qwen2-7b-instruct-q4_0.gguf q4_0
 
 where we use ``q4_0`` for the 4-bit quantization. Until now, you have
 finished quantizing a model to 4 bits and putting it into a GGUF file,
@@ -66,7 +66,7 @@ scales, e.g.,
 
 .. code:: bash
 
-   python convert-hf-to-gguf.py ${quant_path} --outfile models/7B/qwen1_5-7b-chat-fp16-awq.gguf
+   python convert-hf-to-gguf.py ${quant_path} --outfile models/7B/qwen2-7b-instruct-fp16-awq.gguf
 
 In this way, you can apply the AWQ scales to your quantized models in
 GGUF formats, which helps improving the model quality.
@@ -79,7 +79,7 @@ below:
 
 .. code:: bash
 
-   ./quantize models/7B/qwen1_5-7b-chat-fp16.gguf models/7B/qwen1_5-7b-chat-q2_k.gguf q2_k
+   ./quantize models/7B/qwen2-7b-instruct-fp16.gguf models/7B/qwen2-7b-instruct-q2_k.gguf q2_k
 
 We now provide GGUF models in the following quantization levels:
 ``q2_k``, ``q3_k_m``, ``q4_0``, ``q4_k_m``, ``q5_0``, ``q5_k_m``,

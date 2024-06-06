@@ -1,18 +1,18 @@
 Using Transformers to Chat
 ==========================
 
-The most significant but also the simplest usage of Qwen1.5 is to chat
+The most significant but also the simplest usage of Qwen2 is to chat
 with it using the ``transformers`` library. In this document, we show
-how to chat with ``Qwen1.5-7B-Chat``, in either streaming mode or not.
+how to chat with ``Qwen2-7B-Instruct``, in either streaming mode or not.
 
 Basic Usage
 -----------
 
 You can just write several lines of code with ``transformers`` to chat with
-Qwen1.5-Chat. Essentially, we build the tokenizer and the model with
+Qwen2-Instruct. Essentially, we build the tokenizer and the model with
 ``from_pretrained`` method, and we use ``generate`` method to perform
 chatting with the help of chat template provided by the tokenizer.
-Below is an example of how to chat with Qwen1.5-7B-Chat:
+Below is an example of how to chat with Qwen2-7B-Instruct:
 
 .. code:: python
 
@@ -21,11 +21,11 @@ Below is an example of how to chat with Qwen1.5-7B-Chat:
 
    # Now you do not need to add "trust_remote_code=True"
    model = AutoModelForCausalLM.from_pretrained(
-       "Qwen/Qwen1.5-7B-Chat",
+       "Qwen/Qwen2-7B-Instruct",
        torch_dtype="auto",
        device_map="auto"
    )
-   tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen1.5-7B-Chat")
+   tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2-7B-Instruct")
 
    # Instead of using model.chat(), we directly use model.generate()
    # But you need to use tokenizer.apply_chat_template() to format your inputs as shown below
@@ -58,7 +58,7 @@ If you would like to apply Flash Attention 2, you can load the model as shown be
 .. code:: python
 
     model = AutoModelForCausalLM.from_pretrained(
-       "Qwen/Qwen1.5-7B-Chat",
+       "Qwen/Qwen2-7B-Instruct",
        torch_dtype="auto",
        device_map="auto",
        attn_implementation="flash_attention_2",
@@ -121,6 +121,6 @@ application as an iterator:
 Next Step
 ---------
 
-Now you can chat with Qwen1.5 in either streaming mode or not. Continue
+Now you can chat with Qwen2 in either streaming mode or not. Continue
 to read the documentation and try to figure out more advanced usages of
 model inference!

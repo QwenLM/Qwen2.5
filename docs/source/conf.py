@@ -61,7 +61,7 @@ html_theme = 'furo'
 # html_logo = 'assets/logo/qwen.png'
 # html_theme_options = {
 #     'path_to_docs': 'docs/source',
-#     'repository_url': 'https://github.com/QwenLM/Qwen1.5',
+#     'repository_url': 'https://github.com/QwenLM/Qwen2',
 #     # 'use_repository_button': True,
 # }
 html_sidebars = {

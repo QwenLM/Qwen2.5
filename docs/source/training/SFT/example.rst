@@ -2,10 +2,10 @@ Example
 ====================================================
 
 Here we provide a very simple script for supervised finetuning, which is revised from the training
-script in ```Fastchat`` <https://github.com/lm-sys/FastChat>`__. The
+script in `Fastchat <https://github.com/lm-sys/FastChat>`__. The
 script is used to finetune Qwen with Hugging Face Trainer. You can check
 the script
-`here <https://github.com/QwenLM/Qwen1.5/blob/main/finetune.py>`__. This
+`here <https://github.com/QwenLM/Qwen2/blob/main/finetune.py>`__. This
 script for supervised finetuning (SFT) has the following features:
 
 -  Support single-GPU and multi-GPU training;
@@ -177,7 +177,7 @@ process. The script is very simple and easy to understand.
    @dataclass
    @dataclass
    class ModelArguments:
-       model_name_or_path: Optional[str] = field(default="Qwen/Qwen-7B")
+       model_name_or_path: Optional[str] = field(default="Qwen/Qwen2-7B")
 
 
    @dataclass

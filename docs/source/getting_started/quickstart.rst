@@ -1,7 +1,7 @@
 Quickstart
 ==========
 
-This guide helps you quickly start using Qwen1.5. We provide examples of
+This guide helps you quickly start using Qwen2. We provide examples of
 `Hugging Face Transformers <https://github.com/huggingface/transformers>`__ 
 as well as `ModelScope <https://github.com/modelscope/modelscope>`__, and 
 `vLLM <https://github.com/vllm-project/vllm>`__ for deployment.
@@ -9,10 +9,10 @@ as well as `ModelScope <https://github.com/modelscope/modelscope>`__, and
 Hugging Face Transformers & ModelScope
 --------------------------------------
 
-To get a quick start with Qwen1.5, we advise you to try with the
+To get a quick start with Qwen2, we advise you to try with the
 inference with ``transformers`` first. Make sure that you have installed
-``transformers>=4.37.0``. The following is a very simple code snippet
-showing how to run Qwen1.5-Chat, with an example of Qwen1.5-7B-Chat:
+``transformers>=4.40.0``. The following is a very simple code snippet
+showing how to run Qwen2-Instruct, with an example of Qwen2-7B-Instruct:
 
 .. code:: python
 
@@ -21,11 +21,11 @@ showing how to run Qwen1.5-Chat, with an example of Qwen1.5-7B-Chat:
 
    # Now you do not need to add "trust_remote_code=True"
    model = AutoModelForCausalLM.from_pretrained(
-       "Qwen/Qwen1.5-7B-Chat",
+       "Qwen/Qwen2-7B-Instruct",
        torch_dtype="auto",
        device_map="auto"
    )
-   tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen1.5-7B-Chat")
+   tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2-7B-Instruct")
 
    # Instead of using model.chat(), we directly use model.generate()
    # But you need to use tokenizer.apply_chat_template() to format your inputs as shown below
@@ -63,7 +63,7 @@ If you would like to apply Flash Attention 2, you can load the model as shown be
 .. code:: python
 
     model = AutoModelForCausalLM.from_pretrained(
-       "Qwen/Qwen1.5-7B-Chat",
+       "Qwen/Qwen2-7B-Instruct",
        torch_dtype="auto",
        device_map="auto",
        attn_implementation="flash_attention_2",
@@ -94,23 +94,23 @@ Streaming mode for model chat is simple with the help of
 vLLM for Deployment
 -------------------
 
-To deploy Qwen1.5, we advise you to use vLLM. vLLM is a fast
+To deploy Qwen2, we advise you to use vLLM. vLLM is a fast
 and easy-to-use framework for LLM inference and serving. In the
 following, we demonstrate how to build a OpenAI-API compatible API
 service with vLLM.
 
-First, make sure you have installed ``vLLM>=0.3.0``:
+First, make sure you have installed ``vLLM>=0.4.0``:
 
 .. code:: bash
 
    pip install vllm
 
 Run the following code to build up a vllm service. Here we take
-Qwen1.5-7B-Chat as an example:
+Qwen2-7B-Instruct as an example:
 
 .. code:: bash
 
-   python -m vllm.entrypoints.openai.api_server --model Qwen/Qwen1.5-7B-Chat
+   python -m vllm.entrypoints.openai.api_server --model Qwen/Qwen2-7B-Instruct
 
 Then, you can use the `create chat
 interface <https://platform.openai.com/docs/api-reference/chat/completions/create>`__
@@ -119,7 +119,7 @@ to communicate with Qwen:
 .. code:: bash
 
     curl http://localhost:8000/v1/chat/completions  -H "Content-Type: application/json" -d '{
-       "model": "Qwen/Qwen1.5-7B-Chat",
+       "model": "Qwen/Qwen2-7B-Instruct",
        "messages": [
        {"role": "system", "content": "You are a helpful assistant."},
        {"role": "user", "content": "Tell me something about large language models."}
@@ -142,7 +142,7 @@ below:
    )
 
    chat_response = client.chat.completions.create(
-       model="Qwen/Qwen1.5-7B-Chat",
+       model="Qwen/Qwen2-7B-Instruct",
        messages=[
            {"role": "system", "content": "You are a helpful assistant."},
            {"role": "user", "content": "Tell me something about large language models."},

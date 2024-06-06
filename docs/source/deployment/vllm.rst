@@ -14,7 +14,7 @@ Installation
 ------------
 
 By default, you can install ``vLLM`` by pip:
-``pip install vLLM>=0.3.0``, but if you are using CUDA 11.8, check the
+``pip install vLLM>=0.4.0``, but if you are using CUDA 11.8, check the
 note in the official document for installation
 (`link <https://docs.vllm.ai/en/latest/getting_started/installation.html>`__)
 for some help. We also advise you to install ray by ``pip install ray``
@@ -23,7 +23,7 @@ for distributed serving.
 Offline Batched Inference
 -------------------------
 
-Models supported by Qwen2 codes, e.g., Qwen1.5, are supported by vLLM.
+Models supported by Qwen2 codes are supported by vLLM.
 The simplest usage of vLLM is offline batched inference as demonstrated
 below.
 
@@ -33,14 +33,14 @@ below.
    from vllm import LLM, SamplingParams
 
    # Initialize the tokenizer
-   tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen1.5-7B-Chat")
+   tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2-7B-Instruct")
 
-   # Pass the default decoding hyperparameters of Qwen1.5-7B-Chat
+   # Pass the default decoding hyperparameters of Qwen2-7B-Instruct
    # max_tokens is for the maximum length for generation.
    sampling_params = SamplingParams(temperature=0.7, top_p=0.8, repetition_penalty=1.05, max_tokens=512)
 
    # Input the model name or path. Can be GPTQ or AWQ models.
-   llm = LLM(model="Qwen/Qwen1.5-7B-Chat")
+   llm = LLM(model="Qwen/Qwen2-7B-Instruct")
 
    # Prepare your prompts
    prompt = "Tell me something about large language models."
@@ -75,7 +75,7 @@ command as shown below:
 .. code:: bash
 
    python -m vllm.entrypoints.openai.api_server \
-       --model Qwen/Qwen1.5-7B-Chat
+       --model Qwen/Qwen2-7B-Instruct
 
 You don’t need to worry about chat template as it by default uses the
 chat template provided by the tokenizer.
@@ -87,7 +87,7 @@ to communicate with Qwen:
 .. code:: bash
 
    curl http://localhost:8000/v1/chat/completions -H "Content-Type: application/json" -d '{
-       "model": "Qwen/Qwen1.5-7B-Chat",
+       "model": "Qwen/Qwen2-7B-Instruct",
        "messages": [
        {"role": "system", "content": "You are a helpful assistant."},
        {"role": "user", "content": "Tell me something about large language models."}
@@ -110,7 +110,7 @@ below:
    )
 
    chat_response = client.chat.completions.create(
-       model="Qwen/Qwen1.5-7B-Chat",
+       model="Qwen/Qwen2-7B-Instruct",
        messages=[
            {"role": "system", "content": "You are a helpful assistant."},
            {"role": "user", "content": "Tell me something about large language models."},
@@ -123,14 +123,14 @@ Multi-GPU Distributred Serving
 
 To scale up your serving throughputs, distributed serving helps you by
 leveraging more GPU devices. Besides, for large models like
-``Qwen1.5-72B-Chat``, it is impossible to serve it on a single GPU.
-Here, we demonstrate how to run ``Qwen1.5-72B-Chat`` with tensor
+``Qwen2-72B-Instruct``, it is impossible to serve it on a single GPU.
+Here, we demonstrate how to run ``Qwen2-72B-Instruct`` with tensor
 parallelism just by passing in the argument ``tensor_parallel_size``:
 
 .. code:: python
 
    from vllm import LLM, SamplingParams
-   llm = LLM(model="Qwen/Qwen1.5-72B-Chat", tensor_parallel_size=4)
+   llm = LLM(model="Qwen/Qwen2-72B-Instruct", tensor_parallel_size=4)
 
 You can run multi-GPU serving by passing in the argument
 ``--tensor-parallel-size``:
@@ -138,7 +138,7 @@ You can run multi-GPU serving by passing in the argument
 .. code:: bash
 
    python -m vllm.entrypoints.api_server \
-       --model Qwen/Qwen1.5-72B-Chat \
+       --model Qwen/Qwen2-72B-Instruct \
        --tensor-parallel-size 4
 
 Serving Quantized Models
@@ -148,18 +148,18 @@ vLLM supports different types of quantized models, including AWQ, GPTQ,
 SqueezeLLM, etc. Here we show how to deploy AWQ and GPTQ models. The
 usage is almost the same as above except for an additional argument for
 quantization. For example, to run an AWQ model. e.g.,
-``Qwen1.5-7B-Chat-AWQ``:
+``Qwen2-72B-Instruct-AWQ``:
 
 .. code:: python
 
    from vllm import LLM, SamplingParams
-   llm = LLM(model="Qwen/Qwen1.5-7B-Chat-AWQ", quantization="awq")
+   llm = LLM(model="Qwen/Qwen2-72B-Instruct-AWQ", quantization="awq")
 
-or GPTQ models like ``Qwen1.5-7B-Chat-GPTQ-Int8``:
+or GPTQ models like ``Qwen2-72B-Instruct-GPTQ-Int8``:
 
 .. code:: python
 
-   llm = LLM(model="Qwen/Qwen1.5-7B-Chat-GPTQ-Int4", quantization="gptq")
+   llm = LLM(model="Qwen/Qwen2-72B-Instruct-GPTQ-Int4", quantization="gptq")
 
 Similarly, you can run serving adding the argument ``--quantization`` as
 shown below:
@@ -167,7 +167,7 @@ shown below:
 .. code:: bash
 
    python -m vllm.entrypoints.openai.api_server \
-       --model Qwen/Qwen1.5-7B-Chat-AWQ \
+       --model Qwen/Qwen2-72B-Instruct-AWQ \
        --quantization awq
 
 or
@@ -175,7 +175,7 @@ or
 .. code:: bash
 
    python -m vllm.entrypoints.openai.api_server \
-       --model Qwen/Qwen1.5-7B-Chat-GPTQ-Int8 \
+       --model Qwen/Qwen2-72B-Instruct-GPTQ-Int8 \
        --quantization gptq
 
 Additionally, vLLM supports the combination of AWQ or GPTQ models with
@@ -183,12 +183,12 @@ KV cache quantization, namely FP8 E5M2 KV Cache. For example:
 
 .. code:: python
 
-   llm = LLM(model="Qwen/Qwen1.5-7B-Chat-GPTQ-Int8", quantization="gptq", kv_cache_dtype="fp8_e5m2")
+   llm = LLM(model="Qwen/Qwen2-7B-Instruct-GPTQ-Int8", quantization="gptq", kv_cache_dtype="fp8_e5m2")
 
 .. code:: bash
 
    python -m vllm.entrypoints.openai.api_server \
-       --model Qwen/Qwen1.5-7B-Chat-GPTQ-Int8 \
+       --model Qwen/Qwen2-7B-Instruct-GPTQ-Int8 \
        --quantization gptq \
        --kv-cache-dtype fp8_e5m2
 
