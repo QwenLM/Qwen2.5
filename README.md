@@ -221,10 +221,6 @@ print(state["answer_1"])
 
 We advise you to use training frameworks, including [Axolotl](https://github.com/OpenAccess-AI-Collective/axolotl), [Llama-Factory](https://github.com/hiyouga/LLaMA-Factory), [Swift](https://github.com/modelscope/swift), etc., to finetune your models with SFT, DPO, PPO, etc.
 
-## API
-
-Qwen2 models are now deployed on [DashScope](https://dashscope.aliyun.com/) and [Together](https://api.together.ai/).
-
 ## 🐳 Docker
 
 To simplify the deployment process, we provide docker images with pre-built environments: [qwenllm/qwen](https://hub.docker.com/r/qwenllm/qwen). You only need to install the driver and download model files to launch demos and finetune the model.
