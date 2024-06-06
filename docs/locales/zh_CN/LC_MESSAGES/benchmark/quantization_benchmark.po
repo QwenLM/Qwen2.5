@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the Qwen package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
 #
-
 msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-06 22:57+0800\n"
+"POT-Creation-Date: 2024-06-07 00:12+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -29,8 +28,7 @@ msgstr "量化模型效果评估"
 msgid ""
 "This section reports the generation performance of quantized models "
 "(including GPTQ and AWQ) of the Qwen2 series. Specifically, we report:"
-msgstr ""
-"本部分介绍Qwen2量化模型（包括GPTQ与AWQ量化方案）的效果评估，有以下数据集"
+msgstr "本部分介绍Qwen2量化模型（包括GPTQ与AWQ量化方案）的效果评估，有以下数据集"
 
 #: ../../source/benchmark/quantization_benchmark.rst:8
 #: 504942421d70442cbcc85f254f9a5393
@@ -79,7 +77,7 @@ msgstr ""
 
 #: ../../source/benchmark/quantization_benchmark.rst:17
 #: f0f1619f24c04c51bdb22ec7372519a6
-msgid "Qwen-72B-Instruct"
+msgid "Qwen2-72B-Instruct"
 msgstr ""
 
 #: ../../source/benchmark/quantization_benchmark.rst:17
@@ -192,7 +190,7 @@ msgstr ""
 
 #: ../../source/benchmark/quantization_benchmark.rst:25
 #: 1de269e970524699b7d15bee6cdc4cf2
-msgid "Qwen-7B-Instruct"
+msgid "Qwen2-7B-Instruct"
 msgstr ""
 
 #: ../../source/benchmark/quantization_benchmark.rst:25
@@ -273,7 +271,7 @@ msgstr ""
 
 #: ../../source/benchmark/quantization_benchmark.rst:33
 #: 533c3883c1874874a7c787d288ea9d3e
-msgid "Qwen-1.5B-Instruct"
+msgid "Qwen2-1.5B-Instruct"
 msgstr ""
 
 #: ../../source/benchmark/quantization_benchmark.rst:33
@@ -358,7 +356,7 @@ msgstr ""
 
 #: ../../source/benchmark/quantization_benchmark.rst:41
 #: ad428acda07643d0bb1274ce8e8c2c75
-msgid "Qwen-0.5B-Instruct"
+msgid "Qwen2-0.5B-Instruct"
 msgstr ""
 
 #: ../../source/benchmark/quantization_benchmark.rst:41

@@ -37,7 +37,7 @@ msgstr ""
 #: ../../source/benchmark/speed_benchmark.rst:9
 #: 7b78fe22b047416695692b0885ca369d
 msgid "The environment of the evaluation with huggingface transformers is:"
-msgstr "测试HuggingFace ``transformers``时的环境配置："
+msgstr "测试HuggingFace ``transformers`` 时的环境配置："
 
 #: ../../source/benchmark/speed_benchmark.rst:11
 #: ../../source/benchmark/speed_benchmark.rst:21
