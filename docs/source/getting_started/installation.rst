@@ -1,11 +1,11 @@
 Installation
 ============
 
-To get a quick start with Qwen1.5, you can install the ``transformers``
-library from Hugging Face and use models in the `Qwen1.5
-collection <https://huggingface.co/collections/Qwen/qwen15-65c0a2f577b1ecb76d786524>`__.
+To get a quick start with Qwen2, you can install the ``transformers``
+library from Hugging Face and use models in the `Qwen2
+collection <https://huggingface.co/collections/Qwen/qwen2-6659360b33528ced941e557f>`__.
 We advise you to install the latest ``transformers`` or at least version
-4.37.0.
+4.40.0.
 
 Install with Pip
 ~~~~~~~~~~~~~~~~

@@ -6,20 +6,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-04 15:21+0800\n"
+"POT-Creation-Date: 2024-06-06 19:37+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.14.0\n"
+"Generated-By: Babel 2.15.0\n"
 
-#: ../../source/run_locally/llama.cpp.rst:2 9295ae9f5a5f45bfab93b7e8518e8f08
+#: ../../source/run_locally/llama.cpp.rst:2 e7db733a92e84d9b8858cad10d251a75
 msgid "llama.cpp"
 msgstr "llama.cpp"
 
-#: ../../source/run_locally/llama.cpp.rst:4 b13bc91c8a9a4571839cb73e37761d1d
+#: ../../source/run_locally/llama.cpp.rst:4 6b007bb8d4624ef5bc8278693ec39a41
 msgid ""
 "`llama.cpp <https://github.com/ggerganov/llama.cpp>`__ is a C++ library "
 "for LLM inference with mimimal setup. It enables running Qwen on your "
@@ -35,29 +37,29 @@ msgstr ""
 "`llama.cpp <https://github.com/ggerganov/llama.cpp>`__ "
 "是一个C++库，用于简化LLM推理的设置。它使得在本地机器上运行Qwen成为可能。该库是一个纯C/C++实现，不依赖任何外部库，并且针对x86架构提供了AVX、AVX2和AVX512加速支持。此外，它还提供了2、3、4、5、6以及8位量化功能，以加快推理速度并减少内存占用。对于大于总VRAM容量的大规模模型，该库还支持CPU+GPU混合推理模式进行部分加速。本质上，llama.cpp的用途在于运行GGUF（由GPT生成的统一格式）模型。欲了解更多详情，请参阅官方GitHub仓库。以下我们将演示如何使用llama.cpp运行Qwen。"
 
-#: ../../source/run_locally/llama.cpp.rst:17 7296806f5b8f469387080e1658c355ed
+#: ../../source/run_locally/llama.cpp.rst:17 ea71da63c0a24583ab55e2b162d3f673
 msgid "Prerequisites"
 msgstr "准备"
 
-#: ../../source/run_locally/llama.cpp.rst:19 33c80a9748744bfe8580b781834fe204
+#: ../../source/run_locally/llama.cpp.rst:19 a95ae6398fe0438eb8fd0c28a8832694
 msgid ""
 "This example is for the usage on Linux or MacOS. For the first step, "
 "clone the repo and enter the directory:"
 msgstr "这个示例适用于Linux或MacOS系统。第一步操作是： “克隆仓库并进入该目录："
 
-#: ../../source/run_locally/llama.cpp.rst:27 023579e4d3e948fbaf2a2e358cc71d59
+#: ../../source/run_locally/llama.cpp.rst:27 625c94d0577147cdafcf58b04b575dcd
 msgid "Then use ``make``:"
 msgstr "然后运行 ``make`` 命令："
 
-#: ../../source/run_locally/llama.cpp.rst:33 513bfba9842b483687c4e1b4e5b2a092
+#: ../../source/run_locally/llama.cpp.rst:33 38462357b4d14ca1a75d114dac692600
 msgid "Then you can run GGUF files with ``llama.cpp``."
 msgstr "然后你就能使用 ``llama.cpp`` 运行GGUF文件。"
 
-#: ../../source/run_locally/llama.cpp.rst:36 ffbbe87d16bc4205aa246fcf1216a9b7
+#: ../../source/run_locally/llama.cpp.rst:36 974a58bcb19f4d0cb9ee9e9215f4b166
 msgid "Running Qwen GGUF Files"
 msgstr "运行Qwen的GGUF文件"
 
-#: ../../source/run_locally/llama.cpp.rst:38 06afbf066c6442c68f45d1a90bd68b7c
+#: ../../source/run_locally/llama.cpp.rst:38 8d8531d3723e45329b4d184e1bfbd2aa
 msgid ""
 "We provide a series of GGUF models in our Hugging Face organization, and "
 "to search for what you need you can search the repo names with ``-GGUF``."
@@ -68,29 +70,29 @@ msgstr ""
 "的部分。要下载所需的GGUF模型，请使用  ``huggingface-cli`` （首先需要通过命令 ``pip install "
 "huggingface_hub`` 安装它）："
 
-#: ../../source/run_locally/llama.cpp.rst:48 4f94dc408d9641e686d64d0508cb7d3f
+#: ../../source/run_locally/llama.cpp.rst:48 6885ad4a54f242ddb062e1a5b784bf18
 msgid "for example:"
 msgstr "比如："
 
-#: ../../source/run_locally/llama.cpp.rst:54 3333b60028d74c5ea09d3fa42c22af4c
+#: ../../source/run_locally/llama.cpp.rst:54 0816836ed674460a8f4e2081eb53d7a9
 msgid "Then you can run the model with the following command:"
 msgstr "然后你可以用如下命令运行模型："
 
-#: ../../source/run_locally/llama.cpp.rst:60 1dd4d5e214df4b4a8c4b4236d2b40caa
+#: ../../source/run_locally/llama.cpp.rst:60 fb09c6e75f5b4f03b09c1cc37656d3ec
 msgid ""
 "where ``-n`` refers to the maximum number of tokens to generate. There "
 "are other hyperparameters for you to choose and you can run"
 msgstr "``-n`` 指的是要生成的最大token数量。这里还有其他超参数供你选择，并且你可以运行"
 
-#: ../../source/run_locally/llama.cpp.rst:67 1418c6357ce942a7880167048985755d
+#: ../../source/run_locally/llama.cpp.rst:67 17d7934d8f91441392a39d74a1ca9ff9
 msgid "to figure them out."
 msgstr "以了解它们。"
 
-#: ../../source/run_locally/llama.cpp.rst:70 688ee9f001ec4085b4d93caea7aeb036
+#: ../../source/run_locally/llama.cpp.rst:70 f4e62da44014487aa554a054473dddb2
 msgid "Make Your GGUF Files"
 msgstr "生成你的GGUF文件"
 
-#: ../../source/run_locally/llama.cpp.rst:72 404521aabf484cb2aa304a78f23a63db
+#: ../../source/run_locally/llama.cpp.rst:72 caa62ed5d13d417091ef80dd59cffd92
 #, fuzzy
 msgid ""
 "We introduce the method of creating and quantizing GGUF files in "
@@ -100,11 +102,11 @@ msgstr ""
 "我们在 `quantization/llama.cpp <../quantization/gguf.html>`__ "
 "中介绍了创建和量化GGUF文件的方法。您可以参考该文档获取更多信息。"
 
-#: ../../source/run_locally/llama.cpp.rst:77 524dc22e5deb490b9191b674281d2bd9
+#: ../../source/run_locally/llama.cpp.rst:77 2a28e87e3cdf4ed49be8c2ef3b3a7483
 msgid "Perplexity Evaluation"
 msgstr "PPL评测"
 
-#: ../../source/run_locally/llama.cpp.rst:79 c2df95294edf4f0b8de7f92c4e63b604
+#: ../../source/run_locally/llama.cpp.rst:79 ac709adde51c4fa68f917a409fc0a97b
 msgid ""
 "``llama.cpp`` provides methods for us to evaluate the perplexity "
 "performance of the GGUF models. To do this, you need to prepare the "
@@ -112,32 +114,33 @@ msgid ""
 "test."
 msgstr "llama.cpp为我们提供了评估GGUF模型PPL性能的方法。为了实现这一点，你需要准备一个数据集，比如“wiki测试”。这里我们展示了一个运行测试的例子。"
 
-#: ../../source/run_locally/llama.cpp.rst:84 2b96c26557914be28d5d246775b657cd
+#: ../../source/run_locally/llama.cpp.rst:84 64e20019e6d549fe87556f5c0b6ffeeb
 msgid "For the first step, download the dataset:"
 msgstr "第一步，下载数据集："
 
-#: ../../source/run_locally/llama.cpp.rst:91 fb0bc11477524f07b6e195757f152d92
+#: ../../source/run_locally/llama.cpp.rst:91 62b3bac316bc4bbc8a72b40d9888ce51
 msgid "Then you can run the test with the following command:"
 msgstr "然后你可以用如下命令运行测试："
 
-#: ../../source/run_locally/llama.cpp.rst:97 6822a2aaaa5141ea9be44c569b4a440f
+#: ../../source/run_locally/llama.cpp.rst:97 c014dfb5f69341cbbf4e595eef18d496
 msgid "where the output is like"
 msgstr "输出如下所示"
 
-#: ../../source/run_locally/llama.cpp.rst:105 cca21a6ce70d445fbb23ca92cafc574d
+#: ../../source/run_locally/llama.cpp.rst:105 3443cfd163d84c82a75bbd03c1641727
 msgid "Wait for some time and you will get the perplexity of the model."
 msgstr "稍等一段时间你将得到模型的PPL评测结果。"
 
-#: ../../source/run_locally/llama.cpp.rst:108 f3df6de18c0d4b78ad29738580cab53a
+#: ../../source/run_locally/llama.cpp.rst:108 7e0280a7be3e4a5eb0fd4f11f242cd6a
 msgid "Use GGUF with LM Studio"
 msgstr "在LM Studio使用GGUF"
 
-#: ../../source/run_locally/llama.cpp.rst:110 e901df85221a4887b98a3a5c540f010a
+#: ../../source/run_locally/llama.cpp.rst:110 25b52c151477480ca42901dcb84c3c5d
+#, fuzzy
 msgid ""
 "If you still find it difficult to use ``llama.cpp``, I advise you to play"
 " with `LM Studio <https://lmstudio.ai/>`__, which is a platform for your "
-"to search and run local LLMs. Qwen1.5 has already been officially part of"
-" LM Studio. Have fun!"
+"to search and run local LLMs. Qwen2 has already been officially part of "
+"LM Studio. Have fun!"
 msgstr ""
 "如果你仍然觉得使用llama.cpp有困难，我建议你尝试一下 `LM Studio <https://lmstudio.ai/>`__ "
 "这个平台，它允许你搜索和运行本地的大规模语言模型。Qwen1.5已经正式成为LM Studio的一部分。祝你使用愉快！"
