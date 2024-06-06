@@ -1,12 +1,11 @@
 # Copyright (C) 2024, Qwen Team, Alibaba Group.
 # This file is distributed under the same license as the Qwen package.
 #
-
 msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-06 19:37+0800\n"
+"POT-Creation-Date: 2024-06-06 23:35+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -17,86 +16,74 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.15.0\n"
 
-#: ../../source/run_locally/ollama.rst:2 74780f1136e943b8b56da95a8f926376
+#: ../../source/run_locally/ollama.rst:2 53de2a112ba54d39a197bdae1a19cd69
 msgid "Ollama"
 msgstr "Ollama"
 
-#: ../../source/run_locally/ollama.rst:4 135c7eb6b6924c2a8765d06579f7f484
-msgid "The following does not apply to Qwen2 at present."
-msgstr "以下内容当前尚不适用于Qwen2。"
-
-#: ../../source/run_locally/ollama.rst:6 f9c910f329e14b9394079621fdf2fc68
+#: ../../source/run_locally/ollama.rst:4 fde5c7a3f49a4d5eba64aaf756415d59
 msgid ""
 "`Ollama <https://ollama.com/>`__ helps you run LLMs locally with only a "
-"few commands. It is available at MacOS, Linux, and Windows. Now, Qwen1.5 "
-"is officially on Ollama, and you can run it with one command:"
+"few commands. It is available at MacOS, Linux, and Windows. Now, Qwen2 is"
+" officially on Ollama, and you can run it with one command:"
 msgstr ""
 "`Ollama <https://ollama.com/>`__ "
-"帮助您通过少量命令即可在本地运行LLM。它适用于MacOS、Linux和Windows操作系统。现在，Qwen1.5正式上线Ollama，您只需一条命令即可运行它："
+"帮助您通过少量命令即可在本地运行LLM。它适用于MacOS、Linux和Windows操作系统。现在，Qwen2正式上线Ollama，您只需一条命令即可运行它："
 
-#: ../../source/run_locally/ollama.rst:14 9a6efa8c5af7438fab51ee1d9f1d4f76
-msgid "Next, we introduce more detailed usages of Ollama for running Qwen models."
-msgstr "接着，我们介绍在Ollama使用Qwen模型的更多用法"
+#: ../../source/run_locally/ollama.rst:12 99348b96c61c43be933016df746b9f65
+msgid ""
+"Next, we introduce more detailed usages of Ollama for running Qwen2 "
+"models."
+msgstr "接着，我们介绍在Ollama使用Qwen2模型的更多用法"
 
-#: ../../source/run_locally/ollama.rst:18 7854ca2d1b1248d49cb0d1eab7e2b76b
+#: ../../source/run_locally/ollama.rst:16 6f36840d2dbc4dc991cbee4e88b989d5
 msgid "Quickstart"
 msgstr "快速开始"
 
-#: ../../source/run_locally/ollama.rst:20 9dd9fb58e8d24aab891d88579461f270
+#: ../../source/run_locally/ollama.rst:18 8ee18e0a54624598a79ab5fef01f436d
 msgid ""
 "Visit the official website `Ollama <https://ollama.com/>`__ and click "
 "download to install Ollama on your device. You can also search models in "
-"the website, where you can find the Qwen1.5 models. Except for the "
-"default one, you can choose to run Qwen1.5-Chat models of different sizes"
-" by:"
+"the website, where you can find the Qwen2 models. Except for the default "
+"one, you can choose to run Qwen2-Instruct models of different sizes by:"
 msgstr ""
 "访问官方网站 `Ollama <https://ollama.com/>`__ ”，点击 ``Download`` "
-"以在您的设备上安装Ollama。您还可以在网站上搜索模型，在这里您可以找到Qwen1.5系列模型。除了默认模型之外，您可以通过以下方式选择运行不同大小的Qwen1.5-Chat模型："
+"以在您的设备上安装Ollama。您还可以在网站上搜索模型，在这里您可以找到Qwen2系列模型。除了默认模型之外，您可以通过以下方式选择运行不同大小的Qwen2-Instruct模型："
 
-#: ../../source/run_locally/ollama.rst:26 b2dec572564d4e9293cce4051207a287
-msgid "``ollama run qwen:0.5b``"
+#: ../../source/run_locally/ollama.rst:24 56057e178ecc4fe298a8a90794f956ee
+msgid "``ollama run qwen2:0.5b``"
 msgstr ""
 
-#: ../../source/run_locally/ollama.rst:27 04e03f831203419e8ab7a0384fade0d4
-msgid "``ollama run qwen:1.8b``"
+#: ../../source/run_locally/ollama.rst:25 56057e178ecc4fe298a8a90794f956ee
+msgid "``ollama run qwen2:1.5b``"
 msgstr ""
 
-#: ../../source/run_locally/ollama.rst:28 a5647d7da3e242bebe9bb86780eb8247
-msgid "``ollama run qwen:4b``"
+#: ../../source/run_locally/ollama.rst:26 f1a84ddfe3a14f59b62f4dfc8e4c262f
+msgid "``ollama run qwen2:7b``"
 msgstr ""
 
-#: ../../source/run_locally/ollama.rst:29 12e58acc209948c599fce82166bc5cf6
-msgid "``ollama run qwen:7b``"
+#: ../../source/run_locally/ollama.rst:27 e8c2c80bf29f4c588abf4a3f06a49c96
+msgid "``ollama run qwen2:72b``"
 msgstr ""
 
-#: ../../source/run_locally/ollama.rst:30 e5ca52b7b08948d2b8ab607292d82b39
-msgid "``ollama run qwen:14b``"
-msgstr ""
-
-#: ../../source/run_locally/ollama.rst:31 2fe96ccf8b9b4070965f288e29417e21
-msgid "``ollama run qwen:72b``"
-msgstr ""
-
-#: ../../source/run_locally/ollama.rst:34 7878829d30bf42aca0a1049b90b3cec7
+#: ../../source/run_locally/ollama.rst:30 e7c09ad8871e4701b05baca042ca279c
 msgid "Run Ollama with Your GGUF Files"
 msgstr "在Ollama运行你的GGUF文件"
 
-#: ../../source/run_locally/ollama.rst:36 d2faf76abf774c51b4373d5e2dab701c
+#: ../../source/run_locally/ollama.rst:32 089328f73e7d4382a9d82cd10a3c093e
 msgid ""
 "Sometimes you don't want to pull models and you just want to use Ollama "
-"with your own GGUF files. Suppose you have a GGUF file of Qwen, ``qwen1_5"
-"-7b-chat-q4_0.gguf``. For the first step, you need to create a file "
+"with your own GGUF files. Suppose you have a GGUF file of Qwen2, ``qwen2"
+"-7b-instruct-q5_0.gguf``. For the first step, you need to create a file "
 "called ``Modelfile``. The content of the file is shown below:"
 msgstr ""
-"有时您可能不想拉取模型，而是希望直接使用自己的GGUF文件来配合Ollama。假设您有一个名为 ``qwen1_5-7b-"
-"chat-q4_0.gguf`` 的Qwen的GGUF文件。在第一步中，您需要创建一个名为 ``Modelfile`` "
+"有时您可能不想拉取模型，而是希望直接使用自己的GGUF文件来配合Ollama。假设您有一个名为 ``qwen2-7b-"
+"instruct-q5_0.gguf`` 的Qwen2的GGUF文件。在第一步中，您需要创建一个名为 ``Modelfile`` "
 "的文件。该文件的内容如下所示："
 
-#: ../../source/run_locally/ollama.rst:63 e7d87c755b3b4592bda435bf9a562a9c
+#: ../../source/run_locally/ollama.rst:59 f27b0fb22282407e86562603b88821f2
 msgid "Then create the ollama model by running:"
 msgstr "然后通过运行下列命令来创建一个ollama模型"
 
-#: ../../source/run_locally/ollama.rst:69 f458f6af841f4ef4b6be20349258e288
+#: ../../source/run_locally/ollama.rst:65 1015f2be7dca46489ef288f98f80527d
 msgid "Once it is finished, you can run your ollama model by:"
 msgstr "完成后，你即可运行你的ollama模型："
-
