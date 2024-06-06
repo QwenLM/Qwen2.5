@@ -1,6 +1,8 @@
 Ollama
 ===========================
 
+.. note:: The following does not apply to Qwen2 at present.
+
 `Ollama <https://ollama.com/>`__ helps you run LLMs locally with only a
 few commands. It is available at MacOS, Linux, and Windows. Now, Qwen1.5
 is officially on Ollama, and you can run it with one command:

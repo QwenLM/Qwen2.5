@@ -2,7 +2,7 @@ Langchain
 ==========================
 
 This guide helps you build a question-answering application based 
-on a local knowledge base using ``Qwen1.5-7B-Chat`` with ``langchain``.
+on a local knowledge base using ``Qwen2-7B-Instruct`` with ``langchain``.
 The goal is to establish a knowledge base Q&A solution.
 
 Basic Usage
@@ -12,7 +12,7 @@ The implementation process of this project includes
 loading files -> reading text -> segmenting text -> vectorizing text -> vectorizing questions 
 -> matching the top k most similar text vectors with the question vectors -> 
 incorporating the matched text as context along with the question into the prompt -> 
-submitting to the Qwen1.5-7B-Chat to generate an answer.
+submitting to the Qwen2-7B-Instruct to generate an answer.
 Below is an example:
 
 .. code:: bash
@@ -30,11 +30,11 @@ Below is an example:
    device = "cuda" # the device to load the model onto
 
    model = AutoModelForCausalLM.from_pretrained(
-       "Qwen/Qwen1.5-7B-Chat",
+       "Qwen/Qwen2-7B-Instruct",
        torch_dtype="auto",
        device_map="auto"
    )
-   tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen1.5-7B-Chat")
+   tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2-7B-Instruct")
 
    class Qwen(LLM, ABC):
         max_token: int = 10000
@@ -91,7 +91,7 @@ Below is an example:
                     "top_p": self.top_p,
                     "history_len": self.history_len}
 
-After loading the Qwen1.5-7B-Chat model, you should specify the txt file 
+After loading the Qwen2-7B-Instruct model, you should specify the txt file 
 for retrieval.
 
 .. code:: python
@@ -269,6 +269,6 @@ for retrieval.
 Next Step
 ---------
 
-Now you can chat with Qwen1.5 use your own document. Continue
+Now you can chat with Qwen2 use your own document. Continue
 to read the documentation and try to figure out more advanced usages of
 model retrieval!

@@ -1,24 +1,29 @@
 # This code is based on the revised code from fastchat based on tatsu-lab/stanford_alpaca.
 
 
-from dataclasses import dataclass, field
 import json
 import logging
 import os
 import pathlib
-from typing import Dict, Optional, List
-import torch
-from torch.utils.data import Dataset
-from deepspeed import zero
-from deepspeed.utils.zero_to_fp32 import get_fp32_state_dict_from_zero_checkpoint
-from deepspeed.runtime.zero.partition_parameters import ZeroParamStatus
-import transformers
-from transformers import AutoModelForCausalLM, AutoTokenizer
-from transformers import Trainer, BitsAndBytesConfig, deepspeed
-from transformers.trainer_pt_utils import LabelSmoother
-from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
-from accelerate.utils import DistributedType
+from dataclasses import dataclass, field
+from typing import Dict, List, Optional
 
+import torch
+import transformers
+from accelerate.utils import DistributedType
+from deepspeed import zero
+from deepspeed.runtime.zero.partition_parameters import ZeroParamStatus
+from deepspeed.utils.zero_to_fp32 import get_fp32_state_dict_from_zero_checkpoint
+from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
+from torch.utils.data import Dataset
+from transformers import (
+    AutoModelForCausalLM,
+    AutoTokenizer,
+    BitsAndBytesConfig,
+    Trainer,
+    deepspeed,
+)
+from transformers.trainer_pt_utils import LabelSmoother
 
 IGNORE_TOKEN_ID = LabelSmoother.ignore_index
 
@@ -34,7 +39,7 @@ def rank0_print(*args):
 
 @dataclass
 class ModelArguments:
-    model_name_or_path: Optional[str] = field(default="Qwen/Qwen-7B")
+    model_name_or_path: Optional[str] = field(default="Qwen/Qwen2-7B")
 
 
 @dataclass

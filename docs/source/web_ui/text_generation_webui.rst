@@ -55,13 +55,13 @@ please do not use GGUF as the performance with TGW is unsatisfactory. After
 finishing the installation of required packages, you need to prepare your 
 models by putting the model files or directories in the folder ``./models``. 
 For example, you should put the transformers model directory of
-``Qwen1.5-7B-Chat`` in the way shown below:
+``Qwen2-7B-Instruct`` in the way shown below:
 
 ::
 
    text-generation-webui
    ├── models
-   │   ├── Qwen1.5-7B-Chat
+   │   ├── Qwen2-7B-Instruct
    │   │   ├── config.json
    │   │   ├── generation_config.json
    │   │   ├── model-00001-of-00004.safetensor

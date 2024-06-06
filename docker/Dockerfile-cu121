@@ -29,8 +29,8 @@ WORKDIR /data/shared/Qwen/
 
 FROM dev as bundle_req
 RUN pip install --no-cache-dir networkx==3.1
-RUN pip3 install --no-cache-dir torch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 --index-url https://download.pytorch.org/whl/cu121
-RUN pip3 install --no-cache-dir transformers==4.37.0 accelerate tiktoken einops transformers_stream_generator==0.0.4 scipy
+RUN pip3 install --no-cache-dir torch==2.2.2 torchvision==0.17.2 torchaudio==2.2.2 --index-url https://download.pytorch.org/whl/cu121
+RUN pip3 install --no-cache-dir transformers==4.40.2 accelerate tiktoken einops scipy
     
 FROM bundle_req as bundle_finetune
 ARG BUNDLE_FINETUNE=true
@@ -40,13 +40,13 @@ if [ "$BUNDLE_FINETUNE" = "true" ]; then
     cd /data/shared/Qwen
 
     # Full-finetune / LoRA.
-    pip3 install --no-cache-dir "deepspeed==0.14.0" "peft==0.9.0"
+    pip3 install --no-cache-dir "deepspeed==0.14.2" "peft==0.11.1"
 
     # Q-LoRA.
     apt update -y && DEBIAN_FRONTEND=noninteractive apt install -y --no-install-recommends \
         libopenmpi-dev openmpi-bin \
         && rm -rf /var/lib/apt/lists/*
-    pip3 install --no-cache-dir "optimum==1.17.1" "auto-gptq==0.7.1" mpi4py
+    pip3 install --no-cache-dir "optimum==1.20.0" "auto-gptq==0.7.1" "autoawq==0.2.5" mpi4py
 fi
 EOF
 
@@ -57,7 +57,7 @@ RUN <<EOF
 if [ "$BUNDLE_VLLM" = "true" ]; then
     cd /data/shared/Qwen
 
-    pip3 install --no-cache-dir vllm==0.3.1 "fschat[model_worker,webui]==0.2.36"
+    pip3 install --no-cache-dir vllm==0.4.3 "fschat[model_worker,webui]==0.2.36"
 fi
 EOF
 

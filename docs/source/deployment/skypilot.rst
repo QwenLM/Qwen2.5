@@ -1,6 +1,8 @@
 SkyPilot
 ========
 
+.. note:: The following does not apply to Qwen2 at present.
+
 What is SkyPilot
 ----------------
 

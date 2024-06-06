@@ -49,13 +49,13 @@ for example:
 
 .. code:: bash
 
-   huggingface-cli download Qwen/Qwen1.5-7B-Chat-GGUF qwen1_5-7b-chat-q5_k_m.gguf --local-dir . --local-dir-use-symlinks False
+   huggingface-cli download Qwen/Qwen2-7B-Instruct-GGUF qwen2-7b-instruct-q5_k_m.gguf --local-dir . --local-dir-use-symlinks False
 
 Then you can run the model with the following command:
 
 .. code:: bash
 
-   ./main -m qwen1_5-7b-chat-q5_k_m.gguf -n 512 --color -i -cml -f prompts/chat-with-qwen.txt
+   ./main -m qwen2-7b-instruct-q5_k_m.gguf -n 512 --color -i -cml -f prompts/chat-with-qwen.txt
 
 where ``-n`` refers to the maximum number of tokens to generate. There
 are other hyperparameters for you to choose and you can run
@@ -109,5 +109,5 @@ Use GGUF with LM Studio
 
 If you still find it difficult to use ``llama.cpp``, I advise you to
 play with `LM Studio <https://lmstudio.ai/>`__, which is a platform
-for your to search and run local LLMs. Qwen1.5 has already been
+for your to search and run local LLMs. Qwen2 has already been
 officially part of LM Studio. Have fun!
