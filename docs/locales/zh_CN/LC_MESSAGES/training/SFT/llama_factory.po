@@ -1,7 +1,7 @@
 # Copyright (C) 2024, Qwen Team, Alibaba Group.
 # This file is distributed under the same license as the Qwen package.
 #
-#, fuzzy
+
 msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: ../../source/training/SFT/llama_factory.rst:4
 #: d89bbf261ffd4360a3c5d5b0f5a8e784
-#, fuzzy
+
 msgid ""
 "Here we provide a script for supervised finetuning Qwen2 with `LLaMA-"
 "Factory <https://github.com/hiyouga/LLaMA-Factory>`__. This script for "

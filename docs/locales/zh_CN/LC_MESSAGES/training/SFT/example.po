@@ -1,7 +1,7 @@
 # Copyright (C) 2024, Qwen Team, Alibaba Group.
 # This file is distributed under the same license as the Qwen package.
 #
-#, fuzzy
+
 msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
@@ -22,7 +22,7 @@ msgid "Example"
 msgstr "示例"
 
 #: ../../source/training/SFT/example.rst:4 b075974261cb4a15b87b20bb208d80af
-#, fuzzy
+
 msgid ""
 "Here we provide a very simple script for supervised finetuning, which is "
 "revised from the training script in `Fastchat <https://github.com/lm-"

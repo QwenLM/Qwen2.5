@@ -1,7 +1,7 @@
 # Copyright (C) 2024, Qwen Team, Alibaba Group.
 # This file is distributed under the same license as the Qwen package.
 #
-#, fuzzy
+
 msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
@@ -45,7 +45,7 @@ msgid "Usage of AWQ Quantized Models with Transformers"
 msgstr "如何在Transformers中使用AWQ量化模型"
 
 #: ../../source/quantization/awq.rst:18 63681498a4c04b31a1e47158610817ae
-#, fuzzy
+
 msgid ""
 "Now, Transformers has officially supported AutoAWQ, which means that you "
 "can directly use the quantized model with Transformers. The following is "
@@ -60,7 +60,7 @@ msgid "Usage of AWQ Quantized Models with vLLM"
 msgstr "如何在vLLM中使用AWQ量化模型"
 
 #: ../../source/quantization/awq.rst:59 b93a8260df3d4de1b4b0e22bdf27011b
-#, fuzzy
+
 msgid ""
 "vLLM has supported AWQ, which means that you can directly use our "
 "provided AWQ models or those trained with ``AutoAWQ`` with vLLM. "
@@ -91,7 +91,7 @@ msgid ""
 msgstr "如果您希望将自定义模型量化为AWQ量化模型，我们建议您使用AutoAWQ。推荐通过安装源代码来获取并安装该工具包的最新版本："
 
 #: ../../source/quantization/awq.rst:116 12c4ef014a614b0ea7cf7c168154e077
-#, fuzzy
+
 msgid ""
 "Suppose you have finetuned a model based on ``Qwen2-7B``, which is named "
 "``Qwen2-7B-finetuned``, with your own dataset, e.g., Alpaca. To build "

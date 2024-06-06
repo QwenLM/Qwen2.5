@@ -1,7 +1,7 @@
 # Copyright (C) 2024, Qwen Team, Alibaba Group.
 # This file is distributed under the same license as the Qwen package.
 #
-#, fuzzy
+
 msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
@@ -42,7 +42,7 @@ msgid "Quantize Your Models and Make GGUF Files"
 msgstr "量化你的模型并生成GGUF文件"
 
 #: ../../source/quantization/gguf.rst:16 ae943002ddd14f708db84bead37ded7a
-#, fuzzy
+
 msgid ""
 "Before you move to quantization, make sure you have followed the "
 "instruction and started to use llama.cpp. The following guidance will NOT"

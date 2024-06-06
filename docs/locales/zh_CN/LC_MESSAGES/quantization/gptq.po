@@ -1,7 +1,7 @@
 # Copyright (C) 2024, Qwen Team, Alibaba Group.
 # This file is distributed under the same license as the Qwen package.
 #
-#, fuzzy
+
 msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
@@ -39,7 +39,7 @@ msgid "Usage of GPTQ Models with Transformers"
 msgstr "在Transformers中使用GPTQ模型"
 
 #: ../../source/quantization/gptq.rst:13 cb7553d702864612ac0cdaa4bde8ad92
-#, fuzzy
+
 msgid ""
 "Now, Transformers has officially supported AutoGPTQ, which means that you"
 " can directly use the quantized model with Transformers. The following is"
@@ -57,7 +57,7 @@ msgid "Usage of GPTQ Quantized Models with vLLM"
 msgstr "在vLLM中使用GPTQ量化模型"
 
 #: ../../source/quantization/gptq.rst:55 9014a48deb9b46b39f92638c510274c7
-#, fuzzy
+
 msgid ""
 "vLLM has supported GPTQ, which means that you can directly use our "
 "provided GPTQ models or those trained with ``AutoGPTQ`` with vLLM. "
@@ -87,7 +87,7 @@ msgid ""
 msgstr "如果你想将自定义模型量化为GPTQ量化模型，我们建议你使用AutoGPTQ工具。推荐通过安装源代码的方式获取并安装最新版本的该软件包。"
 
 #: ../../source/quantization/gptq.rst:112 ed66cd0f4d644b88a9962305df8b0373
-#, fuzzy
+
 msgid ""
 "Suppose you have finetuned a model based on ``Qwen2-7B``, which is named "
 "``Qwen2-7B-finetuned``, with your own dataset, e.g., Alpaca. To build "

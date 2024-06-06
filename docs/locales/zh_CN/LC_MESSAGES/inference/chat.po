@@ -1,7 +1,7 @@
 # Copyright (C) 2024, Qwen Team, Alibaba Group.
 # This file is distributed under the same license as the Qwen package.
 #
-#, fuzzy
+
 msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
@@ -22,7 +22,7 @@ msgid "Using Transformers to Chat"
 msgstr "使用Transformers实现Chat"
 
 #: ../../source/inference/chat.rst:4 621b6a5183214027883054a19513ca7f
-#, fuzzy
+
 msgid ""
 "The most significant but also the simplest usage of Qwen2 is to chat with"
 " it using the ``transformers`` library. In this document, we show how to "
@@ -37,7 +37,7 @@ msgid "Basic Usage"
 msgstr "基本用法"
 
 #: ../../source/inference/chat.rst:11 5220514bc84f4495a5215a294ac93465
-#, fuzzy
+
 msgid ""
 "You can just write several lines of code with ``transformers`` to chat "
 "with Qwen2-Instruct. Essentially, we build the tokenizer and the model "
@@ -103,7 +103,7 @@ msgid "Next Step"
 msgstr "下一步"
 
 #: ../../source/inference/chat.rst:124 3cc062eb2dd04c04bc3425ca2362d57c
-#, fuzzy
+
 msgid ""
 "Now you can chat with Qwen2 in either streaming mode or not. Continue to "
 "read the documentation and try to figure out more advanced usages of "
