@@ -112,6 +112,8 @@ Qwen1.5-7B-Chat as an example:
 
    python -m vllm.entrypoints.openai.api_server --model Qwen/Qwen1.5-7B-Chat
 
+.. tip:: If saw connection to https://huggingface.co/ failed, try: ``HF_ENDPOINT=https://hf-mirror.com python -m vllm.entrypoints.openai.api_server --model Qwen/Qwen1.5-7B-Chat``.
+
 Then, you can use the `create chat
 interface <https://platform.openai.com/docs/api-reference/chat/completions/create>`__
 to communicate with Qwen:
