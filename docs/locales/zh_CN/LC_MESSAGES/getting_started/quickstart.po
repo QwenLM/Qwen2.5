@@ -1,7 +1,7 @@
 # Copyright (C) 2024, Qwen Team, Alibaba Group.
 # This file is distributed under the same license as the Qwen package.
 #
-#, fuzzy
+
 msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
@@ -24,7 +24,7 @@ msgstr "快速开始"
 
 #: ../../source/getting_started/quickstart.rst:4
 #: 66c3d199697049058a702d04e20de638
-#, fuzzy
+
 msgid ""
 "This guide helps you quickly start using Qwen2. We provide examples of "
 "`Hugging Face Transformers "
@@ -44,7 +44,7 @@ msgstr "Hugging Face Transformers & ModelScope"
 
 #: ../../source/getting_started/quickstart.rst:12
 #: 55d24219350b4f04afbf6ced9e2f0764
-#, fuzzy
+
 msgid ""
 "To get a quick start with Qwen2, we advise you to try with the inference "
 "with ``transformers`` first. Make sure that you have installed "
@@ -94,7 +94,7 @@ msgstr "使用vLLM部署"
 
 #: ../../source/getting_started/quickstart.rst:97
 #: cf331d0e697d4c8f99d7e85381ce1419
-#, fuzzy
+
 msgid ""
 "To deploy Qwen2, we advise you to use vLLM. vLLM is a fast and easy-to-"
 "use framework for LLM inference and serving. In the following, we "
@@ -105,13 +105,13 @@ msgstr ""
 
 #: ../../source/getting_started/quickstart.rst:102
 #: 15973ac6f1dc41f8a9fd39ce2f52f6ca
-#, fuzzy
+
 msgid "First, make sure you have installed ``vLLM>=0.4.0``:"
 msgstr "首先，确保你已经安装 ``vLLM>=0.4.0`` ："
 
 #: ../../source/getting_started/quickstart.rst:108
 #: 4a4789797f6e4c6f81803b97f40cc4ba
-#, fuzzy
+
 msgid ""
 "Run the following code to build up a vllm service. Here we take Qwen2-7B-"
 "Instruct as an example:"

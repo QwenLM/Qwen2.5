@@ -1,7 +1,7 @@
 # Copyright (C) 2024, Qwen Team, Alibaba Group.
 # This file is distributed under the same license as the Qwen package.
 #
-#, fuzzy
+
 msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
@@ -93,7 +93,7 @@ msgid "Make Your GGUF Files"
 msgstr "生成你的GGUF文件"
 
 #: ../../source/run_locally/llama.cpp.rst:72 caa62ed5d13d417091ef80dd59cffd92
-#, fuzzy
+
 msgid ""
 "We introduce the method of creating and quantizing GGUF files in "
 "`quantization/llama.cpp <../quantization/gguf.html>`__. You can refer to "
@@ -135,7 +135,7 @@ msgid "Use GGUF with LM Studio"
 msgstr "在LM Studio使用GGUF"
 
 #: ../../source/run_locally/llama.cpp.rst:110 25b52c151477480ca42901dcb84c3c5d
-#, fuzzy
+
 msgid ""
 "If you still find it difficult to use ``llama.cpp``, I advise you to play"
 " with `LM Studio <https://lmstudio.ai/>`__, which is a platform for your "
@@ -143,5 +143,5 @@ msgid ""
 "LM Studio. Have fun!"
 msgstr ""
 "如果你仍然觉得使用llama.cpp有困难，我建议你尝试一下 `LM Studio <https://lmstudio.ai/>`__ "
-"这个平台，它允许你搜索和运行本地的大规模语言模型。Qwen1.5已经正式成为LM Studio的一部分。祝你使用愉快！"
+"这个平台，它允许你搜索和运行本地的大规模语言模型。Qwen2已经正式成为LM Studio的一部分。祝你使用愉快！"
 

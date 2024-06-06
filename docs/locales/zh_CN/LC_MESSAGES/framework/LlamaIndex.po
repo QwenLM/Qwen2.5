@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the Qwen package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
 #
-#, fuzzy
+
 msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
@@ -24,7 +24,7 @@ msgid "LlamaIndex"
 msgstr "LlamaIndex"
 
 #: ../../source/framework/LlamaIndex.rst:4 032a47f3e4cc4d2fae40bab9582f9087
-#, fuzzy
+
 msgid ""
 "To connect Qwen2 with external data, such as documents, web pages, etc., "
 "we offer a tutorial on `LlamaIndex <https://www.llamaindex.ai/>`__. This "
@@ -102,57 +102,8 @@ msgid "RAG"
 msgstr "检索增强（RAG）"
 
 #: ../../source/framework/LlamaIndex.rst:131 3af3177e41464cca9dec950b16606f45
-#, fuzzy
+
 msgid ""
 "Now you can perform queries, and Qwen2 will answer based on the content "
 "of the indexed documents."
 msgstr "现在您可以输入查询，Qwen2 将基于索引文档的内容提供答案。"
-
-#~ msgid ""
-#~ "To connect Qwen1.5. with external data,"
-#~ " such as documents, web pages, etc.,"
-#~ " we recommend using `LlamaIndex "
-#~ "<https://www.llamaindex.ai/>`__. This guide helps"
-#~ " you quickly implement retrieval-augmented"
-#~ " generation (RAG) using LlamaIndex with "
-#~ "Qwen1.5."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Now we can set up LLM, embedding"
-#~ " model, and the related configurations. "
-#~ "Qwen1.5-Chat supports conversations in "
-#~ "multiple languages, including English and "
-#~ "Chinese. We recommend using the "
-#~ "``bge-base-en-v1.5`` model to retrieve "
-#~ "from English documents, and you can "
-#~ "download the ``bge-base-zh-v1.5`` model"
-#~ " to retrieve from Chinese documents. "
-#~ "You can also choose ``bge-large`` "
-#~ "or ``bge-small`` as the embedding "
-#~ "model or modify the context window "
-#~ "size or text chunk size depending "
-#~ "on your computing resources. Qwen 1.5"
-#~ " model families support a maximum of"
-#~ " 32K context window size."
-#~ msgstr ""
-
-#~ msgid ""
-#~ "Now we can set up LLM, embedding"
-#~ " model, and the related configurations. "
-#~ "Qwen1.5-Chat supports conversations in "
-#~ "multiple languages, including English and "
-#~ "Chinese. You can use the ``bge-"
-#~ "base-en-v1.5`` model to retrieve from "
-#~ "English documents, and you can download"
-#~ " the ``bge-base-zh-v1.5`` model to"
-#~ " retrieve from Chinese documents. You "
-#~ "can also choose ``bge-large`` or "
-#~ "``bge-small`` as the embedding model "
-#~ "or modify the context window size "
-#~ "or text chunk size depending on "
-#~ "your computing resources. Qwen 1.5 model"
-#~ " families support a maximum of 32K"
-#~ " context window size."
-#~ msgstr ""
-

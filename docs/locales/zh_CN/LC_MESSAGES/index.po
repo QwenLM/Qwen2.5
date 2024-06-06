@@ -1,7 +1,7 @@
 # Copyright (C) 2024, Qwen Team, Alibaba Group.
 # This file is distributed under the same license as the Qwen package.
 #
-#, fuzzy
+
 msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
@@ -47,7 +47,7 @@ msgstr "训练"
 
 #: ../../source/index.rst:89
 msgid "Framework"
-msgstr ""
+msgstr "框架"
 
 #: ../../source/index.rst:98
 msgid "Benchmark"
@@ -62,7 +62,7 @@ msgid "Qwen"
 msgstr ""
 
 #: ../../source/index.rst:16 21c21bed2bbd448a83aa65884306373c
-#, fuzzy
+
 msgid ""
 "Qwen is the large language model and large multimodal model series of the"
 " Qwen Team, Alibaba Group. Now the large language models have been "
@@ -73,35 +73,38 @@ msgid ""
 "understanding, audio understanding, tool use, role play, playing as AI "
 "agent, etc."
 msgstr ""
-"Qwen是阿里巴巴集团Qwen团队研发的大语言模型和大型多模态模型系列。目前，大语言模型已升级至Qwen2版本。无论是语言模型还是多模态模型，均在大规模多语言和多模态数据上进行预训练，并通过高质量数据进行后期微调以贴近人类偏好。Qwen具备自然语言理解、文本生成、视觉理解、音频理解、工具使用、角色扮演、作为AI"
+"Qwen是阿里巴巴集团Qwen团队研发的大语言模型和大型多模态模型系列。"
+"目前，大语言模型已升级至Qwen2版本。无论是语言模型还是多模态模型，"
+"均在大规模多语言和多模态数据上进行预训练，并通过高质量数据进行后期微调以贴近人类偏好。"
+"Qwen具备自然语言理解、文本生成、视觉理解、音频理解、工具使用、角色扮演、作为AI"
 " Agent进行互动等多种能力。"
 
 #: ../../source/index.rst:19 f08b7d075d644a7d85a4784795f61945
-#, fuzzy
+
 msgid "The latest version, Qwen2, has the following features:"
 msgstr "最新版本Qwen2有以下特点："
 
 #: ../../source/index.rst:21 da11061db1dc455b8ca18bed0a596985
-#, fuzzy
+
 msgid ""
 "5 sizes, including Qwen2-0.5B, Qwen2-1.5B, Qwen2-7B, Qwen2-57B-A14B, and "
 "Qwen2-72B;"
 msgstr "5种模型规模，包括0.5B、1.5B、7B、57B-A14B和72B；"
 
 #: ../../source/index.rst:22 32b9f6cf7b31467bbe8ff9726be33d39
-#, fuzzy
+
 msgid ""
 "Base and instruction-tuned models for each size, with the instruction-"
 "tuned models aligned for human preferences;"
 msgstr "针对每种尺寸提供基础模型和指令微调模型，并确保指令微调模型按照人类偏好进行校准；"
 
 #: ../../source/index.rst:23 3da9cce4496644f6a061677c51b53ee7
-#, fuzzy
+
 msgid "Multilingual support of both base and instruction-tuned models;"
 msgstr "基础模型和指令微调模型的多语言支持；"
 
 #: ../../source/index.rst:24 550759f0ff87493babb0f8a57bc48e3c
-#, fuzzy
+
 msgid ""
 "Stable support of 32K context length for models of all sizes and up to "
 "128K tokens with Qwen2-7B-Instruct and Qwen2-72B-Instruct;"
@@ -132,7 +135,7 @@ msgid "`ModelScope <https://modelscope.cn/organization/qwen>`__"
 msgstr "`ModelScope <https://modelscope.cn/organization/qwen>`__"
 
 #: ../../source/index.rst:33 f5a7280dd90d482383a601f1f4240269
-#, fuzzy
+
 msgid ""
 "`Qwen2 Collection "
 "<https://huggingface.co/collections/Qwen/qwen2-6659360b33528ced941e557f>`__"

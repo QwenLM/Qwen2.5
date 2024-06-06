@@ -1,7 +1,7 @@
 # Copyright (C) 2024, Qwen Team, Alibaba Group.
 # This file is distributed under the same license as the Qwen package.
 #
-#, fuzzy
+
 msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
@@ -94,7 +94,7 @@ msgstr "接下来，您可以根据您的操作系统执行 ``pip install -r`` �
 
 #: ../../source/web_ui/text_generation_webui.rst:52
 #: dd126288544f4693ac83415914af8568
-#, fuzzy
+
 msgid ""
 "For ``bitsandbytes`` and ``llama-cpp-python`` inside the requirements, I "
 "advise you to install them through ``pip`` directly. However, temporarily"
@@ -107,7 +107,7 @@ msgstr ""
 "对于requirements中的 ``bitsandbytes`` 和 ``llama-cpp-python`` ，我建议您直接通过 "
 "``pip`` "
 "进行安装。但是，暂时请不要使用GGUF，因为其与TGW配合时的性能表现不佳。在完成所需包的安装之后，您需要准备模型，将模型文件或目录放在``./models``文件夹中。"
-"例如，您应按照以下方式将``Qwen1.5-7B-Chat``的transformers模型目录放置到相应位置。"
+"例如，您应按照以下方式将``Qwen2-7B-Chat``的transformers模型目录放置到相应位置。"
 
 #: ../../source/web_ui/text_generation_webui.rst:76
 #: 9860e39a2b264e2e924b60bf7a09691e

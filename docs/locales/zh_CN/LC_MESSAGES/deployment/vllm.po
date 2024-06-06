@@ -1,7 +1,7 @@
 # Copyright (C) 2024, Qwen Team, Alibaba Group.
 # This file is distributed under the same license as the Qwen package.
 #
-#, fuzzy
+
 msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
@@ -42,7 +42,7 @@ msgid "Installation"
 msgstr "安装"
 
 #: ../../source/deployment/vllm.rst:16 e00fb5d35f7f400a8de92e3139f53edb
-#, fuzzy
+
 msgid ""
 "By default, you can install ``vLLM`` by pip: ``pip install vLLM>=0.4.0``,"
 " but if you are using CUDA 11.8, check the note in the official document "
@@ -61,7 +61,7 @@ msgid "Offline Batched Inference"
 msgstr "离线推理"
 
 #: ../../source/deployment/vllm.rst:26 0541433d0a1443c6b47458f0e78dde43
-#, fuzzy
+
 msgid ""
 "Models supported by Qwen2 codes are supported by vLLM. The simplest usage"
 " of vLLM is offline batched inference as demonstrated below."
@@ -109,7 +109,7 @@ msgid "Multi-GPU Distributred Serving"
 msgstr "多卡分布式部署"
 
 #: ../../source/deployment/vllm.rst:124 0c4df958ade2411d8e0f91c976b8e148
-#, fuzzy
+
 msgid ""
 "To scale up your serving throughputs, distributed serving helps you by "
 "leveraging more GPU devices. Besides, for large models like ``Qwen2-72B-"
@@ -132,7 +132,7 @@ msgid "Serving Quantized Models"
 msgstr "部署量化模型"
 
 #: ../../source/deployment/vllm.rst:147 13a33ff5b2114348a6ce5a877cdeabcc
-#, fuzzy
+
 msgid ""
 "vLLM supports different types of quantized models, including AWQ, GPTQ, "
 "SqueezeLLM, etc. Here we show how to deploy AWQ and GPTQ models. The "
@@ -145,7 +145,7 @@ msgstr ""
 " ："
 
 #: ../../source/deployment/vllm.rst:158 e87c3cb93a034dacaac795b139527ab7
-#, fuzzy
+
 msgid "or GPTQ models like ``Qwen2-72B-Instruct-GPTQ-Int8``:"
 msgstr "或者是GPTQ模型比如 ``Qwen2-72B-Instruct-GPTQ-Int8`` ："
 
