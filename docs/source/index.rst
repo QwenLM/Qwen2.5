@@ -99,4 +99,5 @@ Documentation
    :maxdepth: 1
    :caption: Benchmark
 
-   benchmark/hf_infer
+   benchmark/quantization_benchmark
+   benchmark/speed_benchmark
