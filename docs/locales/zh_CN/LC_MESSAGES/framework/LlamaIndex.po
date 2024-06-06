@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-18 18:47+0800\n"
+"POT-Creation-Date: 2024-06-06 20:36+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -17,86 +17,96 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.14.0\n"
+"Generated-By: Babel 2.15.0\n"
 
-#: ../../source/framework/LlamaIndex.rst:2 fd8cb627291b4337a5343514cb875ce3
+#: ../../source/framework/LlamaIndex.rst:2 2201f383dd3841aaac2b31b38d222a53
 msgid "LlamaIndex"
 msgstr "LlamaIndex"
 
-#: ../../source/framework/LlamaIndex.rst:4 3814141ca63942118893f4f20a549b28
+#: ../../source/framework/LlamaIndex.rst:4 032a47f3e4cc4d2fae40bab9582f9087
+#, fuzzy
 msgid ""
-"To connect Qwen1.5. with external data, such as documents, web pages, "
-"etc., we offer a tutorial on `LlamaIndex <https://www.llamaindex.ai/>`__."
-" This guide helps you quickly implement retrieval-augmented generation "
-"(RAG) using LlamaIndex with Qwen1.5."
-msgstr "为了实现 Qwen1.5 与外部数据（例如文档、网页等）的连接，我们提供了 `LlamaIndex <https://www.llamaindex.ai/>`__ 的详细教程。本指南旨在帮助用户利用 LlamaIndex 与 Qwen1.5 快速部署检索增强生成（RAG）技术。"
+"To connect Qwen2 with external data, such as documents, web pages, etc., "
+"we offer a tutorial on `LlamaIndex <https://www.llamaindex.ai/>`__. This "
+"guide helps you quickly implement retrieval-augmented generation (RAG) "
+"using LlamaIndex with Qwen2."
+msgstr ""
+"为了实现 Qwen2 与外部数据（例如文档、网页等）的连接，我们提供了 `LlamaIndex "
+"<https://www.llamaindex.ai/>`__ 的详细教程。本指南旨在帮助用户利用 LlamaIndex 与 Qwen2 "
+"快速部署检索增强生成（RAG）技术。"
 
-#: ../../source/framework/LlamaIndex.rst:8 9d50f10bb8b2432785823a536b89b902
+#: ../../source/framework/LlamaIndex.rst:8 86132c1085f8413495c9864d4ebcc0e1
 msgid "Preparation"
 msgstr "环境准备"
 
-#: ../../source/framework/LlamaIndex.rst:10 fbb180e615474ca49345c4e6ace1bb74
+#: ../../source/framework/LlamaIndex.rst:10 a7e8459ede464f179eb47ceb16236431
 msgid ""
 "To implement RAG, we advise you to install the LlamaIndex-related "
 "packages first."
 msgstr "为实现检索增强生成（RAG），我们建议您首先安装与 LlamaIndex 相关的软件包。"
 
-#: ../../source/framework/LlamaIndex.rst:13 6b09fffd6967464fb87848e130421243
+#: ../../source/framework/LlamaIndex.rst:13 f84c1655beed484a81135d39b83ed295
 msgid "The following is a simple code snippet showing how to do this:"
 msgstr "以下是一个简单的代码示例："
 
-#: ../../source/framework/LlamaIndex.rst:22 34c29b67ddcb4d5997c429bf7a6ecee8
+#: ../../source/framework/LlamaIndex.rst:22 437d18de6baf41bc9c17949fbfda1505
 msgid "Set Parameters"
 msgstr "设置参数"
 
-#: ../../source/framework/LlamaIndex.rst:24 0e6d3c9deb384da3b328fae2199c0239
+#: ../../source/framework/LlamaIndex.rst:24 890da76a3ca94aa89ea45d1311927631
 msgid ""
 "Now we can set up LLM, embedding model, and the related configurations. "
-"Qwen1.5-Chat supports conversations in multiple languages, including "
+"Qwen2-Instruct supports conversations in multiple languages, including "
 "English and Chinese. You can use the ``bge-base-en-v1.5`` model to "
 "retrieve from English documents, and you can download the ``bge-base-"
 "zh-v1.5`` model to retrieve from Chinese documents. You can also choose "
 "``bge-large`` or ``bge-small`` as the embedding model or modify the "
 "context window size or text chunk size depending on your computing "
-"resources. Qwen 1.5 model families support a maximum of 32K context "
-"window size."
+"resources. Qwen2 model families support a maximum of 32K context window "
+"size (up to 128K for Qwen2-7B-Instruct and Qwen2-72B-Instrut, requring "
+"extra configuration)"
 msgstr ""
+"现在，我们可以设置语言模型和向量模型。Qwen2-Instruct支持包括英语和中文在内的多种语言对话。您可以使用``bge-base-"
+"en-v1.5``模型来检索英文文档，下载``bge-base-zh-v1.5``模型以检索中文文档。根据您的计算资源，您还可以选择``bge-"
+"large``或``bge-"
+"small``作为向量模型，或调整上下文窗口大小或文本块大小。Qwen2模型系列支持最大32K上下文窗口大小（Qwen2-7B-"
+"Instruct与Qwen2-72B-Instruct可支持128K上下文，但需要额外配置）"
 
-#: ../../source/framework/LlamaIndex.rst:82 1243ca1a38c34d1797bae5518410374b
+#: ../../source/framework/LlamaIndex.rst:82 5fb506f45f9543bdb8fe26ec86733601
 msgid "Build Index"
-msgstr "现在，我们可以设置语言模型和向量模型。Qwen1.5-Chat支持包括英语和中文在内的多种语言对话。您可以使用``bge-base-en-v1.5``模型来检索英文文档，下载``bge-base-zh-v1.5``模型以检索中文文档。根据您的计算资源，您还可以选择``bge-large``或``bge-small``作为向量模型，或调整上下文窗口大小或文本块大小。Qwen 1.5模型系列支持最大32K上下文窗口大小。"
+msgstr "构建索引"
 
-
-#: ../../source/framework/LlamaIndex.rst:84 5fba4b593336404199cb633cb37290ea
+#: ../../source/framework/LlamaIndex.rst:84 d6e627b58339495dbfcb3047e99aa5c7
 msgid "Now we can build index from documents or websites."
 msgstr "现在我们可以从文档或网站构建索引。"
 
-#: ../../source/framework/LlamaIndex.rst:86 6824493c7a0b4bc593374050a816b1bf
+#: ../../source/framework/LlamaIndex.rst:86 ba3bb667679b474b909561fb1acc7b46
 msgid ""
 "The following code snippet demonstrates how to build an index for files "
 "(regardless of whether they are in PDF or TXT format) in a local folder "
 "named 'document'."
 msgstr "以下代码片段展示了如何为本地名为'document'的文件夹中的文件（无论是PDF格式还是TXT格式）构建索引。"
 
-#: ../../source/framework/LlamaIndex.rst:99 ba2dd451ed214fce8b5dcd7d2605edad
+#: ../../source/framework/LlamaIndex.rst:99 d0edce40a2e84de8b7e8f979ce025a1f
 msgid ""
 "The following code snippet demonstrates how to build an index for the "
 "content in a list of websites."
 msgstr "以下代码片段展示了如何为一系列网站的内容构建索引。"
 
-#: ../../source/framework/LlamaIndex.rst:115 0caf80e9b56344ba8551739c2c6e36d1
+#: ../../source/framework/LlamaIndex.rst:115 1ab81de57d21446d9d4c1454f0bde93d
 msgid "To save and load the index, you can use the following code snippet."
 msgstr "要保存和加载已构建的索引，您可以使用以下代码示例。"
 
-#: ../../source/framework/LlamaIndex.rst:129 9d6e83c2ffbd407cb88c383d88a396da
+#: ../../source/framework/LlamaIndex.rst:129 57a81c64c19645ff988842bd79f4d0d4
 msgid "RAG"
 msgstr "检索增强（RAG）"
 
-#: ../../source/framework/LlamaIndex.rst:131 49c900e2323d4e3ca121fe25bdc30b38
+#: ../../source/framework/LlamaIndex.rst:131 3af3177e41464cca9dec950b16606f45
+#, fuzzy
 msgid ""
-"Now you can perform queries, and Qwen1.5 will answer based on the content"
-" of the indexed documents."
-msgstr "现在您可以输入查询，Qwen1.5 将基于索引文档的内容提供答案。"
+"Now you can perform queries, and Qwen2 will answer based on the content "
+"of the indexed documents."
+msgstr "现在您可以输入查询，Qwen2 将基于索引文档的内容提供答案。"
 
 #~ msgid ""
 #~ "To connect Qwen1.5. with external data,"
@@ -125,5 +135,24 @@ msgstr "现在您可以输入查询，Qwen1.5 将基于索引文档的内容提�
 #~ "on your computing resources. Qwen 1.5"
 #~ " model families support a maximum of"
 #~ " 32K context window size."
+#~ msgstr ""
+
+#~ msgid ""
+#~ "Now we can set up LLM, embedding"
+#~ " model, and the related configurations. "
+#~ "Qwen1.5-Chat supports conversations in "
+#~ "multiple languages, including English and "
+#~ "Chinese. You can use the ``bge-"
+#~ "base-en-v1.5`` model to retrieve from "
+#~ "English documents, and you can download"
+#~ " the ``bge-base-zh-v1.5`` model to"
+#~ " retrieve from Chinese documents. You "
+#~ "can also choose ``bge-large`` or "
+#~ "``bge-small`` as the embedding model "
+#~ "or modify the context window size "
+#~ "or text chunk size depending on "
+#~ "your computing resources. Qwen 1.5 model"
+#~ " families support a maximum of 32K"
+#~ " context window size."
 #~ msgstr ""
 
