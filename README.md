@@ -21,7 +21,7 @@ To learn more about Qwen2, feel free to read our documentation \[[EN](https://qw
 * Deployment: the demonstration of how to deploy Qwen for large-scale inference with frameworks like `vLLM`, `TGI`, etc.;
 * Quantization: the practice of quantizing LLMs with GPTQ, AWQ, as well as the guidance for how to make high-quality quantized GGUF files;
 * Training: the instructions for post-training, including SFT and RLHF (TODO) with frameworks like Axolotl, LLaMA-Factory, etc.
-* Framework: the usage of Qwen with frameworks for applicaition, e.g., RAG, Agent, etc.
+* Framework: the usage of Qwen with frameworks for application, e.g., RAG, Agent, etc.
 * Benchmark: the statistics about inference speed and memory footprint.
 
 ## Introduction
