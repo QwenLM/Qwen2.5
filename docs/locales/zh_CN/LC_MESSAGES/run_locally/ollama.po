@@ -46,7 +46,7 @@ msgid ""
 "the website, where you can find the Qwen2 models. Except for the default "
 "one, you can choose to run Qwen2-Instruct models of different sizes by:"
 msgstr ""
-"访问官方网站 `Ollama <https://ollama.com/>`__ ”，点击 ``Download`` "
+"访问官方网站 `Ollama <https://ollama.com/>`__ ，点击 ``Download`` "
 "以在您的设备上安装Ollama。您还可以在网站上搜索模型，在这里您可以找到Qwen2系列模型。除了默认模型之外，您可以通过以下方式选择运行不同大小的Qwen2-Instruct模型："
 
 #: ../../source/run_locally/ollama.rst:24 56057e178ecc4fe298a8a90794f956ee
