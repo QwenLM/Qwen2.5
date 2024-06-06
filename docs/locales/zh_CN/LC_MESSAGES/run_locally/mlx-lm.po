@@ -40,15 +40,15 @@ msgstr "准备工作"
 
 #: ../../source/run_locally/mlx-lm.rst:11 d5f51ef3f02d4987911d7973be86dc28
 msgid "The easiest way to get started is to install the ``mlx-lm`` package:"
-msgstr "首先需要安装``mlx-lm``包："
+msgstr "首先需要安装 ``mlx-lm`` 包："
 
 #: ../../source/run_locally/mlx-lm.rst:13 78ec5d3202ad46549ca45c7c60dbd999
 msgid "with ``pip``:"
-msgstr "使用``pip``："
+msgstr "使用 ``pip`` ："
 
 #: ../../source/run_locally/mlx-lm.rst:19 49c9ddc9ee9d45e8a1ddf3e61c7abc8d
 msgid "with ``conda``:"
-msgstr "使用``conda``："
+msgstr "使用 ``conda`` ："
 
 #: ../../source/run_locally/mlx-lm.rst:27 7cc5f90094b24917a815c6402418f160
 msgid "Runnig with Qwen MLX Files"
@@ -60,21 +60,21 @@ msgid ""
 "organization, and to search for what you need you can search the repo "
 "names with ``-MLX``."
 msgstr ""
-"我们已在Hugging Face提供了适用于``mlx-lm``的模型文件，请搜索带``-MLX``的存储库。"
+"我们已在Hugging Face提供了适用于 ``mlx-lm`` 的模型文件，请搜索带 ``-MLX`` 的存储库。"
 
 #: ../../source/run_locally/mlx-lm.rst:31 4efb7a29e4614082b98be6e7e467ec3d
 msgid ""
 "Here provides a code snippet with ``apply_chat_template`` to show you how"
 " to load the tokenizer and model and how to generate contents."
-msgstr "这里我们展示了一个代码样例，其中使用了``apply_chat_template``应用对话模板。"
+msgstr "这里我们展示了一个代码样例，其中使用了 ``apply_chat_template`` 来应用对话模板。"
 
 #: ../../source/run_locally/mlx-lm.rst:54 53f991f7820a456bb366dc03c553b4f6
 msgid "Make Your MLX files"
-msgstr "自行制作MLX文件"
+msgstr "自行制作MLX格式模型"
 
 #: ../../source/run_locally/mlx-lm.rst:56 133ff0db1ce94efba0d1ae6ee8a6615e
 msgid "You can make mlx files with just one command:"
-msgstr "仅有一条命令即可制作mlx文件"
+msgstr "仅用一条命令即可制作mlx格式模型"
 
 #: ../../source/run_locally/mlx-lm.rst:62 e8c0a6a2198342c0893fc6cacbc16362
 msgid "where"
@@ -86,7 +86,7 @@ msgstr "``--hf-path``: Hugging Face Hub上的模型名或本地路径"
 
 #: ../../source/run_locally/mlx-lm.rst:66 34b7c6f2f78440ec9d233871719efab3
 msgid "``--mlx-path``: the path for output files"
-msgstr "``--mlx-path``: 输出文件的存储路径"
+msgstr "``--mlx-path``: 输出模型文件的存储路径"
 
 #: ../../source/run_locally/mlx-lm.rst:68 ba2281a5f27b4f6684e796e49434e3c3
 msgid "``-q``: enable quantization"
