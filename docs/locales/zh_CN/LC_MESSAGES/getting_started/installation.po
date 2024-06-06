@@ -23,7 +23,6 @@ msgstr "安装"
 
 #: ../../source/getting_started/installation.rst:4
 #: bfd0be814a04456c94ccce3218483d0c
-
 msgid ""
 "To get a quick start with Qwen2, you can install the ``transformers`` "
 "library from Hugging Face and use models in the `Qwen2 collection "
