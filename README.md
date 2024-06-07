@@ -143,6 +143,21 @@ chat_completion = client.chat.completions.create(
 )
 ```
 
+If you have encountered problems related to quantized models on GPU, please try:
+
+- Enabling the flash attention implementation in the `llama.cpp` backend (for `ollama` over 0.1.39)
+  ```
+  OLLAMA_FLASH_ATTENTION=1 ollama serve
+  ```
+  or following the instructions at [ollama faq](https://github.com/ollama/ollama/blob/main/docs/faq.md#setting-environment-variables-on-linux) to configure the environment variables in ollama service.
+
+- Disabling running on GPU in the ollama app:
+  ```
+  >>> /set parameter num_gpu 0
+  Set parameter 'num_gpu' to '0'
+  ``` 
+
+
 For additional details, please visit [ollama.ai](https://ollama.ai/).
 
 #### llama.cpp
@@ -151,6 +166,8 @@ Download our provided GGUF files or create them by yourself, and you can directl
 ```shell
 ./main -m <path-to-file> -n 512 --color -i -cml -f prompts/chat-with-qwen.txt
 ```
+
+If you have encountered problems related to quantized models on GPU, please try passing the `-fa` argument to enable the flash attention implementation in newest version of `llama.cpp`.
 
 #### MLX-LM
 
