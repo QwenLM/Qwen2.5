@@ -55,7 +55,7 @@ Detailed evaluation results are reported in this <a href="https://qwenlm.github.
 > </b>
 > </div>
 
-For requirements on GPU memory and the respective througput, see results [here](https://qwen.readthedocs.io/en/latest/benchmark/speed_benchmark.html).
+For requirements on GPU memory and the respective throughput, see results [here](https://qwen.readthedocs.io/en/latest/benchmark/speed_benchmark.html).
 
 ## Quickstart
 
