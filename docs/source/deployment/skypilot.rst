@@ -57,7 +57,7 @@ master branch automatically cloned by running:
    docker exec -it sky /bin/bash
 
 Running Qwen2-72B-Instruct with SkyPilot
---------------------------------------
+----------------------------------------
 
 1. Start serving Qwen2-72B-Instruct on a single instance with any
    available GPU in the list specified in
