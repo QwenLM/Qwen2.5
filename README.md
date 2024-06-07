@@ -143,7 +143,9 @@ chat_completion = client.chat.completions.create(
 )
 ```
 
-If you have encountered problems related to quantized models on GPU, please try:
+If you have encountered problems related to quantized models on GPU, please try one of the following:
+
+- Upgrading `ollama` to at least 0.1.42.
 
 - Enabling the flash attention implementation in the `llama.cpp` backend (for `ollama` over 0.1.39)
   ```
