@@ -1,8 +1,6 @@
 SkyPilot
 ========
 
-.. note:: The following does not apply to Qwen2 at present.
-
 What is SkyPilot
 ----------------
 
@@ -58,10 +56,10 @@ master branch automatically cloned by running:
 
    docker exec -it sky /bin/bash
 
-Running Qwen1.5-72B-Chat with SkyPilot
+Running Qwen2-72B-Instruct with SkyPilot
 --------------------------------------
 
-1. Start serving Qwen1.5-72B-Chat on a single instance with any
+1. Start serving Qwen2-72B-Instruct on a single instance with any
    available GPU in the list specified in
    `serve-72b.yaml <https://github.com/skypilot-org/skypilot/blob/master/llm/qwen/serve-72b.yaml>`__
    with a vLLM-powered OpenAI-compatible endpoint:
@@ -79,7 +77,7 @@ Running Qwen1.5-72B-Chat with SkyPilot
    curl -L http://$IP:8000/v1/completions \
        -H "Content-Type: application/json" \
        -d '{
-         "model": "Qwen/Qwen1.5-72B-Chat",
+         "model": "Qwen/Qwen2-72B-Instruct",
          "prompt": "My favorite food is",
          "max_tokens": 512
      }' | jq -r '.choices[0].text'
@@ -91,7 +89,7 @@ Running Qwen1.5-72B-Chat with SkyPilot
    curl -L http://$IP:8000/v1/chat/completions \
        -H "Content-Type: application/json" \
        -d '{
-         "model": "Qwen/Qwen1.5-72B-Chat",
+         "model": "Qwen/Qwen2-72B-Instruct",
          "messages": [
            {
              "role": "system",
@@ -159,7 +157,7 @@ of the service while minimizing the cost.
    curl -L http://$ENDPOINT/v1/chat/completions \
        -H "Content-Type: application/json" \
        -d '{
-         "model": "Qwen/Qwen1.5-72B-Chat",
+         "model": "Qwen/Qwen2-72B-Instruct",
          "messages": [
            {
              "role": "system",
@@ -173,10 +171,10 @@ of the service while minimizing the cost.
          "max_tokens": 512
      }' | jq -r '.choices[0].message.content'
 
-Accessing Qwen1.5 with Chat GUI
+Accessing Qwen2 with Chat GUI
 ---------------------------------------------
 
-It is also possible to access the Qwen1.5 service with GUI by connecting a
+It is also possible to access the Qwen2 service with GUI by connecting a
 `FastChat GUI server <https://github.com/lm-sys/FastChat>`__ to the endpoint launched
 above (see `gui.yaml <https://github.com/skypilot-org/skypilot/blob/master/llm/qwen/gui.yaml>`__).
 
@@ -197,6 +195,6 @@ Note that you may get better results by using a different temperature and top_p 
 Summary
 -------
 
-With SkyPilot, it is easy for you to deploy Qwen1.5 on any cloud. We
-advise you to read the official doc for more usages and more updates.
+With SkyPilot, it is easy for you to deploy Qwen2 on any cloud. We
+advise you to read the official doc for more usages and updates.
 Check `this <https://skypilot.readthedocs.io/>`__ out!
