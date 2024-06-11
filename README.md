@@ -108,6 +108,10 @@ We strongly advise users especially those in mainland China to use ModelScope. `
 
 #### Ollama
 
+> [!Warning]
+> You need `ollama>=0.1.42`.
+
+
 > [!NOTE]
 > <div align="center">
 > Ollama provides an <a href="https://github.com/ollama/ollama/blob/main/docs/openai.md">OpenAI-compatible API</a>, which however does NOT support <b>function calling</b>. For tool use capabilities, consider using <a href="https://github.com/QwenLM/Qwen-Agent">Qwen-Agent</a>, which offers a wrapper for function calling over the API.
@@ -142,23 +146,6 @@ chat_completion = client.chat.completions.create(
     model='qwen2:7b',
 )
 ```
-
-If you have encountered problems related to quantized models on GPU, please try one of the following:
-
-- Upgrading `ollama` to at least 0.1.42.
-
-- Enabling the flash attention implementation in the `llama.cpp` backend (for `ollama` over 0.1.39)
-  ```
-  OLLAMA_FLASH_ATTENTION=1 ollama serve
-  ```
-  or following the instructions at [ollama faq](https://github.com/ollama/ollama/blob/main/docs/faq.md#setting-environment-variables-on-linux) to configure the environment variables in ollama service.
-
-- Disabling running on GPU in the ollama app:
-  ```
-  >>> /set parameter num_gpu 0
-  Set parameter 'num_gpu' to '0'
-  ``` 
-
 
 For additional details, please visit [ollama.ai](https://ollama.ai/).
 
