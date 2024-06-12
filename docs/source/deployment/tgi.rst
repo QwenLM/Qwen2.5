@@ -65,9 +65,9 @@ The full API is listed in this Swagger UI: `https://huggingface.github.io/text-g
 Quantization for Performance
 ----------------------------
 
-Qwen2 come with both GPTQ and AWQ model. You can run them with additional --quantize flag
+Qwen2 comes with both GPTQ and AWQ models. You can run them with additional `--quantize` flag
 . 
-TGI can also serve quantized qwen models, for example Qwen/Qwen2-0.5B-Instruct can be ran with "--quantize gptq"
+TGI can also serve quantized Qwen models, for example, Qwen/Qwen2-0.5B-Instruct can be ran with `--quantize gptq`
 
 .. code:: bash
 
@@ -80,13 +80,13 @@ TGI can also serve quantized qwen models, for example Qwen/Qwen2-0.5B-Instruct c
 
    docker run --gpus all --shm-size 1g -p 8080:80 -v $volume:/data ghcr.io/huggingface/text-generation-inference:2.0 --model-id $model --quantize gptq
 
-If the model is quantized with awq, e.g. Qwen/Qwen2-7B-Instruct-AWQ please use --quantize awq
+If the model is quantized with AWQ, e.g. Qwen/Qwen2-7B-Instruct-AWQ please use `--quantize awq`
 
 
 Multi accelerators Deployment
 ---------------------
 
-Please use --num-shard flag and set it value to the number of accelerators.
+Please use `--num-shard` flag and set its value to the number of accelerators.
 
 
 Zero-Code Deployment with HF Inference Endpoints
