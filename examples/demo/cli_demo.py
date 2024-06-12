@@ -16,15 +16,15 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, TextIteratorStreamer
 from transformers.trainer_utils import set_seed
 
-DEFAULT_CKPT_PATH = 'Qwen/Qwen1.5-7B-Chat'
+DEFAULT_CKPT_PATH = 'Qwen/Qwen2-7B-Instruct'
 
 _WELCOME_MSG = '''\
-Welcome to use Qwen1.5-Chat model, type text to start chat, type :h to show command help.
-(欢迎使用 Qwen1.5-Chat 模型，输入内容即可进行对话，:h 显示命令帮助。)
+Welcome to use Qwen2-Instruct model, type text to start chat, type :h to show command help.
+(欢迎使用 Qwen2-Instruct 模型，输入内容即可进行对话，:h 显示命令帮助。)
 
-Note: This demo is governed by the original license of Qwen1.5.
+Note: This demo is governed by the original license of Qwen2.
 We strongly advise users not to knowingly generate or allow others to knowingly generate harmful content, including hate speech, violence, pornography, deception, etc.
-(注：本演示受Qwen1.5的许可协议限制。我们强烈建议，用户不应传播及不应允许他人传播以下内容，包括但不限于仇恨言论、暴力、色情、欺诈相关的有害信息。)
+(注：本演示受Qwen2的许可协议限制。我们强烈建议，用户不应传播及不应允许他人传播以下内容，包括但不限于仇恨言论、暴力、色情、欺诈相关的有害信息。)
 '''
 _HELP_MSG = '''\
 Commands:
@@ -152,7 +152,7 @@ def _chat_stream(model, tokenizer, query, history):
 
 def main():
     parser = argparse.ArgumentParser(
-        description='QWen1.5-Chat command-line interactive chat demo.')
+        description='QWen2-Instruct command-line interactive chat demo.')
     parser.add_argument("-c", "--checkpoint-path", type=str, default=DEFAULT_CKPT_PATH,
                         help="Checkpoint name or path, default to %(default)r")
     parser.add_argument("-s", "--seed", type=int, default=1234, help="Random seed")
@@ -246,7 +246,7 @@ def main():
         set_seed(seed)
         _clear_screen()
         print(f"\nUser: {query}")
-        print(f"\nQwen1.5-Chat: ", end="")
+        print(f"\nQwen2-Instruct: ", end="")
         try:
             partial_text = ''
             for new_text in _chat_stream(model, tokenizer, query, history):

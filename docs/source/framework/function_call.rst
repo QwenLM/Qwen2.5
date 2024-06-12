@@ -48,12 +48,12 @@ Use Case
            'api_key': os.getenv('DASHSCOPE_API_KEY'),
 
            # Use the model service provided by Together.AI:
-           # 'model': 'Qwen/Qwen1.5-14B-Chat',
+           # 'model': 'Qwen/Qwen2-7B-Instruct',
            # 'model_server': 'https://api.together.xyz',  # api_base
            # 'api_key': os.getenv('TOGETHER_API_KEY'),
 
            # Use your own model service compatible with OpenAI API:
-           # 'model': 'Qwen/Qwen1.5-72B-Chat',
+           # 'model': 'Qwen/Qwen2-72B-Instruct',
            # 'model_server': 'http://localhost:8000/v1',  # api_base
            # 'api_key': 'EMPTY',
        })

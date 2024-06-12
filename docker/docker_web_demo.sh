@@ -2,14 +2,14 @@
 #
 # This script will automatically pull docker image from DockerHub, and start a daemon container to run the Qwen-Chat web-demo.
 
-IMAGE_NAME=qwenllm/qwen:1.5-cu121
-QWEN_CHECKPOINT_PATH=/path/to/Qwen1.5-Chat
+IMAGE_NAME=qwenllm/qwen:2-cu121
+QWEN_CHECKPOINT_PATH=/path/to/Qwen-Instruct
 PORT=8901
-CONTAINER_NAME=qwen1.5
+CONTAINER_NAME=qwen2
 
 function usage() {
     echo '
-Usage: bash docker/docker_web_demo.sh [-i IMAGE_NAME] -c [/path/to/Qwen-Chat] [-n CONTAINER_NAME] [--port PORT]
+Usage: bash docker/docker_web_demo.sh [-i IMAGE_NAME] -c [/path/to/Qwen-Instruct] [-n CONTAINER_NAME] [--port PORT]
 '
 }
 
@@ -55,9 +55,9 @@ sudo docker pull ${IMAGE_NAME} || {
 
 sudo docker run --gpus all -d --restart always --name ${CONTAINER_NAME} \
     -v /var/run/docker.sock:/var/run/docker.sock -p ${PORT}:80 \
-    --mount type=bind,source=${QWEN_CHECKPOINT_PATH},target=/data/shared/Qwen/Qwen-Chat \
+    --mount type=bind,source=${QWEN_CHECKPOINT_PATH},target=/data/shared/Qwen/Qwen-Instruct \
     -it ${IMAGE_NAME} \
-    python web_demo.py --server-port 80 --server-name 0.0.0.0 -c /data/shared/Qwen/Qwen-Chat/ && {
+    python web_demo.py --server-port 80 --server-name 0.0.0.0 -c /data/shared/Qwen/Qwen-Instruct/ && {
     echo "Successfully started web demo. Open 'http://localhost:${PORT}' to try!
 Run \`docker logs ${CONTAINER_NAME}\` to check demo status.
 Run \`docker rm -f ${CONTAINER_NAME}\` to stop and remove the demo."

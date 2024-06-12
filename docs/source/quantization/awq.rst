@@ -17,7 +17,7 @@ Usage of AWQ Quantized Models with Transformers
 
 Now, Transformers has officially supported AutoAWQ, which means that you
 can directly use the quantized model with Transformers. The following is
-a very simple code snippet showing how to run ``Qwen1.5-7B-Chat-AWQ``
+a very simple code snippet showing how to run ``Qwen2-7B-Instruct-AWQ``
 with the quantized model:
 
 .. code:: python
@@ -26,10 +26,10 @@ with the quantized model:
    device = "cuda" # the device to load the model onto
 
    model = AutoModelForCausalLM.from_pretrained(
-       "Qwen/Qwen1.5-7B-Chat-AWQ", # the quantized model
+       "Qwen/Qwen2-7B-Instruct-AWQ", # the quantized model
        device_map="auto"
    )
-   tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen1.5-7B-Chat-AWQ")
+   tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2-7B-Instruct-AWQ")
 
    prompt = "Give me a short introduction to large language model."
    messages = [
@@ -60,16 +60,16 @@ vLLM has supported AWQ, which means that you can directly use our
 provided AWQ models or those trained with ``AutoAWQ`` with vLLM.
 Actually, the usage is the same with the basic usage of vLLM. We provide
 a simple example of how to launch OpenAI-API compatible API with vLLM
-and ``Qwen1.5-7B-Chat-AWQ``:
+and ``Qwen2-7B-Instruct-AWQ``:
 
 .. code:: bash
 
-   python -m vllm.entrypoints.openai.api_server --model Qwen/Qwen1.5-7B-Chat-AWQ
+   python -m vllm.entrypoints.openai.api_server --model Qwen/Qwen2-7B-Instruct-AWQ
 
 .. code:: bash
 
     curl http://localhost:8000/v1/chat/completions  -H "Content-Type: application/json" -d '{
-       "model": "Qwen/Qwen1.5-7B-Chat-AWQ",
+       "model": "Qwen/Qwen2-7B-Instruct-AWQ",
        "messages": [
        {"role": "system", "content": "You are a helpful assistant."},
        {"role": "user", "content": "Tell me something about large language models."}
@@ -92,7 +92,7 @@ below:
    )
 
    chat_response = client.chat.completions.create(
-       model="Qwen/Qwen1.5-7B-Chat-AWQ",
+       model="Qwen/Qwen2-7B-Instruct-AWQ",
        messages=[
            {"role": "system", "content": "You are a helpful assistant."},
            {"role": "user", "content": "Tell me something about large language models."},
@@ -113,8 +113,8 @@ of the package by installing from source code:
    cd AutoAWQ
    pip install -e .
 
-Suppose you have finetuned a model based on ``Qwen1.5-7B``, which is
-named ``Qwen1.5-7B-finetuned``, with your own dataset, e.g., Alpaca. To
+Suppose you have finetuned a model based on ``Qwen2-7B``, which is
+named ``Qwen2-7B-finetuned``, with your own dataset, e.g., Alpaca. To
 build your own AWQ quantized model, you need to use the training data
 for calibration. Below, we provide a simple demonstration for you to
 run:

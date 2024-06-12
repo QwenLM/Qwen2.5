@@ -13,7 +13,7 @@ Usage of GPTQ Models with Transformers
 Now, Transformers has officially supported AutoGPTQ, which means that
 you can directly use the quantized model with Transformers. The
 following is a very simple code snippet showing how to run
-``Qwen1.5-7B-Chat-GPTQ-Int8`` (note that for each size of Qwen1.5, we
+``Qwen2-7B-Instruct-GPTQ-Int8`` (note that for each size of Qwen2, we
 provide both Int4 and Int8 quantized models) with the quantized model:
 
 .. code:: python
@@ -22,10 +22,10 @@ provide both Int4 and Int8 quantized models) with the quantized model:
    device = "cuda" # the device to load the model onto
 
    model = AutoModelForCausalLM.from_pretrained(
-       "Qwen/Qwen1.5-7B-Chat-GPTQ-Int8", # the quantized model
+       "Qwen/Qwen2-7B-Instruct-GPTQ-Int8", # the quantized model
        device_map="auto"
    )
-   tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen1.5-7B-Chat-GPTQ-Int8")
+   tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2-7B-Instruct-GPTQ-Int8")
 
    prompt = "Give me a short introduction to large language model."
    messages = [
@@ -56,16 +56,16 @@ vLLM has supported GPTQ, which means that you can directly use our
 provided GPTQ models or those trained with ``AutoGPTQ`` with vLLM.
 Actually, the usage is the same with the basic usage of vLLM. We provide
 a simple example of how to launch OpenAI-API compatible API with vLLM
-and ``Qwen1.5-7B-Chat-GPTQ-Int8``:
+and ``Qwen2-7B-Instruct-GPTQ-Int8``:
 
 .. code:: bash
 
-   python -m vllm.entrypoints.openai.api_server --model Qwen/Qwen1.5-7B-Chat-GPTQ-Int8
+   python -m vllm.entrypoints.openai.api_server --model Qwen/Qwen2-7B-Instruct-GPTQ-Int8
 
 .. code:: bash
 
     curl http://localhost:8000/v1/chat/completions  -H "Content-Type: application/json" -d '{
-       "model": "Qwen/Qwen1.5-7B-Chat-GPTQ-Int8",
+       "model": "Qwen/Qwen2-7B-Instruct-GPTQ-Int8",
        "messages": [
        {"role": "system", "content": "You are a helpful assistant."},
        {"role": "user", "content": "Tell me something about large language models."}
@@ -88,7 +88,7 @@ below:
    )
 
    chat_response = client.chat.completions.create(
-       model="Qwen/Qwen1.5-7B-Chat-GPTQ-Int8",
+       model="Qwen/Qwen2-7B-Instruct-GPTQ-Int8",
        messages=[
            {"role": "system", "content": "You are a helpful assistant."},
            {"role": "user", "content": "Tell me something about large language models."},
@@ -109,8 +109,8 @@ version of the package by installing from source code:
    cd AutoGPTQ
    pip install -e .
 
-Suppose you have finetuned a model based on ``Qwen1.5-7B``, which is
-named ``Qwen1.5-7B-finetuned``, with your own dataset, e.g., Alpaca. To
+Suppose you have finetuned a model based on ``Qwen2-7B``, which is
+named ``Qwen2-7B-finetuned``, with your own dataset, e.g., Alpaca. To
 build your own GPTQ quantized model, you need to use the training data
 for calibration. Below, we provide a simple demonstration for you to
 run:
