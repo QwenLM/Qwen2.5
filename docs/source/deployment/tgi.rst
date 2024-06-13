@@ -106,7 +106,7 @@ If the model is quantized with AWQ, e.g. Qwen/Qwen2-7B-Instruct-AWQ please use `
 
 2. Data agnostic quantization.
 
-EETQ on the other side is not data dependent and can be used with any model. It can be used with the `--quantize eetq` flag. Note that we're passing in the original model with `--quantize eetq` flag.
+EETQ on the other side is not data dependent and can be used with any model. Note that we're passing in the original model (instead of a quantized model) with `--quantize eetq` flag.
 
 
 .. code:: bash
