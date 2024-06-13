@@ -121,6 +121,7 @@ EETQ on the other side is not data dependent and can be used with any model. Not
 3. Latency metrics
 
 Here are some time_per_token metrics for the quantized qwen 7B instruct models on 4090 GPU:
+
 - gptq int4 6.8ms
 - awq int4 7.9ms
 - eetq int8 9.7ms
@@ -155,6 +156,7 @@ Speculative decoding can reduce the time per token by speculating on the next to
 
 
 Time Per Token Metrics (Qwen 2-7B-Instruct, No Quantization, 4090 GPU)
+
 - no speculation 17.4ms
 - speculation with n=2 16.6ms
 
