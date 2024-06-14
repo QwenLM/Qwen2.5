@@ -79,6 +79,7 @@ Documentation
    :caption: Deployment
 
    deployment/vllm
+   deployment/tgi
    deployment/skypilot
 
 .. toctree::
