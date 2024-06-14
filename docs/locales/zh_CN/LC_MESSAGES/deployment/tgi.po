@@ -85,7 +85,7 @@ msgid ""
 "**Find a Qwen2 Model:** Choose a model from `the Qwen2 collection "
 "<https://huggingface.co/collections/Qwen/qwen2-6659360b33528ced941e557f>`_."
 msgstr "" 
-"** 选定 Qwen2 模型： ** 从 `the Qwen2 collection "
+"**选定 Qwen2 模型：** 从 `the Qwen2 collection "
 "<https://huggingface.co/collections/Qwen/qwen2-6659360b33528ced941e557f>`_ 中挑选模型。"
 
 #: ../../source/deployment/tgi.rst:28 40ffa79dd4e14833bda7bf6219b068bf
@@ -94,7 +94,7 @@ msgid ""
 "replacing ``model`` with your chosen Qwen2 model ID and ``volume`` with "
 "the path to your local data directory:"
 msgstr ""
-"** 部署TGI服务： ** 在终端中运行以下命令，"
+"**部署TGI服务：** 在终端中运行以下命令，"
 "注意替换 ``model`` 为选定的 Qwen2 模型 ID 、 ``volume`` 为本地的数据路径： "
 
 #: ../../source/deployment/tgi.rst:39 ace84efeb2134335a67880a00d03eab4
@@ -205,7 +205,7 @@ msgid ""
 "generation-inference?tab=readme-ov-file#a-note-on-shared-memory-shm>`__):"
 msgstr ""
 "使用 ``--num-shard`` 指定卡书数量。 "
-"请务必传入 ``--shm-size 1g`` 让 NCCL 发挥最好性能 (`reference <https://github.com/huggingface/text-"
+"请务必传入 ``--shm-size 1g`` 让 NCCL 发挥最好性能 (`说明 <https://github.com/huggingface/text-"
 "generation-inference?tab=readme-ov-file#a-note-on-shared-memory-shm>`__) ："
 
 #: ../../source/deployment/tgi.rst:147 f89d10b2b3514df3a1b87ccf92d90963
@@ -251,7 +251,7 @@ msgid ""
 "More context on speculative decoding can be found `here "
 "<https://huggingface.co/docs/text-generation-"
 "inference/conceptual/speculation>`__."
-msgstr "更多说明可查阅 `此文档 "<https://huggingface.co/docs/text-generation-"
+msgstr "更多说明可查阅 `此文档 <https://huggingface.co/docs/text-generation-"
 "inference/conceptual/speculation>`__ 。"
 
 #: ../../source/deployment/tgi.rst:171 d313a86f19654a59bb91b04655fadb0e
