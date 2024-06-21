@@ -1,0 +1,22 @@
+name: Close inactive issues
+on:
+  schedule:
+    - cron: "0 8 * * *"
+jobs:
+  close-issues:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      issues: write
+    steps:
+      - uses: actions/stale@v9
+        with:
+          days-before-issue-stale: 30
+          days-before-issue-close: 7
+          stale-issue-label: inactive
+          stale-issue-message: This issue has been automatically marked as inactive due to lack of recent activity. 
+            Should you believe it remains unresolved and warrants attention, kindly leave a comment on this thread. 
+          days-before-pr-stale: -1
+          days-before-pr-close: -1
+          operations-per-run: 128
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
