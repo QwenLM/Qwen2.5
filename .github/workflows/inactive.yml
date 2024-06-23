@@ -16,6 +16,7 @@ jobs:
           stale-issue-label: inactive
           stale-issue-message: This issue has been automatically marked as inactive due to lack of recent activity. 
             Should you believe it remains unresolved and warrants attention, kindly leave a comment on this thread. 
+          exempt-issue-labels: enhancement,discussion
           days-before-pr-stale: -1
           days-before-pr-close: -1
           operations-per-run: 128
