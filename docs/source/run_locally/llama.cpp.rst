@@ -55,7 +55,11 @@ Then you can run the model with the following command:
 
 .. code:: bash
 
-   ./llama-cli -m qwen2-7b-instruct-q5_k_m.gguf -n 512 --color -i -cml -f prompts/chat-with-qwen.txt
+   ./llama-cli -m qwen2-72b-instruct-q4_0.gguf \
+  -n 512 -co -i -if -f prompts/chat-with-qwen.txt \
+  --in-prefix "<|im_start|>user\n" \
+  --in-suffix "<|im_end|>\n<|im_start|>assistant\n" \
+  -ngl 80 -fa
 
 where ``-n`` refers to the maximum number of tokens to generate. There
 are other hyperparameters for you to choose and you can run
