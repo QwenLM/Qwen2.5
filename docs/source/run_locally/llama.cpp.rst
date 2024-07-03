@@ -55,14 +55,14 @@ Then you can run the model with the following command:
 
 .. code:: bash
 
-   ./main -m qwen2-7b-instruct-q5_k_m.gguf -n 512 --color -i -cml -f prompts/chat-with-qwen.txt
+   ./llama-cli -m qwen2-7b-instruct-q5_k_m.gguf -n 512 --color -i -cml -f prompts/chat-with-qwen.txt
 
 where ``-n`` refers to the maximum number of tokens to generate. There
 are other hyperparameters for you to choose and you can run
 
 .. code:: bash
 
-   ./main -h
+   ./llama-cli -h
 
 to figure them out.
 
@@ -92,7 +92,7 @@ Then you can run the test with the following command:
 
 .. code:: bash
 
-   ./perplexity -m models/7B/ggml-model-q4_0.gguf -f wiki.test.raw
+   ./llama-perplexity -m models/7B/ggml-model-q4_0.gguf -f wiki.test.raw
 
 where the output is like
 
