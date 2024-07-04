@@ -33,7 +33,7 @@ of quantizing the model to 4 bits is shown below:
 
 .. code:: bash
 
-   ./quantize models/7B/qwen2-7b-instruct-fp16.gguf models/7B/qwen2-7b-instruct-q4_0.gguf q4_0
+   ./llama-quantize models/7B/qwen2-7b-instruct-fp16.gguf models/7B/qwen2-7b-instruct-q4_0.gguf q4_0
 
 where we use ``q4_0`` for the 4-bit quantization. Until now, you have
 finished quantizing a model to 4 bits and putting it into a GGUF file,
@@ -79,7 +79,7 @@ below:
 
 .. code:: bash
 
-   ./quantize models/7B/qwen2-7b-instruct-fp16.gguf models/7B/qwen2-7b-instruct-q2_k.gguf q2_k
+   ./llama-quantize models/7B/qwen2-7b-instruct-fp16.gguf models/7B/qwen2-7b-instruct-q2_k.gguf q2_k
 
 We now provide GGUF models in the following quantization levels:
 ``q2_k``, ``q3_k_m``, ``q4_0``, ``q4_k_m``, ``q5_0``, ``q5_k_m``,
