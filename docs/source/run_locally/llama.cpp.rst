@@ -55,7 +55,7 @@ Then you can run the model with the following command:
 
 .. code:: bash
 
-   ./llama-cli -m qwen2-72b-instruct-q4_0.gguf \
+   ./llama-cli -m qwen2-7b-instruct-q5_k_m.gguf \
   -n 512 -co -i -if -f prompts/chat-with-qwen.txt \
   --in-prefix "<|im_start|>user\n" \
   --in-suffix "<|im_end|>\n<|im_start|>assistant\n" \
@@ -96,7 +96,7 @@ Then you can run the test with the following command:
 
 .. code:: bash
 
-   ./llama-perplexity -m models/7B/ggml-model-q4_0.gguf -f wiki.test.raw
+   ./llama-perplexity -m <gguf_path> -f wiki.test.raw
 
 where the output is like
 
