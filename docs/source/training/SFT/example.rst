@@ -5,7 +5,7 @@ Here we provide a very simple script for supervised finetuning, which is revised
 script in `Fastchat <https://github.com/lm-sys/FastChat>`__. The
 script is used to finetune Qwen with Hugging Face Trainer. You can check
 the script
-`here <https://github.com/QwenLM/Qwen2/blob/main/finetune.py>`__. This
+`here <https://github.com/QwenLM/Qwen2/blob/main/examples/sft/finetune.py>`__. This
 script for supervised finetuning (SFT) has the following features:
 
 -  Support single-GPU and multi-GPU training;

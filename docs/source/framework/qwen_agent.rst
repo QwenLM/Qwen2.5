@@ -39,7 +39,7 @@ tools and quickly develop an agent that uses tools.
        'model': 'qwen-max',
        'model_server': 'dashscope',
        # 'api_key': 'YOUR_DASHSCOPE_API_KEY',
-       # It will use the `DASHSCOPE_API_KEY' environment variable if 'api_key' is not set here.
+       # It will use the 'DASHSCOPE_API_KEY' environment variable if 'api_key' is not set here.
 
        # Use your own model service compatible with OpenAI API:
        # 'model': 'Qwen/Qwen2-72B-Instruct',
