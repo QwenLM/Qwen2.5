@@ -151,12 +151,13 @@ For additional details, please visit [ollama.ai](https://ollama.ai/).
 
 #### llama.cpp
 
+> [!Warning]
+> You need `llama.cpp>=b3370`.
+
 Download our provided GGUF files or create them by yourself, and you can directly use them with the latest [`llama.cpp`](https://github.com/ggerganov/llama.cpp) with a one-line command:
 ```shell
-./main -m <path-to-file> -n 512 --color -i -cml -f prompts/chat-with-qwen.txt
+./llama-cli -m <path-to-file> -n 512 -co -i -if -f prompts/chat-with-qwen.txt --in-prefix "<|im_start|>user\n" --in-suffix "<|im_end|>\n<|im_start|>assistant\n"
 ```
-
-If you have encountered problems related to quantized models on GPU, please try passing the `-fa` argument to enable the flash attention implementation in newest version of `llama.cpp`.
 
 #### MLX-LM
 
