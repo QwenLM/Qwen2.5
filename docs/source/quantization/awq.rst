@@ -27,25 +27,25 @@ with the quantized model:
 
    model = AutoModelForCausalLM.from_pretrained(
        "Qwen/Qwen2-7B-Instruct-AWQ", # the quantized model
-       device_map="auto"
+       device_map="auto",
    )
    tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2-7B-Instruct-AWQ")
 
    prompt = "Give me a short introduction to large language model."
    messages = [
        {"role": "system", "content": "You are a helpful assistant."},
-       {"role": "user", "content": prompt}
+       {"role": "user", "content": prompt},
    ]
    text = tokenizer.apply_chat_template(
        messages,
        tokenize=False,
-       add_generation_prompt=True
+       add_generation_prompt=True,
    )
    model_inputs = tokenizer([text], return_tensors="pt").to(device)
 
    generated_ids = model.generate(
        model_inputs.input_ids,
-       max_new_tokens=512
+       max_new_tokens=512,
    )
    generated_ids = [
        output_ids[len(input_ids):] for input_ids, output_ids in zip(model_inputs.input_ids, generated_ids)
@@ -68,37 +68,44 @@ and ``Qwen2-7B-Instruct-AWQ``:
 
 .. code:: bash
 
-    curl http://localhost:8000/v1/chat/completions  -H "Content-Type: application/json" -d '{
-       "model": "Qwen/Qwen2-7B-Instruct-AWQ",
-       "messages": [
-       {"role": "system", "content": "You are a helpful assistant."},
-       {"role": "user", "content": "Tell me something about large language models."}
-       ],
-       }'
+    curl http://localhost:8000/v1/chat/completions -H "Content-Type: application/json" -d '{
+      "model": "Qwen/Qwen2-7B-Instruct-AWQ",
+      "messages": [
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Tell me something about large language models."}
+      ],
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "repetition_penalty": 1.05,
+      "max_tokens": 512
+    }'
 
 or you can use python client with ``openai`` python package as shown
 below:
 
 .. code:: python
 
-   from openai import OpenAI
-   # Set OpenAI's API key and API base to use vLLM's API server.
-   openai_api_key = "EMPTY"
-   openai_api_base = "http://localhost:8000/v1"
+    from openai import OpenAI
+    # Set OpenAI's API key and API base to use vLLM's API server.
+    openai_api_key = "EMPTY"
+    openai_api_base = "http://localhost:8000/v1"
 
-   client = OpenAI(
-       api_key=openai_api_key,
-       base_url=openai_api_base,
-   )
+    client = OpenAI(
+        api_key=openai_api_key,
+        base_url=openai_api_base,
+    )
 
-   chat_response = client.chat.completions.create(
-       model="Qwen/Qwen2-7B-Instruct-AWQ",
-       messages=[
-           {"role": "system", "content": "You are a helpful assistant."},
-           {"role": "user", "content": "Tell me something about large language models."},
-       ]
-   )
-   print("Chat response:", chat_response)
+    chat_response = client.chat.completions.create(
+        model="Qwen/Qwen2-7B-Instruct-AWQ",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": "Tell me something about large language models."},
+        ],
+        temperature=0.7,
+        top_p=0.8,
+        max_tokens=512,
+    )
+    print("Chat response:", chat_response)
 
 Quantize Your Own Model with AutoAWQ
 ------------------------------------
@@ -112,6 +119,11 @@ of the package by installing from source code:
    git clone https://github.com/casper-hansen/AutoAWQ.git
    cd AutoAWQ
    pip install -e .
+
+
+.. important::
+
+    Please use a commit after ``35d23dbe3f4ff015a5a282de3dfc823a42638719`` if NaN errors are raised in quantization.
 
 Suppose you have finetuned a model based on ``Qwen2-7B``, which is
 named ``Qwen2-7B-finetuned``, with your own dataset, e.g., Alpaca. To
@@ -133,6 +145,12 @@ run:
    tokenizer = AutoTokenizer.from_pretrained(model_path)
    model = AutoAWQForCausalLM.from_pretrained(model_path, device_map="auto", safetensors=True)
 
+
+.. attention::
+
+    AutoAWQ does not support quantizing Qwen2 MoE models as of July 18, 2024.
+
+
 Then you need to prepare your data for calibaration. What you need to do
 is just put samples into a list, each of which is a text. As we directly
 use our finetuning data for calibration, we first format it with ChatML
@@ -141,8 +159,7 @@ template. For example:
 .. code:: python
 
    data = []
-   for msg in messages:
-       msg = c['messages']
+   for msg in dataset:
        text = tokenizer.apply_chat_template(msg, tokenize=False, add_generation_prompt=False)
        data.append(text.strip())
 

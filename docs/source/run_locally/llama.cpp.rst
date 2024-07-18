@@ -70,6 +70,14 @@ are other hyperparameters for you to choose and you can run
 
 to figure them out.
 
+.. important::
+   
+   Previously, Qwen2 models generate nonsense like ``GGGG...`` with ``llama.cpp`` on GPUs.
+   The workaround is to enable flash attention (``-fa``), which uses a different implementation, and offload the whole model to the GPU (``-ngl 80``) due to broken partial GPU offloading with flash attention.
+   
+   Both should be no longer necessary after ``b3370``, but it is still recommended to enable both for maximum efficiency.
+
+
 Make Your GGUF Files
 --------------------
 

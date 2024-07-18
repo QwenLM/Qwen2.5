@@ -43,7 +43,6 @@ Documentation
    :maxdepth: 1
    :caption: Getting Started
 
-   getting_started/installation
    getting_started/quickstart
 
 .. toctree::

@@ -86,37 +86,56 @@ to communicate with Qwen:
 
 .. code:: bash
 
-   curl http://localhost:8000/v1/chat/completions -H "Content-Type: application/json" -d '{
-       "model": "Qwen/Qwen2-7B-Instruct",
-       "messages": [
-       {"role": "system", "content": "You are a helpful assistant."},
-       {"role": "user", "content": "Tell me something about large language models."}
-       ]
-       }'
+    curl http://localhost:8000/v1/chat/completions -H "Content-Type: application/json" -d '{
+      "model": "Qwen/Qwen2-7B-Instruct",
+      "messages": [
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Tell me something about large language models."}
+      ],
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "repetition_penalty": 1.05,
+      "max_tokens": 512
+    }'
 
-or you can use python client with ``openai`` python package as shown
+.. tip:: 
+
+    The OpenAI compatible server in ``vllm`` comes with `a default set of sampling parameters <https://github.com/vllm-project/vllm/blob/v0.5.2/vllm/entrypoints/openai/protocol.py#L130>`__, 
+    which are not suitable for Qwen2 models and prone to repetition. 
+    We advise you to always pass sampling parameters to the API.
+
+or you can use Python client with ``openai`` Python package as shown
 below:
 
 .. code:: python
 
-   from openai import OpenAI
-   # Set OpenAI's API key and API base to use vLLM's API server.
-   openai_api_key = "EMPTY"
-   openai_api_base = "http://localhost:8000/v1"
+    from openai import OpenAI
+    # Set OpenAI's API key and API base to use vLLM's API server.
+    openai_api_key = "EMPTY"
+    openai_api_base = "http://localhost:8000/v1"
 
-   client = OpenAI(
-       api_key=openai_api_key,
-       base_url=openai_api_base,
-   )
+    client = OpenAI(
+        api_key=openai_api_key,
+        base_url=openai_api_base,
+    )
 
-   chat_response = client.chat.completions.create(
-       model="Qwen/Qwen2-7B-Instruct",
-       messages=[
-           {"role": "system", "content": "You are a helpful assistant."},
-           {"role": "user", "content": "Tell me something about large language models."},
-       ]
-   )
-   print("Chat response:", chat_response)
+    chat_response = client.chat.completions.create(
+        model="Qwen/Qwen2-7B-Instruct",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": "Tell me something about large language models."},
+        ],
+        temperature=0.7,
+        top_p=0.8,
+        max_tokens=512,
+    )
+    print("Chat response:", chat_response)
+
+
+.. attention::
+
+    ``openai`` does not support setting ``repetition_penalty``.
+
 
 Multi-GPU Distributred Serving
 ------------------------------
@@ -144,22 +163,27 @@ You can run multi-GPU serving by passing in the argument
 Serving Quantized Models
 ------------------------
 
+.. attention:: 
+
+   ``vllm`` does not support quantized Qwen2 MoE models at the moment (version 0.5.2). 
+   
+
 vLLM supports different types of quantized models, including AWQ, GPTQ,
 SqueezeLLM, etc. Here we show how to deploy AWQ and GPTQ models. The
 usage is almost the same as above except for an additional argument for
 quantization. For example, to run an AWQ model. e.g.,
-``Qwen2-72B-Instruct-AWQ``:
+``Qwen2-7B-Instruct-AWQ``:
 
 .. code:: python
 
    from vllm import LLM, SamplingParams
-   llm = LLM(model="Qwen/Qwen2-72B-Instruct-AWQ", quantization="awq")
+   llm = LLM(model="Qwen/Qwen2-7B-Instruct-AWQ", quantization="awq")
 
-or GPTQ models like ``Qwen2-72B-Instruct-GPTQ-Int8``:
+or GPTQ models like ``Qwen2-7B-Instruct-GPTQ-Int4``:
 
 .. code:: python
 
-   llm = LLM(model="Qwen/Qwen2-72B-Instruct-GPTQ-Int4", quantization="gptq")
+   llm = LLM(model="Qwen/Qwen2-7B-Instruct-GPTQ-Int4", quantization="gptq")
 
 Similarly, you can run serving adding the argument ``--quantization`` as
 shown below:
@@ -167,7 +191,7 @@ shown below:
 .. code:: bash
 
    python -m vllm.entrypoints.openai.api_server \
-       --model Qwen/Qwen2-72B-Instruct-AWQ \
+       --model Qwen/Qwen2-7B-Instruct-AWQ \
        --quantization awq
 
 or
@@ -175,7 +199,7 @@ or
 .. code:: bash
 
    python -m vllm.entrypoints.openai.api_server \
-       --model Qwen/Qwen2-72B-Instruct-GPTQ-Int8 \
+       --model Qwen/Qwen2-7B-Instruct-GPTQ-Int4 \
        --quantization gptq
 
 Additionally, vLLM supports the combination of AWQ or GPTQ models with
@@ -183,14 +207,15 @@ KV cache quantization, namely FP8 E5M2 KV Cache. For example:
 
 .. code:: python
 
-   llm = LLM(model="Qwen/Qwen2-7B-Instruct-GPTQ-Int8", quantization="gptq", kv_cache_dtype="fp8_e5m2")
+   llm = LLM(model="Qwen/Qwen2-7B-Instruct-GPTQ-Int4", quantization="gptq", kv_cache_dtype="fp8_e5m2")
 
 .. code:: bash
 
    python -m vllm.entrypoints.openai.api_server \
-       --model Qwen/Qwen2-7B-Instruct-GPTQ-Int8 \
+       --model Qwen/Qwen2-7B-Instruct-GPTQ-Int4 \
        --quantization gptq \
        --kv-cache-dtype fp8_e5m2
+
 
 Troubleshooting
 ---------------

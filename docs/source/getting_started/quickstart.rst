@@ -6,13 +6,35 @@ This guide helps you quickly start using Qwen2. We provide examples of
 as well as `ModelScope <https://github.com/modelscope/modelscope>`__, and 
 `vLLM <https://github.com/vllm-project/vllm>`__ for deployment.
 
+You can find Qwen2 models in the `Qwen2 collection <https://huggingface.co/collections/Qwen/qwen2-6659360b33528ced941e557f>`__.
+
 Hugging Face Transformers & ModelScope
 --------------------------------------
 
-To get a quick start with Qwen2, we advise you to try with the
-inference with ``transformers`` first. Make sure that you have installed
-``transformers>=4.40.0``. The following is a very simple code snippet
-showing how to run Qwen2-Instruct, with an example of Qwen2-7B-Instruct:
+To get a quick start with Qwen2, we advise you to try with the inference with ``transformers`` first. 
+Make sure that you have installed ``transformers>=4.40.0``. 
+We advise you to use Python 3.8 or higher, and Pytorch 2.2 or higher.
+
+* Install with ``pip``:
+
+  .. code:: bash
+
+      pip install transformers -U
+
+* Install with ``conda``:
+
+  .. code:: bash
+    
+      conda install conda-forge::transformers
+
+* Install from source:
+
+  .. code:: bash
+
+      pip install git+https://github.com/huggingface/transformers
+
+
+The following is a very simple code snippet showing how to run Qwen2-Instruct, with an example of Qwen2-7B-Instruct:
 
 .. code:: python
 
@@ -23,7 +45,7 @@ showing how to run Qwen2-Instruct, with an example of Qwen2-7B-Instruct:
    model = AutoModelForCausalLM.from_pretrained(
        "Qwen/Qwen2-7B-Instruct",
        torch_dtype="auto",
-       device_map="auto"
+       device_map="auto",
    )
    tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2-7B-Instruct")
 
@@ -32,12 +54,12 @@ showing how to run Qwen2-Instruct, with an example of Qwen2-7B-Instruct:
    prompt = "Give me a short introduction to large language model."
    messages = [
        {"role": "system", "content": "You are a helpful assistant."},
-       {"role": "user", "content": prompt}
+       {"role": "user", "content": prompt},
    ]
    text = tokenizer.apply_chat_template(
        messages,
        tokenize=False,
-       add_generation_prompt=True
+       add_generation_prompt=True,
    )
    model_inputs = tokenizer([text], return_tensors="pt").to(device)
 
@@ -45,7 +67,7 @@ showing how to run Qwen2-Instruct, with an example of Qwen2-7B-Instruct:
    # Use `max_new_tokens` to control the maximum output length.
    generated_ids = model.generate(
        model_inputs.input_ids,
-       max_new_tokens=512
+       max_new_tokens=512,
    )
    generated_ids = [
        output_ids[len(input_ids):] for input_ids, output_ids in zip(model_inputs.input_ids, generated_ids)
@@ -58,16 +80,6 @@ previous Qwen models for more information). Now, we follow the practice
 of ``transformers`` and directly use ``model.generate()`` with
 ``apply_chat_template()`` in tokenizer. 
 
-If you would like to apply Flash Attention 2, you can load the model as shown below:
-
-.. code:: python
-
-    model = AutoModelForCausalLM.from_pretrained(
-       "Qwen/Qwen2-7B-Instruct",
-       torch_dtype="auto",
-       device_map="auto",
-       attn_implementation="flash_attention_2",
-   )
 
 To tackle with downloading issues, we advise you to try with from
 ModelScope, just changing the first line of code above to the following:
@@ -99,7 +111,7 @@ and easy-to-use framework for LLM inference and serving. In the
 following, we demonstrate how to build a OpenAI-API compatible API
 service with vLLM.
 
-First, make sure you have installed ``vLLM>=0.4.0``:
+First, make sure you have installed ``vllm>=0.4.0``:
 
 .. code:: bash
 
@@ -118,37 +130,45 @@ to communicate with Qwen:
 
 .. code:: bash
 
-    curl http://localhost:8000/v1/chat/completions  -H "Content-Type: application/json" -d '{
-       "model": "Qwen/Qwen2-7B-Instruct",
-       "messages": [
-       {"role": "system", "content": "You are a helpful assistant."},
-       {"role": "user", "content": "Tell me something about large language models."}
-       ]
-       }'
+    curl http://localhost:8000/v1/chat/completions -H "Content-Type: application/json" -d '{
+      "model": "Qwen/Qwen2-7B-Instruct",
+      "messages": [
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "Tell me something about large language models."}
+      ],
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "repetition_penalty": 1.05,
+      "max_tokens": 512
+    }'
 
-or you can use python client with ``openai`` python package as shown
+or you can use Python client with ``openai`` Python package as shown
 below:
 
 .. code:: python
 
-   from openai import OpenAI
-   # Set OpenAI's API key and API base to use vLLM's API server.
-   openai_api_key = "EMPTY"
-   openai_api_base = "http://localhost:8000/v1"
+    from openai import OpenAI
+    # Set OpenAI's API key and API base to use vLLM's API server.
+    openai_api_key = "EMPTY"
+    openai_api_base = "http://localhost:8000/v1"
 
-   client = OpenAI(
-       api_key=openai_api_key,
-       base_url=openai_api_base,
-   )
+    client = OpenAI(
+        api_key=openai_api_key,
+        base_url=openai_api_base,
+    )
 
-   chat_response = client.chat.completions.create(
-       model="Qwen/Qwen2-7B-Instruct",
-       messages=[
-           {"role": "system", "content": "You are a helpful assistant."},
-           {"role": "user", "content": "Tell me something about large language models."},
-       ]
-   )
-   print("Chat response:", chat_response)
+    chat_response = client.chat.completions.create(
+        model="Qwen/Qwen2-7B-Instruct",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": "Tell me something about large language models."},
+        ],
+        temperature=0.7,
+        top_p=0.8,
+        max_tokens=512,
+    )
+    print("Chat response:", chat_response)
+
 
 Next Step
 ---------

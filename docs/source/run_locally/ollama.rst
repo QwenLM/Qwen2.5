@@ -26,6 +26,12 @@ sizes by:
 -  ``ollama run qwen2:7b``
 -  ``ollama run qwen2:72b``
 
+.. note::
+
+   ``ollama`` does not host base models. 
+   Even though the tag may not have the instruct suffix, they are all instruct models.
+
+
 Run Ollama with Your GGUF Files
 -------------------------------
 

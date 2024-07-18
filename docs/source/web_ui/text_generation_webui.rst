@@ -83,7 +83,7 @@ to launch your web UI service. Please browse to
 
 ::
 
-   `http://localhost:7860/?__theme=dark`
+   http://localhost:7860/?__theme=dark
 
 and enjoy playing with Qwen in a web UI!
 

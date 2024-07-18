@@ -1,12 +1,11 @@
 # Copyright (C) 2024, Qwen Team, Alibaba Group.
 # This file is distributed under the same license as the Qwen package.
 #
-
 msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-06 19:37+0800\n"
+"POT-Creation-Date: 2024-07-18 19:19+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -17,27 +16,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.15.0\n"
 
-#: ../../source/inference/chat.rst:2 401ded17c1eb407e9a2c2df1c2b3260c
+#: ../../source/inference/chat.rst:2 0491f1986c9b42fabca9a8edbbdfb72a
 msgid "Using Transformers to Chat"
 msgstr "使用Transformers实现Chat"
 
-#: ../../source/inference/chat.rst:4 621b6a5183214027883054a19513ca7f
-
+#: ../../source/inference/chat.rst:4 9fa8d4db61074ebaaea332d66956f6d5
 msgid ""
 "The most significant but also the simplest usage of Qwen2 is to chat with"
 " it using the ``transformers`` library. In this document, we show how to "
 "chat with ``Qwen2-7B-Instruct``, in either streaming mode or not."
 msgstr ""
-"使用Qwen2最简单的方法就是利用 ``transformers`` 库与之对话。"
-"在本文档中，我们将展示如何在流式模式或非流式模式下与Qwen2"
+"使用Qwen2最简单的方法就是利用 ``transformers`` 库与之对话。在本文档中，我们将展示如何在流式模式或非流式模式下与Qwen2"
 "-7B-Instruct进行对话。"
 
-#: ../../source/inference/chat.rst:9 6f0045c90e4a4c17b46c918747ef8ffb
+#: ../../source/inference/chat.rst:9 8fbf78f2f51e4deeb55eceef7cf07d74
 msgid "Basic Usage"
 msgstr "基本用法"
 
-#: ../../source/inference/chat.rst:11 5220514bc84f4495a5215a294ac93465
-
+#: ../../source/inference/chat.rst:11 092703e4937e4849b625c8854bf19c7b
 msgid ""
 "You can just write several lines of code with ``transformers`` to chat "
 "with Qwen2-Instruct. Essentially, we build the tokenizer and the model "
@@ -45,18 +41,18 @@ msgid ""
 "perform chatting with the help of chat template provided by the "
 "tokenizer. Below is an example of how to chat with Qwen2-7B-Instruct:"
 msgstr ""
-"你只需借助 ``transformers`` "
-"库编写几行代码，就能与Qwen2-Instruct进行对话。实质上，我们通过 ``from_pretrained`` 方法构建tokenizer和模型，然后利用 "
-"``generate`` 方法，在tokenizer提供的chat template的辅助下进行对话。以下是一个如何与Qwen2-7B-"
-"Instruct进行对话的示例："
+"你只需借助 ``transformers`` 库编写几行代码，就能与Qwen2-Instruct进行对话。实质上，我们通过 "
+"``from_pretrained`` 方法构建tokenizer和模型，然后利用 ``generate`` "
+"方法，在tokenizer提供的chat template的辅助下进行对话。以下是一个如何与Qwen2-7B-Instruct进行对话的示例："
 
-#: ../../source/inference/chat.rst:56 31d4b15b63894e4c8897e4658d6510f0
+#: ../../source/inference/chat.rst:57 a913aa7a1f954025bc4a262d09947286
 msgid ""
-"If you would like to apply Flash Attention 2, you can load the model as "
-"shown below:"
-msgstr "如果你想使用Flash Attention 2，你可以用下面这种方式读取模型："
+"To continue the chat, simply append the response to the messages with the"
+" role assistant and repeat the procedure. The following shows and "
+"example:"
+msgstr "如要继续对话，只需将回复内容以 assistant 为 role 加入 messages ，然后重复以上流程即可。下面为示例："
 
-#: ../../source/inference/chat.rst:67 e7c6476ff9ce4f08a6b9cc4cbe311df8
+#: ../../source/inference/chat.rst:88 97262cebfae04a9a9ef7fa3d6f13732a
 msgid ""
 "Note that the previous method in the original Qwen repo ``chat()`` is now"
 " replaced by ``generate()``. The ``apply_chat_template()`` function is "
@@ -79,17 +75,47 @@ msgstr ""
 "``messages`` 是一个示例，展示了如何格式化对话历史记录和系统提示。默认情况下，如果您没有指定系统提示，我们将直接使用 ``You "
 "are a helpful assistant.`` 作为系统提示。"
 
-#: ../../source/inference/chat.rst:81 173e7c1b64a64aa5b257d21f3276ac6d
+#: ../../source/inference/chat.rst:103 be61da715bb441e98be60d947ecc7bb3
+msgid "Pipeline Usage"
+msgstr "Pipeline用法"
+
+#: ../../source/inference/chat.rst:105 6ecc73b0fee54213af938ee4f4aa8d23
+msgid ""
+"``transformers`` also provides a functionality called \"pipeline\" that "
+"encapsulates the many operations in common tasks. You can chat with the "
+"model in just 4 lines of code:"
+msgstr ""
+"``transformers`` 同时提供了“流水线” (\"pipeline\") 功能，封装了常用任务的处理流程，仅用4行代码即可开启对话："
+
+#: ../../source/inference/chat.rst:121 a27b713ce4744c39b5da554d4b31baa4
+msgid "Batching"
+msgstr "批处理"
+
+#: ../../source/inference/chat.rst:123 a214d4f0d3c94dfca676157ae645c179
+msgid ""
+"All common ``transformers`` methods support batched input and output. For"
+" basic usage, the following is an example:"
+msgstr "``transformers`` 常用方法均支持批处理。以下为基本用法的示例："
+
+#: ../../source/inference/chat.rst:155 c7a525a877d04784bd512db57acda59f
+msgid "With pipeline, it is simpler:"
+msgstr "使用流水线功能，实现批处理代码更简单："
+
+#: ../../source/inference/chat.rst:174 621bad0430454518b5e48ea7c80a636a
+msgid "Batching is not automatically a win for performance."
+msgstr "批处理不总能提速。"
+
+#: ../../source/inference/chat.rst:178 9fb0e055e3394dc5b571211f46de2ea9
 msgid "Streaming Mode"
 msgstr "流式输出"
 
-#: ../../source/inference/chat.rst:83 795763a62cb7457689725504e691e049
+#: ../../source/inference/chat.rst:180 072c92f91eff448a87319d611a739e1a
 msgid ""
 "With the help of ``TextStreamer``, you can modify your chatting with Qwen"
 " to streaming mode. Below we show you an example of how to use it:"
 msgstr "借助 ``TextStreamer`` ，您可以将与Qwen的对话切换到流式传输模式。下面是一个关于如何使用它的示例："
 
-#: ../../source/inference/chat.rst:100 87b1b72ef466431ba3f7453c9f386f69
+#: ../../source/inference/chat.rst:197 ca78df61f54d4e408ad4e7a5f274ee84
 msgid ""
 "Besides using ``TextStreamer``, we can also use ``TextIteratorStreamer`` "
 "which stores print-ready text in a queue, to be used by a downstream "
@@ -98,12 +124,166 @@ msgstr ""
 "除了使用 ``TextStreamer`` 之外，我们还可以使用 ``TextIteratorStreamer`` "
 "，它将可打印的文本存储在一个队列中，以便下游应用程序作为迭代器来使用："
 
-#: ../../source/inference/chat.rst:122 2ac04859fe2f4084b4d0f423ba76478c
+#: ../../source/inference/chat.rst:224 569fe9403e7846529d006af9f1a7873d
+msgid "Using Flash Attention 2 to Accelerate Generation"
+msgstr "使用 Flash Attention 2 加速生成"
+
+#: ../../source/inference/chat.rst:228 8e0c00fb225c4e37968b779181904ebf
+msgid ""
+"With the latest ``transformers`` and ``torch``, Flash Attention 2 will be"
+" applied by default if applicable. You do not need to request the use of "
+"Flash Attention 2 in ``transformers`` or install the ``flash_attn`` "
+"package. The following is intended for users that cannot use latest "
+"versions for various reasons."
+msgstr ""
+"如果您使用最新版本的 ``transformers`` 和 ``torch`` ， Flash Attention 2 将在适用时"
+"自动应用。无需指定使用 ``transformers`` 中的 Flash Attention 2 或安装 ``falsh_attn`` 包。"
+"下面的说明是为无法使用最新版的用户补充的。"
+
+#: ../../source/inference/chat.rst:233 2e42677ecc6f400fb27d2c288fcc4cbf
+msgid ""
+"If you would like to apply Flash Attention 2, you need to install an "
+"appropriate version of ``flash_attn``. You can find pre-built wheels at "
+"`its GitHub repository <https://github.com/Dao-AILab/flash-"
+"attention/releases>`__, and you should make sure the Python version, the "
+"torch version, and the CUDA version of torch are a match. Otherwise, you "
+"need to install from source. Please follow the guides at `its GitHub "
+"README <https://github.com/Dao-AILab/flash-attention>`__."
+msgstr ""
+"如果你希望使用 Flash Attention 2 ， 你需要安装 ``flash_attn`` 。 你可以在其 `GitHub 存储库 <https://github.com/Dao-AILab/flash-attention/releases>`__ 找到预编译好的版本。"
+"注意选择与 Python 、 torch 和 torch 中 CUDA 版本对应的预编译版本。如无对应，你需要从源代码安装编译，请参考其 `GitHub README <https://github.com/Dao-AILab/flash-attention>`__ 。"
+
+#: ../../source/inference/chat.rst:239 569fe9403e7846529d006af9f1a7873d
+msgid "After a successful installation, you can load the model as shown below:"
+msgstr "成功安装 Flash Attention 2 后，你可以用下面这种方式读取模型："
+
+#: ../../source/inference/chat.rst:253 c72d4979c7ce452d8c1c8afc8d928acf
+msgid ""
+"The attention module for a model in ``transformers`` typically has three "
+"variants: ``sdpa``, ``flash_attention_2``, and ``eager``. The first two "
+"are wrappers around related functions in the ``torch`` and the "
+"``flash_attn`` packages. It defaults to ``sdpa`` if available."
+msgstr ""
+"``transformers`` 中模型一般实现3种注意力模块： ``sdpa`` 、 ``flash_attention_2`` 和 ``eager`` 。"
+"前两种分别封装了 ``torch`` 和 ``flash_attn`` 中的相关实现。``transformers`` 默认使用 ``sdpa`` 版本的注意力模块。"
+
+#: ../../source/inference/chat.rst:257 bdbe283f6e6c4795b54574847ce649c0
+msgid ""
+"In addition, ``torch`` has integrated three implementations for ``sdpa``:"
+" ``FLASH_ATTENTION`` (indicating Flash Attention 2 since version 2.2), "
+"``EFFICIENT_ATTENTION`` (Memory Efficient Attention), and ``MATH``. It "
+"attempts to automatically select the most optimal implementation based on"
+" the inputs. You don't need to install extra packages to use them."
+msgstr ""
+"同时， ``torch`` 包括3种 ``sdpa`` 实现： ``FLASH_ATTENTION`` （自 2.2 版本为 Flash Attention 2）、 "
+"``EFFICIENT_ATTENTION`` (Memory Efficient Attention) 和 ``MATH`` 。 ``torch`` "
+"根据输入自动选择最优的实现，你无需额外安装其它包或进行配置。"
+
+#: ../../source/inference/chat.rst:261 1e823aec9f654435b1d94958f7a6fc06
+msgid ""
+"Hence, if applicable, by default, ``transformers`` uses ``sdpa`` and "
+"``torch`` selects ``FLASH_ATTENTION``."
+msgstr "因此，在默认情况下，如果适用， ``transformers`` 使用 ``sdpa`` 而 ``torch`` 会选择 ``FLASH_ATTENTION`` 。"
+
+#: ../../source/inference/chat.rst:263 0b2fce34bf3e44e5a2fcb48e02a59973
+msgid ""
+"If you wish to explicitly select the implementations in ``torch``, refer "
+"to `this tutorial "
+"<https://pytorch.org/tutorials/intermediate/scaled_dot_product_attention_tutorial.html>`__."
+msgstr "如果你希望显式控制 ``torch`` 使用的 ``sdpa`` 实现，请参考 `本教程 <https://pytorch.org/tutorials/intermediate/scaled_dot_product_attention_tutorial.html>`__ 。"
+
+#: ../../source/inference/chat.rst:268 12529abbc579462eb415f6ec4d3460d2
+msgid "Troubleshooting"
+msgstr "问题排查"
+
+#: ../../source/inference/chat.rst:270 b4b0296ccab649b4be928dc579552f8c
+msgid "**Issue:** Loading models takes a lot of memory."
+msgstr ""
+
+#: ../../source/inference/chat.rst:272 4c435207927840b9be3b1c6824d2fedd
+msgid ""
+"Normally, memory usage after loading the model can be roughly taken as "
+"twice the parameter count. For example, a 7B model will take 14GB memory "
+"to load. It is because for large language models, the compute dtype is "
+"often 16-bit floating point number. Of course, you will need more memory "
+"in inference to store the activations."
+msgstr ""
+
+#: ../../source/inference/chat.rst:277 e8ea412d5e4543c89e91cd48cc57cc60
+msgid ""
+"For ``transformers``, ``torch_dtype=\"auto\"`` is recommended and the "
+"model will be loaded in ``bfloat16`` automatcially. Otherwise, the model "
+"will be loaded in ``float32`` and it will need double the memory. You can"
+" also pass ``torch.bfloat16`` as ``torch_dtype`` explicitly."
+msgstr ""
+
+#: ../../source/inference/chat.rst:284 c154ecabc5f54239af3c4251a4d682a6
+msgid "**Issue:** Multi-GPU inference is slow."
+msgstr ""
+
+#: ../../source/inference/chat.rst:286 aa893d95a5884547822842a525da26c6
+msgid ""
+"``transformers`` relies on ``accelerate`` for multi-GPU inference and the"
+" implementation is a kind of naive model parallelism: different GPUs "
+"computes different layers of the model. It is enabled by the use of "
+"``device_map=\"auto\"`` or a customized ``device_map`` for multiple GPUs."
+msgstr ""
+
+#: ../../source/inference/chat.rst:290 59ed12893cd546b6acb64c0d96cd0cfa
+msgid ""
+"However, this kind of implementation is not efficienct as for a single "
+"request, only one GPU computes at the same time and the other GPUs just "
+"wait. To use all the GPUs, you need to arrange multiple sequences as on a"
+" pipeline, making sure each GPU has some work to do. However, that will "
+"require concurrency management and load balancing, which is out of the "
+"scope of ``transformers``. Even if all things are implemented, you can "
+"make use of concurrency to improve the total throughput but the latency "
+"for each request is not great."
+msgstr ""
+
+#: ../../source/inference/chat.rst:295 8c7dacc5a5f04bba918a95fa96cd0bb3
+msgid ""
+"For Multi-GPU inference, we recommend using specialized inference "
+"framework, such as vllm and TGI, which support tensor parallelism."
+msgstr ""
+
+#: ../../source/inference/chat.rst:300 ab59968dd35e4ac381f352cec7e3b6ec
+msgid "**Issue:** The inference of Qwen2 MoE models is slow."
+msgstr ""
+
+#: ../../source/inference/chat.rst:302 6c1d5c6ff9c7450aafed25209ba2177f
+msgid ""
+"All MoE models in `transformers` compute the results of the expert FFNs "
+"in loops, and it is less efficient for GPUs by nature. The performance is"
+" even worse for model with finegrained experts, where the model has a lot"
+" of experts and each experts is relatively small, which is the case for "
+"Qwen2 MoE. To optimize that, a fused kernel implementation (as in "
+"``vllm``) or methods like expert parallel (as in ``mcore``) is needed. "
+"For now, we recommend using ``vllm`` for Qwen2 MoE."
+msgstr ""
+
+#: ../../source/inference/chat.rst:309 8646f9aac8174ce2a14844bf30698a92
+msgid ""
+"**Issue:** With Qwen2-7B in ``float16``, ``RuntimeError: probability "
+"tensor contains either `inf`, `nan` or element < 0`` is raised or endless"
+" of ``!!!!...`` is generated, depending on the PyTorch version."
+msgstr ""
+
+#: ../../source/inference/chat.rst:311 3c2edcd350fe4c319de8f65da999388f
+msgid ""
+"We don't recommend using ``float16`` for Qwen2 models or numerical "
+"instability may occur, especially for cards without support of fp16 "
+"matmul with fp32 accumulate. If you have to use ``float16``, consider "
+"using `this fork "
+"<https://github.com/jklj077/transformers/tree/qwen2-patch>`__ and force "
+"`attn_implementation=\"eager\"`."
+msgstr ""
+
+#: ../../source/inference/chat.rst:316 c0fbe1a9c3df463da53cdc6159fa04f1
 msgid "Next Step"
 msgstr "下一步"
 
-#: ../../source/inference/chat.rst:124 3cc062eb2dd04c04bc3425ca2362d57c
-
+#: ../../source/inference/chat.rst:318 8a91dc308f204765af5bd1b88c9698f6
 msgid ""
 "Now you can chat with Qwen2 in either streaming mode or not. Continue to "
 "read the documentation and try to figure out more advanced usages of "

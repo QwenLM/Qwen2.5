@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-06 23:35+0800\n"
+"POT-Creation-Date: 2024-07-18 19:19+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -65,11 +65,17 @@ msgstr ""
 msgid "``ollama run qwen2:72b``"
 msgstr ""
 
-#: ../../source/run_locally/ollama.rst:30 e7c09ad8871e4701b05baca042ca279c
+#: ../../source/run_locally/ollama.rst:31 43a8fc33cab94d0f9606988b142563d8
+msgid ""
+"``ollama`` does not host base models. Even though the tag may not have "
+"the instruct suffix, they are all instruct models."
+msgstr "``ollama`` 并不托管基模型。即便模型标签不带 instruct 后缀，实际也是 instruct 模型。"
+
+#: ../../source/run_locally/ollama.rst:36 e7c09ad8871e4701b05baca042ca279c
 msgid "Run Ollama with Your GGUF Files"
 msgstr "在Ollama运行你的GGUF文件"
 
-#: ../../source/run_locally/ollama.rst:32 089328f73e7d4382a9d82cd10a3c093e
+#: ../../source/run_locally/ollama.rst:38 089328f73e7d4382a9d82cd10a3c093e
 msgid ""
 "Sometimes you don't want to pull models and you just want to use Ollama "
 "with your own GGUF files. Suppose you have a GGUF file of Qwen2, ``qwen2"
@@ -80,10 +86,11 @@ msgstr ""
 "instruct-q5_0.gguf`` 的Qwen2的GGUF文件。在第一步中，您需要创建一个名为 ``Modelfile`` "
 "的文件。该文件的内容如下所示："
 
-#: ../../source/run_locally/ollama.rst:59 f27b0fb22282407e86562603b88821f2
+#: ../../source/run_locally/ollama.rst:65 f27b0fb22282407e86562603b88821f2
 msgid "Then create the ollama model by running:"
 msgstr "然后通过运行下列命令来创建一个ollama模型"
 
-#: ../../source/run_locally/ollama.rst:65 1015f2be7dca46489ef288f98f80527d
+#: ../../source/run_locally/ollama.rst:71 1015f2be7dca46489ef288f98f80527d
 msgid "Once it is finished, you can run your ollama model by:"
 msgstr "完成后，你即可运行你的ollama模型："
+

@@ -10,8 +10,7 @@ To get started, simply run
 pip install -r requirements-docs.txt
 ```
 
-Then run `make html` and it will compile the docs and put it under the `_build/html` 
-or `build/html` directory.
+Then run `make html` or `sphinx-build -M html source build` and it will compile the docs and put it under the `build/html` directory.
 
 
 ## Translation
@@ -29,6 +28,6 @@ be placed in the `_build/gettext` or `build/gettext` directory.
     sphinx-intl update -p <pot_directory> -l zh_CN
     ```
 
-3. Translate po files at `locales\zh_CN\LC_MESSAGES`. Please be careful not to break reST notation.
+3. Translate po files at `locales\zh_CN\LC_MESSAGES`. Pay attention to fuzzy matches (messages after `#, fuzzy`). Please be careful not to break reST notation.
 
-4. Build translated document: `make -e SPHINXOPTS="-D language='zh_cn'" html`
+4. Build translated document: `make -e SPHINXOPTS="-D language='zh_CN'" html` or `sphinx-build -M html source build -D language=zh_CN`
