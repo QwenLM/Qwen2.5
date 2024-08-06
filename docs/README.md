@@ -21,11 +21,11 @@ The documentation is available in both English and Simplified Chinese. We use
 You need to install the Python package `sphinx-intl` before starting.
 
 1. After updating the English documentation, run `make gettext`, and the pot files will
-be placed in the `_build/gettext` or `build/gettext` directory.
+be placed in the `build/gettext` directory.
 
 2. Use the generated pot files to update the po files:
     ```bash
-    sphinx-intl update -p <pot_directory> -l zh_CN
+    sphinx-intl update -p build/gettext -l zh_CN
     ```
 
 3. Translate po files at `locales\zh_CN\LC_MESSAGES`. Pay attention to fuzzy matches (messages after `#, fuzzy`). Please be careful not to break reST notation.
