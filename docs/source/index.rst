@@ -36,7 +36,8 @@ Join our community by joining our `Discord <https://discord.gg/yPEP2vHTu4>`__ an
    :hidden:
 
    getting_started/quickstart
-
+   getting_started/concepts
+   
 .. toctree::
    :maxdepth: 1
    :caption: Inference
