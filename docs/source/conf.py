@@ -10,12 +10,10 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
-import os
 import sys
 from sphinx.ext import autodoc
 import logging
 
-sys.path.insert(0, os.path.abspath(os.path.join("..", "..")))
 
 logger = logging.getLogger(__name__)
 
@@ -41,7 +39,7 @@ extensions = [
     "sphinx_design",
 ]
 
-myst_enable_extensions = ["colon_fence"]
+myst_enable_extensions = ["colon_fence", "attrs_block", "attrs_inline"]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
