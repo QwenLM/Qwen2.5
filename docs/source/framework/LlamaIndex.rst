@@ -25,7 +25,7 @@ Now we can set up LLM, embedding model, and the related configurations.
 Qwen2-Instruct supports conversations in multiple languages, including English and Chinese.
 You can use the ``bge-base-en-v1.5`` model to retrieve from English documents, and you can download the ``bge-base-zh-v1.5`` model to retrieve from Chinese documents. 
 You can also choose ``bge-large`` or ``bge-small`` as the embedding model or modify the context window size or text chunk size depending on your computing resources.
-Qwen2 model families support a maximum of 32K context window size (up to 128K for Qwen2-7B-Instruct and Qwen2-72B-Instrut, requring extra configuration)
+Qwen2 model families support a maximum of 32K context window size (up to 128K for Qwen2-7B-Instruct and Qwen2-72B-Instrut, requiring extra configuration)
 
 .. code:: python
   

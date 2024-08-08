@@ -3,10 +3,10 @@ TGI
 
 Hugging Face's Text Generation Inference (TGI) is a production-ready framework specifically designed for deploying and serving large language models (LLMs) for text generation tasks. It offers a seamless deployment experience, powered by a robust set of features:
 
-* `Speculative Decoding <Speculative Decoding_>`_:  Accelerates generation speeds.
-* `Tensor Parallelism`_:  Enables efficient deployment across multiple GPUs.
-* `Token Streaming`_:  Allows for the continuous generation of text.
-* Versatile Device Support:  Works seamlessly with `AMD`_, `Gaudi`_ and `AWS Inferentia`_.
+* `Speculative Decoding <Speculative Decoding_>`_: Accelerates generation speeds.
+* `Tensor Parallelism`_: Enables efficient deployment across multiple GPUs.
+* `Token Streaming`_: Allows for the continuous generation of text.
+* Versatile Device Support: Works seamlessly with `AMD`_, `Gaudi`_ and `AWS Inferentia`_.
 
 .. _AMD: https://rocm.docs.amd.com/en/latest/how-to/rocm-for-ai/deploy-your-model.html#serving-using-hugging-face-tgi
 .. _Gaudi: https://github.com/huggingface/tgi-gaudi
@@ -62,7 +62,11 @@ It's also available on OpenAI style API:
    }'
 
 
-Note: the model field in the json is not used by TGI, you can put anything. Refer to the `TGI Swagger UI <https://huggingface.github.io/text-generation-inference/#/Text%20Generation%20Inference/completions>`_ for a complete API reference.
+.. note::
+
+   The model field in the JSON is not used by TGI, you can put anything. 
+
+Refer to the `TGI Swagger UI <https://huggingface.github.io/text-generation-inference/#/Text%20Generation%20Inference/completions>`_ for a complete API reference.
 
 You can also use Python API:
 
@@ -162,7 +166,7 @@ The following shows the time per token metrics with Qwen2-7B-Instruct and no qua
 - no speculation (default): 17.4ms
 - speculation (with ``n=2``): 16.6ms
 
-In this particular use case (code generation), speculative decoding is 10% faster than the default configuration. The overall perfomrance of speculative decoding highly depends on the type of task. It works best for code or highly repetitive text.
+In this particular use case (code generation), speculative decoding is 10% faster than the default configuration. The overall performance of speculative decoding highly depends on the type of task. It works best for code or highly repetitive text.
 
 More context on speculative decoding can be found `here <https://huggingface.co/docs/text-generation-inference/conceptual/speculation>`__.
 

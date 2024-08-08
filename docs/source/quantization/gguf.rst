@@ -69,7 +69,7 @@ scales, e.g.,
    python convert-hf-to-gguf.py ${quant_path} --outfile models/7B/qwen2-7b-instruct-fp16-awq.gguf
 
 In this way, you can apply the AWQ scales to your quantized models in
-GGUF formats, which helps improving the model quality.
+GGUF formats, which helps improve the model quality.
 
 We usually quantize the fp16 model to 2, 3, 4, 5, 6, and 8-bit models.
 To perform different low-bit quantization, just replace the quantization

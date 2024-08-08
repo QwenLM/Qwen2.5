@@ -2,14 +2,14 @@ llama.cpp
 ===========================
 
 `llama.cpp <https://github.com/ggerganov/llama.cpp>`__ is a C++ library
-for LLM inference with mimimal setup. It enables running Qwen on your
+for LLM inference with minimal setup. It enables running Qwen on your
 local machine. It is a plain C/C++ implementation without dependencies,
 and it has AVX, AVX2 and AVX512 support for x86 architectures. It
 provides 2, 3, 4, 5, 6, and 8-bit quantization for faster inference and
 reduced memory footprint. CPU+GPU hybrid inference to partially
 accelerate models larger than the total VRAM capacity is also supported.
 Essentially, the usage of llama.cpp is to run the GGUF (GPT-Generated
-Unified Format ) models. For more information, please refer to the
+Unified Format) models. For more information, please refer to the
 official GitHub repo. Here we demonstrate how to run Qwen with
 llama.cpp.
 

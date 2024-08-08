@@ -2,9 +2,9 @@ vLLM
 =====================
 
 We recommend you trying with
-`vLLM <https://github.com/vllm-project/vllm>`__ for your deployement
+`vLLM <https://github.com/vllm-project/vllm>`__ for your deployment
 of Qwen. It is simple to use, and it is fast with state-of-the-art
-serving throughtput, efficienct management of attention key value memory
+serving throughput, efficient management of attention key value memory
 with PagedAttention, continuous batching of input requests, optimized
 CUDA kernels, etc. To learn more about vLLM, please refer to the
 `paper <https://arxiv.org/abs/2309.06180>`__ and
@@ -128,19 +128,17 @@ below:
         temperature=0.7,
         top_p=0.8,
         max_tokens=512,
+        extra_body={
+            "repetition_penalty": 1.05,
+        },
     )
     print("Chat response:", chat_response)
 
 
-.. attention::
-
-    ``openai`` does not support setting ``repetition_penalty``.
-
-
-Multi-GPU Distributred Serving
+Multi-GPU Distributed Serving
 ------------------------------
 
-To scale up your serving throughputs, distributed serving helps you by
+To scale up your serving throughput, distributed serving helps you by
 leveraging more GPU devices. Besides, for large models like
 ``Qwen2-72B-Instruct``, it is impossible to serve it on a single GPU.
 Here, we demonstrate how to run ``Qwen2-72B-Instruct`` with tensor
@@ -226,6 +224,6 @@ arguments for you to make some fix. The first one is
 ``32768`` and thus the maximum length for the serving is also this
 value, leading to higher requirements of memory. Reducing it to a proper
 length for yourself often helps with the OOM issue. Another argument you
-can pay attention to is ``--gpu-memory-utilization``. By default it is
+can pay attention to is ``--gpu-memory-utilization``. By default, it is
 ``0.9`` and you can level it up to tackle the OOM problem. This is also
 why you find a vLLM service always takes so much memory.
