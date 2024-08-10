@@ -74,6 +74,8 @@ model = AutoModelForCausalLM.from_pretrained(
     torch_dtype="auto",
     device_map="auto"
 )
+model = model.to(device=device)
+
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 prompt = "Give me a short introduction to large language model."
