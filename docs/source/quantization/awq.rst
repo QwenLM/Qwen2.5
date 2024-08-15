@@ -69,7 +69,7 @@ and ``Qwen2-7B-Instruct-AWQ``:
 .. code:: bash
 
     curl http://localhost:8000/v1/chat/completions -H "Content-Type: application/json" -d '{
-      "model": "Qwen/Qwen2-7B-Instruct-AWQ",
+      "model": "Qwen/Qwen2-7B-Instruct-AWQ/",
       "messages": [
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": "Tell me something about large language models."}
