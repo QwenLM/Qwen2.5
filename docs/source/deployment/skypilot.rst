@@ -5,7 +5,7 @@ What is SkyPilot
 ----------------
 
 SkyPilot is a framework for running LLMs, AI, and batch jobs on any
-cloud, offering maximum cost savings, highest GPU availability, and
+cloud, offering maximum cost savings, the highest GPU availability, and
 managed execution. Its features include:
 
 -  Get the best GPU availability by utilizing multiple resources pools
@@ -22,7 +22,7 @@ Install SkyPilot
 
 We advise you to follow the
 `instruction <https://skypilot.readthedocs.io/en/latest/getting-started/installation.html>`__
-to install Skypilot. Here we provide a simple example of using ``pip``
+to install SkyPilot. Here we provide a simple example of using ``pip``
 for the installation as shown below.
 
 .. code:: bash
@@ -46,7 +46,7 @@ master branch automatically cloned by running:
 
 .. code:: bash
 
-   # NOTE: '--platform linux/amd64' is needed for Apple silicon Macs
+   # NOTE: '--platform linux/amd64' is needed for Apple Silicon Macs
    docker run --platform linux/amd64 \
      -td --rm --name sky \
      -v "$HOME/.sky:/root/.sky:rw" \

@@ -1,0 +1,65 @@
+html {
+    font-size: 16px;
+}
+
+h1 {
+    font-size: 1.75rem;
+    line-height: 2.5rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+
+h4 {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 0.75rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 1.875rem;
+    margin-bottom: 1rem;
+}
+
+p strong {
+    font-weight: 500;
+}
+
+details.sd-dropdown summary.sd-summary-title {
+    flex-direction: row-reverse;
+    font-weight: 500;
+    padding-left: 0;
+}
+
+details.sd-dropdown summary.sd-summary-title code.literal {
+    font-weight: bolder;
+    filter: brightness(95%);
+}
+
+details.sd-dropdown summary.sd-summary-title span.sd-summary-state-marker {
+    padding-left: 0.5em;
+    padding-right: 0.5em
+}
+
+details.sd-dropdown div.sd-summary-content {
+    padding-left: 2.5em;
+}

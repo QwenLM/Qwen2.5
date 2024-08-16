@@ -3,7 +3,7 @@ Text Generation Web UI
 
 `Text Generation Web
 UI <https://github.com/oobabooga/text-generation-webui>`__ (TGW, or
-usually referred to “oobabooga”) is a popular web UI for text
+usually referred to "oobabooga") is a popular web UI for text
 generation, similar to
 `AUTOMATIC1111/stable-diffusion-webui <https://github.com/AUTOMATIC1111/stable-diffusion-webui>`__.
 It has multiple interfaces, and supports multiple model backends,

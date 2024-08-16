@@ -151,7 +151,7 @@ run:
     AutoAWQ does not support quantizing Qwen2 MoE models as of July 18, 2024.
 
 
-Then you need to prepare your data for calibaration. What you need to do
+Then you need to prepare your data for calibration. What you need to do
 is just put samples into a list, each of which is a text. As we directly
 use our finetuning data for calibration, we first format it with ChatML
 template. For example:

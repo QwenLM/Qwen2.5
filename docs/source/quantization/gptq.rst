@@ -178,7 +178,7 @@ Here is an example:
         max_memory={i: "20GB" for i in range(4)}
     )
 
-Then you need to prepare your data for calibaration. What you need to do
+Then you need to prepare your data for calibration. What you need to do
 is just put samples into a list, each of which is a text. As we directly
 use our finetuning data for calibration, we first format it with ChatML
 template. For example:
@@ -264,13 +264,13 @@ There are two workarounds:
 
 **Issue:** 
 Self-quantized Qwen2-72B-Instruct-GPTQ with ``vllm``, ``ValueError: ... must be divisible by ...`` is raised. 
-The intermediate size of the self-quantized model is differnet from the official Qwen2-72B-Instruct-GPTQ models.
+The intermediate size of the self-quantized model is different from the official Qwen2-72B-Instruct-GPTQ models.
 
 
 After quantization the size of the quantized weights are divided by the group size, which is typically 128. 
 The intermediate size for the FFN blocks in Qwen2-72B is 29568. 
 Unfortunately, :math:`29568 \div 128 = 231`. 
-Since the number of attention heads and the dimenstions of the weights must by divisible by the tensor parallel size, it means you can only run the quantized model with ``tensor_parallel_size=1``, i.e., one GPU card.
+Since the number of attention heads and the dimensions of the weights must be divisible by the tensor parallel size, it means you can only run the quantized model with ``tensor_parallel_size=1``, i.e., one GPU card.
 
 A workaround is to make the intermediate size divisible by :math:`128 \times 8 = 1024`. 
 To achieve that, the weights should be padded with zeros.

@@ -1,8 +1,3 @@
-.. Qwen documentation master file, created by
-   sphinx-quickstart on Tue Feb 20 21:16:41 2024.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 Welcome to Qwen!
 ================
 
@@ -35,25 +30,25 @@ For more information, please visit our:
 Join our community by joining our `Discord <https://discord.gg/yPEP2vHTu4>`__ and `WeChat <https://github.com/QwenLM/Qwen/blob/main/assets/wechat.png>`__ group. We are looking forward to seeing you there!
 
 
-
-Documentation
--------------
-
 .. toctree::
    :maxdepth: 1
    :caption: Getting Started
+   :hidden:
 
    getting_started/quickstart
-
+   getting_started/concepts
+   
 .. toctree::
    :maxdepth: 1
    :caption: Inference
+   :hidden:
 
    inference/chat
 
 .. toctree::
    :maxdepth: 1
    :caption: Run Locally
+   :hidden:
 
    run_locally/llama.cpp
    run_locally/mlx-lm
@@ -62,12 +57,14 @@ Documentation
 .. toctree::
    :maxdepth: 1
    :caption: Web UI
+   :hidden:
 
    web_ui/text_generation_webui
 
 .. toctree::
    :maxdepth: 1
    :caption: Quantization
+   :hidden:
 
    quantization/awq
    quantization/gptq
@@ -76,6 +73,7 @@ Documentation
 .. toctree::
    :maxdepth: 1
    :caption: Deployment
+   :hidden:
 
    deployment/vllm
    deployment/tgi
@@ -84,12 +82,14 @@ Documentation
 .. toctree::
    :maxdepth: 2
    :caption: Training
+   :hidden:
 
    training/SFT/index
 
 .. toctree::
    :maxdepth: 1
    :caption: Framework
+   :hidden:
 
    framework/function_call
    framework/qwen_agent
@@ -99,6 +99,7 @@ Documentation
 .. toctree::
    :maxdepth: 1
    :caption: Benchmark
+   :hidden:
 
    benchmark/quantization_benchmark
    benchmark/speed_benchmark

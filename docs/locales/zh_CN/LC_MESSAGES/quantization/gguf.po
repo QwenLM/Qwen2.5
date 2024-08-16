@@ -1,12 +1,11 @@
 # Copyright (C) 2024, Qwen Team, Alibaba Group.
 # This file is distributed under the same license as the Qwen package.
 #
-
 msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-06 19:37+0800\n"
+"POT-Creation-Date: 2024-08-08 19:58+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -17,11 +16,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.15.0\n"
 
-#: ../../source/quantization/gguf.rst:2 efb68281a8174451a13f64c9b766d327
+#: ../../source/quantization/gguf.rst:2 c84f0281016241a9b8d66df6547f1ca0
 msgid "GGUF"
 msgstr "GGUF"
 
-#: ../../source/quantization/gguf.rst:4 da50a8ea2da94bf287d8f1395c5391b9
+#: ../../source/quantization/gguf.rst:4 ad825d4268b74be1948c5c0e3607f88d
 msgid ""
 "Recently, running LLMs locally is popular in the community, and running "
 "GGUF files with llama.cpp is a typical example. With llama.cpp, you can "
@@ -32,17 +31,15 @@ msgid ""
 "to quantize your model as well as the way to apply AWQ scale to your Qwen"
 " model quantization."
 msgstr ""
-"最近，在社区中本地运行LLM变得越来越流行，其中使用llama.cpp处理GGUF文件是一个典型的例子。"
-"通过llama.cpp，您不仅可以为自己的模型构建GGUF文件，还可以进行低比特量化操作。"
-"在GGUF格式下，您可以直接对模型进行量化而无需校准过程，或者为了获得更好的量化效果应用AWQ scale，亦或是结合校准数据使用imatrix工具。"
-"在这篇文档中，我们将展示最简便的模型量化方法，以及如何在对Qwen模型进行量化时应用AWQ比例以优化其质量。"
+"最近，在社区中本地运行LLM变得越来越流行，其中使用llama.cpp处理GGUF文件是一个典型的例子。通过llama.cpp，您不仅可以为自己的模型构建GGUF文件，还可以进行低比特量化操作。在GGUF格式下，您可以直接对模型进行量化而无需校准过程，或者为了获得更好的量化效果应用AWQ"
+" "
+"scale，亦或是结合校准数据使用imatrix工具。在这篇文档中，我们将展示最简便的模型量化方法，以及如何在对Qwen模型进行量化时应用AWQ比例以优化其质量。"
 
-#: ../../source/quantization/gguf.rst:14 c8926f5ccb2b465ba03568c12305c257
+#: ../../source/quantization/gguf.rst:14 7a57f683cbe345308614d8417c9cc418
 msgid "Quantize Your Models and Make GGUF Files"
 msgstr "量化你的模型并生成GGUF文件"
 
-#: ../../source/quantization/gguf.rst:16 ae943002ddd14f708db84bead37ded7a
-
+#: ../../source/quantization/gguf.rst:16 b85c78e3387e423aa46e89485e345155
 msgid ""
 "Before you move to quantization, make sure you have followed the "
 "instruction and started to use llama.cpp. The following guidance will NOT"
@@ -50,10 +47,10 @@ msgid ""
 "would like to quantize ``Qwen2-7B-Instruct``. You need to first make a "
 "GGUF file for the fp16 model as shown below:"
 msgstr ""
-"在进行量化操作之前，请确保你已经按照指导开始使用llama.cpp。以下指引将不会提供有关安装和构建的步骤。现在，"
-"假设你要对 ``Qwen2-7B-Instruct`` 模型进行量化，首先需要按照如下所示的方式为fp16模型创建一个GGUF文件："
+"在进行量化操作之前，请确保你已经按照指导开始使用llama.cpp。以下指引将不会提供有关安装和构建的步骤。现在，假设你要对 ``Qwen2"
+"-7B-Instruct`` 模型进行量化，首先需要按照如下所示的方式为fp16模型创建一个GGUF文件："
 
-#: ../../source/quantization/gguf.rst:26 3e17d976d18d44879a3190ec406bf4e7
+#: ../../source/quantization/gguf.rst:26 63069bf0c4984282ac913e2b631c3b77
 msgid ""
 "where the first argument refers to the path to the HF model directory or "
 "the HF model name, and the second argument refers to the path of your "
@@ -64,10 +61,10 @@ msgid ""
 " quantizing the model to 4 bits is shown below:"
 msgstr ""
 "其中，第一个参数指代的是预训练模型所在的路径或者HF模型的名称，第二个参数则指的是你想要生成的GGUF文件的路径（此处我将其置于 "
-"``models/7B`` 目录下）。请记住，在运行命令之前，需要先创建这个目录。"
-"通过这种方式，你已经为你的fp16模型生成了一个GGUF文件，接下来你需要根据实际需求将其量化至低比特位。以下是一个将模型量化至4位的具体示例："
+"``models/7B`` "
+"目录下）。请记住，在运行命令之前，需要先创建这个目录。通过这种方式，你已经为你的fp16模型生成了一个GGUF文件，接下来你需要根据实际需求将其量化至低比特位。以下是一个将模型量化至4位的具体示例："
 
-#: ../../source/quantization/gguf.rst:38 774cd7c01fe3412aab023ed6b9e58a75
+#: ../../source/quantization/gguf.rst:38 598432cbed35489a81b3d51bc5b76d1f
 msgid ""
 "where we use ``q4_0`` for the 4-bit quantization. Until now, you have "
 "finished quantizing a model to 4 bits and putting it into a GGUF file, "
@@ -76,11 +73,11 @@ msgstr ""
 "到现在为止，您已经完成了将模型量化为4比特，并将其放入GGUF文件中。这里的 ``q4_0`` "
 "表示4比特量化。现在，这个量化后的模型可以直接通过llama.cpp运行。"
 
-#: ../../source/quantization/gguf.rst:43 f3aa9d123c7f4ceda5a84c4a0b7fa126
+#: ../../source/quantization/gguf.rst:43 4ce8eab321784938aae39a2df6bb5d69
 msgid "Quantize Your Models With AWQ Scales"
 msgstr "利用AWQ scales来量化你的模型"
 
-#: ../../source/quantization/gguf.rst:45 0c10da19db7f453ba74430e31e7ca958
+#: ../../source/quantization/gguf.rst:45 f15065f69c5b4768a0f19f5bb295ea3c
 msgid ""
 "To improve the quality of your quantized models, one possible solution is"
 " to apply the AWQ scale, following `this script <https://github.com"
@@ -88,13 +85,12 @@ msgid ""
 " you run ``model.quantize()`` with AutoAWQ, remember to add "
 "``export_compatible=True`` as shown below:"
 msgstr ""
-"要提升量化模型的质量，一种可能的解决方案是应用AWQ scales，可以参考 `该脚本 <https://github.com"
-"/casper-hansen/AutoAWQ/blob/main/docs/examples.md>`__ 。"
-"具体操作步骤如下："
-"首先，在使用AutoAWQ运行model.quantize()时，请务必记得添加 "
+"要提升量化模型的质量，一种可能的解决方案是应用AWQ scales，可以参考 `该脚本 <https://github.com/casper-"
+"hansen/AutoAWQ/blob/main/docs/examples.md>`__ "
+"。具体操作步骤如下：首先，在使用AutoAWQ运行model.quantize()时，请务必记得添加 "
 "``export_compatible=True`` 参数，如下所示："
 
-#: ../../source/quantization/gguf.rst:62 6a799d2a638a4b59bbc1627378bc8794
+#: ../../source/quantization/gguf.rst:62 adb5ab657f844b82827253feaffd6407
 msgid ""
 "With ``model.save_quantzed()`` as shown above, a fp16 model with AWQ "
 "scales is saved. Then, when you run ``convert-hf-to-gguf.py``, remember "
@@ -104,13 +100,14 @@ msgstr ""
 "通过上述的 model.save_quantized()，一个带有AWQ scales的fp16模型将被保存。然后，当你运行 ``convert-"
 "hf-to-gguf.py`` 脚本时，请记得将模型路径替换为带有AWQ scales的fp16模型的路径，例如："
 
-#: ../../source/quantization/gguf.rst:71 55a4da117b4b4a17a6b6aae5a54f0f79
+#: ../../source/quantization/gguf.rst:71 f537dad6c4a34060b6e7dcf09ae09060
+#, fuzzy
 msgid ""
 "In this way, you can apply the AWQ scales to your quantized models in "
-"GGUF formats, which helps improving the model quality."
+"GGUF formats, which helps improve the model quality."
 msgstr "通过这种方式，您可以在GGUF格式的量化模型中应用AWQ scales，这有助于提升模型的质量。"
 
-#: ../../source/quantization/gguf.rst:74 56c77a98c8914fe687cf2e751d88fb04
+#: ../../source/quantization/gguf.rst:74 36ffa28eb182451da6259394b743bb47
 msgid ""
 "We usually quantize the fp16 model to 2, 3, 4, 5, 6, and 8-bit models. To"
 " perform different low-bit quantization, just replace the quantization "
@@ -118,11 +115,10 @@ msgid ""
 "to 2-bit model, you can replace ``q4_0`` to ``q2_k`` as demonstrated "
 "below:"
 msgstr ""
-"我们通常将fp16模型量化为2、3、4、5、6和8位模型。要执行不同低比特的量化，只需在命令中替换量化方法即可。"
-"例如，如果你想将你的模型量化为2位模型，你可以按照下面所示，将"
+"我们通常将fp16模型量化为2、3、4、5、6和8位模型。要执行不同低比特的量化，只需在命令中替换量化方法即可。例如，如果你想将你的模型量化为2位模型，你可以按照下面所示，将"
 " ``q4_0`` 替换为 ``q2_k`` ："
 
-#: ../../source/quantization/gguf.rst:84 c46c6319f97141ee826baac6e8707b22
+#: ../../source/quantization/gguf.rst:84 f166f3c87c6949329eb30d4728661342
 msgid ""
 "We now provide GGUF models in the following quantization levels: "
 "``q2_k``, ``q3_k_m``, ``q4_0``, ``q4_k_m``, ``q5_0``, ``q5_k_m``, "

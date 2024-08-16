@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-18 19:19+0800\n"
+"POT-Creation-Date: 2024-08-08 19:58+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -16,191 +16,185 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.15.0\n"
 
-#: ../../source/inference/chat.rst:2 0491f1986c9b42fabca9a8edbbdfb72a
+#: ../../source/inference/chat.md:1 96bdbc952c9c426995eeb9ae990ea54b
 msgid "Using Transformers to Chat"
 msgstr "使用Transformers实现Chat"
 
-#: ../../source/inference/chat.rst:4 9fa8d4db61074ebaaea332d66956f6d5
+#: ../../source/inference/chat.md:3 f48db61a87ae4be4a79c0197a5a5b52d
 msgid ""
 "The most significant but also the simplest usage of Qwen2 is to chat with"
-" it using the ``transformers`` library. In this document, we show how to "
-"chat with ``Qwen2-7B-Instruct``, in either streaming mode or not."
+" it using the `transformers` library.  In this document, we show how to "
+"chat with `Qwen2-7B-Instruct`, in either streaming mode or not."
 msgstr ""
-"使用Qwen2最简单的方法就是利用 ``transformers`` 库与之对话。在本文档中，我们将展示如何在流式模式或非流式模式下与Qwen2"
-"-7B-Instruct进行对话。"
+"使用 Qwen2 最简单的方法就是利用 `transformers` 库与之对话。在本文档中，我们将展示如何在流式模式或非流式模式下与 Qwen2-7B-Instruct 进行对话。"
 
-#: ../../source/inference/chat.rst:9 8fbf78f2f51e4deeb55eceef7cf07d74
+#: ../../source/inference/chat.md:7 b5f66f7e95af4cd8932739d94d942f15
+msgid "Select the interface you would like to use:"
+msgstr "选择编程接口"
+
+#: ../../source/inference/chat.md 0e2e7ec3dcc04c348e75a15f6f64a508
+#: 8d707292129e44009a5467ac958b0bcc a2ef2ccb2c774fc6a15aab4efdd95f42
+#: b95c8e3f5e7a46759b319eaad594e373 beec958a6e95438f852d39af857405e5
+#: ebcc31cfde9d4ac39c17f5572d620636
+msgid "Manual"
+msgstr "手动"
+
+#: ../../source/inference/chat.md:14 494c6539025144e8958be5ec1bce814e
+msgid "Using `AutoTokenizer` and `AutoModelForCausalLM`."
+msgstr "使用 `AutoTokenzier` 和 `AutoModelForCausalLM`。"
+
+#: ../../source/inference/chat.md 521c9c2e9faf454589e676c71e7074b8
+#: 68bede46d55f497caaae345c1de04fe2 889b071c108943638207d8146c6345ab
+#: 9e379b4ad0ac4d4bbd7b164690b85188 a182419f4e4947a88966a34963fc0da9
+#: fab2c26fe75b448eb2cc5022e47ee78b
+msgid "Pipeline"
+msgstr "流水线"
+
+#: ../../source/inference/chat.md:19 52374e51d981471ca674b15ed9a7e2eb
+msgid "Using `pipeline`."
+msgstr "使用 `pipeline`。"
+
+#: ../../source/inference/chat.md:24 8983a9faa2034951b3fead985231d336
 msgid "Basic Usage"
 msgstr "基本用法"
 
-#: ../../source/inference/chat.rst:11 092703e4937e4849b625c8854bf19c7b
+#: ../../source/inference/chat.md:33 fdd6f7717e8f4f73b60809b898a887ff
 msgid ""
-"You can just write several lines of code with ``transformers`` to chat "
-"with Qwen2-Instruct. Essentially, we build the tokenizer and the model "
-"with ``from_pretrained`` method, and we use ``generate`` method to "
-"perform chatting with the help of chat template provided by the "
-"tokenizer. Below is an example of how to chat with Qwen2-7B-Instruct:"
+"You can just write several lines of code with `transformers` to chat with"
+" Qwen2-Instruct.  Essentially, we build the tokenizer and the model with "
+"`from_pretrained` method, and we use `generate` method to perform "
+"chatting with the help of chat template provided by the tokenizer. Below "
+"is an example of how to chat with Qwen2-7B-Instruct:"
 msgstr ""
-"你只需借助 ``transformers`` 库编写几行代码，就能与Qwen2-Instruct进行对话。实质上，我们通过 "
-"``from_pretrained`` 方法构建tokenizer和模型，然后利用 ``generate`` "
-"方法，在tokenizer提供的chat template的辅助下进行对话。以下是一个如何与Qwen2-7B-Instruct进行对话的示例："
+"你只需借助 `transformers` 库编写几行代码，就能与 Qwen2-Instruct 进行对话。实质上，我们通过 "
+"`from_pretrained` 方法构建 tokenizer 和模型，然后利用 `generate` "
+"方法，在 tokenizer 提供的 chat template 的辅助下进行对话。以下是一个如何与 Qwen2-7B-Instruct 进行对话的示例："
 
-#: ../../source/inference/chat.rst:57 a913aa7a1f954025bc4a262d09947286
+#: ../../source/inference/chat.md:76 7038380b705c4c39a803ea056daad142
 msgid ""
 "To continue the chat, simply append the response to the messages with the"
 " role assistant and repeat the procedure. The following shows and "
 "example:"
 msgstr "如要继续对话，只需将回复内容以 assistant 为 role 加入 messages ，然后重复以上流程即可。下面为示例："
 
-#: ../../source/inference/chat.rst:88 97262cebfae04a9a9ef7fa3d6f13732a
+#: ../../source/inference/chat.md:106 76e5ba19904843e0a9e6c4d64d61a156
 msgid ""
-"Note that the previous method in the original Qwen repo ``chat()`` is now"
-" replaced by ``generate()``. The ``apply_chat_template()`` function is "
-"used to convert the messages into a format that the model can understand."
-" The ``add_generation_prompt`` argument is used to add a generation "
-"prompt, which refers to ``<|im_start|>assistant\\n`` to the input. "
-"Notably, we apply ChatML template for chat models following our previous "
-"practice. The ``max_new_tokens`` argument is used to set the maximum "
-"length of the response. The ``tokenizer.batch_decode()`` function is used"
-" to decode the response. In terms of the input, the above ``messages`` is"
-" an example to show how to format your dialog history and system prompt. "
-"By default, if you do not specify system prompt, we directly use ``You "
-"are a helpful assistant.``."
+"Note that the previous method in the original Qwen repo `chat()` is now "
+"replaced by `generate()`.  The `apply_chat_template()` function is used "
+"to convert the messages into a format that the model can understand.  The"
+" `add_generation_prompt` argument is used to add a generation prompt, "
+"which refers to `<|im_start|>assistant\\n` to the input. Notably, we "
+"apply ChatML template for chat models following our previous practice.  "
+"The `max_new_tokens` argument is used to set the maximum length of the "
+"response.  The `tokenizer.batch_decode()` function is used to decode the "
+"response.  In terms of the input, the above `messages` is an example to "
+"show how to format your dialog history and system prompt.  By default, if"
+" you do not specify system prompt, we directly use `You are a helpful "
+"assistant.`."
 msgstr ""
-"请注意，原Qwen仓库中的旧方法 ``chat()`` 现在已被 ``generate()`` 方法替代。这里使用了 "
-"``apply_chat_template()`` 函数将消息转换为模型能够理解的格式。其中的 ``add_generation_prompt``"
-" 参数用于在输入中添加生成提示，该提示指向 ``<|im_start|>assistant\\n`` "
-"。尤其需要注意的是，我们遵循先前实践，对chat模型应用ChatML模板。而 ``max_new_tokens`` "
-"参数则用于设置响应的最大长度。此外，通过 ``tokenizer.batch_decode()`` 函数对响应进行解码。关于输入部分，上述的 "
-"``messages`` 是一个示例，展示了如何格式化对话历史记录和系统提示。默认情况下，如果您没有指定系统提示，我们将直接使用 ``You "
-"are a helpful assistant.`` 作为系统提示。"
+"请注意，原 Qwen 仓库中的旧方法 `chat()` 现在已被 `generate()` 方法替代。这里使用了 "
+"`apply_chat_template()` 函数将消息转换为模型能够理解的格式。其中的 `add_generation_prompt`"
+" 参数用于在输入中添加生成提示，该提示指向 `<|im_start|>assistant\\n` "
+"。尤其需要注意的是，我们遵循先前实践，对 chat 模型应用 ChatML 模板。而 `max_new_tokens` "
+"参数则用于设置响应的最大长度。此外，通过 `tokenizer.batch_decode()` 函数对响应进行解码。关于输入部分，上述的 "
+"`messages` 是一个示例，展示了如何格式化对话历史记录和系统提示。默认情况下，如果您没有指定系统提示，我们将直接使用 `You "
+"are a helpful assistant.` 作为系统提示。"
 
-#: ../../source/inference/chat.rst:103 be61da715bb441e98be60d947ecc7bb3
-msgid "Pipeline Usage"
-msgstr "Pipeline用法"
-
-#: ../../source/inference/chat.rst:105 6ecc73b0fee54213af938ee4f4aa8d23
+#: ../../source/inference/chat.md:120 de887c307eec42d6b592d86dd9c7d6ec
 msgid ""
-"``transformers`` also provides a functionality called \"pipeline\" that "
+"`transformers` provides a functionality called \"pipeline\" that "
 "encapsulates the many operations in common tasks. You can chat with the "
 "model in just 4 lines of code:"
-msgstr ""
-"``transformers`` 同时提供了“流水线” (\"pipeline\") 功能，封装了常用任务的处理流程，仅用4行代码即可开启对话："
+msgstr "`transformers` 同时提供了“流水线” (\"pipeline\") 功能，封装了常用任务的处理流程，仅用4行代码即可开启对话："
 
-#: ../../source/inference/chat.rst:121 a27b713ce4744c39b5da554d4b31baa4
+#: ../../source/inference/chat.md:134 cef1a6c6d740426493d66c47613232c9
+msgid ""
+"To continue the chat, simply append the response to the messages with the"
+" role assistant and repeat the procedure.  The following shows and "
+"example:"
+msgstr "如要继续对话，只需将回复内容以 assistant 为 role 加入 messages ，然后重复以上流程即可。下面为示例："
+
+#: ../../source/inference/chat.md:148 b96eb383dfc14dd8a3434650ed4a0f3c
 msgid "Batching"
 msgstr "批处理"
 
-#: ../../source/inference/chat.rst:123 a214d4f0d3c94dfca676157ae645c179
-msgid ""
-"All common ``transformers`` methods support batched input and output. For"
-" basic usage, the following is an example:"
-msgstr "``transformers`` 常用方法均支持批处理。以下为基本用法的示例："
-
-#: ../../source/inference/chat.rst:155 c7a525a877d04784bd512db57acda59f
-msgid "With pipeline, it is simpler:"
-msgstr "使用流水线功能，实现批处理代码更简单："
-
-#: ../../source/inference/chat.rst:174 621bad0430454518b5e48ea7c80a636a
+#: ../../source/inference/chat.md:151 19314150a782445e80cc4625bd237fe0
 msgid "Batching is not automatically a win for performance."
 msgstr "批处理不总能提速。"
 
-#: ../../source/inference/chat.rst:178 9fb0e055e3394dc5b571211f46de2ea9
+#: ../../source/inference/chat.md:154 8984aeb50670492f8a4c965cc8e8587e
+msgid ""
+"All common `transformers` methods support batched input and output. For "
+"basic usage, the following is an example:"
+msgstr "`transformers` 常用方法均支持批处理。以下为基本用法的示例："
+
+#: ../../source/inference/chat.md:196 0640fdebfecb4e8eb8a1ebfbdb51620c
+msgid "With pipeline, it is simpler:"
+msgstr "使用流水线功能，实现批处理代码更简单："
+
+#: ../../source/inference/chat.md:215 f50e7b96eb4f4adfa62d4e738f692c93
 msgid "Streaming Mode"
 msgstr "流式输出"
 
-#: ../../source/inference/chat.rst:180 072c92f91eff448a87319d611a739e1a
+#: ../../source/inference/chat.md:217 2387db7f8f64456e8d71af9279c6f573
 msgid ""
-"With the help of ``TextStreamer``, you can modify your chatting with Qwen"
-" to streaming mode. Below we show you an example of how to use it:"
-msgstr "借助 ``TextStreamer`` ，您可以将与Qwen的对话切换到流式传输模式。下面是一个关于如何使用它的示例："
+"With the help of `TextStreamer`, you can modify your chatting with Qwen "
+"to streaming mode.  It will print the response as being generated to the "
+"console or the terminal. Below we show you an example of how to use it:"
+msgstr "借助 `TextStreamer` ，您可以将与 Qwen 的对话切换到流式传输模式。下面是一个关于如何使用它的示例："
 
-#: ../../source/inference/chat.rst:197 ca78df61f54d4e408ad4e7a5f274ee84
+#: ../../source/inference/chat.md:262 d2759ef46349472797dd73b174f5cf32
 msgid ""
-"Besides using ``TextStreamer``, we can also use ``TextIteratorStreamer`` "
+"Besides using `TextStreamer`, we can also use `TextIteratorStreamer` "
 "which stores print-ready text in a queue, to be used by a downstream "
 "application as an iterator:"
 msgstr ""
-"除了使用 ``TextStreamer`` 之外，我们还可以使用 ``TextIteratorStreamer`` "
+"除了使用 `TextStreamer` 之外，我们还可以使用 `TextIteratorStreamer` "
 "，它将可打印的文本存储在一个队列中，以便下游应用程序作为迭代器来使用："
 
-#: ../../source/inference/chat.rst:224 569fe9403e7846529d006af9f1a7873d
+#: ../../source/inference/chat.md:323 3d382eb284104d19a701af04e623ab3a
 msgid "Using Flash Attention 2 to Accelerate Generation"
 msgstr "使用 Flash Attention 2 加速生成"
 
-#: ../../source/inference/chat.rst:228 8e0c00fb225c4e37968b779181904ebf
+#: ../../source/inference/chat.md:326 6e3e2267c05740d48b24cf2917edd6b1
 msgid ""
-"With the latest ``transformers`` and ``torch``, Flash Attention 2 will be"
-" applied by default if applicable. You do not need to request the use of "
-"Flash Attention 2 in ``transformers`` or install the ``flash_attn`` "
-"package. The following is intended for users that cannot use latest "
+"With the latest `transformers` and `torch`, Flash Attention 2 will be "
+"applied by default if applicable.[^fa2] You do not need to request the "
+"use of Flash Attention 2 in `transformers` or install the `flash_attn` "
+"package. The following is intended for users that cannot use the latest "
 "versions for various reasons."
 msgstr ""
-"如果您使用最新版本的 ``transformers`` 和 ``torch`` ， Flash Attention 2 将在适用时"
-"自动应用。无需指定使用 ``transformers`` 中的 Flash Attention 2 或安装 ``falsh_attn`` 包。"
-"下面的说明是为无法使用最新版的用户补充的。"
+"如果您使用最新版本的 `transformers` 和 `torch` ， Flash Attention 2 "
+"将在适用时自动应用。[^fa2] 无需指定使用 `transformers` 中的 Flash Attention 2 或安装 `falsh_attn`"
+" 包。下面的说明是为无法使用最新版的用户补充的。"
 
-#: ../../source/inference/chat.rst:233 2e42677ecc6f400fb27d2c288fcc4cbf
+#: ../../source/inference/chat.md:331 f8818ea5caa249f9abef1022bf62279b
 msgid ""
 "If you would like to apply Flash Attention 2, you need to install an "
-"appropriate version of ``flash_attn``. You can find pre-built wheels at "
-"`its GitHub repository <https://github.com/Dao-AILab/flash-"
-"attention/releases>`__, and you should make sure the Python version, the "
+"appropriate version of `flash_attn`. You can find pre-built wheels at "
+"[its GitHub repository](https://github.com/Dao-AILab/flash-"
+"attention/releases), and you should make sure the Python version, the "
 "torch version, and the CUDA version of torch are a match. Otherwise, you "
-"need to install from source. Please follow the guides at `its GitHub "
-"README <https://github.com/Dao-AILab/flash-attention>`__."
+"need to install from source. Please follow the guides at [its GitHub "
+"README](https://github.com/Dao-AILab/flash-attention)."
 msgstr ""
-"如果你希望使用 Flash Attention 2 ， 你需要安装 ``flash_attn`` 。 你可以在其 `GitHub 存储库 <https://github.com/Dao-AILab/flash-attention/releases>`__ 找到预编译好的版本。"
-"注意选择与 Python 、 torch 和 torch 中 CUDA 版本对应的预编译版本。如无对应，你需要从源代码安装编译，请参考其 `GitHub README <https://github.com/Dao-AILab/flash-attention>`__ 。"
+"如果你希望使用 Flash Attention 2 ， 你需要安装 `flash_attn` 。 你可以在其 [GitHub 存储库](https://github.com/Dao-AILab/flash-attention/releases) "
+"找到预编译好的版本。注意选择与 Python 、 torch 和 torch 中 CUDA "
+"版本对应的预编译版本。如无对应，你需要从源代码安装编译，请参考其 [GitHub README](https://github.com/Dao-AILab/flash-attention) 。"
 
-#: ../../source/inference/chat.rst:239 569fe9403e7846529d006af9f1a7873d
+#: ../../source/inference/chat.md:337 bf1084818df7465b84c2cfec262e5cb7
 msgid "After a successful installation, you can load the model as shown below:"
 msgstr "成功安装 Flash Attention 2 后，你可以用下面这种方式读取模型："
 
-#: ../../source/inference/chat.rst:253 c72d4979c7ce452d8c1c8afc8d928acf
-msgid ""
-"The attention module for a model in ``transformers`` typically has three "
-"variants: ``sdpa``, ``flash_attention_2``, and ``eager``. The first two "
-"are wrappers around related functions in the ``torch`` and the "
-"``flash_attn`` packages. It defaults to ``sdpa`` if available."
-msgstr ""
-"``transformers`` 中模型一般实现3种注意力模块： ``sdpa`` 、 ``flash_attention_2`` 和 ``eager`` 。"
-"前两种分别封装了 ``torch`` 和 ``flash_attn`` 中的相关实现。``transformers`` 默认使用 ``sdpa`` 版本的注意力模块。"
-
-#: ../../source/inference/chat.rst:257 bdbe283f6e6c4795b54574847ce649c0
-msgid ""
-"In addition, ``torch`` has integrated three implementations for ``sdpa``:"
-" ``FLASH_ATTENTION`` (indicating Flash Attention 2 since version 2.2), "
-"``EFFICIENT_ATTENTION`` (Memory Efficient Attention), and ``MATH``. It "
-"attempts to automatically select the most optimal implementation based on"
-" the inputs. You don't need to install extra packages to use them."
-msgstr ""
-"同时， ``torch`` 包括3种 ``sdpa`` 实现： ``FLASH_ATTENTION`` （自 2.2 版本为 Flash Attention 2）、 "
-"``EFFICIENT_ATTENTION`` (Memory Efficient Attention) 和 ``MATH`` 。 ``torch`` "
-"根据输入自动选择最优的实现，你无需额外安装其它包或进行配置。"
-
-#: ../../source/inference/chat.rst:261 1e823aec9f654435b1d94958f7a6fc06
-msgid ""
-"Hence, if applicable, by default, ``transformers`` uses ``sdpa`` and "
-"``torch`` selects ``FLASH_ATTENTION``."
-msgstr "因此，在默认情况下，如果适用， ``transformers`` 使用 ``sdpa`` 而 ``torch`` 会选择 ``FLASH_ATTENTION`` 。"
-
-#: ../../source/inference/chat.rst:263 0b2fce34bf3e44e5a2fcb48e02a59973
-msgid ""
-"If you wish to explicitly select the implementations in ``torch``, refer "
-"to `this tutorial "
-"<https://pytorch.org/tutorials/intermediate/scaled_dot_product_attention_tutorial.html>`__."
-msgstr "如果你希望显式控制 ``torch`` 使用的 ``sdpa`` 实现，请参考 `本教程 <https://pytorch.org/tutorials/intermediate/scaled_dot_product_attention_tutorial.html>`__ 。"
-
-#: ../../source/inference/chat.rst:268 12529abbc579462eb415f6ec4d3460d2
+#: ../../source/inference/chat.md:382 8450d4c250df4a7093b1cd574fcf0a5c
 msgid "Troubleshooting"
 msgstr "问题排查"
 
-#: ../../source/inference/chat.rst:270 b4b0296ccab649b4be928dc579552f8c
-msgid "**Issue:** Loading models takes a lot of memory."
-msgstr ""
+#: ../../source/inference/chat.md 3bf7f84a9ebf4e248d739aa9605ac21f
+msgid "Loading models takes a lot of memory"
+msgstr "模型加载使用大量显存"
 
-#: ../../source/inference/chat.rst:272 4c435207927840b9be3b1c6824d2fedd
+#: ../../source/inference/chat.md:386 9fb24432d9734abcac7cbe55bd8ba217
 msgid ""
 "Normally, memory usage after loading the model can be roughly taken as "
 "twice the parameter count. For example, a 7B model will take 14GB memory "
@@ -208,85 +202,183 @@ msgid ""
 "often 16-bit floating point number. Of course, you will need more memory "
 "in inference to store the activations."
 msgstr ""
+"一般而言，模型加载所需显存可以按参数量乘二计算，例如，7B 模型需要 14GB 显存加载，"
+"其原因在于，对于大语言模型，计算所用数据类型为16位浮点数。当然，推理运行时还需要更多显存以记录激活状态。"
 
-#: ../../source/inference/chat.rst:277 e8ea412d5e4543c89e91cd48cc57cc60
+#: ../../source/inference/chat.md:391 c69623aefafb47ae84e77d6368bba68f
 msgid ""
-"For ``transformers``, ``torch_dtype=\"auto\"`` is recommended and the "
-"model will be loaded in ``bfloat16`` automatcially. Otherwise, the model "
-"will be loaded in ``float32`` and it will need double the memory. You can"
-" also pass ``torch.bfloat16`` as ``torch_dtype`` explicitly."
+"For `transformers`, `torch_dtype=\"auto\"` is recommended and the model "
+"will be loaded in `bfloat16` automatically. Otherwise, the model will be "
+"loaded in `float32` and it will need double memory. You can also pass "
+"`torch.bfloat16` as `torch_dtype` explicitly."
 msgstr ""
+"对于 `transformers` ，推荐加载时使用 `torch_dtype=\"auto\"` ，这样模型将以 `bfloat16` 数据类型加载。"
+"否则，默认会以 `float32` 数据类型加载，所需显存将翻倍。也可以显式传入 `torch.bfloat16` 作为 `torch_dtype` 。"
 
-#: ../../source/inference/chat.rst:284 c154ecabc5f54239af3c4251a4d682a6
-msgid "**Issue:** Multi-GPU inference is slow."
-msgstr ""
+#: ../../source/inference/chat.md 99148e334f584951b85ef881df01795b
+msgid "Multi-GPU inference is slow"
+msgstr "多卡推理缓慢"
 
-#: ../../source/inference/chat.rst:286 aa893d95a5884547822842a525da26c6
+#: ../../source/inference/chat.md:398 3377e0e398dd476cb85c0af27adfd34e
 msgid ""
-"``transformers`` relies on ``accelerate`` for multi-GPU inference and the"
-" implementation is a kind of naive model parallelism: different GPUs "
+"`transformers` relies on `accelerate` for multi-GPU inference and the "
+"implementation is a kind of naive model parallelism: different GPUs "
 "computes different layers of the model. It is enabled by the use of "
-"``device_map=\"auto\"`` or a customized ``device_map`` for multiple GPUs."
+"`device_map=\"auto\"` or a customized `device_map` for multiple GPUs."
 msgstr ""
+"`transformers` 依赖 `accelerate` 支持多卡推理，其实现为一种简单的模型并行策略："
+"不同的卡计算模型的不同层，分配策略由 `device_map=\"auto\"` 或自定义的 `device_map` 指定。"
 
-#: ../../source/inference/chat.rst:290 59ed12893cd546b6acb64c0d96cd0cfa
+#: ../../source/inference/chat.md:402 b390869b53964ef2ab30bf8dc4fd8d81
 msgid ""
-"However, this kind of implementation is not efficienct as for a single "
+"However, this kind of implementation is not efficient as for a single "
 "request, only one GPU computes at the same time and the other GPUs just "
 "wait. To use all the GPUs, you need to arrange multiple sequences as on a"
 " pipeline, making sure each GPU has some work to do. However, that will "
 "require concurrency management and load balancing, which is out of the "
-"scope of ``transformers``. Even if all things are implemented, you can "
-"make use of concurrency to improve the total throughput but the latency "
-"for each request is not great."
-msgstr ""
+"scope of `transformers`. Even if all things are implemented, you can make"
+" use of concurrency to improve the total throughput but the latency for "
+"each request is not great."
+msgstr "然而，这种实现方式并不高效，因为对于单一请求而言，同时只有单个 GPU 在进行计算而其他 GPU 则处于等待状态。为了充分利用所有的 GPU ，你需要像流水线一样安排多个处理序列，确保每个 GPU 都有一定的工作负载。但是，这将需要进行并发管理和负载均衡，这些超出了 `transformers` 库的范畴。即便实现了所有这些功能，整体吞吐量可以通过提高并发提高，但每个请求的延迟并不会很理想。"
 
-#: ../../source/inference/chat.rst:295 8c7dacc5a5f04bba918a95fa96cd0bb3
+#: ../../source/inference/chat.md:407 f7b88f5390e8442890645cb3a44cad74
 msgid ""
 "For Multi-GPU inference, we recommend using specialized inference "
-"framework, such as vllm and TGI, which support tensor parallelism."
-msgstr ""
+"framework, such as vLLM and TGI, which support tensor parallelism."
+msgstr "对于多卡推理，建议使用专门的推理框架，如 vLLM 和 TGI，这些框架支持张量并行。"
 
-#: ../../source/inference/chat.rst:300 ab59968dd35e4ac381f352cec7e3b6ec
-msgid "**Issue:** The inference of Qwen2 MoE models is slow."
-msgstr ""
+#: ../../source/inference/chat.md 10647e7d71994bd99db2a2fdab83152b
+msgid "The inference of Qwen2 MoE models is slow"
+msgstr "Qwen2 MoE 模型推理慢"
 
-#: ../../source/inference/chat.rst:302 6c1d5c6ff9c7450aafed25209ba2177f
+#: ../../source/inference/chat.md:412 056ae1ac52c64b8894405d78bec80a0c
 msgid ""
 "All MoE models in `transformers` compute the results of the expert FFNs "
 "in loops, and it is less efficient for GPUs by nature. The performance is"
-" even worse for model with finegrained experts, where the model has a lot"
-" of experts and each experts is relatively small, which is the case for "
-"Qwen2 MoE. To optimize that, a fused kernel implementation (as in "
-"``vllm``) or methods like expert parallel (as in ``mcore``) is needed. "
-"For now, we recommend using ``vllm`` for Qwen2 MoE."
-msgstr ""
+" even worse for model with fine-grained experts, where the model has a "
+"lot of experts and each expert is relatively small, which is the case for"
+" Qwen2 MoE. To optimize that, a fused kernel implementation (as in "
+"`vllm`) or methods like expert parallel (as in `mcore`) is needed. For "
+"now, we recommend using `vllm` for Qwen2 MoE."
+msgstr "`transformers` 所有 MoE 模型均使用循环来依次计算“专家”结果，对 GPU 来说这种实现天然效率较低。对于细粒度专家模型来说，效率问题更加严重，这类模型拥有大量专家且每个专家相对较小，Qwen2 MoE 就是这种情况。为了优化这一点，需要实现融合算子（如 `vllm` 中那样）或类似专家并行的方法（如 `mcore` 中那样）。对于 Qwen2 MoE，目前我们建议使用 `vllm` "
 
-#: ../../source/inference/chat.rst:309 8646f9aac8174ce2a14844bf30698a92
+#: ../../source/inference/chat.md 27a1cce3257a44a694627b54ce753191
 msgid ""
-"**Issue:** With Qwen2-7B in ``float16``, ``RuntimeError: probability "
-"tensor contains either `inf`, `nan` or element < 0`` is raised or endless"
-" of ``!!!!...`` is generated, depending on the PyTorch version."
-msgstr ""
+"``RuntimeError: probability tensor contains either `inf`, `nan` or "
+"element < 0`` or generating repeating `!!!!...`"
+msgstr "``RuntimeError: probability tensor contains either `inf`, `nan` or "
+"element < 0`` 或生成 `!!!!...`"
 
-#: ../../source/inference/chat.rst:311 3c2edcd350fe4c319de8f65da999388f
+#: ../../source/inference/chat.md:421 472840e544da42768564dba96eaf10cf
 msgid ""
-"We don't recommend using ``float16`` for Qwen2 models or numerical "
+"We don't recommend using `float16` for Qwen2 models or numerical "
 "instability may occur, especially for cards without support of fp16 "
-"matmul with fp32 accumulate. If you have to use ``float16``, consider "
-"using `this fork "
-"<https://github.com/jklj077/transformers/tree/qwen2-patch>`__ and force "
-"`attn_implementation=\"eager\"`."
-msgstr ""
+"matmul with fp32 accumulate. If you have to use `float16`, consider using"
+" [this fork](https://github.com/jklj077/transformers/tree/qwen2-patch) "
+"and force `attn_implementation=\"eager\"`."
+msgstr "因为潜在的数值稳定性问题，不建议在 Qwen2 模型中使用 `float16` 数据类型，"
+"特别是对于不支持 fp16 矩阵乘法中 fp32 累加的显卡。如果你必须使用 `float16` ，请考虑使用"
+"[这个分支](https://github.com/jklj077/transformers/tree/qwen2-patch)，并强制设置"
+" `attn_implementation='eager'` 。"
 
-#: ../../source/inference/chat.rst:316 c0fbe1a9c3df463da53cdc6159fa04f1
+#: ../../source/inference/chat.md:424 4824af48ef0e4d9e98ff05a3f92ae772
+msgid ""
+"If it works with single GPU but not multiple GPUs, especially if there "
+"are PCI-E switches in your system, please also refer to the next issue."
+msgstr "如果在单个 GPU 上工作正常，但在多个 GPU 上无法工作，特别是如果您的系统中"
+"存在 PCI-E switch，请也参考下一个问题。"
+
+#: ../../source/inference/chat.md 331045a39647433a9c3cc232bc0b9da7
+msgid ""
+"`RuntimeError: CUDA error: device-side assert triggered`, `Assertion "
+"-sizes[i] <= index && index < sizes[i] && \"index out of bounds\" "
+"failed.`"
+msgstr "`RuntimeError: CUDA error: device-side assert triggered`, `Assertion "
+"-sizes[i] <= index && index < sizes[i] && \"index out of bounds\" "
+"failed.`"
+
+#: ../../source/inference/chat.md:429 076abeee847542a4a262dda6a547b06c
+msgid ""
+"If it works with single GPU but not multiple GPUs, especially if there "
+"are PCI-E switches in your system, it could be related to drivers."
+msgstr "如果在单个 GPU上 工作正常，但在多个 GPU 上无法工作，特别是如果你的系统中"
+"有 PCI-E switch，这可能与驱动程序有关。"
+
+#: ../../source/inference/chat.md:431 7e7fefb8c35b4a0589739e624784bde0
+msgid "Try upgrading the GPU driver."
+msgstr "尝试升级显卡驱动"
+
+#: ../../source/inference/chat.md:433 40d1d5d06a91458b8b66ba9a65461e0e
+msgid ""
+"For data center GPUs (e.g., A800, H800, and L40s), please use the data "
+"center GPU drivers and upgrade to the latest subrelease, e.g., 535.104.05"
+" to 535.183.01.  You can check the release note at "
+"<https://docs.nvidia.com/datacenter/tesla/index.html>, where the issues "
+"fixed and known issues are presented."
+msgstr "对于数据中心 GPU （例如， A800 、 H800 和 L40 等），请使用数据中心 GPU 驱动程序并升级到最新子版本，例如从 535.104.05 升级至 535.183.01 。您可以在以下网址查看发布说明：<https://docs.nvidia.com/datacenter/tesla/index.html>，其中列出了已修复的问题和已知问题。"
+
+#: ../../source/inference/chat.md:436 7d4f980ca6c14bdb96d23b87cba8b93f
+msgid ""
+"For consumer GPUs (e.g., RTX 3090 and RTX 4090), their GPU drivers are "
+"released more frequently and focus more on gaming optimization.  There "
+"are online reports that 545.29.02 breaks `vllm` and `torch` but 545.29.06"
+" works.  Their release notes are also less helpful in identifying the "
+"real issues.  However, in general, the advice is still upgrading the GPU "
+"driver."
+msgstr ""
+"对于消费级 GPU （例如， RTX 3090 和 RTX 4090 ），它们的 GPU 驱动程序发布的频率更高，并且更侧重于游戏优化。网上有报告称 545.29.02 版本破坏了 `vllm` 和 `torch` 的运行，但 545.29.06 版本可以正常工作。它们的发布说明在识别实际问题方面帮助较小。然而，总体而言，建议仍然是升级 GPU 驱动程序。"
+
+#: ../../source/inference/chat.md:441 5ee2d6d6e11b4122ad7b0e78205f9fc2
+msgid "Try disabling P2P for process hang, but it has negative effect on speed."
+msgstr "尝试禁用 P2P 以解决进程挂起的问题，但这会对速度产生负面影响。"
+
+#: ../../source/inference/chat.md:448 a8c596b2da9b4e7893fa6f743e847832
 msgid "Next Step"
 msgstr "下一步"
 
-#: ../../source/inference/chat.rst:318 8a91dc308f204765af5bd1b88c9698f6
+#: ../../source/inference/chat.md:450 4538082451e34a1db3742886f3650cb1
 msgid ""
-"Now you can chat with Qwen2 in either streaming mode or not. Continue to "
-"read the documentation and try to figure out more advanced usages of "
+"Now you can chat with Qwen2 in either streaming mode or not.  Continue to"
+" read the documentation and try to figure out more advanced usages of "
 "model inference!"
-msgstr "现在，你可以选择流式模式或非流式模式与Qwen2进行对话。继续阅读文档，并尝试探索模型推理的更多高级用法！"
+msgstr "现在，你可以选择流式模式或非流式模式与 Qwen2 进行对话。继续阅读文档，并尝试探索模型推理的更多高级用法！"
 
+#: ../../source/inference/chat.md:369 7a31074b62e04e7082abb96705bb5561
+msgid ""
+"The attention module for a model in `transformers` typically has three "
+"variants: `sdpa`, `flash_attention_2`, and `eager`.    The first two are "
+"wrappers around related functions in the `torch` and the `flash_attn` "
+"packages.    It defaults to `sdpa` if available."
+msgstr ""
+"`transformers` 中模型一般实现3种注意力模块： `sdpa` 、 `flash_attention_2` 和 "
+"`eager` 。前两种分别封装了 `torch` 和 `flash_attn` 中的相关实现。`transformers` "
+"默认使用 `sdpa` 版本的注意力模块。"
+
+#: ../../source/inference/chat.md:373 3143e5b70b164f4ba8ddf0c19abb589f
+msgid ""
+"In addition, `torch` has integrated three implementations for `sdpa`: "
+"`FLASH_ATTENTION` (indicating Flash Attention 2 since version 2.2), "
+"`EFFICIENT_ATTENTION` (Memory Efficient Attention), and `MATH`.    It "
+"attempts to automatically select the most optimal implementation based on"
+" the inputs.    You don't need to install extra packages to use them."
+msgstr ""
+"同时， `torch` 包括3种 `sdpa` 实现： `FLASH_ATTENTION` （自 2.2 版本为 Flash "
+"Attention 2）、 `EFFICIENT_ATTENTION` (Memory Efficient Attention) 和 "
+"`MATH` 。 `torch` 根据输入自动选择最优的实现，你无需额外安装其它包或进行配置。"
+
+#: ../../source/inference/chat.md:377 8503571f270546a59d65a51f4390bf5c
+msgid ""
+"Hence, if applicable, by default, `transformers` uses `sdpa` and `torch` "
+"selects `FLASH_ATTENTION`."
+msgstr ""
+"因此，在默认情况下，如果适用， `transformers` 使用 `sdpa` 而 `torch` 会选择 "
+"`FLASH_ATTENTION` 。"
+
+#: ../../source/inference/chat.md:379 5713783b699a4b6f8f4f37538d2637c6
+msgid ""
+"If you wish to explicitly select the implementations in `torch`, refer to"
+" [this "
+"tutorial](https://pytorch.org/tutorials/intermediate/scaled_dot_product_attention_tutorial.html)."
+msgstr ""
+"如果你希望显式控制 `torch` 使用的 `sdpa` 实现，请参考 [本教程](https://pytorch.org/tutorials/intermediate/scaled_dot_product_attention_tutorial.html)。"
+" 。"

@@ -36,7 +36,7 @@ Data Preparation
 
 LLaMA-Factory provides several training datasets in ``data`` folder, you
 can use it directly. If you are using a custom dataset, please prepare
-your dataset as follow.
+your dataset as follows.
 
 1. Organize your data in a **json** file and put your data in ``data``
    folder. LLaMA-Factory supports dataset in ``alpaca`` or ``sharegpt``
