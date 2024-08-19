@@ -1,5 +1,5 @@
-sphinx
-sphinx-copybutton
 furo
-myst-parser
-sphinx-design
+myst-parser==4.0.0
+sphinx<8
+sphinx-copybutton
+sphinx-design>=0.6.0
