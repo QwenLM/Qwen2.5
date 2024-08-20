@@ -206,7 +206,7 @@ message_batch = [
     [{"role": "user", "content": "Hello!"}],
 ]
 
-result_batch = pipe(messages, max_new_tokens=512, batch_size=2)
+result_batch = pipe(message_batch, max_new_tokens=512, batch_size=2)
 response_message_batch = [result[0]["generated_text"][-1] for result in result_batch]
 ```
 :::
