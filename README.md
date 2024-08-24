@@ -236,11 +236,6 @@ print("Chat response:", chat_response)
 
 ### SGLang
 
-> [!NOTE]
-> <div align="center">
-> SGLang now does NOT support the <b>Qwen2MoeForCausalLM</b> architecture, thus making <b>Qwen2-57B-A14B</b> incompatible.
-> </div>
-
 Please install `SGLang` from source. Similar to `vLLM`, you need to launch a server and use OpenAI-compatible API service. Start the server first:
 ```shell
 python -m sglang.launch_server --model-path Qwen/Qwen2-7B-Instruct --port 30000
