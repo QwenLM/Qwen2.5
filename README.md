@@ -156,8 +156,10 @@ For additional details, please visit [ollama.ai](https://ollama.ai/).
 
 Download our provided GGUF files or create them by yourself, and you can directly use them with the latest [`llama.cpp`](https://github.com/ggerganov/llama.cpp) with a one-line command:
 ```shell
-./llama-cli -m <path-to-file> -n 512 -co -i -if -f prompts/chat-with-qwen.txt --in-prefix "<|im_start|>user\n" --in-suffix "<|im_end|>\n<|im_start|>assistant\n"
+./llama-cli -m <path-to-file> -n 512 -co -sp -cnv -f prompts/chat-with-qwen.txt 
 ```
+
+For additional guides, please refer to [our documentation](https://qwen.readthedocs.io/en/latest/run_locally/llama.cpp.html).
 
 #### MLX-LM
 
