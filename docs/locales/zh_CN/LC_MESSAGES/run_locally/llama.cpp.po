@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-08 19:58+0800\n"
+"POT-Creation-Date: 2024-08-29 15:56+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -16,147 +16,624 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.15.0\n"
 
-#: ../../source/run_locally/llama.cpp.rst:2 e7166ab61b4a46eda9ee6df6ccee1e68
+#: ../../source/run_locally/llama.cpp.md:1 e7166ab61b4a46eda9ee6df6ccee1e68
 msgid "llama.cpp"
 msgstr "llama.cpp"
 
-#: ../../source/run_locally/llama.cpp.rst:4 b6d269da4f7549dd8eb616780bbe1d52
-msgid ""
-"`llama.cpp <https://github.com/ggerganov/llama.cpp>`__ is a C++ library "
-"for LLM inference with minimal setup. It enables running Qwen on your "
-"local machine. It is a plain C/C++ implementation without dependencies, "
-"and it has AVX, AVX2 and AVX512 support for x86 architectures. It "
-"provides 2, 3, 4, 5, 6, and 8-bit quantization for faster inference and "
-"reduced memory footprint. CPU+GPU hybrid inference to partially "
-"accelerate models larger than the total VRAM capacity is also supported. "
-"Essentially, the usage of llama.cpp is to run the GGUF (GPT-Generated "
-"Unified Format) models. For more information, please refer to the "
-"official GitHub repo. Here we demonstrate how to run Qwen with llama.cpp."
-msgstr ""
-"`llama.cpp <https://github.com/ggerganov/llama.cpp>`__ "
-"是一个C++库，用于简化LLM推理的设置。它使得在本地机器上运行Qwen成为可能。该库是一个纯C/C++实现，不依赖任何外部库，并且针对x86架构提供了AVX、AVX2和AVX512加速支持。此外，它还提供了2、3、4、5、6以及8位量化功能，以加快推理速度并减少内存占用。对于大于总VRAM容量的大规模模型，该库还支持CPU+GPU混合推理模式进行部分加速。本质上，llama.cpp的用途在于运行GGUF（由GPT生成的统一格式）模型。欲了解更多详情，请参阅官方GitHub仓库。以下我们将演示如何使用llama.cpp运行Qwen。"
+#: ../../source/run_locally/llama.cpp.md:5 85ef5e61ab044ebab508e599a2ae64d1
+msgid "In this guide, we will talk about how to \"use\" [llama.cpp](https://github.com/ggerganov/llama.cpp) to run Qwen2 models on your local machine, in particular, the `llama-cli` example program, which comes with the library."
+msgstr "在这份指南中，我们将讨论如何“使用” [llama.cpp](https://github.com/ggerganov/llama.cpp) 在您的本地机器上运行Qwen2模型，特别是随库提供的`llama-cli`示例程序。"
 
-#: ../../source/run_locally/llama.cpp.rst:17 b2c3e02eae06472abc693bfd08dc09f0
-msgid "Prerequisites"
-msgstr "准备"
+#: ../../source/run_locally/llama.cpp.md:9 3c399a14fbf748fc8aa850d26765b68b
+msgid "Before starting, let's first discuss what is llama.cpp and what you should expect, and why we say \"use\" llama.cpp, with \"use\" in quotes. llama.cpp is essentially a different ecosystem with a different design philosophy that targets light-weight footprint, minimal external dependency, multi-platform, and extensive, flexible hardware support:"
+msgstr "开始之前，让我们先谈谈什么是llama.cpp，您应该期待什么，以及为什么我们说带引号“使用”llama.cpp。本质上，llama.cpp是一个不同的生态系统，具有不同的设计理念，旨在实现轻量级、最小外部依赖、多平台以及广泛灵活的硬件支持："
 
-#: ../../source/run_locally/llama.cpp.rst:19 5de8e0838b6f486582b453e1c153741c
-msgid ""
-"This example is for the usage on Linux or MacOS. For the first step, "
-"clone the repo and enter the directory:"
-msgstr "这个示例适用于Linux或MacOS系统。第一步操作是： “克隆仓库并进入该目录："
+#: ../../source/run_locally/llama.cpp.md:11 7ccb6a0a49494f13947d8fe0d7511db8
+msgid "Plain C/C++ implementation without external dependencies"
+msgstr "纯粹的C/C++实现，没有外部依赖"
 
-#: ../../source/run_locally/llama.cpp.rst:27 f6e53061c0b34eb2a43e369d632ae76d
-msgid "Then use ``make``:"
-msgstr "然后运行 ``make`` 命令："
+#: ../../source/run_locally/llama.cpp.md:12 505174de952e4d8db31618970067917b
+msgid "Support a wide variety of hardware:"
+msgstr "支持广泛的硬件："
 
-#: ../../source/run_locally/llama.cpp.rst:33 608ff9d4577d468a851f446d5d8359e0
-msgid "Then you can run GGUF files with ``llama.cpp``."
-msgstr "然后你就能使用 ``llama.cpp`` 运行GGUF文件。"
+#: ../../source/run_locally/llama.cpp.md:13 bef2ff2c167046a7930466a0a4386a0d
+msgid "AVX, AVX2 and AVX512 support for x86_64 CPU"
+msgstr "x86_64 CPU的AVX、AVX2和AVX512支持"
 
-#: ../../source/run_locally/llama.cpp.rst:36 521cd5fd58434818a0644c5bdb57df78
-msgid "Running Qwen GGUF Files"
-msgstr "运行Qwen的GGUF文件"
+#: ../../source/run_locally/llama.cpp.md:14 8fbaca95d6724253b8638c4e2c8df30a
+msgid "Apple Silicon via Metal and Accelerate (CPU and GPU)"
+msgstr "通过Metal和Accelerate支持Apple Silicon（CPU和GPU）"
 
-#: ../../source/run_locally/llama.cpp.rst:38 d730c2298e9048d6bd003e939a730ba1
-msgid ""
-"We provide a series of GGUF models in our Hugging Face organization, and "
-"to search for what you need you can search the repo names with ``-GGUF``."
-" Download the GGUF model that you want with ``huggingface-cli`` (you need"
-" to install it first with ``pip install huggingface_hub``):"
-msgstr ""
-"我们在Hugging Face组织中提供了一系列GGUF模型，为了找到您需要的模型，您可以搜索仓库名称中包含 ``-GGUF`` "
-"的部分。要下载所需的GGUF模型，请使用  ``huggingface-cli`` （首先需要通过命令 ``pip install "
-"huggingface_hub`` 安装它）："
+#: ../../source/run_locally/llama.cpp.md:15 e8159ad619a34423b288167580928f75
+msgid "NVIDIA GPU (via CUDA), AMD GPU (via hipBLAS), Intel GPU (via SYCL), Ascend NPU (via CANN), and Moore Threads GPU (via MUSA)"
+msgstr "NVIDIA GPU（通过CUDA）、AMD GPU（通过hipBLAS）、Intel GPU（通过SYCL）、昇腾NPU（通过CANN）和摩尔线程GPU（通过MUSA）"
 
-#: ../../source/run_locally/llama.cpp.rst:48 fcc9800e97814277a731fefb7d7131a5
-msgid "for example:"
+#: ../../source/run_locally/llama.cpp.md:16 d3d33226983340ab82f04982f4a034c3
+msgid "Vulkan backend for GPU"
+msgstr "GPU的Vulkan后端"
+
+#: ../../source/run_locally/llama.cpp.md:17 7bed8b8580ba4622bbbd295b33690160
+msgid "Various quantization scheme for faster inference and reduced memory footprint"
+msgstr "多种量化方案以加快推理速度并减少内存占用"
+
+#: ../../source/run_locally/llama.cpp.md:18 fe57e041b4cd479ab248d96e901e971a
+msgid "CPU+GPU hybrid inference to partially accelerate models larger than the total VRAM capacity"
+msgstr "CPU+GPU混合推理，以加速超过总VRAM容量的模型"
+
+#: ../../source/run_locally/llama.cpp.md:20 06d8a898281746b6b94ebccfc5ae3282
+msgid "It's like the Python frameworks `torch`+`transformers` or `torch`+`vllm` but in C++. However, this difference is crucial:"
+msgstr "它就像 Python 框架 `torch`+`transformers` 或 `torch`+`vllm` 的组合，但用的是 C++。然而，这一差异至关重要："
+
+#: ../../source/run_locally/llama.cpp.md:22 d4016165a92b4622b649973983826b58
+msgid "Python is an interpreted language:  The code you write is executed line-by-line on-the-fly by an interpreter.  You can run the example code snippet or script with an interpreter or a natively interactive interpreter shell. In addition, Python is learner friendly, and even if you don't know much before, you can tweak the source code here and there."
+msgstr "Python 是一种解释型语言：编写的代码会被解释器逐行实时执行。你可以使用解释器或原生交互式解释器终端来运行示例代码片段或脚本。此外，Python 对学习者非常友好，即使你之前了解不多，也可能修改源代码。"
+
+#: ../../source/run_locally/llama.cpp.md:26 31ca1f70b5dc4ef38f203e9bb1e37305
+msgid "C++ is a compiled language:  The source code you write needs to be compiled beforehand, and it is translated to machine code and an executable program by a compiler. The overhead from the language side is minimal.  You do have source code for example programs showcasing how to use the library.  But it is not very easy to modify the source code if you are not verse in C++ or C."
+msgstr "C++ 是一种编译型语言：你编写的源代码需要预先编译，由编译器将其转换为机器码和可执行程序，来自语言层面的开销微乎其微。llama.cpp也提供了示例程序的源代码，展示了如何使用该库。但是，如果你不精通 C++ 或 C 语言，修改源代码并不容易。"
+
+#: ../../source/run_locally/llama.cpp.md:32 25be8d78d42942d88cbce608fb2f91b2
+msgid "To use llama.cpp means that you use the llama.cpp library in your own program, like writing the source code of [Ollama](https://ollama.com/), [LM Studio](https://lmstudio.ai/), [GPT4ALL](https://www.nomic.ai/gpt4all), [llamafile](https://llamafile.ai/) etc. But that's not what this guide is intended or could do. Instead, here we introduce how to use the `llama-cli` example program, in the hope that you know that llama.cpp does support Qwen2 models and how the ecosystem of llama.cpp generally works."
+msgstr "真正使用 llama.cpp 意味着在自己的程序中使用 llama.cpp 库，就像编写 [Ollama](https://ollama.com/)、[LM Studio](https://lmstudio.ai/)、[GPT4ALL](https://www.nomic.ai/gpt4all)、[llamafile](https://llamafile.ai/) 等的源代码。但这并不是本指南的目的或所能做的。相反，这里我们介绍如何使用 `llama-cli` 示例程序，希望你能了解到 llama.cpp 支持 Qwen2 模型以及 llama.cpp 生态系统的一般工作原理。"
+
+#: ../../source/run_locally/llama.cpp.md:38 7b561db298a74447b2e3d44015631a86
+msgid "The main steps are:"
+msgstr "主要步骤如下："
+
+#: ../../source/run_locally/llama.cpp.md:39 9fb1b7f751374981b96330deb1cd0176
+msgid "Get the `llama-cli` program"
+msgstr "获取 `llama-cli` 程序"
+
+#: ../../source/run_locally/llama.cpp.md:40 43990372b04d46349db67dcb8b43695b
+msgid "Get the Qwen2 models in GGUF[^GGUF] format"
+msgstr "获取 GGUF[^GGUF] 格式的 Qwen2 模型"
+
+#: ../../source/run_locally/llama.cpp.md:41 ee6e08952fcf4f2ebc8cfb17568c3020
+msgid "Run the program with the model"
+msgstr "使用模型运行程序"
+
+#: ../../source/run_locally/llama.cpp.md:43 56cb14b141d14409b5cabd1bab2b46a7
+msgid "Remember that `llama-cli` is an example program, not a full-blown application. Sometimes it just does not work in the way you would like. This guide could also get quite technical sometimes. If you would like a smooth experience, check out the application mentioned above, which are much easier to \"use\"."
+msgstr "请记住，`llama-cli` 只是一个示例程序，并非完整应用。有时候它可能无法完全按照您的期望运行。本指南有时会涉及一些技术细节。如果您希望获得流畅的体验，请尝试上述提到的应用，它们使用起来会更加便捷。"
+
+#: ../../source/run_locally/llama.cpp.md:48 f75b176affbc43ef92c806e85d196930
+msgid "Getting the Program"
+msgstr "获取程序"
+
+#: ../../source/run_locally/llama.cpp.md:50 69a4a24897814172be15f17569c7f57d
+msgid "You can get the `llama-cli` program in various ways.  For optimal efficiency, we recommend compiling the program locally, so you get the CPU optimizations for free. However, if you don't have C++ compilers locally, you can also install using package managers or downloading pre-built binaries.  They could be less efficient but for non-production example use, they are fine."
+msgstr "你可以通过多种方式获得`llama-cli`程序。为了达到最佳效率，我们建议你本地编译程序，这样可以零成本享受CPU优化。但是，如果你的本地环境没有C++编译器，也可以使用包管理器安装或者下载预编译的二进制文件。虽然它们可能效率较低，但对于非生产用途的例子来说，它们已经足够好用了。"
+
+#: ../../source/run_locally/llama.cpp.md f287781d30f74d4eb71710fc7661fb7c
+msgid "Compile Locally"
+msgstr "本地编译"
+
+#: ../../source/run_locally/llama.cpp.md:59 f20b1aa729ed4dd7970edc403f0968ed
+msgid "Here, we show the basic command to compile `llama-cli` locally on **macOS** or **Linux**. For Windows or GPU users, please refer to [the guide from llama.cpp](https://github.com/ggerganov/llama.cpp/blob/master/docs/build.md)."
+msgstr "这里，我们将展示在**macOS**或**Linux**上本地编译`llama-cli`的基本命令。对于Windows用户或GPU用户，请参考[llama.cpp的指南](https://github.com/ggerganov/llama.cpp/blob/master/docs/build.md)。"
+
+#: ../../source/run_locally/llama.cpp.md 332a8aa0c86a4171a2dbeb73c4de443d
+msgid "Installing Build Tools"
+msgstr "安装构建工具"
+
+#: ../../source/run_locally/llama.cpp.md:66 098e677d006245b195ee7f37aad4d312
+msgid "To build locally, a C++ compiler and a build system tool are required.  To see if they have been installed already, type `cc --version` or `make --version` in a terminal window."
+msgstr "要进行本地构建，你需要一个C++编译器和一个构建系统工具。在终端窗口中输入`cc --version`或`make --version`，看看这些工具是否已经安装好了。"
+
+#: ../../source/run_locally/llama.cpp.md:68 e59056580b2d466fbf51d28123acfed9
+msgid "If installed, the build configuration of the tool will be printed to the terminal, and you are good to go!"
+msgstr "如果已安装，工具的构建配置信息将被打印到终端，那么你就可以开始了！"
+
+#: ../../source/run_locally/llama.cpp.md:69 145315b0d31b402a857212ad892431c2
+msgid "If errors are raised, you need to first install the related tools:"
+msgstr "如果出现错误，说明你需要先安装相关工具："
+
+#: ../../source/run_locally/llama.cpp.md:70 7e65c030c41d4d23992400964864ece1
+msgid "On macOS, install with the command `xcode-select --install`"
+msgstr "在macOS上，使用命令`xcode-select --install`来安装。"
+
+#: ../../source/run_locally/llama.cpp.md:71 4c6dbe61104949c8b609c7fa4b817264
+msgid "On Ubuntu, install with the command `sudo apt install build-essential`.  For other Linux distributions, the command may vary; the essential packages needed for this guide are `gcc` and `make`."
+msgstr "在Ubuntu上，使用命令`sudo apt install build-essential`来安装。对于其他Linux发行版，命令可能会有所不同；本指南所需的基本包是`gcc`和`make`。"
+
+#: ../../source/run_locally/llama.cpp.md 4ae6936b0da249e5a1c1c694b1abc407
+msgid "Compiling the Program"
+msgstr "编译程序"
+
+#: ../../source/run_locally/llama.cpp.md:78 5de8e0838b6f486582b453e1c153741c
+msgid "For the first step, clone the repo and enter the directory:"
+msgstr "第一步是克隆仓库并进入该目录："
+
+#: ../../source/run_locally/llama.cpp.md:84 f6e53061c0b34eb2a43e369d632ae76d
+msgid "Then use `make`:"
+msgstr "然后运行 `make` 命令："
+
+#: ../../source/run_locally/llama.cpp.md:88 dd05715824924b1d934f9e092de77479
+msgid "The command will only compile the parts needed for `llama-cli`. On macOS, it will enable Metal and Accelerate by default, so you can run with GPUs. On Linux, you won't get GPU support by default, but SIMD-optimization is enabled if available."
+msgstr "该命令只会编译`llama-cli`所需的部件。在macOS上，默认情况下会启用Metal和Accelerate，因此你可以使用GPU运行。在Linux上，默认情况下你无法获得GPU支持，但如果可用，会启用CPU SIMD优化。"
+
+#: ../../source/run_locally/llama.cpp.md:92 0bd7038fa2ff4d35a320ba7aa9d9e626
+msgid "To shorten the time, you can also enable parallel compiling based on the CPU cores you have, for example:"
+msgstr "为了缩短时间，你还可以根据你的CPU核心数开启并行编译，例如："
+
+#: ../../source/run_locally/llama.cpp.md:96 83c4c6a7f42940568744dc8e4bd64a73
+msgid "This will build the `llama-cli` target with 8 parallel compiling jobs."
+msgstr "这将以8个并行编译任务来构建`llama-cli`目标。"
+
+#: ../../source/run_locally/llama.cpp.md:99 239386289be74e6f9fc71a4d207f06fc
+msgid "There are other [example programs](https://github.com/ggerganov/llama.cpp/tree/master/examples) in llama.cpp. You can build them at once with simply (it may take some time):"
+msgstr "在llama.cpp中还有其他的[示例程序](https://github.com/ggerganov/llama.cpp/tree/master/examples)，你可以一次构建它们（可能需要一些时间）："
+
+#: ../../source/run_locally/llama.cpp.md:104 ca64633450904db28aa8e7e49d972a00
+msgid "or you can also compile only the one you need, for example:"
+msgstr "你也可以只编译你需要的，例如："
+
+#: ../../source/run_locally/llama.cpp.md 0a7d0f8f3d984333b1d0e8147d585c4d
+msgid "Package Managers"
+msgstr "软件包管理器"
+
+#: ../../source/run_locally/llama.cpp.md:112 9b279c1cd3144ee088187fe976ef4f6c
+msgid "For **macOS** and **Linux** users, `llama-cli` can be installed with package managers including Homebrew, Nix, and Flox."
+msgstr "对于**macOS**和**Linux**用户，`llama-cli` 可以通过包括 Homebrew、Nix 和 Flox 在内的软件包管理器进行安装。"
+
+#: ../../source/run_locally/llama.cpp.md:114 a1790afbfce9435c9e2b1551d34fad72
+msgid "Here, we show how to install `llama-cli` with Homebrew.  For other package managers, please check the instructions [here](https://github.com/ggerganov/llama.cpp/blob/master/docs/install.md)."
+msgstr "在这里，我们展示如何使用 Homebrew 安装 `llama-cli`。对于其他软件包管理器的安装，请查阅[这里的指南](https://github.com/ggerganov/llama.cpp/blob/master/docs/install.md)。"
+
+#: ../../source/run_locally/llama.cpp.md:117 940fb93108ce4b3283d532a600fa7a3d
+msgid "Installing with Homebrew is very simple:"
+msgstr "使用 Homebrew 安装非常简单："
+
+#: ../../source/run_locally/llama.cpp.md:119 e3f74f7a1511467c960ea9a10526d517
+msgid "Ensure that Homebrew is available on your operating system.  If you don't have Homebrew, you can install it as in [its website](https://brew.sh/)."
+msgstr "请确保您的操作系统上已安装有 Homebrew。如果没有，您可以按照[官网](https://brew.sh/)上的指导进行安装。"
+
+#: ../../source/run_locally/llama.cpp.md:122 11cbb48fb3f34ba7adc9303f1eebf6d2
+msgid "Second, you can install the pre-built binaries, `llama-cli` included, with a single command:"
+msgstr "其次，您只需一条命令即可安装预先编译好的二进制文件，其中包括 `llama-cli`："
+
+#: ../../source/run_locally/llama.cpp.md:127 350ff8bf80f84cdd8c0fbd454c68fdd2
+msgid "Note that the installed binaries might not be built with the optimal compile options for your hardware, which can lead to poor performance. They also don't support GPU on Linux systems."
+msgstr "请注意，安装的二进制文件可能并未针对您的硬件优化编译选项，这可能导致性能不佳。此外，在 Linux 系统上它们也不支持 GPU。"
+
+#: ../../source/run_locally/llama.cpp.md 59cfad962566462c86d59e9dda4a1bf9
+msgid "Binary Release"
+msgstr "二进制文件"
+
+#: ../../source/run_locally/llama.cpp.md:133 ad95915e807946adaa16f3eae15785f8
+msgid "You can also download pre-built binaries from [GitHub Releases](https://github.com/ggerganov/llama.cpp/releases). Please note that those pre-built binaries files are architecture-, backend-, and os-specific.  If you are not sure what those mean, you probably don't want to use them and running with incompatible versions will most likely fail or lead to poor performance."
+msgstr "您还可以从[GitHub Release](https://github.com/ggerganov/llama.cpp/releases)下载预构建的二进制文件。请注意，这些预构建的二进制文件是特定于架构、后端和操作系统的。如果您不确定这些意味着什么，可能您并不想使用它们。使用不兼容的版本很可能导致运行失败或性能不佳。"
+
+#: ../../source/run_locally/llama.cpp.md:137 752481f80c564b50a6b4dd5628eef5c5
+msgid "The file name is like `llama-<version>-bin-<os>-<feature>-<arch>.zip`."
+msgstr "文件名类似于`llama-<version>-bin-<os>-<feature>-<arch>.zip`。"
+
+#: ../../source/run_locally/llama.cpp.md:139 be57773660404516a528a22e72b2152e
+msgid "There are three simple parts:"
+msgstr "分为三个简单部分："
+
+#: ../../source/run_locally/llama.cpp.md:140 22a57b45e9694cf1b4123961ecf3b826
+msgid "`<version>`: the version of llama.cpp. The latest is preferred, but as llama.cpp is updated and released frequently, the latest may contain bugs. If the latest version does not work, try the previous release until it works."
+msgstr "`<version>`：llama.cpp的版本。建议使用最新版本，但鉴于llama.cpp频繁更新和发布，最新版本可能包含bug。如果最新版本无法正常工作，请尝试之前的版本直到找到能正常工作的为止。"
+
+#: ../../source/run_locally/llama.cpp.md:141 32d127e26c9440fb9e6bfa7daf276e7b
+msgid "`<os>`: the operating system. `win` for Windows; `macos` for macOS; `linux` for Linux."
+msgstr "`<os>`：操作系统。`win`代表Windows；`macos`代表macOS；`linux`代表Linux。"
+
+#: ../../source/run_locally/llama.cpp.md:142 4d1fd29ec2c04bd085bb9741ead71a94
+msgid "`<arch>`: the system architecture. `x64` for `x86_64`, e.g., most Intel and AMD systems, including Intel Mac; `arm64` for `arm64`, e.g., Apple Silicon or Snapdragon-based systems."
+msgstr "`<arch>`：系统架构。`x64`对应`x86_64`，例如大多数Intel和AMD系统，包括Intel Mac；`arm64`对应`arm64`，例如Apple Silicon或基于Snapdragon的系统。"
+
+#: ../../source/run_locally/llama.cpp.md:144 4b52a19d3a794bb981e0314c0712c1f4
+msgid "The `<feature>` part is somewhat complicated for Windows:"
+msgstr "`<feature>`部分对于Windows来说有些复杂："
+
+#: ../../source/run_locally/llama.cpp.md:145 521cd5fd58434818a0644c5bdb57df78
+msgid "Running on CPU"
+msgstr "在CPU上运行"
+
+#: ../../source/run_locally/llama.cpp.md:146 91169f214ab34b28b77736d468daef9c
+msgid "x86_64 CPUs: We suggest try the `avx2` one first."
+msgstr "x86_64 CPU：我们建议首先尝试`avx2`。"
+
+#: ../../source/run_locally/llama.cpp.md:147 b1b12ec40b784b968ad9f972a83beeb7
+msgid "`noavx`: No hardware acceleration at all."
+msgstr "`noavx`：完全无AVX硬件加速。"
+
+#: ../../source/run_locally/llama.cpp.md:148 2df075ed8e844239b2493f094758f03d
+msgid "`avx2`, `avx`, `avx512`: SIMD-based acceleration. Most modern desktop CPUs should support avx2, and some CPUs support `avx512`."
+msgstr "`avx2`，`avx`，`avx512`：基于SIMD的加速。大多数现代桌面CPU应该支持AVX2，部分CPU支持AVX512。"
+
+#: ../../source/run_locally/llama.cpp.md:149 87f1c38c28db4aa890c3e29e6e35738e
+msgid "`openblas`: Relying on OpenBLAS for acceleration for prompt processing but not generation."
+msgstr "`openblas`：依赖OpenBLAS加速提示词(prompt)处理，但不涉及生成过程。"
+
+#: ../../source/run_locally/llama.cpp.md:150 587049dd9d1c4dfe9e2b66c8371c391d
+msgid "arm64 CPUs: We suggest try the `llvm` one first."
+msgstr "arm64 CPU：我们建议首先尝试`llvm`。"
+
+#: ../../source/run_locally/llama.cpp.md:151 638bbb2649e14f998bdf62e1c61e5d54
+msgid "[`llvm` and `msvc`](https://github.com/ggerganov/llama.cpp/pull/7191) are different compilers"
+msgstr "[`llvm`和`msvc`](https://github.com/ggerganov/llama.cpp/pull/7191)是不同的编译器"
+
+#: ../../source/run_locally/llama.cpp.md:152 193d0dd1934d4a5992bdc2c8bdb28368
+msgid "Running on GPU: We suggest try the `cu<cuda_verison>` one for NVIDIA GPUs, `kompute` for AMD GPUs, and `sycl` for Intel GPUs first. Ensure that you have related drivers installed."
+msgstr "在GPU上运行：我们建议NVIDIA GPU先尝试`cu<cuda_verison>`，AMD GPU先尝试`kompute`，Intel GPU先尝试`sycl`。请确保已安装相关驱动程序。"
+
+#: ../../source/run_locally/llama.cpp.md:153 065aba2e4bb040469ee32f8b0513a63b
+msgid "[`vulcan`](https://github.com/ggerganov/llama.cpp/pull/2059): support certain NVIDIA and AMD GPUs"
+msgstr "[`vulcan`](https://github.com/ggerganov/llama.cpp/pull/2059)：支持某些NVIDIA和AMD GPU"
+
+#: ../../source/run_locally/llama.cpp.md:154 6b97514361df4e05ae678c086c5c785a
+msgid "[`kompute`](https://github.com/ggerganov/llama.cpp/pull/4456): support certain NVIDIA and AMD GPUs"
+msgstr "[`kompute`](https://github.com/ggerganov/llama.cpp/pull/4456)：支持某些NVIDIA和AMD GPU"
+
+#: ../../source/run_locally/llama.cpp.md:155 bd6d07fe9c7c4ba5b1842a729fab3a7c
+msgid "[`sycl`](https://github.com/ggerganov/llama.cpp/discussions/5138): Intel GPUs, oneAPI runtime is included"
+msgstr "[`sycl`](https://github.com/ggerganov/llama.cpp/discussions/5138)：Intel GPU，包含oneAPI运行时"
+
+#: ../../source/run_locally/llama.cpp.md:156 380f2bdc23854d61bf9bcfa9ac0ee420
+msgid "`cu<cuda_verison>`: NVIDIA GPUs, CUDA runtime is not included. You can download the `cudart-llama-bin-win-cu<cuda_version>-x64.zip` and unzip it to the same directory if you don't have the corresponding CUDA toolkit installed."
+msgstr "`cu<cuda_verison>`：NVIDIA GPU，未包含CUDA运行时。如果您没有安装相应的CUDA工具包，可以下载`cudart-llama-bin-win-cu<cuda_version>-x64.zip`并将其解压到同一目录中。"
+
+#: ../../source/run_locally/llama.cpp.md:158 f26a8d5f054344b3947eb62521b01939
+msgid "You don't have much choice for macOS or Linux."
+msgstr "对于macOS或Linux，您的选择不多。"
+
+#: ../../source/run_locally/llama.cpp.md:159 35575e9fac2d4c28a73f318147f708f3
+msgid "Linux: only one prebuilt binary, `llama-<version>-bin-linux-x64.zip`, supporting CPU."
+msgstr "Linux：仅有一个预构建的二进制文件`llama-<version>-bin-linux-x64.zip`，支持CPU。"
+
+#: ../../source/run_locally/llama.cpp.md:160 9d5774f40cb547dc95e867da9567127a
+msgid "macOS: `llama-<version>-bin-macos-x64.zip` for Intel Mac with no GPU support; `llama-<version>-bin-macos-arm64.zip` for Apple Silicon with GPU support."
+msgstr "macOS：对于Intel Mac，使用`llama-<version>-bin-macos-x64.zip`（不支持GPU）；对于Apple Silicon，使用`llama-<version>-bin-macos-arm64.zip`（支持GPU）。"
+
+#: ../../source/run_locally/llama.cpp.md:162 3906e8f70edc4d989e615485d9ca6188
+msgid "After downloading the `.zip` file, unzip them into a directory and open a terminal at that directory."
+msgstr "下载`.zip`文件后，将其解压到一个目录中，并在该目录下打开终端。"
+
+#: ../../source/run_locally/llama.cpp.md:166 521cd5fd58434818a0644c5bdb57df78
+msgid "Getting the GGUF"
+msgstr "获取 GGUF"
+
+#: ../../source/run_locally/llama.cpp.md:168 a9d94092e5c642aeb27cfb2b6c7cc64c
+msgid "GGUF[^GGUF] is a file format for storing information needed to run a model, including but not limited to model weights, model hyperparameters, default generation configuration, and tokenizer."
+msgstr "GGUF[^GGUF] 是一种文件格式，用于存储运行模型所需的信息，包括但不限于模型权重、模型超参数、默认生成配置和tokenzier。"
+
+#: ../../source/run_locally/llama.cpp.md:170 0ba15a4f5e6e4e75b88c5c61459a294e
+msgid "You can use the official Qwen2 GGUFs from our HuggingFace Hub or prepare your own GGUF file."
+msgstr "您可以使用我们 HuggingFace Hub 上的官方 Qwen2 GGUF 文件，或者自己准备 GGUF 文件。"
+
+#: ../../source/run_locally/llama.cpp.md:172 a26f9330d44b4a3e98bd8a8f2600175f
+msgid "Using the Official Qwen2 GGUFs"
+msgstr "使用官方 Qwen2 GGUF"
+
+#: ../../source/run_locally/llama.cpp.md:174 d730c2298e9048d6bd003e939a730ba1
+msgid "We provide a series of GGUF models in our Hugging Face organization, and to search for what you need you can search the repo names with `-GGUF`."
+msgstr "在我们的 HuggingFace 组织中，我们提供了一系列 GGUF 模型。要查找您需要的模型，可以在仓库名称中搜索 `-GGUF`。"
+
+#: ../../source/run_locally/llama.cpp.md:176 d730c2298e9048d6bd003e939a730ba1
+msgid "Download the GGUF model that you want with `huggingface-cli` (you need to install it first with `pip install huggingface_hub`):"
+msgstr "使用 `huggingface-cli` 下载您想要的 GGUF 模型（首先需要通过 `pip install huggingface_hub` 进行安装）："
+
+#: ../../source/run_locally/llama.cpp.md:181 fcc9800e97814277a731fefb7d7131a5
+msgid "For example:"
 msgstr "比如："
 
-#: ../../source/run_locally/llama.cpp.rst:54 90bf6bdc8a9a4e4c9a737031e162534d
-msgid "Then you can run the model with the following command:"
-msgstr "然后你可以用如下命令运行模型："
+#: ../../source/run_locally/llama.cpp.md:186 516f5beabe974bcf8f6c97d4c6f79b40
+msgid "This will download the Qwen2-7B-Instruct model in GGUF format quantized with the scheme Q5_K_M."
+msgstr "这将下载采用 Q5_K_M 方案量化的 GGUF 格式的 Qwen2-7B-Instruct 模型。"
 
-#: ../../source/run_locally/llama.cpp.rst:64 029f4dd0fe1a4be9ba30da88a158b627
-msgid ""
-"where ``-n`` refers to the maximum number of tokens to generate. There "
-"are other hyperparameters for you to choose and you can run"
-msgstr "``-n`` 指的是要生成的最大token数量。这里还有其他超参数供你选择，并且你可以运行"
+#: ../../source/run_locally/llama.cpp.md:188 0cc0b921881e46bfa40a11520c977418
+msgid "Preparing Your Own Qwen2 GGUF"
+msgstr "准备您自己的 Qwen2 GGUF"
 
-#: ../../source/run_locally/llama.cpp.rst:71 117096e7a539404b812fcbc11e9f6486
-msgid "to figure them out."
-msgstr "以了解它们。"
+#: ../../source/run_locally/llama.cpp.md:190 687861eee80b4c7fa7605ff75a433a7f
+msgid "Model files from HuggingFace Hub can be converted to GGUF, using the `convert-hf-to-gguf.py` Python script. It does require you to have a working Python environment with at least `transformers` installed."
+msgstr "可以使用 `convert-hf-to-gguf.py` Python 脚本将来自 HuggingFace Hub 的模型文件转换为 GGUF。这确实需要您拥有一个工作中的 Python 环境，并至少安装了 `transformers`。"
 
-#: ../../source/run_locally/llama.cpp.rst:75 943c17a658404014968b48e4cf04aeee
-msgid ""
-"Previously, Qwen2 models generate nonsense like ``GGGG...`` with "
-"``llama.cpp`` on GPUs. The workaround is to enable flash attention "
-"(``-fa``), which uses a different implementation, and offload the whole "
-"model to the GPU (``-ngl 80``) due to broken partial GPU offloading with "
-"flash attention."
+#: ../../source/run_locally/llama.cpp.md:193 88bbe681330847f29495da21e7579852
+msgid "Obtain the source file if you haven't already:"
+msgstr "如果尚未获取，请先获取源文件："
+
+#: ../../source/run_locally/llama.cpp.md:199 3bf4445ff10d4ed7aa705d537e36984f
+msgid "Suppose you would like to use Qwen2-7B-Instruct, you can make a GGUF file for the fp16 model as shown below:"
+msgstr "假设您想使用 Qwen2-7B-Instruct，可以按照以下方式为 fp16 模型制作 GGUF 文件："
+
+#: ../../source/run_locally/llama.cpp.md:203 c318a522c60b44e5bb4f4681e3f6fbe8
+msgid "The first argument to the script refers to the path to the HF model directory or the HF model name, and the second argument refers to the path of your output GGUF file. Remember to create the output directory before you run the command."
+msgstr "脚本的第一个参数指的是 HF 模型目录或 HF 模型名称的路径，第二个参数指的是输出 GGUF 文件的路径。在运行命令前，请记得创建输出目录。"
+
+#: ../../source/run_locally/llama.cpp.md:206 fb31d8998a3d488c9e1d70005f4462ae
+msgid "The fp16 model could be a bit heavy for running locally, and you can quantize the model as needed. We introduce the method of creating and quantizing GGUF files in [this guide](../quantization/llama.cpp).  You can refer to that document for more information."
+msgstr "fp16 模型对于本地运行可能有些重，您可以根据需要对模型进行量化。我们在 [这份指南](../quantization/llama.cpp) 中介绍了创建和量化 GGUF 文件的方法。您可以参考该文档获取更多信息。"
+
+#: ../../source/run_locally/llama.cpp.md:211 521cd5fd58434818a0644c5bdb57df78
+msgid "Running the Model"
+msgstr "运行模型"
+
+#: ../../source/run_locally/llama.cpp.md:214 943c17a658404014968b48e4cf04aeee
+msgid "Previously, Qwen2 models generate nonsense like `GGGG...` with `llama.cpp` on GPUs. The workaround is to enable flash attention (`-fa`), which uses a different implementation, and offload the whole model to the GPU (`-ngl 80`) due to broken partial GPU offloading with flash attention."
+msgstr "曾有一段时间，在 GPU 上用 `llama.cpp` 运行 Qwen2 模型会生成类似 `GGGG...` 的胡言乱语。一个权宜之计是开启 flash attention (`-fa`) 并将全模型加载到 GPU 上 (`-ngl 80`) 。前者使用不同的算法实现，后者避免触发 flash attention 在模型一部分 GPU 加载时的异常。"
+
+#: ../../source/run_locally/llama.cpp.md:217 c000cc9b6d084fe494229af9dc05af60
+msgid "Both should be no longer necessary after `b3370`, but it is still recommended enabling both for maximum efficiency."
+msgstr "自版本 `b3370` 起，以上方案已非必需。但考虑最佳效率，仍建议使用两项参数。"
+
+#: ../../source/run_locally/llama.cpp.md:221 79f8af53d7504c8f9bd758166ee07b49
+msgid "Due to random sampling and source code updates, the generated content with the same command as given in this section may be different from what is shown in the examples."
+msgstr "由于随机采样和源代码更新，使用本节中给出的相同命令生成的内容可能与示例中显示的不同。"
+
+#: ../../source/run_locally/llama.cpp.md:224 da02e35b0c484b1f9b5408166710c35d
+msgid "`llama-cli` provide multiple \"mode\" to \"interact\" with the model. Here, we demonstrate three ways to run the model, with increasing difficulty."
+msgstr "`llama-cli` 提供多种“模式”来与模型进行“交互”。在这里，我们展示三种运行模型的方法，使用难度逐渐增加。"
+
+#: ../../source/run_locally/llama.cpp.md:227 5a8d4e04b43045089a76edfdf28e3e59
+msgid "Conversation Mode"
+msgstr "对话模式"
+
+#: ../../source/run_locally/llama.cpp.md:229 bbd3fb48e6a7481bafe5f2894843ec01
+msgid "For users, to achieve chatbot-like experience, it is recommended to commence in the conversation mode"
+msgstr "对于普通用户来说，为了获得类似聊天机器人的体验，建议从对话模式开始。"
+
+#: ../../source/run_locally/llama.cpp.md:236 1873532875f7459e9ffe165e8b680c29
+msgid "The program will first print metadata to the screen until you see the following:"
+msgstr "程序首先会在屏幕上打印元数据，直到你看到以下内容："
+
+#: ../../source/run_locally/llama.cpp.md:238 a6a18b6780154d8fb13570e57ecf4334
+msgid "![llama-cli conversation start](../assets/imgs/llama-cli-cnv-start.png)"
 msgstr ""
-"曾有一段时间，在 GPU 上用 ``llama.cpp`` 运行 Qwen2 模型会生成类似 ``GGGG...`` "
-"的胡言乱语。一个权宜之计是开启 flash attention (``-fa``) 并将全模型加载到 GPU 上 (``-ngl 80``) 。 "
-"前者使用不同的算法实现，后者避免触发 flash attention 在模型一部分 GPU 加载时的异常。"
 
-#: ../../source/run_locally/llama.cpp.rst:78 c000cc9b6d084fe494229af9dc05af60
-msgid ""
-"Both should be no longer necessary after ``b3370``, but it is still "
-"recommended to enable both for maximum efficiency."
-msgstr "自版本 ``b3370`` 起，以上方案已非必需。但考虑最佳效率，仍建议使用两项参数。"
+#: ../../source/run_locally/llama.cpp.md:238 d2bc73e0f9b845c7ab7718e13d6cbf02
+msgid "llama-cli conversation start"
+msgstr "llama-cli 对话开始"
 
-#: ../../source/run_locally/llama.cpp.rst:82 c29c761ff99a4b5d86c8c19a65da50de
-msgid "Make Your GGUF Files"
-msgstr "生成你的GGUF文件"
+#: ../../source/run_locally/llama.cpp.md:240 6427191fec0a4a8bb18eb7367b52a36c
+msgid "Now, the model is waiting for your input, and you can chat with the model:"
+msgstr "现在，模型正在等待你的输入，你可以与模型进行对话："
 
-#: ../../source/run_locally/llama.cpp.rst:84 1bcfc28efb7a40ec9f9289eaddffe2e0
-msgid ""
-"We introduce the method of creating and quantizing GGUF files in "
-"`quantization/llama.cpp <../quantization/gguf.html>`__. You can refer to "
-"that document for more information."
+#: ../../source/run_locally/llama.cpp.md:242 111838ecc329459bb057b76f5a47f8c5
+msgid "![llama-cli conversation chat](../assets/imgs/llama-cli-cnv-chat.png)"
 msgstr ""
-"我们在 `quantization/llama.cpp <../quantization/gguf.html>`__ "
-"中介绍了创建和量化GGUF文件的方法。您可以参考该文档获取更多信息。"
 
-#: ../../source/run_locally/llama.cpp.rst:89 b5213cd6c0a34104b3ac6c4bf67b3b0b
-msgid "Perplexity Evaluation"
-msgstr "PPL评测"
+#: ../../source/run_locally/llama.cpp.md:242 c9111d38a794467e8521b162d396fab0
+msgid "llama-cli conversation chat"
+msgstr "llama-cli 对话聊天"
 
-#: ../../source/run_locally/llama.cpp.rst:91 c33362f891e64ede9a99889a10cca6a4
-msgid ""
-"``llama.cpp`` provides methods for us to evaluate the perplexity "
-"performance of the GGUF models. To do this, you need to prepare the "
-"dataset, say \"wiki test\". Here we demonstrate an example to run the "
-"test."
-msgstr "llama.cpp为我们提供了评估GGUF模型PPL性能的方法。为了实现这一点，你需要准备一个数据集，比如“wiki测试”。这里我们展示了一个运行测试的例子。"
+#: ../../source/run_locally/llama.cpp.md:244 5f450179c1f0469faffad10565c269cc
+msgid "That's something, isn't it? You can stop the model generation anytime by Ctrl+C or Command+.  However, if the model generation is ended and the control is returned to you, pressing the combination will exit the program."
+msgstr "这很有趣，对吧？你可以随时通过 Ctrl+C 或 Command+. 来停止模型生成。但是，如果模型生成结束并且控制权返回给你，按下组合键将会退出程序。"
 
-#: ../../source/run_locally/llama.cpp.rst:96 845dff813b0d4877ac1166752716d194
-msgid "For the first step, download the dataset:"
-msgstr "第一步，下载数据集："
+#: ../../source/run_locally/llama.cpp.md:248 b55ba9d34da84a1fb61a96e8325bfc48
+msgid "So what does the command we used actually do?  Let's explain a little:"
+msgstr "那么，我们使用的命令实际上做了什么呢？让我们来解释一下："
 
-#: ../../source/run_locally/llama.cpp.rst:103 2e79d349ba1f477aa715493bdbee66dd
-msgid "Then you can run the test with the following command:"
-msgstr "然后你可以用如下命令运行测试："
+#: ../../source/run_locally/llama.cpp.md:251 83c10b7f2e4445f6864c7243beca454f
+msgid "-m or --model"
+msgstr "-m 或 --model"
 
-#: ../../source/run_locally/llama.cpp.rst:109 5b6afbab5da14e13926c23c691d0a9d3
-msgid "where the output is like"
-msgstr "输出如下所示"
+#: ../../source/run_locally/llama.cpp.md:251 865d6e7c1a7f426bb97a4593f01eaaf0
+msgid "Model path, obviously."
+msgstr "显然，这是模型路径。"
 
-#: ../../source/run_locally/llama.cpp.rst:117 a2b94f19290d4fb8ae9641c16c597f65
-msgid "Wait for some time and you will get the perplexity of the model."
-msgstr "稍等一段时间你将得到模型的PPL评测结果。"
+#: ../../source/run_locally/llama.cpp.md:252 c291e8f91ee448edb9fec4a4ab07b015
+msgid "-co or --color"
+msgstr "-co 或 --color"
 
-#: ../../source/run_locally/llama.cpp.rst:120 98f8af16e60b46479c943b40f0651b90
-msgid "Use GGUF with LM Studio"
-msgstr "在LM Studio使用GGUF"
+#: ../../source/run_locally/llama.cpp.md:252 5dba751bae834bf0921b22dbc4a3af56
+msgid "Colorize output to distinguish prompt and user input from generations. Prompt text is dark yellow; user text is green; generated text is white; error text is red."
+msgstr "为输出着色以区分提示词、用户输入和生成的文本。提示文本为深黄色；用户文本为绿色；生成的文本为白色；错误文本为红色。"
 
-#: ../../source/run_locally/llama.cpp.rst:122 8068cc3f544648cfaebffed115c995b3
-msgid ""
-"If you still find it difficult to use ``llama.cpp``, I advise you to play"
-" with `LM Studio <https://lmstudio.ai/>`__, which is a platform for your "
-"to search and run local LLMs. Qwen2 has already been officially part of "
-"LM Studio. Have fun!"
+#: ../../source/run_locally/llama.cpp.md:253 b231a4e66d184e78b87aad1ab47b80a0
+msgid "-cnv or --conversation"
+msgstr "-cnv 或 --conversation"
+
+#: ../../source/run_locally/llama.cpp.md:253 0680db53dbf942a587dabbbff90a354d
+msgid "Run in conversation mode. The program will apply the chat template accordingly."
+msgstr "在对话模式下运行。程序将相应地应用聊天模板。"
+
+#: ../../source/run_locally/llama.cpp.md:254
+#: ../../source/run_locally/llama.cpp.md:288 0ee75757f8ae4f0a8246cdf74ad8858c
+msgid "-p or --prompt"
+msgstr "-p 或 --prompt"
+
+#: ../../source/run_locally/llama.cpp.md:254 78ba41f58a3e46798350fd08016139e5
+msgid "In conversation mode, it acts as the system message."
+msgstr "在对话模式下，它作为系统提示。"
+
+#: ../../source/run_locally/llama.cpp.md:255 45dc36aa9d19402e90f532d61dc4596a
+msgid "-fa or --flash-attn"
+msgstr "-fa 或 --flash-attn"
+
+#: ../../source/run_locally/llama.cpp.md:255 d1e240ec90d74ab899a95b361c00a9a0
+msgid "Enable Flash Attention if the program is compiled with GPU support."
+msgstr "如果程序编译时支持 GPU，则启用Flash Attention注意力实现。"
+
+#: ../../source/run_locally/llama.cpp.md:256 6bbe2a2aa85448639f87562374529e3f
+msgid "-ngl or --n-gpu-layers"
+msgstr "-ngl 或 --n-gpu-layers"
+
+#: ../../source/run_locally/llama.cpp.md:256 aa9d220a649647739b531cc49abff36a
+msgid "Layers to the GPU for computation if the program is compiled with GPU support."
+msgstr "如果程序编译时支持 GPU，则将这么多层分配给 GPU 进行计算。"
+
+#: ../../source/run_locally/llama.cpp.md:257 1c25fd5e6a62458cb25ccd9f58ced615
+msgid "-n or --predict"
+msgstr "-n 或 --predict"
+
+#: ../../source/run_locally/llama.cpp.md:257 573bb35d55334816832b25ec954a5274
+msgid "Number of tokens to predict."
+msgstr "要预测的token数量。"
+
+#: ../../source/run_locally/llama.cpp.md:259 2d420e9a1c674ebda9562fbb1a500c49
+msgid "You can also explore other options by"
+msgstr "你也可以通过以下方式探索其他选项："
+
+#: ../../source/run_locally/llama.cpp.md:264 a3eabeab0b6c4967b3a79404f9f62398
+msgid "Interactive Mode"
+msgstr "互动模式"
+
+#: ../../source/run_locally/llama.cpp.md:266 a6cba2ba8b0949649364b23fd3bf47a7
+msgid "The conversation mode hides the inner workings of LLMs. With interactive mode, you are made aware how LLMs work in the way to completion or continuation. The workflow is like"
+msgstr "对话模式隐藏了大型语言模型（LLMs）的内部机制。在互动模式下，你可以直观地了解LLMs如何完成或继续生成文本。工作流程如下"
+
+#: ../../source/run_locally/llama.cpp.md:269 934e6116f9a24afab0c07b4657b4ae04
+msgid "Give the model an initial prompt, and the model generates a completion."
+msgstr "给模型一个初始提示，模型会生成续写文本。"
+
+#: ../../source/run_locally/llama.cpp.md:270 3d2f3cc3645a4f9eaddd60ac4dd4a614
+msgid "Interrupt the model generation any time or wait until the model generates a reverse prompt or an eos token."
+msgstr "随时中断模型生成，或者等到模型生成反向提示(reverse prompt)或结束token（eos token）。"
+
+#: ../../source/run_locally/llama.cpp.md:271 72c08c69401d450285ff1b7eafc21488
+msgid "Append new texts (with optional prefix and suffix), and then let the model continues the generation."
+msgstr "添加新文本（可选前缀和后缀），然后让模型继续生成。"
+
+#: ../../source/run_locally/llama.cpp.md:272 8902bb212f8b4ac5ad5034cdfe1c7d3b
+msgid "Repeat Step 2. and Step 3."
+msgstr "重复步骤2和步骤3。"
+
+#: ../../source/run_locally/llama.cpp.md:274 dcf548d402124f198b3e4c6d6d652468
+msgid "This workflow requires a different set of options, since you have to mind the chat template yourselves. To proper run the Qwen2 models, try the following:"
+msgstr "此工作流程需要一组不同的选项，因为你必须自己管理聊天模板。为了正确运行Qwen2模型，请尝试以下操作："
+
+#: ../../source/run_locally/llama.cpp.md:283 32c16afc4ee9439486d720045c6718d1
+msgid "We use some new options here:"
+msgstr "我们在这里使用了一些新的选项："
+
+#: ../../source/run_locally/llama.cpp.md:285 7ff99f2fd65a4114a9efd190df5ad9dd
+msgid "-sp or --special"
+msgstr "-sp 或 --special"
+
+#: ../../source/run_locally/llama.cpp.md:285 f178667bd86941a98e87373661093bd9
+msgid "Show the special tokens."
+msgstr "显示特殊token。"
+
+#: ../../source/run_locally/llama.cpp.md:286 c3fa8ba5cac94846acd9418c35731d2d
+msgid "-i or --interactive"
+msgstr "-i 或 --interactive"
+
+#: ../../source/run_locally/llama.cpp.md:286 bf1d46176a76455c9cc7c08b8b5778b4
+msgid "Enter interactive mode. You can interrupt model generation and append new texts."
+msgstr "进入互动模式。你可以中断模型生成并添加新文本。"
+
+#: ../../source/run_locally/llama.cpp.md:287 dae8ab041ec84737aa7de8f04d900001
+msgid "-i or --interactive-first"
+msgstr "-i 或 --interactive-first"
+
+#: ../../source/run_locally/llama.cpp.md:287 86c1f7db2bf1404bb39b5849ac91a050
+msgid "Immediately wait for user input. Otherwise, the model will run at once and generate based on the prompt."
+msgstr "立即等待用户输入。否则，模型将立即运行并根据提示生成文本。"
+
+#: ../../source/run_locally/llama.cpp.md:288 28fb3bf932814a28870d510db40af5a8
+msgid "In interactive mode, it is the contexts based on which the model predicts the continuation."
+msgstr "在互动模式下，这是模型续写用的上文。"
+
+#: ../../source/run_locally/llama.cpp.md:289 010d8b497062417f8a04e8ac872a7a6d
+msgid "--in-prefix"
 msgstr ""
-"如果你仍然觉得使用llama.cpp有困难，我建议你尝试一下 `LM Studio <https://lmstudio.ai/>`__ "
-"这个平台，它允许你搜索和运行本地的大规模语言模型。Qwen2已经正式成为LM Studio的一部分。祝你使用愉快！"
+
+#: ../../source/run_locally/llama.cpp.md:289 88f603387174478c9c200072cdba541b
+msgid "String to prefix user inputs with."
+msgstr "用户输入附加的前缀字符串。"
+
+#: ../../source/run_locally/llama.cpp.md:290 67f634b4cca248efad01de47e730a64c
+msgid "--in-suffix"
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.md:290 8bf22c4f050c4fba952bc9258046a1f1
+msgid "String to suffix after user inputs with."
+msgstr "用户输入附加的后缀字符串。"
+
+#: ../../source/run_locally/llama.cpp.md:292 40965ca457644edea6b4d92b18ea608d
+msgid "The result is like this:"
+msgstr "结果如下："
+
+#: ../../source/run_locally/llama.cpp.md:294 313a7edee13b4a17a5818255b9fab6b3
+msgid "![llama-cli interactive first](../assets/imgs/llama-cli-if.png)"
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.md:294 2033a766c82f4f8db8ebd788d8ee2538
+msgid "llama-cli interactive first"
+msgstr "llama-cli 互动模式用户优先"
+
+#: ../../source/run_locally/llama.cpp.md:296 c5ea7ac1e31d4e7199249a929e35e307
+msgid "We use `prompt`, `in-prefix`, and `in-suffix` together to implement the chat template (ChatML-like) used by Qwen2 with a system message. So the experience is very similar to the conversation mode: you just need to type in the things you want to ask the model and don't need to worry about the chat template once the program starts. Note that, there should not be a new line after user input according to the template, so remember to end your input with `/`."
+msgstr "我们将 `prompt`、`in-prefix` 和 `in-suffix` 结合起来实现Qwen2使用的包含系统消息的聊天模板（类似ChatML）。这样的，体验与对话模式非常相似：你只需输入想要询问模型的内容，在程序启动后无需担心聊天模板。请注意，根据模板，用户输入后不应有换行符，所以请以 `/` 结束输入。"
+
+#: ../../source/run_locally/llama.cpp.md f285cfa9e2d7467fa755e606534e2ea6
+msgid "Advanced Usage"
+msgstr "高级用法"
+
+#: ../../source/run_locally/llama.cpp.md:303 63ddd6cfb1da4a20a4a2a629e0b649c9
+msgid "Interactive mode can achieve a lot more flexible workflows, under the condition that the chat template is maintained properly throughout. The following is an example:"
+msgstr "互动模式可以实现更灵活的工作流程，前提是整个过程中正确维护聊天模板。以下是一个示例："
+
+#: ../../source/run_locally/llama.cpp.md:306 aba16f8eec364a3bb08a75d1f0ba37f3
+msgid "![llama-cli interactive](../assets/imgs/llama-cli-i.png)"
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.md:306 550877320c9441f3ab9a390c26ac4da1
+msgid "llama-cli interactive"
+msgstr "llama-cli 互动模式"
+
+#: ../../source/run_locally/llama.cpp.md:308 51fa6c954bb44c448267fbb94eb05dfd
+msgid "In the above example, I set `--reverse-prompt` to `\"LLM\"` so that the generation is interrupted whenever the model generates `\"LLM\"`[^rp].  The in prefix and in suffix are also set to empty so that I can add content exactly I want. After every generation of `\"LLM\"`, I added the part `\"...not what you think...\"` which are not likely to be generated by the model. Yet the model can continue generation just as fluent, although the logic is broken the second time around. I think it's fun to play around."
+msgstr "在上面的例子中，我将 `--reverse-prompt` 设置为 `\"LLM\"`，以便每当模型生成 `\"LLM\"` 时中断生成过程[^rp]。前缀和后缀也被设置为空，这样我可以精确地添加想要的内容。每次生成 `\"LLM\"` 后，我添加了 `\"...not what you think...\"` 的部分，这部分不太可能由模型生成。然而，模型仍能继续流畅生成，尽管第二次逻辑被破坏。这很有趣，值得探索。"
+
+#: ../../source/run_locally/llama.cpp.md:318 3a9bf359e2d345359a4048f74721ef09
+msgid "Non-interactive Mode"
+msgstr "非交互模式"
+
+#: ../../source/run_locally/llama.cpp.md:320 b8f5aeecfe1f4c4ca12376c5ddaceed5
+msgid "You can also use `llama-cli` for text completion by using just the prompt. However, it also means you have to format the input properly and only one turn can be generated."
+msgstr "你还可以仅使用提示词，通过`llama-cli`完成文本续写。但这也意味着你需要正确格式化输入，并且只能生成一次回应。"
+
+#: ../../source/run_locally/llama.cpp.md:323 1d9b69b7ee104b1dafc34ea052b6c8be
+msgid "The following is an example:"
+msgstr "以下是一个示例："
+
+#: ../../source/run_locally/llama.cpp.md:330 c9105f391c8f4c899e613791f4b80fa2
+msgid "The main output is as follows: ![llama-cli](../assets/imgs/llama-cli.png)"
+msgstr "主要输出如下所示： ![llama-cli](../assets/imgs/llama-cli.png)"
+
+#: ../../source/run_locally/llama.cpp.md:330 9fcddab135724d3f9ca45bb5f6a017fb
+msgid "llama-cli"
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.md:333 04a6b0cb3ee5496abc31f20ec026cfdb
+msgid "In fact, you can start completion anywhere you want, even in the middle of an assistant message:"
+msgstr "实际上，你可以从任何你想要的地方开始续写，即使是在assistant消息的中间："
+
+#: ../../source/run_locally/llama.cpp.md:335 c1fe9baff8874376867531a94b81f187
+msgid "![llama-cli mid](../assets/imgs/llama-cli-mid.png)"
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.md:335 5fcf0052dee54d6b861537d6ecbb19c9
+msgid "llama-cli mid"
+msgstr "llama-cli 中间"
+
+#: ../../source/run_locally/llama.cpp.md:337 5b304576e6b64a2b8a58b348519f93ea
+msgid "Now you can use `llama-cli` in three very different ways! Try talk to Qwen2 and share your experience with the community!"
+msgstr "现在你可以用三种截然不同的方式使用`llama-cli`了！试试和Qwen2对话，然后与社区分享你的体验吧！"
+
+#: ../../source/run_locally/llama.cpp.md:341 5ed217ed199b4f07b85af17bfaa3d968
+msgid "What's More"
+msgstr "还有更多"
+
+#: ../../source/run_locally/llama.cpp.md:343 2f0fa3a8348740ca8e2e81d55acf5ffd
+msgid "If you still find it difficult to use `llama-cli`, don't worry, just check out other llama.cpp-based applications. For example, Qwen2 has already been officially part of Ollama and LM Studio, which are platforms for your to search and run local LLMs."
+msgstr "如果你仍然觉得使用`llama-cli`有困难，别担心，可以尝试其他基于llama.cpp的应用程序。例如，Qwen2已经成为Ollama和LM Studio的官方组成部分，它们是用于搜索和运行本地LLM的平台。"
+
+#: ../../source/run_locally/llama.cpp.md:346 921d951120f044dbb5f7227e69dde70f
+msgid "Have fun!"
+msgstr "玩得开心！"
+
+#: ../../source/run_locally/llama.cpp.md:3 2bf6e9b6cce64f28a25bb780d65acada
+msgid "GPT-Generated Unified Format"
+msgstr ""
+
+#: ../../source/run_locally/llama.cpp.md:315 f76657b6eefb4234b87127049d2e59f9
+msgid "There are some gotchas in using `--reverse-prompt` as it matches tokens instead of strings. Since the same string can be tokenized differently in different contexts in BPE tokenization, some reverse prompts are never matched even though the string does exist in generation."
+msgstr "`--reverse-prompt`在匹配时针对的是token而非字符串，因此使用时有一些需要注意的地方。由于BPE tokenizer在不同上下文中对相同字符串的tokenization结果可能不同，所以某些反向提示符即使在生成的文本中存在，也可能永远无法匹配成功。"
 

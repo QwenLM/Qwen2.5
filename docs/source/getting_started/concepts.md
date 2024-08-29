@@ -123,7 +123,7 @@ Chat templates provide a structured format for conversational interactions, wher
 Different models may use different kinds of chat template to format the conversations. 
 It is crucial to use the designated one to ensure the precise control over the LLM's generation process.
 
-Qwen uses the following format (ChatML), making use of control tokens to format each turn in the conversations
+Qwen uses the following format (ChatML[^chatml]), making use of control tokens to format each turn in the conversations
 ```text
 <|im_start|>{{role}}
 {{content}}<|im_end|>
@@ -151,6 +151,8 @@ Just like your friend might sometimes make mistakes or say things in a funny way
 There are 3 control tokens in the vocabulary of Qwen, making the vocabulary size totaling 151,646.
 
 **Takeaway: Qwen uses ChatML with 3 control tokens for chat template.**
+
+[^chatml]: For historical reference only, ChatML is first described by the OpenAI Python SDK. The last available version is [this](https://github.com/openai/openai-python/blob/v0.28.1/chatml.md). Please also be aware that that document lists use cases intended for OpenAI models. For Qwen2 models, please only use as in our guide.
 
 ## Length Limit
 
