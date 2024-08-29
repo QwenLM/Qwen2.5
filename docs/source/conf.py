@@ -39,7 +39,7 @@ extensions = [
     "sphinx_design",
 ]
 
-myst_enable_extensions = ["colon_fence", "attrs_block", "attrs_inline"]
+myst_enable_extensions = ["colon_fence", "attrs_block", "attrs_inline", "fieldlist"]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]

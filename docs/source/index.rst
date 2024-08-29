@@ -50,10 +50,10 @@ Join our community by joining our `Discord <https://discord.gg/yPEP2vHTu4>`__ an
    :caption: Run Locally
    :hidden:
 
-   run_locally/llama.cpp
-   run_locally/mlx-lm
    run_locally/ollama
-
+   run_locally/mlx-lm
+   run_locally/llama.cpp
+   
 .. toctree::
    :maxdepth: 1
    :caption: Web UI
@@ -68,7 +68,7 @@ Join our community by joining our `Discord <https://discord.gg/yPEP2vHTu4>`__ an
 
    quantization/awq
    quantization/gptq
-   quantization/gguf
+   quantization/llama.cpp
 
 .. toctree::
    :maxdepth: 1
