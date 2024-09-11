@@ -35,7 +35,6 @@ The following is a very simple code snippet showing how to run Qwen2-Instruct, w
 
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
-device = "cuda" # the device to load the model onto
 
 # Now you do not need to add "trust_remote_code=True"
 model = AutoModelForCausalLM.from_pretrained(
@@ -57,12 +56,12 @@ text = tokenizer.apply_chat_template(
     tokenize=False,
     add_generation_prompt=True,
 )
-model_inputs = tokenizer([text], return_tensors="pt").to(device)
+model_inputs = tokenizer([text], return_tensors="pt").to(model.device)
 
 # Directly use generate() and tokenizer.decode() to get the output.
 # Use `max_new_tokens` to control the maximum output length.
 generated_ids = model.generate(
-    model_inputs.input_ids,
+    **model_inputs,
     max_new_tokens=512,
 )
 generated_ids = [
@@ -88,7 +87,7 @@ from transformers import TextStreamer
 
 streamer = TextStreamer(tokenizer, skip_prompt=True, skip_special_tokens=True)
 generated_ids = model.generate(
-    model_inputs.input_ids,
+    **model_inputs,
     max_new_tokens=512,
     streamer=streamer,
 )

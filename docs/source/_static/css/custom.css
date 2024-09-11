@@ -44,6 +44,10 @@ p strong {
     font-weight: 500;
 }
 
+p:target {
+    background-color: var(--color-highlight-on-target);
+}
+
 details.sd-dropdown summary.sd-summary-title {
     flex-direction: row-reverse;
     font-weight: 500;

@@ -36,7 +36,6 @@ Below is an example of how to chat with Qwen2-7B-Instruct:
 
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
-device = "cuda" # the device to load the model onto
 
 # Now you do not need to add "trust_remote_code=True"
 model = AutoModelForCausalLM.from_pretrained(
@@ -58,12 +57,12 @@ text = tokenizer.apply_chat_template(
     tokenize=False,
     add_generation_prompt=True,
 )
-model_inputs = tokenizer([text], return_tensors="pt").to(device)
+model_inputs = tokenizer([text], return_tensors="pt").to(model.device)
 
 # Directly use generate() and tokenizer.decode() to get the output.
 # Use `max_new_tokens` to control the maximum output length.
 generated_ids = model.generate(
-    model_inputs.input_ids,
+    **model_inputs,
     max_new_tokens=512,
 )
 generated_ids = [
