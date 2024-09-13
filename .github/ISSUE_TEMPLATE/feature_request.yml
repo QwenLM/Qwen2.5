@@ -1,0 +1,56 @@
+name: "Feature Request"
+description: "Request a new feature."
+title: "[REQUEST]: "
+body:
+  - type: checkboxes
+    attributes:
+      label: Has this been supported or requested before?
+      description: |
+        Please first check if the feature is supported in related documentation and if it has been already requested.
+      options:
+        - label: I have checked [the GitHub README](https://github.com/QwenLM/Qwen2).
+          required: true
+        - label: I have checked [the Qwen documentation](https://qwen.readthedocs.io).
+          required: true
+        - label: I have checked the documentation of the related framework.
+          required: true
+        - label: I have searched [the issues](https://github.com/QwenLM/Qwen2/issues?q=is%3Aissue) and there is not a similar one.
+          required: true
+  - type: input
+    attributes:
+      label: What is this feature about?
+      description: | 
+        Please briefly describe the feature, including the type of use and the framework, 
+        e.g., support quantized MoE in vLLM, or a model with xxB parameters, etc.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Proposal
+      description: |
+        Please describe the feature you have requested and the rationale behind it.
+        The following template is recommended.
+        Feel free to modify it as you needed.
+      value: |
+        #### Introduction
+
+        I would like that ...
+        
+        #### Rational
+
+        Implementation of this feature will help the following usecase:
+        - ...
+        - ...
+
+        #### Anything else
+
+        I find ... has this feature and xxx can serve as a reference for implementation.
+    validations:
+      required: true
+  - type: checkboxes
+    attributes:
+      label: Contributions are welcomed
+      description: We would greatly appreciated if you could help implement this feature.
+      options:
+        - label: I am willing to help implement this feature.
+      
