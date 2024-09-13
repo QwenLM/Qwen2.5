@@ -1,0 +1,25 @@
+name: Question
+description: "General inquires or discussions" 
+title: "[Question]: "
+body:
+  - type: checkboxes
+    attributes:
+      label: Has this been raised before?
+      description: |
+        Please first check if you can find information in related documentation.
+      options:
+        - label: I have checked [the GitHub README](https://github.com/QwenLM/Qwen2).
+          required: true
+        - label: I have checked [the Qwen documentation](https://qwen.readthedocs.io) and cannot find an answer there.
+          required: true
+        - label: I have searched [the issues](https://github.com/QwenLM/Qwen2/issues?q=is%3Aissue) and there is not a similar one.
+          required: true
+        - label: "I confirm that this is not a bug report, a feature request, or a badcase."
+          required: true
+  - type: textarea
+    attributes:
+      label: Description
+      description: |
+        Please describe the problem you have encountered.
+    validations:
+      required: true
