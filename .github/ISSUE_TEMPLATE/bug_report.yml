@@ -21,7 +21,7 @@ body:
       description: |
         Please list the model used, e.g., Qwen2-7B-Instruct, Qwen2-72B-Instruct-GGUF, etc.
         Note that we only maintain models at <https://huggingface.co/Qwen> and <https://www.modelscope.com/organization/qwen>.
-      placeholder: ex: Qwen2-xxx
+      placeholder: "ex: Qwen2-xxx"
     validations:
       required: true
   - type: input
@@ -30,7 +30,7 @@ body:
       description: | 
         Please briefly describe the scenario, including the type of use and the framework, 
         e.g., inference with `transformers`, deployment with `vllm`, SFT with `llama-factory`, tool calling with `ollama`, etc.
-      placeholder: ex: [type of usage] with [framework]
+      placeholder: "ex: [type of usage] with [framework]"
     validations:
       required: true
   - type: checkboxes
