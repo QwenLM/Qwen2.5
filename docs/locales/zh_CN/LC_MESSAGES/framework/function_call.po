@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-11 19:27+0800\n"
+"POT-Creation-Date: 2024-09-18 21:18+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -43,16 +43,16 @@ msgid "This guide will not delve into those discussions or which role an LLM sho
 msgstr "本指南不会深入讨论LLM在应用中应扮演的角色及相关的最佳实践。这些观点反映在AI应用框架的设计上：从LangChain到LlamaIndex再到QwenAgent。"
 
 #: ../../source/framework/function_call.md:18 f1d812aea22b4996a0e8981d49f6c21e
-msgid "Instead, we will talk about how Qwen2 can be used to support function calling and how it can be used to achieve your goals, from the inference usage for developing application to the inner workings for hardcore customizations.  In this guide,"
-msgstr "相反，我们将讨论如何使用Qwen2来支持函数调用，以及如何利用它实现你的目标，从开发应用时的推理用途，到硬核定制的内部运作。在这个指南中，"
+msgid "Instead, we will talk about how Qwen2.5 can be used to support function calling and how it can be used to achieve your goals, from the inference usage for developing application to the inner workings for hardcore customizations.  In this guide,"
+msgstr "相反，我们将讨论如何使用Qwen2.5来支持函数调用，以及如何利用它实现你的目标，从开发应用时的推理用途，到硬核定制的内部运作。在这个指南中，"
 
 #: ../../source/framework/function_call.md:20 00c2b48a52d64d30ad7330d9a8c8859e
-msgid "We will first demonstrate how to use function calling with Qwen2."
-msgstr "我们首先将展示如何使用Qwen2进行函数调用。"
+msgid "We will first demonstrate how to use function calling with Qwen2.5."
+msgstr "我们首先将展示如何使用Qwen2.5进行函数调用。"
 
 #: ../../source/framework/function_call.md:21 e030890da6884ec7bb530db22f6a16e3
-msgid "Then, we will introduce the technical details on functional calling with Qwen2, which are mainly about the templates."
-msgstr "接着，我们将介绍使用Qwen2进行函数调用的技术细节，主要涉及模板的使用。"
+msgid "Then, we will introduce the technical details on functional calling with Qwen2.5, which are mainly about the templates."
+msgstr "接着，我们将介绍使用Qwen2.5进行函数调用的技术细节，主要涉及模板的使用。"
 
 #: ../../source/framework/function_call.md:23 3c79c3859a4441fa956c13c97ea723ea
 msgid "Before starting, there is one thing we have not yet introduced, that is ..."
@@ -99,8 +99,8 @@ msgid "The chosen functions are used as such by the application and the results 
 msgstr "应用程序按照选择使用这些函数，并获取结果。如果需要进一步互动，结果将提供给大型语言模型。"
 
 #: ../../source/framework/function_call.md:47 b0bfeeb3d8024a8e8b91c0168d3c0aa4
-msgid "They are many ways for LLMs to understand and follow this protocol. As always, the key is prompt engineering or an internalized template known by the model. Qwen2 were pre-trained with two types of templates that could support function calling, one in-house designed and one based on ReAct Prompting, so that users can directly make use of this procedure."
-msgstr "大型语言模型理解并遵循此协议有多种方式。关键在于提示工程 (Prompt Engineering) 或模型内化的模板。Qwen2预先训练了两种支持函数调用的模板，一种是内部设计的，另一种基于ReAct Prompting，以便用户可以直接利用这一过程。"
+msgid "They are many ways for LLMs to understand and follow this protocol. As always, the key is prompt engineering or an internalized template known by the model. Qwen2.5 were pre-trained with various types of templates that could support function calling, so that users can directly make use of this procedure."
+msgstr "大型语言模型理解并遵循此协议有多种方式。关键在于提示工程 (Prompt Engineering) 或模型内化的模板。Qwen2预先训练了多种支持函数调用的模板，以便用户可以直接利用这一过程。"
 
 #: ../../source/framework/function_call.md:52 502179f208ad4780b8099dc700a1572e
 msgid "Inference with Function Calling"
@@ -123,34 +123,38 @@ msgid "**Qwen-Agent**,"
 msgstr "**Qwen-Agent**，"
 
 #: ../../source/framework/function_call.md:63 c446743faa6843da82780933214a1947
-msgid "**Hugging Face transformers**, and"
-msgstr "**Hugging Face transformers**和"
+msgid "**Hugging Face transformers**,"
+msgstr "**Hugging Face transformers**，"
 
 #: ../../source/framework/function_call.md:64 467cc4d457014e2ca2527a9c3e8a2a4a
-msgid "**Ollama**."
-msgstr "**Ollama**。"
+msgid "**Ollama**, and"
+msgstr "**Ollama**，和"
 
-#: ../../source/framework/function_call.md:66 0ff6c40613224c4b8584ec436f34dd82
-msgid "If you are familiar with the usage of OpenAI API, you could also directly use the OpenAI-compatible API services for Qwen2. However, not all of them support function calling for Qwen2. Currently, supported solutions include the self-hosted service by [Ollama](https://github.com/ollama/ollama/blob/main/docs/openai.md) (with a proper TEMPLATE in the Model File) and the cloud service of [ModelStudio \\[zh\\]](https://help.aliyun.com/zh/model-studio/developer-reference/compatibility-of-openai-with-dashscope#97e2b45391x08). Note that although vLLM has supported function calling in its OpenAI-compatible API, it cannot be used with Qwen2 due to the lack of required tool call parsers."
-msgstr "如果您熟悉OpenAI API的使用，您也可以直接使用适用于Qwen2的OpenAI兼容API服务。然而，并非所有服务都支持Qwen2的函数调用。目前，支持的解决方案包括由[Ollama]（https//github.com/ollama/ollama/blob/main/docs/openai.md）提供的自托管服务（需要在模型文件Modelfile中使用适当的TEMPLATE）和[阿里云百炼]（https://help.aliyun.com/zh/model-studio/developer-reference/compatibility-of-openai-with-dashscope#97e2b45391x08）的云服务。请注意，尽管vLLM在其OpenAI兼容API中支持函数调用，但由于缺乏必要的工具调用解析器，它无法与Qwen2配合使用。"
+#: ../../source/framework/function_call.md:65 467cc4d457014e2ca2527a9c3e8a2a4a
+msgid "**vLLM**."
+msgstr "**vLLM**。"
+
+#: ../../source/framework/function_call.md:67 0ff6c40613224c4b8584ec436f34dd82
+msgid "If you are familiar with the usage of OpenAI API, you could also directly use the OpenAI-compatible API services for Qwen2.5. However, not all of them support function calling for Qwen2.5. Currently, supported solutions include the self-hosted service by [Ollama](https://github.com/ollama/ollama/blob/main/docs/openai.md) or [vLLM](https://docs.vllm.ai/en/stable/serving/openai_compatible_server.html#tool-calling-in-the-chat-completion-api) and the cloud service of [ModelStudio \\[zh\\]](https://help.aliyun.com/zh/model-studio/developer-reference/compatibility-of-openai-with-dashscope#97e2b45391x08)."
+msgstr "如果您熟悉OpenAI API的使用，您也可以直接使用适用于Qwen2.5的OpenAI兼容API服务。然而，并非所有服务都支持Qwen2.5的函数调用。目前，支持的解决方案包括由[Ollama](https//github.com/ollama/ollama/blob/main/docs/openai.md)或[vLLM](https://docs.vllm.ai/en/stable/serving/openai_compatible_server.html#tool-calling-in-the-chat-completion-api)提供的自托管服务和[阿里云百炼](https://help.aliyun.com/zh/model-studio/developer-reference/compatibility-of-openai-with-dashscope#97e2b45391x08)的云服务。"
 
 #: ../../source/framework/function_call.md:71 c07b9d2f536c4af7899147c6924252b4
-msgid "If you are familiar with application frameworks, e.g., LangChain, you can also use function calling abilities in Qwen2 via ReAct Prompting."
-msgstr "如果您熟悉应用框架，例如LangChain，您也可以通过ReAct Prompting在Qwen2中使用函数调用功能。"
+msgid "If you are familiar with application frameworks, e.g., LangChain, you can also use function calling abilities in Qwen2.5 via ReAct Prompting."
+msgstr "如果您熟悉应用框架，例如LangChain，您也可以通过ReAct Prompting在Qwen2.5中使用函数调用功能。"
 
-#: ../../source/framework/function_call.md:74 a814a960462f48648f42592115adf2ac
+#: ../../source/framework/function_call.md:73 a814a960462f48648f42592115adf2ac
 msgid "The Example Case"
 msgstr "案例"
 
-#: ../../source/framework/function_call.md:76 8a3cbc661d0a4b3bae0b4a3705c16953
+#: ../../source/framework/function_call.md:75 8a3cbc661d0a4b3bae0b4a3705c16953
 msgid "Let's also use an example to demonstrate the inference usage. We assume **Python 3.11** is used as the programming language."
 msgstr "我们同样通过一个示例来展示推理的使用方法。假设我们使用的编程语言是**Python 3.11**。"
 
-#: ../../source/framework/function_call.md:79 c2d974a93e0a4bb0847a73cc75ca7f58
+#: ../../source/framework/function_call.md:78 c2d974a93e0a4bb0847a73cc75ca7f58
 msgid "**Scenario**: Suppose we would like to ask the model about the temperature of a location. Normally, the model would reply that it cannot provide real-time information. But we have two tools that can be used to obtain the current temperature of and the temperature at a given date of a city respectively, and we would like the model to make use of them."
 msgstr "**场景**：假设我们要询问模型某个地点的温度。通常，模型会回答无法提供实时信息。但我们有两个工具，可以分别获取城市的当前温度和指定日期的温度，我们希望模型能够利用这些工具。"
 
-#: ../../source/framework/function_call.md:83 c0044b97fbd14b7a94f5acb78deb60ee
+#: ../../source/framework/function_call.md:82 c0044b97fbd14b7a94f5acb78deb60ee
 msgid "To set up the example case, you can use the following code:"
 msgstr "为了这个示例案例，您可以使用以下代码："
 
@@ -158,7 +162,7 @@ msgstr "为了这个示例案例，您可以使用以下代码："
 msgid "Preparation Code"
 msgstr "准备代码"
 
-#: ../../source/framework/function_call.md:207 37ae599edb5249c5b90408fab8d9144e
+#: ../../source/framework/function_call.md:213 37ae599edb5249c5b90408fab8d9144e
 msgid "In particular, the tools should be described using JSON Schema and the messages should contain as much available information as possible. You can find the explanations of the tools and messages below:"
 msgstr "工具应使用JSON Schema进行描述，消息应包含尽可能多的有效信息。您可以在下面找到工具和消息的解释："
 
@@ -166,39 +170,39 @@ msgstr "工具应使用JSON Schema进行描述，消息应包含尽可能多的�
 msgid "Example Tools"
 msgstr "示例工具"
 
-#: ../../source/framework/function_call.md:212 72daa62fc239401d85c3c1a345393166
+#: ../../source/framework/function_call.md:218 72daa62fc239401d85c3c1a345393166
 msgid "The tools should be described using the following JSON:"
 msgstr "工具应使用以下JSON进行描述："
 
-#: ../../source/framework/function_call.md:276 a019723d08c845b6a090002fecffe2dd
+#: ../../source/framework/function_call.md:282 a019723d08c845b6a090002fecffe2dd
 msgid "For each **tool**, it is a JSON object with two fields:"
 msgstr "对于每个**工具**，它是一个具有两个字段的JSON object："
 
-#: ../../source/framework/function_call.md:277 7671f5bbadf74f969c5bbcfe790b8743
+#: ../../source/framework/function_call.md:283 7671f5bbadf74f969c5bbcfe790b8743
 msgid "`type`: a string specifying the type of the tool, currently only `\"function\"` is valid"
 msgstr "`type`：string，用于指定工具类型，目前仅`\"function\"`有效"
 
-#: ../../source/framework/function_call.md:278 2a4c33901edd42ad9acd878fcad4c5f0
+#: ../../source/framework/function_call.md:284 2a4c33901edd42ad9acd878fcad4c5f0
 msgid "`function`: an object detailing the instructions to use the function"
 msgstr "`function`：object，详细说明了如何使用该函数"
 
-#: ../../source/framework/function_call.md:280 fca12ab8893a4cfb8b6b42791516fe07
+#: ../../source/framework/function_call.md:286 fca12ab8893a4cfb8b6b42791516fe07
 msgid "For each **function**, it is a JSON object with three fields:"
 msgstr "对于每个**function**，它是一个具有三个字段的JSON object："
 
-#: ../../source/framework/function_call.md:281 9d211ff380d04318a2a45f284949a32d
+#: ../../source/framework/function_call.md:287 9d211ff380d04318a2a45f284949a32d
 msgid "`name`: a string indicating the name of the function"
 msgstr "`name`：string 表示函数名称"
 
-#: ../../source/framework/function_call.md:282 8297df95bce849ff9c4a802028283d9d
+#: ../../source/framework/function_call.md:288 8297df95bce849ff9c4a802028283d9d
 msgid "`description`: a string describing what the function is used for"
 msgstr "`description`：string 描述函数用途"
 
-#: ../../source/framework/function_call.md:283 68ed46d9abbe4d9cb0bfba313ec6aa31
+#: ../../source/framework/function_call.md:289 68ed46d9abbe4d9cb0bfba313ec6aa31
 msgid "`parameters`: [a JSON Schema](https://json-schema.org/learn/getting-started-step-by-step) that specifies the parameters the function accepts. Please refer to the linked documentation for how to compose a JSON Schema. Notable fields include `type`, `required`, and `enum`."
 msgstr "`parameters`：[JSON Schema](https://json-schema.org/learn/getting-started-step-by-step)，用于指定函数接受的参数。请参阅链接文档以了解如何构建JSON Schema。值得注意的字段包括`type`、`required`和`enum`。"
 
-#: ../../source/framework/function_call.md:285 e9ead0409d8c4fa68a4f407246cea299
+#: ../../source/framework/function_call.md:291 e9ead0409d8c4fa68a4f407246cea299
 msgid "Most frameworks use the tool format and some may use the function format. Which one to use should be obvious according to the naming."
 msgstr "大多数框架使用“工具”格式，有些可能使用“函数”格式。根据命名，应该很明显应该使用哪一个。"
 
@@ -206,162 +210,157 @@ msgstr "大多数框架使用“工具”格式，有些可能使用“函数”
 msgid "Example Messages"
 msgstr "示例消息"
 
-#: ../../source/framework/function_call.md:292 d822df58fee04256957482e39740e916
-msgid "Our query is `What's the temperature in San Francisco now? How about tomorrow?`. Since the model does not know what the current date is, let alone tomorrow, we should provide the date in the inputs. Here, we decide to supply that information in the system message after the default system message `You are a helpful assistant.`. You could append the date to user message in your application code."
-msgstr "我们的查询是`What's the temperature in San Francisco now? How about tomorrow?`。由于模型不知道当前日期，更不用说明天了，我们应该在输入中提供日期。在这里，我们决定在默认系统消息`You are a helpful assistant.`之后的系统消息中提供该信息。您可以在应用程序代码中将日期附加到用户消息。"
+#: ../../source/framework/function_call.md:298 d822df58fee04256957482e39740e916
+msgid "Our query is `What's the temperature in San Francisco now? How about tomorrow?`. Since the model does not know what the current date is, let alone tomorrow, we should provide the date in the inputs. Here, we decide to supply that information in the system message after the default system message `You are Qwen, created by Alibaba Cloud. You are a helpful assistant.`. You could append the date to user message in your application code."
+msgstr "我们的查询是`What's the temperature in San Francisco now? How about tomorrow?`。由于模型不知道当前日期，更不用说明天了，我们应该在输入中提供日期。在这里，我们决定在默认系统消息`You are Qwen, created by Alibaba Cloud. You are a helpful assistant.`之后的系统消息中提供该信息。您可以在应用程序代码中将日期附加到用户消息。"
 
-#: ../../source/framework/function_call.md:306
-#: ../../source/framework/function_call.md:643 6b70ca072c2d4c42bc75513b8ad01e17
-#: 9d82a02861ad4da8a2f826696bb58e98
+#: ../../source/framework/function_call.md:312
+#: ../../source/framework/function_call.md:546 6b70ca072c2d4c42bc75513b8ad01e17
 msgid "Qwen-Agent"
 msgstr ""
 
-#: ../../source/framework/function_call.md:308 2350c3c3c4674d1182461bc12546811a
-msgid "[Qwen-Agent](https://github.com/QwenLM/Qwen-Agent) is actually a Python Agent framework for developing AI applications. Although its intended use cases are higher-level than efficient inference, it does contain the **canonical implementation** of function calling for Qwen2. It provides the function calling ability for Qwen2 to an OpenAI-compatible API through templates that is transparent to users."
-msgstr "[Qwen-Agent](https://github.com/QwenLM/Qwen-Agent) 实际上是一个用于开发AI应用的Python智能体框架。尽管其设计用例比高效推理更高级，但它确实包含了Qwen2函数调用的**规范实现**。基于OpenAI兼容API，它可以通过模板为Qwen2提供了对用户透明的的函数调用能力。"
+#: ../../source/framework/function_call.md:314 2350c3c3c4674d1182461bc12546811a
+msgid "[Qwen-Agent](https://github.com/QwenLM/Qwen-Agent) is actually a Python Agent framework for developing AI applications. Although its intended use cases are higher-level than efficient inference, it does contain the **canonical implementation** of function calling for Qwen2.5. It provides the function calling ability for Qwen2.5 to an OpenAI-compatible API through templates that is transparent to users."
+msgstr "[Qwen-Agent](https://github.com/QwenLM/Qwen-Agent) 实际上是一个用于开发AI应用的Python智能体框架。尽管其设计用例比高效推理更高级，但它确实包含了Qwen2.5函数调用的**规范实现**。基于OpenAI兼容API，它可以通过模板为Qwen2.5提供了对用户透明的的函数调用能力。"
 
-#: ../../source/framework/function_call.md:313 f4b89b4ecaf04577b245f1684cdac818
-msgid "It's worth noting that since a lot of stuff can be done under the scene with application frameworks, currently the official function calling implementation for Qwen2 is very flexible and beyond simple templating, making it hard to adapt it other frameworks that use less capable templating engines."
-msgstr "值得注意的是，由于应用框架可以在幕后完成大量工作，目前Qwen2官方的函数调用实现非常灵活且超出了简单的模板化，这使得它难以适应那些使用能力较弱的模板引擎的其他框架。"
+#: ../../source/framework/function_call.md:319 f4b89b4ecaf04577b245f1684cdac818
+msgid "It's worth noting that since a lot of stuff can be done under the scene with application frameworks, currently the official function calling implementation for Qwen2.5 is very flexible and beyond simple templating, making it hard to adapt it other frameworks that use less capable templating engines."
+msgstr "值得注意的是，由于应用框架可以在幕后完成大量工作，目前Qwen2.5官方的函数调用实现非常灵活且超出了简单的模板化，这使得它难以适应那些使用能力较弱的模板引擎的其他框架。"
 
-#: ../../source/framework/function_call.md:315 eb7c9b11971a4ec18deb8255a68944e3
+#: ../../source/framework/function_call.md:321 eb7c9b11971a4ec18deb8255a68944e3
 msgid "Before starting, let's make sure the latest library is installed:"
 msgstr "在开始之前，让我们确保已安装了最新的库："
 
-#: ../../source/framework/function_call.md:320 00b8b5ff2dc14668aa5c3d002fc3afdf
+#: ../../source/framework/function_call.md:326 00b8b5ff2dc14668aa5c3d002fc3afdf
 msgid "For this guide, we are at version v0.0.9."
 msgstr "对于本指南，我们处于版本v0.0.9。"
 
-#: ../../source/framework/function_call.md:322
+#: ../../source/framework/function_call.md:328
 #: ../../source/framework/function_call.md:475
-#: ../../source/framework/function_call.md:670 49b495644c3d4dd894253c0933860682
-#: 527d972ce13e407c996042e72fd7b7d0 528c0aa626bc43788aa0fab8212e1f48
+#: ../../source/framework/function_call.md:662
+#: ../../source/framework/function_call.md:773 49b495644c3d4dd894253c0933860682
+#: 527d972ce13e407c996042e72fd7b7d0
 msgid "Preparing"
 msgstr "准备工作"
 
-#: ../../source/framework/function_call.md:324 4503bb34fc6e44928867d74ba52607df
+#: ../../source/framework/function_call.md:330 4503bb34fc6e44928867d74ba52607df
 msgid "Qwen-Agent can wrap an OpenAI-compatible API that does not support function calling. You can serve such an API with most inference frameworks or obtain one from cloud providers like DashScope or Together."
 msgstr "Qwen-Agent可以封装一个不支持函数调用的OpenAI兼容API。您可以使用大多数推理框架来提供此类API，或者从DashScope或Together等云提供商处获取一个。"
 
-#: ../../source/framework/function_call.md:327 ddf86de87ae44f3a8776d5b44f02ef08
+#: ../../source/framework/function_call.md:333 ddf86de87ae44f3a8776d5b44f02ef08
 msgid "Assuming there is an OpenAI-compatible API at `http://localhost:8000/v1`, Qwen-Agent provides a shortcut function `get_chat_model` to obtain a model inference class with function calling support:"
 msgstr "假设在`http://localhost:8000/v1`处有一个OpenAI兼容API，Qwen-Agent提供了一个快捷函数`get_chat_model`，用于获取具有函数调用支持的模型推理类："
 
-#: ../../source/framework/function_call.md:339 c9d2a5492a4f411ca1c0a5b898c673c1
+#: ../../source/framework/function_call.md:345 c9d2a5492a4f411ca1c0a5b898c673c1
 msgid "In the above, `model_server` is the `api_base` common used in other OpenAI-compatible API clients. It is advised to provide the `api_key` (but not via plaintext in the code), even if the API server does not check it, in which case, you can set it to anything."
 msgstr "在上述代码中，`model_server`是其他OpenAI兼容API客户端常用的`api_base`。建议您提供`api_key`（但不要以明文形式出现在代码中），即使API服务器不检查它，在这种情况下，您可以将其设置为任何值。"
 
-#: ../../source/framework/function_call.md:342 5ee3e06a04ab4885bc73f9ff792d166c
+#: ../../source/framework/function_call.md:348 5ee3e06a04ab4885bc73f9ff792d166c
 msgid "For model inputs, the common message structure for system, user, and assistant history should be used:"
 msgstr "对于模型输入，应使用系统、用户和助手历史记录的通用消息结构："
 
-#: ../../source/framework/function_call.md:352 b050b9981eb54037bc8e301144d2a7cf
+#: ../../source/framework/function_call.md:358 b050b9981eb54037bc8e301144d2a7cf
 msgid "We add the current date to the system message so that the \"tomorrow\" in the user message is anchored. It can also be added to the user message if one desires."
 msgstr "我们在系统消息中添加当前日期，以便使用户消息中的\"明天\"有明确的参照点。如果需要，也可以将其添加到用户消息中。"
 
-#: ../../source/framework/function_call.md:355 1fc4c4718a114b8d9b6243ba0f34dbe4
+#: ../../source/framework/function_call.md:361 1fc4c4718a114b8d9b6243ba0f34dbe4
 msgid "At the time, Qwen-Agent works with functions instead of tools. This requires a small change to our tool descriptions, that is, extracting the function fields:"
 msgstr "目前，Qwen-Agent使用“函数”而非“工具”。这需要对我们工具描述进行一些小的更改，即提取函数字段："
 
-#: ../../source/framework/function_call.md:362
-#: ../../source/framework/function_call.md:551
-#: ../../source/framework/function_call.md:742 0ef1747ef3c44ffd9170cc1c832a02c2
-#: 987b984c8c8e4a6f844843b09248053d fd3f00a2521e44f293fa88789c82ba09
+#: ../../source/framework/function_call.md:368
+#: ../../source/framework/function_call.md:516
+#: ../../source/framework/function_call.md:677
+#: ../../source/framework/function_call.md:802 0ef1747ef3c44ffd9170cc1c832a02c2
 msgid "Tool Calls and Tool Results"
 msgstr "工具调用和工具结果"
 
-#: ../../source/framework/function_call.md:364 ca61da67495244fa9b1cd46915d57fc6
+#: ../../source/framework/function_call.md:370 ca61da67495244fa9b1cd46915d57fc6
 msgid "To interact with the model, the `chat` method should be used:"
 msgstr "为了与模型交互，应使用`chat`方法："
 
-#: ../../source/framework/function_call.md:376 6487d8c684cc46c9a32c9debf179c4c4
+#: ../../source/framework/function_call.md:382 6487d8c684cc46c9a32c9debf179c4c4
 msgid "In the above code, the `chat` method receives the `messages`, the `functions`, and an `extra_generate_cfg` parameter. You can put sampling parameters, such as `temperature`, and `top_p`, in the `extra_generate_cfg`. Here, we add to it a special control `parallel_function_calls` provided by Qwen-Agent. As its name suggests, it will enable parallel function calls, which means that the model may generate multiple function calls for a single turn as it deems fit."
 msgstr "在上述代码中，`chat`方法接收`messages`、`functions`以及一个`extra_generate_cfg`参数。你可以在`extra_generate_cfg`中放入诸如`temperature`和`top_p`等采样参数。这里，我们添加了Qwen-Agent提供的特殊控制`parallel_function_calls`。顾名思义，它将启用并行函数调用，这意味着模型可能为单次请求生成多个函数调用，按照其判断进行。"
 
-#: ../../source/framework/function_call.md:381 c5b860f5d1294806873ae0edb0471234
+#: ../../source/framework/function_call.md:387 c5b860f5d1294806873ae0edb0471234
 msgid "The `chat` method returns a generator of list, each of which may contain multiple messages. Since we enable `parallel_function_calls`, we should get two messages in the responses:"
 msgstr "`chat`方法返回一个列表的生成器，每个列表可能包含多条消息。因为我们启用了`parallel_function_calls`，我们应该在响应中得到两条消息："
 
-#: ../../source/framework/function_call.md:391 34841e6cb07d46d998f4595067171d35
+#: ../../source/framework/function_call.md:397 34841e6cb07d46d998f4595067171d35
 msgid "As we can see, Qwen-Agent attempts to parse the model generation in an easier to use structural format. The details related to function calls are placed in the `function_call` field of the messages:"
 msgstr "我们可以看到，Qwen-Agent试图以更易于使用的结构化格式解析模型生成。与函数调用相关的详细信息被放置在消息的`function_call`字段中："
 
-#: ../../source/framework/function_call.md:393 6c90b5fc820944c4a312440678b98e42
+#: ../../source/framework/function_call.md:399 6c90b5fc820944c4a312440678b98e42
 msgid "`name`: a string representing the function to call"
 msgstr "`name`：代表要调用的函数的字符串"
 
-#: ../../source/framework/function_call.md:394 749e07e4d0be4544953291260cfea201
+#: ../../source/framework/function_call.md:400 749e07e4d0be4544953291260cfea201
 msgid "`arguments`: a JSON-formatted string representing the arguments the function should be called with"
 msgstr "`arguments`：表示函数应带有的参数的JSON格式字符串"
 
-#: ../../source/framework/function_call.md:396 9bd2c3d303b643839fdba3736bdc52c4
-msgid "Note that Qwen2-7B-Instruct is quite capable:"
-msgstr "请注意，Qwen2-7B-Instruct相当强大："
+#: ../../source/framework/function_call.md:402 9bd2c3d303b643839fdba3736bdc52c4
+msgid "Note that Qwen2.5-7B-Instruct is quite capable:"
+msgstr "请注意，Qwen2.5-7B-Instruct相当强大："
 
-#: ../../source/framework/function_call.md:397 c50c5422d6d84efb8cada63e32edfc07
+#: ../../source/framework/function_call.md:403 c50c5422d6d84efb8cada63e32edfc07
 msgid "It has followed the function instructions to add the state and the country to the location."
 msgstr "它遵循函数指令，在位置中添加了州和国家。"
 
-#: ../../source/framework/function_call.md:398 096357a1646b4c9d9c4310e01ab4daef
+#: ../../source/framework/function_call.md:404 096357a1646b4c9d9c4310e01ab4daef
 msgid "It has correctly induced the date of tomorrow and given in the format required by the function."
 msgstr "它正确地推断出明天的日期，并以函数要求的格式给出。"
 
-#: ../../source/framework/function_call.md:401 fcb57da7357c496ca6e006f369e90b1a
+#: ../../source/framework/function_call.md:407 fcb57da7357c496ca6e006f369e90b1a
 msgid "Then comes the critical part -- checking and applying the function call:"
 msgstr "接下来是关键部分——检查和应用函数调用："
 
-#: ../../source/framework/function_call.md:417 c713e5dc88524d9dac41015d5ea65b3c
+#: ../../source/framework/function_call.md:423 c713e5dc88524d9dac41015d5ea65b3c
 msgid "To get tool results:"
 msgstr "获取工具结果："
 
-#: ../../source/framework/function_call.md:418 e68c470c90ec43f7a8233535999b5186
+#: ../../source/framework/function_call.md:424 e68c470c90ec43f7a8233535999b5186
 msgid "line 1: We should iterate the function calls in the order the model generates them."
 msgstr "第1行：我们应该按模型生成它们的顺序迭代函数调用。"
 
-#: ../../source/framework/function_call.md:419 c84bb1ab218a447aa4492269552562c1
+#: ../../source/framework/function_call.md:425 c84bb1ab218a447aa4492269552562c1
 msgid "line 2: We can check if a function call is needed as deemed by the model by checking the `function_call` field of the generated messages."
 msgstr "第2行：通过检查生成消息的`function_call`字段，我们可以查看是否需要按模型判断进行函数调用。"
 
-#: ../../source/framework/function_call.md:420 81bf8aa5a6a94b30884f6bbf4bdc5ba6
+#: ../../source/framework/function_call.md:426 81bf8aa5a6a94b30884f6bbf4bdc5ba6
 msgid "line 3-4: The related details including the name and the arguments of the function can also be found there, which are `name` and `arguments` respectively."
 msgstr "第3-4行：相关详情，包括函数名称和参数，也可以在那里找到，分别是`name`和`arguments`。"
 
-#: ../../source/framework/function_call.md:421 0294d221e7e7474b88ac958c79d1efde
+#: ../../source/framework/function_call.md:427 0294d221e7e7474b88ac958c79d1efde
 msgid "line 6: With the details, one should call the function and obtain the results. Here, we assume there is a function named [`get_function_by_name`](#prepcode) to help us get the related function by its name."
 msgstr "第6行：有了这些细节，应该调用函数并获取结果。这里，我们假设有一个名为[`get_function_by_name`](#prepcode)的函数来帮助我们根据名称获取相关函数。"
 
-#: ../../source/framework/function_call.md:423 9dd6b1fe6e11410b9ea19a0340e6b2fb
+#: ../../source/framework/function_call.md:429 9dd6b1fe6e11410b9ea19a0340e6b2fb
 msgid "line 8-12: With the result obtained, add the function result to the messages as `content` and with `role` as `\"function\"`."
 msgstr "第8-12行：获得结果后，将函数结果作为`content`添加到消息中，并将`role`设置为`\"function\"`。"
 
-#: ../../source/framework/function_call.md:425 b0aa75fe11f54863b527bd3bef60045b
+#: ../../source/framework/function_call.md:431 b0aa75fe11f54863b527bd3bef60045b
 msgid "Now the messages are"
 msgstr "现在消息是"
 
-#: ../../source/framework/function_call.md:437
-#: ../../source/framework/function_call.md:616
-#: ../../source/framework/function_call.md:806 9cf4f29847fd445485a5b8f048fbcc43
-#: e7ac5d291568415d91f0c6189ba9c114 f83f413a40ba473cbb9e61a5799cdd4e
+#: ../../source/framework/function_call.md:443
+#: ../../source/framework/function_call.md:613
+#: ../../source/framework/function_call.md:741
+#: ../../source/framework/function_call.md:884 9cf4f29847fd445485a5b8f048fbcc43
 msgid "Final Response"
 msgstr "最终响应"
 
-#: ../../source/framework/function_call.md:439 2c5e81a3daeb4b95b9ac80fa5a391153
+#: ../../source/framework/function_call.md:445 2c5e81a3daeb4b95b9ac80fa5a391153
 msgid "Finally, run the model again to get the final model results:"
 msgstr "最后，再次运行模型以获取最终的模型结果："
 
-#: ../../source/framework/function_call.md:447 2083a5cabfc04db0be8512ac213859db
+#: ../../source/framework/function_call.md:453 2083a5cabfc04db0be8512ac213859db
 msgid "The final response should be like"
 msgstr "最终响应应如下所示"
 
-#: ../../source/framework/function_call.md:453
-#: ../../source/framework/function_call.md:643 61e2de0505a1435689ea8ea85eae4236
-#: d6df6d88c3c44afaad8992f40e8bc735
+#: ../../source/framework/function_call.md:459
+#: ../../source/framework/function_call.md:546 61e2de0505a1435689ea8ea85eae4236
 msgid "Hugging Face transformers"
 msgstr ""
-
-#: ../../source/framework/function_call.md:456 70d352a527a941fab9de412195e41b1e
-msgid "We demonstrate the usage of function calling with Hugging Face transformers using an unofficial template for Qwen2. You may be expecting varied performance compared with Qwen-Agent."
-msgstr "我们通过使用适用于Qwen2的非官方模板，展示如何利用Hugging Face的transformers进行函数调用。与Qwen-Agent相比，您可能会期待不同的性能表现。"
 
 #: ../../source/framework/function_call.md:461 86698d9d9715495da8cbd520095fb670
 msgid "Since function calling is based on prompt engineering and templates, `transformers` supports it with its tokenizer utilities, in particular, the `tokenizer.apply_chat_template` method, which hides the sophistication of constructing the model inputs, using the Jinja templating engine. However, it means that users should handle the model output part on their own, which includes parsing the generated function call message."
@@ -379,453 +378,513 @@ msgstr "自v4.42.0版本起，transformers中提供了工具使用API。在开�
 msgid "For this guide, we are at version v4.44.2."
 msgstr "对于本指南，我们处于v4.44.2版本。"
 
-#: ../../source/framework/function_call.md:477 7efd9772b77045459392b3ad21dd14cf
-msgid "As explained [before](#note-official-template), since the official Qwen2 function calling template can be complicated to implement with Jinja, here we will use a custom template:"
-msgstr "如[前文所述](#note-official-template)，鉴于官方Qwen2函数调用模板使用Jinja实现起来较为复杂，在这里我们将使用自定义模板："
+#: ../../source/framework/function_call.md:477 3f8bed9e89904e4594b3748c1df075a0
+msgid "For Qwen2.5, the chat template in `tokenizer_config.json` has already included support for the Hermes-style tool use.  We simply need to load the model and the tokenizer:"
+msgstr "对于 Qwen2.5，`tokenizer_config.json` 中的聊天模板已经包含了对 Hermes 风格工具调用的支持。我们只需加载模型和分词器："
 
-#: ../../source/framework/function_call.md:510 bdcd648a546c4a3eae292be40c11edd2
-msgid "We need to load the model and the tokenizer and make sure the tokenizer use the tool use template:"
-msgstr "我们需要加载模型和tokenizer，并确保tokenizer使用工具使用模板："
-
-#: ../../source/framework/function_call.md:528
-#: ../../source/framework/function_call.md:734 11ca9185270644f986042542def1cd71
-#: 5a26534cd2d643ff950aec6e0f7dd0ab
+#: ../../source/framework/function_call.md:493
+#: ../../source/framework/function_call.md:667
+#: ../../source/framework/function_call.md:781 11ca9185270644f986042542def1cd71
 msgid "The inputs are the same with those in [the preparation code](#prepcode):"
 msgstr "输入与[准备代码](#prepcode)中的相同："
 
-#: ../../source/framework/function_call.md:535 0f953ef20f714c0288728a276ae23162
+#: ../../source/framework/function_call.md:500 0f953ef20f714c0288728a276ae23162
 msgid "In `transformers`, you can also directly use Python functions as tools with certain constraints[^get_json_schema_note]:"
 msgstr "在`transformers`中，您也可以直接将Python函数作为工具使用，但需遵循特定约束[^get_json_schema_note]："
 
-#: ../../source/framework/function_call.md:553 5ed381c9efea4b018e9d5048be740b56
+#: ../../source/framework/function_call.md:518 5ed381c9efea4b018e9d5048be740b56
 msgid "To construct the input sequence, we should use the `apply_chat_template` method and then let the model continue the texts:"
 msgstr "为了构造输入序列，我们应该使用`apply_chat_template`方法，然后让模型继续生成文本："
 
-#: ../../source/framework/function_call.md:562 dbc4706ba3224cf0a5bfa80cf34146de
+#: ../../source/framework/function_call.md:527 dbc4706ba3224cf0a5bfa80cf34146de
 msgid "The output texts should be like"
 msgstr "输出文本应如下所示："
 
-#: ../../source/framework/function_call.md:568 4e1d735b4c1e4600ba5607eb878c47fc
+#: ../../source/framework/function_call.md:537 4e1d735b4c1e4600ba5607eb878c47fc
 msgid "Now we need to do two things:"
 msgstr "现在我们需要做两件事："
 
-#: ../../source/framework/function_call.md:569 b583c28b7aeb4bcab18855bb93d0662c
+#: ../../source/framework/function_call.md:538 b583c28b7aeb4bcab18855bb93d0662c
 msgid "Parse the generated tool calls to a message and add them to the messages, so that the model knows which tools are used."
 msgstr "解析生成的工具调用为一条消息，并将其添加到消息列表中，以便模型了解所使用的工具。"
 
-#: ../../source/framework/function_call.md:570 79cda063337a4d7f8e4474f906a61e62
+#: ../../source/framework/function_call.md:539 79cda063337a4d7f8e4474f906a61e62
 msgid "Obtain the results of the tools and add them to the messages, so that the model knows the results of the tool calls."
 msgstr "获取工具的结果并将其添加到消息列表中，以便模型了解工具调用的结果。"
 
-#: ../../source/framework/function_call.md:572 95a367a3ab3649a2b209f6db3d6d208d
+#: ../../source/framework/function_call.md:541 95a367a3ab3649a2b209f6db3d6d208d
 msgid "In `transformers`, the tool calls should be a field of assistant messages.[^tool_call_arg_format] Let's use a simple function called `try_parse_tool_calls` to parse the tool calls, which can be found in [the preparation code](#prepcode). This function does not cover all possible scenarios and thus is prone to errors. But it should suffice for the purpose of this guide."
 msgstr "在`transformers`中，工具调用应该是助手消息的一个字段[^tool_call_arg_format]。让我们使用一个简单的函数`try_parse_tool_calls`来解析工具调用，该函数可以在[准备代码](#prepcode)中找到。此函数并未涵盖所有可能场景，因此容易出错。但对于本指南的目的而言，它应该足够了。"
 
-#: ../../source/framework/function_call.md:596 c704b325d08740d693685fa05a472989
+#: ../../source/framework/function_call.md:547 01180a6d4d024b42b2f82604260603f9
+msgid "The template in the `tokenizer_config.json` assumes that the generated content alongside tool calls is in the same message instead of separate assistant messages, e.g.,"
+msgstr "`tokenizer_config.json` 中的模板假设生成的内容和工具调用是在同一消息中，而不是分开的助手消息，例如："
+
+#: ../../source/framework/function_call.md:557 db78b1cc8fb64e8bad5deb00a88b5070
+msgid "instead of"
+msgstr "而非"
+
+#: ../../source/framework/function_call.md:572 69e09bf412a6437c993adf0843a5c1a8
+msgid "This is implemented roughly in `try_parse_tool_calls` but keep that in mind if you are writing your own tool call parser."
+msgstr "`try_parse_tool_calls` 中大致实现了这一约定，但如果你正在编写自己的工具调用解析器，请留意这一点。"
+
+#: ../../source/framework/function_call.md:593 c704b325d08740d693685fa05a472989
 msgid "The messages now should be like"
 msgstr "现在消息应如下所示："
 
-#: ../../source/framework/function_call.md:610 b8742e89686244bea4b326ce7b422623
+#: ../../source/framework/function_call.md:607 b8742e89686244bea4b326ce7b422623
 msgid "The messages are similar to those of Qwen-Agent, but there are some major differences:"
 msgstr "这些消息类似于Qwen-Agent的消息，但存在一些主要差异："
 
-#: ../../source/framework/function_call.md:611 db78b1cc8fb64e8bad5deb00a88b5070
+#: ../../source/framework/function_call.md:608 db78b1cc8fb64e8bad5deb00a88b5070
 msgid "Tools instead of functions"
 msgstr "工具而非函数"
 
-#: ../../source/framework/function_call.md:612 796a9257459a4c3a8979c9d41b5a337a
+#: ../../source/framework/function_call.md:609 796a9257459a4c3a8979c9d41b5a337a
 msgid "Parallel calls are by default"
 msgstr "默认情况下为并行调用"
 
-#: ../../source/framework/function_call.md:613 df77de491a644cf9aa7a0907bbf0d9fe
-msgid "Multiple tool calls as a list in a single assistant message, instead of multiple messages"
+#: ../../source/framework/function_call.md:610 df77de491a644cf9aa7a0907bbf0d9fe
+msgid "Multiple tool calls as a list in a single assistant message, instead of multiple messages."
 msgstr "多个工具调用以列表形式在一个助手消息中，而不是多个消息"
 
-#: ../../source/framework/function_call.md:614 74994875595c459c847bb26c9c329ecb
+#: ../../source/framework/function_call.md:611 74994875595c459c847bb26c9c329ecb
 msgid "The function arguments are parsed into a dict if it is a valid JSON-formatted string."
 msgstr "如果函数参数是有效的JSON格式字符串，则将其解析为字典。"
 
-#: ../../source/framework/function_call.md:618 c0363bea1c6647ae8c3fd6790c3c678d
+#: ../../source/framework/function_call.md:615 c0363bea1c6647ae8c3fd6790c3c678d
 msgid "Then it's time for the model to generate the actual response for us based on the tool results.  Let's query the model again:"
 msgstr "现在是时候根据工具结果，让模型为我们生成实际响应了。再次查询模型："
 
-#: ../../source/framework/function_call.md:628 2169c7de1d6543e9b3b642cd4aff6507
+#: ../../source/framework/function_call.md:625 2169c7de1d6543e9b3b642cd4aff6507
 msgid "The output_text should be like"
 msgstr "输出文本应如下所示："
 
-#: ../../source/framework/function_call.md:633 7f5b19a07e0b409e97f695d2431dcf4f
+#: ../../source/framework/function_call.md:630 7f5b19a07e0b409e97f695d2431dcf4f
 msgid "Add the result text as an assistant message and the final messages should be ready for further interaction:"
 msgstr "将结果文本作为助手消息添加，最终消息应准备好进行进一步交互："
 
-#: ../../source/framework/function_call.md:641
-#: ../../source/framework/function_call.md:643 6898dabe64614a1f969217a2d6d56161
-#: 87df36833b674364b9be7902bbb22058
+#: ../../source/framework/function_call.md:546
+#: ../../source/framework/function_call.md:638 6898dabe64614a1f969217a2d6d56161
 msgid "Ollama"
 msgstr ""
 
-#: ../../source/framework/function_call.md:644 67460a42debe48549d01c0a0d2d37680
-msgid "We demonstrate the usage of function calling with Ollama using an unofficial template for Qwen2. You may be expecting varied performance compared with Qwen-Agent."
-msgstr "我们通过使用非官方的Qwen2模板，演示了如何使用Ollama进行函数调用。与Qwen-Agent相比，您可能会期待不同的性能表现。"
-
-#: ../../source/framework/function_call.md:648 eb573c90e2ca4b61974b9a67675f66d8
+#: ../../source/framework/function_call.md:640 eb573c90e2ca4b61974b9a67675f66d8
 msgid "Ollama is a set of tools for serving LLMs locally.  It also relies on its template implementation to support function calling. Different from transformers, which is written in Python and uses the Jinja template whose syntax is heavily inspired by Django and Python, Ollama, which is mostly written in Go, uses Go's [text/template](https://pkg.go.dev/text/template) packages. In addition, Ollama implements internally a helper function so that it can automatically parse the generated tool calls in texts to structured messages if the format supported."
 msgstr "Ollama是一套用于本地部署LLMs的工具集。它还依赖于其模板实现来支持函数调用。不同于使用Python编写的transformers，采用了受Django和Python语法启发的Jinja模板，主要用Go编写的Ollama则使用了Go的[text/template](https://pkg.go.dev/text/template)包。此外，Ollama内部实现了辅助函数，如果格式被支持的话，它可以自动解析文本中生成的工具调用为结构化的消息。"
 
-#: ../../source/framework/function_call.md:653 f784e7adb501446889363980f6dabf71
+#: ../../source/framework/function_call.md:645 f784e7adb501446889363980f6dabf71
 msgid "You could check the [Tool support](https://ollama.com/blog/tool-support) blog post first."
 msgstr "您可以先查阅[Tool support](https://ollama.com/blog/tool-support)的博客文章。"
 
-#: ../../source/framework/function_call.md:655 b39015d659f944bbbd5b7f82254f33a6
+#: ../../source/framework/function_call.md:647 b39015d659f944bbbd5b7f82254f33a6
 msgid "Tool support has been available in Ollama since v0.3.0. You can run the following to check the Ollama version:"
 msgstr "自v0.3.0版本以来，Ollama已经提供了工具支持。您可以运行以下命令来检查Ollama的版本："
 
-#: ../../source/framework/function_call.md:660 fbcf15013ab24174a92106998040581c
+#: ../../source/framework/function_call.md:652 fbcf15013ab24174a92106998040581c
 msgid "If lower than expected, follow [the official instructions](https://ollama.com/download) to install the latest version."
 msgstr "如果版本低于预期，请遵循[官方说明](https://ollama.com/download)安装最新版本。"
 
-#: ../../source/framework/function_call.md:662 ade560f683a44b5fb82563da75b8ff71
-msgid "In this guide, we will aslo use ollama-python, before starting, make sure it is available in your environment:"
-msgstr "在本指南中，我们将使用ollama-python，在开始之前，请确保您的环境中已安装此库："
+#: ../../source/framework/function_call.md:654 ade560f683a44b5fb82563da75b8ff71
+msgid "In this guide, we will aslo use [ollama-python](https://github.com/ollama/ollama-python), before starting, make sure it is available in your environment:"
+msgstr "在本指南中，我们将使用[ollama-python](https://github.com/ollama/ollama-python)，在开始之前，请确保您的环境中已安装此库："
 
-#: ../../source/framework/function_call.md:667 a925db3b09f942f882eac61bf5f4fb0a
-msgid "For this guide, the ollama binary is at v0.3.9 and the ollama Python library is at v0.3.2."
-msgstr "对于本指南，ollama二进制文件的版本为v0.3.9，ollama Python库的版本为v0.3.2。"
+#: ../../source/framework/function_call.md:659 a925db3b09f942f882eac61bf5f4fb0a
+msgid "For this guide, the `ollama` binary is at v0.3.9 and the `ollama` Python library is at v0.3.2."
+msgstr "对于本指南，`ollama`二进制文件的版本为v0.3.9，`ollama` Python库的版本为v0.3.2。"
 
-#: ../../source/framework/function_call.md:672 1fecf4d3be974f90ab88c1d2f28be02b
-msgid "The messages structure used in Ollama is the same with that in `transformers`. However, as explained [before](#note-official-template), it's quite difficult to implement the Qwen2 official template using Go templates."
-msgstr "Ollama中使用的消息结构与`transformers`中的相同。然而，正如[之前](#note-official-template)解释的那样，使用Go模板来实现Qwen2官方模板相当困难。"
+#: ../../source/framework/function_call.md:664 1fecf4d3be974f90ab88c1d2f28be02b
+msgid "The messages structure used in Ollama is the same with that in `transformers` and the template in [Qwen2.5 Ollama models](https://ollama.com/library/qwen2.5) has supported tool use."
+msgstr "Ollama 中使用的消息结构与 `transformers` 中的相同，并且 [Qwen2.5 Ollama 模型](https://ollama.com/library/qwen2.5) 的模板已经支持工具调用。"
 
-#: ../../source/framework/function_call.md:675 77d7db76c592420a891bb25e782d6faa
-msgid "The following can be used to create a new model with a function calling template:"
-msgstr "以下可以用来创建带有函数调用模板的新模型："
-
-#: ../../source/framework/function_call.md:724 965f3b021c294ccdb16255c0000f9ab7
-msgid "You can change the model name and tag after `FROM` to use another as base. If that model is not available locally, it will download the model and may take some time. If successful, you will receive the following return values:"
-msgstr "您可以更改`FROM`后的模型名称和标签，以使用另一个模型作为基础。如果该模型未在本地提供，它将下载模型，这可能需要一些时间。如果成功，您将收到以下返回值："
-
-#: ../../source/framework/function_call.md:731 91135628552140119d7d92479b5b7216
-msgid "Then, the new model can be used later as `qwen2fc:7b-instruct-q4_K_M`."
-msgstr "然后，新模型以后可以作为`qwen2fc:7b-instruct-q4_K_M`使用。"
-
-#: ../../source/framework/function_call.md:739 e5e6d58e7d4a45dcab9f50cacb9111eb
+#: ../../source/framework/function_call.md:674 e5e6d58e7d4a45dcab9f50cacb9111eb
 msgid "Note that you cannot pass Python functions as tools directly and `tools` has to be a `dict`."
 msgstr "请注意，您不能直接将Python函数作为工具传递，`tool`的类型必须是`dict`。"
 
-#: ../../source/framework/function_call.md:744 e04bee1415bf4954b8a0f4d3fb920e48
+#: ../../source/framework/function_call.md:679 e04bee1415bf4954b8a0f4d3fb920e48
 msgid "We can use the `ollama.chat` method to directly query the underlying API:"
 msgstr "我们可以使用`ollama.chat`方法直接查询底层API："
 
-#: ../../source/framework/function_call.md:756 9bad87b0045643b1be59ecd43442e9ae
+#: ../../source/framework/function_call.md:691 9bad87b0045643b1be59ecd43442e9ae
 msgid "The main fields in the response could be:"
 msgstr "响应中的主要字段可能是："
 
-#: ../../source/framework/function_call.md:769 dcdc7913f25c4d079787f68dbf14cc03
-msgid "Well, it seems that the format we adopt does not work well with Ollama's tool call parser currently. Let's reuse [the `try_parse_tool_calls` function above](#prepcode) since Ollama also needs the tool call arguments to be JSON objects.[^tool_call_arg_format] Then, we can obtain the tool results and add them to the messages. The following is basically the same with `transformers`:"
-msgstr "看起来，我们采用的格式目前与Ollama的工具调用解析器不兼容。既然Ollama也需要工具调用参数是JSON对象，让我们重新使用上面的[`try_parse_tool_calls`函数](#prepcode)。[^tool_call_arg_format] 然后，我们可以获取工具的结果并将其添加到消息中。以下操作基本上与`transformers`相同："
+#: ../../source/framework/function_call.md:704 dcdc7913f25c4d079787f68dbf14cc03
+msgid "Ollama's tool call parser has succeeded in parsing the tool results.[^tool_call_arg_format] If not, you may refine [the `try_parse_tool_calls` function above](#prepcode). Then, we can obtain the tool results and add them to the messages. The following is basically the same with `transformers`:"
+msgstr "Ollama的工具调用解析器成功解析出了工具调用。[^tool_call_arg_format] 但如果失败了，您可能需要尝试改进[上面的`try_parse_tool_calls`函数](#prepcode)。 然后，我们可以获取工具的结果并将其添加到消息中。以下操作基本上与`transformers`相同："
 
-#: ../../source/framework/function_call.md:792 8afc130882334966bf88c873d78c8a90
+#: ../../source/framework/function_call.md:727
+#: ../../source/framework/function_call.md:870 8afc130882334966bf88c873d78c8a90
 msgid "The messages are now like"
 msgstr "现在消息如下："
 
-#: ../../source/framework/function_call.md:808 de6ae75b7aec4ef79e2010612bd6d491
+#: ../../source/framework/function_call.md:743 de6ae75b7aec4ef79e2010612bd6d491
 msgid "The rest are easy:"
 msgstr "剩下的部分很简单："
 
-#: ../../source/framework/function_call.md:819 b39d79b4f2364e58b6637afe93556c64
+#: ../../source/framework/function_call.md:754 b39d79b4f2364e58b6637afe93556c64
 msgid "The final message should be like the following:"
 msgstr "最终的消息应该如下所示："
 
-#: ../../source/framework/function_call.md:824 87872a0f97de473ba1df95a9198b0d81
+#: ../../source/framework/function_call.md:546
+#: ../../source/framework/function_call.md:760 0ba063b7d6fc4984a0dfb6c2e17da6aa
+#: 6abaa5333ff4454ebfbcd706fdf54251
+msgid "vLLM"
+msgstr ""
+
+#: ../../source/framework/function_call.md:762 36dc2009695649499e58551de42548d2
+msgid "vLLM is a fast and easy-to-use library for LLM inference and serving. It uses the tokenizer from `transformers` to format the input, so we should have no trouble preparing the input. In addition, vLLm also implements helper functions so that generated tool calls can be parsed automatically if the format is supported."
+msgstr "vLLM 是一个快速且易于使用的库，用于大型语言模型的推理和部署。它使用 `transformers` 中的分词器来格式化输入，因此我们在准备输入时应该不会遇到任何问题。此外，vLLM 还实现了辅助函数，以便在支持的情况下自动解析生成的工具调用。"
+
+#: ../../source/framework/function_call.md:766 a018d6a115e0438fa136b1183d5e90f4
+msgid "Tool support has been available in `vllm` since v0.6.0.  Be sure to install a version that supports tool use. For more information, check the [vLLM documentation](https://docs.vllm.ai/en/stable/serving/openai_compatible_server.html#tool-calling-in-the-chat-completion-api)."
+msgstr "工具支持自 v0.6.0 版本起已在 `vllm` 中可用。请确保安装了一个支持工具调用的版本。更多信息，请查阅 [vLLM 文档](https://docs.vllm.ai/en/stable/serving/openai_compatible_server.html#tool-calling-in-the-chat-completion-api)。
+"
+
+#: ../../source/framework/function_call.md:770 ea6b6e9009484134b1b4022284e2cabf
+msgid "For this guide, we are at version v0.6.1.post2. We will use the OpenAI-Compatible API by `vllm` with the API client from the `openai` Python library."
+msgstr "在本指南中，我们使用的是 v0.6.1.post2 版本。我们将使用 `vllm` 提供的 OpenAI 兼容 API，并通过 `openai` Python 库的 API 客户端来进行操作。"
+
+#: ../../source/framework/function_call.md:775 77fa449fa7114b68bc515e2534872212
+msgid "For Qwen2.5, the chat template in tokenizer_config.json has already included support for the Hermes-style tool use. We simply need to start a OpenAI-compatible API with vLLM:"
+msgstr "对于 Qwen2.5，`tokenizer_config.json` 中的聊天模板已经包含了对 Hermes 风格工具调用的支持。我们只需要启动一个由 vLLM 提供的 OpenAI 兼容 API 即可："
+
+#: ../../source/framework/function_call.md:788 23cbe722decd4eb187ba489ba2c2d423
+msgid "Let's also initialize the client:"
+msgstr "我们先初始化API客户端："
+
+#: ../../source/framework/function_call.md:804 e04bee1415bf4954b8a0f4d3fb920e48
+msgid "We can use the create chat completions endpoint to query the model:"
+msgstr "我们可以使用create chat completions endpoint直接查询底层API："
+
+#: ../../source/framework/function_call.md:821 0ce1e7cea01647e9a08b287da0352853
+msgid "vLLM should be able to parse the tool calls for us, and the main fields in the response (`response.choices[0]`) should be like"
+msgstr "vLLM应当可以为我们解析工具调用，回复的主要字段(`response.choices[0]`)应如下所示："
+
+#: ../../source/framework/function_call.md:842 397459264152430b8613af5add38cf67
+msgid "Note that the function arguments are JSON-formatted strings, which Qwen-Agent follows but `transformers` and Ollama differs."
+msgstr "请注意这里函数的参数是JSON格式字符串，Qwen-Agent与其一致，但`transformers`和Ollama与之相异。"
+
+#: ../../source/framework/function_call.md:844 8d6c465994fd4858ba43a8265474bb4e
+msgid "As before, chances are that there are corner cases where tool calls are generated but they are malformed and cannot be parsed. For production code, we should try parsing by ourselves."
+msgstr "如前所述，有可能存在边界情况，模型生成了工具调用但格式不良也无法被解析。对于生产代码，我们需要尝试自行解析。"
+
+#: ../../source/framework/function_call.md:847 b583c28b7aeb4bcab18855bb93d0662c
+msgid "Then, we can obtain the tool results and add them to the messages as shown below:"
+msgstr "随后，我们可以调用工具并获得结果，然后将它们加入消息中："
+
+#: ../../source/framework/function_call.md:868 f6138baa62b9464d947a92c521ba46eb
+msgid "It should be noted that the OpenAI API uses `tool_call_id` to identify the relation between tool results and tool calls."
+msgstr "这里需要注意OpenAI API使用`tool_call_id`字段来识别工具结果和工具调用间的联系。"
+
+#: ../../source/framework/function_call.md:886 c0363bea1c6647ae8c3fd6790c3c678d
+msgid "Let's call the endpoint again to seed the tool results and get response:"
+msgstr "让我们再次查询接口，以给模型提供工具结果并获得回复："
+
+#: ../../source/framework/function_call.md:901 73e2fe9a7cf744ea9873d05534ad4a0b
+msgid "The final response (`response.choices[0].message`) should be like"
+msgstr "最终响应 (`response.choices[0].message`)应如"
+
+#: ../../source/framework/function_call.md:909 87872a0f97de473ba1df95a9198b0d81
 msgid "Discussions"
 msgstr "小结"
 
-#: ../../source/framework/function_call.md:826 7633e63b2a534aeeac46dc0188e9167d
+#: ../../source/framework/function_call.md:911 7633e63b2a534aeeac46dc0188e9167d
 msgid "Now, we have introduced how to conduct inference with function calling using Qwen2 in three different frameworks! Let's make a brief comparison."
 msgstr "现在，我们已经介绍了如何使用Qwen2在三种不同的框架中通过函数调用进行推理！让我们做一个简要的比较。"
 
-#: ../../source/framework/function_call.md:643 dba87f54d9084799abba171287c8022b
+#: ../../source/framework/function_call.md:546 dba87f54d9084799abba171287c8022b
 msgid "Item"
-msgstr ""
-
-#: ../../source/framework/function_call.md:643 272f54ba39474c2bae6a951ff4f17231
-msgid "OpenAI API"
 msgstr "项目"
 
-#: ../../source/framework/function_call.md:643 05d0787d0f4c4e0493fcfdc25795be8f
+#: ../../source/framework/function_call.md:546 272f54ba39474c2bae6a951ff4f17231
+msgid "OpenAI API"
+msgstr ""
+
+#: ../../source/framework/function_call.md:546 05d0787d0f4c4e0493fcfdc25795be8f
 msgid "Type"
 msgstr "类型"
 
-#: ../../source/framework/function_call.md:643 2aec5042a27b4ff9b9b5838391750b1b
-#: 344f99367c2c4140875db69f959ff969 ff8898786daa413bab6fe9679b78de74
+#: ../../source/framework/function_call.md:546 2aec5042a27b4ff9b9b5838391750b1b
 msgid "HTTP API"
 msgstr ""
 
-#: ../../source/framework/function_call.md:643 23740d9c7cec47819ccd3117ae739ff2
-#: 898a9b7660434c56a41304dbeab8df7a
+#: ../../source/framework/function_call.md:546 898a9b7660434c56a41304dbeab8df7a
 msgid "Python Library"
 msgstr "Python库"
 
-#: ../../source/framework/function_call.md:643 e34d86e543ba499697a6c23c99cf4aaa
+#: ../../source/framework/function_call.md:546 e34d86e543ba499697a6c23c99cf4aaa
 msgid "Inference Backend"
 msgstr "推理后端"
 
-#: ../../source/framework/function_call.md:643 57657e81de344332bf6137ff0d450618
-#: ff82e9a2f7de4f4897fa06bb26d77830
+#: ../../source/framework/function_call.md:546 57657e81de344332bf6137ff0d450618
 msgid "-"
 msgstr ""
 
-#: ../../source/framework/function_call.md:643 3d8b4a3441be4bfa928e6d55758beb89
+#: ../../source/framework/function_call.md:546 3d8b4a3441be4bfa928e6d55758beb89
 msgid "PyTorch"
 msgstr ""
 
-#: ../../source/framework/function_call.md:643 8930e5e7116f457ebca2f394601b85ea
+#: ../../source/framework/function_call.md:546 8930e5e7116f457ebca2f394601b85ea
 msgid "llama.cpp"
 msgstr ""
 
-#: ../../source/framework/function_call.md:643 8b5b6a4de6514aae8d63a068fd8064fa
+#: ../../source/framework/function_call.md:546 8b5b6a4de6514aae8d63a068fd8064fa
 msgid "Templating Backend"
 msgstr "模板后端"
 
-#: ../../source/framework/function_call.md:643 7bb01bcccf994ce0b1cc461234405bef
+#: ../../source/framework/function_call.md:546 7bb01bcccf994ce0b1cc461234405bef
 msgid "Jinja"
 msgstr ""
 
-#: ../../source/framework/function_call.md:643 2f249d8c798944f4b6d889222a122a23
+#: ../../source/framework/function_call.md:546 2f249d8c798944f4b6d889222a122a23
 msgid "Go `text/template`"
 msgstr ""
 
-#: ../../source/framework/function_call.md:643 b29a493b25794ebdaf338216936394d1
+#: ../../source/framework/function_call.md:546 b29a493b25794ebdaf338216936394d1
 msgid "Python"
 msgstr ""
 
-#: ../../source/framework/function_call.md:643 b9b94a19d79f4d76b7d8228741ad4fa0
+#: ../../source/framework/function_call.md:546 b9b94a19d79f4d76b7d8228741ad4fa0
 msgid "Tools/Functions"
 msgstr ""
 
-#: ../../source/framework/function_call.md:643 475f0cabcd9e4a509544054de38b5849
-#: 6569ea33d39b4c058eacba7cff114445 a1f43be52d3e4f0199ef25a0613c35c8
+#: ../../source/framework/function_call.md:546 475f0cabcd9e4a509544054de38b5849
 msgid "Tools"
 msgstr ""
 
-#: ../../source/framework/function_call.md:643 ec54b09394c044e1ada1dfbb6c3ef311
+#: ../../source/framework/function_call.md:546 ec54b09394c044e1ada1dfbb6c3ef311
 msgid "Functions"
 msgstr ""
 
-#: ../../source/framework/function_call.md:643 dbb8ddb8c3104eb49c4bd52df45dab89
+#: ../../source/framework/function_call.md:546 dbb8ddb8c3104eb49c4bd52df45dab89
 msgid "Parallel Calls"
 msgstr "并行调用"
 
-#: ../../source/framework/function_call.md:643 5c4bfa9b528b4b1090c56c5a8462f382
+#: ../../source/framework/function_call.md:546 5c4bfa9b528b4b1090c56c5a8462f382
 msgid "Default Yes (Configurable)"
 msgstr "默认是（可配置）"
 
-#: ../../source/framework/function_call.md:643 a16e316eab30499aaac48d43e78f0fc3
-#: ab3912e5f4cb4f649cabb51584a0bf61
+#: ../../source/framework/function_call.md:546 ab3912e5f4cb4f649cabb51584a0bf61
 msgid "Yes"
 msgstr "是"
 
-#: ../../source/framework/function_call.md:643 e88f915cc60a49178ea7413b8a8249bf
+#: ../../source/framework/function_call.md:546 e88f915cc60a49178ea7413b8a8249bf
 msgid "Default No (Configurable)"
 msgstr "默认否（可配置）"
 
-#: ../../source/framework/function_call.md:643 3b2df5c2f49a44739a6fa5d06ed73400
+#: ../../source/framework/function_call.md:546 3b2df5c2f49a44739a6fa5d06ed73400
 msgid "Call Format"
 msgstr "调用格式"
 
-#: ../../source/framework/function_call.md:643 1522f1a6b6fd46b495e0dceb54b6405b
-#: 538f213a6c724daaabef16d2d06c6d7f 951013ff05734663b7af790bf7231833
+#: ../../source/framework/function_call.md:546 1522f1a6b6fd46b495e0dceb54b6405b
 msgid "Single assistant message with `tool_calls`"
 msgstr "带有`tool_calls`的单个助手消息"
 
-#: ../../source/framework/function_call.md:643 021c1e653aef449288059f3a9071b4ac
+#: ../../source/framework/function_call.md:546 021c1e653aef449288059f3a9071b4ac
 msgid "Multiple assistant messages with `function_call`"
 msgstr "带有`function_call`的多个助手消息"
 
-#: ../../source/framework/function_call.md:643 71d2d5ad399341c58abaf5231f7c96b3
+#: ../../source/framework/function_call.md:546 71d2d5ad399341c58abaf5231f7c96b3
 msgid "Call Argument Format"
 msgstr "调用参数格式"
 
-#: ../../source/framework/function_call.md:643 390034e06193479288fbe9ff1ebc0c02
-#: c85d47d74aa04e69ada0acd50253e525
+#: ../../source/framework/function_call.md:546 c85d47d74aa04e69ada0acd50253e525
 msgid "string"
 msgstr ""
 
-#: ../../source/framework/function_call.md:643 37448e2639874aaa86dabafec8e9a115
-#: dda90855cf5f4f46a82271eb7d7380d9
+#: ../../source/framework/function_call.md:546 37448e2639874aaa86dabafec8e9a115
 msgid "object"
 msgstr ""
 
-#: ../../source/framework/function_call.md:643 cb03cc6e1768478bbf48bfcf477b2aee
+#: ../../source/framework/function_call.md:546 cb03cc6e1768478bbf48bfcf477b2aee
 msgid "Call Result Format"
 msgstr "调用结果格式"
 
-#: ../../source/framework/function_call.md:643 460a22967a724a9a86eff1028d1ed67f
-#: 5ae442005be24879a32cbc5e23ba9aa9 dc0900fb4c9148a49a1b8b741bc700bd
+#: ../../source/framework/function_call.md:546 460a22967a724a9a86eff1028d1ed67f
 msgid "Multiple tool messages with `content`"
 msgstr "带有`content`的多个工具消息"
 
-#: ../../source/framework/function_call.md:643 54cbeeaae39547c9ab9bbf151e3446fe
+#: ../../source/framework/function_call.md:546 54cbeeaae39547c9ab9bbf151e3446fe
 msgid "Multiple function messages with `content`"
 msgstr "带有`content`的多个函数消息"
 
-#: ../../source/framework/function_call.md:841 393b7adeb3914eb684c6a98cf7bbfdca
+#: ../../source/framework/function_call.md:926 393b7adeb3914eb684c6a98cf7bbfdca
 msgid "There are some details not shown in the above table:"
 msgstr "上表中有些特性未被体现："
 
-#: ../../source/framework/function_call.md:842 635b415868544742abee5d73af760c28
+#: ../../source/framework/function_call.md:927 635b415868544742abee5d73af760c28
 msgid "OpenAI API comes with Python, Node.js, Go, and .NET SDKs. It also follows the OpenAPI standard."
 msgstr "OpenAI API附带了Python、Node.js、Go和.NET SDK。它还遵循OpenAPI标准。"
 
-#: ../../source/framework/function_call.md:843 e8e59d6d344643279ccb1c3c654a492d
+#: ../../source/framework/function_call.md:928 e8e59d6d344643279ccb1c3c654a492d
 msgid "Ollama comes with Python and Node.js SDKs. It has OpenAI-compatible API at a different base url that can be accessed using OpenAI API SDK."
 msgstr "Ollama附带了Python和Node.js SDK。它在不同的base URL上具有与OpenAI兼容的API，可以使用OpenAI API SDK访问。"
 
-#: ../../source/framework/function_call.md:844 5dccab45631e4a169b0cd459f44a3c92
+#: ../../source/framework/function_call.md:929 5dccab45631e4a169b0cd459f44a3c92
 msgid "Qwen-Agent as an application framework can call the tools automatically for you, which is introduced in [the Qwen-Agent guide](./qwen_agent)."
 msgstr "作为应用程序框架，Qwen-Agent可以自动为您调用工具，这在[Qwen-Agent指南](./qwen_agent)中有所介绍。"
 
-#: ../../source/framework/function_call.md:847 5a12fb51a70147bb9bf13154677c39cb
+#: ../../source/framework/function_call.md:932 5a12fb51a70147bb9bf13154677c39cb
 msgid "In addition, there are more on the model side of function calling, which means you may need to consider more things in production code:"
 msgstr "此外，在函数调用的模型方面还有更多内容，这意味着您可能需要在生产代码中考虑更多的事情："
 
-#: ../../source/framework/function_call.md:848 440ef6320e7a42eb903d0d1b2b571f78
-msgid "**Accuracy of function calling**: When it comes to evaluate the accuracy of function calling, there are two aspects: (a) whether the correct functions (including no functions) are selected and (b) whether the correct function arguments are generated. It is not always the case that Qwen2 will be accurate.  Function calling can involve knowledge that is deep and domain-specific. Sometimes, it doesn't fully understand the function and select the wrong one by mistake. Sometimes, it can fall into a loop and require calling the same function again and again.  Sometimes, it will fabricate required function arguments instead of asking the user for input. To improve the function calling accuracy, it is advised to first try prompt engineering: does a more detailed function description help? can we provide instructions and examples to the model in the system message? If not, finetuning on your own data could also improve performance."
-msgstr "**函数调用准确性**：在评估函数调用的准确性时，有两个方面：(a) 是否选择了正确的函数（包括没有函数）以及(b) 是否生成了正确的函数参数。Qwen2并不总是准确的。函数调用可能涉及深入且领域特定的知识。有时，它不能完全理解函数并错误地选择了错误的函数。有时，它可能会陷入循环，需要反复调用相同的函数。有时，它会伪造所需的函数参数而不是向用户请求输入。为了提高函数调用的准确性，建议首先尝试提示工程：更详细的函数描述是否有所帮助？我们是否可以在系统消息中为模型提供指导和示例？如果没有，使用自己的数据进行微调也可以提高性能。"
+#: ../../source/framework/function_call.md:933 440ef6320e7a42eb903d0d1b2b571f78
+msgid "**Accuracy of function calling**: When it comes to evaluate the accuracy of function calling, there are two aspects: (a) whether the correct functions (including no functions) are selected and (b) whether the correct function arguments are generated. It is not always the case that Qwen2.5 will be accurate.  Function calling can involve knowledge that is deep and domain-specific. Sometimes, it doesn't fully understand the function and select the wrong one by mistake. Sometimes, it can fall into a loop and require calling the same function again and again.  Sometimes, it will fabricate required function arguments instead of asking the user for input. To improve the function calling accuracy, it is advised to first try prompt engineering: does a more detailed function description help? can we provide instructions and examples to the model in the system message? If not, finetuning on your own data could also improve performance."
+msgstr "**函数调用准确性**：在评估函数调用的准确性时，有两个方面：(a) 是否选择了正确的函数（包括没有函数）以及(b) 是否生成了正确的函数参数。Qwen2.5并不总是准确的。函数调用可能涉及深入且领域特定的知识。有时，它不能完全理解函数并错误地选择了错误的函数。有时，它可能会陷入循环，需要反复调用相同的函数。有时，它会伪造所需的函数参数而不是向用户请求输入。为了提高函数调用的准确性，建议首先尝试提示工程：更详细的函数描述是否有所帮助？我们是否可以在系统消息中为模型提供指导和示例？如果没有，使用自己的数据进行微调也可以提高性能。"
 
-#: ../../source/framework/function_call.md:861 b8360ad2c3254c7cb745068880cb07c8
-msgid "**Protocol consistency**: Even with the proper function calling template, the protocol may break. The model may generate extra texts to tool calls, e.g., explanations. The generated tool call may be invalid JSON-formatted string but a representation of a Python dict The generated tool call may be valid JSON but not conforms to the provided JSON Schema. For those kinds of issues, while some of them could be addressed with prompt engineering, some are caused by the nature of LLMs and can be hard to resolve in a general manner by LLMs themselves. While we strive to improve Qwen2 in this regard, edge cases are unlikely to be eliminated completely."
-msgstr "**协议一致性**：即使具备恰当的函数调用模板，协议也可能被破坏。模型可能会在工具调用中生成额外文本，例如解释说明。生成的工具调用可能是无效的JSON格式字符串，但是是Python dict的字符串表示；生成的工具调用可能是有效的JSON，但不符合提供的JSON Schema。对于这类问题，虽然有些可以通过提示工程解决，但有些是由大型语言模型的本质引起的，很难由大模型本身以通用方式解决。尽管我们在这一方面努力改进Qwen2，但极端情况不太可能被完全消除。"
+#: ../../source/framework/function_call.md:946 b8360ad2c3254c7cb745068880cb07c8
+msgid "**Protocol consistency**: Even with the proper function calling template, the protocol may break. The model may generate extra texts to tool calls, e.g., explanations. The generated tool call may be invalid JSON-formatted string but a representation of a Python dict The generated tool call may be valid JSON but not conforms to the provided JSON Schema. For those kinds of issues, while some of them could be addressed with prompt engineering, some are caused by the nature of LLMs and can be hard to resolve in a general manner by LLMs themselves. While we strive to improve Qwen2.5 in this regard, edge cases are unlikely to be eliminated completely."
+msgstr "**协议一致性**：即使具备恰当的函数调用模板，协议也可能被破坏。模型可能会在工具调用中生成额外文本，例如解释说明。生成的工具调用可能是无效的JSON格式字符串，但是是Python dict的字符串表示；生成的工具调用可能是有效的JSON，但不符合提供的JSON Schema。对于这类问题，虽然有些可以通过提示工程解决，但有些是由大型语言模型的本质引起的，很难由大模型本身以通用方式解决。尽管我们在这一方面努力改进Qwen2.5，但极端情况不太可能被完全消除。"
 
-#: ../../source/framework/function_call.md:871 446d50d6b10a436da5161832011c27b8
+#: ../../source/framework/function_call.md:956 446d50d6b10a436da5161832011c27b8
 msgid "Function Calling Templates"
 msgstr "函数调用模板"
 
-#: ../../source/framework/function_call.md:873 9d6864bb66394649b8b725366c2819e1
+#: ../../source/framework/function_call.md:958 9d6864bb66394649b8b725366c2819e1
 msgid "The template design for function calling often includes the following aspects:"
 msgstr "函数调用的模板设计通常包括以下方面："
 
-#: ../../source/framework/function_call.md:874 3d4c7e75141e48d9864f0c922e472039
+#: ../../source/framework/function_call.md:959 3d4c7e75141e48d9864f0c922e472039
 msgid "How to describe the functions to the model, so that the model understands what they are and how to use them."
 msgstr "如何向模型描述这些函数，以便模型理解它们是什么以及如何使用它们。"
 
-#: ../../source/framework/function_call.md:875 5d8589597f13429392c2ccab4a849247
+#: ../../source/framework/function_call.md:960 5d8589597f13429392c2ccab4a849247
 msgid "How to prompt the model, so that it knows that functions can be used and in what format to generate the function calls."
 msgstr "如何提示模型，以便它知道可以使用函数，并以何种格式生成函数调用。"
 
-#: ../../source/framework/function_call.md:876 bf37c44a4a534145a0729de3afc15f0b
+#: ../../source/framework/function_call.md:961 bf37c44a4a534145a0729de3afc15f0b
 msgid "How to tell a function call generation from others in generated text, so that we can extract the calls from the generated texts and actually make the calls."
 msgstr "如何从生成的文本中区分函数调用与其他内容，以便我们能够从生成的文本中提取调用并实际执行调用。"
 
-#: ../../source/framework/function_call.md:877 abc8fb785948495f897d2fee70c865b3
+#: ../../source/framework/function_call.md:962 abc8fb785948495f897d2fee70c865b3
 msgid "How to incorporate the function results to the text, so that the model can tell them from its own generation and make connection among the calls and the results."
 msgstr "如何将函数结果融入文本中，以便模型能够将其与自己的生成区分开来，并在调用和结果之间建立联系。"
 
-#: ../../source/framework/function_call.md:879 5904471682de4ae39ec965cee44b9a36
+#: ../../source/framework/function_call.md:964 5904471682de4ae39ec965cee44b9a36
 msgid "For experienced prompt engineers, it should be possible to make any LLM support function calling, using in-context learning techniques and with representative examples, though with varied accuracy and stability depending on how \"zero-shot\" the task at hand is."
 msgstr "对于经验丰富的提示工程师而言，应该有可能利用上下文学习技术和代表性示例，使任何大模型支持函数调用，尽管准确性和稳定性会根据手头任务的“零样本”程度而有所不同。"
 
-#: ../../source/framework/function_call.md:881 af9cadc00de1472b9fb235b47fda5c91
+#: ../../source/framework/function_call.md:966 af9cadc00de1472b9fb235b47fda5c91
 msgid "Starting from ReAct Prompting"
 msgstr "从ReAct Prompting开始"
 
-#: ../../source/framework/function_call.md:883 eb7ebd3356aa4452885395b469274ff9
+#: ../../source/framework/function_call.md:968 eb7ebd3356aa4452885395b469274ff9
 msgid "For example, ReAct Prompting can be used to implement function calling with an extra element of planning:"
 msgstr "例如，可以使用ReAct Prompting实现带有额外规划元素的函数调用："
 
-#: ../../source/framework/function_call.md:884 1a828090c9834936ba82a609ed8a52d7
+#: ../../source/framework/function_call.md:969 1a828090c9834936ba82a609ed8a52d7
 msgid "**Thought**: the overt reasoning path, analyzing the functions and the user query and saying it out \"loud\""
 msgstr "**Thought**：显而易见的推理路径，分析函数和用户查询，并大声“说”出来"
 
-#: ../../source/framework/function_call.md:885 dd4014e5711040a29cbf33efde75327d
+#: ../../source/framework/function_call.md:970 dd4014e5711040a29cbf33efde75327d
 msgid "**Action**: the function to use and the arguments with which the function should be called"
 msgstr "**Action**：要使用的函数以及调用该函数时应使用的参数"
 
-#: ../../source/framework/function_call.md:886 40f5f5743b584bd487f164baa9b70402
+#: ../../source/framework/function_call.md:971 40f5f5743b584bd487f164baa9b70402
 msgid "**Observation**: the results of the function"
 msgstr "**Observation**：函数的结果"
 
-#: ../../source/framework/function_call.md:888 518936a7347841a89c8bc7b6413cf465
+#: ../../source/framework/function_call.md:973 518936a7347841a89c8bc7b6413cf465
 msgid "In fact, Qwen2 is verse in the following variant of ReAct Prompting (similar to LangChain ReAct) to make the intermediate texts more structured:"
 msgstr "实际上，Qwen2熟练掌握以下变体的ReAct Prompting（类似于LangChain ReAct），以使中间文本更具结构化："
 
-#: ../../source/framework/function_call.md:918 232c4a713724404c8f8ebed08cd928f9
+#: ../../source/framework/function_call.md:1003
+#: 232c4a713724404c8f8ebed08cd928f9
 msgid "As you can see, there is no apparent user/assistant conversation structure in the template. The model will simply continue the texts. One should write the code to actively detect which step the model is at and in particular to add the observations in the process, until the Final Answer is generated."
 msgstr "如您所见，模板中没有明显的用户/助手对话结构。模型将简单地继续文本。应该编写代码来主动检测模型处于哪个步骤，并特别在过程中添加观察结果，直到生成最终答案。"
 
-#: ../../source/framework/function_call.md:922 15c8a4d3eadc4ca9b7c482de83e61e6e
+#: ../../source/framework/function_call.md:1007
+#: 15c8a4d3eadc4ca9b7c482de83e61e6e
 msgid "However, as most programming interfaces accept the message structure, there should be some kind of adapter between the two. [The ReAct Chat Agent](https://github.com/QwenLM/Qwen-Agent/blob/v0.0.9/qwen_agent/agents/react_chat.py) in Qwen-Agent facilitates this kind of conversion."
 msgstr "然而，由于大多数编程接口接受“message”结构，两者之间应该有某种适配器。[Qwen-Agent中的ReAct Chat Agent](https://github.com/QwenLM/Qwen-Agent/blob/v0.0.9/qwen_agent/agents/react_chat.py)实现了这种转换。"
 
-#: ../../source/framework/function_call.md:925 23924e2a58f245289f6aee367012b8cd
-msgid "Qwen2 \"Official\" Function Calling Template"
-msgstr "Qwen2 “官方”函数调用模板"
+#: ../../source/framework/function_call.md:1010
+#: b25d6a68d9fb499abf5d86edf97a8f6b
+msgid "Qwen2 Function Calling Template"
+msgstr "Qwen2 函数调用模板"
 
-#: ../../source/framework/function_call.md:927 fd40c5c5b90549a0bbe0784cc2358ffe
+#: ../../source/framework/function_call.md:1012
+#: fd40c5c5b90549a0bbe0784cc2358ffe
 msgid "As a step forward, the official Qwen2 function calling template is in the vein of the ReAct Prompting format but focuses more on"
 msgstr "作为向前迈进的一步，官方的Qwen2函数调用模板沿袭了ReAct Prompting格式，但更侧重于"
 
-#: ../../source/framework/function_call.md:928 ce019cd219ed45fa98ba9e78e9c0b630
+#: ../../source/framework/function_call.md:1013
+#: ce019cd219ed45fa98ba9e78e9c0b630
 msgid "differentiating the keywords like `Question`, `Thought`, `Action`, etc., from generation,"
 msgstr "将诸如`Question`、`Thought`、`Action`等关键词与生成区分开来，"
 
-#: ../../source/framework/function_call.md:929 9734d17d2f8a481287ce0f6c90316ecf
+#: ../../source/framework/function_call.md:1014
+#: 9734d17d2f8a481287ce0f6c90316ecf
 msgid "simplifying the process,"
 msgstr "简化这一过程，"
 
-#: ../../source/framework/function_call.md:930 463898b04b03444b9e134f087add3fc4
+#: ../../source/framework/function_call.md:1015
+#: 463898b04b03444b9e134f087add3fc4
 msgid "supporting better multi-turn conversation, and"
 msgstr "更好支持多轮对话，以及"
 
-#: ../../source/framework/function_call.md:931 0b32c1f8783048648e312b3d1f0de83f
+#: ../../source/framework/function_call.md:1016
+#: 0b32c1f8783048648e312b3d1f0de83f
 msgid "adding controls for specialized usage."
 msgstr "为特异性使用添加控制。"
 
-#: ../../source/framework/function_call.md:934 084558a6188c4c35bc5fb35f949b298d
+#: ../../source/framework/function_call.md:1019
+#: 084558a6188c4c35bc5fb35f949b298d
 msgid "An equivalent example would be"
 msgstr "一个等效的例子是"
 
-#: ../../source/framework/function_call.md:966 97eed32a69e641548e80ef6f1bd9fd13
+#: ../../source/framework/function_call.md:1051
+#: 97eed32a69e641548e80ef6f1bd9fd13
 msgid "Let's first list the obvious differences:"
 msgstr "我们先列出明显的差异："
 
-#: ../../source/framework/function_call.md:967 e875a4b9f50c423c83e67f10f078b082
+#: ../../source/framework/function_call.md:1052
+#: e875a4b9f50c423c83e67f10f078b082
 msgid "Keywords (`✿FUNCTION✿`, `✿ARGS✿`, etc.) seem rare in ordinary text and more semantically related to function calling, but not special tokens yet."
 msgstr "关键字（`✿FUNCTION✿`, `✿ARGS✿`等）在普通文本中似乎很少见，且与函数调用语义相关，但尚未成为特殊token。"
 
-#: ../../source/framework/function_call.md:968 e37bbd940f4a45dcb714d36eeadd77ef
+#: ../../source/framework/function_call.md:1053
+#: e37bbd940f4a45dcb714d36eeadd77ef
 msgid "Thought is omitted. This could affect accuracy for some use cases."
 msgstr "Thought被省略了。这可能会影响某些使用场景的准确性。"
 
-#: ../../source/framework/function_call.md:969 b46babb027dd4095994784853902903f
+#: ../../source/framework/function_call.md:1054
+#: b46babb027dd4095994784853902903f
 msgid "Use the system-user-assistant format for multi-turn conversations. Function calling prompting is moved to the system message."
 msgstr "对于多轮对话，请采用系统-用户-助手格式。函数调用提示已移至系统消息中。"
 
-#: ../../source/framework/function_call.md:971 0a1d9ffae3ed4f669cc61619119447b4
+#: ../../source/framework/function_call.md:1056
+#: 0a1d9ffae3ed4f669cc61619119447b4
 msgid "How about adding controls for specialized usage? The template actually has the following variants:"
 msgstr "那对于特异性使用添加的控制呢？实际上，该模板有以下变体："
 
-#: ../../source/framework/function_call.md:973 1b8426ef20e1431489df6a5563024167
+#: ../../source/framework/function_call.md:1058
+#: 1b8426ef20e1431489df6a5563024167
 msgid "Language: the above is for non-Chinese language; there is another template in Chinese."
 msgstr "语言：上述内容适用于非中文；另有一份中文模板。"
 
-#: ../../source/framework/function_call.md:974 d9df3170451a4ca0845adf6cadb4f5c0
+#: ../../source/framework/function_call.md:1059
+#: d9df3170451a4ca0845adf6cadb4f5c0
 msgid "Parallel Calls: the above is for non-parallel calls; there is another template for parallel calls."
 msgstr "并行调用：上述内容适用于非并行调用；另有一份并行调用的模板。"
 
-#: ../../source/framework/function_call.md:976 170971873b104c10a29c3be22dad6eb2
+#: ../../source/framework/function_call.md:1061
+#: 170971873b104c10a29c3be22dad6eb2
 msgid "In the canonical implementation in Qwen-Agent, those switches are implemented in Python, according to the configuration and current input."
 msgstr "在Qwen-Agent的标准实现中，这些开关是根据配置和当前输入，用Python实现的。"
 
-#: ../../source/framework/function_call.md:978 6328f4160819477a90a96dbbe113b700
+#: ../../source/framework/function_call.md:1063
+#: 6328f4160819477a90a96dbbe113b700
 msgid "The actual text with parallel calls should be like the following:"
 msgstr "带有并行调用的实际文本应如下所示："
 
-#: ../../source/framework/function_call.md:1018
+#: ../../source/framework/function_call.md:1102
 #: 1a6db8fef95748a09e8730701560d4b0
 msgid "[Previously](#note-official-template), we have said that it is hard to adapt it for other frameworks that use less capable templating engines. But it is doable at least partially for Jinja, which is Python-oriented after all. We didn't use it because using the template in `transformers` leads to more changes to the inference usage, which are not very common for beginners."
 msgstr "[之前](#note-official-template)，我们说过，Qwen2的函数调用模板很难为使用功能较弱模板引擎的其他框架进行适应。但至少部分地，对于Jinja（毕竟它是面向Python的）来说是可行的。我们没有使用它，因为在`transformers`中使用模板会导致对推理使用的更多变更，而这对于初学者来说并不常见。"
 
-#: ../../source/framework/function_call.md:1022
+#: ../../source/framework/function_call.md:1106
 #: a4908c14628142879b40c151a02ad042
 msgid "For the interested, you can find the Jinja template and key points on usage below:"
 msgstr "对于有兴趣的人，您可以在下方找到Jinja模板及其使用要点："
@@ -834,108 +893,97 @@ msgstr "对于有兴趣的人，您可以在下方找到Jinja模板及其使用�
 msgid "Qwen2 Function Calling Jinja Template"
 msgstr "Qwen2 函数调用Jinja模板"
 
-#: ../../source/framework/function_call.md:1095
+#: ../../source/framework/function_call.md:1179
 #: 6733b5d0837e47ff8057c4be637d65e4
 msgid "To use this template in `transformers`:"
 msgstr "要在`transformers`中使用此模板："
 
-#: ../../source/framework/function_call.md:1097
+#: ../../source/framework/function_call.md:1181
 #: 392d17f9228f4260bbb117f6cb88e335
 msgid "Switches can be enabled by passing them to the `apply_chat_template` method, e.g., `tokenizer.apply_chat_template(messages, tools=tools, add_generation_prompt=True, parallel_tool_call=True, language=\"zh\", tokenize=False)`. By default, it is for English non-parallel function calling."
 msgstr "可以通过将它们传递给`apply_chat_template`方法来启用开关，例如，`tokenizer.apply_chat_template(messages, tools=tools, add_generation_prompt=True, parallel_tool_call=True, language=\"zh\", tokenize=False)`。默认情况下，这是用于英语非并行函数调用。"
 
-#: ../../source/framework/function_call.md:1099
+#: ../../source/framework/function_call.md:1183
 #: cc8905966704476e9352945403ce7cac
 msgid "Since the generation needs to be stopped at `✿RESULT✿` or else the model will generate fabricated tool results, we should add it to `stop_strings` in `generation_config`:"
 msgstr "由于生成需要在遇到`✿RESULT✿`时停止，不然模型会继续生成编造的工具结果，我们需要将这些字符串加到`generation_config`中的`stop_strings`字段："
 
-#: ../../source/framework/function_call.md:1104
+#: ../../source/framework/function_call.md:1188
 #: 3ecf12815145488ea159de31c3807278
 msgid "As a result of using `stop_strings`, you need to pass the tokenizer to `model.generate` as `model.generate(**inputs, tokenizer=tokenizer, max_new_tokens=512)`."
 msgstr "由于使用了`stop_strings`，您需要将tokenizer传递给`model.generate`，即`model.generate(**inputs, tokenizer=tokenizer, max_new_tokens=512)`。"
 
-#: ../../source/framework/function_call.md:1106
+#: ../../source/framework/function_call.md:1190
 #: a08459f988ca4bfbb30b65edb0ea7a8f
 msgid "`response`, i.e., the model generation based on the tool calls and tool results, may contain a leading space. You should not strip it for the model. It is resulted from the tokenization and the template design."
 msgstr "基于工具调用和工具结果的模型生成，即`response`，可能包含一个前导空格。作为后续消息输入模型时，不要碰这个空格。这是由tokenization和模板设计导致的。"
 
-#: ../../source/framework/function_call.md:1108
+#: ../../source/framework/function_call.md:1192
 #: 7a1013efddee40a284e1acf9b9f16437
 msgid "The `try_parse_tool_calls` function should also be modified accordingly."
 msgstr "`try_parse_tool_calls`函数也应进行相应的修改。"
 
-#: ../../source/framework/function_call.md:1112
-#: b6bd073d615949fd883aa66347460683
-msgid "The Unofficial Function Calling Templates"
-msgstr "非官方的函数调用模板"
+#: ../../source/framework/function_call.md:1196
+#: b25d6a68d9fb499abf5d86edf97a8f6b
+msgid "Qwen2.5 Function Calling Templates"
+msgstr "Qwen2.5 函数调用模板""
 
-#: ../../source/framework/function_call.md:1114
+#: ../../source/framework/function_call.md:1198
 #: e295e4193b2349c686607a1177434159
-msgid "For `transformers` and Ollama, we have also used unofficial templates and they also seem to work. What do they look like? The templates we have used for `transformers` and Ollama are variants of [the Nous Research's Hermes function calling template](https://github.com/NousResearch/Hermes-Function-Calling#prompt-format-for-function-calling). The Jinja template and the Go template should produce basically the same results. They final text should look like the following:"
-msgstr "对于`transformers`和Ollama，我们也使用了非官方的模板，并且它们似乎也有效。它们看起来是怎样的？我们为`transformers`和Ollama使用的模板是[Nous Research的Hermes函数调用模板](https://github.com/NousResearch/Hermes-Function-Calling#prompt-format-for-function-calling)的变体。Jinja模板和Go模板应基本产生相同的结果。最终文本应如下所示："
+msgid "For `transformers` and Ollama, we have also used templates that are easier to implement with Jinja or Go. They are variants of [the Nous Research's Hermes function calling template](https://github.com/NousResearch/Hermes-Function-Calling#prompt-format-for-function-calling). The Jinja template and the Go template should produce basically the same results. They final text should look like the following:"
+msgstr "对于`transformers`和Ollama，我们也使用易于Jinja和Go实现的模板，它们是[Nous Research的Hermes函数调用模板](https://github.com/NousResearch/Hermes-Function-Calling#prompt-format-for-function-calling)的变体。Jinja模板和Go模板应基本产生相同的结果。最终文本应如下所示："
 
-#: ../../source/framework/function_call.md:1149
+#: ../../source/framework/function_call.md:1243
 #: 51d6dd53c2c14b67a3125e8eb1e49bda
-msgid "While the text may seem different from the previous one, the basic prompting structure is still the same. There are just more structural tags and more JSON-formatted strings. We also demonstrate the usage with those templates to show that"
-msgstr "虽然文本可能与官方的有所不同，但基本的提示结构仍然相同。只是有更多结构标签和更多JSON格式的字符串。我们还通过这些模板展示了使用方法，以表明"
+msgid "While the text may seem different from the previous one, the basic prompting structure is still the same. There are just more structural tags and more JSON-formatted strings."
+msgstr "虽然文本可能与官方的有所不同，但基本的提示结构仍然相同。只是有更多结构标签和更多JSON格式的字符串。"
 
-#: ../../source/framework/function_call.md:1152
-#: 891263df94d24a078126652297a0401a
-msgid "LLMs are not necessarily fragile. Using a different template won't break it."
-msgstr "大型语言模型并不一定脆弱。使用不同的模板不会破坏它。"
-
-#: ../../source/framework/function_call.md:1153
-#: cbe48ee46de642f9864b6cecd58f3ee6
-msgid "Prompt engineering can be helpful in steering LLM generations to one's need."
-msgstr "提示工程有助于引导大型语言模型生成满足需求的内容。"
-
-#: ../../source/framework/function_call.md:1157
+#: ../../source/framework/function_call.md:1248
 #: b29323d89be746f78338bcfb4ec25b23
 msgid "There is one thing we haven't talked about: how should functions be described to the LLMs. In short, you could describe them as you would normally describe them in an API documentation, as long as you can effectively parse, validate, and execute the tool calls generated by the models. The format with JSON Schema appears a valid and common choice."
 msgstr "有一件事我们尚未提及：如何向大型语言模型描述函数。简而言之，你可以像在API文档中通常描述它们那样来描述它们，只要你能有效地解析、验证并执行由模型生成的工具调用。带有JSON Schema的格式似乎是一个有效且常见的选择。"
 
-#: ../../source/framework/function_call.md:1162
+#: ../../source/framework/function_call.md:1253
 #: 6332e16c2683471f8309f1c164dff801
 msgid "Finally"
 msgstr "最后"
 
-#: ../../source/framework/function_call.md:1164
+#: ../../source/framework/function_call.md:1255
 #: cc950685b3c34299a7fd1d6c4faa14d3
-msgid "In whichever way you choose to use function calling with Qwen2, keep in mind that the limitation and the perks of prompt engineering applies:"
-msgstr "无论你选择哪种方式在Qwen2中使用函数调用，请记住提示工程的限制和优势适用："
+msgid "In whichever way you choose to use function calling with Qwen2.5, keep in mind that the limitation and the perks of prompt engineering applies:"
+msgstr "无论你选择哪种方式在Qwen2.5中使用函数调用，请记住提示工程的限制和优势适用："
 
-#: ../../source/framework/function_call.md:1165
+#: ../../source/framework/function_call.md:1256
 #: 978ad2db45a847c79b9e2eba3e4e3d43
 msgid "It is not guaranteed that the model generation will always follow the protocol even with proper prompting or templates. Especially, for the templates that are more complex and relies more on the model itself to think and stay on track than the ones that are simpler and relies on the template and the use of control or special tokens. The latter one, of course, requires some kind of training. In production code, be prepared that if it breaks, countermeasures or rectifications are in place."
 msgstr "无法保证模型生成将始终遵循协议，即使有适当的提示或模板。特别是对于那些更复杂且更多依赖于模型本身思考和保持方向的模板，而非那些更简单且依赖于模板以及控制或特殊标记使用的模板。当然，后者需要某种训练。在生产代码中，要准备好如果出现问题，采取补救措施或修正措施。"
 
-#: ../../source/framework/function_call.md:1169
+#: ../../source/framework/function_call.md:1260
 #: 6751cca533444286b97b29058ff8903c
 msgid "If in certain scenarios, the generation is not up to expectation, you can refine the template to add more instructions or constraints. While the templates mentioned here are general enough, they may not be the best or the most specific or the most concise for your use cases. The ultimate solution is fine-tuning using your own data."
 msgstr "如果在某些场景下，生成结果未达到预期，你可以细化模板以添加更多指令或约束。尽管这里提到的模板足够通用，但对于你的具体使用案例，它们可能不是最佳的、最具体的或最简洁的。最终解决方案是使用你自己的数据进行微调。"
 
-#: ../../source/framework/function_call.md:1173
+#: ../../source/framework/function_call.md:1264
 #: cee5e55e6c9341d6b3f0b947f4124212
 msgid "Have fun prompting!"
 msgstr "享受提示的乐趣吧！"
 
-#: ../../source/framework/function_call.md:541 6c48c38ce2494205a042d2751463c91f
+#: ../../source/framework/function_call.md:506 6c48c38ce2494205a042d2751463c91f
 msgid "`transformers` will use `transformers.utils.get_json_schema` to generate the tool descriptions from Python functions. There are some gotchas with `get_json_schema`, and it is advised to check [its doc \\[v4.44.2\\]](https://github.com/huggingface/transformers/blob/v4.44.2/src/transformers/utils/chat_template_utils.py#L183-L288) before relying on it."
 msgstr "`transformers`将使用`transformers.utils.get_json_schema`从Python函数生成工具描述。`get_json_schema`存在一些陷阱，在依赖它之前建议查看[其文档\\[v4.44.2\\]](https://github.com/huggingface/transformers/blob/v4.44.2/src/transformers/utils/chat_template_utils.py#L183-L288)。"
 
-#: ../../source/framework/function_call.md:544 17c3096d80634f4eba87915e0900c26c
+#: ../../source/framework/function_call.md:509 17c3096d80634f4eba87915e0900c26c
 msgid "The function should use Python type hints for parameter types and has a Google-style docstring for function description and parameter descriptions."
 msgstr "函数应使用Python类型注释表示参数类型，并具有Google风格的docstring用于函数描述和参数描述。"
 
-#: ../../source/framework/function_call.md:545 0997d84aeccd4b0894c625b27c36d6c5
+#: ../../source/framework/function_call.md:510 0997d84aeccd4b0894c625b27c36d6c5
 msgid "Supported types are limited, since the types needs to be mapped to JSON Schema. In particular, `typing.Literal` is not supported. You can instead add `(choices: ...)` at the end of a parameter description, which will be mapped to a `enum` type in JSON Schema."
 msgstr "支持的类型有限，因为这些类型需要映射到JSON Schema。特别是，`typing.Literal`不受支持。你可以在参数描述的末尾添加`(choices: ...)`，这将在JSON Schema中映射为`enum`类型。"
 
-#: ../../source/framework/function_call.md:549 508caafb3a1547fca77684ca184107fa
+#: ../../source/framework/function_call.md:514 508caafb3a1547fca77684ca184107fa
 msgid "Please be aware that all the returned results in the examples in the linked docstring are actually the content of the `function` field in the actual returned results."
 msgstr "请注意，链接docstring中的所有返回结果示例实际上是实际返回结果中`function`字段的内容。"
 
-#: ../../source/framework/function_call.md:638 8a5d5c51bae74829a9d7b0b444c5d020
+#: ../../source/framework/function_call.md:635 8a5d5c51bae74829a9d7b0b444c5d020
 msgid "However, note that the model generates arguments in tool calls not as a JSON object but a JSON-formatted string of the JSON object.  For `transformers` and `ollama`, as the interfaces require the arguments to be JSON objects or Python dicts, there will be differences between the actual model generation and the template results for tool call arguments."
 msgstr "然而，请注意，模型在工具调用中生成的参数不是作为JSON对象，而是该JSON对象的JSON格式字符串。对于`transformers`和`ollama`，由于接口要求参数为JSON对象或Python字典，因此实际模型生成和模板结果之间的工具调用参数格式将存在差异。"
-

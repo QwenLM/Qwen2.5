@@ -135,7 +135,7 @@ Qwen uses the following format (ChatML[^chatml]), making use of control tokens t
 {{content}}<|im_end|>
 ```
 The user input take the role of `user` and the model generation takes the role of `assistant`. 
-Qwen also supports the meta message that instruct the model to perform specific actions or generate text with certain characteristics, such as altering tone, style, or content, which takes the role of `system` and the content defaults to "You are a helpful assistant."
+Qwen also supports the meta message that instruct the model to perform specific actions or generate text with certain characteristics, such as altering tone, style, or content, which takes the role of `system` and the content defaults to "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."
 
 The following is a full example:
 ```text

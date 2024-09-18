@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-29 14:33+0800\n"
+"POT-Creation-Date: 2024-09-18 21:18+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -48,8 +48,8 @@ msgid "Getting the GGUF"
 msgstr "获取GGUF"
 
 #: ../../source/quantization/llama.cpp.md:21 1cb4b2d8fbe043b18d8b6eabc27eb1bf
-msgid "Now, suppose you would like to quantize `Qwen2-7B-Instruct`.  You need to first make a GGUF file as shown below:"
-msgstr "现在，假设你想量化`Qwen2-7B-Instruct`。你需要首先创建一个GGUF文件，如下所示："
+msgid "Now, suppose you would like to quantize `Qwen2.5-7B-Instruct`.  You need to first make a GGUF file as shown below:"
+msgstr "现在，假设你想量化`Qwen2.5-7B-Instruct`。你需要首先创建一个GGUF文件，如下所示："
 
 #: ../../source/quantization/llama.cpp.md:27 53c668326e5a45b1ad1c705841ee0654
 msgid "Sometimes, it may be better to use fp32 as the start point for quantization. In that case, use"
@@ -116,8 +116,8 @@ msgid "First, you need to compute the importance matrix data of the weights of a
 msgstr "首先，你需要使用校准数据集（`-f`）计算模型权重的重要性矩阵数据（`-m`）："
 
 #: ../../source/quantization/llama.cpp.md:100 ac6d40bc73554e27921966ca13e5875b
-msgid "The text is cut in chunks of length `--chunk` for computation. Preferably, the text should be representative of the target domain. The final results will be saved in a file named `qwen2-7b-instruct-imatrix.dat` (`-o`), which can then be used:"
-msgstr "文本被切割成长度为`--chunk`的块进行计算。最好，文本应代表目标领域。最终结果将保存在名为`qwen2-7b-instruct-imatrix.dat`（`-o`）的文件中，然后可以使用："
+msgid "The text is cut in chunks of length `--chunk` for computation. Preferably, the text should be representative of the target domain. The final results will be saved in a file named `qwen2.5-7b-instruct-imatrix.dat` (`-o`), which can then be used:"
+msgstr "文本被切割成长度为`--chunk`的块进行计算。最好，文本应代表目标领域。最终结果将保存在名为`qwen2.5-7b-instruct-imatrix.dat`（`-o`）的文件中，然后可以使用："
 
 #: ../../source/quantization/llama.cpp.md:108 e8267132477c431abccc512c8ff696f3
 msgid "For lower-bit quantization mixtures for 1-bit or 2-bit, if you do not provide `--imatrix`, a helpful warning will be printed by `llama-quantize`."

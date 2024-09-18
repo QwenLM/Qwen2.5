@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-29 14:49+0800\n"
+"POT-Creation-Date: 2024-09-18 21:18+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -52,54 +52,78 @@ msgid "[Qwen1.5](https://github.com/QwenLM/Qwen1.5/tree/v1.5): 0.5B, 1.8B, 4B, 1
 msgstr "[Qwen1.5](https://github.com/QwenLM/Qwen1.5/tree/v1.5): 0.5B、 1.8B、 4B、 14BA2.7B、 7B、 14B、 32B、 72B 及 110B 模型"
 
 #: ../../source/getting_started/concepts.md:15 b977f8a1447c45c798b6d2ef65061361
-msgid "[Qwen2](https://github.com/QwenLM/Qwen2): 0.5B, 1.5B, 7B, 57A14B, and 72B models"
-msgstr "[Qwen2](https://github.com/QwenLM/Qwen2): 0.5B、 1.5B、 7B、 57A14B 及 72B 模型"
+msgid "[Qwen2](https://github.com/QwenLM/Qwen2/tree/v2.0): 0.5B, 1.5B, 7B, 57A14B, and 72B models"
+msgstr "[Qwen2](https://github.com/QwenLM/Qwen2/tree/v2.0): 0.5B、 1.5B、 7B、 57A14B 及 72B 模型"
 
-#: ../../source/getting_started/concepts.md:16 b7073d2978584d328e257550a6517d17
+#: ../../source/getting_started/concepts.md:16 b977f8a1447c45c798b6d2ef65061361
+msgid "[Qwen2.5](https://github.com/QwenLM/Qwen2.5/): 0.5B, 1.5B, 3B, 7B, 14B, 32B, and 72B models"
+msgstr "[Qwen2.5](https://github.com/QwenLM/Qwen2.5/): 0.5B、 1.5B、 3B、 7B、 14B、 32B 及 72B 模型"
+
+#: ../../source/getting_started/concepts.md:17 b7073d2978584d328e257550a6517d17
 msgid "Qwen-VL: the vision-language models"
 msgstr "通义千问 VL (Qwen-VL): 视觉语言模型"
 
-#: ../../source/getting_started/concepts.md:17 934353466f1141798eaf66ceb1157034
+#: ../../source/getting_started/concepts.md:18 934353466f1141798eaf66ceb1157034
 msgid "[Qwen-VL](https://github.com/QwenLM/Qwen-VL): 7B-based models"
 msgstr "[Qwen-VL](https://github.com/QwenLM/Qwen-VL): 基于 7B 的模型"
 
-#: ../../source/getting_started/concepts.md:18 53ca7bab4b1c4a05a0f33cf7812d0813
+#: ../../source/getting_started/concepts.md:19 934353466f1141798eaf66ceb1157034
+msgid "[Qwen2-VL](https://github.com/QwenLM/Qwen2-VL): 2B, 7B, and 72B-based models"
+msgstr "[Qwen-VL](https://github.com/QwenLM/Qwen2-VL): 基于 2B 、 7B 和 72B 的模型"
+
+#: ../../source/getting_started/concepts.md:20 53ca7bab4b1c4a05a0f33cf7812d0813
 msgid "Qwen-Audio: the audio-language models"
 msgstr "通义千问 Audio: 音频语言模型"
 
-#: ../../source/getting_started/concepts.md:19 55a5c608295f4d2c89cf9a3a7597848e
-msgid "[Qwen-Audio](https://github.com/QwenLM/Qwen-Audio): 7B-based models"
+#: ../../source/getting_started/concepts.md:21 55a5c608295f4d2c89cf9a3a7597848e
+msgid "[Qwen-Audio](https://github.com/QwenLM/Qwen-Audio): 7B-based model"
 msgstr "[Qwen-Audio](https://github.com/QwenLM/Qwen-Audio): 基于 7B 的模型"
 
-#: ../../source/getting_started/concepts.md:20 eb627becc6cb4bbfb32cb1d1ce430bd6
+#: ../../source/getting_started/concepts.md:22 eb627becc6cb4bbfb32cb1d1ce430bd6
 msgid "[Qwen2-Audio](https://github.com/QwenLM/Qwen2-Audio): 7B-based models"
 msgstr "[Qwen2-Audio](https://github.com/QwenLM/Qwen2-Audio): 基于 7B 的模型"
 
-#: ../../source/getting_started/concepts.md:21 418115b8fefa411596c07ab9ce0cf9e7
-msgid "CodeQwen: the language models for coding"
-msgstr "Code通义千问：代码语言模型"
+#: ../../source/getting_started/concepts.md:23 418115b8fefa411596c07ab9ce0cf9e7
+msgid "CodeQwen/Qwen-Coder: the language models for coding"
+msgstr "Code通义千问 / 通义千问Coder：代码语言模型"
 
-#: ../../source/getting_started/concepts.md:22 a32ac4931549409a9de2eba79977ffef
+#: ../../source/getting_started/concepts.md:24 a32ac4931549409a9de2eba79977ffef
 msgid "[CodeQwen1.5](https://github.com/QwenLM/CodeQwen1.5): 7B models"
 msgstr "[CodeQwen1.5](https://github.com/QwenLM/CodeQwen1.5): 7B 模型"
 
-#: ../../source/getting_started/concepts.md:24 8cbf3408147d4a208f2d46f96593bba9
+#: ../../source/getting_started/concepts.md:25 eb627becc6cb4bbfb32cb1d1ce430bd6
+msgid "[Qwen2.5-Coder](https://github.com/QwenLM/Qwen2-Coder): 7B models"
+msgstr "[Qwen2.5-Coder](https://github.com/QwenLM/Qwen2-Coder): 7B 模型"
+
+#: ../../source/getting_started/concepts.md:26 418115b8fefa411596c07ab9ce0cf9e7
+msgid "Qwen-Math: the language models for mathematics"
+msgstr "通义千问 Math：数学语言模型"
+
+#: ../../source/getting_started/concepts.md:27 b977f8a1447c45c798b6d2ef65061361
+msgid "[Qwen2-Math](https://github.com/QwenLM/Qwen2-Math): 1.5B, 7B, and 72B models"
+msgstr "[Qwen2-Math](https://github.com/QwenLM/Qwen2-Math)： 1.5B、 7B 及 72B 模型"
+
+#: ../../source/getting_started/concepts.md:28 b977f8a1447c45c798b6d2ef65061361
+msgid "[Qwen2.5-Math](https://github.com/QwenLM/Qwen2.5-Math): 1.5B, 7B, and 72B models"
+msgstr "[Qwen2.5-Math](https://github.com/QwenLM/Qwen2.5-Math)： 1.5B、 7B 及 72B 模型"
+
+#: ../../source/getting_started/concepts.md:30 8cbf3408147d4a208f2d46f96593bba9
 msgid "**In this document, our focus is Qwen, the language models.**"
 msgstr "**本文档针对通义千问 (Qwen) 语言模型。**"
 
-#: ../../source/getting_started/concepts.md:26 71a92430d9d841789f7779736f0b80a5
+#: ../../source/getting_started/concepts.md:32 71a92430d9d841789f7779736f0b80a5
 msgid "Causal Language Models"
 msgstr "因果语言模型 (Causal Language Models)"
 
-#: ../../source/getting_started/concepts.md:28 b6f036f881a541c59e4f659bf81de63e
+#: ../../source/getting_started/concepts.md:34 b6f036f881a541c59e4f659bf81de63e
 msgid "Causal language models, also known as autoregressive language models or decoder-only language models, are a type of machine learning model designed to predict the next token in a sequence based on the preceding tokens.  In other words, they generate text one token at a time, using the previously generated tokens as context.  The \"causal\" aspect refers to the fact that the model only considers the past context (the already generated tokens) when predicting the next token, not any future tokens."
 msgstr "因果语言模型 (causal Language Models)，也被称为自回归语言模型 (autoregressive language models) 或仅解码器语言模型 (decoder-only language models) ，是一种机器学习模型，旨在根据序列中的前导 token 预测下一个 token 。换句话说，它使用之前生成的 token 作为上下文，一次生成一个 token 的文本。\"因果\"方面指的是模型在预测下一个 token 时只考虑过去的上下文（即已生成的 token ），而不考虑任何未来的 token 。"
 
-#: ../../source/getting_started/concepts.md:32 5676bac50af845fb9bb3fdec9bdd4f21
+#: ../../source/getting_started/concepts.md:38 5676bac50af845fb9bb3fdec9bdd4f21
 msgid "Causal language models are widely used for various natural language processing tasks involving text completion and generation.  They have been particularly successful in generating coherent and contextually relevant text, making them a cornerstone of modern natural language understanding and generation systems."
 msgstr "因果语言模型被广泛用于涉及文本补全和生成的各种自然语言处理任务。它们在生成连贯且具有上下文关联性的文本方面尤其成功，这使得它们成为现代自然语言理解和生成系统的基础。"
 
-#: ../../source/getting_started/concepts.md:35 6a150751d7dc42c29d6d90390a334d47
+#: ../../source/getting_started/concepts.md:41 6a150751d7dc42c29d6d90390a334d47
 msgid "**Takeaway: Qwen models are causal language models suitable for text completion.**"
 msgstr "**要点：Qwen 模型是适用于文本补全的因果语言模型。**"
 
@@ -107,83 +131,85 @@ msgstr "**要点：Qwen 模型是适用于文本补全的因果语言模型。**
 msgid "Learn more about language models"
 msgstr "了解更多关于语言模型的信息"
 
-#: ../../source/getting_started/concepts.md:39 b061a637497a4a8c8448e9f8f7fb5a75
+#: ../../source/getting_started/concepts.md:45 b061a637497a4a8c8448e9f8f7fb5a75
 msgid "They are three main kinds of models that are commonly referred to as language models in deep learning:"
 msgstr "在深度学习中，被称为语言模型的主要有三类："
 
-#: ../../source/getting_started/concepts.md:40 cc48cd02786d48ac90598c21cb8e610e
+#: ../../source/getting_started/concepts.md:46 cc48cd02786d48ac90598c21cb8e610e
 msgid "Sequence-to-sequence models: T5 and the likes"
 msgstr "序列到序列模型 (sequence-to-sequence models)：T5及其类似模型"
 
-#: ../../source/getting_started/concepts.md:42 515b0d8993e245c0b9840a4bd8b2ae72
+#: ../../source/getting_started/concepts.md:48 515b0d8993e245c0b9840a4bd8b2ae72
 msgid "Sequence-to-sequence models use both an encoder to capture the entire input sequence and a decoder to generate an output sequence. They are widely used for tasks like machine translation, text summarization, etc."
 msgstr "序列到序列模型同时使用编码器来捕获整个输入序列，以及解码器来生成输出序列。它们广泛应用于诸如机器翻译、文本摘要等任务。"
 
-#: ../../source/getting_started/concepts.md:45 3c4603f6a8604fbeb52701cc3127aba1
+#: ../../source/getting_started/concepts.md:51 3c4603f6a8604fbeb52701cc3127aba1
 msgid "Bidirectional models or encoder-only models: BERT and the likes"
 msgstr "双向模型 (bidirectional models) 或仅编码器模型 (encoder-only models) ：BERT及其类似模型"
 
-#: ../../source/getting_started/concepts.md:47 114846746ba74ab49e84016a425ce10f
+#: ../../source/getting_started/concepts.md:53 114846746ba74ab49e84016a425ce10f
 msgid "Bidirectional models can access both past and future context in a sequence during training. They cannot generate sequential outputs in real-time due to the need for future context. They are widely used as embedding models and subsequently used for text classification."
 msgstr "双向模型在训练期间可以访问序列中的过去和未来上下文。由于需要未来上下文，它们无法实时生成顺序输出。它们广泛用作嵌入模型，并随后用于文本分类。"
 
-#: ../../source/getting_started/concepts.md:51 f0818315e8714d6d87a4ca3d08913e4b
+#: ../../source/getting_started/concepts.md:57 f0818315e8714d6d87a4ca3d08913e4b
 msgid "Casual language models or decoder-only models: GPT and the likes"
 msgstr "因果语言模型 (casual language models) 或仅解码器模型 (decoder-only models) ：GPT及其类似模型"
 
-#: ../../source/getting_started/concepts.md:53 1bcc7bf8c6dd4021a8ebd128884afb95
+#: ../../source/getting_started/concepts.md:59 1bcc7bf8c6dd4021a8ebd128884afb95
 msgid "Causal language models operate unidirectionally in a strictly forward direction, predicting each subsequent word based only on the previous words in the sequence.  This unidirectional nature ensures that the model's predictions do not rely on future context, making them suitable for tasks like text completion and generation."
 msgstr "因果语言模型以严格向前的单向方式运行，仅根据序列中的前导词汇预测每个后续词汇。这种单向性确保了模型的预测不依赖于未来上下文，使它们适合于文本补全和生成等任务。"
 
-#: ../../source/getting_started/concepts.md:57 4f1fa967be4d4c1d87b822547bf0179b
+#: ../../source/getting_started/concepts.md:63 4f1fa967be4d4c1d87b822547bf0179b
 msgid "Pre-training & Base models"
 msgstr "预训练 (Pre-training) 和基模型 (Base models)"
 
-#: ../../source/getting_started/concepts.md:59 bce8166d9934415da5c261a33f0f3421
-msgid "Base language models are foundational models trained on extensive corpora of text to predict the next word in a sequence.  Their main goal is to capture the statistical patterns and structures of language, enabling them to generate coherent and contextually relevant text.  These models are versatile and can be adapted to various natural language processing tasks through fine-tuning.  While adept at producing fluent text, they may require in-context learning or additional training to follow specific instructions or perform complex reasoning tasks effectively. For Qwen models, the base models are those without \"-Instruct\" indicators, such as Qwen2-7B and Qwen2-72B."
-msgstr "基础语言模型 (base language models) 是在大量文本语料库上训练的基本模型，用于预测序列中的下一个词。它们的主要目标是捕捉语言的统计模式和结构，使它们能够生成连贯且具有上下文关联性的文本。这些模型具有多功能性，可以通过微调适应各种自然语言处理任务。虽然擅长生成流畅的文本，但它们可能需要情境学习 (in-context learning)或额外训练才能遵循特定指令或有效执行复杂推理任务。对于 Qwen 模型，基础模型是指那些没有 \"-Instruct\" 标识符的模型，例如 Qwen2-7B 和 Qwen2-72B 。"
+#: ../../source/getting_started/concepts.md:65 bce8166d9934415da5c261a33f0f3421
+msgid "Base language models are foundational models trained on extensive corpora of text to predict the next word in a sequence.  Their main goal is to capture the statistical patterns and structures of language, enabling them to generate coherent and contextually relevant text.  These models are versatile and can be adapted to various natural language processing tasks through fine-tuning.  While adept at producing fluent text, they may require in-context learning or additional training to follow specific instructions or perform complex reasoning tasks effectively. For Qwen models, the base models are those without \"-Instruct\" indicators, such as Qwen2.5-7B and Qwen2.5-72B."
+msgstr "基础语言模型 (base language models) 是在大量文本语料库上训练的基本模型，用于预测序列中的下一个词。它们的主要目标是捕捉语言的统计模式和结构，使它们能够生成连贯且具有上下文关联性的文本。这些模型具有多功能性，可以通过微调适应各种自然语言处理任务。虽然擅长生成流畅的文本，但它们可能需要情境学习 (in-context learning)或额外训练才能遵循特定指令或有效执行复杂推理任务。对于 Qwen 模型，基础模型是指那些没有 \"-Instruct\" 标识符的模型，例如 Qwen2.5-7B 和 Qwen2.5-72B 。"
 
-#: ../../source/getting_started/concepts.md:65 6e715c7fbe3d4c0c8dc7cda6fa8431a8
+#: ../../source/getting_started/concepts.md:71 6e715c7fbe3d4c0c8dc7cda6fa8431a8
 msgid "**Takeaway: Use base models for in-context learning, downstream fine-tuning, etc.**"
 msgstr "**要点：使用基础模型进行情境学习、下游微调等。**"
 
-#: ../../source/getting_started/concepts.md:67 b2b0b1c8e3fb40888b93a55b7a34558f
+#: ../../source/getting_started/concepts.md:73 b2b0b1c8e3fb40888b93a55b7a34558f
 msgid "Post-training & Instruction-tuned models"
 msgstr "后训练 (Post-training) 和指令微调模型 (Instruction-tuned models)"
 
-#: ../../source/getting_started/concepts.md:69 9d9f3d7520c943888269a50e41f9489a
-msgid "Instruction-tuned language models are specialized models designed to understand and execute specific instructions in conversational styles. These models are fine-tuned to interpret user commands accurately and can perform tasks such as summarization, translation, and question answering with improved accuracy and consistency.  Unlike base models, which are trained on large corpora of text, instruction-tuned models undergo additional training using datasets that contain examples of instructions and their desired outcomes, often in multiple turns. This kind of training makes them ideal for applications requiring targeted functionalities while maintaining the ability to generate fluent and coherent text. For Qwen models, the instruction-tuned models are those with the \"-Instruct\" suffix, such as Qwen2-7B-Instruct and Qwen2-72B-Instruct. [^instruct-chat]"
-msgstr "指令微调语言模型 (Instruction-tuned language models) 是专门设计用于理解并以对话风格执行特定指令的模型。这些模型经过微调，能准确地解释用户命令，并能以更高的准确性和一致性执行诸如摘要、翻译和问答等任务。与在大量文本语料库上训练的基础模型不同，指令调优模型会使用包含指令示例及其预期结果的数据集进行额外训练，通常涵盖多个回合。这种训练方式使它们非常适合需要特定功能的应用，同时保持生成流畅且连贯文本的能力。对于 Qwen 模型，指令调优模型是指带有 \"-Instruct\" 后缀的模型，例如 Qwen2-7B-Instruct 和 Qwen2-72B-Instruct 。 [^instruct-chat]"
+#: ../../source/getting_started/concepts.md:75 9d9f3d7520c943888269a50e41f9489a
+msgid "Instruction-tuned language models are specialized models designed to understand and execute specific instructions in conversational styles. These models are fine-tuned to interpret user commands accurately and can perform tasks such as summarization, translation, and question answering with improved accuracy and consistency.  Unlike base models, which are trained on large corpora of text, instruction-tuned models undergo additional training using datasets that contain examples of instructions and their desired outcomes, often in multiple turns. This kind of training makes them ideal for applications requiring targeted functionalities while maintaining the ability to generate fluent and coherent text. For Qwen models, the instruction-tuned models are those with the \"-Instruct\" suffix, such as Qwen2.5-7B-Instruct and Qwen2.5-72B-Instruct. [^instruct-chat]"
+msgstr "指令微调语言模型 (Instruction-tuned language models) 是专门设计用于理解并以对话风格执行特定指令的模型。这些模型经过微调，能准确地解释用户命令，并能以更高的准确性和一致性执行诸如摘要、翻译和问答等任务。与在大量文本语料库上训练的基础模型不同，指令调优模型会使用包含指令示例及其预期结果的数据集进行额外训练，通常涵盖多个回合。这种训练方式使它们非常适合需要特定功能的应用，同时保持生成流畅且连贯文本的能力。对于 Qwen 模型，指令调优模型是指带有 \"-Instruct\" 后缀的模型，例如 Qwen2.5-7B-Instruct 和 Qwen2.5-72B-Instruct 。 [^instruct-chat]"
 
-#: ../../source/getting_started/concepts.md:75 6391045764b64dc0bdbb4a2cf31aadca
+#: ../../source/getting_started/concepts.md:81 6391045764b64dc0bdbb4a2cf31aadca
 msgid "**Takeaway: Use instruction-tuned models for conducting tasks in conversations, downstream fine-tuning, etc.**"
 msgstr "**要点：使用指令微调模型进行对话式的任务执行、下游微调等。**"
 
-#: ../../source/getting_started/concepts.md:80 3d8728cbfe014e759c0a745d14bfe408
+#: ../../source/getting_started/concepts.md:86 3d8728cbfe014e759c0a745d14bfe408
 msgid "Tokens & Tokenization"
 msgstr "Tokens & Tokenization"
 
-#: ../../source/getting_started/concepts.md:82 b4d10a89c8ff433fbc4623d5122456f2
+#: ../../source/getting_started/concepts.md:88 b4d10a89c8ff433fbc4623d5122456f2
 msgid "Tokens represent the fundamental units that models process and generate.  They can represent texts in human languages (regular tokens) or represent specific functionality like keywords in programming languages (control tokens [^special]). Typically, a tokenizer is used to split text into regular tokens, which can be words, subwords, or characters depending on the specific tokenization scheme employed, and furnish the token sequence with control tokens as needed. The vocabulary size, or the total number of unique tokens a model recognizes, significantly impacts its performance and versatility.  Larger language models often use sophisticated tokenization methods to handle the vast diversity of human language while keeping the vocabulary size manageable. Qwen use a relatively large vocabulary of 151,646 tokens in total."
 msgstr "token 代表模型处理和生成的基本单位。它们可以表示人类语言中的文本（常规 token），或者表示特定功能，如编程语言中的关键字（控制 token [^special]）。通常，使用 tokenizer 将文本分割成常规 token ，这些 token 可以是单词、子词或字符，具体取决于所采用的特定 tokenization 方案，并按需为 token 序列添加控制 token 。词表大小，即模型识别的唯一 token 总数，对模型的性能和多功能性有重大影响。大型语言模型通常使用复杂的 tokenization 来处理人类语言的广阔多样性，同时保持词表大小可控。Qwen 词表相对较大，有 15 1646 个 token。"
 
-#: ../../source/getting_started/concepts.md:91 7dfda698c3d948db84979a203b193322
+#: ../../source/getting_started/concepts.md:97 7dfda698c3d948db84979a203b193322
 msgid "**Takeaway: Tokenization method and vocabulary size is important.**"
 msgstr "**要点：tokenization 和词表大小很重要。**"
 
-#: ../../source/getting_started/concepts.md:93 22de97aca8f747f58b72c25203bc7d80
+#: ../../source/getting_started/concepts.md:99 22de97aca8f747f58b72c25203bc7d80
 msgid "Byte-level Byte Pair Encoding"
 msgstr "Byte-level Byte Pair Encoding"
 
-#: ../../source/getting_started/concepts.md:95 49578c8a2b7b479dbd4a9112893a048b
+#: ../../source/getting_started/concepts.md:101
+#: 49578c8a2b7b479dbd4a9112893a048b
 msgid "Qwen adopts a subword tokenization method called Byte Pair Encoding (BPE), which attempts to learn the composition of tokens that can represent the text with the fewest tokens.  For example, the string \" tokenization\" is decomposed as \" token\" and \"ization\" (note that the space is part of the token). Especially, the tokenization of Qwen ensures that there is no unknown words and all texts can be transformed to token sequences."
 msgstr "Qwen采用了名为字节对编码（Byte Pair Encoding，简称BPE）的子词tokenization方法，这种方法试图学习能够用最少的 token 表示文本的 token 组合。例如，字符串\"tokenization\"被分解为\" token\"和\"ization\"（注意空格是 token 的一部分）。特别地，Qwen的 tokenization 确保了不存在未知词汇，并且所有文本都可以转换为 token 序列。"
 
-#: ../../source/getting_started/concepts.md:99 c617bac2a6f7448eaa1e729b09d6f5a1
+#: ../../source/getting_started/concepts.md:105
+#: c617bac2a6f7448eaa1e729b09d6f5a1
 msgid "There are 151,643 tokens as a result of BPE in the vocabulary of Qwen, which is a large vocabulary efficient for diverse languages. As a rule of thumb, 1 token is 3~4 characters for English texts and 1.5~1.8 characters for Chinese texts."
 msgstr "Qwen词表中因BPE而产生的 token 数量为 15 1643 个，这是一个适用于多种语言的大词表。一般而言，对于英语文本，1个token大约是3~4个字符；而对于中文文本，则大约是1.5~1.8个汉字。"
 
-#: ../../source/getting_started/concepts.md:102
+#: ../../source/getting_started/concepts.md:108
 #: 416071f996e34ad5b6e975eb23fb5654
 msgid "**Takeaway: Qwen processes texts in subwords and there are no unknown words.**"
 msgstr "**要点：Qwen 以子词形式处理文本，不存在未知词汇。**"
@@ -192,102 +218,125 @@ msgstr "**要点：Qwen 以子词形式处理文本，不存在未知词汇。**
 msgid "Learn more about tokenization in Qwen"
 msgstr "了解更多"
 
-#: ../../source/getting_started/concepts.md:105
+#: ../../source/getting_started/concepts.md:111
 #: ad4ca31e98d94a9a9ec2e1b5632aac07
 msgid "Qwen uses byte-level BPE (BBPE) on UTF-8 encoded texts.  It starts by treating each byte as a token and then iteratively merges the most frequent pairs of tokens occurring the texts into larger tokens until the desired vocabulary size is met."
 msgstr "Qwen 使用基于字节的BPE (BBPE) 对UTF-8编码的文本进行处理。它开始时将每个字节视为一个 token ，然后迭代地将文本中最频繁出现的 token 对合并成更大的 token，直到达到所需的词表大小。"
 
-#: ../../source/getting_started/concepts.md:108
+#: ../../source/getting_started/concepts.md:114
 #: 2819e636227244f08f8ffd507c7efde4
 msgid "In byte-level BPE, minimum 256 tokens are needed to tokenize every piece of text and avoid the out of vocabulary (OOV) problem. In comparison, character-level BPE needs every Unicode character in its vocabulary to avoid OOV and the Unicode Standard contains 154,998 characters as of Unicode Version 16.0."
 msgstr "在基于字节的BPE中，至少需要256个 token 来对每段文本进行 tokenization，并避免未登录词（out of vocabulary, OOV）问题。相比之下，基于字符的 BPE 需要其词表中包含所有 Unicode 字符以避免未登录词，而截至 Unicode 版本16.0，Unicode标准包含 15 4998 个字符。"
 
-#: ../../source/getting_started/concepts.md:111
+#: ../../source/getting_started/concepts.md:117
 #: 21a9e86250d14d62bbababbc6ef30a98
 msgid "One limitation to keep in mind for byte-level BPE is that the individual tokens in the vocabulary may not be seemingly semantically meaningful or even valid UTF-8 byte sequences, and in certain aspects, they should be viewed as a text compression scheme."
 msgstr "基于字节的BPE的一个限制是，词表中的个别 token 可能看似没有语义意义，甚至不是有效的 UTF-8 字节序列，在某些方面，它们应该被视为一种文本压缩方案。"
 
-#: ../../source/getting_started/concepts.md:114
+#: ../../source/getting_started/concepts.md:120
 #: ca6d3c369d0a4a2b9ae009c1f8082276
 msgid "Control Tokens & Chat Template"
 msgstr "控制 Token 和 对话模板"
 
-#: ../../source/getting_started/concepts.md:116
+#: ../../source/getting_started/concepts.md:122
 #: f4f4968f8e864ff3b7f5b55c2309fa12
 msgid "Control tokens and chat templates both serve as mechanisms to guide the model's behavior and outputs."
 msgstr "控制 token 和对话模板都作为指导模型行为和输出的机制。"
 
-#: ../../source/getting_started/concepts.md:118
+#: ../../source/getting_started/concepts.md:124
 #: 0dc364fd29b048b790c789bb3140f93c
 msgid "Control tokens are special tokens inserted into the sequence that signifies meta information. For example, in pre-training, multiple documents may be packed into a single sequence. For Qwen, the control token \"<|endoftext|>\" is inserted after each document to signify that the document has ended and a new document will proceed."
 msgstr "控制token是插入到序列中的特殊token，表示元信息。例如，在预训练中，多个文档可以被打包成一个单一的序列。对于Qwen，控制令牌 \"<|endoftext|>\" 在每个文档后插入，表示文档已经结束，新的文档将开始。"
 
-#: ../../source/getting_started/concepts.md:122
+#: ../../source/getting_started/concepts.md:128
 #: 089a847d1ad741edbc4812557a022f6b
 msgid "Chat templates provide a structured format for conversational interactions, where predefined placeholders or prompts are used to elicit responses from the model that adhere to a desired dialogue flow or context. Different models may use different kinds of chat template to format the conversations.  It is crucial to use the designated one to ensure the precise control over the LLM's generation process."
 msgstr "对话模板为对话交互提供了结构化的格式，其中使用预定义的占位符或提示来从模型中引发遵循期望的对话流程或上下文的响应。不同的模型可能使用不同类型的对话模板来格式化对话。使用指定的模板对于确保对语言模型生成过程的精确控制至关重要。"
 
-#: ../../source/getting_started/concepts.md:126
+#: ../../source/getting_started/concepts.md:132
 #: bd5be916cff2483f9ee2de6960da5413
-#, fuzzy
 msgid "Qwen uses the following format (ChatML[^chatml]), making use of control tokens to format each turn in the conversations"
-msgstr "Qwen使用以下格式（ChatML），利用控制 token 来格式化对话中的每一轮。"
+msgstr "Qwen使用以下格式（ChatML[^chatml]），利用控制 token 来格式化对话中的每一轮。"
 
-#: ../../source/getting_started/concepts.md:131
+#: ../../source/getting_started/concepts.md:137
 #: 3ec465ba14d9437393ab881aec0a1d85
-msgid "The user input take the role of `user` and the model generation takes the role of `assistant`.  Qwen also supports the meta message that instruct the model to perform specific actions or generate text with certain characteristics, such as altering tone, style, or content, which takes the role of `system` and the content defaults to \"You are a helpful assistant.\""
-msgstr "用户输入扮演 `user` 的 role ，而模型生成则承担 `assistant` 的 role 。 Qwen 还支持元消息，该消息指导模型执行特定操作或生成具有特定特性的文本，例如改变语气、风格或内容，这将承担 `system` 的 role，且内容默认为 \"You are a helpful assistant.\" 。"
+msgid "The user input take the role of `user` and the model generation takes the role of `assistant`.  Qwen also supports the meta message that instruct the model to perform specific actions or generate text with certain characteristics, such as altering tone, style, or content, which takes the role of `system` and the content defaults to \"You are Qwen, created by Alibaba Cloud. You are a helpful assistant.\""
+msgstr "用户输入扮演 `user` 的 role ，而模型生成则承担 `assistant` 的 role 。 Qwen 还支持元消息，该消息指导模型执行特定操作或生成具有特定特性的文本，例如改变语气、风格或内容，这将承担 `system` 的 role，且内容默认为 \"You are Qwen, created by Alibaba Cloud. You are a helpful assistant.\" 。"
 
-#: ../../source/getting_started/concepts.md:134
+#: ../../source/getting_started/concepts.md:140
 #: afd1df15f17c4eb7ae319add1115ba37
 msgid "The following is a full example:"
 msgstr "下面为一个完整示例"
 
-#: ../../source/getting_started/concepts.md:151
-#: 8602a8b5489b47fa9adf9c663b1361b8
-msgid "There are 3 control tokens in the vocabulary of Qwen, making the vocabulary size totaling 151,646."
-msgstr "Qwen 词表中有3个控制 token ，词表总大小为15 1646。"
-
-#: ../../source/getting_started/concepts.md:153
-#: 6634d689a1154d60a38af0f26f125355
-msgid "**Takeaway: Qwen uses ChatML with 3 control tokens for chat template.**"
-msgstr "**要点: Qwen 使用带有3个控制 token 的 ChatML 作为对话模板。**"
-
 #: ../../source/getting_started/concepts.md:157
+#: c092549f460d4e4aa4a8dae00004afd2
+msgid "Starting from Qwen2.5, the Qwen model family including multimodal and specialized models will use a unified vocabulary, which contains control tokens from all subfamilies. There are 22 control tokens in the vocabulary of Qwen2.5, making the vocabulary size totaling 151,665:"
+msgstr "从 Qwen2.5 开始，Qwen 模型家族，包括多模态和专项模型，将使用统一的词汇表，其中包含了所有子系列的控制 token 。Qwen2.5 的词汇表中有 22 个控制 token，使得词汇表的总规模达到 15 1665 。"
+
+#: ../../source/getting_started/concepts.md:159
+#: 739562c32e8448edb570110bc952bf49
+msgid "1 general: `<|endoftext|>`"
+msgstr "通用 token 1个：`<|endoftext|>`"
+
+#: ../../source/getting_started/concepts.md:160
+#: 7911840e2a9940979c1c169efa845146
+msgid "2 for chat: `<|im_start|>` and `<|im_end|>`"
+msgstr "对话 token 2个：`<|im_start|>` 和 `<|im_end|>`"
+
+#: ../../source/getting_started/concepts.md:161
+#: ce2b77ea9018422e94b7de03ca9430e5
+msgid "2 for tool use: `<tool_call>` and `</tool_call>`"
+msgstr "工具调用 token 2个： `<tool_call>` 和 `</tool_call>`"
+
+#: ../../source/getting_started/concepts.md:162
+#: 5f77db2bdd684c478adfd642749898c5
+msgid "11 for vision"
+msgstr "视觉相关 token 11个"
+
+#: ../../source/getting_started/concepts.md:163
+#: ba7cbbc305f948698f8cf2ca62dffbf7
+msgid "6 for coding"
+msgstr "代码相关 token 6个"
+
+#: ../../source/getting_started/concepts.md:165
+#: 6634d689a1154d60a38af0f26f125355
+msgid "**Takeaway: Qwen uses ChatML with control tokens for chat template.**"
+msgstr "**要点: Qwen 使用带有控制 token 的 ChatML 作为对话模板。**"
+
+#: ../../source/getting_started/concepts.md:169
 #: 6e92373b892f409c9bd8b1b9c2dacb2f
 msgid "Length Limit"
 msgstr "长度限制"
 
-#: ../../source/getting_started/concepts.md:159
+#: ../../source/getting_started/concepts.md:171
 #: e61b831a9e24445f91b704ab22dd5e2a
 msgid "As Qwen models are causal language models, in theory there is only one length limit of the entire sequence. However, since there is often packing in training and each sequence may contain multiple individual pieces of texts.  **How long the model can generate or complete ultimately depends on the use case and in that case how long each document (for pre-training) or each turn (for post-training) is in training.**"
 msgstr "由于 Qwen 模型是因果语言模型，理论上整个序列只有一个长度限制。然而，由于在训练中通常存在打包现象，每个序列可能包含多个独立的文本片段。**模型能够生成或完成的长度最终取决于具体的应用场景，以及在这种情况下，预训练时每份文档或后训练时每轮对话的长度。**"
 
-#: ../../source/getting_started/concepts.md:163
+#: ../../source/getting_started/concepts.md:175
 #: 6bae703c59bc4698a01cf90c09eb3141
-msgid "For Qwen2, the packed sequence length in training is 32,768 tokens.[^yarn] The maximum document length in pre-training is this length. The maximum message length for user and assistant is different in post-training. In general, the assistant message could be up to 2048 tokens and for tasks with less variation like tables to HTML, it could be 6-8K tokens."
-msgstr "对于Qwen2，在训练中的打包序列长度为 3 2768 个 token [^yarn]。预训练中的最大文档长度即为此长度。而后训练中，user和assistant的最大消息长度则有所不同。一般情况下，assistant消息长度可达 2048 token，对于变化较小的任务，如表格转HTML，长度可达 6-8K token。"
+msgid "For Qwen2.5, the packed sequence length in training is 32,768 tokens.[^yarn] The maximum document length in pre-training is this length. The maximum message length for user and assistant is different in post-training. In general, the assistant message could be up to 8192 tokens."
+msgstr "对于Qwen2.5，在训练中的打包序列长度为 3 2768 个 token [^yarn]。预训练中的最大文档长度即为此长度。而后训练中，user和assistant的最大消息长度则有所不同。一般情况下，assistant消息长度可达 8192 个 token。"
 
-#: ../../source/getting_started/concepts.md:171
+#: ../../source/getting_started/concepts.md:183
 #: 830c2b41828b48c1b173c634e91fe93e
-msgid "**Takeaway: Qwen2 models can process texts of 32K or 128K tokens but not all of them can be output.**"
-msgstr "**要点：Qwen2 模型可以处理 32K 或 128K token 长的文本，但并非所有长度都可作为输出。**"
+msgid "**Takeaway: Qwen2.5 models can process texts of 32K or 128K tokens and up to 8K tokens can be assistant output.**"
+msgstr "**要点：Qwen2 模型可以处理 32K 或 128K token 长的文本，其中 8K 长度可作为输出。**"
 
-#: ../../source/getting_started/concepts.md:77 63c5f2c803b54f5b87d663b26d99e6fa
+#: ../../source/getting_started/concepts.md:83 63c5f2c803b54f5b87d663b26d99e6fa
 msgid "Previously, they are known as the chat models and with the \"-Chat\" suffix. Starting from Qwen2, the name is changed to follow the common practice. For Qwen, \"-Instruct\" and \"-Chat\" should be regarded as synonymous."
 msgstr "此前，它们被称为对话模型，并带有\"-Chat\"后缀。从Qwen2开始，名称变更为遵循通用做法。对于Qwen，\"-Instruct\"和\"-Chat\"应被视为同义词。"
 
-#: ../../source/getting_started/concepts.md:89 d03c48baae4147fba03213b597c38ad2
+#: ../../source/getting_started/concepts.md:95 d03c48baae4147fba03213b597c38ad2
 msgid "Control tokens can be called special tokens. However, the meaning of special tokens need to be interpreted based on the contexts: special tokens may contain extra regular tokens."
 msgstr "控制 token 也可以称为“特殊 token”。但是，特殊 token 的意义需要根据上下文进行解释：特殊 token 也可能包含额外的常规 token。"
 
-#: ../../source/getting_started/concepts.md:155
-#: 01fb8bf9dcff4d15915d123284ba195c
-msgid "For historical reference only, ChatML is first described by the OpenAI Python SDK. The last available version is [this](https://github.com/openai/openai-python/blob/v0.28.1/chatml.md). Please also be aware that that document lists use cases intended for OpenAI models. For Qwen2 models, please only use as in our guide."
-msgstr "仅供历史参考，ChatML最初由OpenAI的Python SDK描述。可获取的最新版本是[这个](https//github.com/openai/openai-python/blob/v0.28.1/chatml.md)。请注意，该文档列出的应用案例是为OpenAI模型设计的。对于Qwen2模型，请仅按照我们的指南使用。"
+#: ../../source/getting_started/concepts.md:167
+#: e4a054dbf00848658d7bd3a2a25b8593
+msgid "For historical reference only, ChatML is first described by the OpenAI Python SDK. The last available version is [this](https://github.com/openai/openai-python/blob/v0.28.1/chatml.md). Please also be aware that that document lists use cases intended for OpenAI models. For Qwen2.5 models, please only use as in our guide."
+msgstr "仅供历史参考，ChatML最初由OpenAI的Python SDK描述。可获取的最新版本是[这个](https//github.com/openai/openai-python/blob/v0.28.1/chatml.md)。请注意，该文档列出的应用案例是为OpenAI模型设计的。对于Qwen2.5模型，请仅按照我们的指南使用。"
 
-#: ../../source/getting_started/concepts.md:168
+#: ../../source/getting_started/concepts.md:180
 #: 6e25f38a52a145568e0d14ef281869b3
-msgid "The sequence length can be extended to 131,072 tokens for Qwen2-7B and Qwen2-72B models with YaRN.      Please refer to the model card on how to enable YaRN in vLLM."
-msgstr "使用YaRN，Qwen2-7B和Qwen2-72B模型的序列长度可以扩展到13 1072个token。请参考模型卡片了解如何在 vLLM 中启用 YaRN。"
-
+msgid "The sequence length can be extended to 131,072 tokens for Qwen2.5-7B, Qwen2.5-14B, Qwen2.5-32B, and Qwen2.5-72B models with YaRN.      Please refer to the model card on how to enable YaRN in vLLM."
+msgstr "使用YaRN，Qwen2.5-7B、Qwen2.5-14B、Qwen2.5-32B和Qwen2-72B模型的序列长度可以扩展到13 1072个token。请参考模型卡片了解如何在 vLLM 中启用 YaRN。"

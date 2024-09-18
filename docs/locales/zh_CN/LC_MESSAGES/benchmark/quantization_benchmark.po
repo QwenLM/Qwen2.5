@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-07 00:12+0800\n"
+"POT-Creation-Date: 2024-09-18 21:18+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -19,419 +19,418 @@ msgstr ""
 "Generated-By: Babel 2.15.0\n"
 
 #: ../../source/benchmark/quantization_benchmark.rst:2
-#: ba764fc1ae7249ef8b2fa008b894bf6d
+#: 86c16d71673c439c8861bc1925b9b1d1
 msgid "Performance of Quantized Models"
 msgstr "量化模型效果评估"
 
-#: ../../source/benchmark/quantization_benchmark.rst:4
-#: 85184ff127df45859b788cb12d2c80a1
-msgid ""
-"This section reports the generation performance of quantized models "
-"(including GPTQ and AWQ) of the Qwen2 series. Specifically, we report:"
+#: ../../source/benchmark/quantization_benchmark.rst:5
+#: 86b5fb5158c442afb95480fc2324cb29
+msgid "To be updated for Qwen2.5."
+msgstr "Qwen2.5结果待更新"
+
+#: ../../source/benchmark/quantization_benchmark.rst:7
+#: f242f1a976f6460a86f380b158d9dbcd
+msgid "This section reports the generation performance of quantized models (including GPTQ and AWQ) of the Qwen2 series. Specifically, we report:"
 msgstr "本部分介绍Qwen2量化模型（包括GPTQ与AWQ量化方案）的效果评估，有以下数据集"
 
-#: ../../source/benchmark/quantization_benchmark.rst:8
-#: 504942421d70442cbcc85f254f9a5393
+#: ../../source/benchmark/quantization_benchmark.rst:11
+#: 67c637f92064466da223dbe6df453d31
 msgid "MMLU (Accuracy)"
 msgstr "MMLU （准确率）"
 
-#: ../../source/benchmark/quantization_benchmark.rst:9
-#: f869a17fd46441c7b1e3ba0c32124ad6
+#: ../../source/benchmark/quantization_benchmark.rst:12
+#: 52a4490cb1ee4913b1c19be697ff403f
 msgid "C-Eval (Accuracy)"
 msgstr "C-Eval （准确率）"
 
-#: ../../source/benchmark/quantization_benchmark.rst:10
-#: a59a85a6cac84a41bb673cca70c14ec9
+#: ../../source/benchmark/quantization_benchmark.rst:13
+#: 652ff439bf26443a847b318138878bf3
 msgid "IFEval (Strict Prompt-Level Accuracy)"
 msgstr "IFEval （提示词级的严格准确率，Strict Prompt-Level Accuracy）"
 
-#: ../../source/benchmark/quantization_benchmark.rst:12
-#: 144fd59a9acb4d1bb91373d9c9bb4d88
+#: ../../source/benchmark/quantization_benchmark.rst:15
+#: a43c14a952b14fa685edfc26049a28bf
 msgid "We use greedy decoding in evaluating all models."
 msgstr "所有模型均使用贪心解码。"
 
-#: ../../source/benchmark/quantization_benchmark.rst:15
-#: 9964f78199e14cbba80dac5aaaea5aa6
+#: ../../source/benchmark/quantization_benchmark.rst:18
+#: 5246b1b6ecf046059e770a6330fb21d0
 msgid "Quantization"
 msgstr "量化模型"
 
-#: ../../source/benchmark/quantization_benchmark.rst:15
-#: 752863bf96454190bd3f1ae160d61efa
+#: ../../source/benchmark/quantization_benchmark.rst:18
+#: 6cc87ccb45704f0caee13fa7953be683
 msgid "Average"
 msgstr "平均"
 
-#: ../../source/benchmark/quantization_benchmark.rst:15
-#: 0ee9d1d9e01141e2852e6ad52d5598ee
+#: ../../source/benchmark/quantization_benchmark.rst:18
+#: 976e2a5aec824a84955fc80486098871
 msgid "MMLU"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:15
-#: 0266d102de8945ccb813e588107c7649
+#: ../../source/benchmark/quantization_benchmark.rst:18
+#: 8bc8133071924f67991f12a2fc6b314e
 msgid "C-Eval"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:15
-#: 019e753ce33b482584534888824dfc73
+#: ../../source/benchmark/quantization_benchmark.rst:18
+#: 0277554b675b4c19a1bc3178e731628e
 msgid "IFEval"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:17
-#: f0f1619f24c04c51bdb22ec7372519a6
+#: ../../source/benchmark/quantization_benchmark.rst:20
+#: 96209bc3b2634963845968099022fa39
 msgid "Qwen2-72B-Instruct"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:17
-#: ../../source/benchmark/quantization_benchmark.rst:25
-#: ../../source/benchmark/quantization_benchmark.rst:33
-#: ../../source/benchmark/quantization_benchmark.rst:41
-#: 6dac3a477dcf459b967457da7d0e9774 96e7c58e26624e7abaef96dde4365534
-#: d457764a0ae44110b2efd55d7c578ba8 dc8cbd9acb3f4e8daabbd46d59364938
+#: ../../source/benchmark/quantization_benchmark.rst:20
+#: ../../source/benchmark/quantization_benchmark.rst:28
+#: ../../source/benchmark/quantization_benchmark.rst:36
+#: ../../source/benchmark/quantization_benchmark.rst:44
+#: 9bde6e4f0c2843be9070eca6c552a822
 msgid "BF16"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:17
-#: ../../source/benchmark/quantization_benchmark.rst:19
-#: 09c95a1910a74c3a8c38e30b5467ac8a 7e7742d0e5c24009a7fa71614a5b180c
+#: ../../source/benchmark/quantization_benchmark.rst:20
+#: ../../source/benchmark/quantization_benchmark.rst:22
+#: 82e970db086b4a879e10e8266104789c
 msgid "81.3"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:17
-#: 6e9cb6a523e741d1a3843387f69b7258
+#: ../../source/benchmark/quantization_benchmark.rst:20
+#: 54b60cc55eb74677b8d6e1d98a3ae6f0
 msgid "82.3"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:17
-#: 6700e7770ad641a3afb888d0b6149d82
+#: ../../source/benchmark/quantization_benchmark.rst:20
+#: b46df91cad4f45fa8f21c305eb0e250b
 msgid "83.8"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:17
-#: b425eedae1ec4686bffb9f3061c69305
+#: ../../source/benchmark/quantization_benchmark.rst:20
+#: cf68aee3bedc4ed5896fab6d140e03a2
 msgid "77.6"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:19
-#: ../../source/benchmark/quantization_benchmark.rst:27
-#: ../../source/benchmark/quantization_benchmark.rst:35
-#: ../../source/benchmark/quantization_benchmark.rst:43
-#: 5dcfb3b79bc14e63acec2ee8c474b8d6 6f7acb2bc38741b99907ecca5a637b5f
-#: cd77d03dfa9e4b2f865cc2dfc479fb6c e84dbdf08e6e4b348a74ff9bef958b60
+#: ../../source/benchmark/quantization_benchmark.rst:22
+#: ../../source/benchmark/quantization_benchmark.rst:30
+#: ../../source/benchmark/quantization_benchmark.rst:38
+#: ../../source/benchmark/quantization_benchmark.rst:46
+#: e7d8aed997d948a79b91314e394822e6
 msgid "GPTQ-Int8"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:19
-#: ec73def21dcd453a8722839353f2842a
+#: ../../source/benchmark/quantization_benchmark.rst:22
+#: a63548b09635430abdd2ac658d122c87
 msgid "80.7"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:19
-#: ecd2362f572146dfb26bf77ba74b2ba7
+#: ../../source/benchmark/quantization_benchmark.rst:22
+#: 6334a5b790ff461589e7f6494625b048
 msgid "83.4"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:19
-#: b411477cc8d8465ebfa490435438aaea
+#: ../../source/benchmark/quantization_benchmark.rst:22
+#: 8aecc64537034628baaa2e0836864aa9
 msgid "77.5"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:21
-#: ../../source/benchmark/quantization_benchmark.rst:29
-#: ../../source/benchmark/quantization_benchmark.rst:37
-#: ../../source/benchmark/quantization_benchmark.rst:45
-#: 14904f17546b42dea62737a8867bf352 94078ebdf9cc48deb016a0a733476b38
-#: ace66eeac03a4eaa9532a3dd5f8c0462 cc223a29ff884bec8f8128e59679f714
+#: ../../source/benchmark/quantization_benchmark.rst:24
+#: ../../source/benchmark/quantization_benchmark.rst:32
+#: ../../source/benchmark/quantization_benchmark.rst:40
+#: ../../source/benchmark/quantization_benchmark.rst:48
+#: 405337307a514ce6a0eba603befcc398
 msgid "GPTQ-Int4"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:21
-#: 53db263b948b4b079d7def5d6080c337
+#: ../../source/benchmark/quantization_benchmark.rst:24
+#: 91722e7ef06141e399f4f024fab73873
 msgid "81.2"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:21
-#: 1626a789f4de466eb684ac6d7d93fc3e
+#: ../../source/benchmark/quantization_benchmark.rst:24
+#: f5ac8a9c461e49429cd6a294fc85c05c
 msgid "80.8"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:21
-#: ../../source/benchmark/quantization_benchmark.rst:23
-#: 0cd0a8154dc84f52b51de29d99e8cf8f d22a9b23e2554909a34fbe0bc2840ae0
+#: ../../source/benchmark/quantization_benchmark.rst:24
+#: ../../source/benchmark/quantization_benchmark.rst:26
+#: 7db694d4c84f49779810b5e660667930
 msgid "83.9"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:21
-#: a3897972c3004fa2a020f199766546e8
+#: ../../source/benchmark/quantization_benchmark.rst:24
+#: 30fa5d31d67344cb92ca54708d99e5f3
 msgid "78.9"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:23
-#: ../../source/benchmark/quantization_benchmark.rst:31
-#: ../../source/benchmark/quantization_benchmark.rst:39
-#: ../../source/benchmark/quantization_benchmark.rst:47
-#: 0ee6b99866974fe68de7b9033dfedf2b 3444bf8be87f4cf2a50bdbb0cca46485
-#: 9d54b6425b4741fa95d926b45304cb60 b9c7ad1c57214fa9bc7d02ec761bc1b6
+#: ../../source/benchmark/quantization_benchmark.rst:26
+#: ../../source/benchmark/quantization_benchmark.rst:34
+#: ../../source/benchmark/quantization_benchmark.rst:42
+#: ../../source/benchmark/quantization_benchmark.rst:50
+#: 3b469d0fd3df489eaf09fa1b82202ee4
 msgid "AWQ"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:23
-#: a474fa6332274f4c92ecd578f1d063af
+#: ../../source/benchmark/quantization_benchmark.rst:26
+#: 8050484d756e42c48502f01b2c569b8e
 msgid "80.4"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:23
-#: 324559674818474a8d81d2ca9c3dc203
+#: ../../source/benchmark/quantization_benchmark.rst:26
+#: 85e1da57b5d146748f503da01511538b
 msgid "80.5"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:23
-#: 8554a60d84d84190a6252522c8952040
+#: ../../source/benchmark/quantization_benchmark.rst:26
+#: 25a2cc28dfb34ef7aa14efeb5fc67639
 msgid "76.9"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:25
-#: 1de269e970524699b7d15bee6cdc4cf2
+#: ../../source/benchmark/quantization_benchmark.rst:28
+#: 102c4b36233342ed9ec6b4b60ac04102
 msgid "Qwen2-7B-Instruct"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:25
-#: 4bcfc4af44fd40c7ba27cd202eaa7222
+#: ../../source/benchmark/quantization_benchmark.rst:28
+#: b08f4eeb3a4c4a0ca5e2aa1523243f75
 msgid "66.9"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:25
-#: e887249ea0114a96ac35791fa225df17
+#: ../../source/benchmark/quantization_benchmark.rst:28
+#: fcb7700305af4683ac0a8994faa73d9d
 msgid "70.5"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:25
-#: b1b516fdb0de41d1a02127877f293a12
+#: ../../source/benchmark/quantization_benchmark.rst:28
+#: 40a1162e79d949d8bb51079eb5471b58
 msgid "77.2"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:25
-#: c147f559298e4d82afcccca98fb25dd6
+#: ../../source/benchmark/quantization_benchmark.rst:28
+#: 636d54c8f4104b96b69e5c47f466b19d
 msgid "53.1"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:27
-#: 48afb2c745414e48b4f3d65a79409727
+#: ../../source/benchmark/quantization_benchmark.rst:30
+#: 8841d36c5210409fbd5f51796d5ef6e2
 msgid "66.2"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:27
-#: 052691cb948c4a05bf3f1639a3546448
+#: ../../source/benchmark/quantization_benchmark.rst:30
+#: 2832d1d352bb45a8b213490d16da76b5
 msgid "69.1"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:27
-#: 3bf4039a8aeb47f69ee0500e6c122bef
+#: ../../source/benchmark/quantization_benchmark.rst:30
+#: b5afb5c5469248f09ada0697c05b0321
 msgid "76.7"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:27
-#: 7ca14f73cf5548a693e759aefc0f9d85
+#: ../../source/benchmark/quantization_benchmark.rst:30
+#: fe479f3e0fdd4b379c3dccf96577b0dd
 msgid "52.9"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:29
-#: ../../source/benchmark/quantization_benchmark.rst:31
-#: 985468b739024c839a7d4dc6c33e6523 f60f0bce1643499ca4a3f5cf7d23d586
+#: ../../source/benchmark/quantization_benchmark.rst:32
+#: ../../source/benchmark/quantization_benchmark.rst:34
+#: ed395b64de3543f4bef17de0b89498d4
 msgid "64.1"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:29
-#: 662d6012e1d34254a9891e2ab7c5d98d
+#: ../../source/benchmark/quantization_benchmark.rst:32
+#: c80437f274ff406fbb4adc2455414c88
 msgid "67.8"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:29
-#: d9c908c008e74abea72b3976d2b366f0
+#: ../../source/benchmark/quantization_benchmark.rst:32
+#: 944d0b9e6d78418dba32824b09ff3785
 msgid "75.2"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:29
-#: 2f7dc5dd2f46437c837a5ba8e782db20
+#: ../../source/benchmark/quantization_benchmark.rst:32
+#: 377dcf25633f4d57bf2ef58accaa4fc9
 msgid "49.4"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:31
-#: 8ec4cadecfb340649add7029b5267326
+#: ../../source/benchmark/quantization_benchmark.rst:34
+#: 4e41667afd5c47f7bbb38096d8a599da
 msgid "67.4"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:31
-#: bfc0668e308f4470bfdf769e9e5e9dc5
+#: ../../source/benchmark/quantization_benchmark.rst:34
+#: 6114fb4f29674ca58da9b68d308a03c1
 msgid "73.6"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:31
-#: fb84eea578d142c4b2e81c06c8f3f2be
+#: ../../source/benchmark/quantization_benchmark.rst:34
+#: c2c0080d295044ea80df2319b4510fab
 msgid "51.4"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:33
-#: 533c3883c1874874a7c787d288ea9d3e
+#: ../../source/benchmark/quantization_benchmark.rst:36
+#: 79841dc6f02d4b53bb0104835ee5cf87
 msgid "Qwen2-1.5B-Instruct"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:33
-#: 00a79e6b33654fb7954b9cf84e3e4cd5
+#: ../../source/benchmark/quantization_benchmark.rst:36
+#: 91e7fa52b0e4496dbe184e92e9b7cefc
 msgid "48.4"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:33
-#: 11a60a555a5b49e2af25eed5aa6393de
+#: ../../source/benchmark/quantization_benchmark.rst:36
+#: 3b02de6444084aee8c234bc8f819e775
 msgid "52.4"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:33
-#: c81ea4df0e7842ec8f1dcc732814350e
+#: ../../source/benchmark/quantization_benchmark.rst:36
+#: ef1dfe72aa1f42dc9f0cec04c4b367d3
 msgid "63.8"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:33
-#: 70abced5ecbc48efafd2dc529c7ce65c
+#: ../../source/benchmark/quantization_benchmark.rst:36
+#: 9f116995db8a48adb9963be7e8e83f6a
 msgid "29.0"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:35
-#: 96557b9c6f49442c925e1a96cdafcc81
+#: ../../source/benchmark/quantization_benchmark.rst:38
+#: 66fd0b1871564ad98b2f4e55151423c6
 msgid "48.1"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:35
-#: ca24112ee0e2450f9cf33bd50364bf6c
+#: ../../source/benchmark/quantization_benchmark.rst:38
+#: 10a75bf3be33455d884b3bea7cb728ff
 msgid "53.0"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:35
-#: be99eeed524f406fa667ecd770b9c725
+#: ../../source/benchmark/quantization_benchmark.rst:38
+#: cb0b6edff0f04bda8f929ad1eabe4ca2
 msgid "62.5"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:35
-#: 24a0c9ca183049988384381d57933685
+#: ../../source/benchmark/quantization_benchmark.rst:38
+#: fd36872cc15540e58b9206afd8950598
 msgid "28.8"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:37
-#: c5fe5f3d4f2947578f7b6a3835a0e247
+#: ../../source/benchmark/quantization_benchmark.rst:40
+#: 616a7c11f3e746ce9e304497e17f79dc
 msgid "45.0"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:37
-#: 81f71b7d09a1463cad3b873932b3f62b
+#: ../../source/benchmark/quantization_benchmark.rst:40
+#: 3d205e5a543a46169c17648fcd1282a6
 msgid "50.7"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:37
-#: 6152a3395853456d832098b86a420821
+#: ../../source/benchmark/quantization_benchmark.rst:40
+#: 14bcd558111743448fdbaf1b5f39f441
 msgid "57.4"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:37
-#: 8a5c5702bd0248a99227d7da65360cc2
+#: ../../source/benchmark/quantization_benchmark.rst:40
+#: e7b473d0ed31479fba401d67e41644ee
 msgid "27.0"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:39
-#: 0f681f37e91f4ae4a1ce16be91c98651
+#: ../../source/benchmark/quantization_benchmark.rst:42
+#: da85545dee7c4f99b3c6ce3eadcce143
 msgid "46.5"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:39
-#: 68e037d10f114e31aad8fbf7a09a6c10
+#: ../../source/benchmark/quantization_benchmark.rst:42
+#: 717fd5ab1db14cf8b77d648166259d26
 msgid "51.6"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:39
-#: 525026880a63428f8fca0276d24ba953
+#: ../../source/benchmark/quantization_benchmark.rst:42
+#: 73c579253bbd42959bea7a81f16c2ba2
 msgid "58.1"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:39
-#: b2f0b466d713441aa1db8d78e657a75f
+#: ../../source/benchmark/quantization_benchmark.rst:42
+#: 6d26956450694b2b8d2c4b245a179f40
 msgid "29.9"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:41
-#: ad428acda07643d0bb1274ce8e8c2c75
+#: ../../source/benchmark/quantization_benchmark.rst:44
+#: 0244beb2a0cd4746922d498d5c2d342a
 msgid "Qwen2-0.5B-Instruct"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:41
-#: ../../source/benchmark/quantization_benchmark.rst:47
-#: 2e7292dc334a42dcafda9e25e448eb57 4d608815551c42a6980c6a0638d48bc6
+#: ../../source/benchmark/quantization_benchmark.rst:44
+#: ../../source/benchmark/quantization_benchmark.rst:50
+#: ca8261dbaeb243578bc60d9f3034c182
 msgid "34.4"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:41
-#: 6ba14d6d0ba2471e8802d9f4d174c380
+#: ../../source/benchmark/quantization_benchmark.rst:44
+#: 42e6525e5f8544a29bb80eb0ea793219
 msgid "37.9"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:41
-#: 88987d89b07143fba3a3994268ef3c35
+#: ../../source/benchmark/quantization_benchmark.rst:44
+#: cbf250db76d5401eb32ee2778d95228c
 msgid "45.2"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:41
-#: 78f9782863ec4f0c98def6efe100bd2d
+#: ../../source/benchmark/quantization_benchmark.rst:44
+#: 03d2f5ce679a47648c1c8daf375e64c7
 msgid "20.0"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:43
-#: 29293730fd614755b5ca90d783913ff4
+#: ../../source/benchmark/quantization_benchmark.rst:46
+#: 260676692e0240ca973f35fa6552b6c5
 msgid "32.6"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:43
-#: d1af24d206cd432da974fcd48f993d44
+#: ../../source/benchmark/quantization_benchmark.rst:46
+#: 18454b96823146d7bb2752fdbe12d1a9
 msgid "35.6"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:43
-#: d630cebcf60d49ddb49a81ddfa013ace
+#: ../../source/benchmark/quantization_benchmark.rst:46
+#: 3a02c6f8071b4e4bb9f77bc6de9d7839
 msgid "43.9"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:43
-#: 5e44dd7e6ef6431c9cef30aa2c541b9b
+#: ../../source/benchmark/quantization_benchmark.rst:46
+#: b446bcd21b5342dfa7248703ef9c8956
 msgid "18.1"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:45
-#: 2605879c763544ee8d6b40a11acfdd8f
+#: ../../source/benchmark/quantization_benchmark.rst:48
+#: ec96a44895954170a91eb1963e4e9dd7
 msgid "29.7"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:45
-#: ffbffa70c63640e1a0ae74e673db890e
+#: ../../source/benchmark/quantization_benchmark.rst:48
+#: 071267fb9e7542d3b95c73268b085499
 msgid "33.0"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:45
-#: 87a3d72746df4129bcfbb69cc54fbc1b
+#: ../../source/benchmark/quantization_benchmark.rst:48
+#: 408a25971283421695483e3d5c5cc873
 msgid "39.2"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:45
-#: 9689f04b802443f5af768161999738e2
+#: ../../source/benchmark/quantization_benchmark.rst:48
+#: 9bb319d070d442aaa21e288b594e90bf
 msgid "16.8"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:47
-#: 191cafc427844fdeb79df2feb7bdb485
+#: ../../source/benchmark/quantization_benchmark.rst:50
+#: 2376c96817c0469f943346d210ef4fea
 msgid "31.1"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:47
-#: 02626fc761a2478fb78b714e8f2ceb76
+#: ../../source/benchmark/quantization_benchmark.rst:50
+#: 3cb9ec7c9ab54493ab7038631ad0f114
 msgid "42.1"
 msgstr ""
 
-#: ../../source/benchmark/quantization_benchmark.rst:47
-#: 807f8ede65ec4850bf6fe4b3287348c7
+#: ../../source/benchmark/quantization_benchmark.rst:50
+#: d1db89e828994f4b99f82159512e7f85
 msgid "16.7"
 msgstr ""
 

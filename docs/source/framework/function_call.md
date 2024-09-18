@@ -62,7 +62,7 @@ In the following, we will introduce the usage (via dedicated function calling ch
 - **Qwen-Agent**,
 - **Hugging Face transformers**,
 - **Ollama**, and
-- **vLLm**.
+- **vLLM**.
 
 If you are familiar with the usage of OpenAI API, you could also directly use the OpenAI-compatible API services for Qwen2.5.
 However, not all of them support function calling for Qwen2.5.
@@ -297,7 +297,7 @@ Which one to use should be obvious according to the naming.
 
 Our query is `What's the temperature in San Francisco now? How about tomorrow?`.
 Since the model does not know what the current date is, let alone tomorrow, we should provide the date in the inputs.
-Here, we decide to supply that information in the system message after the default system message `You are a helpful assistant.`.
+Here, we decide to supply that information in the system message after the default system message `You are Qwen, created by Alibaba Cloud. You are a helpful assistant.`.
 You could append the date to user message in your application code.
 
 ```json

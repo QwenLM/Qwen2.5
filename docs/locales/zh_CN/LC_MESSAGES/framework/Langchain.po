@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the Qwen package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
 #
-
 msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-06 19:37+0800\n"
+"POT-Creation-Date: 2024-09-18 21:18+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -19,60 +18,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.15.0\n"
 
-#: ../../source/framework/Langchain.rst:2 a3143834964449d89beeeb58dd94f44e
+#: ../../source/framework/Langchain.rst:2 be65fda6713a48c489d2f8d366b13c0b
 msgid "Langchain"
 msgstr ""
 
-#: ../../source/framework/Langchain.rst:4 e531b8cd38a14c548b4b3fc67ed14209
+#: ../../source/framework/Langchain.rst:4 48a12e316fc247208c1fec278a5aeecb
+msgid "This guide helps you build a question-answering application based on a local knowledge base using ``Qwen2.5-7B-Instruct`` with ``langchain``. The goal is to establish a knowledge base Q&A solution."
+msgstr "本教程旨在帮助您利用 ``Qwen2.5-7B-Instruct`` 与 ``langchain`` ，基于本地知识库构建问答应用。目标是建立一个知识库问答解决方案。"
 
-msgid ""
-"This guide helps you build a question-answering application based on a "
-"local knowledge base using ``Qwen2-7B-Instruct`` with ``langchain``. The "
-"goal is to establish a knowledge base Q&A solution."
-msgstr ""
-"本教程旨在帮助您利用``Qwen2-7B-"
-"Instruct``与``langchain``，基于本地知识库构建问答应用。目标是建立一个知识库问答解决方案。"
-
-#: ../../source/framework/Langchain.rst:9 a63163c88fad47f88956581662fa3345
+#: ../../source/framework/Langchain.rst:9 8f67396bc10d42909963a75537a9907f
 msgid "Basic Usage"
 msgstr "基础用法"
 
-#: ../../source/framework/Langchain.rst:11 3c3cb0bb8f9844b5a7256e72d2b417a1
+#: ../../source/framework/Langchain.rst:11 b93bd8165fbe4340970f3942884a91dd
+msgid "The implementation process of this project includes loading files -> reading text -> segmenting text -> vectorizing text -> vectorizing questions -> matching the top k most similar text vectors with the question vectors -> incorporating the matched text as context along with the question into the prompt -> submitting to the Qwen2.5-7B-Instruct to generate an answer. Below is an example:"
+msgstr "您可以仅使用您的文档配合``langchain``来构建一个问答应用。该项目的实现流程包括加载文件 -> 阅读文本 -> 文本分段 -> 文本向量化 -> 问题向量化 -> 将最相似的前k个文本向量与问题向量匹配 -> 将匹配的文本作为上下文连同问题一起纳入提示 -> 提交给Qwen2.5-7B-Instruct生成答案。以下是一个示例："
 
-msgid ""
-"The implementation process of this project includes loading files -> "
-"reading text -> segmenting text -> vectorizing text -> vectorizing "
-"questions -> matching the top k most similar text vectors with the "
-"question vectors -> incorporating the matched text as context along with "
-"the question into the prompt -> submitting to the Qwen2-7B-Instruct to "
-"generate an answer. Below is an example:"
-msgstr ""
-"您可以仅使用您的文档配合``langchain``来构建一个问答应用。该项目的实现流程包括加载文件 -> 阅读文本 -> 文本分段 -> "
-"文本向量化 -> 问题向量化 -> 将最相似的前k个文本向量与问题向量匹配 -> 将匹配的文本作为上下文连同问题一起纳入提示 -> "
-"提交给Qwen2-7B-Instruct生成答案。以下是一个示例："
+#: ../../source/framework/Langchain.rst:95 db8fe123a81d481c91f22710ead3993a
+msgid "After loading the Qwen2.5-7B-Instruct model, you should specify the txt file for retrieval."
+msgstr "加载Qwen2.5-7B-Instruct模型后，您可以指定需要用于知识库问答的txt文件。"
 
-#: ../../source/framework/Langchain.rst:94 4f7afe887b9f48c1990b926ebfb8220c
-
-msgid ""
-"After loading the Qwen2-7B-Instruct model, you should specify the txt "
-"file for retrieval."
-msgstr "加载Qwen2-7B-Instruct模型后，您可以指定需要用于知识库问答的txt文件。"
-
-#: ../../source/framework/Langchain.rst:270 08a03d20189741bd93b8b7151449c9c9
+#: ../../source/framework/Langchain.rst:271 21d3a4f627cd4eeab72f8792c1042d38
 msgid "Next Step"
 msgstr "下一步"
 
-#: ../../source/framework/Langchain.rst:272 4a4bc8f0f569494cb22dca56cbbf3c9d
-
-msgid ""
-"Now you can chat with Qwen2 use your own document. Continue to read the "
-"documentation and try to figure out more advanced usages of model "
-"retrieval!"
-msgstr "现在，您可以在您自己的文档上与Qwen2进行交流。继续阅读文档，尝试探索模型检索的更多高级用法！"
-
-#~ msgid "Langchain"
-#~ msgstr "Langchain"
-
-#~ msgid "Using Langchain to Retrieval"
-#~ msgstr ""
+#: ../../source/framework/Langchain.rst:273 e8732280a7ab4288b0667d261bc4efff
+msgid "Now you can chat with Qwen2.5 use your own document. Continue to read the documentation and try to figure out more advanced usages of model retrieval!"
+msgstr "现在，您可以在您自己的文档上与Qwen2.5进行交流。继续阅读文档，尝试探索模型检索的更多高级用法！"
 
