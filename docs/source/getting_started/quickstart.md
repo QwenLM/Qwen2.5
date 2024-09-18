@@ -1,24 +1,24 @@
 # Quickstart
 
-This guide helps you quickly start using Qwen2. 
+This guide helps you quickly start using Qwen2.5. 
 We provide examples of [Hugging Face Transformers](https://github.com/huggingface/transformers) as well as [ModelScope](https://github.com/modelscope/modelscope), and [vLLM](https://github.com/vllm-project/vllm) for deployment.
 
-You can find Qwen2 models in the [Qwen2 collection](https://huggingface.co/collections/Qwen/qwen2-6659360b33528ced941e557f).
+You can find Qwen2.5 models in the [Qwen2.5 collection](https://huggingface.co/collections/Qwen/qwen25-66e81a666513e518adb90d9e) at Hugging Face Hub.
 
 ## Hugging Face Transformers & ModelScope
 
-To get a quick start with Qwen2, we advise you to try with the inference with `transformers` first.
-Make sure that you have installed `transformers>=4.40.0`.
-We advise you to use Python 3.8 or higher, and PyTorch 2.2 or higher.
+To get a quick start with Qwen2.5, we advise you to try with the inference with `transformers` first.
+Make sure that you have installed `transformers>=4.37.0`.
+We advise you to use Python 3.10 or higher, and PyTorch 2.3 or higher.
 
-:::{dropdown} Install ``transformers``
-* Install with ``pip``:
+:::{dropdown} Install `transformers`
+* Install with `pip`:
 
     ```bash
     pip install transformers -U
     ```
 
-* Install with ``conda``:
+* Install with `conda`:
 
     ```bash
     conda install conda-forge::transformers
@@ -31,24 +31,23 @@ We advise you to use Python 3.8 or higher, and PyTorch 2.2 or higher.
     ```
 :::
 
-The following is a very simple code snippet showing how to run Qwen2-Instruct, with an example of Qwen2-7B-Instruct:
+The following is a very simple code snippet showing how to run Qwen2.5-7B-Instruct:
 
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-# Now you do not need to add "trust_remote_code=True"
-model = AutoModelForCausalLM.from_pretrained(
-    "Qwen/Qwen2-7B-Instruct",
-    torch_dtype="auto",
-    device_map="auto",
-)
-tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2-7B-Instruct")
+model_name = "Qwen/Qwen2.5-7B-Instruct"
 
-# Instead of using model.chat(), we directly use model.generate()
-# But you need to use tokenizer.apply_chat_template() to format your inputs as shown below
+model = AutoModelForCausalLM.from_pretrained(
+    model_name,
+    torch_dtype="auto",
+    device_map="auto"
+)
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+
 prompt = "Give me a short introduction to large language model."
 messages = [
-    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."},
     {"role": "user", "content": prompt},
 ]
 text = tokenizer.apply_chat_template(
@@ -58,8 +57,6 @@ text = tokenizer.apply_chat_template(
 )
 model_inputs = tokenizer([text], return_tensors="pt").to(model.device)
 
-# Directly use generate() and tokenizer.decode() to get the output.
-# Use `max_new_tokens` to control the maximum output length.
 generated_ids = model.generate(
     **model_inputs,
     max_new_tokens=512,
@@ -71,9 +68,7 @@ generated_ids = [
 response = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0]
 ```
 
-Previously, we use `model.chat()` (see `modeling_qwen.py` in previous Qwen models for more information). 
-Now, we follow the practice of `transformers` and directly use `model.generate()` with `apply_chat_template()` in tokenizer.
-
+As you can see, it's just standard usage for casual LMs in `transformers`!
 
 ### Streaming Generation
 
@@ -111,7 +106,8 @@ For more information, please refer to [the documentation of `modelscope`](https:
 
 ## vLLM for Deployment
 
-To deploy Qwen2, we advise you to use vLLM. vLLM is a fast and easy-to-use framework for LLM inference and serving. 
+To deploy Qwen2.5, we advise you to use vLLM. 
+vLLM is a fast and easy-to-use framework for LLM inference and serving. 
 In the following, we demonstrate how to build a OpenAI-API compatible API service with vLLM.
 
 First, make sure you have installed `vllm>=0.4.0`:
@@ -121,25 +117,25 @@ pip install vllm
 ```
 
 Run the following code to build up a vLLM service. 
-Here we take Qwen2-7B-Instruct as an example:
+Here we take Qwen2.5-7B-Instruct as an example:
 
 ```bash
-python -m vllm.entrypoints.openai.api_server --model Qwen/Qwen2-7B-Instruct
+python -m vllm.entrypoints.openai.api_server --model Qwen/Qwen2.5-7B-Instruct
 ```
 
 with `vllm>=0.5.3`, you can also use
 
 ```bash
-vllm serve Qwen/Qwen2-7B-Instruct
+vllm serve Qwen/Qwen2.5-7B-Instruct
 ```
 
 Then, you can use the [create chat interface](https://platform.openai.com/docs/api-reference/chat/completions/create) to communicate with Qwen:
 
 ```bash
 curl http://localhost:8000/v1/chat/completions -H "Content-Type: application/json" -d '{
-  "model": "Qwen/Qwen2-7B-Instruct",
+  "model": "Qwen/Qwen2.5-7B-Instruct",
   "messages": [
-    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."},
     {"role": "user", "content": "Tell me something about large language models."}
   ],
   "temperature": 0.7,
@@ -163,9 +159,9 @@ client = OpenAI(
 )
 
 chat_response = client.chat.completions.create(
-    model="Qwen/Qwen2-7B-Instruct",
+    model="Qwen/Qwen2.5-7B-Instruct",
     messages=[
-        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."},
         {"role": "user", "content": "Tell me something about large language models."},
     ],
     temperature=0.7,
@@ -182,6 +178,6 @@ For more information, please refer to [the documentation of `vllm`](https://docs
 
 ## Next Step
 
-Now, you can have fun with Qwen2 models. 
+Now, you can have fun with Qwen2.5 models. 
 Would love to know more about its usages? 
 Feel free to check other documents in this documentation.

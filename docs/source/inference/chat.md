@@ -1,7 +1,7 @@
-# Using Transformers to Chat
+# Hugging Face transformers
 
-The most significant but also the simplest usage of Qwen2 is to chat with it using the `transformers` library. 
-In this document, we show how to chat with `Qwen2-7B-Instruct`, in either streaming mode or not.
+The most significant but also the simplest usage of Qwen2.5 is to chat with it using the `transformers` library. 
+In this document, we show how to chat with `Qwen2.5-7B-Instruct`, in either streaming mode or not.
 
 
 Select the interface you would like to use:
@@ -30,27 +30,26 @@ Using `pipeline`.
 :::{tab-item} Manual
 :sync: manual
 
-You can just write several lines of code with `transformers` to chat with Qwen2-Instruct. 
+You can just write several lines of code with `transformers` to chat with Qwen2.5-Instruct. 
 Essentially, we build the tokenizer and the model with `from_pretrained` method, and we use `generate` method to perform chatting with the help of chat template provided by the tokenizer.
-Below is an example of how to chat with Qwen2-7B-Instruct:
+Below is an example of how to chat with Qwen2.5-7B-Instruct:
 
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-# Now you do not need to add "trust_remote_code=True"
+model_name = "Qwen/Qwen2.5-7B-Instruct"
+
 model = AutoModelForCausalLM.from_pretrained(
-    "Qwen/Qwen2-7B-Instruct",
+    model_name,
     torch_dtype="auto",
     device_map="auto"
 )
-tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2-7B-Instruct")
+tokenizer = AutoTokenizer.from_pretrained(model_name)
 
-# Instead of using model.chat(), we directly use model.generate()
-# But you need to use tokenizer.apply_chat_template() to format your inputs as shown below
 prompt = "Give me a short introduction to large language model."
 messages = [
-    {"role": "system", "content": "You are a helpful assistant."},
-    {"role": "user", "content": prompt}
+    {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."},
+    {"role": "user", "content": prompt},
 ]
 text = tokenizer.apply_chat_template(
     messages,
@@ -59,8 +58,6 @@ text = tokenizer.apply_chat_template(
 )
 model_inputs = tokenizer([text], return_tensors="pt").to(model.device)
 
-# Directly use generate() and tokenizer.decode() to get the output.
-# Use `max_new_tokens` to control the maximum output length.
 generated_ids = model.generate(
     **model_inputs,
     max_new_tokens=512,
@@ -109,7 +106,7 @@ Notably, we apply ChatML template for chat models following our previous practic
 The `max_new_tokens` argument is used to set the maximum length of the response. 
 The `tokenizer.batch_decode()` function is used to decode the response. 
 In terms of the input, the above `messages` is an example to show how to format your dialog history and system prompt. 
-By default, if you do not specify system prompt, we directly use `You are a helpful assistant.`.
+By default, if you do not specify system prompt, we directly use `You are Qwen, created by Alibaba Cloud. You are a helpful assistant.`.
 :::
 
 :::{tab-item} Pipeline
@@ -121,7 +118,7 @@ You can chat with the model in just 4 lines of code:
 ```python
 from transformers import pipeline
 
-pipe = pipeline("text-generation", "Qwen/Qwen2-7B-Instruct", torch_dtype="auto", device_map="auto")
+pipe = pipeline("text-generation", "Qwen/Qwen2.5-7B-Instruct", torch_dtype="auto", device_map="auto")
 
 # the default system message will be used
 messages = [{"role": "user", "content": "Give me a short introduction to large language model."}]
@@ -162,12 +159,14 @@ For basic usage, the following is an example:
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
+model_name = "Qwen/Qwen2.5-7B-Instruct"
+
 model = AutoModelForCausalLM.from_pretrained(
-    "Qwen/Qwen2-7B-Instruct",
+    model_name,
     torch_dtype="auto",
     device_map="auto",
 )
-tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2-7B-Instruct", padding_side="left")
+tokenizer = AutoTokenizer.from_pretrained(model_name, padding_side="left")
 
 message_batch = [
     [{"role": "user", "content": "Give me a detailed introduction to large language model."}],
@@ -197,7 +196,7 @@ With pipeline, it is simpler:
 ```python
 from transformers import pipeline
 
-pipe = pipeline("text-generation", "Qwen/Qwen2-7B-Instruct", torch_dtype="auto", device_map="auto")
+pipe = pipeline("text-generation", "Qwen/Qwen2.5-7B-Instruct", torch_dtype="auto", device_map="auto")
 pipe.tokenizer.padding_side="left"
 
 message_batch = [
@@ -246,7 +245,7 @@ from transformers import pipeline, TextStreamer
 
 pipe = pipeline(
     "text-generation", 
-    "Qwen/Qwen2-7B-Instruct", 
+    "Qwen/Qwen2.5-7B-Instruct", 
     torch_dtype="auto", 
     device_map="auto", 
 )
@@ -296,7 +295,7 @@ from transformers import pipeline, TextIteratorStreamer
 
 pipe = pipeline(
     "text-generation", 
-    "Qwen/Qwen2-7B-Instruct", 
+    "Qwen/Qwen2.5-7B-Instruct", 
     torch_dtype="auto", 
     device_map="auto", 
 )
@@ -343,7 +342,7 @@ After a successful installation, you can load the model as shown below:
 
 ```python
 model = AutoModelForCausalLM.from_pretrained(
-   "Qwen/Qwen2-7B-Instruct",
+   "Qwen/Qwen2.5-7B-Instruct",
    torch_dtype="auto",
    device_map="auto",
    attn_implementation="flash_attention_2",
@@ -356,7 +355,7 @@ model = AutoModelForCausalLM.from_pretrained(
 ```python
 pipe = pipeline(
     "text-generation", 
-    "Qwen/Qwen2-7B-Instruct", 
+    "Qwen/Qwen2.5-7B-Instruct", 
     torch_dtype="auto", 
     device_map="auto", 
     model_kwargs=dict(attn_implementation="flash_attention_2"),
@@ -389,7 +388,7 @@ Of course, you will need more memory in inference to store the activations.
 
 For `transformers`, `torch_dtype="auto"` is recommended and the model will be loaded in `bfloat16` automatically.
 Otherwise, the model will be loaded in `float32` and it will need double memory.
-You can also pass `torch.bfloat16` as `torch_dtype` explicitly.
+You can also pass `torch.bfloat16` or `torch.float16` as `torch_dtype` explicitly.
 :::
 
 :::{dropdown} Multi-GPU inference is slow
@@ -404,23 +403,6 @@ However, that will require concurrency management and load balancing, which is o
 Even if all things are implemented, you can make use of concurrency to improve the total throughput but the latency for each request is not great.
 
 For Multi-GPU inference, we recommend using specialized inference framework, such as vLLM and TGI, which support tensor parallelism.
-:::
-
-:::{dropdown} The inference of Qwen2 MoE models is slow
-
-All MoE models in `transformers` compute the results of the expert FFNs in loops, and it is less efficient for GPUs by nature.
-The performance is even worse for model with fine-grained experts, where the model has a lot of experts and each expert is relatively small, which is the case for Qwen2 MoE.
-To optimize that, a fused kernel implementation (as in `vllm`) or methods like expert parallel (as in `mcore`) is needed.
-For now, we recommend using `vllm` for Qwen2 MoE.
-:::
-
-
-:::{dropdown} ``RuntimeError: probability tensor contains either `inf`, `nan` or element < 0`` or generating repeating `!!!!...`
-
-We don't recommend using `float16` for Qwen2 models or numerical instability may occur, especially for cards without support of fp16 matmul with fp32 accumulate.
-If you have to use `float16`, consider using [this fork](https://github.com/jklj077/transformers/tree/qwen2-patch) and force `attn_implementation="eager"`.
-
-If it works with single GPU but not multiple GPUs, especially if there are PCI-E switches in your system, please also refer to the next issue.
 :::
 
 :::{dropdown} `RuntimeError: CUDA error: device-side assert triggered`, `Assertion -sizes[i] <= index && index < sizes[i] && "index out of bounds" failed.`
@@ -446,5 +428,5 @@ If it works with single GPU but not multiple GPUs, especially if there are PCI-E
 
 ## Next Step
 
-Now you can chat with Qwen2 in either streaming mode or not. 
+Now you can chat with Qwen2.5 in either streaming mode or not. 
 Continue to read the documentation and try to figure out more advanced usages of model inference!

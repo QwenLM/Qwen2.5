@@ -67,3 +67,21 @@ details.sd-dropdown summary.sd-summary-title span.sd-summary-state-marker {
 details.sd-dropdown div.sd-summary-content {
     padding-left: 2.5em;
 }
+
+pre.terminal {
+    font-size: 12px !important;
+    line-height: 16px;
+    background-color: black;
+    color: white;
+    padding: .5em;
+    text-wrap: wrap;
+    word-break: break-all;
+}
+
+pre.terminal span.system {
+    color: greenyellow
+}
+
+pre.terminal span.user {
+    color: yellowgreen
+}

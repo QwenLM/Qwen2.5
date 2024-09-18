@@ -12,14 +12,20 @@ The spectrum for the open-weight models spans over
 - Qwen: the language models
     - [Qwen](https://github.com/QwenLM/Qwen): 1.8B, 7B, 14B, and 72B models
     - [Qwen1.5](https://github.com/QwenLM/Qwen1.5/tree/v1.5): 0.5B, 1.8B, 4B, 14BA2.7B, 7B, 14B, 32B, 72B, and 110B models
-    - [Qwen2](https://github.com/QwenLM/Qwen2): 0.5B, 1.5B, 7B, 57A14B, and 72B models 
+    - [Qwen2](https://github.com/QwenLM/Qwen2/tree/v2.0): 0.5B, 1.5B, 7B, 57A14B, and 72B models 
+    - [Qwen2.5](https://github.com/QwenLM/Qwen2.5/): 0.5B, 1.5B, 3B, 7B, 14B, 32B, and 72B models
 - Qwen-VL: the vision-language models
     - [Qwen-VL](https://github.com/QwenLM/Qwen-VL): 7B-based models
+    - [Qwen2-VL](https://github.com/QwenLM/Qwen2-VL): 2B, 7B, and 72B-based models
 - Qwen-Audio: the audio-language models
-    - [Qwen-Audio](https://github.com/QwenLM/Qwen-Audio): 7B-based models
+    - [Qwen-Audio](https://github.com/QwenLM/Qwen-Audio): 7B-based model
     - [Qwen2-Audio](https://github.com/QwenLM/Qwen2-Audio): 7B-based models
-- CodeQwen: the language models for coding
+- CodeQwen/Qwen-Coder: the language models for coding
     - [CodeQwen1.5](https://github.com/QwenLM/CodeQwen1.5): 7B models
+    - [Qwen2.5-Coder](https://github.com/QwenLM/Qwen2-Coder): 7B models
+- Qwen-Math: the language models for mathematics
+    - [Qwen2-Math](https://github.com/QwenLM/Qwen2-Math): 1.5B, 7B, and 72B models
+    - [Qwen2.5-Math](https://github.com/QwenLM/Qwen2.5-Math): 1.5B, 7B, and 72B models
 
 **In this document, our focus is Qwen, the language models.**
 
@@ -60,7 +66,7 @@ Base language models are foundational models trained on extensive corpora of tex
 Their main goal is to capture the statistical patterns and structures of language, enabling them to generate coherent and contextually relevant text. 
 These models are versatile and can be adapted to various natural language processing tasks through fine-tuning. 
 While adept at producing fluent text, they may require in-context learning or additional training to follow specific instructions or perform complex reasoning tasks effectively.
-For Qwen models, the base models are those without "-Instruct" indicators, such as Qwen2-7B and Qwen2-72B.
+For Qwen models, the base models are those without "-Instruct" indicators, such as Qwen2.5-7B and Qwen2.5-72B.
 
 **Takeaway: Use base models for in-context learning, downstream fine-tuning, etc.**
 
@@ -70,7 +76,7 @@ Instruction-tuned language models are specialized models designed to understand 
 These models are fine-tuned to interpret user commands accurately and can perform tasks such as summarization, translation, and question answering with improved accuracy and consistency. 
 Unlike base models, which are trained on large corpora of text, instruction-tuned models undergo additional training using datasets that contain examples of instructions and their desired outcomes, often in multiple turns.
 This kind of training makes them ideal for applications requiring targeted functionalities while maintaining the ability to generate fluent and coherent text.
-For Qwen models, the instruction-tuned models are those with the "-Instruct" suffix, such as Qwen2-7B-Instruct and Qwen2-72B-Instruct. [^instruct-chat]
+For Qwen models, the instruction-tuned models are those with the "-Instruct" suffix, such as Qwen2.5-7B-Instruct and Qwen2.5-72B-Instruct. [^instruct-chat]
 
 **Takeaway: Use instruction-tuned models for conducting tasks in conversations, downstream fine-tuning, etc.**
 
@@ -134,7 +140,7 @@ Qwen also supports the meta message that instruct the model to perform specific 
 The following is a full example:
 ```text
 <|im_start|>system
-You are a helpful assistant.<|im_end|>
+You are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>
 <|im_start|>user
 hello<|im_end|>
 <|im_start|>assistant
@@ -148,11 +154,17 @@ Now imagine that this friend is actually a computer program, called a "large lan
 Just like your friend might sometimes make mistakes or say things in a funny way, the large language model isn't perfect either. But it's still really impressive, because it can understand and generate human language in a way that was once thought impossible for machines!<|im_end|><|endoftext|>
 ```
 
-There are 3 control tokens in the vocabulary of Qwen, making the vocabulary size totaling 151,646.
+Starting from Qwen2.5, the Qwen model family including multimodal and specialized models will use a unified vocabulary, which contains control tokens from all subfamilies.
+There are 22 control tokens in the vocabulary of Qwen2.5, making the vocabulary size totaling 151,665:
+- 1 general: `<|endoftext|>`
+- 2 for chat: `<|im_start|>` and `<|im_end|>`
+- 2 for tool use: `<tool_call>` and `</tool_call>`
+- 11 for vision
+- 6 for coding
 
-**Takeaway: Qwen uses ChatML with 3 control tokens for chat template.**
+**Takeaway: Qwen uses ChatML with control tokens for chat template.**
 
-[^chatml]: For historical reference only, ChatML is first described by the OpenAI Python SDK. The last available version is [this](https://github.com/openai/openai-python/blob/v0.28.1/chatml.md). Please also be aware that that document lists use cases intended for OpenAI models. For Qwen2 models, please only use as in our guide.
+[^chatml]: For historical reference only, ChatML is first described by the OpenAI Python SDK. The last available version is [this](https://github.com/openai/openai-python/blob/v0.28.1/chatml.md). Please also be aware that that document lists use cases intended for OpenAI models. For Qwen2.5 models, please only use as in our guide.
 
 ## Length Limit
 
@@ -160,12 +172,12 @@ As Qwen models are causal language models, in theory there is only one length li
 However, since there is often packing in training and each sequence may contain multiple individual pieces of texts. 
 **How long the model can generate or complete ultimately depends on the use case and in that case how long each document (for pre-training) or each turn (for post-training) is in training.**
 
-For Qwen2, the packed sequence length in training is 32,768 tokens.[^yarn]
+For Qwen2.5, the packed sequence length in training is 32,768 tokens.[^yarn]
 The maximum document length in pre-training is this length.
 The maximum message length for user and assistant is different in post-training.
-In general, the assistant message could be up to 2048 tokens and for tasks with less variation like tables to HTML, it could be 6-8K tokens.
+In general, the assistant message could be up to 8192 tokens.
 
-[^yarn]: The sequence length can be extended to 131,072 tokens for Qwen2-7B and Qwen2-72B models with YaRN.
+[^yarn]: The sequence length can be extended to 131,072 tokens for Qwen2.5-7B, Qwen2.5-14B, Qwen2.5-32B, and Qwen2.5-72B models with YaRN.
          Please refer to the model card on how to enable YaRN in vLLM.
 
-**Takeaway: Qwen2 models can process texts of 32K or 128K tokens but not all of them can be output.**
+**Takeaway: Qwen2.5 models can process texts of 32K or 128K tokens and up to 8K tokens can be assistant output.**

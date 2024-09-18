@@ -1,8 +1,8 @@
 LlamaIndex
 ==========
 
-To connect Qwen2 with external data, such as documents, web pages, etc., we offer a tutorial on `LlamaIndex <https://www.llamaindex.ai/>`__.
-This guide helps you quickly implement retrieval-augmented generation (RAG) using LlamaIndex with Qwen2.
+To connect Qwen2.5 with external data, such as documents, web pages, etc., we offer a tutorial on `LlamaIndex <https://www.llamaindex.ai/>`__.
+This guide helps you quickly implement retrieval-augmented generation (RAG) using LlamaIndex with Qwen2.5.
 
 Preparation
 --------------------------------------
@@ -22,10 +22,10 @@ Set Parameters
 --------------------------------------
 
 Now we can set up LLM, embedding model, and the related configurations.  
-Qwen2-Instruct supports conversations in multiple languages, including English and Chinese.
+Qwen2.5-Instruct supports conversations in multiple languages, including English and Chinese.
 You can use the ``bge-base-en-v1.5`` model to retrieve from English documents, and you can download the ``bge-base-zh-v1.5`` model to retrieve from Chinese documents. 
 You can also choose ``bge-large`` or ``bge-small`` as the embedding model or modify the context window size or text chunk size depending on your computing resources.
-Qwen2 model families support a maximum of 32K context window size (up to 128K for Qwen2-7B-Instruct and Qwen2-72B-Instrut, requiring extra configuration)
+Qwen2.5 model families support a maximum of 32K context window size (up to 128K for 7B, 14B, 32B, and 72B, requiring extra configuration)
 
 .. code:: python
   
@@ -58,10 +58,10 @@ Qwen2 model families support a maximum of 32K context window size (up to 128K fo
     
         return prompt
     
-    # Set Qwen2 as the language model and set generation config
+    # Set Qwen2.5 as the language model and set generation config
     Settings.llm = HuggingFaceLLM(
-        model_name="Qwen/Qwen2-7B-Instruct",
-        tokenizer_name="Qwen/Qwen2-7B-Instruct",
+        model_name="Qwen/Qwen2.5-7B-Instruct",
+        tokenizer_name="Qwen/Qwen2.5-7B-Instruct",
         context_window=30000,
         max_new_tokens=2000,
         generate_kwargs={"temperature": 0.7, "top_k": 50, "top_p": 0.95},
@@ -128,7 +128,7 @@ To save and load the index, you can use the following code snippet.
 RAG
 -------------------
 
-Now you can perform queries, and Qwen2 will answer based on the content of the indexed documents.                               
+Now you can perform queries, and Qwen2.5 will answer based on the content of the indexed documents.                               
                                
 .. code:: python
 

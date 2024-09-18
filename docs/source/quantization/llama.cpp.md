@@ -18,16 +18,16 @@ If you don't, check our guide [here](../run_locally/llama.cpp.html#getting-the-p
 
 ## Getting the GGUF
 
-Now, suppose you would like to quantize `Qwen2-7B-Instruct`. 
+Now, suppose you would like to quantize `Qwen2.5-7B-Instruct`. 
 You need to first make a GGUF file as shown below:
 ```bash
-python convert-hf-to-gguf.py Qwen/Qwen2-7B-Instruct --outfile qwen2-7b-instruct-f16.gguf
+python convert-hf-to-gguf.py Qwen/Qwen2.5-7B-Instruct --outfile qwen2.5-7b-instruct-f16.gguf
 ```
 
 Sometimes, it may be better to use fp32 as the start point for quantization.
 In that case, use
 ```bash
-python convert-hf-to-gguf.py Qwen/Qwen2-7B-Instruct --outtype f32 --outfile qwen2-7b-instruct-f32.gguf
+python convert-hf-to-gguf.py Qwen/Qwen2.5-7B-Instruct --outtype f32 --outfile qwen2.5-7b-instruct-f32.gguf
 ```
 
 ## Quantizing the GGUF without Calibration
@@ -35,7 +35,7 @@ python convert-hf-to-gguf.py Qwen/Qwen2-7B-Instruct --outtype f32 --outfile qwen
 For the simplest way, you can directly quantize the model to lower-bits based on your requirements. 
 An example of quantizing the model to 8 bits is shown below:
 ```bash
-./llama-quantize qwen2-7b-instruct-f16.gguf qwen2-7b-instruct-q8_0.gguf Q8_0
+./llama-quantize Qwen2.5-7b-instruct-f16.gguf Qwen2.5-7b-instruct-q8_0.gguf Q8_0
 ```
 
 `Q8_0` is a code for a quantization preset.
@@ -74,12 +74,12 @@ Instead, it adjusts weights based on a dataset so that they are "easier" to quan
 
 Then, when you run `convert-hf-to-gguf.py`, remember to replace the model path with the path to the new model:
 ```bash
-python convert-hf-to-gguf.py <quant_path> --outfile qwen2-7b-instruct-f16-awq.gguf
+python convert-hf-to-gguf.py <quant_path> --outfile Qwen2.5-7b-instruct-f16-awq.gguf
 ```
 
 Finally, you can quantize the model as in the last example:
 ```bash
-./llama-quantize qwen2-7b-instruct-f16-awq.gguf qwen2-7b-instruct-q8_0.gguf Q8_0
+./llama-quantize Qwen2.5-7b-instruct-f16-awq.gguf Qwen2.5-7b-instruct-q8_0.gguf Q8_0
 ```
 
 In this way, it should be possible to achieve similar quality with lower bit-per-weight.
@@ -94,15 +94,15 @@ Another possible solution is to use the "important matrix"[^imatrix], following 
 
 First, you need to compute the importance matrix data of the weights of a model (`-m`) using a calibration dataset (`-f`):
 ```bash
-./llama-imatrix -m qwen2-7b-instruct-f16.gguf -f calibration-text.txt --chunk 512 -o qwen2-7b-instruct-imatrix.dat -ngl 80
+./llama-imatrix -m Qwen2.5-7b-instruct-f16.gguf -f calibration-text.txt --chunk 512 -o Qwen2.5-7b-instruct-imatrix.dat -ngl 80
 ```
 
 The text is cut in chunks of length `--chunk` for computation.
 Preferably, the text should be representative of the target domain.
-The final results will be saved in a file named `qwen2-7b-instruct-imatrix.dat` (`-o`), which can then be used:
+The final results will be saved in a file named `Qwen2.5-7b-instruct-imatrix.dat` (`-o`), which can then be used:
 ```bash
-./llama-quantize --imatrix qwen2-7b-instruct-imatrix.data \
-    qwen2-7b-instruct-f16-awq.gguf qwen2-7b-instruct-q4_k_m.gguf Q4_K_M
+./llama-quantize --imatrix Qwen2.5-7b-instruct-imatrix.data \
+    Qwen2.5-7b-instruct-f16-awq.gguf Qwen2.5-7b-instruct-q4_k_m.gguf Q4_K_M
 ```
 
 For lower-bit quantization mixtures for 1-bit or 2-bit, if you do not provide `--imatrix`, a helpful warning will be printed by `llama-quantize`.
@@ -123,7 +123,7 @@ unzip wikitext-2-raw-v1.zip
 
 Then you can run the test with the following command:
 ```bash
-./llama-perplexity -m qwen2-7b-instruct-q8_0.gguf -f wiki.test.raw -ngl 80
+./llama-perplexity -m Qwen2.5-7b-instruct-q8_0.gguf -f wiki.test.raw -ngl 80
 ```
 Wait for some time and you will get the perplexity of the model.
 There are some numbers of different kinds of quantization mixture [here](https://github.com/ggerganov/llama.cpp/blob/master/examples/perplexity/README.md).

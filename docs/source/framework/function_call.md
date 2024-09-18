@@ -15,10 +15,10 @@ It is particularly important for AI applications:
 This guide will not delve into those discussions or which role an LLM should play in an application and the related best practice.
 Those views are reflected in the design of AI application frameworks: from LangChain to LlamaIndex to QwenAgent.
 
-Instead, we will talk about how Qwen2 can be used to support function calling and how it can be used to achieve your goals, from the inference usage for developing application to the inner workings for hardcore customizations. 
+Instead, we will talk about how Qwen2.5 can be used to support function calling and how it can be used to achieve your goals, from the inference usage for developing application to the inner workings for hardcore customizations. 
 In this guide, 
-- We will first demonstrate how to use function calling with Qwen2.
-- Then, we will introduce the technical details on functional calling with Qwen2, which are mainly about the templates.
+- We will first demonstrate how to use function calling with Qwen2.5.
+- Then, we will introduce the technical details on functional calling with Qwen2.5, which are mainly about the templates.
 
 Before starting, there is one thing we have not yet introduced, that is ...
 
@@ -46,7 +46,7 @@ The procedure is mainly as follows:
 
 They are many ways for LLMs to understand and follow this protocol.
 As always, the key is prompt engineering or an internalized template known by the model.
-Qwen2 were pre-trained with two types of templates that could support function calling, one in-house designed and one based on ReAct Prompting, so that users can directly make use of this procedure.
+Qwen2.5 were pre-trained with various types of templates that could support function calling, so that users can directly make use of this procedure.
 
 
 ## Inference with Function Calling
@@ -60,16 +60,15 @@ However, frameworks with function calling support can help you with all that lab
 
 In the following, we will introduce the usage (via dedicated function calling chat template) with
 - **Qwen-Agent**,
-- **Hugging Face transformers**, and
-- **Ollama**.
+- **Hugging Face transformers**,
+- **Ollama**, and
+- **vLLm**.
 
-If you are familiar with the usage of OpenAI API, you could also directly use the OpenAI-compatible API services for Qwen2.
-However, not all of them support function calling for Qwen2.
-Currently, supported solutions include the self-hosted service by [Ollama](https://github.com/ollama/ollama/blob/main/docs/openai.md) (with a proper TEMPLATE in the Model File) and the cloud service of [ModelStudio \[zh\]](https://help.aliyun.com/zh/model-studio/developer-reference/compatibility-of-openai-with-dashscope#97e2b45391x08).
-Note that although vLLM has supported function calling in its OpenAI-compatible API, it cannot be used with Qwen2 due to the lack of required tool call parsers.
+If you are familiar with the usage of OpenAI API, you could also directly use the OpenAI-compatible API services for Qwen2.5.
+However, not all of them support function calling for Qwen2.5.
+Currently, supported solutions include the self-hosted service by [Ollama](https://github.com/ollama/ollama/blob/main/docs/openai.md) or [vLLM](https://docs.vllm.ai/en/stable/serving/openai_compatible_server.html#tool-calling-in-the-chat-completion-api) and the cloud service of [ModelStudio \[zh\]](https://help.aliyun.com/zh/model-studio/developer-reference/compatibility-of-openai-with-dashscope#97e2b45391x08).
 
-If you are familiar with application frameworks, e.g., LangChain, you can also use function calling abilities in Qwen2 via ReAct Prompting.
-
+If you are familiar with application frameworks, e.g., LangChain, you can also use function calling abilities in Qwen2.5 via ReAct Prompting.
 
 ### The Example Case
 
@@ -134,7 +133,10 @@ def get_function_by_name(name):
 def try_parse_tool_calls(content: str):
     """Try parse the tool calls."""
     tool_calls = []
-    for m in re.finditer(r"<\|tool_call_start\|>(.+)?<\|tool_call_end\|>", content):
+    offset = 0
+    for i, m in enumerate(re.finditer(r"<tool_call>(.+)?</tool_call>", content)):
+        if i == 0:
+            offset = m.start()
         try:
             func = json.loads(m.group(1))
             tool_calls.append({"type": "function", "function": func})
@@ -144,7 +146,11 @@ def try_parse_tool_calls(content: str):
             print(m)
             pass
     if tool_calls:
-        return {"role": "assistant", "tool_calls": tool_calls}
+        if offset > 0 and content[:offset].strip():
+            c = content[:offset]
+        else: 
+            c = ""
+        return {"role": "assistant", "content": c, "tool_calls": tool_calls}
     return {"role": "assistant", "content": re.sub(r"<\|im_end\|>$", "", content)}
 
 TOOLS = [
@@ -198,7 +204,7 @@ TOOLS = [
     },
 ]
 MESSAGES = [
-    {"role": "system", "content": "You are a helpful assistant.\n\nCurrent Date: 2024-08-31"},
+    {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.\n\nCurrent Date: 2024-08-31"},
     {"role": "user",  "content": "What's the temperature in San Francisco now? How about tomorrow?"},
 ]
 ```
@@ -296,7 +302,7 @@ You could append the date to user message in your application code.
 
 ```json
 [
-    {"role": "system", "content": "You are a helpful assistant.\n\nCurrent Date: 2024-08-31"},
+    {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.\n\nCurrent Date: 2024-08-31"},
     {"role": "user",  "content": "What's the temperature in San Francisco now? How about tomorrow?"}
 ]
 ```
@@ -306,11 +312,11 @@ You could append the date to user message in your application code.
 ### Qwen-Agent
 
 [Qwen-Agent](https://github.com/QwenLM/Qwen-Agent) is actually a Python Agent framework for developing AI applications.
-Although its intended use cases are higher-level than efficient inference, it does contain the **canonical implementation** of function calling for Qwen2.
-It provides the function calling ability for Qwen2 to an OpenAI-compatible API through templates that is transparent to users.
+Although its intended use cases are higher-level than efficient inference, it does contain the **canonical implementation** of function calling for Qwen2.5.
+It provides the function calling ability for Qwen2.5 to an OpenAI-compatible API through templates that is transparent to users.
 
 {#note-official-template}
-It's worth noting that since a lot of stuff can be done under the scene with application frameworks, currently the official function calling implementation for Qwen2 is very flexible and beyond simple templating, making it hard to adapt it other frameworks that use less capable templating engines.
+It's worth noting that since a lot of stuff can be done under the scene with application frameworks, currently the official function calling implementation for Qwen2.5 is very flexible and beyond simple templating, making it hard to adapt it other frameworks that use less capable templating engines.
 
 Before starting, let's make sure the latest library is installed:
 ```bash
@@ -330,7 +336,7 @@ Assuming there is an OpenAI-compatible API at `http://localhost:8000/v1`, Qwen-A
 from qwen_agent.llm import get_chat_model
 
 llm = get_chat_model({
-    "model": "Qwen/Qwen2-7B-Instruct",
+    "model": "Qwen/Qwen2.5-7B-Instruct",
     "model_server": "http://localhost:8000/v1",
     "api_key": "EMPTY",
 })
@@ -344,7 +350,7 @@ For model inputs, the common message structure for system, user, and assistant h
 ```python
 messages = MESSAGES[:]
 # [
-#     {"role": "system", "content": "You are a helpful assistant.\n\nCurrent Date: 2024-08-31"},
+#     {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.\n\nCurrent Date: 2024-08-31"},
 #     {"role": "user",  "content": "What's the temperature in San Francisco now? How about tomorrow?"},
 # ]
 ```
@@ -393,7 +399,7 @@ The details related to function calls are placed in the `function_call` field of
 - `name`: a string representing the function to call
 - `arguments`: a JSON-formatted string representing the arguments the function should be called with
 
-Note that Qwen2-7B-Instruct is quite capable:
+Note that Qwen2.5-7B-Instruct is quite capable:
 - It has followed the function instructions to add the state and the country to the location.
 - It has correctly induced the date of tomorrow and given in the format required by the function.
 
@@ -425,7 +431,7 @@ To get tool results:
 Now the messages are
 ```python
 [
-    {"role": "system", "content": "You are a helpful assistant.\n\nCurrent Date: 2024-08-31"},
+    {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.\n\nCurrent Date: 2024-08-31"},
     {"role": "user",  "content": "What's the temperature in San Francisco now? How about tomorrow?"},
     {"role": "assistant", "content": "", "function_call": {"name": "get_current_temperature", "arguments": '{"location": "San Francisco, CA, USA"}'}},
     {"role": "assistant", "content": "", "function_call": {"name": "get_temperature_date", "arguments": '{"location": "San Francisco, CA, USA", "date": "2024-09-01"}'}},
@@ -452,12 +458,6 @@ The final response should be like
 
 ### Hugging Face transformers
 
-:::{attention}
-We demonstrate the usage of function calling with Hugging Face transformers using an unofficial template for Qwen2.
-You may be expecting varied performance compared with Qwen-Agent.
-:::
-
-
 Since function calling is based on prompt engineering and templates, `transformers` supports it with its tokenizer utilities, in particular, the `tokenizer.apply_chat_template` method, which hides the sophistication of constructing the model inputs, using the Jinja templating engine.
 However, it means that users should handle the model output part on their own, which includes parsing the generated function call message.
 
@@ -474,50 +474,15 @@ For this guide, we are at version v4.44.2.
 
 #### Preparing
 
-As explained [before](#note-official-template), since the official Qwen2 function calling template can be complicated to implement with Jinja, here we will use a custom template:
-
-```python
-chat_template = r"""{%- if messages[0]["role"] == "system" %}
-    {%- set system_message = messages[0]["content"] %}
-    {%- set loop_messages = messages[1:] %}
-{%- else %}
-    {%- set system_message = "You are a helpful assistant." %}
-    {%- set loop_messages = messages %}
-{%- endif %}
-
-{{- "<|im_start|>system\n" + system_message|trim }}
-{%- if tools %}
-    {{- "\n\n# Tools\n\nYou may call one or more functions to assist with the user query.\n\nYou are provided with function signatures within <|tools_start|><|tools_end|> tags:\n<|tools_start|>" + tools|map(attribute="function")|list|tojson + "<|tools_end|>\n\nFor each function call, return a JSON object with function name and arguments within <|tool_call_start|><|tool_call_end|> tags:\n<|tool_call_start|>{\"name\": <function-name>, \"arguments\": <args-json-string>}<|tool_call_end|>" }}
-{%- endif %}
-{{- "<|im_end|>" }}
-
-{%- for message in loop_messages %}
-    {%- if message.role == "assistant" and message.tool_calls is defined %}
-        {{- "\n<|im_start|>assistant" }}
-        {%- for tool_call in message.tool_calls %}
-            {{- "\n<|tool_call_start|>" + tool_call.function|tojson + "<|tool_call_end|>" }}
-        {%- endfor %}
-        {{- "<|im_end|>" }}
-    {%- else %}
-        {{- "\n<|im_start|>" + message.role + "\n" + message.content + "<|im_end|>" }}
-    {%- endif %}
-    {%- if loop.last and add_generation_prompt and message.role != "assistant" %}
-        {{- "\n<|im_start|>assistant\n" }}
-    {%- endif %}
-{%- endfor %}"""
-```
-
-We need to load the model and the tokenizer and make sure the tokenizer use the tool use template:
+For Qwen2.5, the chat template in `tokenizer_config.json` has already included support for the Hermes-style tool use. 
+We simply need to load the model and the tokenizer:
 
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-model_name_or_path = "Qwen/Qwen2-7B-Instruct"
+model_name_or_path = "Qwen/Qwen2.5-7B-Instruct"
 
-tokenizer = AutoTokenizer.from_pretrained(
-    model_name_or_path, 
-    chat_template=chat_template,
-)
+tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
 model = AutoModelForCausalLM.from_pretrained(
     model_name_or_path,
     torch_dtype="auto",
@@ -560,9 +525,13 @@ output_text = tokenizer.batch_decode(outputs)[0][len(text):]
 ```
 
 The output texts should be like
-```
-<|tool_call_start|>{"name": "get_current_temperature", "arguments": "{\"location\": \"San Francisco, CA, USA\", \"unit\": \"celsius\"}"}<|tool_call_end|>
-<|tool_call_start|>{"name": "get_temperature_date", "arguments": "{\"location\": \"San Francisco, CA, USA\", \"date\": \"2024-09-01\", \"unit\": \"celsius\"}"}<|tool_call_end|><|im_end|>
+```text
+<tool_call>
+{"name": "get_current_temperature", "arguments": "{\"location\": \"San Francisco, CA, USA\", \"unit\": \"celsius\"}"}
+</tool_call>
+<tool_call>
+{"name": "get_temperature_date", "arguments": "{\"location\": \"San Francisco, CA, USA\", \"date\": \"2024-09-01\", \"unit\": \"celsius\"}"}
+</tool_call><|im_end|>
 ```
 
 Now we need to do two things: 
@@ -574,6 +543,34 @@ Let's use a simple function called `try_parse_tool_calls` to parse the tool call
 This function does not cover all possible scenarios and thus is prone to errors.
 But it should suffice for the purpose of this guide. 
 
+:::{note}
+The template in the `tokenizer_config.json` assumes that the generated content alongside tool calls is in the same message instead of separate assistant messages, e.g.,
+```json
+{
+  "role": "assistant", 
+  "content": "To obtain the current temperature, I should call the functions `get_current_temperate`.", 
+  "tool_calls": [
+    {"type": "function", "function": {"name": "get_current_temperature", "arguments": {"location": "San Francisco, CA, USA", "unit": "celsius"}}}
+  ]
+}
+```
+instead of 
+```json
+{
+  "role": "assistant", 
+  "content": "To obtain the current temperature, I should call the functions `get_current_temperate`.", 
+}
+{
+  "role": "assistant", 
+  "content": "", 
+  "tool_calls": [
+    {"type": "function", "function": {"name": "get_current_temperature", "arguments": {"location": "San Francisco, CA, USA", "unit": "celsius"}}}
+  ]
+}
+```
+
+This is implemented roughly in `try_parse_tool_calls` but keep that in mind if you are writing your own tool call parser.
+:::
 
 ```python
 messages.append(try_parse_tool_calls(output_text))
@@ -596,9 +593,9 @@ if tool_calls := messages[-1].get("tool_calls", None):
 The messages now should be like
 ```python
 [
-    {"role": "system", "content": "You are a helpful assistant.\n\nCurrent Date: 2024-08-31"},
+    {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.\n\nCurrent Date: 2024-08-31"},
     {"role": "user",  "content": "What's the temperature in San Francisco now? How about tomorrow?"},
-    {"role": "assistant", "tool_calls": [
+    {"role": "assistant", "content": "", "tool_calls": [
         {'type': 'function', 'function': {'name': 'get_current_temperature', 'arguments': {'location': 'San Francisco, CA, USA', 'unit': 'celsius'}}},
         {'type': 'function', 'function': {'name': 'get_temperature_date', 'arguments': {'location': 'San Francisco, CA, USA', 'date': '2024-09-01', 'unit': 'celsius'}}}
     ]},
@@ -610,7 +607,7 @@ The messages now should be like
 The messages are similar to those of Qwen-Agent, but there are some major differences:
 - Tools instead of functions
 - Parallel calls are by default
-  - Multiple tool calls as a list in a single assistant message, instead of multiple messages
+  - Multiple tool calls as a list in a single assistant message, instead of multiple messages.
   - The function arguments are parsed into a dict if it is a valid JSON-formatted string.
 
 #### Final Response
@@ -640,11 +637,6 @@ messages.append(try_parse_tool_calls(output_text))
 
 ### Ollama
 
-:::{attention}
-We demonstrate the usage of function calling with Ollama using an unofficial template for Qwen2.
-You may be expecting varied performance compared with Qwen-Agent.
-:::
-
 Ollama is a set of tools for serving LLMs locally. 
 It also relies on its template implementation to support function calling.
 Different from transformers, which is written in Python and uses the Jinja template whose syntax is heavily inspired by Django and Python, Ollama, which is mostly written in Go, uses Go's [text/template](https://pkg.go.dev/text/template) packages.
@@ -659,82 +651,25 @@ ollama -v
 ```
 If lower than expected, follow [the official instructions](https://ollama.com/download) to install the latest version.
 
-In this guide, we will aslo use ollama-python, before starting, make sure it is available in your environment:
+In this guide, we will aslo use [ollama-python](https://github.com/ollama/ollama-python), before starting, make sure it is available in your environment:
 ```bash
 pip install ollama
 ```
 
-For this guide, the ollama binary is at v0.3.9 and the ollama Python library is at v0.3.2.
+For this guide, the `ollama` binary is at v0.3.9 and the `ollama` Python library is at v0.3.2.
 
 
 #### Preparing
 
-The messages structure used in Ollama is the same with that in `transformers`.
-However, as explained [before](#note-official-template), it's quite difficult to implement the Qwen2 official template using Go templates.
-
-The following can be used to create a new model with a function calling template:
-
-```python
-import ollama
-
-model_name = "qwen2fc:7b-instruct-q4_K_M"
-modelfile = r'''FROM qwen2:7b-instruct-q4_K_M
-
-TEMPLATE """
-{{- $system_message := "You are a helpful assistant." }}
-{{- $loop_messages := .Messages }}
-{{- if .System }}
-{{- $system_message = .System }}
-{{- end }}
-{{- if eq ((index .Messages 0).Role) "system" }}
-    {{- $system_message = ((index .Messages 0).Content) }}
-    {{- $loop_messages = slice .Messages 1 }}
-{{- end -}}
-<|im_start|>system
-{{ $system_message }}
-{{- if .Tools }}
-
-# Tools
-
-You may call one or more functions to assist with the user query.
-
-You are provided with function signatures within <|tools_start|><|tools_end|> tags:
-<|tools_start|>[{{ range $index, $_ := .Tools }}{{ if ne $index 0 }},{{ end }}{{ json .Function }}{{ end }}]<|tools_end|>
-
-For each function call, return a JSON object with function name and arguments within <|tool_call_start|><|tool_call_end|> tags: 
-<|tool_call_start|>{"name": <function-name>, "arguments": <args-json-string>}<|tool_call_end|>
-{{- end -}}
-<|im_end|>
-{{- range $loop_messages }}
-    {{- if and (eq .Role "assistant") .ToolCalls }}   
-<|im_start|>assistant
-        {{- range .ToolCalls }}<|tool_call_start|>{{ json .Function }}<|tool_call_end|>{{ end }}<|im_end|>
-    {{- else }}
-<|im_start|>{{ .Role }}
-{{ .Content }}<|im_end|>
-    {{- end }}
-{{- end }}
-<|im_start|>assistant
-"""
-'''
-
-ollama.create(model_name, modelfile=modelfile)
-```
-
-You can change the model name and tag after `FROM` to use another as base.
-If that model is not available locally, it will download the model and may take some time.
-If successful, you will receive the following return values:
-```python
-{"status": "success"}
-```
-
-Then, the new model can be used later as `qwen2fc:7b-instruct-q4_K_M`.
+The messages structure used in Ollama is the same with that in `transformers` and the template in [Qwen2.5 Ollama models](https://ollama.com/library/qwen2.5) has supported tool use. 
 
 
 The inputs are the same with those in [the preparation code](#prepcode):
 ```python
 tools = TOOLS
 messages = MESSAGES[:]
+
+model_name = "qwen2:7b"
 ```
 Note that you cannot pass Python functions as tools directly and `tools` has to be a `dict`.
 
@@ -756,7 +691,7 @@ response = ollama.chat(
 The main fields in the response could be:
 ```python
 {
-    "model": "qwen2fc:7b-instruct-q4_K_M",
+    "model": "qwen2:7b",
     "message": {
         "role": "assistant",
         "content": '<|tool_call_start|>{"name": "get_current_temperature", "arguments": "{\\"location\\": \\"San Francisco, CA, USA\\", \\"unit\\": \\"celsius\\"}"}<|tool_call_end|>\n<|tool_call_start|>{"name": "get_temperature_date", "arguments": "{\\"date\\": \\"2024-09-01\\", \\"location\\": \\"San Francisco, CA, USA\\", \\"unit\\": \\"celsius\\"}"}<|tool_call_end|>'
@@ -766,8 +701,8 @@ The main fields in the response could be:
 }
 ```
 
-Well, it seems that the format we adopt does not work well with Ollama's tool call parser currently.
-Let's reuse [the `try_parse_tool_calls` function above](#prepcode) since Ollama also needs the tool call arguments to be JSON objects.[^tool_call_arg_format]
+Ollama's tool call parser has succeeded in parsing the tool results.[^tool_call_arg_format]
+If not, you may refine [the `try_parse_tool_calls` function above](#prepcode).
 Then, we can obtain the tool results and add them to the messages.
 The following is basically the same with `transformers`:
 
@@ -792,7 +727,7 @@ if tool_calls := messages[-1].get("tool_calls", None):
 The messages are now like
 ```python
 [
-    {"role": "system", "content": "You are a helpful assistant.\n\nCurrent Date: 2024-08-31"},
+    {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.\n\nCurrent Date: 2024-08-31"},
     {"role": "user", "content": "What's the temperature in San Francisco now? How about tomorrow?"},
     {"role": "assistant", "content": "", "tool_calls": [
         {'function': {'name': 'get_current_temperature', 'arguments': {'location': 'San Francisco, CA, USA', "unit": "celsius"}}},
@@ -821,21 +756,171 @@ The final message should be like the following:
 {"role": "assistant", "content": "The current temperature in San Francisco is approximately 26.1 degrees Celsius. Tomorrow, the forecasted temperature in San Francisco will be around 25.9 degrees Celsius."}
 ```
 
+(heading-target)=
+### vLLM
+
+vLLM is a fast and easy-to-use library for LLM inference and serving.
+It uses the tokenizer from `transformers` to format the input, so we should have no trouble preparing the input.
+In addition, vLLm also implements helper functions so that generated tool calls can be parsed automatically if the format is supported.
+
+Tool support has been available in `vllm` since v0.6.0. 
+Be sure to install a version that supports tool use.
+For more information, check the [vLLM documentation](https://docs.vllm.ai/en/stable/serving/openai_compatible_server.html#tool-calling-in-the-chat-completion-api).
+
+For this guide, we are at version v0.6.1.post2.
+We will use the OpenAI-Compatible API by `vllm` with the API client from the `openai` Python library.
+
+#### Preparing
+
+For Qwen2.5, the chat template in tokenizer_config.json has already included support for the Hermes-style tool use.
+We simply need to start a OpenAI-compatible API with vLLM:
+```bash
+vllm serve Qwen/Qwen2.5-7B-Instruct --enable-auto-tool-choice --tool-call-parser hermes
+```
+
+The inputs are the same with those in [the preparation code](#prepcode):
+
+```python
+tools = TOOLS
+messages = MESSAGES[:]
+```
+
+Let's also initialize the client:
+
+```python
+import openai
+
+openai_api_key = "EMPTY"
+openai_api_base = "http://localhost:8000/v1"
+
+client = OpenAI(
+    api_key=openai_api_key,
+    base_url=openai_api_base,
+)
+```
+
+#### Tool Calls and Tool Results
+
+We can use the create chat completions endpoint to query the model:
+
+```python
+
+response = client.chat.completions.create(
+    model="Qwen/Qwen2.5-7B-Instruct",
+    messages=messages,
+    tools=tools,
+    temperature=0.7,
+    top_p=0.8,
+    max_tokens=512,
+    extra_body={
+        "repetition_penalty": 1.05,
+    },
+)
+```
+
+vLLM should be able to parse the tool calls for us, and the main fields in the response (`response.choices[0]`) should be like
+```python
+Choice(
+    finish_reason='tool_calls', 
+    index=0, 
+    logprobs=None, 
+    message=chat.completionsMessage(
+        content=None, 
+        role='assistant', 
+        function_call=None, 
+        tool_calls=[
+            chat.completionsMessageToolCall(
+                id='call_62136354', 
+                function=Function(
+                    arguments='{"order_id":"order_12345"}', 
+                    name='get_delivery_date'), 
+                type='function')
+        ])
+)
+```
+
+Note that the function arguments are JSON-formatted strings, which Qwen-Agent follows but `transformers` and Ollama differs.
+
+As before, chances are that there are corner cases where tool calls are generated but they are malformed and cannot be parsed.
+For production code, we should try parsing by ourselves.
+
+Then, we can obtain the tool results and add them to the messages as shown below:
+
+```python
+messages.append(response['choices'][0]['message'])
+
+if tool_calls := messages[-1].get("tool_calls", None):
+    for tool_call in tool_calls:
+        call_id: str = tool_call["id"]
+        if fn_call := tool_call.get("function"):
+            fn_name: str = fn_call["name"]
+            fn_args: dict = json.loads(fn_call["arguments"])
+        
+            fn_res: str = json.dumps(get_function_by_name(fn_name)(**fn_args))
+
+            messages.append({
+                "role": "tool",
+                "content": fn_res,
+                "tool_call_id": call_id,
+            })
+```
+
+It should be noted that the OpenAI API uses `tool_call_id` to identify the relation between tool results and tool calls.
+
+The messages are now like
+```python
+[
+    {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.\n\nCurrent Date: 2024-08-31"},
+    {"role": "user", "content": "What's the temperature in San Francisco now? How about tomorrow?"},
+    {"role": "assistant", "tool_calls": [
+        {"id": "call_xx",  "type": "function", 'function': {'name': 'get_current_temperature', 'arguments': '{"location": "San Francisco, CA, USA"}'}},
+        {"id": "call_xxx",  "type": "function", 'function': {'name': 'get_temperature_date', 'arguments': '{"location": "San Francisco, CA, USA", "date": "2024-09-01"}'}}
+    ]},
+    {'role': 'tool', 'content': '{"temperature": 26.1, "location": "San Francisco, CA, USA", "unit": "celsius"}', 'tool_call_id': 'call_xx'},
+    {'role': 'tool', 'content': '{"temperature": 25.9, "location": "San Francisco, CA, USA", "date": "2024-09-01", "unit": "celsius"}', 'tool_call_id': 'call_xxx'},
+]
+```
+
+#### Final Response
+
+Let's call the endpoint again to seed the tool results and get response:
+```python
+response = client.chat.completions.create(
+    model="Qwen/Qwen2.5-7B-Instruct",
+    messages=messages,
+    tools=tools,
+    temperature=0.7,
+    top_p=0.8,
+    max_tokens=512,
+    extra_body={
+        "repetition_penalty": 1.05,
+    },
+)
+```
+
+The final response (`response.choices[0].message`) should be like
+```
+{"role": "assistant", "content": "The current temperature in San Francisco is 26.1 degrees Celsius. For tomorrow, the forecasted temperature is 25.9 degrees Celsius."}
+
+```
+
+
+
 ### Discussions
 
 Now, we have introduced how to conduct inference with function calling using Qwen2 in three different frameworks!
 Let's make a brief comparison.
 
-| Item | OpenAI API | Hugging Face transformers | Ollama | Qwen-Agent |
-| :-----  | :---: | :---: | :---: | :---: | 
-| Type | HTTP API | Python Library | HTTP API | Python Library |
-| Inference Backend | - | PyTorch | llama.cpp | HTTP API |
-| Templating Backend | - | Jinja | Go `text/template` | Python |
-| Tools/Functions | Tools | Tools | Tools | Functions |
-| Parallel Calls | Default Yes (Configurable) | Yes | Yes | Default No (Configurable) |
-| Call Format | Single assistant message with `tool_calls` | Single assistant message with `tool_calls` | Single assistant message with `tool_calls` | Multiple assistant messages with `function_call` |
-| Call Argument Format | string | object | object | string |  
-| Call Result Format | Multiple tool messages with `content` | Multiple tool messages with `content` | Multiple tool messages with `content` | Multiple function messages with `content` |
+| Item | OpenAI API | Hugging Face transformers | Ollama | vLLM | Qwen-Agent |
+| :-----  | :---: | :---: | :---: | :---: | :---: | 
+| Type | HTTP API | Python Library | HTTP API | HTTP API | Python Library |
+| Inference Backend | - | PyTorch | llama.cpp | PyTorch | HTTP API |
+| Templating Backend | - | Jinja | Go `text/template` | Jinja | Python |
+| Tools/Functions | Tools | Tools | Tools | Tools | Functions |
+| Parallel Calls | Default Yes (Configurable) | Yes | Yes | Yes | Default No (Configurable) |
+| Call Format | Single assistant message with `tool_calls` | Single assistant message with `tool_calls` | Single assistant message with `tool_calls`  | Single assistant message with `tool_calls` | Multiple assistant messages with `function_call` |
+| Call Argument Format | string | object | object | string | string |  
+| Call Result Format | Multiple tool messages with `content` | Multiple tool messages with `content` | Multiple tool messages with `content` | Multiple tool messages with `content` | Multiple function messages with `content` |
 
 
 There are some details not shown in the above table:
@@ -849,7 +934,7 @@ In addition, there are more on the model side of function calling, which means y
   When it comes to evaluate the accuracy of function calling, there are two aspects:
   (a) whether the correct functions (including no functions) are selected and
   (b) whether the correct function arguments are generated.
-  It is not always the case that Qwen2 will be accurate. 
+  It is not always the case that Qwen2.5 will be accurate. 
   Function calling can involve knowledge that is deep and domain-specific.
   Sometimes, it doesn't fully understand the function and select the wrong one by mistake.
   Sometimes, it can fall into a loop and require calling the same function again and again. 
@@ -864,7 +949,7 @@ In addition, there are more on the model side of function calling, which means y
   The generated tool call may be invalid JSON-formatted string but a representation of a Python dict
   The generated tool call may be valid JSON but not conforms to the provided JSON Schema.
   For those kinds of issues, while some of them could be addressed with prompt engineering, some are caused by the nature of LLMs and can be hard to resolve in a general manner by LLMs themselves.
-  While we strive to improve Qwen2 in this regard, edge cases are unlikely to be eliminated completely.
+  While we strive to improve Qwen2.5 in this regard, edge cases are unlikely to be eliminated completely.
 
 
 
@@ -922,7 +1007,7 @@ One should write the code to actively detect which step the model is at and in p
 However, as most programming interfaces accept the message structure, there should be some kind of adapter between the two.
 [The ReAct Chat Agent](https://github.com/QwenLM/Qwen-Agent/blob/v0.0.9/qwen_agent/agents/react_chat.py) in Qwen-Agent facilitates this kind of conversion.
 
-### Qwen2 "Official" Function Calling Template
+### Qwen2 Function Calling Template
 
 As a step forward, the official Qwen2 function calling template is in the vein of the ReAct Prompting format but focuses more on
 - differentiating the keywords like `Question`, `Thought`, `Action`, etc., from generation,
@@ -1012,7 +1097,6 @@ What's the temperature in San Francisco now? How about tomorrow?<|im_end|>
 ✿RESULT✿: {"temperature": 25.9, "location": "San Francisco, CA, USA", "date": "2024-09-01", "unit": "celsius"}
 ✿RETURN✿: The current temperature in San Francisco is 26.1°C. The temperature for tomorrow in San Francisco is expected to be 25.9°C.<|im_end|>
 ```
-
 
 
 [Previously](#note-official-template), we have said that it is hard to adapt it for other frameworks that use less capable templating engines.
@@ -1109,17 +1193,16 @@ To use this template in `transformers`:
 :::
 
 
-### The Unofficial Function Calling Templates
+### Qwen2.5 Function Calling Templates
 
-For `transformers` and Ollama, we have also used unofficial templates and they also seem to work.
-What do they look like?
-The templates we have used for `transformers` and Ollama are variants of [the Nous Research's Hermes function calling template](https://github.com/NousResearch/Hermes-Function-Calling#prompt-format-for-function-calling).
+For `transformers` and Ollama, we have also used templates that are easier to implement with Jinja or Go.
+They are variants of [the Nous Research's Hermes function calling template](https://github.com/NousResearch/Hermes-Function-Calling#prompt-format-for-function-calling).
 The Jinja template and the Go template should produce basically the same results.
 They final text should look like the following:
 
 ```text
 <|im_start|>system
-You are a helpful assistant.
+You are Qwen, created by Alibaba Cloud. You are a helpful assistant.
 
 Current Date: 2024-08-31
 
@@ -1127,30 +1210,38 @@ Current Date: 2024-08-31
 
 You may call one or more functions to assist with the user query.
 
-You are provided with function signatures within <|tools_start|><|tools_end|> tags:
-<|tools_start|>[{"name": "get_current_temperature", "description": "Get current temperature at a location.", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The location to get the temperature for, in the format \"City, State, Country\"."}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"], "description": "The unit to return the temperature in. Defaults to \"celsius\"."}}, "required": ["location"]}}, {"name": "get_temperature_date", "description": "Get temperature at a location and date.", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The location to get the temperature for, in the format \"City, State, Country\"."}, "date": {"type": "string", "description": "The date to get the temperature for, in the format \"Year-Month-Day\"."}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"], "description": "The unit to return the temperature in. Defaults to \"celsius\"."}}, "required": ["location", "date"]}}]<|tools_end|>
+You are provided with function signatures within <tools></tools> XML tags:
+<tools>
+{"name": "get_current_temperature", "description": "Get current temperature at a location.", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The location to get the temperature for, in the format \"City, State, Country\"."}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"], "description": "The unit to return the temperature in. Defaults to \"celsius\"."}}, "required": ["location"]}}
+{"name": "get_temperature_date", "description": "Get temperature at a location and date.", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The location to get the temperature for, in the format \"City, State, Country\"."}, "date": {"type": "string", "description": "The date to get the temperature for, in the format \"Year-Month-Day\"."}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"], "description": "The unit to return the temperature in. Defaults to \"celsius\"."}}, "required": ["location", "date"]}}
+</tools>
 
-For each function call, return a JSON object with function name and arguments within <|tool_call_start|><|tool_call_end|> tags:
-<|tool_call_start|>{"name": <function-name>, "arguments": <args-json-string>}<|tool_call_end|><|im_end|>
+For each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:
+<tool_call>
+{"name": <function-name>, "arguments": <args-json-object>}
+</tool_call><|im_end|>
 <|im_start|>user
 What's the temperature in San Francisco now? How about tomorrow?<|im_end|>
 <|im_start|>assistant
-<|tool_call_start|>{"name": "get_current_temperature", "arguments": {"location": "San Francisco, CA, USA", "unit": "celsius"}}<|tool_call_end|>
-<|tool_call_start|>{"name": "get_temperature_date", "arguments": {"location": "San Francisco, CA, USA", "date": "2024-09-01", "unit": "celsius"}}<|tool_call_end|><|im_end|>
-<|im_start|>tool
-{"temperature": 26.1, "location": "San Francisco, CA, USA", "unit": "celsius"}<|im_end|>
-<|im_start|>tool
-{"temperature": 25.9, "location": "San Francisco, CA, USA", "date": "2024-09-01", "unit": "celsius"}<|im_end|>
+<tool_call>
+{"name": "get_current_temperature", "arguments": {"location": "San Francisco, CA, USA", "unit": "celsius"}}
+</tool_call>
+<tool_call>
+{"name": "get_temperature_date", "arguments": {"location": "San Francisco, CA, USA", "date": "2024-09-01", "unit": "celsius"}}
+</tool_call><|im_end|>
+<|im_start|>user
+<tool_response>
+{"temperature": 26.1, "location": "San Francisco, CA, USA", "unit": "celsius"}
+</tool_response>
+<tool_response>
+{"temperature": 25.9, "location": "San Francisco, CA, USA", "date": "2024-09-01", "unit": "celsius"}
+</tool_response><|im_end|>
 <|im_start|>assistant
 The current temperature in San Francisco is 26.1°C. The temperature for tomorrow in San Francisco is expected to be 25.9°C.<|im_end|>
 ```
 
-
 While the text may seem different from the previous one, the basic prompting structure is still the same.
 There are just more structural tags and more JSON-formatted strings.
-We also demonstrate the usage with those templates to show that 
-- LLMs are not necessarily fragile. Using a different template won't break it.
-- Prompt engineering can be helpful in steering LLM generations to one's need.
 
 ---
 
@@ -1161,7 +1252,7 @@ The format with JSON Schema appears a valid and common choice.
 
 ## Finally
 
-In whichever way you choose to use function calling with Qwen2, keep in mind that the limitation and the perks of prompt engineering applies:
+In whichever way you choose to use function calling with Qwen2.5, keep in mind that the limitation and the perks of prompt engineering applies:
 - It is not guaranteed that the model generation will always follow the protocol even with proper prompting or templates.
   Especially, for the templates that are more complex and relies more on the model itself to think and stay on track than the ones that are simpler and relies on the template and the use of control or special tokens.
   The latter one, of course, requires some kind of training.

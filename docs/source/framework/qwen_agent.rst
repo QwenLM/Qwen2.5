@@ -42,7 +42,7 @@ tools and quickly develop an agent that uses tools.
        # It will use the `DASHSCOPE_API_KEY' environment variable if 'api_key' is not set here.
 
        # Use your own model service compatible with OpenAI API:
-       # 'model': 'Qwen/Qwen2-72B-Instruct',
+       # 'model': 'Qwen/Qwen2.5-7B-Instruct',
        # 'model_server': 'http://localhost:8000/v1',  # api_base
        # 'api_key': 'EMPTY',
 

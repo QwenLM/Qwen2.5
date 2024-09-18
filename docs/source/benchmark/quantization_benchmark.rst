@@ -1,6 +1,9 @@
 Performance of Quantized Models
 ==================================
 
+.. attention:: 
+    To be updated for Qwen2.5.
+
 This section reports the generation performance of quantized
 models (including GPTQ and AWQ) of the Qwen2 series. Specifically, we
 report:

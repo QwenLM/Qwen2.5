@@ -2,7 +2,7 @@ Langchain
 ==========================
 
 This guide helps you build a question-answering application based 
-on a local knowledge base using ``Qwen2-7B-Instruct`` with ``langchain``.
+on a local knowledge base using ``Qwen2.5-7B-Instruct`` with ``langchain``.
 The goal is to establish a knowledge base Q&A solution.
 
 Basic Usage
@@ -12,7 +12,7 @@ The implementation process of this project includes
 loading files -> reading text -> segmenting text -> vectorizing text -> vectorizing questions 
 -> matching the top k most similar text vectors with the question vectors -> 
 incorporating the matched text as context along with the question into the prompt -> 
-submitting to the Qwen2-7B-Instruct to generate an answer.
+submitting to the Qwen2.5-7B-Instruct to generate an answer.
 Below is an example:
 
 .. code:: bash
@@ -27,14 +27,15 @@ Below is an example:
    from langchain.llms.base import LLM
    from typing import Any, List, Mapping, Optional
    from langchain.callbacks.manager import CallbackManagerForLLMRun
-   device = "cuda" # the device to load the model onto
+   
+   model_name = "Qwen/Qwen2.5-7B-Instruct"
 
    model = AutoModelForCausalLM.from_pretrained(
-       "Qwen/Qwen2-7B-Instruct",
+       model_name,
        torch_dtype="auto",
        device_map="auto"
    )
-   tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2-7B-Instruct")
+   tokenizer = AutoTokenizer.from_pretrained(model_name)
 
    class Qwen(LLM, ABC):
         max_token: int = 10000
@@ -63,7 +64,7 @@ Below is an example:
             run_manager: Optional[CallbackManagerForLLMRun] = None,
         ) -> str:
             messages = [
-                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."},
                 {"role": "user", "content": prompt}
             ]
             text = tokenizer.apply_chat_template(
@@ -71,9 +72,9 @@ Below is an example:
                 tokenize=False,
                 add_generation_prompt=True
             )
-            model_inputs = tokenizer([text], return_tensors="pt").to(device)
+            model_inputs = tokenizer([text], return_tensors="pt").to(model.device)
             generated_ids = model.generate(
-                model_inputs.input_ids,
+                **model_inputs,
                 max_new_tokens=512
             )
             generated_ids = [
@@ -91,7 +92,7 @@ Below is an example:
                     "top_p": self.top_p,
                     "history_len": self.history_len}
 
-After loading the Qwen2-7B-Instruct model, you should specify the txt file 
+After loading the Qwen2.5-7B-Instruct model, you should specify the txt file 
 for retrieval.
 
 .. code:: python
@@ -269,6 +270,6 @@ for retrieval.
 Next Step
 ---------
 
-Now you can chat with Qwen2 use your own document. Continue
+Now you can chat with Qwen2.5 use your own document. Continue
 to read the documentation and try to figure out more advanced usages of
 model retrieval!

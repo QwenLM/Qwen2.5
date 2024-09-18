@@ -1,6 +1,9 @@
 Speed Benchmark
 =========================
 
+.. attention:: 
+    To be updated for Qwen2.5.
+
 This section reports the speed performance of bf16 models, quantized models 
 (including GPTQ-Int4, GPTQ-Int8 and AWQ) of the Qwen2 series. Specifically, we
 report the inference speed (tokens/s) as well as memory footprint (GB)
