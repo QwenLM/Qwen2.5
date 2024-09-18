@@ -22,11 +22,11 @@ To learn more about Qwen2.5, feel free to read our documentation \[[EN](https://
 - Quantization: the practice of quantizing LLMs with GPTQ, AWQ, as well as the guidance for how to make high-quality quantized GGUF files;
 - Training: the instructions for post-training, including SFT and RLHF (TODO) with frameworks like Axolotl, LLaMA-Factory, etc.
 - Framework: the usage of Qwen with frameworks for application, e.g., RAG, Agent, etc.
-0 Benchmark: the statistics about inference speed and memory footprint.
+- Benchmark: the statistics about inference speed and memory footprint (to be updated for Qwen2.5).
 
 ## Introduction
 
-In the past three months since Qwen2’s release, numerous developers have built new models on the Qwen2 language models, providing us with valuable feedback. During this period, we have focused on creating smarter and more knowledgeable language models. Today, we are excited to introduce the latest addition to the Qwen family: **Qwen2.5**. 
+In the past three months since Qwen2's release, numerous developers have built new models on the Qwen2 language models, providing us with valuable feedback. During this period, we have focused on creating smarter and more knowledgeable language models. Today, we are excited to introduce the latest addition to the Qwen family: **Qwen2.5**. 
 
 - Dense, easy-to-use, decoder-only language models, available in **0.5B**, **1.5B**, **3B**, **7B**, **14B**, **32B**, and **72B** sizes, and base and instruct variants.
 - Pretrained on our latest large-scale dataset, encompassing up to **18T** tokens.
@@ -46,7 +46,7 @@ In the past three months since Qwen2’s release, numerous developers have built
 
 Detailed evaluation results are reported in this <a href="https://qwenlm.github.io/blog/qwen2.5/"> 📑 blog</a>.
 
-For requirements on GPU memory and the respective throughput, see results [here](https://qwen.readthedocs.io/en/latest/benchmark/speed_benchmark.html).
+For requirements on GPU memory and the respective throughput, see results [here](https://qwen.readthedocs.io/en/latest/benchmark/speed_benchmark.html) (to be updated for Qwen2.5).
 
 ## Quickstart
 
@@ -70,7 +70,7 @@ tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 prompt = "Give me a short introduction to large language model."
 messages = [
-    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."},
     {"role": "user", "content": prompt}
 ]
 text = tokenizer.apply_chat_template(
@@ -136,14 +136,14 @@ For additional details, please visit [ollama.ai](https://ollama.ai/).
 
 Download our provided GGUF files or create them by yourself, and you can directly use them with the latest [`llama.cpp`](https://github.com/ggerganov/llama.cpp) with a one-line command:
 ```shell
-./llama-cli -m <path-to-file> -n 512 -co -sp -cnv -f prompts/chat-with-qwen.txt 
+./llama-cli -m <path-to-file> -n 512 -co -sp -cnv -f "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."
 ```
 
 For additional guides, please refer to [our documentation](https://qwen.readthedocs.io/en/latest/run_locally/llama.cpp.html).
 
 #### MLX-LM
 
-If you are running on Apple Silicon, we have also provided checkpoints compatible with [`mlx-lm`](https://github.com/ml-explore/mlx-examples/blob/main/llms/README.md). Look for models ending with MLX on HuggingFace Hub, like [Qwen2.5-7B-Instruct-MLX](https://huggingface.co/Qwen/Qwen2-7B-Instruct-MLX).
+If you are running on Apple Silicon, we have also provided checkpoints compatible with [`mlx-lm`](https://github.com/ml-explore/mlx-examples/blob/main/llms/README.md). Look for models ending with MLX on HuggingFace Hub, like [Qwen2.5-7B-Instruct-MLX](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct-MLX).
 
 #### LMStudio
 
@@ -174,20 +174,22 @@ Qwen2.5 is supported by multiple inference frameworks. Here we demonstrate the u
 
 We advise you to use the latest version of vLLM to build OpenAI-compatible API service, including tool use support. Start the server with a chat model, e.g. `Qwen2.5-7B-Instruct`:
 ```shell
-vllm serve Qwen/Qwen2.5-7B-Instruct --served-model-name Qwen2.5-7B-Instruct
+vllm serve Qwen/Qwen2.5-7B-Instruct
 ```
 
 Then use the chat API as demonstrated below:
 
 ```shell
-curl http://localhost:8000/v1/chat/completions \
-    -H "Content-Type: application/json" \
-    -d '{
-    "model": "Qwen2.5-7B-Instruct",
+curl http://localhost:8000/v1/chat/completions -H "Content-Type: application/json" -d '{
+    "model": "Qwen/Qwen2.5-7B-Instruct",
     "messages": [
-        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."},
         {"role": "user", "content": "Tell me something about large language models."}
-    ]
+    ],
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "repetition_penalty": 1.05,
+    "max_tokens": 512
 }'
 ```
 
@@ -205,9 +207,15 @@ client = OpenAI(
 chat_response = client.chat.completions.create(
     model="Qwen2.5-7B-Instruct",
     messages=[
-        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."},
         {"role": "user", "content": "Tell me something about large language models."},
-    ]
+    ],
+    temperature=0.7,
+    top_p=0.8,
+    max_tokens=512,
+    extra_body={
+        "repetition_penalty": 1.05,
+    },
 )
 print("Chat response:", chat_response)
 ```
@@ -227,7 +235,7 @@ from sglang import function, system, user, assistant, gen, set_default_backend, 
 
 @function
 def multi_turn_question(s, question_1, question_2):
-    s += system("You are a helpful assistant.")
+    s += system("You are Qwen, created by Alibaba Cloud. You are a helpful assistant.")
     s += user(question_1)
     s += assistant(gen("answer_1", max_tokens=256))
     s += user(question_2)
@@ -246,9 +254,9 @@ for m in state.messages():
 print(state["answer_1"])
 ```
 
-## Tool Use
+### Tool Use
 
-For tool use capabilities, we recommend to take a look at <a href="https://github.com/QwenLM/Qwen-Agent">Qwen-Agent</a>, which provides a wrapper around these APIs to support function calling.
+For tool use capabilities, we recommend taking a look at [Qwen-Agent](https://github.com/QwenLM/Qwen-Agent), which provides a wrapper around these APIs to support tool use or function calling.
 Tool use with Qwen2.5 can also be conducted with Hugging Face `transformers`, Ollama, and vLLM.
 Follow guides in our documentation to see how to enable the support.
 

@@ -10,6 +10,7 @@ body:
         What series of Qwen models were you running? 
         Please note that there may not be response for previous model series.
       options:
+        - Qwen2.5
         - Qwen2
         - Qwen1.5
       default: 0

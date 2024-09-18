@@ -10,6 +10,7 @@ body:
         What series of Qwen models were you running? 
         Please note that there may not be response for previous model series.
       options:
+        - Qwen2.5
         - Qwen2
         - Qwen1.5
       default: 0
@@ -19,9 +20,9 @@ body:
     attributes:
       label: What are the models used?
       description: |
-        Please list the model used, e.g., Qwen2-7B-Instruct, Qwen2-72B-Instruct-GGUF, etc.
+        Please list the model used, e.g., Qwen2.5-7B-Instruct, Qwen2.5-72B-Instruct-GGUF, etc.
         Note that we only maintain models at <https://huggingface.co/Qwen> and <https://www.modelscope.com/organization/qwen>.
-      placeholder: "ex: Qwen2-xxx"
+      placeholder: "ex: Qwen2.5-xxx"
     validations:
       required: true
   - type: input
@@ -40,13 +41,13 @@ body:
         Please first check if you have followed the usage guide in related documentation and if the issue is known: 
         either a workaround is avaiable or the issue has been already reported.
       options:
-        - label: I have followed [the GitHub README](https://github.com/QwenLM/Qwen2).
+        - label: I have followed [the GitHub README](https://github.com/QwenLM/Qwen2.5).
           required: true
         - label: I have checked [the Qwen documentation](https://qwen.readthedocs.io) and cannot find an answer there.
           required: true
         - label: I have checked the documentation of the related framework and cannot find useful information.
           required: true
-        - label: I have searched [the issues](https://github.com/QwenLM/Qwen2/issues?q=is%3Aissue) and there is not a similar one.
+        - label: I have searched [the issues](https://github.com/QwenLM/Qwen2.5/issues?q=is%3Aissue) and there is not a similar one.
           required: true
   - type: textarea
     attributes:
@@ -98,7 +99,7 @@ body:
       value: |
         #### Steps to reproduce
 
-        This happens to Qwen2-xB-Instruct-xxx and xxx.
+        This happens to Qwen2.5-xB-Instruct-xxx and xxx.
         The problem can be reproduced with the following steps:
         1. ...
         2. ...

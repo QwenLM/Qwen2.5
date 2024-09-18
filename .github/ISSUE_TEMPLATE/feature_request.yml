@@ -8,13 +8,13 @@ body:
       description: |
         Please first check if the feature is supported in related documentation and if it has been already requested.
       options:
-        - label: I have checked [the GitHub README](https://github.com/QwenLM/Qwen2).
+        - label: I have checked [the GitHub README](https://github.com/QwenLM/Qwen2.5).
           required: true
         - label: I have checked [the Qwen documentation](https://qwen.readthedocs.io).
           required: true
         - label: I have checked the documentation of the related framework.
           required: true
-        - label: I have searched [the issues](https://github.com/QwenLM/Qwen2/issues?q=is%3Aissue) and there is not a similar one.
+        - label: I have searched [the issues](https://github.com/QwenLM/Qwen2.5/issues?q=is%3Aissue) and there is not a similar one.
           required: true
   - type: input
     attributes:
