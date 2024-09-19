@@ -153,6 +153,9 @@ Qwen2.5 has already been supported by [lmstudio.ai](https://lmstudio.ai/). You c
 
 Qwen2.5 has already been supported by [OpenVINO toolkit](https://github.com/openvinotoolkit). You can install and run this [chatbot example](https://github.com/OpenVINO-dev-contest/Qwen2.openvino) with Intel CPU, integrated GPU or discrete GPU. 
 
+#### MNN
+
+Qwen2.5 has already been supported by [MNN](https://github.com/alibaba/MNN). You can export model by [llm-export](https://github.com/wangzhaode/llm-export) and run with mobile devices using CPU or GPU. You can also download Qwen2.5 models from modelscope, model list and mobile demos in [mnn-llm](https://github.com/wangzhaode/mnn-llm).
 
 ## Web UI
 
