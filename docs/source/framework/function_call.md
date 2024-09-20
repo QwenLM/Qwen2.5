@@ -86,7 +86,6 @@ To set up the example case, you can use the following code:
 
 ```python
 import json
-import re
 
 def get_current_temperature(location: str, unit: str = "celsius"):
     """Get current temperature at a location.
@@ -129,29 +128,6 @@ def get_function_by_name(name):
         return get_current_temperature
     if name == "get_temperature_date":
         return get_temperature_date
-
-def try_parse_tool_calls(content: str):
-    """Try parse the tool calls."""
-    tool_calls = []
-    offset = 0
-    for i, m in enumerate(re.finditer(r"<tool_call>(.+)?</tool_call>", content)):
-        if i == 0:
-            offset = m.start()
-        try:
-            func = json.loads(m.group(1))
-            tool_calls.append({"type": "function", "function": func})
-            if isinstance(func["arguments"], str):
-                func["arguments"] = json.loads(func["arguments"])
-        except json.JSONDecodeError as _:
-            print(m)
-            pass
-    if tool_calls:
-        if offset > 0 and content[:offset].strip():
-            c = content[:offset]
-        else: 
-            c = ""
-        return {"role": "assistant", "content": c, "tool_calls": tool_calls}
-    return {"role": "assistant", "content": re.sub(r"<\|im_end\|>$", "", content)}
 
 TOOLS = [
     {
@@ -204,7 +180,7 @@ TOOLS = [
     },
 ]
 MESSAGES = [
-    {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.\n\nCurrent Date: 2024-08-31"},
+    {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.\n\nCurrent Date: 2024-09-30"},
     {"role": "user",  "content": "What's the temperature in San Francisco now? How about tomorrow?"},
 ]
 ```
@@ -302,11 +278,10 @@ You could append the date to user message in your application code.
 
 ```json
 [
-    {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.\n\nCurrent Date: 2024-08-31"},
+    {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.\n\nCurrent Date: 2024-09-30"},
     {"role": "user",  "content": "What's the temperature in San Francisco now? How about tomorrow?"}
 ]
 ```
-
 :::
 
 ### Qwen-Agent
@@ -323,7 +298,7 @@ Before starting, let's make sure the latest library is installed:
 pip install -U qwen-agent
 ```
 
-For this guide, we are at version v0.0.9.
+For this guide, we are at version v0.0.10.
 
 #### Preparing
 
@@ -350,8 +325,8 @@ For model inputs, the common message structure for system, user, and assistant h
 ```python
 messages = MESSAGES[:]
 # [
-#     {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.\n\nCurrent Date: 2024-08-31"},
-#     {"role": "user",  "content": "What's the temperature in San Francisco now? How about tomorrow?"},
+#    {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.\n\nCurrent Date: 2024-09-30"},
+#    {"role": "user", "content": "What's the temperature in San Francisco now? How about tomorrow?"}
 # ]
 ```
 
@@ -389,8 +364,8 @@ Since we enable `parallel_function_calls`, we should get two messages in the res
 
 ```python
 [
-    {"role": "assistant", "content": "", "function_call": {"name": "get_current_temperature", "arguments": '{"location": "San Francisco, CA, USA"}'}},
-    {"role": "assistant", "content": "", "function_call": {"name": "get_temperature_date", "arguments": '{"location": "San Francisco, CA, USA", "date": "2024-09-01"}'}},
+    {'role': 'assistant', 'content': '', 'function_call': {'name': 'get_current_temperature', 'arguments': '{"location": "San Francisco, CA, USA", "unit": "celsius"}'}},
+    {'role': 'assistant', 'content': '', 'function_call': {'name': 'get_temperature_date', 'arguments': '{"location": "San Francisco, CA, USA", "date": "2024-10-01", "unit": "celsius"}'}},
 ]
 ```
 
@@ -402,7 +377,6 @@ The details related to function calls are placed in the `function_call` field of
 Note that Qwen2.5-7B-Instruct is quite capable:
 - It has followed the function instructions to add the state and the country to the location.
 - It has correctly induced the date of tomorrow and given in the format required by the function.
-
 
 Then comes the critical part -- checking and applying the function call:
 ```python3
@@ -431,12 +405,12 @@ To get tool results:
 Now the messages are
 ```python
 [
-    {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.\n\nCurrent Date: 2024-08-31"},
-    {"role": "user",  "content": "What's the temperature in San Francisco now? How about tomorrow?"},
-    {"role": "assistant", "content": "", "function_call": {"name": "get_current_temperature", "arguments": '{"location": "San Francisco, CA, USA"}'}},
-    {"role": "assistant", "content": "", "function_call": {"name": "get_temperature_date", "arguments": '{"location": "San Francisco, CA, USA", "date": "2024-09-01"}'}},
-    {"role": "function", "name": "get_current_temperature", "content": '{"temperature": 26.1, "location": "San Francisco, CA, USA", "unit": "celsius"}'},
-    {"role": "function", "name": "get_temperature_date", "content": '{"temperature": 25.9, "location": "San Francisco, CA, USA", "date": "2024-09-01", "unit": "celsius"}'},
+    {'role': 'system', 'content': 'You are Qwen, created by Alibaba Cloud. You are a helpful assistant.\n\nCurrent Date: 2024-09-30'},
+    {'role': 'user', 'content': "What's the temperature in San Francisco now? How about tomorrow?"},
+    {'role': 'assistant', 'content': '', 'function_call': {'name': 'get_current_temperature', 'arguments': '{"location": "San Francisco, CA, USA", "unit": "celsius"}'}},
+    {'role': 'assistant', 'content': '', 'function_call': {'name': 'get_temperature_date', 'arguments': '{"location": "San Francisco, CA, USA", "date": "2024-10-01", "unit": "celsius"}'}},
+    {'role': 'function', 'name': 'get_current_temperature', 'content': '{"temperature": 26.1, "location": "San Francisco, CA, USA", "unit": "celsius"}'},
+    {'role': 'function', 'name': 'get_temperature_date', 'content': '{"temperature": 25.9, "location": "San Francisco, CA, USA", "date": "2024-10-01", "unit": "celsius"}'},
 ]
 ```
 
@@ -453,7 +427,7 @@ messages.extend(responses)
 The final response should be like
 
 ```python
-{"role": "assistant", "content": "The current temperature in San Francisco is 26.1 degrees Celsius. For tomorrow, the forecasted temperature is 25.9 degrees Celsius."}
+{'role': 'assistant', 'content': 'Currently, the temperature in San Francisco is approximately 26.1°C. Tomorrow, on 2024-10-01, the temperature is forecasted to be around 25.9°C.'}
 ```
 
 ### Hugging Face transformers
@@ -527,10 +501,10 @@ output_text = tokenizer.batch_decode(outputs)[0][len(text):]
 The output texts should be like
 ```text
 <tool_call>
-{"name": "get_current_temperature", "arguments": "{\"location\": \"San Francisco, CA, USA\", \"unit\": \"celsius\"}"}
+{"name": "get_current_temperature", "arguments": {"location": "San Francisco, CA, USA"}}
 </tool_call>
 <tool_call>
-{"name": "get_temperature_date", "arguments": "{\"location\": \"San Francisco, CA, USA\", \"date\": \"2024-09-01\", \"unit\": \"celsius\"}"}
+{"name": "get_temperature_date", "arguments": {"location": "San Francisco, CA, USA", "date": "2024-10-01"}}
 </tool_call><|im_end|>
 ```
 
@@ -538,8 +512,38 @@ Now we need to do two things:
 1. Parse the generated tool calls to a message and add them to the messages, so that the model knows which tools are used.
 2. Obtain the results of the tools and add them to the messages, so that the model knows the results of the tool calls.
 
-In `transformers`, the tool calls should be a field of assistant messages.[^tool_call_arg_format]
-Let's use a simple function called `try_parse_tool_calls` to parse the tool calls, which can be found in [the preparation code](#prepcode).
+In `transformers`, the tool calls should be a field of assistant messages.
+Let's use a simple function called `try_parse_tool_calls` to parse the tool calls:
+
+{#parse-function}
+```python
+import re
+
+def try_parse_tool_calls(content: str):
+    """Try parse the tool calls."""
+    tool_calls = []
+    offset = 0
+    for i, m in enumerate(re.finditer(r"<tool_call>\n(.+)?\n</tool_call>", content)):
+        if i == 0:
+            offset = m.start()
+        try:
+            func = json.loads(m.group(1))
+            tool_calls.append({"type": "function", "function": func})
+            if isinstance(func["arguments"], str):
+                func["arguments"] = json.loads(func["arguments"])
+        except json.JSONDecodeError as e:
+            print(f"Failed to parse tool calls: the content is {m.group(1)} and {e}")
+            pass
+    if tool_calls:
+        if offset > 0 and content[:offset].strip():
+            c = content[:offset]
+        else: 
+            c = ""
+        return {"role": "assistant", "content": c, "tool_calls": tool_calls}
+    return {"role": "assistant", "content": re.sub(r"<\|im_end\|>$", "", content)}
+```
+
+
 This function does not cover all possible scenarios and thus is prone to errors.
 But it should suffice for the purpose of this guide. 
 
@@ -556,17 +560,19 @@ The template in the `tokenizer_config.json` assumes that the generated content a
 ```
 instead of 
 ```json
-{
-  "role": "assistant", 
-  "content": "To obtain the current temperature, I should call the functions `get_current_temperate`.", 
-}
-{
-  "role": "assistant", 
-  "content": "", 
-  "tool_calls": [
-    {"type": "function", "function": {"name": "get_current_temperature", "arguments": {"location": "San Francisco, CA, USA", "unit": "celsius"}}}
-  ]
-}
+[
+  {
+    "role": "assistant", 
+    "content": "To obtain the current temperature, I should call the functions `get_current_temperate`.", 
+  },
+  {
+    "role": "assistant", 
+    "content": "", 
+    "tool_calls": [
+      {"type": "function", "function": {"name": "get_current_temperature", "arguments": {"location": "San Francisco, CA, USA", "unit": "celsius"}}}
+    ]
+  }
+]
 ```
 
 This is implemented roughly in `try_parse_tool_calls` but keep that in mind if you are writing your own tool call parser.
@@ -593,14 +599,14 @@ if tool_calls := messages[-1].get("tool_calls", None):
 The messages now should be like
 ```python
 [
-    {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.\n\nCurrent Date: 2024-08-31"},
-    {"role": "user",  "content": "What's the temperature in San Francisco now? How about tomorrow?"},
-    {"role": "assistant", "content": "", "tool_calls": [
-        {'type': 'function', 'function': {'name': 'get_current_temperature', 'arguments': {'location': 'San Francisco, CA, USA', 'unit': 'celsius'}}},
-        {'type': 'function', 'function': {'name': 'get_temperature_date', 'arguments': {'location': 'San Francisco, CA, USA', 'date': '2024-09-01', 'unit': 'celsius'}}}
+    {'role': 'system', 'content': 'You are Qwen, created by Alibaba Cloud. You are a helpful assistant.\n\nCurrent Date: 2024-09-30'},
+    {'role': 'user', 'content': "What's the temperature in San Francisco now? How about tomorrow?"},
+    {'role': 'assistant', 'content': '', 'tool_calls': [
+        {'type': 'function', 'function': {'name': 'get_current_temperature', 'arguments': {'location': 'San Francisco, CA, USA'}}}, 
+        {'type': 'function', 'function': {'name': 'get_temperature_date', 'arguments': {'location': 'San Francisco, CA, USA', 'date': '2024-10-01'}}},
     ]},
     {'role': 'tool', 'name': 'get_current_temperature', 'content': '{"temperature": 26.1, "location": "San Francisco, CA, USA", "unit": "celsius"}'},
-    {'role': 'tool', 'name': 'get_temperature_date', 'content': '{"temperature": 25.9, "location": "San Francisco, CA, USA", "date": "2024-09-01", "unit": "celsius"}'},
+    {'role': 'tool', 'name': 'get_temperature_date', 'content': '{"temperature": 25.9, "location": "San Francisco, CA, USA", "date": "2024-10-01", "unit": "celsius"}'},
 ]
 ```
 
@@ -624,16 +630,13 @@ output_text = tokenizer.batch_decode(outputs)[0][len(text):]
 
 The output_text should be like
 ```
-The current temperature in San Francisco is 26.1°C. The temperature for tomorrow in San Francisco is expected to be 25.9°C.<|im_end|>
+The current temperature in San Francisco is approximately 26.1°C. Tomorrow, on October 1, 2024, the temperature is expected to be around 25.9°C.<|im_end|>
 ```
 
 Add the result text as an assistant message and the final messages should be ready for further interaction:
 ```python
 messages.append(try_parse_tool_calls(output_text))
 ```
-
-[^tool_call_arg_format]: However, note that the model generates arguments in tool calls not as a JSON object but a JSON-formatted string of the JSON object. 
-    For `transformers` and `ollama`, as the interfaces require the arguments to be JSON objects or Python dicts, there will be differences between the actual model generation and the template results for tool call arguments.
 
 ### Ollama
 
@@ -663,13 +666,12 @@ For this guide, the `ollama` binary is at v0.3.9 and the `ollama` Python library
 
 The messages structure used in Ollama is the same with that in `transformers` and the template in [Qwen2.5 Ollama models](https://ollama.com/library/qwen2.5) has supported tool use. 
 
-
 The inputs are the same with those in [the preparation code](#prepcode):
 ```python
 tools = TOOLS
 messages = MESSAGES[:]
 
-model_name = "qwen2:7b"
+model_name = "qwen2.5:7b"
 ```
 Note that you cannot pass Python functions as tools directly and `tools` has to be a `dict`.
 
@@ -691,23 +693,25 @@ response = ollama.chat(
 The main fields in the response could be:
 ```python
 {
-    "model": "qwen2:7b",
-    "message": {
-        "role": "assistant",
-        "content": '<|tool_call_start|>{"name": "get_current_temperature", "arguments": "{\\"location\\": \\"San Francisco, CA, USA\\", \\"unit\\": \\"celsius\\"}"}<|tool_call_end|>\n<|tool_call_start|>{"name": "get_temperature_date", "arguments": "{\\"date\\": \\"2024-09-01\\", \\"location\\": \\"San Francisco, CA, USA\\", \\"unit\\": \\"celsius\\"}"}<|tool_call_end|>'
+    'model': 'qwen2.5:7b',
+    'message': {
+        'role': 'assistant',
+        'content': '',
+        'tool_calls': [
+            {'function': {'name': 'get_current_temperature', 'arguments': {'location': 'San Francisco, CA, USA'}}},
+            {'function': {'name': 'get_temperature_date', 'arguments': {'date': '2024-10-01', 'location': 'San Francisco, CA, USA'}}},
+        ],
     },
-    "done_reason": 'stop',
-    "done": True,
 }
 ```
 
-Ollama's tool call parser has succeeded in parsing the tool results.[^tool_call_arg_format]
-If not, you may refine [the `try_parse_tool_calls` function above](#prepcode).
+Ollama's tool call parser has succeeded in parsing the tool results.
+If not, you may refine [the `try_parse_tool_calls` function above](#parse-function).
 Then, we can obtain the tool results and add them to the messages.
 The following is basically the same with `transformers`:
 
 ```python
-messages.append(try_parse_tool_calls(response["message"]["content"]))
+messages.append(response["message"])
 
 if tool_calls := messages[-1].get("tool_calls", None):
     for tool_call in tool_calls:
@@ -727,14 +731,14 @@ if tool_calls := messages[-1].get("tool_calls", None):
 The messages are now like
 ```python
 [
-    {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.\n\nCurrent Date: 2024-08-31"},
-    {"role": "user", "content": "What's the temperature in San Francisco now? How about tomorrow?"},
-    {"role": "assistant", "content": "", "tool_calls": [
-        {'function': {'name': 'get_current_temperature', 'arguments': {'location': 'San Francisco, CA, USA', "unit": "celsius"}}},
-        {'function': {'name': 'get_temperature_date', 'arguments': {'date': '2024-09-01', 'location': 'San Francisco, CA, USA', "unit": "celsius"}}}
+    {'role': 'system', 'content': 'You are Qwen, created by Alibaba Cloud. You are a helpful assistant.\n\nCurrent Date: 2024-09-30'},
+    {'role': 'user', 'content': "What's the temperature in San Francisco now? How about tomorrow?"},
+    {'role': 'assistant', 'content': '', 'tool_calls': [
+        {'function': {'name': 'get_current_temperature', 'arguments': {'location': 'San Francisco, CA, USA'}}},
+        {'function': {'name': 'get_temperature_date', 'arguments': {'date': '2024-10-01', 'location': 'San Francisco, CA, USA'}}},
     ]},
     {'role': 'tool', 'name': 'get_current_temperature', 'content': '{"temperature": 26.1, "location": "San Francisco, CA, USA", "unit": "celsius"}'},
-    {'role': 'tool', 'name': 'get_temperature_date', 'content': '{"temperature": 25.9, "location": "San Francisco, CA, USA", "date": "2024-09-01", "unit": "celsius"}'},
+    {'role': 'tool', 'name': 'get_temperature_date', 'content': '{"temperature": 25.9, "location": "San Francisco, CA, USA", "date": "2024-10-01", "unit": "celsius"}'},
 ]
 ```
 
@@ -753,7 +757,7 @@ messages.append(response["message"])
 
 The final message should be like the following:
 ```python
-{"role": "assistant", "content": "The current temperature in San Francisco is approximately 26.1 degrees Celsius. Tomorrow, the forecasted temperature in San Francisco will be around 25.9 degrees Celsius."}
+{'role': 'assistant', 'content': 'The current temperature in San Francisco is approximately 26.1°C. For tomorrow, October 1st, 2024, the forecasted temperature will be around 25.9°C.'}
 ```
 
 (heading-target)=
@@ -788,7 +792,7 @@ messages = MESSAGES[:]
 Let's also initialize the client:
 
 ```python
-import openai
+from openai import OpenAI
 
 openai_api_key = "EMPTY"
 openai_api_base = "http://localhost:8000/v1"
@@ -797,6 +801,8 @@ client = OpenAI(
     api_key=openai_api_key,
     base_url=openai_api_base,
 )
+
+model_name = "Qwen/Qwen2.5-7B-Instruct"
 ```
 
 #### Tool Calls and Tool Results
@@ -804,9 +810,8 @@ client = OpenAI(
 We can use the create chat completions endpoint to query the model:
 
 ```python
-
 response = client.chat.completions.create(
-    model="Qwen/Qwen2.5-7B-Instruct",
+    model=model_name,
     messages=messages,
     tools=tools,
     temperature=0.7,
@@ -824,18 +829,24 @@ Choice(
     finish_reason='tool_calls', 
     index=0, 
     logprobs=None, 
-    message=chat.completionsMessage(
+    message=ChatCompletionMessage(
         content=None, 
         role='assistant', 
         function_call=None, 
         tool_calls=[
-            chat.completionsMessageToolCall(
-                id='call_62136354', 
-                function=Function(
-                    arguments='{"order_id":"order_12345"}', 
-                    name='get_delivery_date'), 
-                type='function')
-        ])
+            ChatCompletionMessageToolCall(
+                id='chatcmpl-tool-924d705adb044ff88e0ef3afdd155f15', 
+                function=Function(arguments='{"location": "San Francisco, CA, USA"}', name='get_current_temperature'), 
+                type='function',
+            ), 
+            ChatCompletionMessageToolCall(
+                id='chatcmpl-tool-7e30313081944b11b6e5ebfd02e8e501', 
+                function=Function(arguments='{"location": "San Francisco, CA, USA", "date": "2024-10-01"}', name='get_temperature_date'), 
+                type='function',
+            ),
+        ],
+    ), 
+    stop_reason=None,
 )
 ```
 
@@ -847,7 +858,7 @@ For production code, we should try parsing by ourselves.
 Then, we can obtain the tool results and add them to the messages as shown below:
 
 ```python
-messages.append(response['choices'][0]['message'])
+messages.append(response.choices[0].message.model_dump())
 
 if tool_calls := messages[-1].get("tool_calls", None):
     for tool_call in tool_calls:
@@ -870,14 +881,14 @@ It should be noted that the OpenAI API uses `tool_call_id` to identify the relat
 The messages are now like
 ```python
 [
-    {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant.\n\nCurrent Date: 2024-08-31"},
-    {"role": "user", "content": "What's the temperature in San Francisco now? How about tomorrow?"},
-    {"role": "assistant", "tool_calls": [
-        {"id": "call_xx",  "type": "function", 'function': {'name': 'get_current_temperature', 'arguments': '{"location": "San Francisco, CA, USA"}'}},
-        {"id": "call_xxx",  "type": "function", 'function': {'name': 'get_temperature_date', 'arguments': '{"location": "San Francisco, CA, USA", "date": "2024-09-01"}'}}
+    {'role': 'system', 'content': 'You are Qwen, created by Alibaba Cloud. You are a helpful assistant.\n\nCurrent Date: 2024-09-30'},
+    {'role': 'user', 'content': "What's the temperature in San Francisco now? How about tomorrow?"},
+    {'content': None, 'role': 'assistant', 'function_call': None, 'tool_calls': [
+        {'id': 'chatcmpl-tool-924d705adb044ff88e0ef3afdd155f15', 'function': {'arguments': '{"location": "San Francisco, CA, USA"}', 'name': 'get_current_temperature'}, 'type': 'function'},
+        {'id': 'chatcmpl-tool-7e30313081944b11b6e5ebfd02e8e501', 'function': {'arguments': '{"location": "San Francisco, CA, USA", "date": "2024-10-01"}', 'name': 'get_temperature_date'}, 'type': 'function'},
     ]},
-    {'role': 'tool', 'content': '{"temperature": 26.1, "location": "San Francisco, CA, USA", "unit": "celsius"}', 'tool_call_id': 'call_xx'},
-    {'role': 'tool', 'content': '{"temperature": 25.9, "location": "San Francisco, CA, USA", "date": "2024-09-01", "unit": "celsius"}', 'tool_call_id': 'call_xxx'},
+    {'role': 'tool', 'content': '{"temperature": 26.1, "location": "San Francisco, CA, USA", "unit": "celsius"}', 'tool_call_id': 'chatcmpl-tool-924d705adb044ff88e0ef3afdd155f15'},
+    {'role': 'tool', 'content': '{"temperature": 25.9, "location": "San Francisco, CA, USA", "date": "2024-10-01", "unit": "celsius"}', 'tool_call_id': 'chatcmpl-tool-7e30313081944b11b6e5ebfd02e8e501'},
 ]
 ```
 
@@ -886,7 +897,7 @@ The messages are now like
 Let's call the endpoint again to seed the tool results and get response:
 ```python
 response = client.chat.completions.create(
-    model="Qwen/Qwen2.5-7B-Instruct",
+    model=model_name,
     messages=messages,
     tools=tools,
     temperature=0.7,
@@ -896,15 +907,14 @@ response = client.chat.completions.create(
         "repetition_penalty": 1.05,
     },
 )
+
+messages.append(response.choices[0].message.model_dump())
 ```
 
-The final response (`response.choices[0].message`) should be like
+The final response (`response.choices[0].message.content`) should be like
+```text
+The current temperature in San Francisco is approximately 26.1°C. For tomorrow, the forecasted temperature is around 25.9°C.
 ```
-{"role": "assistant", "content": "The current temperature in San Francisco is 26.1 degrees Celsius. For tomorrow, the forecasted temperature is 25.9 degrees Celsius."}
-
-```
-
-
 
 ### Discussions
 
@@ -950,7 +960,6 @@ In addition, there are more on the model side of function calling, which means y
   The generated tool call may be valid JSON but not conforms to the provided JSON Schema.
   For those kinds of issues, while some of them could be addressed with prompt engineering, some are caused by the nature of LLMs and can be hard to resolve in a general manner by LLMs themselves.
   While we strive to improve Qwen2.5 in this regard, edge cases are unlikely to be eliminated completely.
-
 
 
 ## Function Calling Templates
@@ -1005,7 +1014,7 @@ The model will simply continue the texts.
 One should write the code to actively detect which step the model is at and in particular to add the observations in the process, until the Final Answer is generated.
 
 However, as most programming interfaces accept the message structure, there should be some kind of adapter between the two.
-[The ReAct Chat Agent](https://github.com/QwenLM/Qwen-Agent/blob/v0.0.9/qwen_agent/agents/react_chat.py) in Qwen-Agent facilitates this kind of conversion.
+[The ReAct Chat Agent](https://github.com/QwenLM/Qwen-Agent/blob/v0.0.10/qwen_agent/agents/react_chat.py) in Qwen-Agent facilitates this kind of conversion.
 
 ### Qwen2 Function Calling Template
 
@@ -1099,7 +1108,7 @@ What's the temperature in San Francisco now? How about tomorrow?<|im_end|>
 ```
 
 
-[Previously](#note-official-template), we have said that it is hard to adapt it for other frameworks that use less capable templating engines.
+This template is hard to adapt it for other frameworks that use less capable templating engines.
 But it is doable at least partially for Jinja, which is Python-oriented after all.
 We didn't use it because using the template in `transformers` leads to more changes to the inference usage, which are not very common for beginners.
 
@@ -1204,7 +1213,7 @@ They final text should look like the following:
 <|im_start|>system
 You are Qwen, created by Alibaba Cloud. You are a helpful assistant.
 
-Current Date: 2024-08-31
+Current Date: 2024-09-30
 
 # Tools
 
@@ -1212,8 +1221,8 @@ You may call one or more functions to assist with the user query.
 
 You are provided with function signatures within <tools></tools> XML tags:
 <tools>
-{"name": "get_current_temperature", "description": "Get current temperature at a location.", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The location to get the temperature for, in the format \"City, State, Country\"."}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"], "description": "The unit to return the temperature in. Defaults to \"celsius\"."}}, "required": ["location"]}}
-{"name": "get_temperature_date", "description": "Get temperature at a location and date.", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The location to get the temperature for, in the format \"City, State, Country\"."}, "date": {"type": "string", "description": "The date to get the temperature for, in the format \"Year-Month-Day\"."}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"], "description": "The unit to return the temperature in. Defaults to \"celsius\"."}}, "required": ["location", "date"]}}
+{"type": "function", "function": {"name": "get_current_temperature", "description": "Get current temperature at a location.", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The location to get the temperature for, in the format \"City, State, Country\"."}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"], "description": "The unit to return the temperature in. Defaults to \"celsius\"."}}, "required": ["location"]}}}
+{"type": "function", "function": {"name": "get_temperature_date", "description": "Get temperature at a location and date.", "parameters": {"type": "object", "properties": {"location": {"type": "string", "description": "The location to get the temperature for, in the format \"City, State, Country\"."}, "date": {"type": "string", "description": "The date to get the temperature for, in the format \"Year-Month-Day\"."}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"], "description": "The unit to return the temperature in. Defaults to \"celsius\"."}}, "required": ["location", "date"]}}}
 </tools>
 
 For each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:
@@ -1224,20 +1233,20 @@ For each function call, return a json object with function name and arguments wi
 What's the temperature in San Francisco now? How about tomorrow?<|im_end|>
 <|im_start|>assistant
 <tool_call>
-{"name": "get_current_temperature", "arguments": {"location": "San Francisco, CA, USA", "unit": "celsius"}}
+{"name": "get_current_temperature", "arguments": {"location": "San Francisco, CA, USA"}}
 </tool_call>
 <tool_call>
-{"name": "get_temperature_date", "arguments": {"location": "San Francisco, CA, USA", "date": "2024-09-01", "unit": "celsius"}}
+{"name": "get_temperature_date", "arguments": {"location": "San Francisco, CA, USA", "date": "2024-10-01"}}
 </tool_call><|im_end|>
 <|im_start|>user
 <tool_response>
 {"temperature": 26.1, "location": "San Francisco, CA, USA", "unit": "celsius"}
 </tool_response>
 <tool_response>
-{"temperature": 25.9, "location": "San Francisco, CA, USA", "date": "2024-09-01", "unit": "celsius"}
+{"temperature": 25.9, "location": "San Francisco, CA, USA", "date": "2024-10-01", "unit": "celsius"}
 </tool_response><|im_end|>
 <|im_start|>assistant
-The current temperature in San Francisco is 26.1°C. The temperature for tomorrow in San Francisco is expected to be 25.9°C.<|im_end|>
+The current temperature in San Francisco is approximately 26.1°C. Tomorrow, on October 1, 2024, the temperature is expected to be around 25.9°C.<|im_end|>
 ```
 
 While the text may seem different from the previous one, the basic prompting structure is still the same.

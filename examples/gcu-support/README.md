@@ -1,4 +1,4 @@
-# Qwen2 推理
+# Qwen2.5 推理
 
 ## 1、配置运行环境
 
@@ -49,7 +49,7 @@ pip3.8 install accelerate
 ```
 python3.8 gcu_demo.py
 ```
-执行 gcu_demo.py 推理示例，代码改编自 [仓库 README](https://github.com/QwenLM/Qwen2/blob/main/README.md) 中的给的 Huggingface quick start 用例。
+执行 gcu_demo.py 推理示例，代码改编自 [仓库 README](https://github.com/QwenLM/Qwen2.5/blob/main/README.md) 中的给的 Huggingface quick start 用例。
 
 **GCU PyTorch 原生推理支持**
 
@@ -73,5 +73,5 @@ GCU 支持 pytorch 原生推理，在 pytorch 代码上只需做少许改动就�
 GCU 也支持 *vLLM* 原生推理，需要安装 GCU 版本的 *vLLM* 后，将设备名改为 gcu
 
 ```
-python -m vllm.entrypoints.openai.api_server --served-model-name Qwen2-7B-Instruct --model Qwen/Qwen2-7B-Instruct --device gcu
+python -m vllm.entrypoints.openai.api_server --served-model-name Qwen2.5-7B-Instruct --model Qwen/Qwen2.5-7B-Instruct --device gcu
 ```

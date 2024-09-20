@@ -6,7 +6,7 @@ except Exception as e:
 
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-model_name = "Qwen/Qwen2-7B-Instruct"
+model_name = "Qwen/Qwen2.5-7B-Instruct"
 device = "gcu" # the device to load the model onto
 
 model = AutoModelForCausalLM.from_pretrained(
