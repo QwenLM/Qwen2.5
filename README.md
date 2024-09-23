@@ -136,7 +136,7 @@ For additional details, please visit [ollama.ai](https://ollama.ai/).
 
 Download our provided GGUF files or create them by yourself, and you can directly use them with the latest [`llama.cpp`](https://github.com/ggerganov/llama.cpp) with a one-line command:
 ```shell
-./llama-cli -m <path-to-file> -n 512 -co -sp -cnv -f "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."
+./llama-cli -m <path-to-file> -n 512 -co -sp -cnv -p "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."
 ```
 
 For additional guides, please refer to [our documentation](https://qwen.readthedocs.io/en/latest/run_locally/llama.cpp.html).
