@@ -1028,7 +1028,7 @@ As a step forward, the official Qwen2 function calling template is in the vein o
 An equivalent example would be
 ```
 <|im_start|>system
-You are a helpful assistant.
+{system message}
 
 ## Tools
 
@@ -1069,13 +1069,13 @@ The template actually has the following variants:
 
 In the canonical implementation in Qwen-Agent, those switches are implemented in Python, according to the configuration and current input.
 
-The actual text with parallel calls should be like the following:
+The actual text with _parallel calls_ should be like the following:
 
 ```text
 <|im_start|>system
-You are a helpful assistant.
+You are Qwen, created by Alibaba Cloud. You are a helpful assistant.
 
-Current Date: 2024-08-31
+Current Date: 2024-09-30
 
 ## Tools
 
@@ -1089,24 +1089,31 @@ get_current_temperature: Get current temperature at a location. Parameters: {"ty
 
 get_temperature_date: Get temperature at a location and date. Parameters: {"type": "object", "properties": {"location": {"type": "string", "description": "The location to get the temperature for, in the format \"City, State, Country\"."}, "date": {"type": "string", "description": "The date to get the temperature for, in the format \"Year-Month-Day\"."}, "unit": {"type": "string", "enum": ["celsius", "fahrenheit"], "description": "The unit to return the temperature in. Defaults to \"celsius\"."}}, "required": ["location", "date"]} Format the arguments as a JSON object.
 
-## When you need to call a tool, please insert the following command in your reply, which can be called zero or multiple times according to your needs:
+## Insert the following command in your reply when you need to call N tools in parallel:
 
-✿FUNCTION✿: The tool to use, should be one of [get_current_temperature,get_temperature_date]
-✿ARGS✿: The input of the tool
-✿RESULT✿: Tool results
+✿FUNCTION✿: The name of tool 1, should be one of [get_current_temperature,get_temperature_date]
+✿ARGS✿: The input of tool 1
+✿FUNCTION✿: The name of tool 2
+✿ARGS✿: The input of tool 2
+...
+✿FUNCTION✿: The name of tool N
+✿ARGS✿: The input of tool N
+✿RESULT✿: The result of tool 1
+✿RESULT✿: The result of tool 2
+...
+✿RESULT✿: The result of tool N
 ✿RETURN✿: Reply based on tool results. Images need to be rendered as ![](url)<|im_end|>
 <|im_start|>user
 What's the temperature in San Francisco now? How about tomorrow?<|im_end|>
 <|im_start|>assistant
 ✿FUNCTION✿: get_current_temperature
-✿ARGS✿: {"location": "San Francisco, CA, USA", "unit": "celsius"}
+✿ARGS✿: {"location": "San Francisco, CA, USA"}
 ✿FUNCTION✿: get_temperature_date
-✿ARGS✿: {"date": "2024-09-01", "location": "San Francisco, CA, USA", "unit": "celsius"}
+✿ARGS✿: {"location": "San Francisco, CA, USA", "date": "2024-10-01"}
 ✿RESULT✿: {"temperature": 26.1, "location": "San Francisco, CA, USA", "unit": "celsius"}
-✿RESULT✿: {"temperature": 25.9, "location": "San Francisco, CA, USA", "date": "2024-09-01", "unit": "celsius"}
-✿RETURN✿: The current temperature in San Francisco is 26.1°C. The temperature for tomorrow in San Francisco is expected to be 25.9°C.<|im_end|>
+✿RESULT✿: {"temperature": 25.9, "location": "San Francisco, CA, USA", "date": "2024-10-01", "unit": "celsius"}
+✿RETURN✿: The current temperature in San Francisco is approximately 26.1°C. For tomorrow, October 1st, 2024, the forecasted temperature will be around 25.9°C.<|im_end|>
 ```
-
 
 This template is hard to adapt it for other frameworks that use less capable templating engines.
 But it is doable at least partially for Jinja, which is Python-oriented after all.
@@ -1188,6 +1195,8 @@ For the interested, you can find the Jinja template and key points on usage belo
 To use this template in `transformers`:
 
 - Switches can be enabled by passing them to the `apply_chat_template` method, e.g., `tokenizer.apply_chat_template(messages, tools=tools, add_generation_prompt=True, parallel_tool_call=True, language="zh", tokenize=False)`. By default, it is for English non-parallel function calling.
+
+- The tool arguments should be a Python `dict` instead of a JSON-formatted object `str`.
 
 - Since the generation needs to be stopped at `✿RESULT✿` or else the model will generate fabricated tool results, we should add it to `stop_strings` in `generation_config`:
     ```python
