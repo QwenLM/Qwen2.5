@@ -1,4 +1,4 @@
 contact_links:
-  - name: GitHub Community Support
+  - name: Question
     url: https://github.com/QwenLM/Qwen.5/discussions
-    about: Please ask and answer questions here. Issues are mainly for Bugs and Features.
+    about: Please ask and answer questions in discussions. Issues are mainly for Bugs and Features.
