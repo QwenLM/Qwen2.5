@@ -5,6 +5,16 @@ In this document, we show you how to use the quantized model with Hugging Face `
 
 ## Usage of GPTQ Models with Hugging Face transformers
 
+:::{note}
+
+To use the official Qwen2.5 GPTQ models with `transformers`, please ensure that `optimum>=1.20.0` and compatible versions of `transformers` and `auto_gptq` are installed.
+
+You can do that by 
+```bash
+pip install -U "optimum>=1.20.0"
+```
+:::
+
 Now, `transformers` has officially supported AutoGPTQ, which means that you can directly use the quantized model with `transformers`. 
 For each size of Qwen2.5, we provide both Int4 and Int8 GPTQ quantized models.
 The following is a very simple code snippet showing how to run `Qwen2.5-7B-Instruct-GPTQ-Int4`:
@@ -203,6 +213,29 @@ It is unfortunate that the `save_quantized` method does not support sharding.
 For sharding, you need to load the model and use `save_pretrained` from transformers to save and shard the model.
 Except for this, everything is so simple. 
 Enjoy!
+
+
+## Known Issues
+
+### Qwen2.5-72B-Instruct-GPTQ-Int4 cannot stop generation properly
+
+:Model: Qwen2.5-72B-Instruct-GPTQ-Int4
+:Framework: vLLM, AutoGPTQ (including Hugging Face transformers)
+:Description: Generation cannot stop properly. Continual generation after where it should stop, then repeated texts, either single character, a phrase, or paragraphs, are generated.
+:Workaround: The following workaround could be considered
+    1. Using the original model in 16-bit floating point
+    2. Using the AWQ variants or llama.cpp-based models for reduced chances of abnormal generation
+
+### Qwen2.5-32B-Instruct-GPTQ-Int4 broken with vLLM on multiple GPUs
+
+:Model: Qwen2.5-32B-Instruct-GPTQ-Int4
+:Framework: vLLM
+:Description: Deployment on multiple GPUs and only garbled text like `!!!!!!!!!!!!!!!!!!` could be generated.
+:Workaround: Each of the following workaround could be considered
+    1. Using the AWQ or GPTQ-Int8 variants
+    2. Using a single GPU
+    3. Using Hugging Face `transformers` if latency and throughput are not major concerns
+
 
 ## Troubleshooting
 
