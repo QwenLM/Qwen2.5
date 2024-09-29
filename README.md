@@ -168,7 +168,7 @@ Clone [`llamafile`](https://github.com/Mozilla-Ocho/llamafile), run source insta
 
 ## Deployment
 
-Qwen2.5 is supported by multiple inference frameworks. Here we demonstrate the usage of `vLLM` and `SGLang`.
+Qwen2.5 is supported by multiple inference frameworks. Here we demonstrate the usage of `vLLM`, `OpenLLM` and `SGLang`.
 
 ### vLLM
 
@@ -219,6 +219,81 @@ chat_response = client.chat.completions.create(
 )
 print("Chat response:", chat_response)
 ```
+
+### OpenLLM
+
+[OpenLLM](https://github.com/bentoml/OpenLLM) allows you to easily run any open-source LLMs as OpenAI-compatible APIs. Install OpenLLM via `pip`.
+
+```bash
+pip install openllm
+
+# Update supported models list
+openllm repo update
+```
+
+List all available options:
+
+```bash
+$ openllm model list --tag qwen2.5
+
+model    version       repo     required GPU RAM    platforms
+-------  ------------  -------  ------------------  -----------
+qwen2.5  qwen2.5:0.5b  default  12G                 linux
+         qwen2.5:1.5b  default  12G                 linux
+         qwen2.5:3b    default  12G                 linux
+         qwen2.5:7b    default  24G                 linux
+         qwen2.5:14b   default  80G                 linux
+         qwen2.5:32b   default  80G                 linux
+         qwen2.5:72b   default  80Gx2               linux
+```
+
+Start an LLM server, which exposes the OpenAI-compatible API at `http://localhost:3000/`.
+
+```bash
+openllm serve qwen2.5:7b
+```
+
+Send an HTTP request to its `/generate` endpoint via CURL:
+
+```bash
+curl -X 'POST' \
+  'http://localhost:3000/api/generate' \
+  -H 'accept: text/event-stream' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "prompt": "Explain superconductors like I am five years old",
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "max_tokens": 2048,
+  "stop": null
+}'
+```
+
+Alternatively, create an OpenAI client to call its chat API:
+
+```python
+from openai import OpenAI
+
+client = OpenAI(base_url='http://localhost:3000/v1', api_key='na')
+
+# Use the following func to get the available models
+# model_list = client.models.list()
+# print(model_list)
+
+chat_completion = client.chat.completions.create(
+    model="Qwen/Qwen2.5-7B-Instruct",
+    messages=[
+        {
+            "role": "user",
+            "content": "Explain superconductors like I'm five years old"
+        }
+    ],
+    stream=True,
+)
+for chunk in chat_completion:
+    print(chunk.choices[0].delta.content or "", end="")
+```
+
+You can also visit `http://localhost:3000/chat` to interact with the model in the chat UI.
 
 ### SGLang
 
