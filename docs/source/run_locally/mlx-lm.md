@@ -20,7 +20,7 @@ The easiest way to get started is to install the `mlx-lm` package:
   conda install -c conda-forge mlx-lm
   ```
 
-## Runnig with Qwen MLX Files
+## Running with Qwen MLX Files
 
 We provide model checkpoints with `mlx-lm` in our Hugging Face organization, and to search for what you need you can search the repo names with `-MLX`.
 
