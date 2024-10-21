@@ -168,7 +168,7 @@ Clone [`llamafile`](https://github.com/Mozilla-Ocho/llamafile), run source insta
 
 ## Deployment
 
-Qwen2.5 is supported by multiple inference frameworks. Here we demonstrate the usage of `vLLM` and `SGLang`.
+Qwen2.5 is supported by multiple inference frameworks. Here we demonstrate the usage of `vLLM`, `SGLang` and `OpenLLM`.
 
 ### vLLM
 
@@ -253,6 +253,41 @@ for m in state.messages():
 
 print(state["answer_1"])
 ```
+
+### OpenLLM
+
+[OpenLLM](https://github.com/bentoml/OpenLLM) allows you to easily run Qwen2.5 as OpenAI-compatible APIs. You can start a model server using `openllm serve`. For example:
+
+```bash
+openllm serve qwen2.5:7b
+```
+
+The server is active at `http://localhost:3000/`, providing OpenAI-compatible APIs. You can create an OpenAI client to call its chat API:
+
+```python
+from openai import OpenAI
+
+client = OpenAI(base_url='http://localhost:3000/v1', api_key='na')
+
+# Use the following func to get the available models
+# model_list = client.models.list()
+# print(model_list)
+
+chat_completion = client.chat.completions.create(
+    model="Qwen/Qwen2.5-7B-Instruct",
+    messages=[
+        {
+            "role": "user",
+            "content": "Explain superconductors like I'm five years old"
+        }
+    ],
+    stream=True,
+)
+for chunk in chat_completion:
+    print(chunk.choices[0].delta.content or "", end="")
+```
+
+For more information, refer to [our documentation](https://qwen.readthedocs.io/en/latest/deployment/openllm.html).
 
 ### Tool Use
 
