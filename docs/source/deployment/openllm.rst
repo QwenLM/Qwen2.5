@@ -57,7 +57,7 @@ To start a server with one of the models, use ``openllm serve`` like this:
 
    openllm serve qwen2.5:7b
 
-By default, the server starts at ``http://localhost:3000/``, providing OpenAI-compatible APIs.
+By default, the server starts at ``http://localhost:3000/``.
 
 Interact with the model server
 ------------------------------
@@ -77,7 +77,7 @@ With the model server up and running, you can call its APIs in the following way
                -H 'accept: text/event-stream' \
                -H 'Content-Type: application/json' \
                -d '{
-               "prompt": "Explain superconductors like I am five years old",
+               "prompt": "Tell me something about large language models.",
                "model": "Qwen/Qwen2.5-7B-Instruct",
                "max_tokens": 2048,
                "stop": null
@@ -85,7 +85,7 @@ With the model server up and running, you can call its APIs in the following way
 
     .. tab-item:: Python client
 
-       Call the OpenAI-compatible endpoints with any frameworks and tools that support the OpenAI API protocol. Here is an example:
+       Call the OpenAI-compatible endpoints with frameworks and tools that support the OpenAI API protocol. Here is an example:
 
        .. code-block:: python
 
@@ -102,7 +102,7 @@ With the model server up and running, you can call its APIs in the following way
                messages=[
                   {
                         "role": "user",
-                        "content": "Explain superconductors like I am five years old"
+                        "content": "Tell me something about large language models."
                   }
                ],
                stream=True,

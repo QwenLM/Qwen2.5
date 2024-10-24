@@ -262,32 +262,7 @@ print(state["answer_1"])
 openllm serve qwen2.5:7b
 ```
 
-The server is active at `http://localhost:3000/`, providing OpenAI-compatible APIs. You can create an OpenAI client to call its chat API:
-
-```python
-from openai import OpenAI
-
-client = OpenAI(base_url='http://localhost:3000/v1', api_key='na')
-
-# Use the following func to get the available models
-# model_list = client.models.list()
-# print(model_list)
-
-chat_completion = client.chat.completions.create(
-    model="Qwen/Qwen2.5-7B-Instruct",
-    messages=[
-        {
-            "role": "user",
-            "content": "Explain superconductors like I'm five years old"
-        }
-    ],
-    stream=True,
-)
-for chunk in chat_completion:
-    print(chunk.choices[0].delta.content or "", end="")
-```
-
-For more information, refer to [our documentation](https://qwen.readthedocs.io/en/latest/deployment/openllm.html).
+The server is active at `http://localhost:3000/`, providing OpenAI-compatible APIs. You can create an OpenAI client to call its chat API. For more information, refer to [our documentation](https://qwen.readthedocs.io/en/latest/deployment/openllm.html).
 
 ### Tool Use
 
