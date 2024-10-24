@@ -60,8 +60,8 @@ msgid "To start a server with one of the models, use ``openllm serve`` like this
 msgstr "要使用其中一个模型来启动服务器，请使用 ``openllm serve`` 命令，例如："
 
 #: ../../source/deployment/openllm.rst:60 e637a01782a041cbbb044ed0c5bfb48f
-msgid "By default, the server starts at ``http://localhost:3000/``, providing OpenAI-compatible APIs."
-msgstr "默认情况下，服务器启动在 http://localhost:3000/，并提供与 OpenAI 兼容的 API。"
+msgid "By default, the server starts at ``http://localhost:3000/``."
+msgstr "默认情况下，服务器启动在 http://localhost:3000/。"
 
 #: ../../source/deployment/openllm.rst:63 8457ac65af3f4ec5853f0b8a0a725708
 msgid "Interact with the model server"
@@ -84,8 +84,8 @@ msgid "Python client"
 msgstr "Python 客户端"
 
 #: ../../source/deployment/openllm.rst:88 3c1852f6303c40fbb7c7f1ded4bf2313
-msgid "Call the OpenAI-compatible endpoints with any frameworks and tools that support the OpenAI API protocol. Here is an example:"
-msgstr "使用支持 OpenAI API 协议的任何框架和工具来调用。例如："
+msgid "Call the OpenAI-compatible endpoints with frameworks and tools that support the OpenAI API protocol. Here is an example:"
+msgstr "使用支持 OpenAI API 协议的框架和工具来调用。例如："
 
 #: ../../source/deployment/openllm.rst 4b9859905ccf4198960623fb08729f48
 msgid "Chat UI"
