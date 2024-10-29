@@ -1,0 +1,105 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Qwen Team
+# This file is distributed under the same license as the Qwen package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-10-21 10:15+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.12.1\n"
+
+#: ../../source/deployment/openllm.rst:2 9f00d55ade714c18b2164e565a34ca40
+msgid "OpenLLM"
+msgstr "OpenLLM"
+
+#: ../../source/deployment/openllm.rst:4 0d9f8589af474e3ba036df93871a9d4c
+msgid "OpenLLM allows developers to run Qwen2.5 models of different sizes as OpenAI-compatible APIs with a single command. It features a built-in chat UI, state-of-the-art inference backends, and a simplified workflow for creating enterprise-grade cloud deployment with Qwen2.5. Visit `the OpenLLM repository <https://github.com/bentoml/OpenLLM/>`_ to learn more."
+msgstr "OpenLLM 允许开发者通过一个命令运行不同大小的 Qwen2.5 模型，提供 OpenAI 兼容的 API。它具有内置的聊天 UI，先进的推理后端，以及简化的工作流程来使用 Qwen2.5 创建企业级云部署。访问 `OpenLLM 仓库 <https://github.com/bentoml/OpenLLM/>`_ 了解更多信息。"
+
+#: ../../source/deployment/openllm.rst:7 c2d3e721de5d4a42b42654aaeec00fb9
+msgid "Installation"
+msgstr "安装"
+
+#: ../../source/deployment/openllm.rst:9 258e40bb2c4d4b0b8a7ab002111f2ff7
+msgid "Install OpenLLM using ``pip``."
+msgstr "使用 ``pip`` 安装 OpenLLM。"
+
+#: ../../source/deployment/openllm.rst:15 51e9e7ea8fd14537b9573e1adfd6358a
+msgid "Verify the installation and display the help information:"
+msgstr "验证安装并显示帮助信息："
+
+#: ../../source/deployment/openllm.rst:22 854205ed7929464ca8aa4138b5b03f46
+msgid "Quickstart"
+msgstr "快速开始"
+
+#: ../../source/deployment/openllm.rst:24 cd1086ff08b5402dbfdd3721b4454a7b
+msgid "Before you run any Qwen2.5 model, ensure your model repository is up to date by syncing it with OpenLLM's latest official repository."
+msgstr "在运行任何 Qwen2.5 模型之前，确保您的模型仓库与 OpenLLM 的最新官方仓库同步。"
+
+#: ../../source/deployment/openllm.rst:30 e48b1b0b3ef24ebf8344f1e8e7128026
+msgid "List the supported Qwen2.5 models:"
+msgstr "列出支持的 Qwen2.5 模型："
+
+#: ../../source/deployment/openllm.rst:36 59f91e90b1264a749c6182f1e8da9070
+msgid "The results also display the required GPU resources and supported platforms:"
+msgstr "结果还会显示所需的 GPU 资源和支持的平台："
+
+#: ../../source/deployment/openllm.rst:54 5dcf3a784bd042448f0a122818c52395
+msgid "To start a server with one of the models, use ``openllm serve`` like this:"
+msgstr "要使用其中一个模型来启动服务器，请使用 ``openllm serve`` 命令，例如："
+
+#: ../../source/deployment/openllm.rst:60 e637a01782a041cbbb044ed0c5bfb48f
+msgid "By default, the server starts at ``http://localhost:3000/``."
+msgstr "默认情况下，服务器启动在 http://localhost:3000/。"
+
+#: ../../source/deployment/openllm.rst:63 8457ac65af3f4ec5853f0b8a0a725708
+msgid "Interact with the model server"
+msgstr "与模型服务器交互"
+
+#: ../../source/deployment/openllm.rst:65 6f0aa0deae1a4de0b694d35bbef3c5c7
+msgid "With the model server up and running, you can call its APIs in the following ways:"
+msgstr "服务器运行后，可以通过以下方式调用其 API："
+
+#: ../../source/deployment/openllm.rst 80e56ac95bab4c478bef739c854b17a2
+msgid "CURL"
+msgstr "CURL"
+
+#: ../../source/deployment/openllm.rst:71 781c1253b9f8482fb3371b66819f4273
+msgid "Send an HTTP request to its ``/generate`` endpoint via CURL:"
+msgstr "通过 CURL 向其 ``/generate`` 端点发送 HTTP 请求："
+
+#: ../../source/deployment/openllm.rst cec41082c62447d2b78b8f6a59305d9e
+msgid "Python client"
+msgstr "Python 客户端"
+
+#: ../../source/deployment/openllm.rst:88 3c1852f6303c40fbb7c7f1ded4bf2313
+msgid "Call the OpenAI-compatible endpoints with frameworks and tools that support the OpenAI API protocol. Here is an example:"
+msgstr "使用支持 OpenAI API 协议的框架和工具来调用。例如："
+
+#: ../../source/deployment/openllm.rst 4b9859905ccf4198960623fb08729f48
+msgid "Chat UI"
+msgstr "聊天 UI"
+
+#: ../../source/deployment/openllm.rst:115 2bd4d8290f0546c3b22ca985ecfa9d13
+msgid "OpenLLM provides a chat UI at the ``/chat`` endpoint for the LLM server at http://localhost:3000/chat."
+msgstr "OpenLLM 为 LLM 服务器提供的聊天 UI 位于 ``/chat`` 端点，地址为 http://localhost:3000/chat。"
+
+#: ../../source/deployment/openllm.rst:120 57ce35b171cd42088ed23be0862611b3
+msgid "Model repository"
+msgstr "模型仓库"
+
+#: ../../source/deployment/openllm.rst:122 3a642d5e0c4c4a7484d05eebfdf0a3ac
+msgid "A model repository in OpenLLM represents a catalog of available LLMs. You can add your own repository to OpenLLM with custom Qwen2.5 variants for your specific needs. See our `documentation to learn details <https://github.com/bentoml/OpenLLM?tab=readme-ov-file#model-repository>`_."
+msgstr "OpenLLM 中的模型仓库表示可用的 LLM 目录。您可以为 OpenLLM 添加自定义的 Qwen2.5 模型仓库，以满足您的特定需求。请参阅 `我们的文档 <https://github.com/bentoml/OpenLLM?tab=readme-ov-file#model-repository>`_ 了解详细信息。"
+
