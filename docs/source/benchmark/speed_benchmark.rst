@@ -11,21 +11,21 @@ The environment of the evaluation with huggingface transformers is:
 
 -  NVIDIA A100 80GB
 -  CUDA 12.1
--  torch==2.3.1
--  flash_attn==2.5.8
--  transformers==4.46.0
--  auto_gptq==0.7.1+cu1210 (Compiled from source code)
--  autoawq==0.2.6
+-  Pytorch 2.3.1+cu121
+-  Flash Attention 2.5.8
+-  Transformers 4.46.0
+-  AutoGPTQ 0.7.1+cu121 (Compiled from source code)
+-  AutoAWQ 0.2.6
 
 
 The environment of the evaluation with vLLM is:
 
 -  NVIDIA A100 80GB
 -  CUDA 12.1
--  vllm==0.6.3
--  torch==2.4.0
--  flash_attn==2.6.3
--  transformers==4.46.0
+-  vLLM 0.6.3
+-  Pytorch 2.4.0+cu121
+-  Flash Attention 2.6.3
+-  Transformers 4.46.0
 
 
 Notes:
