@@ -172,6 +172,9 @@ Qwen2.5 is supported by multiple inference frameworks. Here we demonstrate the u
 
 ### vLLM
 
+> [!Warning]
+> Not working with vllm 0.6.3.
+
 We advise you to use the latest version of vLLM to build OpenAI-compatible API service, including tool use support. Start the server with a chat model, e.g. `Qwen2.5-7B-Instruct`:
 ```shell
 vllm serve Qwen/Qwen2.5-7B-Instruct
