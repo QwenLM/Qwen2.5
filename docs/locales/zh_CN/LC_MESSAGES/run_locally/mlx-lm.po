@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-18 21:18+0800\n"
+"POT-Creation-Date: 2024-10-31 15:08+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -16,65 +16,66 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.15.0\n"
+"Generated-By: Babel 2.16.0\n"
 
-#: ../../source/run_locally/mlx-lm.md:1 61c8baf11c744edcba28e78965503480
+#: ../../source/run_locally/mlx-lm.md:1 d2c5128adf914ab6abd19d847cbc8601
 msgid "MLX-LM"
 msgstr ""
 
-#: ../../source/run_locally/mlx-lm.md:3 383638a8f5bc4be89d462a0227a098e3
+#: ../../source/run_locally/mlx-lm.md:3 f6d04869289f4c849d4391621be2644c
 msgid "[mlx-lm](https://github.com/ml-explore/mlx-examples/tree/main/llms) helps you run LLMs locally on Apple Silicon.  It is available at MacOS.  It has already supported Qwen models and this time, we have also provided checkpoints that you can directly use with it."
 msgstr "[mlx-lm](https://github.com/ml-explore/mlx-examples/tree/main/llms)能让你在Apple Silicon上运行大型语言模型，适用于MacOS。mlx-lm已支持Qwen模型，此次我们提供直接可用的模型文件。"
 
-#: ../../source/run_locally/mlx-lm.md:7 e8a5a01e2cfc4e47a9956419b6b29ff0
+#: ../../source/run_locally/mlx-lm.md:7 edf9e165a26848bc875ca49f57d232fb
 msgid "Prerequisites"
 msgstr "准备工作"
 
-#: ../../source/run_locally/mlx-lm.md:9 f750b6e1dc7e4cbd826d7691c7f6ed26
+#: ../../source/run_locally/mlx-lm.md:9 5436a9f090304c46b7f169742af3400a
 msgid "The easiest way to get started is to install the `mlx-lm` package:"
 msgstr "首先需要安装`mlx-lm`包："
 
-#: ../../source/run_locally/mlx-lm.md:11 db8c2b3ec8dd4c5f8359694c5c7ce434
+#: ../../source/run_locally/mlx-lm.md:11 6e32880d153147f8b234edcd15c02b14
 msgid "with `pip`:"
 msgstr "使用`pip`："
 
-#: ../../source/run_locally/mlx-lm.md:17 b4ec1327d3684c22ab8ba3bae2dc5e76
+#: ../../source/run_locally/mlx-lm.md:17 91926ab5162c43a8a97ef99be46cb072
 msgid "with `conda`:"
 msgstr "使用`conda`："
 
-#: ../../source/run_locally/mlx-lm.md:23 7b663111a4c14ed5b0750fc999469416
-msgid "Runnig with Qwen MLX Files"
+#: ../../source/run_locally/mlx-lm.md:23 b99995c0cae74e9c8f910f58da8411b1
+#, fuzzy
+msgid "Running with Qwen MLX Files"
 msgstr "使用Qwen MLX模型文件"
 
-#: ../../source/run_locally/mlx-lm.md:25 64d9483d2eff4b4eb9010a46c04fc4a6
+#: ../../source/run_locally/mlx-lm.md:25 ab8763829ca3472ea28ad27a8d633543
 msgid "We provide model checkpoints with `mlx-lm` in our Hugging Face organization, and to search for what you need you can search the repo names with `-MLX`."
 msgstr "我们已在Hugging Face提供了适用于`mlx-lm`的模型文件，请搜索带`-MLX`的存储库。"
 
-#: ../../source/run_locally/mlx-lm.md:27 860d860779d14625b752d6d11f15f6a7
+#: ../../source/run_locally/mlx-lm.md:27 bbec39bf80944e2aa5f8389fe2698aca
 msgid "Here provides a code snippet with `apply_chat_template` to show you how to load the tokenizer and model and how to generate contents."
 msgstr "这里我们展示了一个代码样例，其中使用了`apply_chat_template`来应用对话模板。"
 
-#: ../../source/run_locally/mlx-lm.md:48 432fa9f73b064a369f6b944fd2ec9589
+#: ../../source/run_locally/mlx-lm.md:48 ac7841a49cd9409a852bdd19d7187126
 msgid "Make Your MLX files"
 msgstr "自行制作MLX格式模型"
 
-#: ../../source/run_locally/mlx-lm.md:50 c3cd4ce2e13a40ceb5271b178102eac9
+#: ../../source/run_locally/mlx-lm.md:50 1bf2b3706c884cfa8809532adee5326f
 msgid "You can make mlx files with just one command:"
 msgstr "仅用一条命令即可制作mlx格式模型"
 
-#: ../../source/run_locally/mlx-lm.md:56 9d387ad659674c939d143b940d67a29a
+#: ../../source/run_locally/mlx-lm.md:56 e093ca37eefa4f88a72e14b336c9d9a7
 msgid "where"
 msgstr "参数含义分别是"
 
-#: ../../source/run_locally/mlx-lm.md:58 ad0256ce9848415aa01d2bb21d3db5f2
+#: ../../source/run_locally/mlx-lm.md:58 cb051476b94a4acca95e1b77e80975d0
 msgid "`--hf-path`: the model name on Hugging Face Hub or the local path"
 msgstr "`--hf-path`: Hugging Face Hub上的模型名或本地路径"
 
-#: ../../source/run_locally/mlx-lm.md:59 552bc20336cf43a89512a133c085bdfb
+#: ../../source/run_locally/mlx-lm.md:59 bf4a4147d4cb42949b5d5619635f4d51
 msgid "`--mlx-path`: the path for output files"
 msgstr "`--mlx-path`: 输出模型文件的存储路径"
 
-#: ../../source/run_locally/mlx-lm.md:60 d689159e16c74ef5b6eeaf23747fefb9
+#: ../../source/run_locally/mlx-lm.md:60 10890e9a3357489ebd2efc0d17b4c136
 msgid "`-q`: enable quantization"
 msgstr "`-q`: 启用量化"
 

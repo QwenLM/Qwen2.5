@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-18 21:18+0800\n"
+"POT-Creation-Date: 2024-10-31 15:08+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -14,112 +14,206 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.15.0\n"
+"Generated-By: Babel 2.16.0\n"
 
-#: ../../source/quantization/gptq.md:1 cb8ed83cdbcd46cea1b87333dde2ea42
+#: ../../source/quantization/gptq.md:1 4639a1fe25a04b82be1949dc30362f74
 msgid "GPTQ"
 msgstr ""
 
-#: ../../source/quantization/gptq.md:3 fc00d2c7a4bd4f4589577b9309fb07a5
+#: ../../source/quantization/gptq.md:3 237c1e5775384796b514f9b62d5f01ba
 msgid "[GPTQ](https://arxiv.org/abs/2210.17323) is a quantization method for GPT-like LLMs, which uses one-shot weight quantization based on approximate second-order information. In this document, we show you how to use the quantized model with Hugging Face `transformers` and also how to quantize your own model with [AutoGPTQ](https://github.com/AutoGPTQ/AutoGPTQ)."
 msgstr "[GPTQ](https://arxiv.org/abs/2210.17323)是一种针对类GPT大型语言模型的量化方法，它基于近似二阶信息进行一次性权重量化。在本文档中，我们将向您展示如何使用 `transformers` 库加载并应用量化后的模型，同时也会指导您如何通过[AutoGPTQ](https://github.com/AutoGPTQ/AutoGPTQ)来对您自己的模型进行量化处理。"
 
-#: ../../source/quantization/gptq.md:6 13ecd69c76bf491598c2c300ac8c6385
+#: ../../source/quantization/gptq.md:6 0a51b2eedca845fbba17d67952449711
 msgid "Usage of GPTQ Models with Hugging Face transformers"
 msgstr "在Hugging Face transformers中使用GPTQ模型"
 
-#: ../../source/quantization/gptq.md:8 984ca3b90c32412db8aa19c9d5e2de1d
+#: ../../source/quantization/gptq.md:10 9841015799964ac4bfe88e8ebb7e223e
+msgid "To use the official Qwen2.5 GPTQ models with `transformers`, please ensure that `optimum>=1.20.0` and compatible versions of `transformers` and `auto_gptq` are installed."
+msgstr ""
+
+#: ../../source/quantization/gptq.md:12 709565fad090474c960dbb92bd6cd874
+msgid "You can do that by"
+msgstr ""
+
+#: ../../source/quantization/gptq.md:18 63bf35a5d08e46a1a6c64371867e7793
 msgid "Now, `transformers` has officially supported AutoGPTQ, which means that you can directly use the quantized model with `transformers`.  For each size of Qwen2.5, we provide both Int4 and Int8 GPTQ quantized models. The following is a very simple code snippet showing how to run `Qwen2.5-7B-Instruct-GPTQ-Int4`:"
 msgstr "现在，`transformers` 正式支持了AutoGPTQ，这意味着您能够直接在`transformers`中使用量化后的模型。以下是一个非常简单的代码片段示例，展示如何运行  `Qwen2.5-7B-Instruct-GPTQ-Int4` （请注意，对于每种大小的Qwen2.5模型，我们都提供了Int4和Int8两种量化版本）："
 
-#: ../../source/quantization/gptq.md:46 6c6592e0572b4ac3aa7a9e1a1209d598
+#: ../../source/quantization/gptq.md:56 62a8696f558d4033a95d84f3decb1798
 msgid "Usage of GPTQ Models with vLLM"
 msgstr "在vLLM中使用GPTQ模型"
 
-#: ../../source/quantization/gptq.md:48 71eac1c25a7d4ee08af7dc1a8ce0f1b9
+#: ../../source/quantization/gptq.md:58 51810b14f61f408ea261f77eb51d0ae2
 msgid "vLLM has supported GPTQ, which means that you can directly use our provided GPTQ models or those trained with `AutoGPTQ` with vLLM. If possible, it will automatically use the GPTQ Marlin kernel, which is more efficient."
 msgstr "vLLM已支持GPTQ，您可以直接使用我们提供的GPTQ量化模型或使用`AutoGPTQ`量化的模型。我们建议使用最新版的vLLM。如有可能，其会自动使用效率更好的GPTQ Marlin实现。"
 
-#: ../../source/quantization/gptq.md:51 71eac1c25a7d4ee08af7dc1a8ce0f1b9
+#: ../../source/quantization/gptq.md:61 c42f9e0f65184b5bac3c0e30c90f4302
 msgid "Actually, the usage is the same with the basic usage of vLLM.  We provide a simple example of how to launch OpenAI-API compatible API with vLLM and `Qwen2.5-7B-Instruct-GPTQ-Int4`:"
 msgstr "实际上，使用GPTQ模型与vLLM的基本用法相同。我们提供了一个简单的示例，展示了如何通过vLLM启动与OpenAI API兼容的接口，并使用 `Qwen2.5-7B-Instruct-GPTQ-Int4` 模型："
 
-#: ../../source/quantization/gptq.md:54 715a952875424ec9bc143ef8e7a16575
+#: ../../source/quantization/gptq.md:64 9f6785984f76491db338e5000352a4cb
 msgid "Run the following in a shell to start an OpenAI-compatible API service:"
 msgstr "在终端中运行以下命令以开启OpenAI兼容API："
 
-#: ../../source/quantization/gptq.md:60 3f59ee33852e43e0810a5bc5bcc5621d
+#: ../../source/quantization/gptq.md:70 59947bdebf534ba495b35b4b5af8a806
 msgid "Then, you can call the API as"
 msgstr "随后，您可以这样调用API："
 
-#: ../../source/quantization/gptq.md:76 2c30755346da4592b504426afb9468bc
+#: ../../source/quantization/gptq.md:86 bf73da8fad43475cb004e130f06d4bda
 msgid "or you can use the API client with the `openai` Python package as shown below:"
 msgstr "或者你可以按照下面所示的方式，使用 `openai` Python包中的API客户端："
 
-#: ../../source/quantization/gptq.md:105 9ff0176b3d5a4c8398b8c8ab8aff8791
+#: ../../source/quantization/gptq.md:115 42823c00f5264ec194a0a0819e53ba77
 msgid "Quantize Your Own Model with AutoGPTQ"
 msgstr "使用AutoGPTQ量化你的模型"
 
-#: ../../source/quantization/gptq.md:107 0bf906fda20448e5a69327314618b481
+#: ../../source/quantization/gptq.md:117 848e61f37cb24de887613d4773db0003
 msgid "If you want to quantize your own model to GPTQ quantized models, we advise you to use AutoGPTQ.  It is suggested installing the latest version of the package by installing from source code:"
 msgstr "如果你想将自定义模型量化为GPTQ量化模型，我们建议你使用AutoGPTQ工具。推荐通过安装源代码的方式获取并安装最新版本的该软件包。"
 
-#: ../../source/quantization/gptq.md:116 bdbe39e2c9ea4c8f92cf06009f889523
+#: ../../source/quantization/gptq.md:126 11f45927d8194982a8f358bcc46fcdf2
 msgid "Suppose you have finetuned a model based on `Qwen2.5-7B`, which is named `Qwen2.5-7B-finetuned`, with your own dataset, e.g., Alpaca.  To build your own GPTQ quantized model, you need to use the training data for calibration.  Below, we provide a simple demonstration for you to run:"
 msgstr "假设你已经基于 `Qwen2.5-7B` 模型进行了微调，并将该微调后的模型命名为 `Qwen2.5-7B-finetuned` ，且使用的是自己的数据集，比如Alpaca。要构建你自己的GPTQ量化模型，你需要使用训练数据进行校准。以下是一个简单的演示示例，供你参考运行："
 
-#: ../../source/quantization/gptq.md:147 806cb9bb1ea04087afe8aa0f3b7ddb1c
+#: ../../source/quantization/gptq.md:157 8147c10174394c4daff298e141737866
 msgid "However, if you would like to load the model on multiple GPUs, you need to use `max_memory` instead of `device_map`. Here is an example:"
 msgstr "但是，如果你想使用多GPU来读取模型，你需要使用 `max_memory` 而不是 `device_map`。下面是一段示例代码："
 
-#: ../../source/quantization/gptq.md:158 db590b4cb49c4f48ad670d9392d7b23c
+#: ../../source/quantization/gptq.md:168 846bf15aa5734a54b2f02de63cb26c6d
 msgid "Then you need to prepare your data for calibration.  What you need to do is just put samples into a list, each of which is a text.  As we directly use our finetuning data for calibration, we first format it with ChatML template.  For example,"
 msgstr "接下来，你需要准备数据进行校准。你需要做的是将样本放入一个列表中，其中每个样本都是一段文本。由于我们直接使用微调数据进行校准，所以我们首先使用ChatML模板对它进行格式化处理。例如："
 
-#: ../../source/quantization/gptq.md:174 b41af049786f4fa5a05bfaee8f002351
+#: ../../source/quantization/gptq.md:184 1926aed96c414ee8af0e4cc83ffaea6c
 msgid "where each `msg` is a typical chat message as shown below:"
 msgstr "其中每个 `msg` 是一个典型的聊天消息，如下所示："
 
-#: ../../source/quantization/gptq.md:184 49eb3e4cbd784cb6951bfd8b13234acd
+#: ../../source/quantization/gptq.md:194 bd672cae55a2456591e7d43a9dc9b6ed
 msgid "Then just run the calibration process by one line of code:"
 msgstr "然后只需通过一行代码运行校准过程："
 
-#: ../../source/quantization/gptq.md:195 39f7446a008a4860818889596902fb47
+#: ../../source/quantization/gptq.md:205 c672563f95564e1ba3eab7ebb210d2ee
 msgid "Finally, save the quantized model:"
 msgstr "最后，保存量化模型："
 
-#: ../../source/quantization/gptq.md:202 1e27f2d66f404194806416b805cf7f08
+#: ../../source/quantization/gptq.md:212 38868a0095e2481dbc29de68effd2347
 msgid "It is unfortunate that the `save_quantized` method does not support sharding.  For sharding, you need to load the model and use `save_pretrained` from transformers to save and shard the model. Except for this, everything is so simple.  Enjoy!"
 msgstr "很遗憾， `save_quantized` 方法不支持模型分片。若要实现模型分片，您需要先加载模型，然后使用来自 `transformers` 库的 `save_pretrained` 方法来保存并分片模型。除此之外，一切操作都非常简单。祝您使用愉快！"
 
-#: ../../source/quantization/gptq.md:207 23d469057d1d4ac1b88ba44472a399c6
+#: ../../source/quantization/gptq.md:218 546021d400c74b5a86d97f4519aed455
+msgid "Known Issues"
+msgstr ""
+
+#: ../../source/quantization/gptq.md:220 4f03b54677ae4d7db7781b3d3be4dc8b
+msgid "Qwen2.5-72B-Instruct-GPTQ-Int4 cannot stop generation properly"
+msgstr ""
+
+#: ../../source/quantization/gptq.md:222 ../../source/quantization/gptq.md:231
+#: 1053c0c8b9074eb39117e87a4a0db6c9 3ef8f35723a842c69e8298fc9248dc25
+msgid "Model"
+msgstr ""
+
+#: ../../source/quantization/gptq.md:222 e1f9fb03003449768c44e67cc9f25130
+msgid "Qwen2.5-72B-Instruct-GPTQ-Int4"
+msgstr ""
+
+#: ../../source/quantization/gptq.md:223 ../../source/quantization/gptq.md:232
+#: 1dee311544024ea4901950182e4ac696 d7c5342c5741494a987ee2a6d75fb106
+msgid "Framework"
+msgstr ""
+
+#: ../../source/quantization/gptq.md:223 4a38ef4c688c4ec881437801b06409e9
+#, fuzzy
+msgid "vLLM, AutoGPTQ (including Hugging Face transformers)"
+msgstr "在Hugging Face transformers中使用GPTQ模型"
+
+#: ../../source/quantization/gptq.md:224 ../../source/quantization/gptq.md:233
+#: cdecacae30324a64bfff2d21b61231a3 ec09e9fa6b394eada934097897897edc
+msgid "Description"
+msgstr ""
+
+#: ../../source/quantization/gptq.md:224 18a98a249fa0418593b22c971e1aacad
+msgid "Generation cannot stop properly. Continual generation after where it should stop, then repeated texts, either single character, a phrase, or paragraphs, are generated."
+msgstr ""
+
+#: ../../source/quantization/gptq.md:225 ../../source/quantization/gptq.md:234
+#: 776f865aca6c42969e22927b53f4533f e9a580df896d4ebaaca0adb5c6783382
+msgid "Workaround"
+msgstr ""
+
+#: ../../source/quantization/gptq.md:225 df3189eabeb6496f927e4021fffc5e7c
+msgid "The following workaround could be considered"
+msgstr ""
+
+#: ../../source/quantization/gptq.md:226 44a1a31e0353469591a3ce16b798f004
+msgid "Using the original model in 16-bit floating point"
+msgstr ""
+
+#: ../../source/quantization/gptq.md:227 050daae5d5c845faa8eb67d08c5e9e4f
+msgid "Using the AWQ variants or llama.cpp-based models for reduced chances of abnormal generation"
+msgstr ""
+
+#: ../../source/quantization/gptq.md:229 9e6307842e8c435ab2db1f442d406af5
+msgid "Qwen2.5-32B-Instruct-GPTQ-Int4 broken with vLLM on multiple GPUs"
+msgstr ""
+
+#: ../../source/quantization/gptq.md:231 55f70c4e7db64d2a9b4b0ece216b2d90
+msgid "Qwen2.5-32B-Instruct-GPTQ-Int4"
+msgstr ""
+
+#: ../../source/quantization/gptq.md:232 cc6d588b5d184193b332d4a8c16f9820
+msgid "vLLM"
+msgstr ""
+
+#: ../../source/quantization/gptq.md:233 72c11e9a5ecd46d39ba3fbe236b6e2e2
+msgid "Deployment on multiple GPUs and only garbled text like `!!!!!!!!!!!!!!!!!!` could be generated."
+msgstr ""
+
+#: ../../source/quantization/gptq.md:234 831d894cc231436f8200d6dcffc49ef9
+msgid "Each of the following workaround could be considered"
+msgstr ""
+
+#: ../../source/quantization/gptq.md:235 a3e8c4919a0a4a49b69cb6362bb828af
+msgid "Using the AWQ or GPTQ-Int8 variants"
+msgstr ""
+
+#: ../../source/quantization/gptq.md:236 0c6aadc5568b4e0294b8f2bde18fb07c
+msgid "Using a single GPU"
+msgstr ""
+
+#: ../../source/quantization/gptq.md:237 163f1b82ed8b4a219ffba33f6683fd74
+msgid "Using Hugging Face `transformers` if latency and throughput are not major concerns"
+msgstr ""
+
+#: ../../source/quantization/gptq.md:240 7231ceaecd0b4a2194f868c2eabdb5df
 msgid "Troubleshooting"
 msgstr "问题排查"
 
-#: ../../source/quantization/gptq.md fa840e4726b441e2be38619b4f8a53cf
+#: ../../source/quantization/gptq.md b90a653492964a9baf61df0769feebf5
 msgid "With `transformers` and `auto_gptq`, the logs suggest `CUDA extension not installed.` and the inference is slow."
 msgstr "在使用 `transformers` 和 `auto_gptq` 时，日志提示 `CUDA extension not installed.` 并且推理速度缓慢。"
 
-#: ../../source/quantization/gptq.md:211 f612190c806c495fb7e6952dd4e6a10f
+#: ../../source/quantization/gptq.md:244 5e8ff5bf3ced493abb042d5be7aac086
 msgid "`auto_gptq` fails to find a fused CUDA kernel compatible with your environment and falls back to a plain implementation. Follow its [installation guide](https://github.com/AutoGPTQ/AutoGPTQ/blob/main/docs/INSTALLATION.md) to install a pre-built wheel or try installing `auto_gptq` from source."
 msgstr "`auto_gptq` 未能找到与您的环境兼容的融合CUDA算子，因此退回到基础实现。请遵循其 [安装指南](https://github.com/AutoGPTQ/AutoGPTQ/blob/main/docs/INSTALLATION.md) 来安装预构建的 wheel 或尝试从源代码安装 `auto_gptq` 。"
 
-#: ../../source/quantization/gptq.md 4148a187a0b542bcb6ed4206644c3357
+#: ../../source/quantization/gptq.md 53c460f4e9a04dd999897d79c1636885
 msgid "Self-quantized Qwen2.5-72B-Instruct-GPTQ with `vllm`, `ValueError: ... must be divisible by ...` is raised. The intermediate size of the self-quantized model is different from the official Qwen2.5-72B-Instruct-GPTQ models."
 msgstr "`vllm` 使用自行量化的 Qwen2.5-72B-Instruct-GPTQ 时，会引发 `ValueError: ... must be divisible by ...` 错误。自量化的模型的 intermediate size 与官方的 Qwen2.5-72B-Instruct-GPTQ 模型不同。"
 
-#: ../../source/quantization/gptq.md:218 b3062ffe77b546e5a7abdf6dac4c6cd9
+#: ../../source/quantization/gptq.md:251 734883359745457d9c339aada5ebc188
 msgid "After quantization the size of the quantized weights are divided by the group size, which is typically 128. The intermediate size for the FFN blocks in Qwen2.5-72B is 29568. Unfortunately, {math}`29568 \\div 128 = 231`. Since the number of attention heads and the dimensions of the weights must be divisible by the tensor parallel size, it means you can only run the quantized model with `tensor_parallel_size=1`, i.e., one GPU card."
 msgstr "量化后，量化权重的大小将被 group size（通常为128）整除。Qwen2-72B 中FFN块的中间大小为29568。不幸的是， {math}`29568 \\div 128 = 231` 。由于注意力头的数量和权重的维度必须能够被张量并行大小整除，这意味着你只能使用 `tensor_parallel_size=1` ，即一张 GPU 卡，来运行量化的模型。"
 
-#: ../../source/quantization/gptq.md:223 a447651e7c814a0cbac88c4c069f1847
+#: ../../source/quantization/gptq.md:256 c5fab7dd871c402d9ca0b9b844e9bcda
 msgid "A workaround is to make the intermediate size divisible by {math}`128 \\times 8 = 1024`. To achieve that, the weights should be padded with zeros. While it is mathematically equivalent before and after zero-padding the weights, the results may be slightly different in reality."
 msgstr "一个解决方案是使中间大小能够被 {math}`128 \\times 8 = 1024` 整除。为了达到这一目的，应该使用零值对权重进行填充。虽然在数学上，在对权重进行零填充前后是等价的，但在现实中结果可能会略有不同。"
 
-#: ../../source/quantization/gptq.md:227 c3ec2b95ae3741febf935629a53914d0
+#: ../../source/quantization/gptq.md:260 7e68bc625db74887b283394e934c8088
 msgid "Try the following:"
 msgstr "尝试以下方法："
 
-#: ../../source/quantization/gptq.md:260 b16834a84ce24525a649814741c80ea1
+#: ../../source/quantization/gptq.md:293 48b0df4371494b88a672ba56a437ac9e
 msgid "This will save the padded checkpoint to the specified directory. Then, copy other files from the original checkpoint to the new directory and modify the `intermediate_size` in `config.json` to `29696`. Finally, you can quantize the saved model checkpoint."
 msgstr "这将会把填充后的检查点保存到指定的目录。然后，你需要从原始检查点复制其他文件到新目录，并将 `config.json` 中的 `intermediate_size` 修改为 `29696` 。最后，你可以量化保存的模型检查点。"
+
