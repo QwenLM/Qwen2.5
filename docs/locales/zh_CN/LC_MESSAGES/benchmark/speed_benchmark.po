@@ -47,7 +47,7 @@ msgstr ""
 
 #: ../../source/benchmark/speed_benchmark.rst:14
 #: 190e255dcd1e469294188508b49bf98c
-msgid "Pytorch 2.3.1+cu121"
+msgid "Pytorch 2.3.1"
 msgstr ""
 
 #: ../../source/benchmark/speed_benchmark.rst:15
@@ -83,7 +83,7 @@ msgstr ""
 
 #: ../../source/benchmark/speed_benchmark.rst:26
 #: a5ed9f5e4c164ddaa94443aaf9fad845
-msgid "Pytorch 2.4.0+cu121"
+msgid "Pytorch 2.4.0"
 msgstr ""
 
 #: ../../source/benchmark/speed_benchmark.rst:27
