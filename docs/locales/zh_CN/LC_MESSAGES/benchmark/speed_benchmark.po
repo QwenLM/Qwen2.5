@@ -20,13 +20,11 @@ msgstr ""
 
 #: ../../source/benchmark/speed_benchmark.rst:2
 #: c37062a883c842a2b89fc3971b2209cb
-#, fuzzy
 msgid "Qwen2.5 Speed Benchmark"
 msgstr "效率评估"
 
 #: ../../source/benchmark/speed_benchmark.rst:5
 #: 5577386104e04ce0820d75b8d4a4b9bb
-#, fuzzy
 msgid "This section reports the speed performance of bf16 models, quantized models (including GPTQ-Int4, GPTQ-Int8 and AWQ) of the Qwen2.5 series. Specifically, we report the inference speed (tokens/s) as well as memory footprint (GB) under the conditions of different context lengths."
 msgstr "本部分介绍Qwen2.5系列模型（原始模型和量化模型）的效率测试结果，包括推理速度(tokens/s)与不同上下文长度时的显存占用(GB)。"
 
@@ -95,19 +93,16 @@ msgstr ""
 
 #: ../../source/benchmark/speed_benchmark.rst:31
 #: 408f8720e08641238a86c8976c54b69f
-#, fuzzy
 msgid "Notes:"
 msgstr "注意："
 
 #: ../../source/benchmark/speed_benchmark.rst:33
 #: 721fca542cbe44dca41c5209a83b2df7
-#, fuzzy
 msgid "We use the batch size of 1 and the least number of GPUs as possible for the evaluation."
 msgstr "batch size 设置为1，使用 GPU 数量尽可能少"
 
 #: ../../source/benchmark/speed_benchmark.rst:35
 #: 974fc88f26354dce8f66862962a6a420
-#, fuzzy
 msgid "We test the speed and memory of generating 2048 tokens with the input lengths of 1, 6144, 14336, 30720, 63488, and 129024 tokens."
 msgstr "我们测试生成2048 tokens时的速度与显存占用，输入长度分别为1、6144、14336、30720、63488、129024 tokens。(超过32K长度仅有 Qwen2-72B-Instuct 与 Qwen2-7B-Instuct 支持)"
 
@@ -234,7 +229,6 @@ msgstr "显存占用 (GB)"
 #: ../../source/benchmark/speed_benchmark.rst:583
 #: ../../source/benchmark/speed_benchmark.rst:624
 #: 974200ffda5f454cad058306d29c01f5
-#, fuzzy
 msgid "Note"
 msgstr "注意："
 
@@ -1879,7 +1873,6 @@ msgstr ""
 #: ../../source/benchmark/speed_benchmark.rst:559
 #: ../../source/benchmark/speed_benchmark.rst:561
 #: 9f914a0377a345d49e368e87916880dc
-#, fuzzy
 msgid "setting-64k"
 msgstr "[设定3]"
 
@@ -1946,7 +1939,6 @@ msgstr ""
 #: ../../source/benchmark/speed_benchmark.rst:471
 #: ../../source/benchmark/speed_benchmark.rst:575
 #: 72d24e828e8943af941fe8a9cebd7d0b
-#, fuzzy
 msgid "[Setting-64k]=(gpu_memory_utilization=0.9 max_model_len=65536 enforce_eager=False)"
 msgstr "[默认设定]=(gpu_memory_utilization=0.9 max_model_len=32768 enforce_eager=False)"
 
@@ -2431,7 +2423,6 @@ msgstr ""
 #: ../../source/benchmark/speed_benchmark.rst:531
 #: ../../source/benchmark/speed_benchmark.rst:539
 #: ecb82e57e6174a228b0bb6c9408c857a
-#, fuzzy
 msgid "setting1"
 msgstr "[设定3]"
 
@@ -2596,7 +2587,6 @@ msgstr "[默认设定]=(gpu_memory_utilization=0.9 max_model_len=32768 enforce_e
 
 #: ../../source/benchmark/speed_benchmark.rst:574
 #: 52ff1ba434ec4f5aa779f7c1391a4888
-#, fuzzy
 msgid "[Setting 1]=(gpu_memory_utilization=1.0 max_model_len=32768 enforce_eager=True)"
 msgstr "[设定 3]=(gpu_memory_utilization=1.0 max_model_len=8192 enforce_eager=True)"
 
@@ -2776,7 +2766,6 @@ msgstr ""
 
 #: ../../source/benchmark/speed_benchmark.rst:626
 #: 8cdd46c8c8c64b749e734e82f604941d
-#, fuzzy
 msgid "Setting 1"
 msgstr "[设定3]"
 
@@ -2828,7 +2817,6 @@ msgstr ""
 
 #: ../../source/benchmark/speed_benchmark.rst:634
 #: 06343656f08748a2b10154bae4376207
-#, fuzzy
 msgid "Setting 2"
 msgstr "[设定2]"
 
@@ -2854,7 +2842,6 @@ msgstr ""
 
 #: ../../source/benchmark/speed_benchmark.rst:644
 #: b204f3c52579498683f909bc570a588a
-#, fuzzy
 msgid "Setting 3"
 msgstr "[设定3]"
 
@@ -2913,7 +2900,6 @@ msgstr ""
 #: ../../source/benchmark/speed_benchmark.rst:668
 #: ../../source/benchmark/speed_benchmark.rst:670
 #: 48fa6349dfa84ceb9647fe94dfb1b0f1
-#, fuzzy
 msgid "Setting 4"
 msgstr "[设定3]"
 
@@ -2942,7 +2928,6 @@ msgstr ""
 #: ../../source/benchmark/speed_benchmark.rst:676
 #: ../../source/benchmark/speed_benchmark.rst:678
 #: b728aa33bc8a43d48e30bb7c6eda12c3
-#, fuzzy
 msgid "Setting 5"
 msgstr "[设定3]"
 
@@ -2978,13 +2963,11 @@ msgstr "[设定 3]=(gpu_memory_utilization=1.0 max_model_len=8192 enforce_eager=
 
 #: ../../source/benchmark/speed_benchmark.rst:685
 #: 70b88bc91b9848bdb4901f8490275db4
-#, fuzzy
 msgid "[Setting 4]=(gpu_memory_utilization=0.9 max_model_len=65536 enforce_eager=False)"
 msgstr "[默认设定]=(gpu_memory_utilization=0.9 max_model_len=32768 enforce_eager=False)"
 
 #: ../../source/benchmark/speed_benchmark.rst:686
 #: 6eed31e9316b4d64b8c1d105884524fc
-#, fuzzy
 msgid "[Setting 5]=(gpu_memory_utilization=0.9 max_model_len=131072 enforce_eager=False)"
 msgstr "[默认设定]=(gpu_memory_utilization=0.9 max_model_len=32768 enforce_eager=False)"
 
