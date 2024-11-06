@@ -77,3 +77,4 @@ msgstr "`--mlx-path`: 输出模型文件的存储路径"
 #: ../../source/run_locally/mlx-lm.md:60 d689159e16c74ef5b6eeaf23747fefb9
 msgid "`-q`: enable quantization"
 msgstr "`-q`: 启用量化"
+
