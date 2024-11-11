@@ -175,12 +175,12 @@ We provide a series of GGUF models in our Hugging Face organization, and to sear
 
 Download the GGUF model that you want with `huggingface-cli` (you need to install it first with `pip install huggingface_hub`):
 ```bash
-huggingface-cli download <model_repo> <gguf_file> --local-dir <local_dir> --local-dir-use-symlinks False
+huggingface-cli download <model_repo> <gguf_file> --local-dir <local_dir>
 ```
 
 For example:
 ```bash
-huggingface-cli download Qwen/Qwen2.5-7B-Instruct-GGUF qwen2.5-7b-instruct-q5_k_m.gguf --local-dir . --local-dir-use-symlinks False
+huggingface-cli download Qwen/Qwen2.5-7B-Instruct-GGUF qwen2.5-7b-instruct-q5_k_m.gguf --local-dir .
 ```
 
 This will download the Qwen2.5-7B-Instruct model in GGUF format quantized with the scheme Q5_K_M.
@@ -306,7 +306,7 @@ We use some new options here:
 
 :`-sp` or `--special`: Show the special tokens.
 :`-i` or `--interactive`: Enter interactive mode. You can interrupt model generation and append new texts.
-:`-i` or `--interactive-first`: Immediately wait for user input. Otherwise, the model will run at once and generate based on the prompt.
+:`-if` or `--interactive-first`: Immediately wait for user input. Otherwise, the model will run at once and generate based on the prompt.
 :`-p` or `--prompt`: In interactive mode, it is the contexts based on which the model predicts the continuation.
 :`--in-prefix`: String to prefix user inputs with.
 :`--in-suffix`: String to suffix after user inputs with.

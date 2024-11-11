@@ -495,8 +495,8 @@ msgid "Enter interactive mode. You can interrupt model generation and append new
 msgstr "进入互动模式。你可以中断模型生成并添加新文本。"
 
 #: ../../source/run_locally/llama.cpp.md:309 fa961800b1584d93b9315ae358c0d70d
-msgid "-i or --interactive-first"
-msgstr "-i 或 --interactive-first"
+msgid "-if or --interactive-first"
+msgstr "-if 或 --interactive-first"
 
 #: ../../source/run_locally/llama.cpp.md:309 ec896aaf5dfc44f99f2033044df8f4a0
 msgid "Immediately wait for user input. Otherwise, the model will run at once and generate based on the prompt."

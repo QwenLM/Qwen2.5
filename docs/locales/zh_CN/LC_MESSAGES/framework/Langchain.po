@@ -32,7 +32,7 @@ msgstr "基础用法"
 
 #: ../../source/framework/Langchain.rst:11 b93bd8165fbe4340970f3942884a91dd
 msgid "The implementation process of this project includes loading files -> reading text -> segmenting text -> vectorizing text -> vectorizing questions -> matching the top k most similar text vectors with the question vectors -> incorporating the matched text as context along with the question into the prompt -> submitting to the Qwen2.5-7B-Instruct to generate an answer. Below is an example:"
-msgstr "您可以仅使用您的文档配合``langchain``来构建一个问答应用。该项目的实现流程包括加载文件 -> 阅读文本 -> 文本分段 -> 文本向量化 -> 问题向量化 -> 将最相似的前k个文本向量与问题向量匹配 -> 将匹配的文本作为上下文连同问题一起纳入提示 -> 提交给Qwen2.5-7B-Instruct生成答案。以下是一个示例："
+msgstr "您可以仅使用您的文档配合 ``langchain`` 来构建一个问答应用。该项目的实现流程包括加载文件 -> 阅读文本 -> 文本分段 -> 文本向量化 -> 问题向量化 -> 将最相似的前k个文本向量与问题向量匹配 -> 将匹配的文本作为上下文连同问题一起纳入提示 -> 提交给Qwen2.5-7B-Instruct生成答案。以下是一个示例："
 
 #: ../../source/framework/Langchain.rst:95 db8fe123a81d481c91f22710ead3993a
 msgid "After loading the Qwen2.5-7B-Instruct model, you should specify the txt file for retrieval."
