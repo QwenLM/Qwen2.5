@@ -5,4 +5,4 @@ autoawq==0.2.6
 flash_attn==2.5.8
 modelscope[framework]
 accelerate
-optimum
+optimum>=1.20.0

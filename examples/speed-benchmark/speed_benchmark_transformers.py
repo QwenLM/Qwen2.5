@@ -16,7 +16,7 @@ import torch
 from transformers.trainer_utils import set_seed
 
 
-class SpeedBenchmarkTransformer:
+class SpeedBenchmarkTransformers:
 
     SEED = 1024
     BATCH_SIZE = 1
@@ -28,14 +28,14 @@ class SpeedBenchmarkTransformer:
     OVERWRITE_RESULT = False
     DUMMY_INPUT = '我'
 
-    def __init__(self, model_id_or_path, use_modelscope: bool = True, outputs_dir: str = 'outputs/transformer'):
+    def __init__(self, model_id_or_path, use_modelscope: bool = True, outputs_dir: str = 'outputs/transformers'):
         """
         Speed benchmark for transformer(pt) inference.
 
         Args:
             model_id_or_path: The model id on ModelScope or HuggingFace hub, or local model path.
             use_modelscope: Use ModelScope, otherwise HuggingFace.
-            outputs_dir: The output directory. Default is 'outputs/transformer'.
+            outputs_dir: The output directory. Default is 'outputs/transformers'.
         """
 
         set_seed(self.SEED)
@@ -145,7 +145,7 @@ def main():
     parser.add_argument('--gpus', type=str, help='Equivalent to the env CUDA_VISIBLE_DEVICES.  e.g. `0,1,2,3`, `4,5`')
     parser.add_argument('--use_modelscope', action='store_true',
                         help='Use ModelScope when set this flag. Otherwise, use HuggingFace.')
-    parser.add_argument('--outputs_dir', type=str, default='outputs/transformer', help='The output directory')
+    parser.add_argument('--outputs_dir', type=str, default='outputs/transformers', help='The output directory')
 
     args = parser.parse_args()
 
@@ -158,12 +158,12 @@ def main():
     print(f'Set CUDA_VISIBLE_DEVICES={envs} for model {model_id_or_path} with input_length {context_length}')
     os.environ["CUDA_VISIBLE_DEVICES"] = envs
 
-    speed_benchmark = SpeedBenchmarkTransformer(model_id_or_path=model_id_or_path,
-                                                use_modelscope=use_modelscope,
-                                                outputs_dir=outputs_dir)
+    speed_benchmark = SpeedBenchmarkTransformers(model_id_or_path=model_id_or_path,
+                                                 use_modelscope=use_modelscope,
+                                                 outputs_dir=outputs_dir)
     speed_benchmark.run(context_length=context_length)
 
 
 if __name__ == '__main__':
-    # Usage: python speed_benchmark_transformer.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --use_modelscope --outputs_dir outputs/transformer
+    # Usage: python speed_benchmark_transformers.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --use_modelscope --outputs_dir outputs/transformers
     main()

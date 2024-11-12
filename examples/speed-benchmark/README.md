@@ -39,16 +39,16 @@ pip install -r requirements/perf_vllm.txt
 - Use ModelScope hub
 
 ```shell
-python speed_benchmark_transformer.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --use_modelscope --outputs_dir outputs/transformer
+python speed_benchmark_transformers.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --use_modelscope --outputs_dir outputs/transformers
 ```
 
 - Use HuggingFace hub
 
 ```shell
-python speed_benchmark_transformer.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --outputs_dir outputs/transformer
+python speed_benchmark_transformers.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --outputs_dir outputs/transformers
 
 # Specify the HF_ENDPOINT
-HF_ENDPOINT=https://hf-mirror.com python speed_benchmark_transformer.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --outputs_dir outputs/transformer
+HF_ENDPOINT=https://hf-mirror.com python speed_benchmark_transformers.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --outputs_dir outputs/transformers
 ```
 
 Parameters:
@@ -57,7 +57,7 @@ Parameters:
     `--context_length`: Input length in tokens; optional values are 1, 6144, 14336, 30720, 63488, 129024; Refer to the `Qwen2.5 SpeedBenchmark`.  
     `--gpus`: Equivalent to the environment variable CUDA_VISIBLE_DEVICES.  e.g. `0,1,2,3`, `4,5`  
     `--use_modelscope`: Use ModelScope when set this flag. Otherwise, use HuggingFace.  
-    `--outputs_dir`: Output directory; default is outputs/transformer.  
+    `--outputs_dir`: Output directory; default is outputs/transformers.  
 
 
 

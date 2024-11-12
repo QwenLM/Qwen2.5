@@ -40,16 +40,16 @@ pip install -r requirements/perf_vllm.txt
 - 使用ModelScope hub
 
 ```shell
-python speed_benchmark_transformer.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --use_modelscope --outputs_dir outputs/transformer
+python speed_benchmark_transformers.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --use_modelscope --outputs_dir outputs/transformers
 ```
 
 - 使用HuggingFace hub
 
 ```shell
-python speed_benchmark_transformer.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --outputs_dir outputs/transformer
+python speed_benchmark_transformers.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --outputs_dir outputs/transformers
 
 # 指定HF_ENDPOINT
-HF_ENDPOINT=https://hf-mirror.com python speed_benchmark_transformer.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --outputs_dir outputs/transformer
+HF_ENDPOINT=https://hf-mirror.com python speed_benchmark_transformers.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --outputs_dir outputs/transformers
 ```
 
 参数说明：
@@ -58,7 +58,7 @@ HF_ENDPOINT=https://hf-mirror.com python speed_benchmark_transformer.py --model_
     `--context_length`: 输入长度，单位为token数；可选值为1, 6144, 14336, 30720, 63488, 129024；具体可参考`Qwen2.5模型效率评估报告`  
     `--gpus`: 等价于环境变量CUDA_VISIBLE_DEVICES，例如`0,1,2,3`，`4,5`  
     `--use_modelscope`: 如果设置该值，则使用ModelScope加载模型，否则使用HuggingFace  
-    `--outputs_dir`: 输出目录， 默认为`outputs/transformer`  
+    `--outputs_dir`: 输出目录， 默认为`outputs/transformers`  
 
 
 #### 3.2 使用vLLM推理
