@@ -31,13 +31,13 @@ pip install -r requirements/perf_vllm.txt
 #### 3.1 Inference using HuggingFace Transformers
 
 ```shell
-python speed_benchmark_transformer.py --model_id Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --use_modelscope --outputs_dir outputs/transformer
+python speed_benchmark_transformer.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --use_modelscope --outputs_dir outputs/transformer
 
 ```
 
 Parameters:
 
-    `--model_id`: Model ID, optional values refer to the Model Resources section.  
+    `--model_id_or_path`: Model ID or path, optional values refer to the Model Resources section.  
     `--context_length`: Input length in tokens; optional values are 1, 6144, 14336, 30720, 63488, 129024; Refer to the `Qwen2.5 SpeedBenchmark`.  
     `--gpus`: Number of GPUs to use, e.g., 0,1.  
     `--use_modelscope`: Whether to use ModelScope; if False, HuggingFace is used; default is True.  
@@ -47,13 +47,13 @@ Parameters:
 #### 3.2 Inference using vLLM
 
 ```shell
-python speed_benchmark_vllm.py --model_id Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --max_model_len 32768 --gpus 0 --use_modelscope --gpu_memory_utilization 0.9 --outputs_dir outputs/vllm
+python speed_benchmark_vllm.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --max_model_len 32768 --gpus 0 --use_modelscope --gpu_memory_utilization 0.9 --outputs_dir outputs/vllm
 
 ```
 
 Parameters:
 
-    `--model_id`: Model ID, optional values refer to the Model Resources section.  
+    `--model_id_or_path`: Model ID or path, optional values refer to the Model Resources section.  
     `--context_length`: Input length in tokens; optional values are 1, 6144, 14336, 30720, 63488, 129024; Refer to the `Qwen2.5 SpeedBenchmark`.  
     `--max_model_len`: Maximum model length in tokens; default is 32768.  
     `--gpus`: Number of GPUs to use, e.g., 0,1.  

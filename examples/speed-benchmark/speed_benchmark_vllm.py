@@ -10,7 +10,6 @@ import statistics
 import pandas as pd
 from datetime import datetime
 import logging
-import importlib.util
 
 import vllm
 from vllm import LLM, SamplingParams
@@ -21,11 +20,6 @@ logger = logging.getLogger(__name__)
 
 os.environ['VLLM_WORKER_MULTIPROC_METHOD'] = 'spawn'
 os.environ["VLLM_ALLOW_LONG_MAX_MODEL_LEN"] = "1"
-
-
-def is_module_installed(module_name):
-    module_spec = importlib.util.find_spec(module_name)
-    return module_spec is not None
 
 
 class SpeedBenchmarkVllm:
@@ -41,26 +35,19 @@ class SpeedBenchmarkVllm:
         self.sampling_params = sampling_params
 
         # Get experiment config
-        self.model_id: str = self.experiment_config['model_id']
+        self.model_id_or_path: str = self.experiment_config['model_id_or_path']
         use_modelscope: bool = self.experiment_config['use_modelscope']
 
         if use_modelscope:
-            if not is_module_installed('modelscope'):
-                raise ImportError("Please install modelscope: pip install modelscope[framework]")
-            from modelscope import snapshot_download, AutoModelForCausalLM, AutoTokenizer, GenerationConfig
+            from modelscope import AutoTokenizer
+            os.environ['VLLM_USE_MODELSCOPE'] = 'True'
         else:
-            if not is_module_installed('huggingface_hub'):
-                raise ImportError("Please install huggingface-hub: pip install huggingface-hub")
-            from huggingface_hub import snapshot_download
-            from transformers import AutoModelForCausalLM, AutoTokenizer, GenerationConfig
+            from transformers import AutoTokenizer
 
-        logger.info(f'>> Downloading model {self.model_id} ...')
-        model_path = snapshot_download(self.model_id)
-        logger.info(f'>> Model {self.model_id} downloaded to {model_path}')
+        self.tokenizer = AutoTokenizer.from_pretrained(self.model_id_or_path, trust_remote_code=True)
 
-        self.tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
         llm_kwargs = dict(
-            model=model_path,
+            model=self.model_id_or_path,
             trust_remote_code=True,
             tensor_parallel_size=self.experiment_config['tp_size'],
             gpu_memory_utilization=self.experiment_config['gpu_memory_utilization'],
@@ -134,7 +121,7 @@ class SpeedBenchmarkVllm:
         logger.info(f'Input({real_length}): {self._reprs(query)}')
         logger.info(f'Output({real_out_length}): {self._reprs(generated_text)}')
 
-        results: dict = self.collect_statistics(self.model_id,
+        results: dict = self.collect_statistics(self.model_id_or_path,
                                                 [time_cost, time_cost],
                                                 output_len,
                                                 context_length,
@@ -147,20 +134,24 @@ class SpeedBenchmarkVllm:
         outputs_dir.mkdir(parents=True, exist_ok=True)
         now = datetime.now()
         timestamp: str = now.strftime("%m%d%H%M%S")
+
+        model_id_or_path_str = self.model_id_or_path.split(os.sep)[-1] \
+            if os.path.isdir(self.model_id_or_path) else self.model_id_or_path.replace('/', '__')
+
         out_file: str = os.path.join(outputs_dir,
-                                     f"{self.model_id.replace('/', '__')}"
+                                     f"{model_id_or_path_str}"
                                      f"_context_length-{context_length}_{timestamp}.csv")
         self.save_to_file(results, out_file)
 
     @staticmethod
-    def collect_statistics(model_id, data, out_length, in_length, tp_size) -> dict:
+    def collect_statistics(model_id_or_path, data, out_length, in_length, tp_size) -> dict:
 
         avg_time = statistics.mean(data)
         throughput_data = [out_length / t for t in data]
         avg_throughput = statistics.mean(throughput_data)
 
         results = {
-            'Model ID': model_id,
+            'Model ID': model_id_or_path,
             'Input Length': in_length,
             'Output Length': out_length,
             'TP Size': tp_size,
@@ -187,7 +178,7 @@ def main():
 
     # Define command line arguments
     parser = argparse.ArgumentParser(description='Speed benchmark for vLLM deployment')
-    parser.add_argument('--model_id', type=str, help='The model id on ModelScope or HuggingFace hub')
+    parser.add_argument('--model_id_or_path', type=str, help='The model id on ModelScope or HuggingFace hub')
     parser.add_argument('--context_length', type=int, help='The context length for each experiment, '
                                                            'e.g. 1, 6144, 14336, 30720, 63488, 129024')
     parser.add_argument('--gpus', type=str, help='gpus, e.g. 0,1,2,3, or 4,5')
@@ -202,7 +193,7 @@ def main():
     args = parser.parse_args()
 
     # Parse args
-    model_id: str = args.model_id
+    model_id_or_path: str = args.model_id_or_path
     context_length: int = args.context_length
     output_len: int = 2048
     envs: str = args.gpus
@@ -225,7 +216,7 @@ def main():
 
     # Set experiment config
     experiment_config: dict = {
-        'model_id': model_id,
+        'model_id_or_path': model_id_or_path,
         'context_length': context_length,
         'output_len': output_len,
         'tp_size': len(envs.split(',')),
@@ -241,7 +232,7 @@ def main():
     logger.info(f'Sampling params: {sampling_params}')
     logger.info(f'Experiment config: {experiment_config}')
 
-    logger.info(f'Set CUDA_VISIBLE_DEVICES={envs} for model {model_id} with context_length {context_length}')
+    logger.info(f'Set CUDA_VISIBLE_DEVICES={envs} for model {model_id_or_path} with context_length {context_length}')
     os.environ["CUDA_VISIBLE_DEVICES"] = envs
 
     speed_benchmark_vllm = SpeedBenchmarkVllm(experiment_config=experiment_config, sampling_params=sampling_params)
@@ -249,6 +240,6 @@ def main():
 
 
 if __name__ == '__main__':
-    # Usage: python speed_benchmark_vllm.py --model_id Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --max_model_len 32768 --gpus 0 --use_modelscope --gpu_memory_utilization 0.9 --outputs_dir outputs/vllm
-    # HF_ENDPOINT=https://hf-mirror.com python speed_benchmark_vllm.py --model_id Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --max_model_len 32768 --gpus 0 --gpu_memory_utilization 0.9 --outputs_dir outputs/vllm
+    # Usage: python speed_benchmark_vllm.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --max_model_len 32768 --gpus 0 --use_modelscope --gpu_memory_utilization 0.9 --outputs_dir outputs/vllm
+    # HF_ENDPOINT=https://hf-mirror.com python speed_benchmark_vllm.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --max_model_len 32768 --gpus 0 --gpu_memory_utilization 0.9 --outputs_dir outputs/vllm
     main()
