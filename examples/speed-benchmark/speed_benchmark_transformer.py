@@ -4,10 +4,13 @@ import os
 import time
 import torch
 import pandas as pd
-from transformers import AutoModelForCausalLM, AutoTokenizer
-from transformers.generation import GenerationConfig
+import json
 from transformers.trainer_utils import set_seed
 import importlib.util
+
+"""
+Qwen2.5 Speed Benchmark for transformer(pt) inference.
+"""
 
 
 def is_module_installed(module_name):
@@ -44,13 +47,16 @@ class SpeedBenchmarkTransformer:
         if use_modelscope:
             if not is_module_installed('modelscope'):
                 raise ImportError("Please install modelscope: pip install modelscope[framework]")
-            from modelscope import snapshot_download
+            from modelscope import snapshot_download, AutoModelForCausalLM, AutoTokenizer, GenerationConfig
         else:
             if not is_module_installed('huggingface_hub'):
                 raise ImportError("Please install huggingface-hub: pip install huggingface-hub")
             from huggingface_hub import snapshot_download
+            from transformers import AutoModelForCausalLM, AutoTokenizer, GenerationConfig
 
+        print(f'>> Downloading model {model_id} ...')
         model_path = snapshot_download(model_id)
+        print(f'>> Model {model_id} downloaded to {model_path}')
 
         self.tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
         attn_impl = 'flash_attention_2' if self.USE_FLASH_ATTN else 'eager'
@@ -67,6 +73,7 @@ class SpeedBenchmarkTransformer:
         # Specify hyperparameters for generation
         self.generation_config.min_length = self.GENERATE_LENGTH_PER_EXPERIMENT + context_length
         self.generation_config.max_new_tokens = self.GENERATE_LENGTH_PER_EXPERIMENT
+        print(f'Generation config: {self.generation_config}')
 
         # Prepare inputs
         batch_size = self.BATCH_SIZE
@@ -77,6 +84,7 @@ class SpeedBenchmarkTransformer:
         inputs = inputs.to(self.model.device)
 
         # Run inference
+        print(f'Start running inference for model {self.model_id} with input length {context_length} ...')
         start_time = time.time()
         torch.cuda.synchronize()
         pred = self.model.generate(**inputs, generation_config=self.generation_config)
@@ -102,13 +110,19 @@ class SpeedBenchmarkTransformer:
             "generate_length_per_experiment": self.GENERATE_LENGTH_PER_EXPERIMENT,
             "use_flash_attn": self.USE_FLASH_ATTN,
             "comment": self.COMMENT,
-            "tokens_per_second": tokens_per_second,
-            "max_gpu_memory_cost_gb": max_gpu_memory_cost_gb
+            "tokens_per_second": round(tokens_per_second, 4),
+            "max_gpu_memory_cost_gb": round(max_gpu_memory_cost_gb, 4),
         }
+        data_json = json.dumps(data, indent=4, ensure_ascii=False)
+        print(f'**Final result **\n{data_json}\n')
 
         # Dump results to CSV file
+        from datetime import datetime
+        now = datetime.now()
+        timestamp: str = now.strftime("%m%d%H%M%S")
         out_file: str = os.path.join(self.outputs_dir,
-                                     f"{self.model_id.replace('/', '__')}-context_length-{context_length}.csv")
+                                     f"{self.model_id.replace('/', '__')}"
+                                     f"_context_length-{context_length}_{timestamp}.csv")
         out_dir = os.path.dirname(out_file)
         os.makedirs(out_dir, exist_ok=True)
         self.save_result(data, out_file)
@@ -119,7 +133,7 @@ class SpeedBenchmarkTransformer:
     def save_result(data: dict, out_file: str) -> None:
         df = pd.DataFrame([data])
         df.to_csv(out_file, index=False)
-        print(f"Results saved to {out_file}")
+        print(f'Results saved to {out_file}')
 
 
 def main():
@@ -127,29 +141,31 @@ def main():
     import argparse
 
     # Parse args
-    parser = argparse.ArgumentParser(description='Speed benchmark for transformer(pt) inference')
+    parser = argparse.ArgumentParser(description='Speed benchmark for transformer(pt) deployment')
     parser.add_argument('--model_id', type=str, help='The model id on ModelScope or HuggingFace hub')
-    parser.add_argument('--input_len', type=int, help='The input length for each experiment')
+    parser.add_argument('--context_length', type=int, help='The input length for each experiment.'
+                                                           'e.g. 1, 6144, 14336, 30720, 63488, 129024')
     parser.add_argument('--gpus', type=str, help='gpus, e.g. 0,1,2,3, or 4,5')
-    parser.add_argument('--use_modelscope', type=bool, default=True, help='Use ModelScope, otherwise HuggingFace')
+    parser.add_argument('--use_modelscope', action='store_true', help='Use ModelScope, otherwise HuggingFace')
     parser.add_argument('--outputs_dir', type=str, default='outputs/transformer', help='The output directory')
 
     args = parser.parse_args()
 
     model_id: str = args.model_id
     envs: str = args.gpus
-    in_length: int = args.input_len
+    context_length: int = args.context_length
     use_modelscope: bool = args.use_modelscope
     outputs_dir: str = args.outputs_dir
 
-    print(f"Set CUDA_VISIBLE_DEVICES={envs} for model {model_id} with input_length {in_length}")
+    print(f'Set CUDA_VISIBLE_DEVICES={envs} for model {model_id} with input_length {context_length}')
     os.environ["CUDA_VISIBLE_DEVICES"] = envs
 
     speed_benchmark = SpeedBenchmarkTransformer(model_id=model_id,
                                                 use_modelscope=use_modelscope,
                                                 outputs_dir=outputs_dir)
-    speed_benchmark.run(context_length=in_length)
+    speed_benchmark.run(context_length=context_length)
 
 
 if __name__ == '__main__':
+    # Usage: python speed_benchmark_transformer.py --model_id Qwen/Qwen2.5-0.5B-Instruct-GPTQ-Int8 --context_length 1 --gpus 0 --use_modelscope --outputs_dir outputs/transformer
     main()

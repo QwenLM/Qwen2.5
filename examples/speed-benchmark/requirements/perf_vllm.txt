@@ -1,0 +1,6 @@
+vllm==0.6.3
+torch==2.4.0
+flash_attn==2.6.3
+pandas
+modelscope[framework]
+accelerate
