@@ -74,7 +74,7 @@ msgstr "用Ollama运行你自己的GGUF文件"
 
 #: ../../source/run_locally/ollama.md:34 a45b6bcaab944f00ae23384aaf4bebfe
 msgid "Sometimes you don't want to pull models and you just want to use Ollama with your own GGUF files. Suppose you have a GGUF file of Qwen2.5, `qwen2.5-7b-instruct-q5_0.gguf`. For the first step, you need to create a file called `Modelfile`. The content of the file is shown below:"
-msgstr "有时您可能不想拉取模型，而是希望直接使用自己的GGUF文件来配合Ollama。假设您有一个名为`qwen2.5-7b-instruct-q5_0.gguf`的Qwen2.5的GGUF文件。在第一步中，您需要创建一个名为`Modelfile``的文件。该文件的内容如下所示："
+msgstr "有时您可能不想拉取模型，而是希望直接使用自己的GGUF文件来配合Ollama。假设您有一个名为`qwen2.5-7b-instruct-q5_0.gguf`的Qwen2.5的GGUF文件。在第一步中，您需要创建一个名为`Modelfile`的文件。该文件的内容如下所示："
 
 #: ../../source/run_locally/ollama.md:97 0300ccc8902641e689c5214717fb588d
 msgid "Then create the ollama model by running:"
