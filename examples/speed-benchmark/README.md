@@ -38,7 +38,7 @@ python speed_benchmark_transformer.py --model_id Qwen/Qwen2.5-0.5B-Instruct --co
 Parameters:
 
     `--model_id`: Model ID, optional values refer to the Model Resources section.  
-    `--context_length`: Input length in tokens; optional values are 1, 6144, 14336, 30720, 63488, 129024; for specifics, refer to the `Qwen2.5 SpeedBenchmark`.  
+    `--context_length`: Input length in tokens; optional values are 1, 6144, 14336, 30720, 63488, 129024; Refer to the `Qwen2.5 SpeedBenchmark`.  
     `--gpus`: Number of GPUs to use, e.g., 0,1.  
     `--use_modelscope`: Whether to use ModelScope; if False, HuggingFace is used; default is True.  
     `--outputs_dir`: Output directory; default is outputs/transformer.  
@@ -54,7 +54,7 @@ python speed_benchmark_vllm.py --model_id Qwen/Qwen2.5-0.5B-Instruct --context_l
 Parameters:
 
     `--model_id`: Model ID, optional values refer to the Model Resources section.  
-    `--context_length`: Input length in tokens; optional values are 1, 6144, 14336, 30720, 63488, 129024; for specifics, refer to the `Qwen2.5 SpeedBenchmark`.  
+    `--context_length`: Input length in tokens; optional values are 1, 6144, 14336, 30720, 63488, 129024; Refer to the `Qwen2.5 SpeedBenchmark`.  
     `--max_model_len`: Maximum model length in tokens; default is 32768.  
     `--gpus`: Number of GPUs to use, e.g., 0,1.  
     `--use_modelscope`: Whether to use ModelScope; if False, HuggingFace is used; default is True.  
