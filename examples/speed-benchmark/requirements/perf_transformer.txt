@@ -3,7 +3,6 @@ transformers==4.46.0
 auto_gptq==0.7.1
 autoawq==0.2.6
 flash_attn==2.5.8
-pandas
 modelscope[framework]
 accelerate
 optimum

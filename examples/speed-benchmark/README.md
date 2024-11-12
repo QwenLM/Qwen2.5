@@ -1,6 +1,6 @@
 ## Speed Benchmark
 
-This document introduces the speed benchmark testing process for the Qwen2.5 series models (original and quantized models). For detailed reports, please refer to the [Qwen2.5 SpeedBenchmark](../../docs/source/benchmark/speed_benchmark.rst)
+This document introduces the speed benchmark testing process for the Qwen2.5 series models (original and quantized models). For detailed reports, please refer to the [Qwen2.5 SpeedBenchmark](https://qwen.readthedocs.io/en/latest/benchmark/speed_benchmark.html)
 
 ### 1. Model Collections
 
@@ -10,9 +10,13 @@ For models hosted on ModelScope, please refer to [Qwen2.5 Collections-ModelScope
 
 ### 2. Environment Installation
 
+
 For inference using HuggingFace transformers:
 
 ```shell
+conda create -n qwen_perf python=3.10
+conda activate qwen_perf
+
 pip install -r requirements/perf_transformer.txt
 
 # Note: For auto_gptq, you may need to install from the source code.
@@ -21,46 +25,71 @@ pip install -r requirements/perf_transformer.txt
 For inference using vLLM:
 
 ```shell
-pip install -r requirements/perf_vllm.txt
+conda create -n qwen_perf_vllm python=3.10
+conda activate qwen_perf_vllm
 
+pip install -r requirements/perf_vllm.txt
 ```
 
 
-### 3. Run experiments
+### 3. Run Experiments
 
 #### 3.1 Inference using HuggingFace Transformers
 
+- Use ModelScope hub
+
 ```shell
 python speed_benchmark_transformer.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --use_modelscope --outputs_dir outputs/transformer
+```
 
+- Use HuggingFace hub
+
+```shell
+python speed_benchmark_transformer.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --outputs_dir outputs/transformer
+
+# Specify the HF_ENDPOINT
+HF_ENDPOINT=https://hf-mirror.com python speed_benchmark_transformer.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --outputs_dir outputs/transformer
 ```
 
 Parameters:
 
-    `--model_id_or_path`: Model ID or path, optional values refer to the Model Resources section.  
+    `--model_id_or_path`: The model path or id on ModelScope or HuggingFace hub
     `--context_length`: Input length in tokens; optional values are 1, 6144, 14336, 30720, 63488, 129024; Refer to the `Qwen2.5 SpeedBenchmark`.  
-    `--gpus`: Number of GPUs to use, e.g., 0,1.  
-    `--use_modelscope`: Whether to use ModelScope; if False, HuggingFace is used; default is True.  
+    `--gpus`: Equivalent to the environment variable CUDA_VISIBLE_DEVICES.  e.g. `0,1,2,3`, `4,5`  
+    `--use_modelscope`: Use ModelScope when set this flag. Otherwise, use HuggingFace.  
     `--outputs_dir`: Output directory; default is outputs/transformer.  
+
 
 
 #### 3.2 Inference using vLLM
 
+- Use ModelScope hub
+
 ```shell
 python speed_benchmark_vllm.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --max_model_len 32768 --gpus 0 --use_modelscope --gpu_memory_utilization 0.9 --outputs_dir outputs/vllm
-
 ```
+
+- Use HuggingFace hub
+
+```shell
+python speed_benchmark_vllm.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --max_model_len 32768 --gpus 0 --gpu_memory_utilization 0.9 --outputs_dir outputs/vllm
+
+# Specify the HF_ENDPOINT
+HF_ENDPOINT=https://hf-mirror.com python speed_benchmark_vllm.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --max_model_len 32768 --gpus 0 --gpu_memory_utilization 0.9 --outputs_dir outputs/vllm
+```
+
 
 Parameters:
 
-    `--model_id_or_path`: Model ID or path, optional values refer to the Model Resources section.  
+    `--model_id_or_path`: The model id on ModelScope or HuggingFace hub.
     `--context_length`: Input length in tokens; optional values are 1, 6144, 14336, 30720, 63488, 129024; Refer to the `Qwen2.5 SpeedBenchmark`.  
-    `--max_model_len`: Maximum model length in tokens; default is 32768.  
-    `--gpus`: Number of GPUs to use, e.g., 0,1.  
-    `--use_modelscope`: Whether to use ModelScope; if False, HuggingFace is used; default is True.  
+    `--max_model_len`: Maximum model length in tokens; default is 32768. Optional values are 4096, 8192, 32768, 65536, 131072.
+    `--gpus`: Equivalent to the environment variable CUDA_VISIBLE_DEVICES.  e.g. `0,1,2,3`, `4,5`  
+    `--use_modelscope`: Use ModelScope when set this flag. Otherwise, use HuggingFace.  
     `--gpu_memory_utilization`: GPU memory utilization; range is (0, 1]; default is 0.9.  
     `--outputs_dir`: Output directory; default is outputs/vllm.  
     `--enforce_eager`: Whether to enforce eager mode; default is False.  
+
 
 
 #### 3.3 Tips

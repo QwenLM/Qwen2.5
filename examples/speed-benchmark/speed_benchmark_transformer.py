@@ -1,15 +1,19 @@
-# Copyright (c) Alibaba, Inc. and its affiliates.
-
-import os
-import time
-import torch
-import pandas as pd
-import json
-from transformers.trainer_utils import set_seed
+# Copyright (c) Alibaba Cloud.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
 
 """
 Qwen2.5 Speed Benchmark for transformer(pt) inference.
 """
+
+import os
+import time
+import json
+import csv
+
+import torch
+from transformers.trainer_utils import set_seed
 
 
 class SpeedBenchmarkTransformer:
@@ -120,9 +124,13 @@ class SpeedBenchmarkTransformer:
 
     @staticmethod
     def save_result(data: dict, out_file: str) -> None:
-        df = pd.DataFrame([data])
-        df.to_csv(out_file, index=False)
-        print(f'Results saved to {out_file}')
+
+        with open(out_file, mode='w') as file:
+            writer = csv.DictWriter(file, fieldnames=data.keys())
+            writer.writeheader()
+            writer.writerows([data])
+
+        print(f"Results saved to {out_file}")
 
 
 def main():
@@ -134,8 +142,9 @@ def main():
     parser.add_argument('--model_id_or_path', type=str, help='The model path or id on ModelScope or HuggingFace hub')
     parser.add_argument('--context_length', type=int, help='The input length for each experiment.'
                                                            'e.g. 1, 6144, 14336, 30720, 63488, 129024')
-    parser.add_argument('--gpus', type=str, help='gpus, e.g. 0,1,2,3, or 4,5')
-    parser.add_argument('--use_modelscope', action='store_true', help='Use ModelScope, otherwise HuggingFace')
+    parser.add_argument('--gpus', type=str, help='Equivalent to the env CUDA_VISIBLE_DEVICES.  e.g. `0,1,2,3`, `4,5`')
+    parser.add_argument('--use_modelscope', action='store_true',
+                        help='Use ModelScope when set this flag. Otherwise, use HuggingFace.')
     parser.add_argument('--outputs_dir', type=str, default='outputs/transformer', help='The output directory')
 
     args = parser.parse_args()

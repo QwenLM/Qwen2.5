@@ -1,15 +1,22 @@
-# Copyright (c) Alibaba, Inc. and its affiliates.
+# Copyright (c) Alibaba Cloud.
+#
+# This source code is licensed under the license found in the
+# LICENSE file in the root directory of this source tree.
+
+"""
+Speed benchmark for vLLM deployment.
+"""
 
 import os
 import time
 import json
-from pathlib import Path
-from typing import Tuple
 import reprlib
 import statistics
-import pandas as pd
-from datetime import datetime
 import logging
+import csv
+from datetime import datetime
+from pathlib import Path
+from typing import Tuple
 
 import vllm
 from vllm import LLM, SamplingParams
@@ -141,7 +148,7 @@ class SpeedBenchmarkVllm:
         out_file: str = os.path.join(outputs_dir,
                                      f"{model_id_or_path_str}"
                                      f"_context_length-{context_length}_{timestamp}.csv")
-        self.save_to_file(results, out_file)
+        self.save_result(results, out_file)
 
     @staticmethod
     def collect_statistics(model_id_or_path, data, out_length, in_length, tp_size) -> dict:
@@ -167,10 +174,14 @@ class SpeedBenchmarkVllm:
         logger.info(f"Final results:\n{json_res}")
 
     @staticmethod
-    def save_to_file(results: dict, output_file_path: str):
-        df = pd.DataFrame([results])
-        df.to_csv(output_file_path, index=False)
-        logger.info(f"Results saved to {output_file_path}")
+    def save_result(data: dict, out_file: str) -> None:
+
+        with open(out_file, mode='w') as file:
+            writer = csv.DictWriter(file, fieldnames=data.keys())
+            writer.writeheader()
+            writer.writerows([data])
+
+        logger.info(f"Results saved to {out_file}")
 
 
 def main():
@@ -181,13 +192,14 @@ def main():
     parser.add_argument('--model_id_or_path', type=str, help='The model id on ModelScope or HuggingFace hub')
     parser.add_argument('--context_length', type=int, help='The context length for each experiment, '
                                                            'e.g. 1, 6144, 14336, 30720, 63488, 129024')
-    parser.add_argument('--gpus', type=str, help='gpus, e.g. 0,1,2,3, or 4,5')
+    parser.add_argument('--gpus', type=str, help='Equivalent to the env CUDA_VISIBLE_DEVICES.  e.g. `0,1,2,3`, `4,5`')
     parser.add_argument('--gpu_memory_utilization', type=float, default=0.9, help='GPU memory utilization')
     parser.add_argument('--max_model_len', type=int, default=32768, help='The maximum model length, '
                                                                          'e.g. 4096, 8192, 32768, 65536, 131072')
     parser.add_argument('--enforce_eager', action='store_true', help='Enforce eager mode for vLLM')
     parser.add_argument('--outputs_dir', type=str, default='outputs/vllm', help='The output directory')
-    parser.add_argument('--use_modelscope', action='store_true', help='Use ModelScope, otherwise HuggingFace')
+    parser.add_argument('--use_modelscope', action='store_true',
+                        help='Use ModelScope when set this flag. Otherwise, use HuggingFace.')
 
     # Parse args
     args = parser.parse_args()
