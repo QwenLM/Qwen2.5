@@ -167,5 +167,5 @@ def main():
 
 
 if __name__ == '__main__':
-    # Usage: python speed_benchmark_transformer.py --model_id Qwen/Qwen2.5-0.5B-Instruct-GPTQ-Int8 --context_length 1 --gpus 0 --use_modelscope --outputs_dir outputs/transformer
+    # Usage: python speed_benchmark_transformer.py --model_id Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --use_modelscope --outputs_dir outputs/transformer
     main()

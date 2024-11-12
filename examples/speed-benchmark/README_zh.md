@@ -33,32 +33,36 @@ pip install -r requirements/perf_vllm.txt
 #### 3.1 使用HuggingFace transformers推理
 
 ```shell
-python speed_benchmark_transformer.py --model_id Qwen/Qwen2.5-0.5B-Instruct-GPTQ-Int8 --context_length 1 --gpus 0 --use_modelscope --outputs_dir outputs/transformer
+python speed_benchmark_transformer.py --model_id Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --use_modelscope --outputs_dir outputs/transformer
 ```
 
-- 参数说明：
-    `--model_id`: 模型ID， 可选值参考`模型资源`章节
-    `--context_length`: 输入长度，单位为token数；可选值为1, 6144, 14336, 30720, 63488, 129024；具体可参考`Qwen2.5模型效率评估报告`
-    `--gpus`: 使用的GPU数量，例如`0,1`
-    `--use_modelscope`: 是否使用ModelScope，如果为False，则使用HuggingFace；默认为True
-    `--outputs_dir`: 输出目录， 默认为`outputs/transformer`
+参数说明：
+
+    `--model_id`: 模型ID， 可选值参考`模型资源`章节  
+    `--context_length`: 输入长度，单位为token数；可选值为1, 6144, 14336, 30720, 63488, 129024；具体可参考`Qwen2.5模型效率评估报告`  
+    `--gpus`: 使用的GPU数量，例如`0,1`  
+    `--use_modelscope`: 是否使用ModelScope，如果为False，则使用HuggingFace；默认为True  
+    `--outputs_dir`: 输出目录， 默认为`outputs/transformer`  
+
 
 #### 3.2 使用vLLM推理
 
 ```shell
-python speed_benchmark_vllm.py --model_id Qwen/Qwen2.5-0.5B-Instruct-GPTQ-Int8 --context_length 1 --max_model_len 32768 --gpus 0 --use_modelscope --gpu_memory_utilization 0.9 --outputs_dir outputs/vllm
+python speed_benchmark_vllm.py --model_id Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --max_model_len 32768 --gpus 0 --use_modelscope --gpu_memory_utilization 0.9 --outputs_dir outputs/vllm
 
 ```
 
-- 参数说明：
-    `--model_id`: 模型ID， 可选值参考`模型资源`章节
-    `--context_length`: 输入长度，单位为token数；可选值为1, 6144, 14336, 30720, 63488, 129024；具体可参考`Qwen2.5模型效率评估报告`
-    `--max_model_len`: 模型最大长度，单位为token数；默认为32768
-    `--gpus`: 使用的GPU数量，例如`0,1`
-    `--use_modelscope`: 是否使用ModelScope，如果为False，则使用HuggingFace；默认为True
-    `--gpu_memory_utilization`: GPU内存利用率，取值范围为(0, 1]；默认为0.9
-    `--outputs_dir`: 输出目录， 默认为`outputs/vllm`
-    `--enforce_eager`: 是否强制使用eager模式；默认为False
+参数说明：
+
+    `--model_id`: 模型ID， 可选值参考`模型资源`章节  
+    `--context_length`: 输入长度，单位为token数；可选值为1, 6144, 14336, 30720, 63488, 129024；具体可参考`Qwen2.5模型效率评估报告`  
+    `--max_model_len`: 模型最大长度，单位为token数；默认为32768  
+    `--gpus`: 使用的GPU数量，例如`0,1`  
+    `--use_modelscope`: 是否使用ModelScope，如果为False，则使用HuggingFace；默认为True  
+    `--gpu_memory_utilization`: GPU内存利用率，取值范围为(0, 1]；默认为0.9  
+    `--outputs_dir`: 输出目录， 默认为`outputs/vllm`  
+    `--enforce_eager`: 是否强制使用eager模式；默认为False  
+
 
 #### 3.3 注意事项
 

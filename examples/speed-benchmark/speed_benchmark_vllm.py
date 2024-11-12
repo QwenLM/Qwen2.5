@@ -249,6 +249,6 @@ def main():
 
 
 if __name__ == '__main__':
-    # Usage: python speed_benchmark_vllm.py --model_id Qwen/Qwen2.5-0.5B-Instruct-GPTQ-Int8 --context_length 1 --max_model_len 32768 --gpus 0 --use_modelscope --gpu_memory_utilization 0.9 --outputs_dir outputs/vllm
-    # HF_ENDPOINT=https://hf-mirror.com python speed_benchmark_vllm.py --model_id Qwen/Qwen2.5-0.5B-Instruct-GPTQ-Int8 --context_length 1 --max_model_len 32768 --gpus 0 --gpu_memory_utilization 0.9 --outputs_dir outputs/vllm
+    # Usage: python speed_benchmark_vllm.py --model_id Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --max_model_len 32768 --gpus 0 --use_modelscope --gpu_memory_utilization 0.9 --outputs_dir outputs/vllm
+    # HF_ENDPOINT=https://hf-mirror.com python speed_benchmark_vllm.py --model_id Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --max_model_len 32768 --gpus 0 --gpu_memory_utilization 0.9 --outputs_dir outputs/vllm
     main()
