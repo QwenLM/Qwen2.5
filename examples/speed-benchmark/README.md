@@ -14,13 +14,21 @@ For models hosted on ModelScope, please refer to [Qwen2.5 Collections-ModelScope
 For inference using HuggingFace transformers:
 
 ```shell
-conda create -n qwen_perf python=3.10
-conda activate qwen_perf
+conda create -n qwen_perf_transformers python=3.10
+conda activate qwen_perf_transformers
 
-pip install -r requirements/perf_transformer.txt
+pip install torch==2.3.1
+pip install git+https://github.com/AutoGPTQ/AutoGPTQ.git@v0.7.1
+pip install git+https://github.com/Dao-AILab/flash-attention.git@v2.5.8
+pip install -r requirements-perf-transformers.txt
 
-# Note: For auto_gptq, you may need to install from the source code.
 ```
+
+- Notes
+  - For `auto_gptq`, you may need to install from the source code.
+  - For prebuilt wheel `autoawq-kernels`, which can be collected by `pip install autoawq==0.2.6` automatically.
+  - For `flash-attention`, you may need to install from the source code, or use the wheels from the [GitHub page](https://github.com/Dao-AILab/flash-attention/releases/tag/v2.5.8)
+
 
 For inference using vLLM:
 
@@ -28,7 +36,7 @@ For inference using vLLM:
 conda create -n qwen_perf_vllm python=3.10
 conda activate qwen_perf_vllm
 
-pip install -r requirements/perf_vllm.txt
+pip install -r requirements-perf-vllm.txt
 ```
 
 

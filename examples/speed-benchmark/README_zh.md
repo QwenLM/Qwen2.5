@@ -15,12 +15,17 @@
 使用HuggingFace transformers推理，安装环境如下：
 
 ```shell
-conda create -n qwen_perf python=3.10
-conda activate qwen_perf
+conda create -n qwen_perf_transformers python=3.10
+conda activate qwen_perf_transformers
 
-pip install -r requirements/perf_transformer.txt
-# 注意：对于auto_gptq，可能需要从源码安装。
+pip install -r requirements-perf-transformers.txt
 ```
+
+- Notes
+  - 对于`auto_gptq`，您可能需要从源代码安装。
+  - 通过`pip install autoawq==0.2.6`方式，默认可以自动安装`autoawq-kernels`预编译的wheel包。
+  - 对于`flash-attention`，您可能需要从源代码安装，或使用以下预编译的wheel包，参考[GitHub page](https://github.com/Dao-AILab/flash-attention/releases/tag/v2.5.8)
+
 
 
 使用vLLM推理，安装环境如下：
@@ -29,7 +34,7 @@ pip install -r requirements/perf_transformer.txt
 conda create -n qwen_perf_vllm python=3.10
 conda activate qwen_perf_vllm
 
-pip install -r requirements/perf_vllm.txt
+pip install -r requirements-perf-vllm.txt
 ```
 
 
