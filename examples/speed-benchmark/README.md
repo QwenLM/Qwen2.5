@@ -63,6 +63,7 @@ Parameters:
 
     `--model_id_or_path`: The model path or id on ModelScope or HuggingFace hub
     `--context_length`: Input length in tokens; optional values are 1, 6144, 14336, 30720, 63488, 129024; Refer to the `Qwen2.5 SpeedBenchmark`.  
+    `--generate_length`: Output length in tokens; default is 2048.
     `--gpus`: Equivalent to the environment variable CUDA_VISIBLE_DEVICES.  e.g. `0,1,2,3`, `4,5`  
     `--use_modelscope`: Use ModelScope when set this flag. Otherwise, use HuggingFace.  
     `--outputs_dir`: Output directory; default is outputs/transformers.  
@@ -91,6 +92,7 @@ Parameters:
 
     `--model_id_or_path`: The model id on ModelScope or HuggingFace hub.
     `--context_length`: Input length in tokens; optional values are 1, 6144, 14336, 30720, 63488, 129024; Refer to the `Qwen2.5 SpeedBenchmark`.  
+    `--generate_length`: Output length in tokens; default is 2048.
     `--max_model_len`: Maximum model length in tokens; default is 32768. Optional values are 4096, 8192, 32768, 65536, 131072.
     `--gpus`: Equivalent to the environment variable CUDA_VISIBLE_DEVICES.  e.g. `0,1,2,3`, `4,5`  
     `--use_modelscope`: Use ModelScope when set this flag. Otherwise, use HuggingFace.  

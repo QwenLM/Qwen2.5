@@ -192,6 +192,7 @@ def main():
     parser.add_argument('--model_id_or_path', type=str, help='The model id on ModelScope or HuggingFace hub')
     parser.add_argument('--context_length', type=int, help='The context length for each experiment, '
                                                            'e.g. 1, 6144, 14336, 30720, 63488, 129024')
+    parser.add_argument('--generate_length', type=int, default=2048, help='Output length in tokens; default is 2048.')
     parser.add_argument('--gpus', type=str, help='Equivalent to the env CUDA_VISIBLE_DEVICES.  e.g. `0,1,2,3`, `4,5`')
     parser.add_argument('--gpu_memory_utilization', type=float, default=0.9, help='GPU memory utilization')
     parser.add_argument('--max_model_len', type=int, default=32768, help='The maximum model length, '
@@ -207,7 +208,7 @@ def main():
     # Parse args
     model_id_or_path: str = args.model_id_or_path
     context_length: int = args.context_length
-    output_len: int = 2048
+    output_len: int = args.generate_length
     envs: str = args.gpus
     gpu_memory_utilization: float = args.gpu_memory_utilization
     max_model_len: int = args.max_model_len

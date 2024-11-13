@@ -61,6 +61,7 @@ HF_ENDPOINT=https://hf-mirror.com python speed_benchmark_transformers.py --model
 
     `--model_id_or_path`: 模型ID或本地路径， 可选值参考`模型资源`章节  
     `--context_length`: 输入长度，单位为token数；可选值为1, 6144, 14336, 30720, 63488, 129024；具体可参考`Qwen2.5模型效率评估报告`  
+    `--generate_length`: 生成token数量；默认为2048
     `--gpus`: 等价于环境变量CUDA_VISIBLE_DEVICES，例如`0,1,2,3`，`4,5`  
     `--use_modelscope`: 如果设置该值，则使用ModelScope加载模型，否则使用HuggingFace  
     `--outputs_dir`: 输出目录， 默认为`outputs/transformers`  
@@ -87,6 +88,7 @@ HF_ENDPOINT=https://hf-mirror.com python speed_benchmark_vllm.py --model_id_or_p
 
     `--model_id_or_path`: 模型ID或本地路径， 可选值参考`模型资源`章节  
     `--context_length`: 输入长度，单位为token数；可选值为1, 6144, 14336, 30720, 63488, 129024；具体可参考`Qwen2.5模型效率评估报告`  
+    `--generate_length`: 生成token数量；默认为2048
     `--max_model_len`: 模型最大长度，单位为token数；默认为32768  
     `--gpus`: 等价于环境变量CUDA_VISIBLE_DEVICES，例如`0,1,2,3`，`4,5`   
     `--use_modelscope`: 如果设置该值，则使用ModelScope加载模型，否则使用HuggingFace  

@@ -24,7 +24,6 @@ class SpeedBenchmarkTransformers:
     COMMENT = 'default'
     DEVICE_MAP = 'auto'
     TORCH_DTYPE = 'auto'
-    GENERATE_LENGTH_PER_EXPERIMENT = 2048
     OVERWRITE_RESULT = False
     DUMMY_INPUT = '我'
 
@@ -57,11 +56,11 @@ class SpeedBenchmarkTransformers:
 
         self.generation_config = GenerationConfig.from_pretrained(model_id_or_path, trust_remote_code=True)
 
-    def run(self, context_length: int) -> str:
+    def run(self, context_length: int, generate_length: int) -> str:
 
         # Specify hyperparameters for generation
-        self.generation_config.min_length = self.GENERATE_LENGTH_PER_EXPERIMENT + context_length
-        self.generation_config.max_new_tokens = self.GENERATE_LENGTH_PER_EXPERIMENT
+        self.generation_config.min_length = generate_length + context_length
+        self.generation_config.max_new_tokens = generate_length
         print(f'Generation config: {self.generation_config}')
 
         # Prepare inputs
@@ -88,7 +87,7 @@ class SpeedBenchmarkTransformers:
         torch.cuda.empty_cache()
 
         # Prepare results
-        tokens_per_second: float = self.GENERATE_LENGTH_PER_EXPERIMENT / time_cost
+        tokens_per_second: float = generate_length / time_cost
         # Compute the maximum GPU memory cost (in GB)
         max_gpu_memory_cost_gb = max_gpu_memory_cost / 1024 / 1024 / 1024
 
@@ -96,7 +95,7 @@ class SpeedBenchmarkTransformers:
             "model_id_or_path": self.model_id_or_path,
             "batch_size": batch_size,
             "context_length_per_experiment": context_length,
-            "generate_length_per_experiment": self.GENERATE_LENGTH_PER_EXPERIMENT,
+            "generate_length_per_experiment": generate_length,
             "use_flash_attn": self.USE_FLASH_ATTN,
             "comment": self.COMMENT,
             "tokens_per_second": round(tokens_per_second, 4),
@@ -142,6 +141,7 @@ def main():
     parser.add_argument('--model_id_or_path', type=str, help='The model path or id on ModelScope or HuggingFace hub')
     parser.add_argument('--context_length', type=int, help='The input length for each experiment.'
                                                            'e.g. 1, 6144, 14336, 30720, 63488, 129024')
+    parser.add_argument('--generate_length', type=int, default=2048, help='Output length in tokens; default is 2048.')
     parser.add_argument('--gpus', type=str, help='Equivalent to the env CUDA_VISIBLE_DEVICES.  e.g. `0,1,2,3`, `4,5`')
     parser.add_argument('--use_modelscope', action='store_true',
                         help='Use ModelScope when set this flag. Otherwise, use HuggingFace.')
@@ -152,6 +152,7 @@ def main():
     model_id_or_path: str = args.model_id_or_path
     envs: str = args.gpus
     context_length: int = args.context_length
+    generate_length: int = args.generate_length
     use_modelscope: bool = args.use_modelscope
     outputs_dir: str = args.outputs_dir
 
@@ -161,7 +162,7 @@ def main():
     speed_benchmark = SpeedBenchmarkTransformers(model_id_or_path=model_id_or_path,
                                                  use_modelscope=use_modelscope,
                                                  outputs_dir=outputs_dir)
-    speed_benchmark.run(context_length=context_length)
+    speed_benchmark.run(context_length=context_length, generate_length=generate_length)
 
 
 if __name__ == '__main__':
