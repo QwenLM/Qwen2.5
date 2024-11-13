@@ -104,4 +104,4 @@ HF_ENDPOINT=https://hf-mirror.com python speed_benchmark_vllm.py --model_id_or_p
 
 ### 4. 测试结果
 
-测试结果详见`outputs`目录下的文件，默认包括`transformer`和`vllm`两个目录，分别存放HuggingFace transformers和vLLM的测试结果。
+测试结果详见`outputs`目录下的文件，默认包括`transformers`和`vllm`两个目录，分别存放HuggingFace transformers和vLLM的测试结果。

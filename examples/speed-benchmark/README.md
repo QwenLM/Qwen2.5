@@ -110,5 +110,5 @@ Parameters:
 
 ### 4. Results
 
-Please check the `outputs` directory, which includes two directories by default: `transformer` and `vllm`, containing the experiments results for HuggingFace transformers and vLLM, respectively.
+Please check the `outputs` directory, which includes two directories by default: `transformers` and `vllm`, containing the experiments results for HuggingFace transformers and vLLM, respectively.
 

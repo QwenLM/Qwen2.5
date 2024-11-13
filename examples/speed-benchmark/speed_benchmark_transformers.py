@@ -4,7 +4,7 @@
 # LICENSE file in the root directory of this source tree.
 
 """
-Qwen2.5 Speed Benchmark for transformer(pt) inference.
+Qwen2.5 Speed Benchmark for transformers(pt) inference.
 """
 
 import os
@@ -29,7 +29,7 @@ class SpeedBenchmarkTransformers:
 
     def __init__(self, model_id_or_path, use_modelscope: bool = True, outputs_dir: str = 'outputs/transformers'):
         """
-        Speed benchmark for transformer(pt) inference.
+        Speed benchmark for transformers(pt) inference.
 
         Args:
             model_id_or_path: The model id on ModelScope or HuggingFace hub, or local model path.
@@ -137,7 +137,7 @@ def main():
     import argparse
 
     # Parse args
-    parser = argparse.ArgumentParser(description='Speed benchmark for transformer(pt) deployment')
+    parser = argparse.ArgumentParser(description='Speed benchmark for transformers(pt) deployment')
     parser.add_argument('--model_id_or_path', type=str, help='The model path or id on ModelScope or HuggingFace hub')
     parser.add_argument('--context_length', type=int, help='The input length for each experiment.'
                                                            'e.g. 1, 6144, 14336, 30720, 63488, 129024')
