@@ -293,7 +293,7 @@ If you find our work helpful, feel free to give us a cite.
 @misc{qwen2.5,
     title = {Qwen2.5: A Party of Foundation Models},
     url = {https://qwenlm.github.io/blog/qwen2.5/},
-    author = {Qwen Team},
+    author = {{Qwen Team}},
     month = {September},
     year = {2024}
 }
