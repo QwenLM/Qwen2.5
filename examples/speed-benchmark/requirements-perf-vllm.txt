@@ -1,0 +1,4 @@
+vllm==0.6.3.post1
+torch==2.4.0
+modelscope[framework]
+accelerate

@@ -1,0 +1,10 @@
+# Note: install following requirements saparately
+# pip install torch==2.3.1
+# pip install git+https://github.com/AutoGPTQ/AutoGPTQ.git@v0.7.1
+# pip install git+https://github.com/Dao-AILab/flash-attention.git@v2.5.8
+
+transformers==4.46.0
+autoawq==0.2.6
+modelscope[framework]
+accelerate
+optimum>=1.20.0
