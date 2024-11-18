@@ -1,12 +1,12 @@
 ## Speed Benchmark
 
-This document introduces the speed benchmark testing process for the Qwen2.5 series models (original and quantized models). For detailed reports, please refer to the [Qwen2.5 SpeedBenchmark](https://qwen.readthedocs.io/en/latest/benchmark/speed_benchmark.html)
+This document introduces the speed benchmark testing process for the Qwen2.5 series models (original and quantized models). For detailed reports, please refer to the [Qwen2.5 Speed Benchmark](https://qwen.readthedocs.io/en/latest/benchmark/speed_benchmark.html).
 
 ### 1. Model Collections
 
-For models hosted on HuggingFace, please refer to [Qwen2.5 Collections-HuggingFace](https://huggingface.co/collections/Qwen/qwen25-66e81a666513e518adb90d9e)
+For models hosted on HuggingFace, please refer to [Qwen2.5 Collections-HuggingFace](https://huggingface.co/collections/Qwen/qwen25-66e81a666513e518adb90d9e).
 
-For models hosted on ModelScope, please refer to [Qwen2.5 Collections-ModelScope](https://modelscope.cn/collections/Qwen25-dbc4d30adb768)
+For models hosted on ModelScope, please refer to [Qwen2.5 Collections-ModelScope](https://modelscope.cn/collections/Qwen25-dbc4d30adb768).
 
 ### 2. Environment Installation
 
@@ -21,14 +21,13 @@ pip install torch==2.3.1
 pip install git+https://github.com/AutoGPTQ/AutoGPTQ.git@v0.7.1
 pip install git+https://github.com/Dao-AILab/flash-attention.git@v2.5.8
 pip install -r requirements-perf-transformers.txt
-
 ```
 
-- Notes
-  - For `auto_gptq`, you may need to install from the source code.
-  - For prebuilt wheel `autoawq-kernels`, which can be collected by `pip install autoawq==0.2.6` automatically.
-  - For `flash-attention`, you may need to install from the source code, or use the wheels from the [GitHub page](https://github.com/Dao-AILab/flash-attention/releases/tag/v2.5.8)
-
+> [!Important]
+> - For `flash-attention`, you can use the prebulit wheels from [GitHub Releases](https://github.com/Dao-AILab/flash-attention/releases/tag/v2.5.8) or installing from source, which requires a compatible CUDA compiler.
+>   - You don't actually need to install `flash-attention`. It has been intergrated into `torch` as a backend of `sdpa`.
+> - For `auto_gptq` to use efficent kernels, you need to install from source, because the prebuilt wheels require incompatible `torch` versions. Installing from source also requires a compatible CUDA compiler.
+> - For `autoawq` to use efficent kenerls, you need `autoawq-kernels`, which should be automatically installed. If not, run `pip install autoawq-kernels`.
 
 For inference using vLLM:
 
@@ -44,19 +43,16 @@ pip install -r requirements-perf-vllm.txt
 
 #### 3.1 Inference using HuggingFace Transformers
 
-- Use ModelScope hub
-
-```shell
-python speed_benchmark_transformers.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --use_modelscope --outputs_dir outputs/transformers
-```
-
 - Use HuggingFace hub
 
 ```shell
 python speed_benchmark_transformers.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --outputs_dir outputs/transformers
+```
 
-# Specify the HF_ENDPOINT
-HF_ENDPOINT=https://hf-mirror.com python speed_benchmark_transformers.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --outputs_dir outputs/transformers
+- Use ModelScope hub
+
+```shell
+python speed_benchmark_transformers.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --use_modelscope --outputs_dir outputs/transformers
 ```
 
 Parameters:
@@ -69,22 +65,19 @@ Parameters:
     `--outputs_dir`: Output directory; default is outputs/transformers.  
 
 
-
 #### 3.2 Inference using vLLM
-
-- Use ModelScope hub
-
-```shell
-python speed_benchmark_vllm.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --max_model_len 32768 --gpus 0 --use_modelscope --gpu_memory_utilization 0.9 --outputs_dir outputs/vllm
-```
 
 - Use HuggingFace hub
 
 ```shell
 python speed_benchmark_vllm.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --max_model_len 32768 --gpus 0 --gpu_memory_utilization 0.9 --outputs_dir outputs/vllm
+```
 
-# Specify the HF_ENDPOINT
-HF_ENDPOINT=https://hf-mirror.com python speed_benchmark_vllm.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --max_model_len 32768 --gpus 0 --gpu_memory_utilization 0.9 --outputs_dir outputs/vllm
+
+- Use ModelScope hub
+
+```shell
+python speed_benchmark_vllm.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --max_model_len 32768 --gpus 0 --use_modelscope --gpu_memory_utilization 0.9 --outputs_dir outputs/vllm
 ```
 
 
@@ -111,4 +104,3 @@ Parameters:
 ### 4. Results
 
 Please check the `outputs` directory, which includes two directories by default: `transformers` and `vllm`, containing the experiments results for HuggingFace transformers and vLLM, respectively.
-
