@@ -4,9 +4,9 @@ This document introduces the speed benchmark testing process for the Qwen2.5 ser
 
 ## 1. Model Collections
 
-For models hosted on HuggingFace, refer to [Qwen2.5 Model - HuggingFace](https://huggingface.co/collections/Qwen/qwen25-66e81a666513e518adb90d9e).
+For models hosted on HuggingFace, refer to [Qwen2.5 Collections-HuggingFace](https://huggingface.co/collections/Qwen/qwen25-66e81a666513e518adb90d9e).
 
-For models hosted on ModelScope, refer to [Qwen2.5 Model - ModelScope](https://modelscope.cn/collections/Qwen25-dbc4d30adb768).
+For models hosted on ModelScope, refer to [Qwen2.5 Collections-ModelScope](https://modelscope.cn/collections/Qwen25-dbc4d30adb768).
 
 ## 2. Environment Setup
 
@@ -107,9 +107,6 @@ Test results can be found in the `outputs/{model_name}/{timestamp}/speed_benchma
 
 ```shell
 python speed_benchmark_transformers.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --outputs_dir outputs/transformers
-
-# Specify HF_ENDPOINT
-HF_ENDPOINT=https://hf-mirror.com python speed_benchmark_transformers.py --model_id_or_path Qwen/Qwen2.5-0.5B-Instruct --context_length 1 --gpus 0 --outputs_dir outputs/transformers
 ```
 
 - Using ModelScope Hub
