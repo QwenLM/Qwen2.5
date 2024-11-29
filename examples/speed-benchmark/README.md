@@ -44,7 +44,7 @@ Below are two methods for executing tests: using a script or the Speed Benchmark
 
 ### Method 1: Testing with Speed Benchmark Tool
 
-Use the Speed Benchmark tool developed by [EvalScope](https://github.com/modelscope/evalscope) for testing. It supports automatic downloading of models from ModelScope and outputs test results. Refer to the [📖 User Guide](https://evalscope.readthedocs.io/en/latest/user_guides/stress_test/speed_benchmark.html).
+Use the Speed Benchmark tool developed by [EvalScope](https://github.com/modelscope/evalscope), which supports automatic model downloads from ModelScope and outputs test results. It also allows testing by specifying the model service URL. For details, please refer to the [📖 User Guide](https://evalscope.readthedocs.io/en/latest/user_guides/stress_test/speed_benchmark.html).
 
 **Install Dependencies**
 ```shell

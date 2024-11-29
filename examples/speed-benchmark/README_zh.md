@@ -46,7 +46,7 @@ pip install -r requirements-perf-vllm.txt
 
 ### 方法1：使用Speed Benchmark工具测试
 
-使用[EvalScope](https://github.com/modelscope/evalscope)开发的Speed Benchmark工具进行测试，支持自动从modelscope下载模型并输出测试结果，参考[📖使用指南](https://evalscope.readthedocs.io/zh-cn/latest/user_guides/stress_test/speed_benchmark.html).
+使用[EvalScope](https://github.com/modelscope/evalscope)开发的Speed Benchmark工具进行测试，支持自动从modelscope下载模型并输出测试结果，也支持指定模型服务的url进行测试，具体请参考[📖使用指南](https://evalscope.readthedocs.io/zh-cn/latest/user_guides/stress_test/speed_benchmark.html)。
 
 **安装依赖**
 ```shell
