@@ -111,12 +111,9 @@ print("Chat response:", chat_response)
 ## Quantize Your Own Model with AutoAWQ
 
 If you want to quantize your own model to AWQ quantized models, we advise you to use AutoAWQ. 
-It is suggested installing the latest version of the package by installing from source code:
 
 ```bash
-git clone https://github.com/casper-hansen/AutoAWQ.git
-cd AutoAWQ
-pip install -e .
+pip install "autoawq<0.2.7"
 ```
 
 Suppose you have finetuned a model based on `Qwen2.5-7B`, which is named `Qwen2.5-7B-finetuned`, with your own dataset, e.g., Alpaca. 
