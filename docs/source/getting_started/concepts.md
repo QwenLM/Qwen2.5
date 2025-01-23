@@ -22,7 +22,7 @@ The spectrum for the open-weight models spans over
     - [Qwen2-Audio](https://github.com/QwenLM/Qwen2-Audio): 7B-based models
 - CodeQwen/Qwen-Coder: the language models for coding
     - [CodeQwen1.5](https://github.com/QwenLM/CodeQwen1.5): 7B models
-    - [Qwen2.5-Coder](https://github.com/QwenLM/Qwen2-Coder): 7B models
+    - [Qwen2.5-Coder](https://github.com/QwenLM/Qwen2.5-Coder): 7B models
 - Qwen-Math: the language models for mathematics
     - [Qwen2-Math](https://github.com/QwenLM/Qwen2-Math): 1.5B, 7B, and 72B models
     - [Qwen2.5-Math](https://github.com/QwenLM/Qwen2.5-Math): 1.5B, 7B, and 72B models
