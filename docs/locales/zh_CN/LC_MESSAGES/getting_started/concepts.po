@@ -92,8 +92,8 @@ msgid "[CodeQwen1.5](https://github.com/QwenLM/CodeQwen1.5): 7B models"
 msgstr "[CodeQwen1.5](https://github.com/QwenLM/CodeQwen1.5): 7B 模型"
 
 #: ../../source/getting_started/concepts.md:25 eb627becc6cb4bbfb32cb1d1ce430bd6
-msgid "[Qwen2.5-Coder](https://github.com/QwenLM/Qwen2-Coder): 7B models"
-msgstr "[Qwen2.5-Coder](https://github.com/QwenLM/Qwen2-Coder): 7B 模型"
+msgid "[Qwen2.5-Coder](https://github.com/QwenLM/Qwen2.5-Coder): 7B models"
+msgstr "[Qwen2.5-Coder](https://github.com/QwenLM/Qwen2.5-Coder): 7B 模型"
 
 #: ../../source/getting_started/concepts.md:26 418115b8fefa411596c07ab9ce0cf9e7
 msgid "Qwen-Math: the language models for mathematics"
