@@ -6,7 +6,22 @@ Qwen (Chinese: 通义千问; pinyin: _Tongyi Qianwen_) is the large language mod
 Qwen is capable of natural language understanding, text generation, vision understanding, audio understanding, tool use, role play, playing as AI agent, etc. 
 Both language models and multimodal models are pre-trained on large-scale multilingual and multimodal data and post-trained on quality data for aligning to human preferences.
 
-There is the proprietary version hosted exclusively at [Alibaba Cloud \[zh\]](https://help.aliyun.com/zh/model-studio/developer-reference/tongyi-qianwen-llm/) and the open-weight version.
+There is the proprietary version and the open-weight version.
+
+The proprietary versions include
+- Qwen: the language models
+    - Qwen Max
+    - Qwen Plus
+    - Qwen Turbo
+- Qwen-VL: the vision-language models
+    - Qwen-VL Max
+    - Qwen-VL Plus
+    - Qwen-VL OCR
+- Qwen-Audio: the audio-language models
+    - Qwen-Audio Turbo
+    - Qwen-Audio ASR
+
+You can learn more about them at Alibaba Cloud Model Studio ([China Site](https://help.aliyun.com/zh/model-studio/getting-started/models#9f8890ce29g5u) \[zh\], [International Site](https://www.alibabacloud.com/en/product/modelstudio)).
 
 The spectrum for the open-weight models spans over
 - Qwen: the language models
@@ -20,12 +35,19 @@ The spectrum for the open-weight models spans over
 - Qwen-Audio: the audio-language models
     - [Qwen-Audio](https://github.com/QwenLM/Qwen-Audio): 7B-based model
     - [Qwen2-Audio](https://github.com/QwenLM/Qwen2-Audio): 7B-based models
+- Q*Q: the reasoning models
+    - [QwQ-Preview](https://github.com/QwenLM/Qwen2.5/): 32B LLM
+    - [QVQ-Preview](https://github.com/QwenLM/Qwen2-VL): 72B VLM
 - CodeQwen/Qwen-Coder: the language models for coding
     - [CodeQwen1.5](https://github.com/QwenLM/CodeQwen1.5): 7B models
-    - [Qwen2.5-Coder](https://github.com/QwenLM/Qwen2.5-Coder): 7B models
+    - [Qwen2.5-Coder](https://github.com/QwenLM/Qwen2.5-Coder): 0.5B, 1.5B, 3B, 7B, 14B, and 32B models
 - Qwen-Math: the language models for mathematics
     - [Qwen2-Math](https://github.com/QwenLM/Qwen2-Math): 1.5B, 7B, and 72B models
     - [Qwen2.5-Math](https://github.com/QwenLM/Qwen2.5-Math): 1.5B, 7B, and 72B models
+- Qwen-Math-RM: the reward models for mathematics
+    - [Qwen2-Math-RM](https://github.com/QwenLM/Qwen2-Math): 72B models
+    - [Qwen2.5-Math-RM](https://github.com/QwenLM/Qwen2.5-Math): 72B models
+    - [Qwen2.5-Math-PRM](https://github.com/QwenLM/Qwen2.5-Math): 7B and 72B models
 
 **In this document, our focus is Qwen, the language models.**
 
