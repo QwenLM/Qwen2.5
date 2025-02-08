@@ -1,5 +1,5 @@
 furo
 myst-parser==4.0.0
-sphinx<8
+sphinx<8,>4.5.0
 sphinx-copybutton
 sphinx-design>=0.6.0
