@@ -126,6 +126,15 @@ Training
 Execute the following training command:
 
 .. code:: bash
+# for example,using deepspeed_z3 train Qwen2-7B-Instruct in 2GPUs(1 node)
+   export NPROC_PER_NODE=2
+   export NNODES=1
+   export NODE_RANK=0
+   export MASTER_ADDR="127.0.0.1"
+   export MASTER_PORT=12345
+   export DS_CONFIG_PATH="examples/deepspeed/ds_z3_config.json"
+   export MODEL_PATH="qwen/Qwen2-7B-Instruct"
+   export OUTPUT_PATH="saves/qwen2-7b-instruct/lora/sft"
 
    DISTRIBUTED_ARGS="
        --nproc_per_node $NPROC_PER_NODE \
@@ -140,7 +149,7 @@ Execute the following training command:
        --stage sft \
        --do_train \
        --use_fast_tokenizer \
-       --flash_attn \
+       --flash_attn fa2 \
        --model_name_or_path $MODEL_PATH \
        --dataset your_dataset \
        --template qwen \
