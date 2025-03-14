@@ -52,7 +52,7 @@ Qwen2.5 model families support a maximum of 32K context window size (up to 128K 
                 prompt += f"<|im_start|>assistant\n{message.content}<|im_end|>\n"
     
         if not prompt.startswith("<|im_start|>system"):
-            prompt = "<|im_start|>system\n" + prompt
+            prompt = "<|im_start|>system\nYou are Qwen, created by Alibaba Cloud. You are a helpful assistant.<|im_end|>\n" + prompt
     
         prompt = prompt + "<|im_start|>assistant\n"
     
