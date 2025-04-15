@@ -49,18 +49,16 @@ Example dataset formats:
    {"messages": [{"role": "user", "content": "<image>What is the difference between the two images?"}], "images": ["/xxx/x.jpg"]}
    {"messages": [{"role": "user", "content": "<image><image>What is the difference between the two images?"}], "images": ["/xxx/.yjpg", "/xxx/z.png"]}
 
+GRPO Training Examples
+----------------------
 
-Training with GRPO Algorithm
-----------------------------
+Single-GPU Configuration
+------------------------
 
-The following examples demonstrate training with the GRPO algorithm for both Qwen2.5-7B (LLM) and Qwen2.5-VL-7B-Instruct (MLLM) models.
-
-Single-GPU Training
--------------------
+**LLM (Qwen2.5-7B):**
 
 .. code-block:: bash
 
-   # Qwen2.5-7B (LLM)
    CUDA_VISIBLE_DEVICES=0 \
    swift rlhf \
        --rlhf_type grpo \
@@ -98,7 +96,10 @@ Single-GPU Training
        --system 'examples/train/grpo/prompt.txt' \
        --log_completions true
 
-   # Qwen2.5-VL-7B-Instruct (MLLM)
+**MLLM (Qwen2.5-VL-7B-Instruct):**
+
+.. code-block:: bash
+
    CUDA_VISIBLE_DEVICES=0 \
    swift rlhf \
        --rlhf_type grpo \
@@ -139,9 +140,10 @@ Single-GPU Training
 Multi-GPU Training
 ------------------
 
+**LLM Example with DeepSpeed:**
+
 .. code-block:: bash
 
-   # Qwen2.5-7B (LLM)
    CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 \
    NPROC_PER_NODE=8 \
    swift rlhf \
@@ -182,7 +184,15 @@ Multi-GPU Training
        --gc_collect_after_offload true \
        --log_completions true
 
-   # Qwen2.5-VL-7B-Instruct (MLLM)
+
+Multi-GPU Deployment
+--------------------
+
+**MLLM Example with DeepSpeed:**
+
+.. code-block:: bash
+
+
    CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 \
    NPROC_PER_NODE=8 \
    swift rlhf \
