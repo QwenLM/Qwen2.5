@@ -162,7 +162,7 @@ Multi-GPU Training
        --output_dir output \
        --use_flash_attn true
 
-Model Export & Deployment
+Model Export
 -------------------------
 
 **Merge LoRA Adapters:**

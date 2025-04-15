@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-15 20:27+0800\n"
+"POT-Creation-Date: 2025-04-15 21:08+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -19,99 +19,98 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: ../../source/training/SFT/ms_swift.rst:2 82c8f7450916441fa8c9f6357b1401e2
+#: ../../source/training/SFT/ms_swift.rst:2 f9862f8069d8476b9f4b1fe3fceb0aa2
 msgid "ms-swift"
-msgstr ""
+msgstr "ms-swift"
 
-#: ../../source/training/SFT/ms_swift.rst:5 eda9564845964f0c8361c92ee3389ee8
+#: ../../source/training/SFT/ms_swift.rst:5 52e8e29cf9394b759eae428ad86df9ef
 msgid "Introduction to ms-swift SFT"
-msgstr ""
+msgstr "ms-swift SFT 介绍"
 
-#: ../../source/training/SFT/ms_swift.rst:7 c04f5a8db05940f5b72e9d7e765a747b
+#: ../../source/training/SFT/ms_swift.rst:7 574012b1fe204f3c89a48ccdc92a015b
 msgid "ms-swift provides comprehensive support for Supervised Fine-Tuning (SFT) of large language models (LLMs) and multimodal models (MLLMs). The framework offers:"
-msgstr ""
+msgstr "ms-swift 为大型语言模型 (LLMs) 和多模态模型 (MLLMs) 的监督微调 (SFT) 提供全面支持。该框架提供："
 
-#: ../../source/training/SFT/ms_swift.rst:9 fc96a8e854734b9499436bca718fd9b6
+#: ../../source/training/SFT/ms_swift.rst:9 915853f3d1344b23a73b83d5554278e0
 msgid "Flexible training options: single-GPU and multi-GPU support"
-msgstr ""
+msgstr "支持单卡和多卡分布式训练"
 
-#: ../../source/training/SFT/ms_swift.rst:10 6914251664da48b09e1401e9cd28d8eb
+#: ../../source/training/SFT/ms_swift.rst:10 07ce50df2feb4d68a5061279b6278270
 msgid "Efficient tuning methods: full-parameter, LoRA, Q-LoRA, and Dora"
-msgstr ""
+msgstr "支持全参数微调、LoRA、Q-LoRA 和 DoRA"
 
-#: ../../source/training/SFT/ms_swift.rst:11 b4dccf7be828464781110e797b6deba9
+#: ../../source/training/SFT/ms_swift.rst:11 83caf26cb7324d32b05e6c4106a283c3
 msgid "Broad model compatibility: supports various LLM and MLLM architectures"
-msgstr ""
+msgstr "模型兼容性：支持各种 LLM 和 MLLM 架构"
 
-#: ../../source/training/SFT/ms_swift.rst:13 9c4bb34834b94d1baa2a568079f77104
+#: ../../source/training/SFT/ms_swift.rst:13 dbde4570f7f8420e971094eb6a3e644a
 msgid "For detailed model compatibility, see: `Supported Models <https://swift.readthedocs.io/en/latest/Instruction/Supported-models-and-datasets.html>`__"
-msgstr ""
+msgstr "支持的模型参考：`支持的模型 <https://swift.readthedocs.io/en/latest/Instruction/Supported-models-and-datasets.html>`__"
 
-#: ../../source/training/SFT/ms_swift.rst:16 cb3deeae761a47b9a6ad48b974a77583
+#: ../../source/training/SFT/ms_swift.rst:16 76c97768231e4ce28afa1564eb5d5b08
 msgid "Environment Setup"
-msgstr ""
+msgstr "环境安装"
 
-#: ../../source/training/SFT/ms_swift.rst:18 45444561b6df46ebb945e008a277b957
+#: ../../source/training/SFT/ms_swift.rst:18 4c703d1de46d45239d241dc86843f5c6
 msgid "Install ms-swift and required dependencies::"
-msgstr ""
+msgstr "安装 ms-swift 及其所需依赖项：："
 
-#: ../../source/training/SFT/ms_swift.rst:23 3a7b5add6d454e9897f888c8e0a76a25
+#: ../../source/training/SFT/ms_swift.rst:23 2438fc314ca648cc80099fd8afc70907
 msgid "Optional packages for advanced features::"
-msgstr ""
+msgstr "可选包：："
 
-#: ../../source/training/SFT/ms_swift.rst:29 a3290b45718a4a038ff281ede6dda456
+#: ../../source/training/SFT/ms_swift.rst:29 35c77b9341d047f8a9ad9fb1ba77f6ab
 msgid "Data Preparation"
-msgstr ""
+msgstr "数据准备"
 
-#: ../../source/training/SFT/ms_swift.rst:31 c4b6bfc719654acabd8613635af4fa13
+#: ../../source/training/SFT/ms_swift.rst:31 142d4a7e7dd14c159a927e797a136531
 msgid "ms-swift supports multiple dataset formats:"
-msgstr ""
+msgstr "ms-swift 支持多种数据集格式："
 
-#: ../../source/training/SFT/ms_swift.rst:60 79d42cfdc0c144cebda3905bc663861e
+#: ../../source/training/SFT/ms_swift.rst:60 06fd40a382b94c0683a215943b9d1b16
 msgid "For complete dataset formatting guidelines, see: `Custom Dataset Documentation <https://swift.readthedocs.io/en/latest/Customization/Custom-dataset.html>`__"
-msgstr ""
+msgstr "有关完整的数据集格式，请参阅：`自定义数据集文档 <https://swift.readthedocs.io/en/latest/Customization/Custom-dataset.html>`__"
 
-#: ../../source/training/SFT/ms_swift.rst:62 ecb1472cf05e42d6b7d765e2735d70f8
+#: ../../source/training/SFT/ms_swift.rst:62 df1d32755fe7401d8562484e805b6e05
 msgid "Pre-built datasets are available at: `Supported Datasets <https://swift.readthedocs.io/en/latest/Instruction/Supported-models-and-datasets.html#datasets>`__"
-msgstr ""
+msgstr "内置数据集可以查看：`支持的数据集 <https://swift.readthedocs.io/en/latest/Instruction/Supported-models-and-datasets.html#datasets>`__"
 
-#: ../../source/training/SFT/ms_swift.rst:65 b0d2a1b4ea5441d0be9ed5980bc13479
+#: ../../source/training/SFT/ms_swift.rst:65 ebb2445561cb47f1b0757becc10abc72
 msgid "Training Examples"
-msgstr ""
+msgstr "训练示例"
 
-#: ../../source/training/SFT/ms_swift.rst:68 7cc98ae04f8748cb83f58a3054d2c524
+#: ../../source/training/SFT/ms_swift.rst:68 068f6b88d5514ba8b8a3cf401f0c719d
 msgid "Single-GPU Training"
-msgstr ""
+msgstr "单卡训练"
 
-#: ../../source/training/SFT/ms_swift.rst:70 1948dcdde4de4964bd0ac2b4e431a47d
+#: ../../source/training/SFT/ms_swift.rst:70 87eafdcab8854a17a155887824e09a42
 msgid "**LLM Example (Qwen2.5-7B-Instruct):**"
-msgstr ""
+msgstr "**LLM 示例 (Qwen2.5-7B-Instruct)：**"
 
-#: ../../source/training/SFT/ms_swift.rst:97 4b949083525d4c53a84f1cdd29528832
+#: ../../source/training/SFT/ms_swift.rst:97 2127e993cb7e4fb9bfc8eadd96f8dfaf
 msgid "**MLLM Example (Qwen2.5-VL-7B-Instruct):**"
-msgstr ""
+msgstr "**MLLM 示例 (Qwen2.5-VL-7B-Instruct)：**"
 
-#: ../../source/training/SFT/ms_swift.rst:121 63e20f8dc61e449ca0a65b51ca5b0aa3
+#: ../../source/training/SFT/ms_swift.rst:121 99466a0489b1497ba2638d1083a4a8e0
 msgid "Multi-GPU Training"
-msgstr ""
+msgstr "多卡训练"
 
-#: ../../source/training/SFT/ms_swift.rst:123 daf7306f12fc4269974a9c48f9d88060
+#: ../../source/training/SFT/ms_swift.rst:123 910cbdf6d2304a64bc5052eb088a235a
 msgid "**LLM Example with DeepSpeed:**"
-msgstr ""
+msgstr "**LLM 使用 DeepSpeed 示例：**"
 
-#: ../../source/training/SFT/ms_swift.rst:146 aef1c57a8b0d47e6a944aedf005ef1f0
+#: ../../source/training/SFT/ms_swift.rst:146 c0cf341e4f99442cb6149abc30fe1db3
 msgid "**MLLM Example with DeepSpeed:**"
-msgstr ""
+msgstr "** MLLM 使用 DeepSpeed 示例：**"
 
-#: ../../source/training/SFT/ms_swift.rst:166 ee97627147a84f57a396a96cd9536dfb
-msgid "Model Export & Deployment"
-msgstr ""
+#: ../../source/training/SFT/ms_swift.rst:166 17bdcce75ea545ce83d3fce2054ab66d
+msgid "Model Export"
+msgstr "模型导出"
 
-#: ../../source/training/SFT/ms_swift.rst:168 b022518a62424e3c98661fbe14c16921
+#: ../../source/training/SFT/ms_swift.rst:168 99e7c4cda3a5406d82c5012a48813432
 msgid "**Merge LoRA Adapters:**"
-msgstr ""
+msgstr "**合并 LoRA：**"
 
-#: ../../source/training/SFT/ms_swift.rst:176 d0e1c05369cc46aaa53b968da05969fe
+#: ../../source/training/SFT/ms_swift.rst:176 c32bb54f291048cab36acff3c956b4af
 msgid "**Push to ModelScope Hub:**"
-msgstr ""
-
+msgstr "**推送到 ModelScope Hub：**"
