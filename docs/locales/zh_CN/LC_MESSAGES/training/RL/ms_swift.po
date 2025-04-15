@@ -107,11 +107,11 @@ msgstr "多卡训练"
 
 #: ../../source/training/RL/ms_swift.rst:143 b450602a3888485781d65217152b6f0c
 msgid "**LLM Example with DeepSpeed:**"
-msgstr "**LLM 使用 DeepSpeed 示例：**"
+msgstr "**LLM 示例：**"
 
 #: ../../source/training/RL/ms_swift.rst:187 7d86099115d8429da97a05939e7e9293
 msgid "**MLLM Example with DeepSpeed:**"
-msgstr "**使用 DeepSpeed 的 MLLM 示例：**"
+msgstr "**MLLM 示例：**"
 
 #: ../../source/training/RL/ms_swift.rst:233 e0a70bfe20734d1b9e5041467e1118e7
 msgid "Model Export"
