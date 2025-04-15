@@ -1,7 +1,5 @@
-# SOME DESCRIPTIVE TITLE.
 # Copyright (C) 2024, Qwen Team
 # This file is distributed under the same license as the Qwen package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
 #, fuzzy
 msgid ""
@@ -126,5 +124,3 @@ msgstr "**合并 LoRA：**"
 #: ../../source/training/RL/ms_swift.rst:243 b5855f974c874ec5a30e7001db0ee35d
 msgid "**Push to ModelScope Hub:**"
 msgstr "**推送到 ModelScope Hub：**"
-
-
