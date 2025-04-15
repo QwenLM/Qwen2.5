@@ -4,7 +4,12 @@ ms-swift
 Introduction to ms-swift SFT
 ----------------------------
 
-ms-swift provides comprehensive support for Supervised Fine-Tuning (SFT) of large language models (LLMs) and multimodal models (MLLMs). The framework offers:
+
+ms-swift is the official large model and multimodal model training and deployment framework provided by the ModelScope community. 
+
+GitHub repository: `ms-swift <https://github.com/modelscope/ms-swift>`__
+
+The SFT script in ms-swift has the following features:
 
 - Flexible training options: single-GPU and multi-GPU support
 - Efficient tuning methods: full-parameter, LoRA, Q-LoRA, and Dora

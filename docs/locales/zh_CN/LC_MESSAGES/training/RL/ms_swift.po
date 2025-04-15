@@ -31,11 +31,11 @@ msgstr "ms-swift 是 ModelScope 社区提供的官方大型模型和多模态模
 
 #: ../../source/training/RL/ms_swift.rst:9 ed1e7c6c314649eba6e90799ca62189e
 msgid "GitHub repository: `ms-swift <https://github.com/modelscope/ms-swift>`__"
-msgstr "GitHub 仓库：`ms-swift <https://github.com/modelscope/ms-swift>`__"
+msgstr "GitHub 地址：`ms-swift <https://github.com/modelscope/ms-swift>`__"
 
 #: ../../source/training/RL/ms_swift.rst:11 baef7064c2e84e0db68ab71d4092979d
 msgid "The RL script in ms-swift has the following features:"
-msgstr "ms-swift 中的 RL 脚本具有以下特性："
+msgstr "ms-swift 中的 RL 训练具有以下特性："
 
 #: ../../source/training/RL/ms_swift.rst:13 140803cb0a0047339da9aad7c61053ab
 msgid "Support single-GPU and multi-GPU training"
