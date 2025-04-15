@@ -1,0 +1,117 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Qwen Team
+# This file is distributed under the same license as the Qwen package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-15 20:27+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/training/SFT/ms_swift.rst:2 82c8f7450916441fa8c9f6357b1401e2
+msgid "ms-swift"
+msgstr ""
+
+#: ../../source/training/SFT/ms_swift.rst:5 eda9564845964f0c8361c92ee3389ee8
+msgid "Introduction to ms-swift SFT"
+msgstr ""
+
+#: ../../source/training/SFT/ms_swift.rst:7 c04f5a8db05940f5b72e9d7e765a747b
+msgid "ms-swift provides comprehensive support for Supervised Fine-Tuning (SFT) of large language models (LLMs) and multimodal models (MLLMs). The framework offers:"
+msgstr ""
+
+#: ../../source/training/SFT/ms_swift.rst:9 fc96a8e854734b9499436bca718fd9b6
+msgid "Flexible training options: single-GPU and multi-GPU support"
+msgstr ""
+
+#: ../../source/training/SFT/ms_swift.rst:10 6914251664da48b09e1401e9cd28d8eb
+msgid "Efficient tuning methods: full-parameter, LoRA, Q-LoRA, and Dora"
+msgstr ""
+
+#: ../../source/training/SFT/ms_swift.rst:11 b4dccf7be828464781110e797b6deba9
+msgid "Broad model compatibility: supports various LLM and MLLM architectures"
+msgstr ""
+
+#: ../../source/training/SFT/ms_swift.rst:13 9c4bb34834b94d1baa2a568079f77104
+msgid "For detailed model compatibility, see: `Supported Models <https://swift.readthedocs.io/en/latest/Instruction/Supported-models-and-datasets.html>`__"
+msgstr ""
+
+#: ../../source/training/SFT/ms_swift.rst:16 cb3deeae761a47b9a6ad48b974a77583
+msgid "Environment Setup"
+msgstr ""
+
+#: ../../source/training/SFT/ms_swift.rst:18 45444561b6df46ebb945e008a277b957
+msgid "Install ms-swift and required dependencies::"
+msgstr ""
+
+#: ../../source/training/SFT/ms_swift.rst:23 3a7b5add6d454e9897f888c8e0a76a25
+msgid "Optional packages for advanced features::"
+msgstr ""
+
+#: ../../source/training/SFT/ms_swift.rst:29 a3290b45718a4a038ff281ede6dda456
+msgid "Data Preparation"
+msgstr ""
+
+#: ../../source/training/SFT/ms_swift.rst:31 c4b6bfc719654acabd8613635af4fa13
+msgid "ms-swift supports multiple dataset formats:"
+msgstr ""
+
+#: ../../source/training/SFT/ms_swift.rst:60 79d42cfdc0c144cebda3905bc663861e
+msgid "For complete dataset formatting guidelines, see: `Custom Dataset Documentation <https://swift.readthedocs.io/en/latest/Customization/Custom-dataset.html>`__"
+msgstr ""
+
+#: ../../source/training/SFT/ms_swift.rst:62 ecb1472cf05e42d6b7d765e2735d70f8
+msgid "Pre-built datasets are available at: `Supported Datasets <https://swift.readthedocs.io/en/latest/Instruction/Supported-models-and-datasets.html#datasets>`__"
+msgstr ""
+
+#: ../../source/training/SFT/ms_swift.rst:65 b0d2a1b4ea5441d0be9ed5980bc13479
+msgid "Training Examples"
+msgstr ""
+
+#: ../../source/training/SFT/ms_swift.rst:68 7cc98ae04f8748cb83f58a3054d2c524
+msgid "Single-GPU Training"
+msgstr ""
+
+#: ../../source/training/SFT/ms_swift.rst:70 1948dcdde4de4964bd0ac2b4e431a47d
+msgid "**LLM Example (Qwen2.5-7B-Instruct):**"
+msgstr ""
+
+#: ../../source/training/SFT/ms_swift.rst:97 4b949083525d4c53a84f1cdd29528832
+msgid "**MLLM Example (Qwen2.5-VL-7B-Instruct):**"
+msgstr ""
+
+#: ../../source/training/SFT/ms_swift.rst:121 63e20f8dc61e449ca0a65b51ca5b0aa3
+msgid "Multi-GPU Training"
+msgstr ""
+
+#: ../../source/training/SFT/ms_swift.rst:123 daf7306f12fc4269974a9c48f9d88060
+msgid "**LLM Example with DeepSpeed:**"
+msgstr ""
+
+#: ../../source/training/SFT/ms_swift.rst:146 aef1c57a8b0d47e6a944aedf005ef1f0
+msgid "**MLLM Example with DeepSpeed:**"
+msgstr ""
+
+#: ../../source/training/SFT/ms_swift.rst:166 ee97627147a84f57a396a96cd9536dfb
+msgid "Model Export & Deployment"
+msgstr ""
+
+#: ../../source/training/SFT/ms_swift.rst:168 b022518a62424e3c98661fbe14c16921
+msgid "**Merge LoRA Adapters:**"
+msgstr ""
+
+#: ../../source/training/SFT/ms_swift.rst:176 d0e1c05369cc46aaa53b968da05969fe
+msgid "**Push to ModelScope Hub:**"
+msgstr ""
+
