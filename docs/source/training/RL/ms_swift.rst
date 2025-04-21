@@ -27,6 +27,7 @@ Environment Setup
       pip install deepspeed
       pip install math_verify==0.5.2
       pip install flash-attn --no-build-isolation
+      pip install vllm
 
 
 Data Preparation

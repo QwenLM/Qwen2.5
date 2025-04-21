@@ -55,7 +55,7 @@ msgstr "支持大型语言模型 (LLM) 和多模态模型 (MLLM)"
 
 #: ../../source/training/RL/ms_swift.rst:18 ada034f28f7c4cb290f64a788ce97e8f
 msgid "For detailed support information, please refer to: `Supported Features <https://swift.readthedocs.io/en/latest/Instruction/Pre-training-and-Fine-tuning.html#pre-training-and-fine-tuning>`__"
-msgstr "有关详细支持信息，请参考：`支持的功能 <https://swift.readthedocs.io/en/latest/Instruction/Pre-training-and-Fine-tuning.html#pre-training-and-fine-tuning>`__"
+msgstr "有关详细支持信息，请参考：`训练支持 <https://swift.readthedocs.io/en/latest/Instruction/Pre-training-and-Fine-tuning.html#pre-training-and-fine-tuning>`__"
 
 #: ../../source/training/RL/ms_swift.rst:22 41c7514380f243be98dd448b2b347fe0
 msgid "Environment Setup"
@@ -100,7 +100,7 @@ msgstr "在使用内置的accuracy/cosine奖励时，数据集必须包含一个
 
 #: ../../source/training/RL/ms_swift.rst:59 b32e940c2eb7462ba84b9dc6fe8af0a4
 msgid "Customizing the Reward Function: To tailor the reward function to your specific needs, you can refer to the following resource: `external reward plugin <https://github.com/modelscope/ms-swift/tree/main/examples/train/grpo/plugin>`__"
-msgstr "自定义奖励函数：为了满足您的具体需求，可以参考以下资源：外部奖励插件 <https://github.com/modelscope/ms-swift/tree/main/examples/train/grpo/plugin>__"
+msgstr "自定义奖励函数：为了满足您的具体需求，可以参考以下资源：`外部奖励插件 <https://github.com/modelscope/ms-swift/tree/main/examples/train/grpo/plugin>`__"
 
 #: ../../source/training/RL/ms_swift.rst:63 33a0dabb608f41f8b4150d5bc9bec006
 msgid "GRPO Training Examples"
