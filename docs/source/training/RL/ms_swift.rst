@@ -36,7 +36,7 @@ ms-swift has built-in preprocessing logic for several datasets, which can be dir
 
 You can also use local custom datasets by providing the local dataset path to the ``--dataset`` parameter.
 
-Example dataset formats:
+Example Dataset Formats:
 
 .. code-block:: text
 
@@ -47,7 +47,17 @@ Example dataset formats:
 
    # mllm
    {"messages": [{"role": "user", "content": "<image>What is the difference between the two images?"}], "images": ["/xxx/x.jpg"]}
-   {"messages": [{"role": "user", "content": "<image><image>What is the difference between the two images?"}], "images": ["/xxx/.yjpg", "/xxx/z.png"]}
+   {"messages": [{"role": "user", "content": "<image><image>What is the difference between the two images?"}], "images": ["/xxx/y.jpg", "/xxx/z.png"]}
+
+Notes on Dataset Requirements
+
+1. Reward Function Calculation: Depending on the reward function being used, additional columns may be required in the dataset. For example:
+
+      When using the built-in accuracy/cosine reward, the dataset must include a ``solution`` column to compute accuracy.
+      The other columns in the dataset will also be passed to the `kwargs` of the reward function. 
+
+2. Customizing the Reward Function: To tailor the reward function to your specific needs, you can refer to the following resource: `external reward plugin <https://github.com/modelscope/ms-swift/tree/main/examples/train/grpo/plugin>`__
+
 
 GRPO Training Examples
 ----------------------

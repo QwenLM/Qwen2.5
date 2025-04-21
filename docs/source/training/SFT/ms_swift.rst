@@ -107,7 +107,7 @@ Single-GPU Training
    swift sft \
        --model Qwen/Qwen2.5-VL-7B-Instruct \
        --dataset 'AI-ModelScope/LaTeX_OCR:human_handwrite#2000' \
-       --train_type dummy \
+       --train_type lora \
        --torch_dtype bfloat16 \
        --num_train_epochs 1 \
        --per_device_train_batch_size 1 \

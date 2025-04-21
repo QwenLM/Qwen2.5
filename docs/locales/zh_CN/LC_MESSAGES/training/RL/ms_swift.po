@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-15 21:23+0800\n"
+"POT-Creation-Date: 2025-04-21 14:13+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -82,45 +82,63 @@ msgid "You can also use local custom datasets by providing the local dataset pat
 msgstr "您还可以通过将本地数据集路径提供给 ``--dataset`` 参数来使用本地自定义数据集。"
 
 #: ../../source/training/RL/ms_swift.rst:39 3133feb6f25e4a4bb4a3fd12246dbc81
-msgid "Example dataset formats:"
+#, fuzzy
+msgid "Example Dataset Formats:"
 msgstr "示例数据集格式："
 
-#: ../../source/training/RL/ms_swift.rst:53 33a0dabb608f41f8b4150d5bc9bec006
+#: ../../source/training/RL/ms_swift.rst:52 3ee9f52819be4171af4dd4fb53ce9f7f
+msgid "Notes on Dataset Requirements"
+msgstr "数据集要求说明"
+
+#: ../../source/training/RL/ms_swift.rst:54 29506eb1ae804edab73aeb144a758416
+msgid "Reward Function Calculation: Depending on the reward function being used, additional columns may be required in the dataset. For example:"
+msgstr "奖励函数计算：根据使用的奖励函数，数据集中可能需要额外的列。例如："
+
+#: ../../source/training/RL/ms_swift.rst:56 44da901faf00440987c1bfcfa1dab527
+msgid "When using the built-in accuracy/cosine reward, the dataset must include a ``solution`` column to compute accuracy. The other columns in the dataset will also be passed to the `kwargs` of the reward function."
+msgstr "在使用内置的accuracy/cosine奖励时，数据集必须包含一个 solution 列以计算准确性。数据集中的其他列也将传递到奖励函数的 kwargs 中。"
+
+#: ../../source/training/RL/ms_swift.rst:59 b32e940c2eb7462ba84b9dc6fe8af0a4
+msgid "Customizing the Reward Function: To tailor the reward function to your specific needs, you can refer to the following resource: `external reward plugin <https://github.com/modelscope/ms-swift/tree/main/examples/train/grpo/plugin>`__"
+msgstr "自定义奖励函数：为了满足您的具体需求，可以参考以下资源：外部奖励插件 <https://github.com/modelscope/ms-swift/tree/main/examples/train/grpo/plugin>__"
+
+#: ../../source/training/RL/ms_swift.rst:63 33a0dabb608f41f8b4150d5bc9bec006
 msgid "GRPO Training Examples"
 msgstr "GRPO 训练示例"
 
-#: ../../source/training/RL/ms_swift.rst:56 d6179d572bbb4268b6fc235abe5aeab8
+#: ../../source/training/RL/ms_swift.rst:66 d6179d572bbb4268b6fc235abe5aeab8
 msgid "Single-GPU Configuration"
 msgstr "单卡配置"
 
-#: ../../source/training/RL/ms_swift.rst:58 8b0a61ff75244a89b8dcd912f2a56905
+#: ../../source/training/RL/ms_swift.rst:68 8b0a61ff75244a89b8dcd912f2a56905
 msgid "**LLM (Qwen2.5-7B):**"
 msgstr "**LLM (Qwen2.5-7B)：**"
 
-#: ../../source/training/RL/ms_swift.rst:99 ed99697f6ec04c88a74654329bf6ceb3
+#: ../../source/training/RL/ms_swift.rst:109 ed99697f6ec04c88a74654329bf6ceb3
 msgid "**MLLM (Qwen2.5-VL-7B-Instruct):**"
 msgstr "**MLLM (Qwen2.5-VL-7B-Instruct)：**"
 
-#: ../../source/training/RL/ms_swift.rst:141 b3fbd0a17bdc44ccba50071661c5de94
+#: ../../source/training/RL/ms_swift.rst:151 b3fbd0a17bdc44ccba50071661c5de94
 msgid "Multi-GPU Training"
 msgstr "多卡训练"
 
-#: ../../source/training/RL/ms_swift.rst:143 b450602a3888485781d65217152b6f0c
+#: ../../source/training/RL/ms_swift.rst:153 b450602a3888485781d65217152b6f0c
 msgid "**LLM Example with DeepSpeed:**"
 msgstr "**LLM 示例：**"
 
-#: ../../source/training/RL/ms_swift.rst:187 7d86099115d8429da97a05939e7e9293
+#: ../../source/training/RL/ms_swift.rst:197 7d86099115d8429da97a05939e7e9293
 msgid "**MLLM Example with DeepSpeed:**"
 msgstr "**MLLM 示例：**"
 
-#: ../../source/training/RL/ms_swift.rst:233 e0a70bfe20734d1b9e5041467e1118e7
+#: ../../source/training/RL/ms_swift.rst:243 e0a70bfe20734d1b9e5041467e1118e7
 msgid "Model Export"
 msgstr "模型导出"
 
-#: ../../source/training/RL/ms_swift.rst:235 74c6d300f5ab405e82fb9746c47ca4e3
+#: ../../source/training/RL/ms_swift.rst:245 74c6d300f5ab405e82fb9746c47ca4e3
 msgid "**Merge LoRA Adapters:**"
 msgstr "**合并 LoRA：**"
 
-#: ../../source/training/RL/ms_swift.rst:243 b5855f974c874ec5a30e7001db0ee35d
+#: ../../source/training/RL/ms_swift.rst:253 b5855f974c874ec5a30e7001db0ee35d
 msgid "**Push to ModelScope Hub:**"
 msgstr "**推送到 ModelScope Hub：**"
+
