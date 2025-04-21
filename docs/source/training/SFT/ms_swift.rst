@@ -20,10 +20,7 @@ For detailed model compatibility, see: `Supported Models <https://swift.readthed
 Environment Setup
 -----------------
 
-1. Install ms-swift and required dependencies::
-
-      pip install ms-swift
-      pip install flash-attn --no-build-isolation
+1. Follow the instructions of `ms-swift <https://github.com/modelscope/ms-swift>`__, and build the environment.
 
 2. Optional packages for advanced features::
 
@@ -79,7 +76,7 @@ Single-GPU Training
    CUDA_VISIBLE_DEVICES=0 \
    swift sft \
        --model Qwen/Qwen2.5-7B-Instruct \
-       --dataset 'AI-ModelScope/alpaca-gpt4-data-zh#500' \
+       --dataset 'AI-ModelScope/alpaca-gpt4-data-zh' \
        --train_type lora \
        --lora_rank 8 \
        --lora_alpha 32 \
@@ -106,7 +103,7 @@ Single-GPU Training
    CUDA_VISIBLE_DEVICES=0 \
    swift sft \
        --model Qwen/Qwen2.5-VL-7B-Instruct \
-       --dataset 'AI-ModelScope/LaTeX_OCR:human_handwrite#2000' \
+       --dataset 'AI-ModelScope/LaTeX_OCR:human_handwrite' \
        --train_type lora \
        --torch_dtype bfloat16 \
        --num_train_epochs 1 \
@@ -133,7 +130,7 @@ Multi-GPU Training
    NPROC_PER_NODE=8 \
    swift sft \
        --model Qwen/Qwen2.5-7B-Instruct \
-       --dataset 'AI-ModelScope/alpaca-gpt4-data-zh#500' \
+       --dataset 'AI-ModelScope/alpaca-gpt4-data-zh' \
        --train_type lora \
        --lora_rank 8 \
        --lora_alpha 32 \
@@ -156,7 +153,7 @@ Multi-GPU Training
    NPROC_PER_NODE=8 \
    swift sft \
        --model Qwen/Qwen2.5-VL-7B-Instruct \
-       --dataset 'AI-ModelScope/LaTeX_OCR:human_handwrite#2000' \
+       --dataset 'AI-ModelScope/LaTeX_OCR:human_handwrite' \
        --train_type lora \
        --deepspeed zero2 \
        --per_device_train_batch_size 1 \

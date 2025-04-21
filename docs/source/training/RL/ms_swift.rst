@@ -85,7 +85,7 @@ Single-GPU Configuration
        --lora_alpha 32 \
        --target_modules all-linear \
        --torch_dtype bfloat16 \
-       --dataset 'AI-MO/NuminaMath-TIR#1000' \
+       --dataset 'AI-MO/NuminaMath-TIR' \
        --max_completion_length 1024 \
        --num_train_epochs 1 \
        --per_device_train_batch_size 4 \
@@ -126,7 +126,7 @@ Single-GPU Configuration
        --lora_alpha 32 \
        --target_modules all-linear \
        --torch_dtype bfloat16 \
-       --dataset 'lmms-lab/multimodal-open-r1-8k-verified#1000' \
+       --dataset 'lmms-lab/multimodal-open-r1-8k-verified' \
        --max_completion_length 1024 \
        --num_train_epochs 1 \
        --per_device_train_batch_size 4 \
@@ -167,7 +167,7 @@ Multi-GPU Training
        --num_infer_workers 8 \
        --train_type lora \
        --torch_dtype bfloat16 \
-       --dataset 'AI-MO/NuminaMath-TIR#5000' \
+       --dataset 'AI-MO/NuminaMath-TIR' \
        --max_completion_length 2048 \
        --num_train_epochs 1 \
        --per_device_train_batch_size 1 \
@@ -212,7 +212,7 @@ Multi-GPU Training
        --num_infer_workers 8 \
        --train_type lora \
        --torch_dtype bfloat16 \
-       --dataset 'lmms-lab/multimodal-open-r1-8k-verified#5000' \
+       --dataset 'lmms-lab/multimodal-open-r1-8k-verified' \
        --max_completion_length 2048 \
        --num_train_epochs 1 \
        --per_device_train_batch_size 1 \
