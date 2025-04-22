@@ -73,8 +73,9 @@ Single-GPU Training
 
 .. code-block:: bash
 
-   CUDA_VISIBLE_DEVICES=0 \
-   swift sft \
+    # 19GB
+    CUDA_VISIBLE_DEVICES=0 \
+    swift sft \
        --model Qwen/Qwen2.5-7B-Instruct \
        --dataset 'AI-ModelScope/alpaca-gpt4-data-zh' \
        --train_type lora \
@@ -94,14 +95,18 @@ Single-GPU Training
        --output_dir output \
        --system 'You are a helpful assistant.' \
        --warmup_ratio 0.05 \
-       --dataloader_num_workers 4
+       --dataloader_num_workers 4 \
+        --attn_impl flash_attn
+
 
 **MLLM Example (Qwen2.5-VL-7B-Instruct):**
 
 .. code-block:: bash
 
-   CUDA_VISIBLE_DEVICES=0 \
-   swift sft \
+   # 18GB
+    CUDA_VISIBLE_DEVICES=0 \
+    MAX_PIXELS=602112 \
+    swift sft \
        --model Qwen/Qwen2.5-VL-7B-Instruct \
        --dataset 'AI-ModelScope/LaTeX_OCR:human_handwrite' \
        --train_type lora \
@@ -126,32 +131,35 @@ Multi-GPU Training
 
 .. code-block:: bash
 
-   CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 \
-   NPROC_PER_NODE=8 \
-   swift sft \
-       --model Qwen/Qwen2.5-7B-Instruct \
-       --dataset 'AI-ModelScope/alpaca-gpt4-data-zh' \
-       --train_type lora \
-       --lora_rank 8 \
-       --lora_alpha 32 \
-       --target_modules all-linear \
-       --torch_dtype bfloat16 \
-       --deepspeed zero2 \
-       --per_device_train_batch_size 1 \
-       --gradient_accumulation_steps 16 \
-       --learning_rate 1e-4 \
-       --max_length 2048 \
-       --num_train_epochs 1 \
-       --output_dir output \
-       --use_flash_attn true
+    # 18G*8
+    CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 \
+    NPROC_PER_NODE=8 \
+    nohup swift sft \
+        --model Qwen/Qwen2.5-7B-Instruct \
+        --dataset 'AI-ModelScope/alpaca-gpt4-data-zh' \
+        --train_type lora \
+        --lora_rank 8 \
+        --lora_alpha 32 \
+        --target_modules all-linear \
+        --torch_dtype bfloat16 \
+        --deepspeed zero2 \
+        --per_device_train_batch_size 1 \
+        --gradient_accumulation_steps 16 \
+        --learning_rate 1e-4 \
+        --max_length 2048 \
+        --num_train_epochs 1 \
+        --output_dir output \
+        --attn_impl flash_attn
 
 **MLLM Example with DeepSpeed:**
 
 .. code-block:: bash
 
-   CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 \
-   NPROC_PER_NODE=8 \
-   swift sft \
+    # 17G*8
+    CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 \
+    NPROC_PER_NODE=8 \
+    MAX_PIXELS=602112 \
+    nohup swift sft \
        --model Qwen/Qwen2.5-VL-7B-Instruct \
        --dataset 'AI-ModelScope/LaTeX_OCR:human_handwrite' \
        --train_type lora \
@@ -162,7 +170,7 @@ Multi-GPU Training
        --max_length 4096 \
        --num_train_epochs 2 \
        --output_dir output \
-       --use_flash_attn true
+        --attn_impl flash_attn
 
 Model Export
 -------------------------
@@ -171,7 +179,7 @@ Model Export
 
 .. code-block:: bash
 
-   swift export \
+    swift export \
        --adapters output/checkpoint-xxx \
        --merge_lora true
 
@@ -179,7 +187,7 @@ Model Export
 
 .. code-block:: bash
 
-   swift export \
+    swift export \
        --adapters output/checkpoint-xxx \
        --push_to_hub true \
        --hub_model_id '<your-namespace>/<model-name>' \

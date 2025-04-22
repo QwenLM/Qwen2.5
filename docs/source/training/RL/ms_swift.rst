@@ -69,9 +69,10 @@ Single-GPU Configuration
 **LLM (Qwen2.5-7B):**
 
 .. code-block:: bash
-
+   
+   # 42G
    CUDA_VISIBLE_DEVICES=0 \
-   swift rlhf \
+   nohup swift rlhf \
        --rlhf_type grpo \
        --model Qwen/Qwen2.5-7B \
        --vllm_gpu_memory_utilization 0.5 \
@@ -111,7 +112,9 @@ Single-GPU Configuration
 
 .. code-block:: bash
 
+   # 55G
    CUDA_VISIBLE_DEVICES=0 \
+   MAX_PIXELS=602112 \
    swift rlhf \
        --rlhf_type grpo \
        --model Qwen/Qwen2.5-VL-7B-Instruct \
@@ -121,13 +124,15 @@ Single-GPU Configuration
        --offload_model true \
        --offload_optimizer true \
        --gc_collect_after_offload true \
-       --reward_funcs accuracy format \
+       --external_plugins examples/train/grpo/plugin/plugin.py \
+       --reward_funcs external_r1v_acc format \
        --train_type lora \
        --lora_rank 8 \
        --lora_alpha 32 \
        --target_modules all-linear \
        --torch_dtype bfloat16 \
        --dataset 'lmms-lab/multimodal-open-r1-8k-verified' \
+       --vllm_max_model_len 4196 \
        --max_completion_length 1024 \
        --num_train_epochs 1 \
        --per_device_train_batch_size 4 \
@@ -138,7 +143,6 @@ Single-GPU Configuration
        --save_steps 100 \
        --save_total_limit 2 \
        --logging_steps 5 \
-       --max_length 2048 \
        --output_dir output \
        --warmup_ratio 0.05 \
        --dataloader_num_workers 4 \
@@ -155,6 +159,7 @@ Multi-GPU Training
 
 .. code-block:: bash
 
+   # 60G*8
    CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 \
    NPROC_PER_NODE=8 \
    swift rlhf \
@@ -199,13 +204,14 @@ Multi-GPU Training
 
 .. code-block:: bash
 
-
+   # 60G*8
    CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 \
    NPROC_PER_NODE=8 \
-   swift rlhf \
+   nohup swift rlhf \
        --rlhf_type grpo \
        --model Qwen/Qwen2.5-VL-7B-Instruct \
-       --reward_funcs accuracy format \
+       --external_plugins examples/train/grpo/plugin/plugin.py \ 
+       --reward_funcs external_r1v_acc format \
        --use_vllm true \
        --vllm_device auto \
        --vllm_gpu_memory_utilization 0.7 \
@@ -224,7 +230,7 @@ Multi-GPU Training
        --save_steps 200 \
        --save_total_limit 2 \
        --logging_steps 5 \
-       --max_length 4096 \
+       --vllm_max_model_len 4196 \
        --output_dir output \
        --warmup_ratio 0.05 \
        --dataloader_num_workers 4 \
