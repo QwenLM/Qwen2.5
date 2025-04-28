@@ -62,8 +62,8 @@ Join our community by joining our `Discord <https://discord.gg/yPEP2vHTu4>`__ an
    :caption: Deployment
    :hidden:
 
-   deployment/vllm
    deployment/sglang
+   deployment/vllm
    deployment/tgi
    deployment/skypilot
    deployment/openllm
