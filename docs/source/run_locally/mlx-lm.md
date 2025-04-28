@@ -1,5 +1,9 @@
 # MLX-LM
 
+:::{attention}
+To be updated for Qwen3.
+:::
+
 [mlx-lm](https://github.com/ml-explore/mlx-examples/tree/main/llms) helps you run LLMs locally on Apple Silicon. 
 It is available at MacOS. 
 It has already supported Qwen models and this time, we have also provided checkpoints that you can directly use with it.

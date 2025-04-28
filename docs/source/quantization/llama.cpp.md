@@ -18,16 +18,16 @@ If you don't, check our guide [here](../run_locally/llama.cpp.html#getting-the-p
 
 ## Getting the GGUF
 
-Now, suppose you would like to quantize `Qwen2.5-7B-Instruct`. 
+Now, suppose you would like to quantize `Qwen3-8B`. 
 You need to first make a GGUF file as shown below:
 ```bash
-python convert-hf-to-gguf.py Qwen/Qwen2.5-7B-Instruct --outfile qwen2.5-7b-instruct-f16.gguf
+python convert-hf-to-gguf.py Qwen/Qwen3-8B --outfile qwen3-8b-f16.gguf
 ```
 
 Sometimes, it may be better to use fp32 as the start point for quantization.
 In that case, use
 ```bash
-python convert-hf-to-gguf.py Qwen/Qwen2.5-7B-Instruct --outtype f32 --outfile qwen2.5-7b-instruct-f32.gguf
+python convert-hf-to-gguf.py Qwen/Qwen3-8B-Instruct --outtype f32 --outfile qwen3-8b-f32.gguf
 ```
 
 ## Quantizing the GGUF without Calibration
@@ -35,11 +35,11 @@ python convert-hf-to-gguf.py Qwen/Qwen2.5-7B-Instruct --outtype f32 --outfile qw
 For the simplest way, you can directly quantize the model to lower-bits based on your requirements. 
 An example of quantizing the model to 8 bits is shown below:
 ```bash
-./llama-quantize qwen2.5-7b-instruct-f16.gguf qwen2.5-7b-instruct-q8_0.gguf Q8_0
+./llama-quantize qwen3-8b-f16.gguf qwen3-8b-q8_0.gguf Q8_0
 ```
 
 `Q8_0` is a code for a quantization preset.
-You can find all the presets in [the source code of `llama-quantize`](https://github.com/ggerganov/llama.cpp/blob/master/examples/quantize/quantize.cpp).
+You can find all the presets in [the source code of `llama-quantize`](https://github.com/ggml-org/llama.cpp/blob/master/examples/quantize/quantize.cpp).
 Look for the variable `QUANT_OPTIONS`.
 Common ones used for 7B models include `Q8_0`, `Q5_0`, and `Q4_K_M`. 
 The letter case doesn't matter, so `q8_0` or `q4_K_m` are perfectly fine.
@@ -55,6 +55,10 @@ A common way is to use a calibration dataset in the target domain to identify th
 
 
 ## Quantizing the GGUF with AWQ Scale
+
+:::{attention}
+To be updated for Qwen3.
+:::
 
 To improve the quality of your quantized models, one possible solution is to apply the AWQ scale, following [this script](https://github.com/casper-hansen/AutoAWQ/blob/main/docs/examples.md#gguf-export).
 First, when you run `model.quantize()` with `autoawq`, remember to add `export_compatible=True` as shown below:
@@ -90,19 +94,19 @@ In this way, it should be possible to achieve similar quality with lower bit-per
 
 ## Quantizing the GGUF with Importance Matrix
 
-Another possible solution is to use the "important matrix"[^imatrix], following [this](https://github.com/ggerganov/llama.cpp/tree/master/examples/imatrix).
+Another possible solution is to use the "important matrix"[^imatrix], following [this](https://github.com/ggml-org/llama.cpp/tree/master/examples/imatrix).
 
 First, you need to compute the importance matrix data of the weights of a model (`-m`) using a calibration dataset (`-f`):
 ```bash
-./llama-imatrix -m qwen2.5-7b-instruct-f16.gguf -f calibration-text.txt --chunk 512 -o qwen2.5-7b-instruct-imatrix.dat -ngl 80
+./llama-imatrix -m qwen3-8b-f16.gguf -f calibration-text.txt --chunk 512 -o qwen3-8b-imatrix.dat -ngl 80
 ```
 
 The text is cut in chunks of length `--chunk` for computation.
 Preferably, the text should be representative of the target domain.
-The final results will be saved in a file named `qwen2.5-7b-instruct-imatrix.dat` (`-o`), which can then be used:
+The final results will be saved in a file named `qwen3-8b-imatrix.dat` (`-o`), which can then be used:
 ```bash
-./llama-quantize --imatrix qwen2.5-7b-instruct-imatrix.data \
-    qwen2.5-7b-instruct-f16-awq.gguf qwen2.5-7b-instruct-q4_k_m.gguf Q4_K_M
+./llama-quantize --imatrix qwen3-8b-imatrix.data \
+    qwen3-8b-f16.gguf qwen3-8b-q4_k_m.gguf Q4_K_M
 ```
 
 For lower-bit quantization mixtures for 1-bit or 2-bit, if you do not provide `--imatrix`, a helpful warning will be printed by `llama-quantize`.
@@ -123,10 +127,10 @@ unzip wikitext-2-raw-v1.zip
 
 Then you can run the test with the following command:
 ```bash
-./llama-perplexity -m qwen2.5-7b-instruct-q8_0.gguf -f wiki.test.raw -ngl 80
+./llama-perplexity -m qwen3-8b-q8_0.gguf -f wiki.test.raw -ngl 80
 ```
 Wait for some time and you will get the perplexity of the model.
-There are some numbers of different kinds of quantization mixture [here](https://github.com/ggerganov/llama.cpp/blob/master/examples/perplexity/README.md).
+There are some numbers of different kinds of quantization mixture [here](https://github.com/ggml-org/llama.cpp/blob/master/examples/perplexity/README.md).
 It might be helpful to look at the difference and grab a sense of how that kind of quantization might perform.
 
 [^wiki]: It is not a good evaluation dataset for instruct models though, but it is very common and easily accessible.
@@ -135,9 +139,9 @@ It might be helpful to look at the difference and grab a sense of how that kind 
 ## Finally
 
 In this guide, we demonstrate how to conduct quantization and evaluate the perplexity with llama.cpp.
-For more information, please visit the [llama.cpp GitHub repo](https://github.com/ggerganov/llama.cpp).
+For more information, please visit the [llama.cpp GitHub repo](https://github.com/ggml-org/llama.cpp).
 
-We usually quantize the fp16 model to 2, 3, 4, 5, 6, and 8-bit models with different quantization mixtures, but sometimes a particular mixture just does not work, so we don't provide those in our HuggingFace Hub.
+We usually quantize the fp16 model to 4, 5, 6, and 8-bit models with different quantization mixtures, but sometimes a particular mixture just does not work, so we don't provide those in our HuggingFace Hub.
 However, others in the community may have success, so if you haven't found what you need in our repos, look around.
 
 Enjoy your freshly quantized models!

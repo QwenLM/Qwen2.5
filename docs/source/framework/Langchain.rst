@@ -1,6 +1,9 @@
 Langchain
 ==========================
 
+.. attention:: 
+    To be updated for Qwen3.
+
 This guide helps you build a question-answering application based 
 on a local knowledge base using ``Qwen2.5-7B-Instruct`` with ``langchain``.
 The goal is to establish a knowledge base Q&A solution.

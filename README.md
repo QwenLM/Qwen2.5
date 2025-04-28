@@ -1,43 +1,53 @@
-# Qwen2.5
+# Qwen3
 
 <p align="center">
-    <img src="https://qianwen-res.oss-accelerate-overseas.aliyuncs.com/assets/logo/qwen2.5_logo.png" width="400"/>
+    <img src="https://qianwen-res.oss-accelerate-overseas.aliyuncs.com/logo_qwen3.png" width="400"/>
 <p>
 
 <p align="center">
-          💜 <a href="https://chat.qwenlm.ai/"><b>Qwen Chat</b></a>&nbsp&nbsp | &nbsp&nbsp🤗 <a href="https://huggingface.co/Qwen">Hugging Face</a>&nbsp&nbsp | &nbsp&nbsp🤖 <a href="https://modelscope.cn/organization/qwen">ModelScope</a>&nbsp&nbsp | &nbsp&nbsp 📑 <a href="https://arxiv.org/abs/2412.15115">Paper</a> &nbsp&nbsp | &nbsp&nbsp 📑 <a href="https://qwenlm.github.io/blog/qwen2.5/">Blog</a> &nbsp&nbsp ｜ &nbsp&nbsp📖 <a href="https://qwen.readthedocs.io/">Documentation</a>
-
+          💜 <a href="https://chat.qwen.ai/"><b>Qwen Chat</b></a>&nbsp&nbsp | &nbsp&nbsp🤗 <a href="https://huggingface.co/Qwen">Hugging Face</a>&nbsp&nbsp | &nbsp&nbsp🤖 <a href="https://modelscope.cn/organization/qwen">ModelScope</a>&nbsp&nbsp | &nbsp&nbsp 📑 Paper &nbsp&nbsp | &nbsp&nbsp 📑 <a href="https://qwenlm.github.io/blog/qwen3/">Blog</a> &nbsp&nbsp ｜ &nbsp&nbsp📖 <a href="https://qwen.readthedocs.io/">Documentation</a>
 <br>
-💻 <a href="https://gallery.pai-ml.com/#/preview/deepLearning/nlp/qwen2-5_7b">PAI-DSW</a>&nbsp&nbsp | &nbsp&nbsp🖥️ <a href="https://huggingface.co/spaces/Qwen/Qwen2.5-72B-Instruct">Demo</a>&nbsp&nbsp | &nbsp&nbsp💬 <a href="https://github.com/QwenLM/Qwen/blob/main/assets/wechat.png">WeChat (微信)</a>&nbsp&nbsp | &nbsp&nbsp🫨 <a href="https://discord.gg/CV4E9rpNSD">Discord</a>&nbsp&nbsp
+🖥️ <a href="https://huggingface.co/spaces/Qwen/Qwen3-Demo">Demo</a>&nbsp&nbsp | &nbsp&nbsp💬 <a href="https://github.com/QwenLM/Qwen/blob/main/assets/wechat.png">WeChat (微信)</a>&nbsp&nbsp | &nbsp&nbsp🫨 <a href="https://discord.gg/CV4E9rpNSD">Discord</a>&nbsp&nbsp
 </p>
 
 
-Visit our Hugging Face or ModelScope organization (click links above), search checkpoints with names starting with `Qwen2.5-` or visit the [Qwen2.5 collection](https://huggingface.co/collections/Qwen/qwen25-66e81a666513e518adb90d9e), and you will find all you need! Enjoy!
+Visit our Hugging Face or ModelScope organization (click links above), search checkpoints with names starting with `Qwen3-` or visit the [Qwen3 collection](https://huggingface.co/collections/Qwen/qwen3-67dd247413f0e2e4f653967f), and you will find all you need! Enjoy!
 
-To learn more about Qwen2.5, feel free to read our documentation \[[EN](https://qwen.readthedocs.io/en/latest/)|[ZH](https://qwen.readthedocs.io/zh-cn/latest/)\]. Our documentation consists of the following sections:
+To learn more about Qwen3, feel free to read our documentation \[[EN](https://qwen.readthedocs.io/en/latest/)|[ZH](https://qwen.readthedocs.io/zh-cn/latest/)\]. Our documentation consists of the following sections:
 
 - Quickstart: the basic usages and demonstrations;
-- Inference: the guidance for the inference with transformers, including batch inference, streaming, etc.;
-- Run Locally: the instructions for running LLM locally on CPU and GPU, with frameworks like `llama.cpp` and `Ollama`;
-- Deployment: the demonstration of how to deploy Qwen for large-scale inference with frameworks like `vLLM`, `TGI`, etc.;
+- Inference: the guidance for the inference with Transformers, including batch inference, streaming, etc.;
+- Run Locally: the instructions for running LLM locally on CPU and GPU, with frameworks like llama.cpp and Ollama;
+- Deployment: the demonstration of how to deploy Qwen for large-scale inference with frameworks like SGLang, vLLM, TGI, etc.;
 - Quantization: the practice of quantizing LLMs with GPTQ, AWQ, as well as the guidance for how to make high-quality quantized GGUF files;
 - Training: the instructions for post-training, including SFT and RLHF (TODO) with frameworks like Axolotl, LLaMA-Factory, etc.
 - Framework: the usage of Qwen with frameworks for application, e.g., RAG, Agent, etc.
-- Benchmark: the statistics about inference speed and memory footprint (Available for Qwen2.5).
 
 ## Introduction
 
-In the past three months since Qwen2's release, numerous developers have built new models on the Qwen2 language models, providing us with valuable feedback. During this period, we have focused on creating smarter and more knowledgeable language models. Today, we are excited to introduce the latest addition to the Qwen family: **Qwen2.5**. 
+We are excited to announce the release of Qwen3, the latest addition to the Qwen family of large language models.
+These models represent our most advanced and intelligent systems to date, improving from our experience in building QwQ and Qwen2.5.
+We are making the weights of Qwen3 available to the public, including both dense and Mixture-of-Expert (MoE) models. 
 
-- Dense, easy-to-use, decoder-only language models, available in **0.5B**, **1.5B**, **3B**, **7B**, **14B**, **32B**, and **72B** sizes, and base and instruct variants.
-- Pretrained on our latest large-scale dataset, encompassing up to **18T** tokens.
-- Significant improvements in instruction following, generating long texts (over 8K tokens), understanding structured data (e.g, tables), and generating structured outputs especially JSON. 
-- More resilient to the diversity of system prompts, enhancing role-play implementation and condition-setting for chatbots. 
-- Context length support up to **128K** tokens and can generate up to **8K** tokens. 
-- Multilingual support for over **29** languages, including Chinese, English, French, Spanish, Portuguese, German, Italian, Russian, Japanese, Korean, Vietnamese, Thai, Arabic, and more. 
+The highlights from Qwen3 include:
+- **Dense and Mixture-of-Experts (MoE) models of various sizes**, available in 0.6B, 1.7B, 4B, 8B, 14B, 32B and 30B-A3B, 235B-A22B.
+- **Seamless switching between thinking mode** (for complex logical reasoning, math, and coding) and **non-thinking mode** (for efficient, general-purpose chat), ensuring optimal performance across various scenarios.
+- **Significantly enhancement in reasoning capabilities**, surpassing previous QwQ (in thinking mode) and Qwen2.5 instruct models (in non-thinking mode) on mathematics, code generation, and commonsense logical reasoning.
+- **Superior human preference alignment**, excelling in creative writing, role-playing, multi-turn dialogues, and instruction following, to deliver a more natural, engaging, and immersive conversational experience.
+- **Expertise in agent capabilities**, enabling precise integration with external tools in both thinking and unthinking modes and achieving leading performance among open-source models in complex agent-based tasks.
+- **Support of 100+ languages and dialects** with strong capabilities for **multilingual instruction following** and **translation**.
+
+> ![IMPORTANT]
+> Qwen3 models adopt a different naming scheme.
+>
+> The post-trained models do not use the "-Instruct" suffix any more. For example, Qwen3-32B is the newer version of Qwen2.5-32B-Instruct.
+>
+> The base models now have names ending with "-Base".
+
 
 ## News
 
+- 2025.04.29: We released the Qwen3 series. Check our [blog](https://qwenlm.github.io/blog/qwen3) for more details!
 - 2024.09.19: We released the Qwen2.5 series. This time there are 3 extra model sizes: 3B, 14B, and 32B for more possibilities. Check our [blog](https://qwenlm.github.io/blog/qwen2.5) for more!
 - 2024.06.06: We released the Qwen2 series. Check our [blog](https://qwenlm.github.io/blog/qwen2/)!
 - 2024.03.28: We released the first MoE model of Qwen: Qwen1.5-MoE-A2.7B! Temporarily, only HF transformers and vLLM support the model. We will soon add the support of llama.cpp, mlx-lm, etc. Check our [blog](https://qwenlm.github.io/blog/qwen-moe/) for more information!
@@ -45,216 +55,164 @@ In the past three months since Qwen2's release, numerous developers have built n
 
 ## Performance
 
-Detailed evaluation results are reported in this <a href="https://qwenlm.github.io/blog/qwen2.5/"> 📑 blog</a>.
+Detailed evaluation results are reported in this <a href="https://qwenlm.github.io/blog/qwen3/"> 📑 blog</a>.
 
-For requirements on GPU memory and the respective throughput, see results [here](https://qwen.readthedocs.io/en/latest/benchmark/speed_benchmark.html) .
+For requirements on GPU memory and the respective throughput, see results [here](https://qwen.readthedocs.io/en/latest/getting_started/speed_benchmark.html) .
 
-## Quickstart
+## Run Qwen3
 
-### 🤗 Hugging Face Transformers
+### 🤗 Transformers
 
+Transformers is a library of pretrained natural language processing for inference and training. 
+The latest version of `transformers` is recommended and `transformers>=4.51.0` is required.
 
-The latest version of `transformers` is recommended (at least 4.37.0).
-Here we show a code snippet to show you how to use the chat model with `transformers`:
-
+The following contains a code snippet illustrating how to use the model generate content based on given inputs. 
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
+model_name = "Qwen/Qwen3-8B"
 
-model_name = "Qwen/Qwen2.5-7B-Instruct"
-
+# load the tokenizer and the model
+tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
     torch_dtype="auto",
     device_map="auto"
 )
-tokenizer = AutoTokenizer.from_pretrained(model_name)
 
-prompt = "Give me a short introduction to large language model."
+# prepare the model input
+prompt = "Give me a short introduction to large language models."
 messages = [
-    {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."},
     {"role": "user", "content": prompt}
 ]
 text = tokenizer.apply_chat_template(
     messages,
     tokenize=False,
-    add_generation_prompt=True
+    add_generation_prompt=True,
+    enable_thinking=True # Switches between thinking and non-thinking modes. Default is True.
 )
 model_inputs = tokenizer([text], return_tensors="pt").to(model.device)
 
+# conduct text completion
 generated_ids = model.generate(
     **model_inputs,
-    max_new_tokens=512
+    max_new_tokens=32768
 )
-generated_ids = [
-    output_ids[len(input_ids):] for input_ids, output_ids in zip(model_inputs.input_ids, generated_ids)
-]
+output_ids = generated_ids[0][len(model_inputs.input_ids[0]):].tolist() 
 
-response = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0]
+# the result will begin with thinking content in <think></think> tags, followed by the actual response
+print(tokenizer.decode(output_ids, skip_special_tokens=True))
 ```
 
-For quantized models, we advise you to use the GPTQ and AWQ correspondents, namely `Qwen2.5-7B-Instruct-GPTQ-Int8` and `Qwen2.5-7B-Instruct-AWQ`. 
+By default, Qwen3 models will think before response.
+This could be controled by
+- `enable_thinking=False`: Passing `enable_thinking=False` to `tokenizer.apply_chat_template` will strictly prevent the model from generating thinking content.
+- `/think` and `/nothink` instructions: Use those words in the system or user message to signify whether Qwen3 should think. In multi-turn conversations, the latest instruction is followed.
 
-### 🤖 ModelScope
-We strongly advise users especially those in mainland China to use ModelScope. `snapshot_download` can help you solve issues concerning downloading checkpoints.
 
-### 💻 Run locally
 
-#### Ollama
+### ModelScope
 
-After [installing ollama](https://github.com/ollama/ollama/blob/main/README.md), you can initiate the ollama service with the following command:
+We strongly advise users especially those in mainland China to use ModelScope. 
+ModelScope adopts a Python API similar to Transformers.
+The CLI tool `modelscope download` can help you solve issues concerning downloading checkpoints.
+
+
+### llama.cpp
+
+[`llama.cpp`](https://github.com/ggml-org/llama.cpp) enables LLM inference with minimal setup and state-of-the-art performance on a wide range of hardware.
+`llama.cpp>=b5092` is required.
+
+To use the CLI, run the following in a terminal:
+```shell
+./llama-cli -hf Qwen/Qwen3-8B-GGUF:Q8_0 --jinja --color -ngl 99 -fa -sm row --temp 0.6 --top-k 20 --top-p 0.95 --min-p 0 -c 40960 -n 32768 --no-context-shift
+# CTRL+C to exit
+```
+
+To use the API server, run the following in a terminal:
+```shell
+./llama-server -hf Qwen/Qwen3-8B-GGUF:Q8_0 --jinja --reasoning-format deepseek -ngl 99 -fa -sm row --temp 0.6 --top-k 20 --top-p 0.95 --min-p 0 -c 40960 -n 32768 --no-context-shift --port 8080
+```
+A simple web front end will be at `http://localhost:8080` and an OpenAI-compatible API will be at `http://localhost:8080/v1`.
+
+For additional guides, please refer to [our documentation](https://qwen.readthedocs.io/en/latest/run_locally/llama.cpp.html).
+
+### Ollama
+
+After [installing ollama](https://ollama.com/), you can initiate the ollama service with the following command:
 ```shell
 ollama serve
 # You need to keep this service running whenever you are using ollama
 ```
 
-To pull a model checkpoint and run the model, use the `ollama run` command. You can specify a model size by adding a suffix to `qwen2.5`, such as `:0.5b`, `:1.5b`, `:7b`, or `:72b`:
+To pull a model checkpoint and run the model, use the `ollama run` command. You can specify a model size by adding a suffix to `qwen3`, such as `:8b` or `:30b-a3b`:
 ```shell
-ollama run qwen2.5:7b
+ollama run qwen3:8b
 # To exit, type "/bye" and press ENTER
 ```
 
-You can also access the ollama service via its OpenAI-compatible API. Please note that you need to (1) keep `ollama serve` running while using the API, and (2) execute `ollama run qwen2.5:7b` before utilizing this API to ensure that the model checkpoint is prepared.
-```py
-from openai import OpenAI
-client = OpenAI(
-    base_url='http://localhost:11434/v1/',
-    api_key='ollama',  # required but ignored
-)
-chat_completion = client.chat.completions.create(
-    messages=[
-        {
-            'role': 'user',
-            'content': 'Say this is a test',
-        }
-    ],
-    model='qwen2.5:7b',
-)
-```
+You can also access the ollama service via its OpenAI-compatible API. 
+Please note that you need to (1) keep `ollama serve` running while using the API, and (2) execute `ollama run qwen3:8b` before utilizing this API to ensure that the model checkpoint is prepared.
+The API is at `http://localhost:11434/v1/` by default.
 
-For additional details, please visit [ollama.ai](https://ollama.ai/).
+For additional details, please visit [ollama.ai](https://ollama.com/).
 
-#### llama.cpp
+### LMStudio
 
-Download our provided GGUF files or create them by yourself, and you can directly use them with the latest [`llama.cpp`](https://github.com/ggerganov/llama.cpp) with a one-line command:
-```shell
-./llama-cli -m <path-to-file> -n 512 -co -sp -cnv -p "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."
-```
+Qwen3 has already been supported by [lmstudio.ai](https://lmstudio.ai/). You can directly use LMStudio with our GGUF files.
 
-For additional guides, please refer to [our documentation](https://qwen.readthedocs.io/en/latest/run_locally/llama.cpp.html).
+### MLX-LM
 
-#### MLX-LM
-
-If you are running on Apple Silicon, we have also provided checkpoints compatible with [`mlx-lm`](https://github.com/ml-explore/mlx-examples/blob/main/llms/README.md). Look for models ending with MLX on HuggingFace Hub, like [Qwen2.5-7B-Instruct-MLX](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct-MLX).
-
-#### LMStudio
-
-Qwen2.5 has already been supported by [lmstudio.ai](https://lmstudio.ai/). You can directly use LMStudio with our GGUF files.
-
-#### OpenVINO
-
-Qwen2.5 has already been supported by [OpenVINO toolkit](https://github.com/openvinotoolkit). You can install and run this [chatbot example](https://github.com/OpenVINO-dev-contest/Qwen2.openvino) with Intel CPU, integrated GPU or discrete GPU. 
+If you are running on Apple Silicon, [`mlx-lm`](https://github.com/ml-explore/mlx-lm) also supports Qwen3 (`mlx-lm>=0.24.0`). 
+Look for models ending with MLX on HuggingFace Hub.
 
 
-## Web UI
+<!-- ### OpenVINO
 
-#### Text generation web UI
-
-You can directly use [`text-generation-webui`](https://github.com/oobabooga/text-generation-webui) for creating a web UI demo. If you use GGUF, remember to install the latest wheel of `llama.cpp` with the support of Qwen2.5.
+Qwen2.5 has already been supported by [OpenVINO toolkit](https://github.com/openvinotoolkit). You can install and run this [chatbot example](https://github.com/OpenVINO-dev-contest/Qwen2.openvino) with Intel CPU, integrated GPU or discrete GPU.  -->
 
 
-#### llamafile
+<!-- ### Text generation web UI
 
-Clone [`llamafile`](https://github.com/Mozilla-Ocho/llamafile), run source install, and then create your own llamafile with the GGUF file following the guide [here](https://github.com/Mozilla-Ocho/llamafile?tab=readme-ov-file#creating-llamafiles). You are able to run one line of command, say `./qwen.llamafile`, to create a demo.
+You can directly use [`text-generation-webui`](https://github.com/oobabooga/text-generation-webui) for creating a web UI demo. If you use GGUF, remember to install the latest wheel of `llama.cpp` with the support of Qwen2.5. -->
 
 
-## Deployment
+<!-- ### llamafile
 
-Qwen2.5 is supported by multiple inference frameworks. Here we demonstrate the usage of `vLLM`, `SGLang` and `OpenLLM`.
+Clone [`llamafile`](https://github.com/Mozilla-Ocho/llamafile), run source install, and then create your own llamafile with the GGUF file following the guide [here](https://github.com/Mozilla-Ocho/llamafile?tab=readme-ov-file#creating-llamafiles). You are able to run one line of command, say `./qwen.llamafile`, to create a demo. -->
 
-### vLLM
 
-We advise you to use the latest version of vLLM to build OpenAI-compatible API service, including tool use support. Start the server with a chat model, e.g. `Qwen2.5-7B-Instruct`:
-```shell
-vllm serve Qwen/Qwen2.5-7B-Instruct
-```
+## Deploy Qwen3
 
-Then use the chat API as demonstrated below:
-
-```shell
-curl http://localhost:8000/v1/chat/completions -H "Content-Type: application/json" -d '{
-    "model": "Qwen/Qwen2.5-7B-Instruct",
-    "messages": [
-        {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."},
-        {"role": "user", "content": "Tell me something about large language models."}
-    ],
-    "temperature": 0.7,
-    "top_p": 0.8,
-    "repetition_penalty": 1.05,
-    "max_tokens": 512
-}'
-```
-
-```python
-from openai import OpenAI
-# Set OpenAI's API key and API base to use vLLM's API server.
-openai_api_key = "EMPTY"
-openai_api_base = "http://localhost:8000/v1"
-
-client = OpenAI(
-    api_key=openai_api_key,
-    base_url=openai_api_base,
-)
-
-chat_response = client.chat.completions.create(
-    model="Qwen2.5-7B-Instruct",
-    messages=[
-        {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."},
-        {"role": "user", "content": "Tell me something about large language models."},
-    ],
-    temperature=0.7,
-    top_p=0.8,
-    max_tokens=512,
-    extra_body={
-        "repetition_penalty": 1.05,
-    },
-)
-print("Chat response:", chat_response)
-```
+Qwen3 is supported by multiple inference frameworks. 
+Here we demonstrate the usage of `SGLang` and `vLLM`.
+You can also find Qwen3 models from various inference providers, e.g., [Alibaba Cloud Model Studio](https://www.alibabacloud.com/en/product/modelstudio).
 
 ### SGLang
 
-> [!Warning]
-> The OpenAI-compatible APIs provided by SGLang currently do NOT support **tool use** or **function calling**. 
-
-Please install `SGLang` from source. Similar to `vLLM`, you need to launch a server and use OpenAI-compatible API service. Start the server first:
+[SGLang](https://github.com/sgl-project/sglang) is a fast serving framework for large language models and vision language models.
+SGLang could be used to launch a server with OpenAI-compatible API service. 
+`sglang>=0.4.6.post1` is required.
+It is as easy as
 ```shell
-python -m sglang.launch_server --model-path Qwen/Qwen2.5-7B-Instruct --port 30000
+python -m sglang.launch_server --model-path Qwen/Qwen3-8B --port 30000 --reasoning-parser qwen3
 ```
-You can use it in Python as shown below:
-```python
-from sglang import function, system, user, assistant, gen, set_default_backend, RuntimeEndpoint
+An OpenAI-compatible API will be available at `http://localhost:30000/v1`.
 
-@function
-def multi_turn_question(s, question_1, question_2):
-    s += system("You are Qwen, created by Alibaba Cloud. You are a helpful assistant.")
-    s += user(question_1)
-    s += assistant(gen("answer_1", max_tokens=256))
-    s += user(question_2)
-    s += assistant(gen("answer_2", max_tokens=256))
+### vLLM
 
-set_default_backend(RuntimeEndpoint("http://localhost:30000"))
+[vLLM](https://github.com/vllm-project/vllm) is a high-throughput and memory-efficient inference and serving engine for LLMs.
+`vllm>=0.8.4` is required.
 
-state = multi_turn_question.run(
-    question_1="What is the capital of China?",
-    question_2="List two local attractions.",
-)
-
-for m in state.messages():
-    print(m["role"], ":", m["content"])
-
-print(state["answer_1"])
+```shell
+vllm serve Qwen/Qwen3-8B --port 8000 --enable-reasoning-parser --reasoning-parser deepseek_r1
 ```
+An OpenAI-compatible API will be available at `http://localhost:8000/v1`.
 
+### MindIE
+
+For depolyment on Ascend NPUs, please visit [Modelers](https://modelers.cn/) and search for Qwen3.
+
+<!-- 
 ### OpenLLM
 
 [OpenLLM](https://github.com/bentoml/OpenLLM) allows you to easily run Qwen2.5 as OpenAI-compatible APIs. You can start a model server using `openllm serve`. For example:
@@ -263,23 +221,26 @@ print(state["answer_1"])
 openllm serve qwen2.5:7b
 ```
 
-The server is active at `http://localhost:3000/`, providing OpenAI-compatible APIs. You can create an OpenAI client to call its chat API. For more information, refer to [our documentation](https://qwen.readthedocs.io/en/latest/deployment/openllm.html).
+The server is active at `http://localhost:3000/`, providing OpenAI-compatible APIs. You can create an OpenAI client to call its chat API. For more information, refer to [our documentation](https://qwen.readthedocs.io/en/latest/deployment/openllm.html). -->
+
+
+## Build with Qwen3
 
 ### Tool Use
 
-For tool use capabilities, we recommend taking a look at [Qwen-Agent](https://github.com/QwenLM/Qwen-Agent), which provides a wrapper around these APIs to support tool use or function calling.
-Tool use with Qwen2.5 can also be conducted with Hugging Face `transformers`, Ollama, and vLLM.
+For tool use capabilities, we recommend taking a look at [Qwen-Agent](https://github.com/QwenLM/Qwen-Agent), which provides a wrapper around these APIs to support tool use or function calling with MCP support.
+Tool use with Qwen3 can also be conducted with SGLang, vLLM,  Transformers, llama.cpp, Ollama, etc.
 Follow guides in our documentation to see how to enable the support.
 
 
-## Finetuning
+### Finetuning
 
-We advise you to use training frameworks, including [Axolotl](https://github.com/OpenAccess-AI-Collective/axolotl), [Llama-Factory](https://github.com/hiyouga/LLaMA-Factory), [unsloth](https://github.com/unslothai/unsloth), [Swift](https://github.com/modelscope/swift), etc., to finetune your models with SFT, DPO, PPO, etc.
+We advise you to use training frameworks, including [Axolotl](https://github.com/OpenAccess-AI-Collective/axolotl), [unsloth](https://github.com/unslothai/unsloth), [Swift](https://github.com/modelscope/swift), [Llama-Factory](https://github.com/hiyouga/LLaMA-Factory), etc., to finetune your models with SFT, DPO, GRPO, etc.
 
 
 ## License Agreement
 
-All our open-source models, except for the 3B and 72B variants, are licensed under Apache 2.0. 
+All our open-source models are licensed under Apache 2.0. 
 You can find the license files in the respective Hugging Face repositories.
 
 ## Citation

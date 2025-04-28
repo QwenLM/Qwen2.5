@@ -1,0 +1,362 @@
+# Copyright (C) 2024, Qwen Team, Alibaba Group.
+# This file is distributed under the same license as the Qwen package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-28 19:42+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../Qwen/source/inference/transformers.md:1
+#: 0614c94c5d284106b6157f7b89fa087f
+msgid "Transformers"
+msgstr ""
+
+#: ../../Qwen/source/inference/transformers.md:3
+#: d3760c125a4049b9848d4c98d60104f8
+msgid "Transformers is a library of pretrained natural language processing for inference and training.  Developers can use Transformers to train models on their data, build inference applications, and generate texts with large language models."
+msgstr "Transformers 是一个用于推理和训练的预训练自然语言处理库。开发者可以使用 Transformers 在自己的数据上训练模型、构建推理应用，并通过大型语言模型生成文本。"
+
+#: ../../Qwen/source/inference/transformers.md:6
+#: 795ca76ad33c4cf89341343edc36115f
+msgid "Environment Setup"
+msgstr "环境配置"
+
+#: ../../Qwen/source/inference/transformers.md:8
+#: 1331055ed63c4702b1c5a300dab74b09
+msgid "`transformers>=4.51.0`"
+msgstr ""
+
+#: ../../Qwen/source/inference/transformers.md:9
+#: 5167e357b63a4abc814e861f0f87adf0
+msgid "`torch>=2.6` is recommended"
+msgstr "推荐使用 `torch>=2.6`"
+
+#: ../../Qwen/source/inference/transformers.md:10
+#: 0be0ab63e365422c8d48cc1143704782
+msgid "GPU is recommended"
+msgstr "推荐使用 GPU"
+
+#: ../../Qwen/source/inference/transformers.md:13
+#: 0567a5b164704d0eb72c23e3c0525131
+msgid "Basic Usage"
+msgstr "基本用法"
+
+#: ../../Qwen/source/inference/transformers.md:15
+#: 823777aaf3b149c9bc2dbe19fb70cf06
+msgid "You can use the `pipeline()` interface or the `generate()` interface to generate texts with Qwen3 in transformers."
+msgstr "您可以使用 `pipeline()` 接口或 `generate()` 接口在 transformers 中通过 Qwen3 生成文本。"
+
+#: ../../Qwen/source/inference/transformers.md:17
+#: 0a59ebb37456410c82118211759d17d9
+msgid "In general, the pipeline interface requires less boilerplate code, which is shown here. The following shows a basic example using pipeline for mult-iturn conversations:"
+msgstr "通常，pipeline 接口需要的样板代码更少，如下所示。以下展示了一个使用 pipeline 进行多轮对话的基本示例："
+
+#: ../../Qwen/source/inference/transformers.md:44
+#: 970a2d7d3090478580bf41085235ec13
+msgid "There are some important parameters creating the pipeline:"
+msgstr "创建 pipeline 时有一些重要的参数："
+
+#: ../../Qwen/source/inference/transformers.md:45
+#: 7a6748475636475c83a23e0f2649d145
+msgid "**Model**: `model_name_or_path` could be a model ID like `Qwen/Qwen3-8B` or a local path."
+msgstr "**模型**：`model_name_or_path` 可以是像 `Qwen/Qwen3-8B` 这样的模型 ID，也可以是本地路径。"
+
+#: ../../Qwen/source/inference/transformers.md:47
+#: 5836c86d2c9e46f1a29d8a827bae7266
+msgid "To download model files to a local directory, you could use"
+msgstr "要将模型文件下载到本地目录，可以使用"
+
+#: ../../Qwen/source/inference/transformers.md:51
+#: ee52b7ed97df4d3d8eee53879369a8a0
+msgid "You can also download model files using ModelScope if you are in mainland China"
+msgstr "如果您在中国大陆，还可以使用 ModelScope 下载模型文件"
+
+#: ../../Qwen/source/inference/transformers.md:55
+#: 0fe0e5f3d5d044f584d89008a0f89b0e
+msgid "**Device Placement**: `device_map=\"auto\"` will load the model parameters to multiple devices automatically, if available.  It relies on the `accelerate` pacakge. If you would like to use a single device, you can pass `device` instead of device_map. `device=-1` or `device=\"cpu\"` indicates using CPU, `device=\"cuda\"` indicates using the current GPU, and `device=\"cuda:1\"` or `device=1` indicates using the second GPU. Do not use `device_map` and `device` at the same time!"
+msgstr "**设备分配**：如果可用，`device_map=\"auto\"` 将自动将模型参数加载到多个设备上。它依赖于 `accelerate` 包。如果您想使用单个设备，可以传递 `device` 而不是 `device_map`。`device=-1` 或 `device=\"cpu\"` 表示使用 CPU，`device=\"cuda\"` 表示使用当前 GPU，`device=\"cuda:1\"` 或 `device=1` 表示使用第二个 GPU。不要同时使用 `device_map` 和 `device`！"
+
+#: ../../Qwen/source/inference/transformers.md:60
+#: b304ed147f944a47b89bb27bc4b6142f
+msgid "**Compute Precision**: `torch_dtype=\"auto\"` will determine automatically the data type to use based on the original precision of the checkpoint and the precision your device supports. For modern devices, the precision determined will be `bfloat16`."
+msgstr "**计算精度**：`torch_dtype=\"auto\"` 将根据检查点的原始精度和设备支持的精度自动确定要使用的数据类型。对于现代设备，确定的精度将是 `bfloat16`。"
+
+#: ../../Qwen/source/inference/transformers.md:63
+#: 13295d55b1dd493887c9f0aab35ebfcd
+msgid "If you don't pass `torch_dtype=\"auto\"`, the default data type is `float32`, which will take double the memory and be slower in computation."
+msgstr "如果您不传递 `torch_dtype=\"auto\"`，默认数据类型为 `float32`，这将占用两倍的内存并且计算速度较慢。"
+
+#: ../../Qwen/source/inference/transformers.md:66
+#: 280ff00b4ccd4e59be8d798cd7d4377d
+msgid "Calls to the text generation pipleine will use the generation configuration from the model file, e.g., `generation_config.json`.  Those configuration could be overridden by passing arguments directly to the call. The default is equivalent to"
+msgstr "调用文本生成 pipeline 时，将使用模型文件中的生成配置，例如 `generation_config.json`。这些配置可以通过直接向调用传递参数来覆盖。默认配置等效于"
+
+#: ../../Qwen/source/inference/transformers.md:73
+#: f3cd39b62e8848dd8493086915577cd2
+msgid "For the best practices in configuring generation parameters, please see the model card."
+msgstr "有关配置生成参数的最佳实践，请参阅模型卡片。"
+
+#: ../../Qwen/source/inference/transformers.md:75
+#: c69916ddab134eadbb509748b73bb515
+msgid "Thinking & Non-Thinking Mode"
+msgstr "思考与非思考模式"
+
+#: ../../Qwen/source/inference/transformers.md:77
+#: e23485edb6654b588965a22a20332dce
+msgid "By default, Qwen3 model will think before response. It is also true for the `pipeline()` interface. To switch between thinking and non-thinking mode, two methods can be used"
+msgstr "默认情况下，Qwen3 模型会在回复前进行思考，`pipeline()` 接口也是如此。要切换思考与非思考模式，可以使用以下两种方法："
+
+#: ../../Qwen/source/inference/transformers.md:80
+#: 3597031da80f43f5883b499eb42e153f
+msgid "Append a final assistant message, containing only `<think>\\n\\n</think>\\n\\n`.  This method is stateless, meaning it will only work for that single turn.  It will also strictly prevented the model from generating thinking content. For example,"
+msgstr "追加一条仅包含 `<think>\\n\\n</think>\\n\\n` 的最终助手 (assistant) 消息。此方法是无状态的，意味着它仅对当前轮对话生效，并且会严格阻止模型生成思考内容。例如："
+
+#: ../../Qwen/source/inference/transformers.md:97
+#: 5c4b107221d14749a0c61541068be791
+msgid "Add to the user (or the system) message, `/no_think` to disable thinking and `/think` to enable thinking. This method is stateful, meaning the model will follow the most recent instruction in multi-turn conversations. You can also use instructions in natural language."
+msgstr "在用户 (user) 或系统 (system) 消息中添加 `/no_think` 以禁用思考、添加 `/think` 以启用思考。此方法是有状态的，意味着在多轮对话中，模型将遵循最近的指令。您还可以使用自然语言指令。"
+
+#: ../../Qwen/source/inference/transformers.md:113
+#: c93fb1cf4f5849128d0fe52f86a74aca
+msgid "Parsing Thinking Content"
+msgstr "解析思考内容"
+
+#: ../../Qwen/source/inference/transformers.md:115
+#: 32af8e0e86e646d1900ddb45b6b576e9
+msgid "If you would like a more structured assistant message format, you can use the following function to extract the thinking content into a field named `reasoning_content` which is similar to the format used by vLLM, SGLang, etc."
+msgstr "如果您希望获得更结构化的助手消息格式，可以使用以下函数将思考内容提取到名为 `reasoning_content` 的字段中，该字段的格式类似于 vLLM、SGLang 等使用的格式。"
+
+#: ../../Qwen/source/inference/transformers.md:131
+#: ae7a948b483c4e3d973301698cfc82e6
+msgid "Parsing Tool Calls"
+msgstr "解析工具调用"
+
+#: ../../Qwen/source/inference/transformers.md:133
+#: 9798bad1fc1d49e28c8576a67ea59044
+msgid "For tool calling with Transformers, please refer to [our guide on Function Calling](../framework/function_call.md#hugging-face-transformers)."
+msgstr "有关使用 Transformers 进行工具调用的信息，请参阅[函数调用指南](../framework/function_call.md#hugging-face-transformers)。"
+
+#: ../../Qwen/source/inference/transformers.md:135
+#: 555f509828dc4e5ab201530f04168b44
+msgid "Serving Quantized models"
+msgstr "使用量化模型"
+
+#: ../../Qwen/source/inference/transformers.md:137
+#: bb57ca974bda4158b1c3efe90b72d557
+msgid "Qwen3 comes with two types of pre-quantized models, FP8 and AWQ. The command serving those models are the same as the original models except for the name change:"
+msgstr "Qwen3 提供了两种类型的预量化模型：FP8 和 AWQ。使用这些模型的命令与原始模型相同，只是名称有所更改："
+
+#: ../../Qwen/source/inference/transformers.md:155
+#: 091c7fd44b804573be565b59f4498a5d
+msgid "FP8 computation is supported on NVIDIA GPUs with compute capability > 8.9, that is, Ada Lovelace, Hopper, and later GPUs."
+msgstr "FP8 计算在计算能力 > 8.9 的 NVIDIA GPU 上受支持，即 Ada Lovelace、Hopper 及更新的 GPU。"
+
+#: ../../Qwen/source/inference/transformers.md:157
+#: 468b4de54b0c436086877aeb58894345
+msgid "For better performance, make sure `triton` and a CUDA compiler compatible with the CUDA version of `torch` in your environment are installed."
+msgstr "为了获得更好的性能，请确保安装了 `triton` 和与环境中 `torch` 的 CUDA 版本兼容的 CUDA 编译器。"
+
+#: ../../Qwen/source/inference/transformers.md:161
+#: 4c26b8d556764c28813e27713fa14962
+msgid "As of 4.51.0, there are issues with Tranformers when running those checkpoints **across GPUs**. The following method could be used to work around those issues:"
+msgstr "在 4.51.0 版本中，在**跨 GPU**的情况下运行 FP8 存在一些与 Transformers 相关的问题。可以使用以下方法来解决这些问题："
+
+#: ../../Qwen/source/inference/transformers.md:163
+#: 67ef3f3b2a6c461aaa5a40d4867e8f7b
+msgid "Set the environmnt variable `CUDA_LAUNCH_BLOCKING=1` before running the script; or"
+msgstr "在运行脚本之前设置环境变量 `CUDA_LAUNCH_BLOCKING=1`；或者"
+
+#: ../../Qwen/source/inference/transformers.md:164
+#: 25d447166ecb4e069a7cdc3f4c2844d8
+msgid "Uncomment [this line](https://github.com/huggingface/transformers/blob/0720e206c6ba28887e4d60ef60a6a089f6c1cc76/src/transformers/integrations/finegrained_fp8.py#L340) in your local installation of `transformers`."
+msgstr "取消注释您本地安装的 `transformers` 中的[这一行](https://github.com/huggingface/transformers/blob/0720e206c6ba28887e4d60ef60a6a089f6c1cc76/src/transformers/integrations/finegrained_fp8.py#L340)。"
+
+#: ../../Qwen/source/inference/transformers.md:169
+#: 4405b99bd1a941e2b7243a860e65ed1f
+msgid "Enabling Long Context"
+msgstr "启用长上下文"
+
+#: ../../Qwen/source/inference/transformers.md:171
+#: 5b50bba7f4eb48f6a0e3f408ddc476ea
+msgid "The maximum context length in pre-training for Qwen3 models is 32,768 tokens. It can be extended to 131,072 tokens with RoPE scaling techniques. We have validated the performance with YaRN."
+msgstr "Qwen3 模型在预训练中的最大上下文长度为 32,768 个 token。通过 RoPE 缩放技术，它可以扩展到 131,072 个 token。我们已使用 YaRN 验证了性能。"
+
+#: ../../Qwen/source/inference/transformers.md:175
+#: 32af7906e1ae44f282e22f3eb656bc47
+msgid "Transformers supports YaRN, which can be enabled either by modifying the model files or overriding the default arguments when loading the model."
+msgstr "Transformers 支持 YaRN，可以通过修改模型文件或在加载模型时覆盖默认参数来启用。"
+
+#: ../../Qwen/source/inference/transformers.md:177
+#: 4d80b834eb444b65885583b6a0db6a93
+msgid "Modifying the model files: In the config.json file, add the rope_scaling fields:"
+msgstr "修改模型文件：在 config.json 文件中，添加 rope_scaling 字段："
+
+#: ../../Qwen/source/inference/transformers.md:188
+#: 432eb2b9ed054ea3b5a6597ffc207b53
+msgid "Overriding the default arguments:"
+msgstr "覆盖默认参数："
+
+#: ../../Qwen/source/inference/transformers.md:210
+#: 9d7651802c2344fa987f709a7ac87c08
+msgid "Transformers implements static YaRN, which means the scaling factor remains constant regardless of input length, **potentially impacting performance on shorter texts.** We advise adding the `rope_scaling` configuration only when processing long contexts is required.  It is also recommended to modify the `factor` as needed. For example, if the typical context length for your application is 65,536 tokens, it would be better to set `factor` as 2.0."
+msgstr "Transformers 实现了静态 YaRN，这意味着无论输入长度如何，缩放因子保持不变，**这可能会对较短文本的性能产生影响。** 我们建议仅在需要处理长上下文时添加 `rope_scaling` 配置。还建议根据需要修改 `factor`。例如，如果您的应用程序的典型上下文长度为 65,536 个 token，则最好将 `factor` 设置为 2.0。"
+
+#: ../../Qwen/source/inference/transformers.md:216
+#: dcc2913c11534349a3aa28988055044c
+msgid "Streaming Generation"
+msgstr "流式输出"
+
+#: ../../Qwen/source/inference/transformers.md:218
+#: 23238ec6181e498fa754f6d3ea363f52
+msgid "With the help of `TextStreamer`, you can modify your chatting with Qwen3 to streaming mode.  It will print the response as being generated to the console or the terminal."
+msgstr "借助 `TextStreamer` ，您可以将与 Qwen3 的对话切换到流式传输模式。下面是一个关于如何使用它的示例："
+
+#: ../../Qwen/source/inference/transformers.md:238
+#: 4a6ba39c851b4296907f624a38766570
+msgid "Besides using `TextStreamer`, we can also use `TextIteratorStreamer` which stores print-ready text in a queue, to be used by a downstream application as an iterator:"
+msgstr "除了使用 `TextStreamer` 之外，我们还可以使用 `TextIteratorStreamer` ，它将可打印的文本存储在一个队列中，以便下游应用程序作为迭代器来使用："
+
+#: ../../Qwen/source/inference/transformers.md:267
+#: 4c6797668ec84bf4866c6e3be2350e82
+msgid "Batch Generation"
+msgstr "批处理"
+
+#: ../../Qwen/source/inference/transformers.md:270
+#: 132f318ada71477192c48cefc7eeb229
+msgid "Batching is not automatically a win for performance."
+msgstr "批处理不总能提速。"
+
+#: ../../Qwen/source/inference/transformers.md:296
+#: 3371e43683aa4c6284e08193a40110c4
+msgid "FAQ"
+msgstr "常见问题解答"
+
+#: ../../Qwen/source/inference/transformers.md:298
+#: 5b68ed1d7a1e48ef9b0943de038e7ebc
+msgid "You may find distributed inference with Transformers is not as fast as you would imagine. Transformers with `device_map=\"auto\"` does not apply tensor parallelism and it only uses one GPU at a time. For Transformers with tensor parallelism, please refer to [its documentation](https://huggingface.co/docs/transformers/v4.51.3/en/perf_infer_gpu_multi)."
+msgstr "您可能会发现使用 Transformers 进行分布式推理的速度不如预期。Transformers 使用 `device_map=\"auto\"` 时并未应用张量并行 (Tensor Parallelism)，且一次仅使用一个 GPU。如需支持张量并行的 Transformers，请参阅[其文档](https://huggingface.co/docs/transformers/v4.51.3/en/perf_infer_gpu_multi)。"
+
+#~ msgid "The most significant but also the simplest usage of Qwen2.5 is to chat with it using the `transformers` library.  In this document, we show how to chat with `Qwen2.5-7B-Instruct`, in either streaming mode or not."
+#~ msgstr "使用 Qwen2.5 最简单的方法就是利用 `transformers` 库与之对话。在本文档中，我们将展示如何在流式模式或非流式模式下与 Qwen2.5-7B-Instruct 进行对话。"
+
+#~ msgid "Select the interface you would like to use:"
+#~ msgstr "选择编程接口"
+
+#~ msgid "Manual"
+#~ msgstr "手动"
+
+#~ msgid "Using `AutoTokenizer` and `AutoModelForCausalLM`."
+#~ msgstr "使用 `AutoTokenzier` 和 `AutoModelForCausalLM`。"
+
+#~ msgid "Pipeline"
+#~ msgstr "流水线"
+
+#~ msgid "Using `pipeline`."
+#~ msgstr "使用 `pipeline`。"
+
+#~ msgid "You can just write several lines of code with `transformers` to chat with Qwen2.5-Instruct.  Essentially, we build the tokenizer and the model with `from_pretrained` method, and we use `generate` method to perform chatting with the help of chat template provided by the tokenizer. Below is an example of how to chat with Qwen2.5-7B-Instruct:"
+#~ msgstr "你只需借助 `transformers` 库编写几行代码，就能与 Qwen2.5-Instruct 进行对话。实质上，我们通过 `from_pretrained` 方法构建 tokenizer 和模型，然后利用 `generate` 方法，在 tokenizer 提供的对话模板 (Chat Template) 的辅助下进行对话。以下是一个如何与 Qwen2.5-7B-Instruct 进行对话的示例："
+
+#~ msgid "To continue the chat, simply append the response to the messages with the role assistant and repeat the procedure. The following shows and example:"
+#~ msgstr "如要继续对话，只需将回复内容以 assistant 为 role 加入 messages ，然后重复以上流程即可。下面为示例："
+
+#~ msgid "Note that the previous method in the original Qwen repo `chat()` is now replaced by `generate()`.  The `apply_chat_template()` function is used to convert the messages into a format that the model can understand.  The `add_generation_prompt` argument is used to add a generation prompt, which refers to `<|im_start|>assistant\\n` to the input. Notably, we apply ChatML template for chat models following our previous practice.  The `max_new_tokens` argument is used to set the maximum length of the response.  The `tokenizer.batch_decode()` function is used to decode the response.  In terms of the input, the above `messages` is an example to show how to format your dialog history and system prompt.  By default, if you do not specify system prompt, we directly use `You are Qwen, created by Alibaba Cloud. You are a helpful assistant.`."
+#~ msgstr "请注意，原 Qwen 仓库中的旧方法 `chat()` 现在已被 `generate()` 方法替代。这里使用了 `apply_chat_template()` 函数将消息转换为模型能够理解的格式。其中的 `add_generation_prompt` 参数用于在输入中添加生成提示，该提示指向 `<|im_start|>assistant\\n` 。尤其需要注意的是，我们遵循先前实践，对 chat 模型应用 ChatML 模板。而 `max_new_tokens` 参数则用于设置响应的最大长度。此外，通过 `tokenizer.batch_decode()` 函数对响应进行解码。关于输入部分，上述的 `messages` 是一个示例，展示了如何格式化对话历史记录和系统提示。默认情况下，如果您没有指定系统提示，我们将直接使用 `You are Qwen, created by Alibaba Cloud. You are a helpful assistant.` 作为系统提示。"
+
+#~ msgid "`transformers` provides a functionality called \"pipeline\" that encapsulates the many operations in common tasks. You can chat with the model in just 4 lines of code:"
+#~ msgstr "`transformers` 同时提供了“流水线” (\"pipeline\") 功能，封装了常用任务的处理流程，仅用4行代码即可开启对话："
+
+#~ msgid "To continue the chat, simply append the response to the messages with the role assistant and repeat the procedure.  The following shows and example:"
+#~ msgstr "如要继续对话，只需将回复内容以 assistant 为 role 加入 messages ，然后重复以上流程即可。下面为示例："
+
+#~ msgid "Batching"
+#~ msgstr "批处理"
+
+#~ msgid "All common `transformers` methods support batched input and output. For basic usage, the following is an example:"
+#~ msgstr "`transformers` 常用方法均支持批处理。以下为基本用法的示例："
+
+#~ msgid "With pipeline, it is simpler:"
+#~ msgstr "使用流水线功能，实现批处理代码更简单："
+
+#~ msgid "Using Flash Attention 2 to Accelerate Generation"
+#~ msgstr "使用 Flash Attention 2 加速生成"
+
+#~ msgid "With the latest `transformers` and `torch`, Flash Attention 2 will be applied by default if applicable.[^fa2] You do not need to request the use of Flash Attention 2 in `transformers` or install the `flash_attn` package. The following is intended for users that cannot use the latest versions for various reasons."
+#~ msgstr "如果您使用最新版本的 `transformers` 和 `torch` ， Flash Attention 2 将在适用时自动应用。[^fa2] 无需指定使用 `transformers` 中的 Flash Attention 2 或安装 `falsh_attn` 包。下面的说明是为无法使用最新版的用户补充的。"
+
+#~ msgid "If you would like to apply Flash Attention 2, you need to install an appropriate version of `flash_attn`. You can find pre-built wheels at [its GitHub repository](https://github.com/Dao-AILab/flash-attention/releases), and you should make sure the Python version, the torch version, and the CUDA version of torch are a match. Otherwise, you need to install from source. Please follow the guides at [its GitHub README](https://github.com/Dao-AILab/flash-attention)."
+#~ msgstr "如果你希望使用 Flash Attention 2 ， 你需要安装 `flash_attn` 。 你可以在其 [GitHub 存储库](https://github.com/Dao-AILab/flash-attention/releases) 找到预编译好的版本。注意选择与 Python 、 torch 和 torch 中 CUDA 版本对应的预编译版本。如无对应，你需要从源代码安装编译，请参考其 [GitHub README](https://github.com/Dao-AILab/flash-attention) 。"
+
+#~ msgid "After a successful installation, you can load the model as shown below:"
+#~ msgstr "成功安装 Flash Attention 2 后，你可以用下面这种方式读取模型："
+
+#~ msgid "Troubleshooting"
+#~ msgstr "问题排查"
+
+#~ msgid "Loading models takes a lot of memory"
+#~ msgstr "模型加载使用大量显存"
+
+#~ msgid "Normally, memory usage after loading the model can be roughly taken as twice the parameter count. For example, a 7B model will take 14GB memory to load. It is because for large language models, the compute dtype is often 16-bit floating point number. Of course, you will need more memory in inference to store the activations."
+#~ msgstr "一般而言，模型加载所需显存可以按参数量乘二计算，例如，7B 模型需要 14GB 显存加载，其原因在于，对于大语言模型，计算所用数据类型为16位浮点数。当然，推理运行时还需要更多显存以记录激活状态。"
+
+#~ msgid "For `transformers`, `torch_dtype=\"auto\"` is recommended and the model will be loaded in `bfloat16` automatically. Otherwise, the model will be loaded in `float32` and it will need double memory. You can also pass `torch.bfloat16` or `torch.float16` as `torch_dtype` explicitly."
+#~ msgstr "对于 `transformers` ，推荐加载时使用 `torch_dtype=\"auto\"` ，这样模型将以 `bfloat16` 数据类型加载。否则，默认会以 `float32` 数据类型加载，所需显存将翻倍。也可以显式传入 `torch.bfloat16` 或 `torch.float16` 作为 `torch_dtype` 。"
+
+#~ msgid "Multi-GPU inference is slow"
+#~ msgstr "多卡推理缓慢"
+
+#~ msgid "`transformers` relies on `accelerate` for multi-GPU inference and the implementation is a kind of naive model parallelism: different GPUs computes different layers of the model. It is enabled by the use of `device_map=\"auto\"` or a customized `device_map` for multiple GPUs."
+#~ msgstr "`transformers` 依赖 `accelerate` 支持多卡推理，其实现为一种简单的模型并行策略：不同的卡计算模型的不同层，分配策略由 `device_map=\"auto\"` 或自定义的 `device_map` 指定。"
+
+#~ msgid "However, this kind of implementation is not efficient as for a single request, only one GPU computes at the same time and the other GPUs just wait. To use all the GPUs, you need to arrange multiple sequences as on a pipeline, making sure each GPU has some work to do. However, that will require concurrency management and load balancing, which is out of the scope of `transformers`. Even if all things are implemented, you can make use of concurrency to improve the total throughput but the latency for each request is not great."
+#~ msgstr "然而，这种实现方式并不高效，因为对于单一请求而言，同时只有单个 GPU 在进行计算而其他 GPU 则处于等待状态。为了充分利用所有的 GPU ，你需要像流水线一样安排多个处理序列，确保每个 GPU 都有一定的工作负载。但是，这将需要进行并发管理和负载均衡，这些超出了 `transformers` 库的范畴。即便实现了所有这些功能，整体吞吐量可以通过提高并发提高，但每个请求的延迟并不会很理想。"
+
+#~ msgid "For Multi-GPU inference, we recommend using specialized inference framework, such as vLLM and TGI, which support tensor parallelism."
+#~ msgstr "对于多卡推理，建议使用专门的推理框架，如 vLLM 和 TGI，这些框架支持张量并行。"
+
+#~ msgid "`RuntimeError: CUDA error: device-side assert triggered`, `Assertion -sizes[i] <= index && index < sizes[i] && \"index out of bounds\" failed.`"
+#~ msgstr "`RuntimeError: CUDA error: device-side assert triggered`, `Assertion -sizes[i] <= index && index < sizes[i] && \"index out of bounds\" failed.`"
+
+#~ msgid "If it works with single GPU but not multiple GPUs, especially if there are PCI-E switches in your system, it could be related to drivers."
+#~ msgstr "如果在单个 GPU上 工作正常，但在多个 GPU 上无法工作，特别是如果你的系统中有 PCI-E switch，这可能与驱动程序有关。"
+
+#~ msgid "Try upgrading the GPU driver."
+#~ msgstr "尝试升级显卡驱动"
+
+#~ msgid "For data center GPUs (e.g., A800, H800, and L40s), please use the data center GPU drivers and upgrade to the latest subrelease, e.g., 535.104.05 to 535.183.01.  You can check the release note at <https://docs.nvidia.com/datacenter/tesla/index.html>, where the issues fixed and known issues are presented."
+#~ msgstr "对于数据中心 GPU （例如， A800 、 H800 和 L40 等），请使用数据中心 GPU 驱动程序并升级到最新子版本，例如从 535.104.05 升级至 535.183.01 。您可以在以下网址查看发布说明：<https://docs.nvidia.com/datacenter/tesla/index.html>，其中列出了已修复的问题和已知问题。"
+
+#~ msgid "For consumer GPUs (e.g., RTX 3090 and RTX 4090), their GPU drivers are released more frequently and focus more on gaming optimization.  There are online reports that 545.29.02 breaks `vllm` and `torch` but 545.29.06 works.  Their release notes are also less helpful in identifying the real issues.  However, in general, the advice is still upgrading the GPU driver."
+#~ msgstr "对于消费级 GPU （例如， RTX 3090 和 RTX 4090 ），它们的 GPU 驱动程序发布的频率更高，并且更侧重于游戏优化。网上有报告称 545.29.02 版本破坏了 `vllm` 和 `torch` 的运行，但 545.29.06 版本可以正常工作。它们的发布说明在识别实际问题方面帮助较小。然而，总体而言，建议仍然是升级 GPU 驱动程序。"
+
+#~ msgid "Try disabling P2P for process hang, but it has negative effect on speed."
+#~ msgstr "尝试禁用 P2P 以解决进程挂起的问题，但这会对速度产生负面影响。"
+
+#~ msgid "Next Step"
+#~ msgstr "下一步"
+
+#~ msgid "Now you can chat with Qwen2.5 in either streaming mode or not.  Continue to read the documentation and try to figure out more advanced usages of model inference!"
+#~ msgstr "现在，你可以选择流式模式或非流式模式与 Qwen2.5 进行对话。继续阅读文档，并尝试探索模型推理的更多高级用法！"
+
+#~ msgid "The attention module for a model in `transformers` typically has three variants: `sdpa`, `flash_attention_2`, and `eager`.    The first two are wrappers around related functions in the `torch` and the `flash_attn` packages.    It defaults to `sdpa` if available."
+#~ msgstr "`transformers` 中模型一般实现3种注意力模块： `sdpa` 、 `flash_attention_2` 和 `eager` 。前两种分别封装了 `torch` 和 `flash_attn` 中的相关实现。`transformers` 默认使用 `sdpa` 版本的注意力模块。"
+
+#~ msgid "In addition, `torch` has integrated three implementations for `sdpa`: `FLASH_ATTENTION` (indicating Flash Attention 2 since version 2.2), `EFFICIENT_ATTENTION` (Memory Efficient Attention), and `MATH`.    It attempts to automatically select the most optimal implementation based on the inputs.    You don't need to install extra packages to use them."
+#~ msgstr "同时， `torch` 包括3种 `sdpa` 实现： `FLASH_ATTENTION` （自 2.2 版本为 Flash Attention 2）、 `EFFICIENT_ATTENTION` (Memory Efficient Attention) 和 `MATH` 。 `torch` 根据输入自动选择最优的实现，你无需额外安装其它包或进行配置。"
+
+#~ msgid "Hence, if applicable, by default, `transformers` uses `sdpa` and `torch` selects `FLASH_ATTENTION`."
+#~ msgstr "因此，在默认情况下，如果适用， `transformers` 使用 `sdpa` 而 `torch` 会选择 `FLASH_ATTENTION` 。"
+
+#~ msgid "If you wish to explicitly select the implementations in `torch`, refer to [this tutorial](https://pytorch.org/tutorials/intermediate/scaled_dot_product_attention_tutorial.html)."
+#~ msgstr "如果你希望显式控制 `torch` 使用的 `sdpa` 实现，请参考 [本教程](https://pytorch.org/tutorials/intermediate/scaled_dot_product_attention_tutorial.html)。 "
+
