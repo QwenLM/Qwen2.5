@@ -1,6 +1,9 @@
 TGI
 =====================
 
+.. attention:: 
+    To be updated for Qwen3.
+
 Hugging Face's Text Generation Inference (TGI) is a production-ready framework specifically designed for deploying and serving large language models (LLMs) for text generation tasks. It offers a seamless deployment experience, powered by a robust set of features:
 
 * `Speculative Decoding <Speculative Decoding_>`_: Accelerates generation speeds.

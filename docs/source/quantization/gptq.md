@@ -1,5 +1,9 @@
 # GPTQ
 
+:::{attention}
+To be updated for Qwen3.
+:::
+
 [GPTQ](https://arxiv.org/abs/2210.17323) is a quantization method for GPT-like LLMs, which uses one-shot weight quantization based on approximate second-order information.
 In this document, we show you how to use the quantized model with Hugging Face `transformers` and also how to quantize your own model with [AutoGPTQ](https://github.com/AutoGPTQ/AutoGPTQ).
 

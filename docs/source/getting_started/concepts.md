@@ -1,5 +1,9 @@
 # Key Concepts
 
+:::{attention}
+To be updated for Qwen3.
+:::
+
 ## Qwen
 
 Qwen (Chinese: 通义千问; pinyin: _Tongyi Qianwen_) is the large language model and large multimodal model series of the Qwen Team, Alibaba Group. 

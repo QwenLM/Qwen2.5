@@ -5,6 +5,11 @@ myst:
 
 # Function Calling
 
+:::{attention}
+To be updated for Qwen3.
+Since the support for tool calling in Qwen3 is a superset of that in Qwen2, the examples would still work.
+:::
+
 ## Preface
 
 Function calling with large language models is a huge and evolving topic.

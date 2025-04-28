@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-18 21:18+0800\n"
+"POT-Creation-Date: 2025-04-28 19:42+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -14,144 +14,174 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.15.0\n"
+"Generated-By: Babel 2.17.0\n"
 
-#: ../../source/getting_started/quickstart.md:1
-#: f62d7bb1400c4422b85bec0cd425ef0d
+#: ../../Qwen/source/getting_started/quickstart.md:1
+#: 595827c46f2e4884b69954cf22e0e957
 msgid "Quickstart"
 msgstr "快速开始"
 
-#: ../../source/getting_started/quickstart.md:3
-#: 91b7b18c28c5440682fa4a58d17b1cd8
-msgid "This guide helps you quickly start using Qwen2.5.  We provide examples of [Hugging Face Transformers](https://github.com/huggingface/transformers) as well as [ModelScope](https://github.com/modelscope/modelscope), and [vLLM](https://github.com/vllm-project/vllm) for deployment."
-msgstr "本指南帮助您快速上手 Qwen2.5 的使用，并提供了如下示例： [Hugging Face Transformers](https://github.com/huggingface/transformers) 以及 [ModelScope](https://github.com/modelscope/modelscope) 和 [vLLM](https://github.com/vllm-project/vllm>) 在部署时的应用实例。"
+#: ../../Qwen/source/getting_started/quickstart.md:3
+#: 725288359306417a943352cef10f831c
+msgid "This guide helps you quickly start using Qwen3.  We provide examples of [Hugging Face Transformers](https://github.com/huggingface/transformers) as well as [ModelScope](https://github.com/modelscope/modelscope), and [vLLM](https://github.com/vllm-project/vllm) for deployment."
+msgstr "本指南帮助您快速上手 Qwen3 的使用，并提供了如下示例： [Hugging Face Transformers](https://github.com/huggingface/transformers) 以及 [ModelScope](https://github.com/modelscope/modelscope) 和 [vLLM](https://github.com/vllm-project/vllm>) 在部署时的应用实例。"
 
-#: ../../source/getting_started/quickstart.md:6
-#: 8b1b0b425b3f4c72a8b1aea6d8849c06
-msgid "You can find Qwen2.5 models in the [Qwen2.5 collection](https://huggingface.co/collections/Qwen/qwen25-66e81a666513e518adb90d9e) at Hugging Face Hub."
-msgstr "你可以在 [Qwen2.5 collection](https://huggingface.co/collections/Qwen/qwen25-66e81a666513e518adb90d9e) 中寻找 Qwen2.5 模型。"
+#: ../../Qwen/source/getting_started/quickstart.md:6
+#: 6bfc020002af4b4eaad8adf3902e30ac
+msgid "You can find Qwen3 models in [the Qwen3 collection](https://huggingface.co/collections/Qwen/qwen3-67dd247413f0e2e4f653967f) at HuggingFace Hub and [the Qwen3 collection](https://www.modelscope.cn/collections/Qwen3-9743180bdc6b48) at ModelScope."
+msgstr "你可以在 HuggingFace Hub 的 [Qwen3 collection](https://huggingface.co/collections/Qwen/qwen3-67dd247413f0e2e4f653967f) 或 ModelScope 的 [Qwen3 collection](https://www.modelscope.cn/collections/Qwen3-9743180bdc6b48) 中寻找 Qwen3 模型。"
 
-#: ../../source/getting_started/quickstart.md:8
-#: 7fd4434fcb1c4c7b9141885449022ef1
-msgid "Hugging Face Transformers & ModelScope"
-msgstr ""
+#: ../../Qwen/source/getting_started/quickstart.md:8
+#: 1dbf0833f8a5407b8d00056d029eb9d8
+msgid "Transformers"
+msgstr "Transformers"
 
-#: ../../source/getting_started/quickstart.md:10
-#: b6432291987a48a4be0eefe3ca624488
-msgid "To get a quick start with Qwen2.5, we advise you to try with the inference with `transformers` first. Make sure that you have installed `transformers>=4.37.0`. We advise you to use Python 3.10 or higher, and PyTorch 2.3 or higher."
-msgstr "要快速上手 Qwen2.5 ，我们建议您首先尝试使用 `transformers` 进行推理。请确保已安装了 `transformers>=4.37.0` 版本。我们建议您使用 Python 3.10 或以上版本， PyTorch 2.3 或以上版本。"
+#: ../../Qwen/source/getting_started/quickstart.md:10
+#: cbe2f022b0b54729a1d3627cb19ad99f
+msgid "To get a quick start with Qwen3, you can try the inference with `transformers` first. Make sure that you have installed `transformers>=4.51.0`. We advise you to use Python 3.10 or higher, and PyTorch 2.6 or higher."
+msgstr "要快速上手 Qwen3 ，我们建议您首先尝试使用 `transformers` 进行推理。请确保已安装了 `transformers>=4.51.0` 版本。我们建议您使用 Python 3.10 或以上版本， PyTorch 2.6 或以上版本。"
 
-#: ../../source/getting_started/quickstart.md 2146a97785344b9cb24fcdb19d9f7539
-msgid "Install `transformers`"
-msgstr "安装 `transformers`"
+#: ../../Qwen/source/getting_started/quickstart.md:14
+#: bd305d4f44484f75bfe0c02a9eda68c4
+msgid "The following is a very simple code snippet showing how to run Qwen3-8B:"
+msgstr "以下是一个非常简单的代码片段示例，展示如何运行 Qwen3 模型："
 
-#: ../../source/getting_started/quickstart.md:15
-#: c2089b39283a4e82bb2576d211eeee9f
-msgid "Install with `pip`:"
-msgstr "使用 `pip` 安装："
+#: ../../Qwen/source/getting_started/quickstart.md:63
+#: 0bb48ceb71854514be78497721308702
+msgid "Qwen3 will think before respond, similar to QwQ models. This means the model will use its reasoning abilities to enhance the quality of generated responses. The model will first generate thinking content wrapped in a `<think>...</think>` block, followed by the final response."
+msgstr "Qwen3 将在实际回复前思考，与 QwQ 模型类似。这意味着模型将运用其推理能力来提升生成回复的质量。模型会首先生成包含在 `<think>...</think>` 块中的思考内容，随后给出最终回复。"
 
-#: ../../source/getting_started/quickstart.md:21
-#: a8d9a63a16644770a61958773a7067d2
-msgid "Install with `conda`:"
-msgstr "使用 `conda` 安装："
+#: ../../Qwen/source/getting_started/quickstart.md:67
+#: d110ccfe1d834169992f03bcf932e250
+msgid "Hard Switch: To strictly disable the model's thinking behavior, aligning its functionality with the previous Qwen2.5-Instruct models, you can set `enable_thinking=False` when formatting the text."
+msgstr "硬开关：为了严格禁用模型的思考行为，使其功能与之前的Qwen2.5-Instruct模型保持一致，您可以在格式化文本时设置`enable_thinking=False`。"
 
-#: ../../source/getting_started/quickstart.md:27
-#: 1c4f03006ec644f29252e1767b828689
-msgid "Install from source:"
-msgstr "从源代码安装："
+#: ../../Qwen/source/getting_started/quickstart.md:77
+#: 4bceeb7e0179470f88620507ade7915b
+msgid "It can be particularly useful in scenarios where disabling thinking is essential for enhancing efficiency."
+msgstr "在某些需要通过禁用思考来提升效率的场景中，这一功能尤其有用。"
 
-#: ../../source/getting_started/quickstart.md:34
-#: 5ee82ea695be4a4b9dcfbcb1a2fa1bb4
-msgid "The following is a very simple code snippet showing how to run Qwen2.5-7B-Instruct:"
-msgstr "以下是一个非常简单的代码片段示例，展示如何运行 Qwen2.5-7B-Instruct 模型："
+#: ../../Qwen/source/getting_started/quickstart.md:79
+#: 16b4b43b7a7b43a698118e17d778a6dd
+msgid "Soft Switch: Qwen3 also understands the user's instruction on its thinking behaviour, in particular, the soft switch `/think` and `/no_think`. You can add them to user prompts or system messages to switch the model's thinking mode from turn to turn.  The model will follow the most recent instruction in multi-turn conversations."
+msgstr "软开关：Qwen3 还能够理解用户对其思考行为的指令，特别是软开关 `/think` 和 `/no_think`。您可以将这些指令添加到用户 (user) 或系统 (system) 消息中，以在对话轮次之间灵活切换模型的思考模式。在多轮对话中，模型将遵循最近的指令。"
 
-#: ../../source/getting_started/quickstart.md:71
-#: b7520f4f9f834e1d9a8c20a50c2cd876
-msgid "As you can see, it's just standard usage for casual LMs in `transformers`!"
-msgstr "如您所见，与 `transformers` 的常规使用方式无二！"
+#: ../../Qwen/source/getting_started/quickstart.md:85
+#: 518d0395430f4920973e6da2753c1507
+msgid "For thinking mode, use Temperature=0.6, TopP=0.95, TopK=20, and MinP=0 (the default setting in `generation_config.json`). DO NOT use greedy decoding, as it can lead to performance degradation and endless repetitions.  For more detailed guidance, please refer to the Best Practices section."
+msgstr "对于思考模式，使用 Temperature=0.6，TopP=0.95，TopK=20，以及 MinP=0（`generation_config.json` 中的默认设置）。不要使用贪婪解码，因为它可能导致性能下降和无尽的重复。更多详细指导，请参阅最佳实践部分。"
 
-#: ../../source/getting_started/quickstart.md:73
-#: 9e1d9bb23a134455aa5d249a3f5da308
-msgid "Streaming Generation"
-msgstr "流式生成"
+#: ../../Qwen/source/getting_started/quickstart.md:89
+#: 80bf598dfdf048a791d05c6a21ccd425
+msgid "For non-thinking mode, we suggest using Temperature=0.7, TopP=0.8, TopK=20, and MinP=0."
+msgstr "对于非思考模式，我们建议使用 Temperature=0.7，TopP=0.8，TopK=20，以及 MinP=0。"
 
-#: ../../source/getting_started/quickstart.md:75
-#: cad2888853f14635adb3b3022a8ec37b
-msgid "Streaming mode for model chat is simple with the help of `TextStreamer`.  Below we show you an example of how to use it:"
-msgstr "借助 `TextStreamer` ， 模型生成的流式模式变得非常简单。下面我们将展示一个如何使用它的示例："
-
-#: ../../source/getting_started/quickstart.md:91
-#: 7eb62cee0ad8494fa33ff92e1f64723b
-msgid "It will print the text to the console or the terminal as being generated."
-msgstr "命令行或终端中将屏显生成的文本。"
-
-#: ../../source/getting_started/quickstart.md:93
-#: fe23e5bf8bc4464aaf709e5d98512526
+#: ../../Qwen/source/getting_started/quickstart.md:93
+#: 7a585706796a4db9a9f34ec1241135b5
 msgid "ModelScope"
 msgstr "魔搭 (ModelScope)"
 
-#: ../../source/getting_started/quickstart.md:95
-#: 561c624337114f9692581b1fc7378cf7
+#: ../../Qwen/source/getting_started/quickstart.md:95
+#: fbf6acee0f534a3d9197221626ce79e4
 msgid "To tackle with downloading issues, we advise you to try [ModelScope](https://github.com/modelscope/modelscope). Before starting, you need to install `modelscope` with `pip`."
 msgstr "为了解决下载问题，我们建议您尝试从 [ModelScope](https://github.com/modelscope/modelscope) 进行下载。开始之前，需要使用 `pip` 安装 `modelscope` 。"
 
-#: ../../source/getting_started/quickstart.md:98
-#: 01cfa31a34814605bf47ce728b5b95c9
+#: ../../Qwen/source/getting_started/quickstart.md:98
+#: e29964895f744793a18058022ad578b8
 msgid "`modelscope` adopts a programmatic interface similar (but not identical) to `transformers`. For basic usage, you can simply change the first line of code above to the following:"
 msgstr "`modelscope` 采用了与 `transformers` 类似（但不完全一致）的编程接口。对于基础使用，仅需将上面代码第一行做如下修改："
 
-#: ../../source/getting_started/quickstart.md:105
-#: eb1ad88353fc4e0cb015ca1d8021168d
+#: ../../Qwen/source/getting_started/quickstart.md:105
+#: 2686cab2a6f54fe7ae813a0aeeb04d14
 msgid "For more information, please refer to [the documentation of `modelscope`](https://www.modelscope.cn/docs)."
 msgstr "欲获取更多信息，请参考 [`modelscope` 文档](https://www.modelscope.cn/docs)。"
 
-#: ../../source/getting_started/quickstart.md:107
-#: e4dc9c95e94643ddba632e800cc852d6
-msgid "vLLM for Deployment"
-msgstr "使用vLLM部署"
+#: ../../Qwen/source/getting_started/quickstart.md:107
+#: ce23fee238f8458599cc4d7e16a2e509
+msgid "vLLM"
+msgstr ""
 
-#: ../../source/getting_started/quickstart.md:109
-#: 4243a18cf40a40f58d6779d9ddb8ca5d
-msgid "To deploy Qwen2.5, we advise you to use vLLM.  vLLM is a fast and easy-to-use framework for LLM inference and serving.  In the following, we demonstrate how to build a OpenAI-API compatible API service with vLLM."
-msgstr "要部署 Qwen2.5 ，我们建议您使用 vLLM 。 vLLM 是一个用于 LLM 推理和服务的快速且易于使用的框架。以下，我们将展示如何使用 vLLM 构建一个与 OpenAI 兼容的 API 服务。"
+#: ../../Qwen/source/getting_started/quickstart.md:109
+#: cf0e10035e954a328775205ff39e9687
+msgid "To deploy Qwen3, we advise you to use vLLM.  vLLM is a fast and easy-to-use framework for LLM inference and serving.  In the following, we demonstrate how to build a OpenAI-API compatible API service with vLLM."
+msgstr "要部署 Qwen3 ，我们建议您使用 vLLM 。 vLLM 是一个用于 LLM 推理和服务的快速且易于使用的框架。以下，我们将展示如何使用 vLLM 构建一个与 OpenAI 兼容的 API 服务。"
 
-#: ../../source/getting_started/quickstart.md:113
-#: 551059fe298e4367a1ec4ccc69778fc0
-msgid "First, make sure you have installed `vllm>=0.4.0`:"
-msgstr "首先，确保你已经安装 `vLLM>=0.4.0` ："
+#: ../../Qwen/source/getting_started/quickstart.md:113
+#: 925651cdb57d478884f151b52834ab3c
+msgid "First, make sure you have installed `vllm>=0.8.5`."
+msgstr "首先，确保你已经安装 `vLLM>=0.8.5` ："
 
-#: ../../source/getting_started/quickstart.md:119
-#: c1fdce2340df41039ffbaaf1d4dc5362
-msgid "Run the following code to build up a vLLM service.  Here we take Qwen2.5-7B-Instruct as an example:"
-msgstr "运行以下代码以构建 vLLM 服务。此处我们以 Qwen2.5-7B-Instruct 为例："
+#: ../../Qwen/source/getting_started/quickstart.md:115
+#: 4cb0c9b830984fafa3f5ee2e74dea6dc
+msgid "Run the following code to build up a vLLM service.  Here we take Qwen3-8B as an example:"
+msgstr "运行以下代码以构建 vLLM 服务。此处我们以 Qwen3-8B 为例："
 
-#: ../../source/getting_started/quickstart.md:126
-#: 0d86d2caa667408c96050bc25b56ae21
-msgid "with `vllm>=0.5.3`, you can also use"
-msgstr "如 `vllm>=0.5.3` ，也可以如下启动："
-
-#: ../../source/getting_started/quickstart.md:132
-#: 533929c7c67b4e909e0c959abe6855f3
+#: ../../Qwen/source/getting_started/quickstart.md:122
+#: c7b58160d10d43a2bb6e63572dbeff46
 msgid "Then, you can use the [create chat interface](https://platform.openai.com/docs/api-reference/chat/completions/create) to communicate with Qwen:"
 msgstr "然后，可以使用 [\"create chat\" interface](https://platform.openai.com/docs/api-reference/chat/completions/create>) 来与 Qwen 进行交流："
 
-#: ../../source/getting_started/quickstart.md:148
-#: 5eb8647b867b442a9e8768490d207398
-msgid "or you can use Python client with `openai` Python package as shown below:"
-msgstr "或者您可以按照下面所示的方式，使用 `openai` Python 包中的 Python 客户端："
+#: ../../Qwen/source/getting_started/quickstart.md
+#: 8f4c1e3692a34137ad9fbf6d7a50969c c685b92ca0ea49c0b3925b24cd43317c
+msgid "curl"
+msgstr ""
 
-#: ../../source/getting_started/quickstart.md:177
-#: c39ee9e6e1f643a29184f50bd2c72cb9
-msgid "For more information, please refer to [the documentation of `vllm`](https://docs.vllm.ai/en/stable/)."
-msgstr "欲获取更多信息，请参考 [`vllm` 文档](https://docs.vllm.ai/en/stable/)。"
+#: ../../Qwen/source/getting_started/quickstart.md
+#: 147be07b6f3141c08f8c707a9f06403c ffc3d81775264a00ad0d7bcb85ff6caf
+msgid "Python"
+msgstr ""
 
-#: ../../source/getting_started/quickstart.md:179
-#: 0c57013a132c4e849c9f2039114eb50d
+#: ../../Qwen/source/getting_started/quickstart.md:142
+#: ../../Qwen/source/getting_started/quickstart.md:192
+#: 9a1026d8cf10458b8a3e717e105e8d5e ed7621681c36472a90b4be9c1fe98355
+msgid "You can use the API client with the `openai` Python SDK as shown below:"
+msgstr "您可以按照下面所示的方式，使用 `openai` Python SDK中的客户端："
+
+#: ../../Qwen/source/getting_started/quickstart.md:169
+#: a5ae1f193b044cb982e5ea4d98b30afb
+msgid "While the soft switch is always available, the hard switch is also availabe in vLLM through the following configuration to the API call. To disable thinking, use"
+msgstr "虽然软开关始终可用，但硬开关也可以通过以下 API 调用配置在 vLLM 中使用。要禁用思考，请使用"
+
+#: ../../Qwen/source/getting_started/quickstart.md:221
+#: a200dc6f700d40f89e22d7745a5f01f0
 msgid "Next Step"
 msgstr "下一步"
 
-#: ../../source/getting_started/quickstart.md:181
-#: 152c9b4de67648f5b570caebb3a05998
-msgid "Now, you can have fun with Qwen2.5 models.  Would love to know more about its usages?  Feel free to check other documents in this documentation."
-msgstr "现在，您可以尽情探索 Qwen2.5 模型的各种用途。若想了解更多，请随时查阅本文档中的其他内容。"
+#: ../../Qwen/source/getting_started/quickstart.md:223
+#: e22d4b679b36490fb4877ae01bfb515a
+msgid "Now, you can have fun with Qwen3 models.  Would love to know more about its usage?  Feel free to check other documents in this documentation."
+msgstr "现在，您可以尽情探索 Qwen3 模型的各种用途。若想了解更多，请随时查阅本文档中的其他内容。"
+
+#~ msgid "Hugging Face Transformers & ModelScope"
+#~ msgstr ""
+
+#~ msgid "Install with `pip`:"
+#~ msgstr "使用 `pip` 安装："
+
+#~ msgid "Install with `conda`:"
+#~ msgstr "使用 `conda` 安装："
+
+#~ msgid "Install from source:"
+#~ msgstr "从源代码安装："
+
+#~ msgid "As you can see, it's just standard usage for casual LMs in `transformers`!"
+#~ msgstr "如您所见，与 `transformers` 的常规使用方式无二！"
+
+#~ msgid "Streaming Generation"
+#~ msgstr "流式生成"
+
+#~ msgid "Streaming mode for model chat is simple with the help of `TextStreamer`.  Below we show you an example of how to use it:"
+#~ msgstr "借助 `TextStreamer` ， 模型生成的流式模式变得非常简单。下面我们将展示一个如何使用它的示例："
+
+#~ msgid "It will print the text to the console or the terminal as being generated."
+#~ msgstr "命令行或终端中将屏显生成的文本。"
+
+#~ msgid "vLLM for Deployment"
+#~ msgstr "使用vLLM部署"
+
+#~ msgid "with `vllm>=0.5.3`, you can also use"
+#~ msgstr "如 `vllm>=0.5.3` ，也可以如下启动："
+
+#~ msgid "For more information, please refer to [the documentation of `vllm`](https://docs.vllm.ai/en/stable/)."
+#~ msgstr "欲获取更多信息，请参考 [`vllm` 文档](https://docs.vllm.ai/en/stable/)。"
 

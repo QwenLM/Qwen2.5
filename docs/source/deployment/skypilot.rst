@@ -1,6 +1,9 @@
 SkyPilot
 ========
 
+.. attention:: 
+    To be updated for Qwen3.
+
 What is SkyPilot
 ----------------
 

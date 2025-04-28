@@ -1,6 +1,9 @@
 OpenLLM
 =======
 
+.. attention:: 
+    To be updated for Qwen3.
+
 OpenLLM allows developers to run Qwen2.5 models of different sizes as OpenAI-compatible APIs with a single command. It features a built-in chat UI, state-of-the-art inference backends, and a simplified workflow for creating enterprise-grade cloud deployment with Qwen2.5. Visit `the OpenLLM repository <https://github.com/bentoml/OpenLLM/>`_ to learn more.
 
 Installation

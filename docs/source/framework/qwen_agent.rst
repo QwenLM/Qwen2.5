@@ -1,6 +1,9 @@
 Qwen-Agent
 ==========
 
+.. attention:: 
+    To be updated for Qwen3.
+
 `Qwen-Agent <https://github.com/QwenLM/Qwen-Agent>`__ is a framework for
 developing LLM applications based on the instruction following, tool
 usage, planning, and memory capabilities of Qwen. It also comes with

@@ -1,6 +1,9 @@
 LlamaIndex
 ==========
 
+.. attention:: 
+    To be updated for Qwen3.
+
 To connect Qwen2.5 with external data, such as documents, web pages, etc., we offer a tutorial on `LlamaIndex <https://www.llamaindex.ai/>`__.
 This guide helps you quickly implement retrieval-augmented generation (RAG) using LlamaIndex with Qwen2.5.
 

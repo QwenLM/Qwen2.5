@@ -1,6 +1,9 @@
 LLaMA-Factory
 ===================================
 
+.. attention:: 
+    To be updated for Qwen3.
+
 Here we provide a script for supervised finetuning Qwen2.5 with
 `LLaMA-Factory <https://github.com/hiyouga/LLaMA-Factory>`__. This
 script for supervised finetuning (SFT) has the following features:

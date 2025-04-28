@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-18 21:18+0800\n"
+"POT-Creation-Date: 2025-04-28 19:42+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -16,160 +16,166 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.15.0\n"
+"Generated-By: Babel 2.17.0\n"
 
-#: ../../source/deployment/tgi.rst:2 cf11ad720200435fb2654949dd047d21
+#: ../../Qwen/source/deployment/tgi.rst:2 2abcc96f9deb4b9187ac9d88fc69e929
 msgid "TGI"
 msgstr ""
 
-#: ../../source/deployment/tgi.rst:4 44247bbb82734a7e9e3101887341421a
+#: ../../Qwen/source/deployment/tgi.rst:5 2d124d7cb95f47388aa48c662932ef9b
+msgid "To be updated for Qwen3."
+msgstr "仍需为Qwen3更新。"
+
+#: ../../Qwen/source/deployment/tgi.rst:7 4e5d299c4fdd46d5aba38c9af5765792
 msgid "Hugging Face's Text Generation Inference (TGI) is a production-ready framework specifically designed for deploying and serving large language models (LLMs) for text generation tasks. It offers a seamless deployment experience, powered by a robust set of features:"
 msgstr "Hugging Face 的 Text Generation Inference (TGI) 是一个专为部署大规模语言模型 (Large Language Models, LLMs) 而设计的生产级框架。TGI提供了流畅的部署体验，并稳定支持如下特性："
 
-#: ../../source/deployment/tgi.rst:6 8c97b1d80a014234ac65a82b22ea5d03
+#: ../../Qwen/source/deployment/tgi.rst:9 ecd4fc11a95140959915d062791ceba1
 msgid "`Speculative Decoding <Speculative Decoding_>`_: Accelerates generation speeds."
 msgstr "`推测解码 (Speculative Decoding) <Speculative Decoding_>`_ ：提升生成速度。"
 
-#: ../../source/deployment/tgi.rst:7 0705827da7a8474da8ac5467dd2f930b
+#: ../../Qwen/source/deployment/tgi.rst:10 84590a56416348bf85b3f296cf57e257
 msgid "`Tensor Parallelism`_: Enables efficient deployment across multiple GPUs."
 msgstr "张量并行 (`Tensor Parallelism`_) ：高效多卡部署。"
 
-#: ../../source/deployment/tgi.rst:8 5bafa600e8e544dfa83c545610f49ad9
+#: ../../Qwen/source/deployment/tgi.rst:11 a996d6ecd7b94c5cb9752d370f29a9b1
 msgid "`Token Streaming`_: Allows for the continuous generation of text."
 msgstr "流式生成 (`Token Streaming`_) ：支持持续性生成文本。"
 
-#: ../../source/deployment/tgi.rst:9 dd2d06d1000a4e748c6fe5f36126c8a9
+#: ../../Qwen/source/deployment/tgi.rst:12 8f591c045ba34f4581bb19652db9f9b3
 msgid "Versatile Device Support: Works seamlessly with `AMD`_, `Gaudi`_ and `AWS Inferentia`_."
 msgstr "灵活的硬件支持：与 `AMD`_ ， `Gaudi`_ 和 `AWS Inferentia`_ 无缝衔接。"
 
-#: ../../source/deployment/tgi.rst:18 b65ab63af9f3443fb9e430c5868fdea6
+#: ../../Qwen/source/deployment/tgi.rst:21 5e8a98b91fc146e0b581422faa683a18
 msgid "Installation"
 msgstr "安装"
 
-#: ../../source/deployment/tgi.rst:20 e42f09d2de8a4a57a491206566dad3ee
+#: ../../Qwen/source/deployment/tgi.rst:23 684ef25bfb0e460999d6dcccce41b85f
 msgid "The easiest way to use TGI is via the TGI docker image. In this guide, we show how to use TGI with docker."
 msgstr "通过 TGI docker 镜像使用 TGI 轻而易举。本文将主要介绍 TGI 的 docker 用法。"
 
-#: ../../source/deployment/tgi.rst:22 4353dc36f3e84c75b4b6df66fa80d5d2
+#: ../../Qwen/source/deployment/tgi.rst:25 c563fa3eccb04d00a477c1d2e8b15c38
 msgid "It's possible to run it locally via Conda or build locally. Please refer to `Installation Guide <https://huggingface.co/docs/text-generation-inference/installation>`_  and `CLI tool <https://huggingface.co/docs/text-generation-inference/en/basic_tutorials/using_cli>`_ for detailed instructions."
 msgstr "也可通过 Conda 实机安装或搭建服务。请参考 `Installation Guide <https://huggingface.co/docs/text-generation-inference/installation>`_ 与 `CLI tool <https://huggingface.co/docs/text-generation-inference/en/basic_tutorials/using_cli>`_ 以了解详细说明。"
 
-#: ../../source/deployment/tgi.rst:25 d02ce3c98ad74e228ea99ad08464106f
+#: ../../Qwen/source/deployment/tgi.rst:28 b55fc58ff4cb472abca08296409c7837
 msgid "Deploy Qwen2.5 with TGI"
 msgstr "通过 TGI 部署 Qwen2.5"
 
-#: ../../source/deployment/tgi.rst:27 40238d91f35749818fd0e4919a8bb5f3
+#: ../../Qwen/source/deployment/tgi.rst:30 586a8425ec5d413592fd7daf579c7e87
 msgid "**Find a Qwen2.5 Model:** Choose a model from `the Qwen2.5 collection <https://huggingface.co/collections/Qwen/qwen25-66e81a666513e518adb90d9e>`_."
 msgstr "**选定 Qwen2.5 模型：** 从 `the Qwen2.5 collection <https://huggingface.co/collections/Qwen/qwen25-66e81a666513e518adb90d9e>`_ 中挑选模型。"
 
-#: ../../source/deployment/tgi.rst:28 9ab92c3fdde14c0bb552d814ebbf693f
+#: ../../Qwen/source/deployment/tgi.rst:31 50fcab8da35941eca308786979dbaf38
 msgid "**Deployment Command:** Run the following command in your terminal, replacing ``model`` with your chosen Qwen2.5 model ID and ``volume`` with the path to your local data directory:"
 msgstr "**部署TGI服务：** 在终端中运行以下命令，注意替换 ``model`` 为选定的 Qwen2.5 模型 ID 、 ``volume`` 为本地的数据路径： "
 
-#: ../../source/deployment/tgi.rst:39 1179b104c4394f65a2e5e0a6a1b151df
+#: ../../Qwen/source/deployment/tgi.rst:42 2a800533a7d84bdeab1da0976b0cab53
 msgid "Using TGI API"
 msgstr "使用 TGI API"
 
-#: ../../source/deployment/tgi.rst:41 07b70b5341374eb882ecaa51dfc78ad9
+#: ../../Qwen/source/deployment/tgi.rst:44 f05d1ec08140452782d0659543fad7d1
 msgid "Once deployed, the model will be available on the mapped port (8080)."
 msgstr "一旦成功部署，API 将于选定的映射端口 (8080) 提供服务。"
 
-#: ../../source/deployment/tgi.rst:43 fb26135427a04ed99ec63637f9392edd
+#: ../../Qwen/source/deployment/tgi.rst:46 f265dc1522b049c98ba31fd5d255c50f
 msgid "TGI comes with a handy API for streaming response:"
 msgstr "TGI 提供了简单直接的 API 支持流式生成："
 
-#: ../../source/deployment/tgi.rst:51 302d55914bb84632ad3482081117e431
+#: ../../Qwen/source/deployment/tgi.rst:54 e9cc4c0571b74bd08b2a59347503e653
 msgid "It's also available on OpenAI style API:"
 msgstr "也可使用 OpenAI 风格的 API 使用 TGI ："
 
-#: ../../source/deployment/tgi.rst:70 bdf1e604993c4ac388e3be1fb6abefbf
+#: ../../Qwen/source/deployment/tgi.rst:73 5dc7e9c74fc04483ba8e5dcdd7052020
 msgid "The model field in the JSON is not used by TGI, you can put anything."
 msgstr "JSON 中的 model 字段不会被 TGI 识别，您可传入任意值。"
 
-#: ../../source/deployment/tgi.rst:72 b52ca15718a54348b022135e550d6f1e
+#: ../../Qwen/source/deployment/tgi.rst:75 d60f837152014cda8baebc90d65d1cc0
+#, python-format
 msgid "Refer to the `TGI Swagger UI <https://huggingface.github.io/text-generation-inference/#/Text%20Generation%20Inference/completions>`_ for a complete API reference."
 msgstr "完整 API 文档，请查阅 `TGI Swagger UI <https://huggingface.github.io/text-generation-inference/#/Text%20Generation%20Inference/completions>`_ 。"
 
-#: ../../source/deployment/tgi.rst:74 380ca067892f4025ad5ff76c7ac89bcf
+#: ../../Qwen/source/deployment/tgi.rst:77 b59564031e5548088aef828f9753e337
 msgid "You can also use Python API:"
 msgstr "你也可以使用 Python 访问 API ："
 
-#: ../../source/deployment/tgi.rst:103 40e8976a47834c4c8b3270e201b22731
+#: ../../Qwen/source/deployment/tgi.rst:106 62646cecb024479ebfeca5f3063e7322
 msgid "Quantization for Performance"
 msgstr "量化"
 
-#: ../../source/deployment/tgi.rst:105 8ed65f337eb14d0197071ea6d4a62fe7
+#: ../../Qwen/source/deployment/tgi.rst:108 4a8d39bf37be4820afb230f9a977b431
 msgid "Data-dependent quantization (GPTQ and AWQ)"
 msgstr "依赖数据的量化方案（ GPTQ 与 AWQ ）"
 
-#: ../../source/deployment/tgi.rst:107 74f87495aa2744e9a420aa1cd35e3fb6
+#: ../../Qwen/source/deployment/tgi.rst:110 ef2b18f47e4f4f7ebb017be628cb0be9
 msgid "Both GPTQ and AWQ models are data-dependent. The official quantized models can be found from `the Qwen2.5 collection`_ and you can also quantize models with your own dataset to make it perform better on your use case."
 msgstr "GPTQ 与 AWQ 均依赖数据进行量化。我们提供了预先量化好的模型，请于 `the Qwen2.5 collection`_ 查找。你也可以使用自己的数据集自行量化，以在你的场景中取得更好效果。"
 
-#: ../../source/deployment/tgi.rst:109 0c6f46f9f1e645b2bbf1c36183e31332
+#: ../../Qwen/source/deployment/tgi.rst:112 53d94278a2e3409abb9980ebc7c96c24
 msgid "The following shows the command to start TGI with Qwen2.5-7B-Instruct-GPTQ-Int4:"
 msgstr "以下是通过 TGI 部署 Qwen2.5-7B-Instruct-GPTQ-Int4 的指令："
 
-#: ../../source/deployment/tgi.rst:119 fc1b55c9f8ed449abe24d194727e6154
+#: ../../Qwen/source/deployment/tgi.rst:122 68ff8a07d0eb40cfa67d79e01adea070
 msgid "If the model is quantized with AWQ, e.g. Qwen/Qwen2.5-7B-Instruct-AWQ, please use ``--quantize awq``."
 msgstr "如果模型是 AWQ 量化的，如 Qwen/Qwen2.5-7B-Instruct-AWQ ，请使用 ``--quantize awq`` 。"
 
-#: ../../source/deployment/tgi.rst:121 f8a645cfe482411e9d70c25672991ca8
+#: ../../Qwen/source/deployment/tgi.rst:124 b4c3b82b1f2a43a8a02383fd0afbda5f
 msgid "Data-agnostic quantization"
 msgstr "不依赖数据的量化方案"
 
-#: ../../source/deployment/tgi.rst:123 145e840ec2bb41e0a08bd8071decfae1
+#: ../../Qwen/source/deployment/tgi.rst:126 7a6b89c94b72407482b96790f5bbd272
 msgid "EETQ on the other side is not data dependent and can be used with any model. Note that we're passing in the original model (instead of a quantized model) with the ``--quantize eetq`` flag."
 msgstr "EETQ 是一种不依赖数据的量化方案，可直接用于任意模型。请注意，我们需要传入原始模型，并使用 ``--quantize eetq`` 标志。"
 
-#: ../../source/deployment/tgi.rst:135 5c4796ae64a54c3da2aee748cfbeb696
+#: ../../Qwen/source/deployment/tgi.rst:138 763166da65924887b3bba99ea4d2baab
 msgid "Multi-Accelerators Deployment"
 msgstr "多卡部署"
 
-#: ../../source/deployment/tgi.rst:137 ccac03ce9a414921907bab67cb571655
+#: ../../Qwen/source/deployment/tgi.rst:140 ddcfcff947894f168c7945ae9c42a579
 msgid "Use the ``--num-shard`` flag to specify the number of accelerators. Please also use ``--shm-size 1g`` to enable shared memory for optimal NCCL performance (`reference <https://github.com/huggingface/text-generation-inference?tab=readme-ov-file#a-note-on-shared-memory-shm>`__):"
 msgstr "使用 ``--num-shard`` 指定卡书数量。 请务必传入 ``--shm-size 1g`` 让 NCCL 发挥最好性能 (`说明 <https://github.com/huggingface/text-generation-inference?tab=readme-ov-file#a-note-on-shared-memory-shm>`__) ："
 
-#: ../../source/deployment/tgi.rst:148 ab300f930fcd476fb3459b41b335d84c
+#: ../../Qwen/source/deployment/tgi.rst:151 520c46fb404c4ec9bf89280e4a71f1e8
 msgid "Speculative Decoding"
 msgstr "推测性解码 (Speculative Decoding)"
 
-#: ../../source/deployment/tgi.rst:150 6039311ce98548b8baba968516b8d0ee
+#: ../../Qwen/source/deployment/tgi.rst:153 74c6b65f76b74d56ad109af9da11f66e
 msgid "Speculative decoding can reduce the time per token by speculating on the next token. Use the ``--speculative-decoding`` flag, setting the value to the number of tokens to speculate on (default: 0 for no speculation):"
 msgstr "推测性解码 (Speculative Decoding) 通过预先推测下一 token 来节约每 token 需要的时间。使用 ``--speculative-decoding`` 设定预先推测 token 的数量 （默认为0，表示不预先推测）："
 
-#: ../../source/deployment/tgi.rst:161 a8b4bb390aff40a99e9c289fd91cfc2b
+#: ../../Qwen/source/deployment/tgi.rst:164 dee05ee0fb1a4f2da42b250192d943f5
 msgid "The overall performance of speculative decoding highly depends on the type of task. It works best for code or highly repetitive text."
 msgstr "推测性解码的加速效果依赖于任务类型，对于代码或重复性较高的文本生成任务，提速更明显。"
 
-#: ../../source/deployment/tgi.rst:163 a2a324c25c6b4f04b3b729568fabe6ea
+#: ../../Qwen/source/deployment/tgi.rst:166 731f300bc1174589901dd5feb26e8b2f
 msgid "More context on speculative decoding can be found `here <https://huggingface.co/docs/text-generation-inference/conceptual/speculation>`__."
 msgstr "更多说明可查阅 `此文档 <https://huggingface.co/docs/text-generation-inference/conceptual/speculation>`__ 。"
 
-#: ../../source/deployment/tgi.rst:167 44a6f76ed9fd41ba811f49a098f0c22e
+#: ../../Qwen/source/deployment/tgi.rst:170 65a7d5553dd145398f9705c1ee6c28f0
 msgid "Zero-Code Deployment with HF Inference Endpoints"
 msgstr "使用 HF Inference Endpoints 零代码部署"
 
-#: ../../source/deployment/tgi.rst:169 472e9b36b1cc4777b7ab99ece5216d53
+#: ../../Qwen/source/deployment/tgi.rst:172 721c3a7578f846ae8e21e595923e17e7
 msgid "For effortless deployment, leverage Hugging Face Inference Endpoints:"
 msgstr "使用 Hugging Face Inference Endpoints 不费吹灰之力："
 
-#: ../../source/deployment/tgi.rst:171 0f5ae298efce4e3fad7547f2afe01f41
+#: ../../Qwen/source/deployment/tgi.rst:174 7741607488d94a9f8be2ffcb6a5322fb
 msgid "**GUI interface:** `<https://huggingface.co/inference-endpoints/dedicated>`__"
 msgstr ""
 
-#: ../../source/deployment/tgi.rst:172 1cc6cf2772cc43d0be3b20be753816f0
+#: ../../Qwen/source/deployment/tgi.rst:175 02ff4520e66f4a42828483da7d25445f
 msgid "**Coding interface:** `<https://huggingface.co/blog/tgi-messages-api>`__"
 msgstr ""
 
-#: ../../source/deployment/tgi.rst:174 d4c5656d9f41417c9eec0a3e6c0686d2
+#: ../../Qwen/source/deployment/tgi.rst:177 d35f9dd4bc96400cb6c7584012d2df49
 msgid "Once deployed, the endpoint can be used as usual."
 msgstr "一旦部署成功，服务使用与本地无异。"
 
-#: ../../source/deployment/tgi.rst:178 40704b165c5b4c34a896fcef01d7addd
+#: ../../Qwen/source/deployment/tgi.rst:181 61c1b825bbf24be2aaaeb99de3f0660e
 msgid "Common Issues"
 msgstr "常见问题"
 
-#: ../../source/deployment/tgi.rst:180 13f572fbd6a541839d3cf4f9f12cc656
+#: ../../Qwen/source/deployment/tgi.rst:183 b55a2d286fc24dbe92b79ab5c010c7af
 msgid "Qwen2.5 supports long context lengths, so carefully choose the values for ``--max-batch-prefill-tokens``, ``--max-total-tokens``, and ``--max-input-tokens`` to avoid potential out-of-memory (OOM) issues. If an OOM occurs, you'll receive an error message upon startup. The following shows an example to modify those parameters:"
 msgstr "Qwen2.5 支持长上下文，谨慎设定 ``--max-batch-prefill-tokens`` ， ``--max-total-tokens`` 和 ``--max-input-tokens`` 以避免 out-of-memory (OOM) 。如 OOM ，你将在启动 TGI 时收到错误提示。以下为修改这些参数的示例："
+

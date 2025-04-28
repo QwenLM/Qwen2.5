@@ -1,5 +1,9 @@
 # AWQ
 
+:::{attention}
+To be updated for Qwen3.
+:::
+
 For quantized models, one of our recommendations is the usage of [AWQ](https://arxiv.org/abs/2306.00978) with [AutoAWQ](https://github.com/casper-hansen/AutoAWQ). 
 
 **AWQ** refers to Activation-aware Weight Quantization, a hardware-friendly approach for LLM low-bit weight-only quantization. 
