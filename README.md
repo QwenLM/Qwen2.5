@@ -160,9 +160,10 @@ For additional details, please visit [ollama.ai](https://ollama.com/).
 
 Qwen3 has already been supported by [lmstudio.ai](https://lmstudio.ai/). You can directly use LMStudio with our GGUF files.
 
-<!-- ### MLX-LM
+### MLX-LM
 
-If you are running on Apple Silicon, we have also provided checkpoints compatible with [`mlx-lm`](https://github.com/ml-explore/mlx-examples/blob/main/llms/README.md). Look for models ending with MLX on HuggingFace Hub, like [Qwen2.5-7B-Instruct-MLX](https://huggingface.co/Qwen/Qwen2.5-7B-Instruct-MLX). -->
+If you are running on Apple Silicon, [`mlx-lm`](https://github.com/ml-explore/mlx-lm) also supports Qwen3 (`mlx-lm>=0.24.0`). 
+Look for models ending with MLX on HuggingFace Hub.
 
 
 <!-- ### OpenVINO
