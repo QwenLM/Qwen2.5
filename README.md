@@ -37,7 +37,7 @@ The highlights from Qwen3 include:
 - **Expertise in agent capabilities**, enabling precise integration with external tools in both thinking and unthinking modes and achieving leading performance among open-source models in complex agent-based tasks.
 - **Support of 100+ languages and dialects** with strong capabilities for **multilingual instruction following** and **translation**.
 
-> ![IMPORTANT]
+> [!IMPORTANT]
 > Qwen3 models adopt a different naming scheme.
 >
 > The post-trained models do not use the "-Instruct" suffix any more. For example, Qwen3-32B is the newer version of Qwen2.5-32B-Instruct.
@@ -136,6 +136,11 @@ A simple web front end will be at `http://localhost:8080` and an OpenAI-compatib
 
 For additional guides, please refer to [our documentation](https://qwen.readthedocs.io/en/latest/run_locally/llama.cpp.html).
 
+> [!TIP]
+> llama.cpp adopts "rotating context management" and inifinite generation is made possible by evicting eariler tokens.
+> It could configuared by parameters and the commands above effectively disable it.
+> For more details, please refer to [our documentation](https://qwen.readthedocs.io/en/latest/run_locally/llama.cpp.html#llama-cli).
+
 ### Ollama
 
 After [installing ollama](https://ollama.com/), you can initiate the ollama service with the following command (Ollama v0.6.6 or higher is required):
@@ -147,6 +152,7 @@ ollama serve
 To pull a model checkpoint and run the model, use the `ollama run` command. You can specify a model size by adding a suffix to `qwen3`, such as `:8b` or `:30b-a3b`:
 ```shell
 ollama run qwen3:8b
+# Setting parameters, type "/set parameter num_ctx 40960" and "/set parameter num_predict 32768"
 # To exit, type "/bye" and press ENTER
 ```
 
@@ -155,6 +161,12 @@ Please note that you need to (1) keep `ollama serve` running while using the API
 The API is at `http://localhost:11434/v1/` by default.
 
 For additional details, please visit [ollama.ai](https://ollama.com/).
+
+> [!TIP]
+> Ollama adopts the same "rotating context management" with llama.cpp.
+> However, its default settings (`num_ctx` 2048 and `num_predict` -1), suggesting infinite generation with a 2048-token context,
+> could lead to trouble for Qwen3 models.
+> We recommend setting `num_ctx` and `num_predict` properly.
 
 ### LMStudio
 
