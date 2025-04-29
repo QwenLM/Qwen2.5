@@ -3,6 +3,6 @@ contact_links:
     url: https://github.com/QwenLM/QwQ/issues
     about: For issues related to QwQ, please report to the QwQ repository.
   - name: Question
-    url: https://github.com/QwenLM/Qwen2.5/discussions
+    url: https://github.com/QwenLM/Qwen3/discussions
     about: Please ask and answer questions in discussions. Issues are mainly for Bugs and Features.
     
