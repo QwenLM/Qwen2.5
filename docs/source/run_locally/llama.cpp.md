@@ -11,7 +11,7 @@ llama.cpp is essentially a different ecosystem with a different design philosoph
   - Apple Silicon via Metal and Accelerate (CPU and GPU)
   - NVIDIA GPU (via CUDA), AMD GPU (via hipBLAS), Intel GPU (via SYCL), Ascend NPU (via CANN), and Moore Threads GPU (via MUSA)
   - Vulkan backend for GPU
-- Various quantization scheme for faster inference and reduced memory footprint
+- Various quantization schemes for faster inference and reduced memory footprint
 - CPU+GPU hybrid inference to partially accelerate models larger than the total VRAM capacity
 
 It's like the Python frameworks `torch`+`transformers` or `torch`+`vllm` but in C++.
@@ -157,11 +157,11 @@ After downloading the `.zip` file, unzip them into a directory and open a termin
 
 GGUF[^GGUF] is a file format for storing information needed to run a model, including but not limited to model weights, model hyperparameters, default generation configuration, and tokenizer.
 
-You can use the official Qwen GGUFs from our HuggingFace Hub or prepare your own GGUF file.
+You can use the official Qwen GGUFs from our Hugging Face Hub or prepare your own GGUF file.
 
 ### Using the Official Qwen3 GGUFs
 
-We provide a series of GGUF models in our HuggingFace organization, and to search for what you need you can search the repo names with `-GGUF`. 
+We provide a series of GGUF models in our Hugging Face organization, and to search for what you need you can search the repo names with `-GGUF`. 
 
 Download the GGUF model that you want with `huggingface-cli` (you need to install it first with `pip install huggingface_hub`):
 ```bash
@@ -177,7 +177,7 @@ This will download the Qwen3-8B model in GGUF format quantized with the scheme Q
 
 ### Preparing Your Own GGUF
 
-Model files from HuggingFace Hub can be converted to GGUF, using the `convert-hf-to-gguf.py` Python script.
+Model files from Hugging Face Hub can be converted to GGUF, using the `convert-hf-to-gguf.py` Python script.
 It does require you to have a working Python environment with at least `transformers` installed.
 
 Obtain the source file if you haven't already:
@@ -203,7 +203,7 @@ You can refer to that document for more information.
 :::{note}
 Regarding switching between thinking and non-thinking modes,
 while the soft switch is always available, the hard switch implemented in the chat template is not exposed in llama.cpp.
-The quick workaround is to pass a custom chat template equivalennt to always `enable_thinking=False` via `--chat-template-file`.
+The quick workaround is to pass [a custom chat template](../../source/assets/qwen3_nonthinking.jinja) equivalent to always `enable_thinking=False` via `--chat-template-file`.
 :::
 
 
@@ -216,14 +216,14 @@ Simple run the following command where you place the llama.cpp programs:
 ```
 
 Here are some explanations to the above command:
--   **Model**: llama-cli supports using model files from local path, remote url, or HuggingFace hub.
-    -   `-hf Qwen/Qwen3-8B-GGUF:Q8_0` in the above indicates we are using the model file from HuggingFace hub
+-   **Model**: llama-cli supports using model files from local path, remote URL, or Hugging Face hub.
+    -   `-hf Qwen/Qwen3-8B-GGUF:Q8_0` in the above indicates we are using the model file from Hugging Face hub
     -   To use a local path, pass `-m qwen3-8b-q8_0.gguf` instead
-    -   To use a remote url, pass `-mu https://hf.co/Qwen/Qwen3-8B-GGUF/resolve/main/qwen3-8b-Q8_0.gguf?download=true` instead
+    -   To use a remote URL, pass `-mu https://hf.co/Qwen/Qwen3-8B-GGUF/resolve/main/qwen3-8b-Q8_0.gguf?download=true` instead
 
 -   **Speed Optimization**: 
     - CPU: llama-cli by default will use CPU and you can change `-t` to specify how many threads you would like it to use, e.g., `-t 8` means using 8 threads.
-    - GPU: If the programs are bulit with GPU support, you can use `-ngl`, which allows offloading some layers to the GPU for computation.
+    - GPU: If the programs are built with GPU support, you can use `-ngl`, which allows offloading some layers to the GPU for computation.
     If there are multiple GPUs, it will offload to all the GPUs.
     You can use `-dev` to control the devices used and `-sm` to control which kinds of parallelism is used.
     For example, `-ngl 99 -dev cuda0,cuda1 -sm row` means offload all layers to GPU 0 and GPU1 using the split mode row. 
@@ -237,10 +237,10 @@ Here are some explanations to the above command:
     The `-c` controls the maximum context length (default 4096, 0 means loaded from model), and `-n` controls the maximum generation length each time (default -1 means infinite until ending, -2 means until context full).
     When the context is full but the generation doesn't end, the first `--keep` tokens (default 0, -1 means all) from the initial prompt is kept, and the first half of the rest is discarded.
     Then, the model continues to generate based on the new context tokens.
-    You can set `--no-context-shift` to prevent this rotating behaviour and the generation will stop once `-c` is reached.
+    You can set `--no-context-shift` to prevent this rotating behavior and the generation will stop once `-c` is reached.
     
     llama.cpp supports YaRN, which can be enabled by `-c 131072 --rope-scaling yarn --rope-scale 4 --yarn-orig-ctx 32768`.
--   **Chat**: `--jinja` indicates using the chat template embedded in the GGUF which is prefered and `--color` indicates coloring the texts so that user input and model output can be better differentiated.
+-   **Chat**: `--jinja` indicates using the chat template embedded in the GGUF which is preferred and `--color` indicates coloring the texts so that user input and model output can be better differentiated.
     If there is a chat template, like in Qwen3 models, llama-cli will enter chat mode automatically.
     To stop generation or exit press "Ctrl+C".
     You can use `-sys` to add a system prompt.
@@ -257,8 +257,8 @@ In addition, it supports thinking content parsing and tool call parsing.
 ./llama-server -hf Qwen/Qwen3-8B-GGUF:Q8_0 --jinja --reasoning-format deepseek -ngl 99 -fa -sm row --temp 0.6 --top-k 20 --top-p 0.95 --min-p 0 -c 40960 -n 32768 --no-context-shift
 ```
 
-By default the server will listen at `http://localhost:8080` which can be changed by passing `--host` and `--port`.
-The web front end can be assess from a browser at `http://localhost:8080/`.
+By default, the server will listen at `http://localhost:8080` which can be changed by passing `--host` and `--port`.
+The web front end can be assessed from a browser at `http://localhost:8080/`.
 The OpenAI compatible API is at `http://localhost:8080/v1/`.
 
 

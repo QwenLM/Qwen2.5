@@ -15,7 +15,7 @@ Developers can use Transformers to train models on their data, build inference a
 You can use the `pipeline()` interface or the `generate()` interface to generate texts with Qwen3 in transformers.
 
 In general, the pipeline interface requires less boilerplate code, which is shown here.
-The following shows a basic example using pipeline for mult-iturn conversations:
+The following shows a basic example using pipeline for multi-turn conversations:
 
 ```python
 from transformers import pipeline
@@ -30,7 +30,7 @@ generator = pipeline(
 )
 
 messages = [
-    {"role": "user", "content": "Give me a short introduction to large language model."},
+    {"role": "user", "content": "Give me a short introduction to large language models."},
 ]
 messages = generator(messages, max_new_tokens=32768)[0]{"generated_text"}
 # print(messages[-1]["content"])
@@ -53,7 +53,7 @@ There are some important parameters creating the pipeline:
     modelscope download --local_dir ./Qwen3-8B Qwen/Qwen3-8B
     ```
 -   **Device Placement**: `device_map="auto"` will load the model parameters to multiple devices automatically, if available. 
-    It relies on the `accelerate` pacakge.
+    It relies on the `accelerate` package.
     If you would like to use a single device, you can pass `device` instead of device_map.
     `device=-1` or `device="cpu"` indicates using CPU, `device="cuda"` indicates using the current GPU, and `device="cuda:1"` or `device=1` indicates using the second GPU.
     Do not use `device_map` and `device` at the same time!
@@ -63,8 +63,8 @@ There are some important parameters creating the pipeline:
     If you don't pass `torch_dtype="auto"`, the default data type is `float32`, which will take double the memory and be slower in computation.
 
 
-Calls to the text generation pipleine will use the generation configuration from the model file, e.g., `generation_config.json`. 
-Those configuration could be overridden by passing arguments directly to the call.
+Calls to the text generation pipeline will use the generation configuration from the model file, e.g., `generation_config.json`. 
+This configuration could be overridden by passing arguments directly to the call.
 The default is equivalent to
 ```python
 messages = generator(messages, do_sample=True, temperature=0.6, top_k=2, top_p=0.95, eos_token_id=[151645, 151643])[0]{"generated_text"}
@@ -79,11 +79,11 @@ It is also true for the `pipeline()` interface.
 To switch between thinking and non-thinking mode, two methods can be used
 -   Append a final assistant message, containing only `<think>\n\n</think>\n\n`. 
     This method is stateless, meaning it will only work for that single turn. 
-    It will also strictly prevented the model from generating thinking content.
+    It will also strictly prevent the model from generating thinking content.
     For example, 
     ```python
     messages = [
-        {"role": "user", "content": "Give me a short introduction to large language model."},
+        {"role": "user", "content": "Give me a short introduction to large language models."},
         {"role": "assistant", "content": "<think>\n\n</think>\n\n"},
     ]
     messages = generator(messages, max_new_tokens=32768)[0]{"generated_text"}
@@ -96,10 +96,10 @@ To switch between thinking and non-thinking mode, two methods can be used
     
 -   Add to the user (or the system) message, `/no_think` to disable thinking and `/think` to enable thinking.
     This method is stateful, meaning the model will follow the most recent instruction in multi-turn conversations.
-    You can also use instructions in natural language.
+
     ```python
     messages = [
-        {"role": "user", "content": "Give me a short introduction to large language model./no_think"},
+        {"role": "user", "content": "Give me a short introduction to large language models./no_think"},
     ]
     messages = generator(messages, max_new_tokens=32768)[0]{"generated_text"}
     # print(messages[-1]["content"])
@@ -158,12 +158,11 @@ For better performance, make sure `triton` and a CUDA compiler compatible with t
 :::
 
 :::{important}
-As of 4.51.0, there are issues with Tranformers when running those checkpoints **across GPUs**.
+As of 4.51.0, there are issues with Transformers when running those checkpoints **across GPUs**.
 The following method could be used to work around those issues:
-- Set the environmnt variable `CUDA_LAUNCH_BLOCKING=1` before running the script; or
+- Set the environment variable `CUDA_LAUNCH_BLOCKING=1` before running the script; or
 - Uncomment [this line](https://github.com/huggingface/transformers/blob/0720e206c6ba28887e4d60ef60a6a089f6c1cc76/src/transformers/integrations/finegrained_fp8.py#L340) in your local installation of `transformers`.
 :::
-
 
 
 ## Enabling Long Context
@@ -174,12 +173,12 @@ We have validated the performance with YaRN.
 
 Transformers supports YaRN, which can be enabled either by modifying the model files or overriding the default arguments when loading the model.
 
--   Modifying the model files: In the config.json file, add the rope_scaling fields:
+-   Modifying the model files: In the `config.json` file, add the rope_scaling fields:
     ```json
     {
         ...,
         "rope_scaling": {
-            "type": "yarn",
+            "rope_type": "yarn",
             "factor": 4.0,
             "original_max_position_embeddings": 32768
         }
@@ -198,7 +197,7 @@ Transformers supports YaRN, which can be enabled either by modifying the model f
         device_map="auto",
         model_kwargs={
             "rope_scaling": {
-                "type": "yarn",
+                "rope_type": "yarn",
                 "factor": 4.0,
                 "original_max_position_embeddings": 32768
             }
@@ -285,7 +284,7 @@ generator = pipeline(
 generator.tokenizer.padding_side="left"
 
 batch = [
-    [{"role": "user", "content": "Give me a short introduction to large language model."}],
+    [{"role": "user", "content": "Give me a short introduction to large language models."}],
     [{"role": "user", "content": "Give me a detailed introduction to large language model."}],
 ]
 
@@ -296,5 +295,5 @@ batch = [result[0]["generated_text"] for result in results]
 ## FAQ
 
 You may find distributed inference with Transformers is not as fast as you would imagine.
-Transformers with `device_map="auto"` does not apply tensor parallelism and it only uses one GPU at a time.
+Transformers with `device_map="auto"` does not apply tensor parallelism, and it only uses one GPU at a time.
 For Transformers with tensor parallelism, please refer to [its documentation](https://huggingface.co/docs/transformers/v4.51.3/en/perf_infer_gpu_multi).

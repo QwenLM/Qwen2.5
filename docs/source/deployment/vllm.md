@@ -9,7 +9,7 @@ To learn more about vLLM, please refer to the [paper](https://arxiv.org/abs/2309
 By default, you can install `vllm` with pip in a clean environment:
 
 ```shell
-pip install "vllm>=0.8.4"
+pip install "vllm>=0.8.5"
 ```
 
 Please note that the prebuilt `vllm` has strict dependencies on `torch` and its CUDA versions.
@@ -25,13 +25,13 @@ Run the command as shown below:
 vllm serve Qwen/Qwen3-8B
 ```
 
-By default, if the model does not point to a valid local directory, it will download the model files from the HuggingFace Hub.
+By default, if the model does not point to a valid local directory, it will download the model files from the Hugging Face Hub.
 To download model from ModelScope, set the following before running the above command:
 ```shell
 export VLLM_USE_MODELSCOPE=true
 ```
 
-For distrbiuted inference with tensor parallelism, it is as simple as
+For distributed inference with tensor parallelism, it is as simple as
 ```shell
 vllm server Qwen/Qwen3-8B --tensor-parallel-size 4
 ```
@@ -99,9 +99,9 @@ and always pass the sampling parameters to the API.
 ### Thinking & Non-Thinking Modes
 
 Qwen3 models will think before respond.
-This behaviour could be controled by either the hard switch, which could disable thinking completely, or the soft switch, where the model follows the instruction of the user on whether or not it should think.
+This behavior could be controlled by either the hard switch, which could disable thinking completely, or the soft switch, where the model follows the instruction of the user on whether it should think.
 
-The hard switch is availabe in vLLM through the following configuration to the API call.
+The hard switch is available in vLLM through the following configuration to the API call.
 To disable thinking, use
 
 ::::{tab-set}
@@ -145,6 +145,7 @@ chat_response = client.chat.completions.create(
     temperature=0.7,
     top_p=0.8,
     top_k=20,
+    max_tokens=8192,
     presence_penalty=1.5,
     extra_body={"chat_template_kwargs": {"enable_thinking": False}},
 )
@@ -152,9 +153,23 @@ print("Chat response:", chat_response)
 ```
 ::::
 
+
+:::{tip}
+To completely disable thinking, you could use [a custom chat template](../../source/assets/qwen3_nonthinking.jinja) when starting the model:
+
+```shell
+vllm serve Qwen/Qwen3-8B --chat-template ./qwen3_nonthinking.jinja
+```
+
+The chat template prevents the model from generating thinking content, even if the user instructs the model to do so with `/think`.
+:::
+
+
 :::{tip}
 It is recommended to set sampling parameters differently for thinking and non-thinking modes.
 :::
+
+
 
 ### Parsing Thinking Content
 
@@ -169,6 +184,11 @@ The response message will have a field named `reasoning_content` in addition to 
 Please note that this feature is not OpenAI API compatible.
 :::
 
+:::{important}
+As of vLLM 0.8.5, `enable_thinking=False` is not compatible with this feature.
+If you need to pass `enable_thinking=False` to the API, you should disable parsing thinking content.
+:::
+
 ### Parsing Tool Calls
 
 vLLM supports parsing the tool calling content from the model generation into structured messages:
@@ -179,7 +199,7 @@ vllm serve Qwen/Qwen3-8B --enable-auto-tool-choice --tool-call-parser hermes
 For more information, please refer to [our guide on Function Calling](../framework/function_call.md#vllm).
 
 :::{note}
-As of vLLM 0.5.4, it is not supported to parse the thinking content and the tool calling from the model generation at the same time.
+As of vLLM 0.8.5, it is not supported to parse the thinking content and the tool calling from the model generation at the same time.
 :::
 
 ### Structured/JSON Output
@@ -208,40 +228,28 @@ FP8 computation is supported on NVIDIA GPUs with compute capability > 8.9, that 
 FP8 models will run on compute capability > 8.0 (Ampere) as weight-only W8A16, utilizing FP8 Marlin.
 :::
 
-:::{important}
-As of vLLM 0.5.4, there are currently compatibility issues with `vllm` with the Qwen3 FP8 checkpoints. 
-For a quick fix, you should make the following changes to the file `vllm/vllm/model_executor/layers/linear.py`:
-```python
-# these changes are in QKVParallelLinear.weight_loader_v2() of vllm/vllm/model_executor/layers/linear.py
-...
-shard_offset = self._get_shard_offset_mapping(loaded_shard_id)
-shard_size = self._get_shard_size_mapping(loaded_shard_id)
-# add the following code
-if isinstance(param, BlockQuantScaleParameter):
-    weight_block_size = self.quant_method.quant_config.weight_block_size
-    block_n, _ = weight_block_size[0], weight_block_size[1]
-    shard_offset = (shard_offset + block_n - 1) // block_n
-    shard_size = (shard_size + block_n - 1) // block_n
-# end of the modification
-param.load_qkv_weight(loaded_weight=loaded_weight,
-                        num_heads=self.num_kv_head_replicas,
-                        shard_id=loaded_shard_id,
-                        shard_offset=shard_offset,
-                        shard_size=shard_size)
-...
+:::{note}
+If you encountered the following error when deploying the FP8 models, it indicates that the tensor parallel size does not agree with the model weights:
 ```
-:::
+File ".../vllm/vllm/model_executor/layers/quantization/fp8.py", line 477, in create_weights
+    raise ValueError(
+ValueError: The output_size of gate's and up's weight = 192 is not divisible by weight quantization block_n = 128.
+```
 
+For now, we recommend lowering the degree of tensor parallel, e.g., `--tensor-parallel-size 4` or enabling expert parallel, e.g., `--tensor-parallel-size 8 --enable-expert-parallel`.
+
+We are currently working on other solutions that would allow this usage.
+:::
 
 ### Context Length
 
-The context length for Qwen3 models in pretraining is up to 32,768 tokenns.
+The context length for Qwen3 models in pretraining is up to 32,768 tokens.
 To handle context length substantially exceeding 32,768 tokens, RoPE scaling techniques should be applied.
 We have validated the performance of [YaRN](https://arxiv.org/abs/2309.00071), a technique for enhancing model length extrapolation, ensuring optimal performance on lengthy texts.
 
 vLLM supports YaRN, which can be configured as
 ```shell
-vllm serve Qwen3/Qwen3-8B --rope-scaling '{"type":"yarn","factor":4.0,"original_max_position_embeddings":32768}' --max-model-len 131072  
+vllm serve Qwen3/Qwen3-8B --rope-scaling '{"rope_type":"yarn","factor":4.0,"original_max_position_embeddings":32768}' --max-model-len 131072  
 ```
 
 :::{note}
@@ -258,7 +266,7 @@ If the average context length does not exceed 32,768 tokens, we do not recommend
 
 ## Python Library
 
-vLLM can also be directly used as a Python library, which is convinient for offline batch inference but lack some API-only features, such as parsing model generation to structure messages.
+vLLM can also be directly used as a Python library, which is convenient for offline batch inference but lack some API-only features, such as parsing model generation to structure messages.
 
 The following shows the basic usage of vLLM as a library:
 
@@ -311,4 +319,7 @@ We recommend two arguments for you to make some fix.
   This is also why you find a vLLM service always takes so much memory.
   If you are in eager mode (by default it is not), you can level it up to tackle the OOM problem.
   Otherwise, CUDA Graphs are used, which will use GPU memory not controlled by vLLM, and you should try lowering it.
-  If it doesn't work, you should try `--enforce-eager`, which may slow down infernece, or reduce the `--max-model-len`.
+  If it doesn't work, you should try `--enforce-eager`, which may slow down inference, or reduce the `--max-model-len`.
+
+
+For more usage guide with vLLM, please see vLLM's [Qwen3 Usage Guide](https://github.com/vllm-project/vllm/issues/17327).

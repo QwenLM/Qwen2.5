@@ -10,9 +10,8 @@ body:
         What series of Qwen models were you running? 
         Please note that there may not be response for previous model series.
       options:
+        - Qwen3
         - Qwen2.5
-        - Qwen2
-        - Qwen1.5
       default: 0
     validations:
       required: true
@@ -20,9 +19,9 @@ body:
     attributes:
       label: What are the models used?
       description: |
-        Please list the model used, e.g., Qwen2.5-7B-Instruct, Qwen2.5-72B-Instruct-GGUF, etc.
+        Please list the model used, e.g., Qwen3-8B, Qwen3-8B-GGUF, etc.
         Note that we only maintain models at <https://huggingface.co/Qwen> and <https://www.modelscope.com/organization/qwen>.
-      placeholder: "ex: Qwen2.5-xxx"
+      placeholder: "ex: Qwen3-xxx"
     validations:
       required: true
   - type: input
@@ -41,13 +40,13 @@ body:
         Please first check if you have followed the usage guide in related documentation and if the issue is known: 
         either a workaround is avaiable or the issue has been already reported.
       options:
-        - label: I have followed [the GitHub README](https://github.com/QwenLM/Qwen2.5).
+        - label: I have followed [the GitHub README](https://github.com/QwenLM/Qwen3).
           required: true
         - label: I have checked [the Qwen documentation](https://qwen.readthedocs.io) and cannot find an answer there.
           required: true
         - label: I have checked the documentation of the related framework and cannot find useful information.
           required: true
-        - label: I have searched [the issues](https://github.com/QwenLM/Qwen2.5/issues?q=is%3Aissue) and there is not a similar one.
+        - label: I have searched [the issues](https://github.com/QwenLM/Qwen3/issues?q=is%3Aissue) and there is not a similar one.
           required: true
   - type: textarea
     attributes:
@@ -57,12 +56,12 @@ body:
         e.g., the software versions and the information on the OS, GPUs, CUDA, and NVIDIA Driver if GPUs are used.
         
         For example:
-        - OS: Ubuntu 22.04
+        - OS: Ubuntu 24.04
         - Python: Python 3.11
         - GPUs: 4 x NVIDIA A20
-        - NVIDIA driver: 535 (from `nvidia-smi`)
-        - CUDA compiler: 12.1 (from `nvcc -V`)
-        - PyTorch: 2.4.1+cu121 (from `python -c "import troch; print(torch.__version__)"`)
+        - NVIDIA driver: 560 (from `nvidia-smi`)
+        - CUDA compiler: 12.4 (from `nvcc -V`)
+        - PyTorch: 2.6.0+cu124 (from `python -c "import troch; print(torch.__version__)"`)
 
         Python packages (from `pip list`)
         ```
@@ -99,7 +98,7 @@ body:
       value: |
         #### Steps to reproduce
 
-        This happens to Qwen2.5-xB-Instruct-xxx and xxx.
+        This happens to Qwen3-xB-xxx and xxx.
         The problem can be reproduced with the following steps:
         1. ...
         2. ...

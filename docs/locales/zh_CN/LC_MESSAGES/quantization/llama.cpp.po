@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-28 19:42+0800\n"
+"POT-Creation-Date: 2025-04-29 16:34+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -19,199 +19,161 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:1
-#: 2cde165afca34e508b163ca4d513c50c
+#: ../../source/quantization/llama.cpp.md:1 91e2a69dab7145e39b9e203302a2639e
 msgid "llama.cpp"
 msgstr ""
 
-#: ../../Qwen/source/quantization/llama.cpp.md:3
-#: c6369d5467e449719f2b30253bfdcb99
+#: ../../source/quantization/llama.cpp.md:3 7ae5403049d44c0ca2396985312e1a36
 msgid "Quantization is a major topic for local inference of LLMs, as it reduces the memory footprint. Undoubtably, llama.cpp natively supports LLM quantization and of course, with flexibility as always."
 msgstr "量化(Quantization)是本地运行大规模语言模型的主要议题，因为它能减少内存占用。毫无疑问，llama.cpp原生支持大规模语言模型的量化，并且一如既往地保持了灵活性。"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:6
-#: 9aeef2584cd445c9a95c7dd463a0afbe
+#: ../../source/quantization/llama.cpp.md:6 ae64a4f0deb944d99dc9db527fb13770
 msgid "At high-level, all quantization supported by llama.cpp is weight quantization:  Model parameters are quantized into lower bits, and in inference, they are dequantized and used in computation."
 msgstr "在高层次上，llama.cpp所支持的所有量化都是权重量化(weight quantization)：模型参数被量化为低位(bit)数，在推理过程中，它们会被反量化(dequantize)并用于计算。"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:9
-#: dc633f028b95470489c4c9bca97a6002
+#: ../../source/quantization/llama.cpp.md:9 384848aad7cb4457a6b39d80487ccfc4
 msgid "In addition, you can mix different quantization data types in a single quantized model, e.g., you can quantize the embedding weights using a quantization data type and other weights using a different one. With an adequate mixture of quantization types, much lower quantization error can be attained with just a slight increase of bit-per-weight. The example program `llama-quantize` supports many quantization presets, such as Q4_K_M and Q8_0."
 msgstr "此外，你可以在单一的量化模型中混合使用不同的量化数据类型，例如，你可以使用一种量化数据类型量化嵌入权重(embedding)，而使用另一种量化其他权重。通过适当的量化类型组合，只需略微增加bpw （bit-per-weight, 位权比），就能达到更低的量化误差。示例程序`llama-quantize`支持许多量化预设，如Q4_K_M和Q8_0。"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:13
-#: 4235cf2df8164eed928d00f57f6807c7
+#: ../../source/quantization/llama.cpp.md:13 0d6c25bebbf94dc8b1c0e9bec5788043
 msgid "If you find the quantization errors still more than expected, you can bring your own scales, e.g., as computed by AWQ, or use calibration data to compute an importance matrix using `llama-imatrix`, which can then be used during quantization to enhance the quality of the quantized models."
 msgstr "如果你发现量化误差仍然超出预期，你可以引入自己的量化尺度，例如由AWQ计算的，或者使用校准数据用`llama-imatrix`来计算一个“重要性矩阵”(importance matrix)，然后在量化过程中使用以提高量化模型的质量。"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:15
-#: 515fe42fe0f34fce883ae3fa60853f0c
+#: ../../source/quantization/llama.cpp.md:15 1543df272fe5426e94899b16cc1cd36e
 #, python-brace-format
 msgid "In this document, we demonstrate the common way to quantize your model and evaluate the performance of the quantized model. We will assume you have the example programs from llama.cpp at your hand. If you don't, check our guide [here](../run_locally/llama.cpp.html#getting-the-program){.external}."
 msgstr "在本文档中，我们将展示量化和评估量化模型性能的常见方法。我们会假设你手头有llama.cpp的示例程序。如果没有，请查看我们的[指南](../run_locally/llama.cpp.html#getting-the-program){.external}。"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:19
-#: 835ffea72afe4c4baf28d764a4a947f4
+#: ../../source/quantization/llama.cpp.md:19 9245fc77ed6048e482ab7a046f8eb8cf
 msgid "Getting the GGUF"
 msgstr "获取GGUF"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:21
-#: 93463a200a5543b5b5798795b8edd0b4
+#: ../../source/quantization/llama.cpp.md:21 05e869b2fa3e459f8b640a59b88470d5
 msgid "Now, suppose you would like to quantize `Qwen3-8B`.  You need to first make a GGUF file as shown below:"
 msgstr "现在，假设你想量化`Qwen3-8B-Instruct`。你需要首先创建一个GGUF文件，如下所示："
 
-#: ../../Qwen/source/quantization/llama.cpp.md:27
-#: 59b1507af3dd430b9de8b1d51ebcfc53
+#: ../../source/quantization/llama.cpp.md:27 a2b26c45c99247f39ec8d90e92b7de07
 msgid "Sometimes, it may be better to use fp32 as the start point for quantization. In that case, use"
 msgstr "有时，可能最好将fp32作为量化的起点。在这种情况下，使用"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:33
-#: d54b89e59e214e1baeba025ecd971e30
+#: ../../source/quantization/llama.cpp.md:33 0d6321f7482a499f80747d78f2d01033
 msgid "Quantizing the GGUF without Calibration"
 msgstr "无校准量化GGUF"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:35
-#: a6d57166997a4a1bad8a28eb4cc5593c
+#: ../../source/quantization/llama.cpp.md:35 807e22b6326346c99a29068b29aa2436
 msgid "For the simplest way, you can directly quantize the model to lower-bits based on your requirements.  An example of quantizing the model to 8 bits is shown below:"
 msgstr "最简单的方法是，你可以根据需求直接将模型量化到低位数。下面是一个将模型量化到8 bit的例子："
 
-#: ../../Qwen/source/quantization/llama.cpp.md:41
-#: 8094b5237744430aa9594b344901dc4b
+#: ../../source/quantization/llama.cpp.md:41 66cadafa9bc84365a53f870e8f0548cb
 msgid "`Q8_0` is a code for a quantization preset. You can find all the presets in [the source code of `llama-quantize`](https://github.com/ggml-org/llama.cpp/blob/master/examples/quantize/quantize.cpp). Look for the variable `QUANT_OPTIONS`. Common ones used for 7B models include `Q8_0`, `Q5_0`, and `Q4_K_M`.  The letter case doesn't matter, so `q8_0` or `q4_K_m` are perfectly fine."
 msgstr "`Q8_0`是一个量化预设的代号。你可以在[`llama-quantize`的源代码](https://github.com/ggml-org/llama.cpp/blob/master/examples/quantize/quantize.cpp)中找到所有预设。寻找变量`QUANT_OPTIONS`。对于7B模型常用的包括`Q8_0`、`Q5_0`和`Q4_K_M`。字母大小写不重要，所以`q8_0`或`q4_K_m`都是可以接受的。"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:47
-#: 388bcb0c32464e6c8ec2940b0b564658
+#: ../../source/quantization/llama.cpp.md:47 d4cce644d247439ebf58c01f1916aabe
 msgid "Now you can use the GGUF file of the quantized model with applications based on llama.cpp. Very simple indeed."
 msgstr "现在，你可以使用基于llama.cpp的应用程序中的量化模型的GGUF文件。确实很简单。"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:50
-#: a32f72ed508e477a98b67172c20c3d9d
+#: ../../source/quantization/llama.cpp.md:50 292de0cf1cfa48b1859c274185a456ac
 msgid "However, the accuracy of the quantized model could be lower than expected occasionally, especially for lower-bit quantization. The program may even prevent you from doing that."
 msgstr "然而，量化模型的准确性偶尔可能低于预期，特别是对于低位数量化。程序甚至可能阻止你这样做。"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:53
-#: 5cbe569e12714a1eb8b5d125f3b85ab6
+#: ../../source/quantization/llama.cpp.md:53 fc9efc3991b04d1192f26ea93635aaef
 msgid "There are several ways to improve quality of quantized models. A common way is to use a calibration dataset in the target domain to identify the weights that really matter and quantize the model in a way that those weights have lower quantization errors, as introduced in the next two methods."
 msgstr "有几种方法可以提高量化模型的质量。一种常见的方法是在目标域中使用校准数据集来识别真正重要的权重，并以这些权重具有较低量化误差的方式量化模型，如下两种方法中将介绍。"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:57
-#: b6667f74d47e4e9f8ab0ba6fc8de0299
+#: ../../source/quantization/llama.cpp.md:57 a1467369a0c04c0da45d555e43e42635
 msgid "Quantizing the GGUF with AWQ Scale"
 msgstr "使用AWQ尺度量化GGUF"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:60
-#: b08348105b2f4b1d831ace8255b8208e
+#: ../../source/quantization/llama.cpp.md:60 2cc212d09e8d4e8b912c24dd2a27f35a
 msgid "To be updated for Qwen3."
 msgstr "仍需为Qwen3更新。"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:63
-#: e9191853f77c4c3bbf5b2516cd463229
+#: ../../source/quantization/llama.cpp.md:63 da955f0aaa564ec4b5584fe4fb1fbda0
 msgid "To improve the quality of your quantized models, one possible solution is to apply the AWQ scale, following [this script](https://github.com/casper-hansen/AutoAWQ/blob/main/docs/examples.md#gguf-export). First, when you run `model.quantize()` with `autoawq`, remember to add `export_compatible=True` as shown below:"
 msgstr "为了提高量化模型的质量，一种可能的解决方案是应用AWQ尺度，遵循[这个脚本](https://github.com/casper-hansen/AutoAWQ/blob/main/docs/examples.md#gguf-export)。首先，当你使用`autoawq`运行`model.quantize()`时，记得添加`export_compatible=True`，如下所示："
 
-#: ../../Qwen/source/quantization/llama.cpp.md:76
-#: a9b8a7e942f343c68ab9bb5c51b75beb
+#: ../../source/quantization/llama.cpp.md:76 1be192c485db4fcd876568e9faacac4b
 msgid "The above code will not actually quantize the weights. Instead, it adjusts weights based on a dataset so that they are \"easier\" to quantize.[^AWQ]"
 msgstr "上述代码实际上不会量化权重。相反，它会根据数据集调整权重，使它们“更容易”量化。[^AWQ]"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:79
-#: 2853451d91ba48e99096e4ff2c6aa28d
+#: ../../source/quantization/llama.cpp.md:79 10aa1c71ed9d4553bab3d2bc5aba08e8
 msgid "Then, when you run `convert-hf-to-gguf.py`, remember to replace the model path with the path to the new model:"
 msgstr "然后，当你运行`convert-hf-to-gguf.py`时，记得将模型路径替换为新模型的路径："
 
-#: ../../Qwen/source/quantization/llama.cpp.md:84
-#: 68cab73a58b14a8a8a38b82f209f6060
+#: ../../source/quantization/llama.cpp.md:84 99b87ba88b84422983b60584515fc924
 msgid "Finally, you can quantize the model as in the last example:"
 msgstr "最后，你可以像最后一个例子那样量化模型："
 
-#: ../../Qwen/source/quantization/llama.cpp.md:89
-#: c92ab12879be4e1c98ef49dcdb66e3e0
+#: ../../source/quantization/llama.cpp.md:89 8c2b985fccf54302b8175a50f34304e8
 msgid "In this way, it should be possible to achieve similar quality with lower bit-per-weight."
 msgstr "这样，应该有可能以更低的bpw实现相似的质量。"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:95
-#: 95d0914f02b44bacb160815e8f6400c3
+#: ../../source/quantization/llama.cpp.md:95 b35ae6045d8045d6a4f6cfe0b8a86f5e
 msgid "Quantizing the GGUF with Importance Matrix"
 msgstr "使用重要性矩阵量化GGUF"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:97
-#: 35543f118a84404ca6e5c52e3c51b8f7
+#: ../../source/quantization/llama.cpp.md:97 2e5cafdf307d430d9e34e3bb2c60bbf2
 msgid "Another possible solution is to use the \"important matrix\"[^imatrix], following [this](https://github.com/ggml-org/llama.cpp/tree/master/examples/imatrix)."
 msgstr "另一个可能的解决方案是使用\"重要矩阵\"[^imatrix]，参照[这里](https://github.com/ggml-org/llama.cpp/tree/master/examples/imatrix)。"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:99
-#: 6f0eba75740b41bc8d277809f72bd839
+#: ../../source/quantization/llama.cpp.md:99 1aeee4c40d034cff890bc076983530e4
 msgid "First, you need to compute the importance matrix data of the weights of a model (`-m`) using a calibration dataset (`-f`):"
 msgstr "首先，你需要使用校准数据集（`-f`）计算模型权重的重要性矩阵数据（`-m`）："
 
-#: ../../Qwen/source/quantization/llama.cpp.md:104
-#: 3a9550cf6a04480788fa31a011c5094f
+#: ../../source/quantization/llama.cpp.md:104 b679568784524852a1736d3be54ac50f
 msgid "The text is cut in chunks of length `--chunk` for computation. Preferably, the text should be representative of the target domain. The final results will be saved in a file named `qwen3-8b-imatrix.dat` (`-o`), which can then be used:"
 msgstr "文本被切割成长度为`--chunk`的块进行计算。最好，文本应代表目标领域。最终结果将保存在名为`qwen3-8b-imatrix.dat`（`-o`）的文件中，然后可以使用："
 
-#: ../../Qwen/source/quantization/llama.cpp.md:112
-#: 2f3dfa34285948ff8780c66b41a49fb0
+#: ../../source/quantization/llama.cpp.md:112 4f13b845d25a4beea4f072de70b95c32
 msgid "For lower-bit quantization mixtures for 1-bit or 2-bit, if you do not provide `--imatrix`, a helpful warning will be printed by `llama-quantize`."
 msgstr "对于1 bit或2 bit的低位数量化混合，如果你不提供`--imatrix`，`llama-quantize`将打印出有用的警告。"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:116
-#: 742734079457418f82128bb7ab0851bc
+#: ../../source/quantization/llama.cpp.md:116 c3308e36443949e3be37bf1ceee2d56f
 msgid "Perplexity Evaluation"
 msgstr "困惑度(Perplexity)评估"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:118
-#: d5e074195d2e4136aa741cd5facebc91
+#: ../../source/quantization/llama.cpp.md:118 5a84b0a3e7e647ed8f453baf9f9309c8
 msgid "`llama.cpp` provides an example program for us to calculate the perplexity, which evaluate how unlikely the given text is to the model. It should be mostly used for comparisons: the lower the perplexity, the better the model remembers the given text."
 msgstr "`llama.cpp`为我们提供了一个示例程序来计算困惑度，这评估了给定文本对模型而言的“不可能”程度。它主要用于比较：困惑度越低，模型对给定文本的记忆越好。"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:121
-#: c7b7d6516be0401284f7d1a5fc21f683
+#: ../../source/quantization/llama.cpp.md:121 cf72d076477a42f497034e2f670c119d
 msgid "To do this, you need to prepare a dataset, say \"wiki test\"[^wiki].  You can download the dataset with:"
 msgstr "要做到这一点，你需要准备一个数据集，比如\"wiki测试集\"[^wiki]。你可以使用以下命令下载数据集："
 
-#: ../../Qwen/source/quantization/llama.cpp.md:128
-#: 9af07ffbc0214d0e905079b8a791c376
+#: ../../source/quantization/llama.cpp.md:128 d16427f201af46c2bc8204d61b82f8b5
 msgid "Then you can run the test with the following command:"
 msgstr "然后你可以使用以下命令运行测试："
 
-#: ../../Qwen/source/quantization/llama.cpp.md:132
-#: b74f0297d6904028ba7c715af1501541
+#: ../../source/quantization/llama.cpp.md:132 56d6bd741ec64dee91a994c708620838
 msgid "Wait for some time and you will get the perplexity of the model. There are some numbers of different kinds of quantization mixture [here](https://github.com/ggml-org/llama.cpp/blob/master/examples/perplexity/README.md). It might be helpful to look at the difference and grab a sense of how that kind of quantization might perform."
 msgstr "稍等一段时间，你将得到模型的困惑度。[这里](https://github.com/ggml-org/llama.cpp/blob/master/examples/perplexity/README.md)提供了不同类型的量化模型的数值。观察差异可能有助于理解不同量化方式的潜在表现。"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:139
-#: 2f906e721b414c9094a0282c011722c4
+#: ../../source/quantization/llama.cpp.md:139 589fad71ce69495fa259e51035baf046
 msgid "Finally"
 msgstr "结束语"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:141
-#: b1a3811d3c3941cc8b4693c1e5c168ca
+#: ../../source/quantization/llama.cpp.md:141 2ac61288357b43a3b6932b226a785bb1
 msgid "In this guide, we demonstrate how to conduct quantization and evaluate the perplexity with llama.cpp. For more information, please visit the [llama.cpp GitHub repo](https://github.com/ggml-org/llama.cpp)."
 msgstr "在本指南中，我们展示了如何使用llama.cpp进行量化和评估困惑度。更多信息，请访问[llama.cpp GitHub仓库](https://github.com/ggml-org/llama.cpp)。"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:144
-#: bfeea9c5ef7540f88336e17f37c5cac1
-msgid "We usually quantize the fp16 model to 4, 5, 6, and 8-bit models with different quantization mixtures, but sometimes a particular mixture just does not work, so we don't provide those in our HuggingFace Hub. However, others in the community may have success, so if you haven't found what you need in our repos, look around."
+#: ../../source/quantization/llama.cpp.md:144 8cb576b8079e4dfeaca0ab06f7d9f4e4
+#, fuzzy
+msgid "We usually quantize the fp16 model to 4, 5, 6, and 8-bit models with different quantization mixtures, but sometimes a particular mixture just does not work, so we don't provide those in our Hugging Face Hub. However, others in the community may have success, so if you haven't found what you need in our repos, look around."
 msgstr "我们通常将fp16模型量化为4、5、6和8位模型，采用不同的量化混合，但有时特定的混合就是不起作用，所以我们不在HuggingFace Hub中提供这些。但是，社区中的其他人可能会成功，因此，如果你在我们的仓库中没有找到所需的内容，请四处看看。"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:147
-#: 54a2e17cd64e4e36bab3fff70e940d62
+#: ../../source/quantization/llama.cpp.md:147 1b2b1b45246c4539bc30b684b818676f
 msgid "Enjoy your freshly quantized models!"
 msgstr "享受你新鲜量化的模型吧！"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:91
-#: e51017220a414251bd0e5b184dd4db0a
+#: ../../source/quantization/llama.cpp.md:91 5d42d043024a4425a3b4d2d846c6aa59
 msgid "If you are interested in what this means, refer to [the AWQ paper](https://arxiv.org/abs/2306.00978).     Basically, important weights (called salient weights in the paper) are identified based on activations across data examples.     The weights are scaled accordingly such that the salient weights are protected even after quantization."
 msgstr "如果你对这意味着什么感兴趣，请参阅[AWQ论文](https://arxiv.org/abs/2306.00978)。基本上，根据数据实例上的激活，识别出重要的权重（在论文中称为显著权重）。相应地缩放权重，以便即使在量化后也能保护显著权重。"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:114
-#: 9eeaab6f255647b39afab212008b14ca
+#: ../../source/quantization/llama.cpp.md:114 8b25ee3804f24fa798a79299899ab860
 msgid "Here, the importance matrix keeps record of how weights affect the output: the weight should be important is a slight change in its value causes huge difference in the results, akin to the [GPTQ](https://arxiv.org/abs/2210.17323) algorithm."
 msgstr "在这里，重要性矩阵记录了权重如何影响输出：如果权重的微小变化导致结果的巨大差异，则该权重应该是重要的，类似于[GPTQ](https://arxiv.org/abs/2210.17323)算法。"
 
-#: ../../Qwen/source/quantization/llama.cpp.md:136
-#: e5325dfbcf50472a8766eb96eda47e52
+#: ../../source/quantization/llama.cpp.md:136 1fd3ddb3e40a47ffb4cc5a2604918ad7
 msgid "It is not a good evaluation dataset for instruct models though, but it is very common and easily accessible.      You probably want to use a dataset similar to your target domain."
 msgstr "虽然它不是指导模型的良好评估数据集，但它非常常见且易于访问。你可能希望使用与目标领域相似的数据集。"
 
