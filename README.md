@@ -55,7 +55,7 @@ The highlights from Qwen3 include:
 
 ## Performance
 
-Detailed evaluation results are reported in this [📑 blog](https://qwenlm.github.io/blog/qwen3/").
+Detailed evaluation results are reported in this [📑 blog](https://qwenlm.github.io/blog/qwen3/).
 
 For requirements on GPU memory and the respective throughput, see results [here](https://qwen.readthedocs.io/en/latest/getting_started/speed_benchmark.html).
 
