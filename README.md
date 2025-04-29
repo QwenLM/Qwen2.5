@@ -141,6 +141,14 @@ For additional guides, please refer to [our documentation](https://qwen.readthed
 > It could configured by parameters and the commands above effectively disable it.
 > For more details, please refer to [our documentation](https://qwen.readthedocs.io/en/latest/run_locally/llama.cpp.html#llama-cli).
 
+> [!IMPORTANT]
+> The chat template uses features that are not supported by the template engine used by llama.cpp.
+> As a result, you may encounter the following errors if the original chat template is used:
+> ```
+> common_chat_templates_init: failed to parse chat template (defaulting to chatml)
+> ```
+> We are working on a proper fix.
+
 ### Ollama
 
 After [installing Ollama](https://ollama.com/), you can initiate the Ollama service with the following command (Ollama v0.6.6 or higher is required):
@@ -259,7 +267,7 @@ You can find the license files in the respective Hugging Face repositories.
 
 If you find our work helpful, feel free to give us a cite.
 
-```
+```bibtex
 @article{qwen2.5,
     title   = {Qwen2.5 Technical Report}, 
     author  = {An Yang and Baosong Yang and Beichen Zhang and Binyuan Hui and Bo Zheng and Bowen Yu and Chengyuan Li and Dayiheng Liu and Fei Huang and Haoran Wei and Huan Lin and Jian Yang and Jianhong Tu and Jianwei Zhang and Jianxin Yang and Jiaxi Yang and Jingren Zhou and Junyang Lin and Kai Dang and Keming Lu and Keqin Bao and Kexin Yang and Le Yu and Mei Li and Mingfeng Xue and Pei Zhang and Qin Zhu and Rui Men and Runji Lin and Tianhao Li and Tingyu Xia and Xingzhang Ren and Xuancheng Ren and Yang Fan and Yang Su and Yichang Zhang and Yu Wan and Yuqiong Liu and Zeyu Cui and Zhenru Zhang and Zihan Qiu},
