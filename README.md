@@ -216,7 +216,7 @@ An OpenAI-compatible API will be available at `http://localhost:30000/v1`.
 `vllm>=0.8.4` is required.
 
 ```shell
-vllm serve Qwen/Qwen3-8B --port 8000 --enable-reasoning-parser --reasoning-parser deepseek_r1
+vllm serve Qwen/Qwen3-8B --port 8000 --enable-reasoning --reasoning-parser deepseek_r1
 ```
 An OpenAI-compatible API will be available at `http://localhost:8000/v1`.
 
