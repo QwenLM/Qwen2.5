@@ -24,7 +24,7 @@ msgstr "快速开始"
 #: ../../Qwen/source/getting_started/quickstart.md:3
 #: 725288359306417a943352cef10f831c
 msgid "This guide helps you quickly start using Qwen3.  We provide examples of [Hugging Face Transformers](https://github.com/huggingface/transformers) as well as [ModelScope](https://github.com/modelscope/modelscope), and [vLLM](https://github.com/vllm-project/vllm) for deployment."
-msgstr "本指南帮助您快速上手 Qwen3 的使用，并提供了如下示例： [Hugging Face Transformers](https://github.com/huggingface/transformers) 以及 [ModelScope](https://github.com/modelscope/modelscope) 和 [vLLM](https://github.com/vllm-project/vllm>) 在部署时的应用实例。"
+msgstr "本指南帮助您快速上手 Qwen3 的使用，并提供了如下示例： [Hugging Face Transformers](https://github.com/huggingface/transformers) 以及 [ModelScope](https://github.com/modelscope/modelscope) 和 [vLLM](https://github.com/vllm-project/vllm) 在部署时的应用实例。"
 
 #: ../../Qwen/source/getting_started/quickstart.md:6
 #: 6bfc020002af4b4eaad8adf3902e30ac
