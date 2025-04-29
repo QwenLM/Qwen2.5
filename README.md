@@ -138,7 +138,7 @@ For additional guides, please refer to [our documentation](https://qwen.readthed
 
 ### Ollama
 
-After [installing ollama](https://ollama.com/), you can initiate the ollama service with the following command:
+After [installing ollama](https://ollama.com/), you can initiate the ollama service with the following command (Ollama v0.6.6 or higher is required):
 ```shell
 ollama serve
 # You need to keep this service running whenever you are using ollama
