@@ -198,10 +198,6 @@ vllm serve Qwen/Qwen3-8B --enable-auto-tool-choice --tool-call-parser hermes
 
 For more information, please refer to [our guide on Function Calling](../framework/function_call.md#vllm).
 
-:::{note}
-As of vLLM 0.8.5, it is not supported to parse the thinking content and the tool calling from the model generation at the same time.
-:::
-
 ### Structured/JSON Output
 
 vLLM supports structured/JSON output. 
