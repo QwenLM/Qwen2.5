@@ -210,7 +210,7 @@ An OpenAI-compatible API will be available at `http://localhost:8000/v1`.
 
 ### MindIE
 
-For depolyment on Ascend NPUs, please visit [Modelers](https://modelers.cn/) and search for Qwen3.
+For deployment on Ascend NPUs, please visit [Modelers](https://modelers.cn/) and search for Qwen3.
 
 <!-- 
 ### OpenLLM
