@@ -5,7 +5,7 @@ To be updated for Qwen3.
 :::
 
 [Ollama](https://ollama.com/) helps you run LLMs locally with only a few commands.
-It is available at MacOS, Linux, and Windows.
+It is available at macOS, Linux, and Windows.
 Now, Qwen2.5 is officially on Ollama, and you can run it with one command:
 
 ```bash
@@ -98,13 +98,13 @@ For each function call, return a json object with function name and arguments wi
 SYSTEM """You are Qwen, created by Alibaba Cloud. You are a helpful assistant."""
 ```
 
-Then create the ollama model by running:
+Then create the Ollama model by running:
 
 ```bash
 ollama create qwen2.5_7b -f Modelfile
 ```
 
-Once it is finished, you can run your ollama model by:
+Once it is finished, you can run your Ollama model by:
 
 ```bash
 ollama run qwen2.5_7b
@@ -112,5 +112,5 @@ ollama run qwen2.5_7b
 
 ## Tool Use
 
-Tool use is now support Ollama and you should be able to run Qwen2.5 models with it.
+Tool use is now supported Ollama and you should be able to run Qwen2.5 models with it.
 For more details, see our [function calling guide](../framework/function_call).

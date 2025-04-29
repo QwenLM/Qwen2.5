@@ -267,7 +267,7 @@ for retrieval.
             retriever=docsearch.as_retriever(search_kwargs={"k": VECTOR_SEARCH_TOP_K}), 
             chain_type_kwargs=chain_type_kwargs)
         
-        query = "Give me a short introduction to large language model."  
+        query = "Give me a short introduction to large language models."  
         print(qa.run(query))
 
 Next Step

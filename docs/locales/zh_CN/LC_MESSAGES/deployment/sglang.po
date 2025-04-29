@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-28 19:42+0800\n"
+"POT-Creation-Date: 2025-04-29 16:34+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -19,163 +19,176 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: ../../Qwen/source/deployment/sglang.md:1 4886c9be510e44ba968bba79c7e01e2b
+#: ../../source/deployment/sglang.md:1 e05607ecb34c453aa8f805ea62edf34f
 msgid "SGLang"
 msgstr ""
 
-#: ../../Qwen/source/deployment/sglang.md:3 fa388b3c599c454bbe22dc7c831723c1
+#: ../../source/deployment/sglang.md:3 54dde79baa664197a2f3a5bb52383b70
 msgid "[SGLang](https://github.com/sgl-project/sglang) is a fast serving framework for large language models and vision language models."
 msgstr "[SGLang](https://github.com/sgl-project/sglang) 是一个用于大型语言模型和视觉语言模型的快速推理框架。"
 
-#: ../../Qwen/source/deployment/sglang.md:5 43fe1ab3622b4d619de1ba451ff5b5c4
+#: ../../source/deployment/sglang.md:5 1ae08e7b1ffc4f0290eefb616eac1b63
 msgid "To learn more about SGLang, please refer to the [documentation](https://docs.sglang.ai/)."
 msgstr "要了解更多关于 SGLang 的信息，请参阅[官方文档](https://docs.sglang.ai/)。"
 
-#: ../../Qwen/source/deployment/sglang.md:7 4e7093847f104f5c91bf12495db0e2df
+#: ../../source/deployment/sglang.md:7 927f96387c844f79a7cfa592e64fc1b2
 msgid "Environment Setup"
 msgstr "环境配置"
 
-#: ../../Qwen/source/deployment/sglang.md:9 404501b6bb754a01afa398ce270f4ad6
+#: ../../source/deployment/sglang.md:9 e04e805b59364e96a366fa088fae04e4
 msgid "By default, you can install `sglang` with pip in a clean environment:"
 msgstr "默认情况下，你可以通过 pip 在新环境中安装 `sglang` ： "
 
-#: ../../Qwen/source/deployment/sglang.md:15 8794cc70acd141eeaef4717a190b11f4
-msgid "Please note that `sglang` relies on `flashinfer-python` and has strict dependencies on `torch` and its CUDA versions. Check the note in the official document for installation ([link](https://docs.sglang.ai/start/install.html)) for more help."
-msgstr "请留意预构建的 `sglang` 依赖 `flashinfer-python`，并对`torch`和其CUDA版本有强依赖。请查看[官方文档](https://docs.sglang.ai/start/install.html)中的注意事项以获取有关安装的帮助。"
+#: ../../source/deployment/sglang.md:15 fcb185985f1b4c1589200ac4af2a6aee
+msgid "If you have encountered issues in installation, please feel free to check the official document for installation ([link](https://docs.sglang.ai/start/install.html))."
+msgstr "如果在安装过程中遇到问题，请随时查阅官方安装文档（[链接](https://docs.sglang.ai/start/install.html)）。
 
-#: ../../Qwen/source/deployment/sglang.md:18 06e04edfe3094363bcbc5b8758c8b16c
+#: ../../source/deployment/sglang.md:17 a0f36bc7b4e24d598d381e2705f73eb1
 msgid "API Service"
 msgstr "API 服务"
 
-#: ../../Qwen/source/deployment/sglang.md:20 5969d8121d8a4af99d790844c4b348c5
+#: ../../source/deployment/sglang.md:19 4d7006fa87884605b48700b05f602bb1
 msgid "It is easy to build an OpenAI-compatible API service with SGLang, which can be deployed as a server that implements OpenAI API protocol. By default, it starts the server at `http://localhost:30000`.  You can specify the address with `--host` and `--port` arguments.  Run the command as shown below:"
 msgstr "借助 SGLang ，构建一个与OpenAI API兼容的API服务十分简便，该服务可以作为实现OpenAI API协议的服务器进行部署。默认情况下，它将在 `http://localhost:30000` 启动服务器。您可以通过 `--host` 和 `--port` 参数来自定义地址。请按照以下所示运行命令："
 
-#: ../../Qwen/source/deployment/sglang.md:28 32a52bb639634b9b9c196696dc20e2c5
-msgid "By default, if the `--model-path` does not point to a valid local directory, it will download the model files from the HuggingFace Hub. To download model from ModelScope, set the following before running the above command:"
-msgstr "默认情况下，如果模型未指向有效的本地目录，它将从 HuggingFace Hub 下载模型文件。要从 ModelScope 下载模型，请在运行上述命令之前设置以下内容："
+#: ../../source/deployment/sglang.md:27 6d10b2003b9b4dd0b9dca0a2e8d33fd6
+msgid "By default, if the `--model-path` does not point to a valid local directory, it will download the model files from the Hugging Face Hub. To download model from ModelScope, set the following before running the above command:"
+msgstr "默认情况下，如果模型未指向有效的本地目录，它将从 Hugging Face Hub 下载模型文件。要从 ModelScope 下载模型，请在运行上述命令之前设置以下内容："
 
-#: ../../Qwen/source/deployment/sglang.md:34 cd33984af3e045549668c8ad682f7612
-msgid "For distrbiuted inference with tensor parallelism, it is as simple as"
+#: ../../source/deployment/sglang.md:33 d3cee58928964c5dba7720884d6c5189
+msgid "For distributed inference with tensor parallelism, it is as simple as"
 msgstr "对于使用张量并行的分布式推理，操作非常简单："
 
-#: ../../Qwen/source/deployment/sglang.md:38 4db95581ffd046a9b6d532933403d985
+#: ../../source/deployment/sglang.md:37 4c8600c0f3ac4d0e803af9c089d73dae
 msgid "The above command will use tensor parallelism on 4 GPUs. You should change the number of GPUs according to your demand."
 msgstr "上述命令将在 4 块 GPU 上使用张量并行。您应根据需求调整 GPU 的数量。"
 
-#: ../../Qwen/source/deployment/sglang.md:41 765cc12e934b4ab6881f0a71693fcc3d
+#: ../../source/deployment/sglang.md:40 4ca7c9376bd84c65a877134047aeee37
 msgid "Basic Usage"
 msgstr "基本用法"
 
-#: ../../Qwen/source/deployment/sglang.md:43 51032557dac94cb3b14c3842076192a8
+#: ../../source/deployment/sglang.md:42 bd805ae178b6401c925a959334b64b88
 msgid "Then, you can use the [create chat interface](https://platform.openai.com/docs/api-reference/chat/completions/create) to communicate with Qwen:"
 msgstr "然后，您可以利用 [create chat interface](https://platform.openai.com/docs/api-reference/chat/completions/create) 来与Qwen进行对话："
 
-#: ../../Qwen/source/deployment/sglang.md 0708e8d2e6a44e94956e44f3a83bb4d8
-#: 3bfc1bfe04ea4b49bfd1d5c6b5af52d7
+#: ../../source/deployment/sglang.md 2f867c83bdce4a4286842da69aa68640
+#: 418b07dd6a574642bfa89052103763e9
 msgid "curl"
 msgstr ""
 
-#: ../../Qwen/source/deployment/sglang.md 3b62fc6e456d44a6ba9cc8f5519fc3c6
-#: ab964c5641584f7a9ef4252ecf0428cb
+#: ../../source/deployment/sglang.md 14df52980bfe41689ac8dc8699be2134
+#: 7a50af3d10534acfbf980ac0d2ee92e5
 msgid "Python"
 msgstr ""
 
-#: ../../Qwen/source/deployment/sglang.md:63
-#: ../../Qwen/source/deployment/sglang.md:130 18da82bbe0db4a59aa430b68b91db904
-#: a2fccb4d7c164911a35e5ff6f30d98df
+#: ../../source/deployment/sglang.md:62 ../../source/deployment/sglang.md:124
+#: 669de086434740279e9cf7c54fb42e56 a3f9e92506374567a4660de9071567e8
 msgid "You can use the API client with the `openai` Python SDK as shown below:"
 msgstr "或者您可以如下面所示使用 `openai` Python SDK中的 API 客户端："
 
-#: ../../Qwen/source/deployment/sglang.md:91 2bff40bb9f104cf2b19e6cf8169bf18d
+#: ../../source/deployment/sglang.md:90 d8321f81e9624419b5e0fdb7012816e4
 msgid "While the default sampling parameters would work most of the time for thinking mode, it is recommended to adjust the sampling parameters according to your application,  and always pass the sampling parameters to the API."
 msgstr "虽然默认的采样参数在大多数情况下适用于思考模式，但建议根据您的应用调整采样参数，并始终将采样参数传递给 API。"
 
-#: ../../Qwen/source/deployment/sglang.md:97 e10b0bbcaa7c4e54a59f7a30fa8760ef
+#: ../../source/deployment/sglang.md:96 d6379b9f885748ca89bd3fe6c3362376
 msgid "Thinking & Non-Thinking Modes"
 msgstr "思考与非思考模式"
 
-#: ../../Qwen/source/deployment/sglang.md:100 ff0a121d43d5494597e8fc3b832f4893
-msgid "This feature has not been released. For more information, please see this [pull request](https://github.com/sgl-project/sglang/pull/5551)."
-msgstr "此功能尚未发布。更多信息，请参阅此[pull request](https://github.com/sgl-project/sglang/pull/5551)。"
-
-#: ../../Qwen/source/deployment/sglang.md:104 8ba3c8c378ed4df7acb28f04e41bf067
-msgid "Qwen3 models will think before respond. This behaviour could be controled by either the hard switch, which could disable thinking completely, or the soft switch, where the model follows the instruction of the user on whether or not it should think."
+#: ../../source/deployment/sglang.md:98 f82eb1dfcc934667ac5aee0600140794
+msgid "Qwen3 models will think before respond. This behavior could be controlled by either the hard switch, which could disable thinking completely, or the soft switch, where the model follows the instruction of the user on whether it should think."
 msgstr "Qwen3 模型会在回复前进行思考。这种行为可以通过硬开关（完全禁用思考）或软开关（模型遵循用户关于是否应该思考的指令）来控制。"
 
-#: ../../Qwen/source/deployment/sglang.md:107 dcc39b3925704aee927b220cbf9b341d
-msgid "The hard switch is availabe in SGLang through the following configuration to the API call. To disable thinking, use"
-msgstr "硬开关在 vLLM 中可以通过以下 API 调用配置使用。要禁用思考，请使用"
+#: ../../source/deployment/sglang.md:101 bac5d71126f04d149c0d674b7b2f7ec8
+msgid "The hard switch is available in SGLang through the following configuration to the API call. To disable thinking, use"
+msgstr "硬开关在 SGLang 中可以通过以下 API 调用配置使用。要禁用思考，请使用"
 
-#: ../../Qwen/source/deployment/sglang.md:159 952c90f4f1c84daba9cb66bfeb32725f
+#: ../../source/deployment/sglang.md:154 650e618e24044303b48b6bc9d4ccc239
+msgid "To completely disable thinking, you could use [a custom chat template](../../source/assets/qwen3_nonthinking.jinja) when starting the model:"
+msgstr "要完全禁用思考，您可以在启动模型时使用[自定义聊天模板](../../source/assets/qwen3_nonthinking.jinja)："
+
+#: ../../source/deployment/sglang.md:160 9c0dc646158541a991045064cfa5b258
+msgid "The chat template prevents the model from generating thinking content, even if the user instructs the model to do so with `/think`."
+msgstr "该聊天模板会阻止模型生成思考内容，即使用户通过 `/think` 指示模型这样做。"
+
+#: ../../source/deployment/sglang.md:165 c23b692035b14b1099c8a148956457a5
 msgid "It is recommended to set sampling parameters differently for thinking and non-thinking modes."
 msgstr "建议为思考模式和非思考模式分别设置不同的采样参数。"
 
-#: ../../Qwen/source/deployment/sglang.md:162 750cee1281d74246bc7cf47ac9e0d502
+#: ../../source/deployment/sglang.md:168 c5c258baa5fa46ccbadb58573699a0f1
 msgid "Parsing Thinking Content"
 msgstr "解析思考内容"
 
-#: ../../Qwen/source/deployment/sglang.md:164 4f1f6c5d59134ea1bf6a625cd5081c51
+#: ../../source/deployment/sglang.md:170 02d90ad41ecb4d51ae9f55458670843e
 msgid "SGLang supports parsing the thinking content from the model generation into structured messages:"
 msgstr "SGLang 支持将模型生成的思考内容解析为结构化消息："
 
-#: ../../Qwen/source/deployment/sglang.md:169 0517d0a9cf694f6caabcbe69e3e1e845
+#: ../../source/deployment/sglang.md:175 854a73931a9e404b9942a10dd2702023
 msgid "The response message will have a field named `reasoning_content` in addition to `content`, containing the thinking content generated by the model."
 msgstr "响应消息除了包含 `content` 字段外，还会有一个名为 `reasoning_content` 的字段，其中包含模型生成的思考内容。"
 
-#: ../../Qwen/source/deployment/sglang.md:172 0225706aa7fe441c82d34f81b348fd42
+#: ../../source/deployment/sglang.md:178 0bae083925f64ec7984c1b7c86d00ac1
 msgid "Please note that this feature is not OpenAI API compatible."
 msgstr "请注意，此功能与 OpenAI API 规范不一致。"
 
-#: ../../Qwen/source/deployment/sglang.md:175 45a5f606e86543c08eacf7686b5a2def
+#: ../../source/deployment/sglang.md:182 f23a3deb557a4d808cef5bdaad6dcf16
+msgid "`enable_thinking=False` may not be compatible with this feature. If you need to pass `enable_thinking=False` to the API, please consider disabling parsing thinking content."
+msgstr "`enable_thinking=False` 可能与思考内容解析不兼容。如果需要向 API 传递 `enable_thinking=False`，请考虑禁用该功能。"
+
+#: ../../source/deployment/sglang.md:186 930b8e7391204fc68d6473fec1d2e4e0
 msgid "Parsing Tool Calls"
 msgstr "解析工具调用"
 
-#: ../../Qwen/source/deployment/sglang.md:177 0aa3be18c7a5476cb915d6686c58387d
+#: ../../source/deployment/sglang.md:188 8fb5272b079543219b125e70da4f89d3
 msgid "SGLang supports parsing the tool calling content from the model generation into structured messages:"
 msgstr "SGLang 支持将模型生成的工具调用内容解析为结构化消息："
 
-#: ../../Qwen/source/deployment/sglang.md:182 dc096c7fb79c4b9ca0dd2c9cdd7ec890
+#: ../../source/deployment/sglang.md:193 28ca5e5fc8694b839b91cb3f7f38a0cb
 msgid "For more information, please refer to [our guide on Function Calling](../framework/function_call.md)."
 msgstr "详细信息，请参阅[函数调用的指南](../framework/function_call.md#vllm)。"
 
-#: ../../Qwen/source/deployment/sglang.md:184 a58bba52efc44663af792d859bd3b410
+#: ../../source/deployment/sglang.md:195 59cd747bac244c57afc56b7f3d041df8
 msgid "Structured/JSON Output"
 msgstr "结构化/JSON输出"
 
-#: ../../Qwen/source/deployment/sglang.md:186 518f257e9d6d4080b41f980467573f7f
+#: ../../source/deployment/sglang.md:197 4534e68747c041d5addd24c36fbc8250
 msgid "SGLang supports structured/JSON output.  Please refer to [SGLang's documentation](https://docs.sglang.ai/backend/structured_outputs.html#OpenAI-Compatible-API). Besides, it is also recommended to instruct the model to generate the specific format in the system message or in your prompt."
 msgstr "SGLang 支持结构化/JSON 输出。请参阅[SGLan文档](https://docs.sglang.ai/backend/structured_outputs.html#OpenAI-Compatible-API)。此外，还建议在系统消息或您的提示中指示模型生成特定格式。"
 
-#: ../../Qwen/source/deployment/sglang.md:190 3a6d08a831584d6b8392da2650e8bf0b
+#: ../../source/deployment/sglang.md:201 734cfd6d921e4706a07e112237b09b38
 msgid "Serving Quantized models"
 msgstr "部署量化模型"
 
-#: ../../Qwen/source/deployment/sglang.md:192 b2fe212a02b84349940f4c0c30cde88d
+#: ../../source/deployment/sglang.md:203 e7b0890292ad44278e910b6ee97f6d2d
 msgid "Qwen3 comes with two types of pre-quantized models, FP8 and AWQ."
 msgstr "Qwen3 提供了两种类型的预量化模型：FP8 和 AWQ。"
 
-#: ../../Qwen/source/deployment/sglang.md:194 efc85fc46a564483bdb872dbf5d61f3c
+#: ../../source/deployment/sglang.md:205 0bb52b4e43504cb8ac143e594247a0e0
 msgid "The command serving those models are the same as the original models except for the name change:"
 msgstr "部署这些模型的命令与原始模型相同，只是名称有所更改："
 
-#: ../../Qwen/source/deployment/sglang.md:203 11a6d1bb983d4e60a55f5d579f1eb76b
+#: ../../source/deployment/sglang.md:214 714f8f196af24271b6967dd038614f88
 msgid "Context Length"
 msgstr "上下文长度"
 
-#: ../../Qwen/source/deployment/sglang.md:205 de0293719e06477fbde6afc533973b1a
-msgid "The context length for Qwen3 models in pretraining is up to 32,768 tokenns. To handle context length substantially exceeding 32,768 tokens, RoPE scaling techniques should be applied. We have validated the performance of [YaRN](https://arxiv.org/abs/2309.00071), a technique for enhancing model length extrapolation, ensuring optimal performance on lengthy texts."
+#: ../../source/deployment/sglang.md:216 ad211116852345b8bfb9bb9e58027486
+msgid "The context length for Qwen3 models in pretraining is up to 32,768 tokens. To handle context length substantially exceeding 32,768 tokens, RoPE scaling techniques should be applied. We have validated the performance of [YaRN](https://arxiv.org/abs/2309.00071), a technique for enhancing model length extrapolation, ensuring optimal performance on lengthy texts."
 msgstr "Qwen3 模型在预训练中的上下文长度最长为 32,768 个 token。为了处理显著超过 32,768 个 token 的上下文长度，应应用 RoPE 缩放技术。我们已经验证了 [YaRN](https://arxiv.org/abs/2309.00071) 的性能，这是一种增强模型长度外推的技术，可确保在长文本上的最佳性能。"
 
-#: ../../Qwen/source/deployment/sglang.md:209 0ee16aabbc794331a329e52ab2ca40e7
+#: ../../source/deployment/sglang.md:220 d243e7a41b214c289be782db495e82f4
 msgid "SGLang supports YaRN, which can be configured as"
 msgstr "SGLang 支持 YaRN，可以配置为"
 
-#: ../../Qwen/source/deployment/sglang.md:215 c3ba0a9b3502462795dfd887912e9357
+#: ../../source/deployment/sglang.md:226 c15ed6a15a714884ab3024654203ec06
 msgid "SGLang implements static YaRN, which means the scaling factor remains constant regardless of input length, **potentially impacting performance on shorter texts.** We advise adding the `rope_scaling` configuration only when processing long contexts is required.  It is also recommended to modify the `factor` as needed. For example, if the typical context length for your application is 65,536 tokens, it would be better to set `factor` as 2.0."
 msgstr "SGLang 实现了静态 YaRN，这意味着无论输入长度如何，缩放因子都保持不变，**这可能会对较短文本的性能产生影响。** 我们建议仅在需要处理长上下文时添加 `rope_scaling` 配置。还建议根据需要调整 `factor`。例如，如果您的应用程序的典型上下文长度为 65,536 个 token，则最好将 `factor` 设置为 2.0。"
 
-#: ../../Qwen/source/deployment/sglang.md:221 398c3e38c94e446aa9922dd04dce609c
+#: ../../source/deployment/sglang.md:232 e0528eb23e2a454585b46ef178d28a79
 msgid "The default `max_position_embeddings` in `config.json` is set to 40,960, which is used by SGLang. This allocation includes reserving 32,768 tokens for outputs and 8,192 tokens for typical prompts, which is sufficient for most scenarios involving short text processing and leave adequate room for model thinking. If the average context length does not exceed 32,768 tokens, we do not recommend enabling YaRN in this scenario, as it may potentially degrade model performance."
 msgstr "`config.json` 中的默认 `max_position_embeddings` 被设置为 40,960，SGLang 将使用该值。此分配包括为输出保留 32,768 个 token，为典型提示保留 8,192 个 token，这足以应对大多数涉及短文本处理的场景，并为模型思考留出充足空间。如果平均上下文长度不超过 32,768 个 token，我们不建议在此场景中启用 YaRN，因为这可能会降低模型性能。"
+
+#~ msgid "Please note that `sglang` relies on `flashinfer-python` and has strict dependencies on `torch` and its CUDA versions. Check the note in the official document for installation ([link](https://docs.sglang.ai/start/install.html)) for more help."
+#~ msgstr "请留意预构建的 `sglang` 依赖 `flashinfer-python`，并对`torch`和其CUDA版本有强依赖。请查看[官方文档](https://docs.sglang.ai/start/install.html)中的注意事项以获取有关安装的帮助。"
+
+#~ msgid "This feature has not been released. For more information, please see this [pull request](https://github.com/sgl-project/sglang/pull/5551)."
+#~ msgstr "此功能尚未发布。更多信息，请参阅此[pull request](https://github.com/sgl-project/sglang/pull/5551)。"
 

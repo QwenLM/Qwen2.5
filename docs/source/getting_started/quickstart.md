@@ -3,7 +3,7 @@
 This guide helps you quickly start using Qwen3. 
 We provide examples of [Hugging Face Transformers](https://github.com/huggingface/transformers) as well as [ModelScope](https://github.com/modelscope/modelscope), and [vLLM](https://github.com/vllm-project/vllm) for deployment.
 
-You can find Qwen3 models in [the Qwen3 collection](https://huggingface.co/collections/Qwen/qwen3-67dd247413f0e2e4f653967f) at HuggingFace Hub and [the Qwen3 collection](https://www.modelscope.cn/collections/Qwen3-9743180bdc6b48) at ModelScope.
+You can find Qwen3 models in [the Qwen3 collection](https://huggingface.co/collections/Qwen/qwen3-67dd247413f0e2e4f653967f) at Hugging Face Hub and [the Qwen3 collection](https://www.modelscope.cn/collections/Qwen3-9743180bdc6b48) at ModelScope.
 
 ## Transformers
 
@@ -77,7 +77,7 @@ The model will first generate thinking content wrapped in a `<think>...</think>`
     It can be particularly useful in scenarios where disabling thinking is essential for enhancing efficiency.
 
 -   Soft Switch:
-    Qwen3 also understands the user's instruction on its thinking behaviour, in particular, the soft switch `/think` and `/no_think`.
+    Qwen3 also understands the user's instruction on its thinking behavior, in particular, the soft switch `/think` and `/no_think`.
     You can add them to user prompts or system messages to switch the model's thinking mode from turn to turn. 
     The model will follow the most recent instruction in multi-turn conversations.
 
@@ -106,11 +106,10 @@ For more information, please refer to [the documentation of `modelscope`](https:
 
 ## vLLM 
 
-To deploy Qwen3, we advise you to use vLLM. 
 vLLM is a fast and easy-to-use framework for LLM inference and serving. 
 In the following, we demonstrate how to build a OpenAI-API compatible API service with vLLM.
 
-First, make sure you have installed `vllm>=0.8.5`.
+First, make sure you have `vllm>=0.8.5` installed.
 
 Run the following code to build up a vLLM service. 
 Here we take Qwen3-8B as an example:
@@ -166,56 +165,8 @@ print("Chat response:", chat_response)
 ```
 ::::
 
-While the soft switch is always available, the hard switch is also availabe in vLLM through the following configuration to the API call.
-To disable thinking, use
-
-::::{tab-set}
-
-:::{tab-item} curl
-```shell
-curl http://localhost:8000/v1/chat/completions -H "Content-Type: application/json" -d '{
-  "model": "Qwen/Qwen3-8B",
-  "messages": [
-    {"role": "user", "content": "Give me a short introduction to large language models."}
-  ],
-  "temperature": 0.7,
-  "top_p": 0.8,
-  "top_k": 20,
-  "max_tokens": 8192,
-  "presence_penalty": 1.5,
-  "chat_template_kwargs": {"enable_thinking": false}
-}'
-```
-:::
-
-:::{tab-item} Python
-You can use the API client with the `openai` Python SDK as shown below:
-
-```python
-from openai import OpenAI
-# Set OpenAI's API key and API base to use vLLM's API server.
-openai_api_key = "EMPTY"
-openai_api_base = "http://localhost:8000/v1"
-
-client = OpenAI(
-    api_key=openai_api_key,
-    base_url=openai_api_base,
-)
-
-chat_response = client.chat.completions.create(
-    model="Qwen/Qwen3-8B",
-    messages=[
-        {"role": "user", "content": "Give me a short introduction to large language models."},
-    ],
-    temperature=0.7,
-    top_p=0.8,
-    top_k=20,
-    presence_penalty=1.5,
-    extra_body={"chat_template_kwargs": {"enable_thinking": False}},
-)
-print("Chat response:", chat_response)
-```
-::::
+While the soft switch is always available, the hard switch is also available in vLLM through the following configuration to the API call.
+For more usage, please refer to [our document on vLLM](../deployment/vllm).
 
 
 ## Next Step

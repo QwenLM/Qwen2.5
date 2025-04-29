@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-28 19:42+0800\n"
+"POT-Creation-Date: 2025-04-29 16:40+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -16,234 +16,188 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: ../../Qwen/source/inference/transformers.md:1
-#: 0614c94c5d284106b6157f7b89fa087f
+#: ../../source/inference/transformers.md:1 c178ffb3888f441180ecb4fca79195fd
 msgid "Transformers"
 msgstr ""
 
-#: ../../Qwen/source/inference/transformers.md:3
-#: d3760c125a4049b9848d4c98d60104f8
+#: ../../source/inference/transformers.md:3 c816184205fc456894a0b5b5f3dc4b80
 msgid "Transformers is a library of pretrained natural language processing for inference and training.  Developers can use Transformers to train models on their data, build inference applications, and generate texts with large language models."
 msgstr "Transformers 是一个用于推理和训练的预训练自然语言处理库。开发者可以使用 Transformers 在自己的数据上训练模型、构建推理应用，并通过大型语言模型生成文本。"
 
-#: ../../Qwen/source/inference/transformers.md:6
-#: 795ca76ad33c4cf89341343edc36115f
+#: ../../source/inference/transformers.md:6 373686a143e14f7a9fd059cddff449bf
 msgid "Environment Setup"
 msgstr "环境配置"
 
-#: ../../Qwen/source/inference/transformers.md:8
-#: 1331055ed63c4702b1c5a300dab74b09
+#: ../../source/inference/transformers.md:8 7dfb38faea8f4eeda6072046cead1636
 msgid "`transformers>=4.51.0`"
 msgstr ""
 
-#: ../../Qwen/source/inference/transformers.md:9
-#: 5167e357b63a4abc814e861f0f87adf0
+#: ../../source/inference/transformers.md:9 9d7e644e3ec840bead01f1ce246e9cd1
 msgid "`torch>=2.6` is recommended"
 msgstr "推荐使用 `torch>=2.6`"
 
-#: ../../Qwen/source/inference/transformers.md:10
-#: 0be0ab63e365422c8d48cc1143704782
+#: ../../source/inference/transformers.md:10 06da43b05cd94312a35c83fd485e617e
 msgid "GPU is recommended"
 msgstr "推荐使用 GPU"
 
-#: ../../Qwen/source/inference/transformers.md:13
-#: 0567a5b164704d0eb72c23e3c0525131
+#: ../../source/inference/transformers.md:13 363ebf64fe2746ada9487ec3bf691ed8
 msgid "Basic Usage"
 msgstr "基本用法"
 
-#: ../../Qwen/source/inference/transformers.md:15
-#: 823777aaf3b149c9bc2dbe19fb70cf06
+#: ../../source/inference/transformers.md:15 356e5bca4faa4492b7ce0646fcb9dc12
 msgid "You can use the `pipeline()` interface or the `generate()` interface to generate texts with Qwen3 in transformers."
 msgstr "您可以使用 `pipeline()` 接口或 `generate()` 接口在 transformers 中通过 Qwen3 生成文本。"
 
-#: ../../Qwen/source/inference/transformers.md:17
-#: 0a59ebb37456410c82118211759d17d9
-msgid "In general, the pipeline interface requires less boilerplate code, which is shown here. The following shows a basic example using pipeline for mult-iturn conversations:"
+#: ../../source/inference/transformers.md:17 704e2d1659d94b6d911bd5e01ea63764
+msgid "In general, the pipeline interface requires less boilerplate code, which is shown here. The following shows a basic example using pipeline for multi-turn conversations:"
 msgstr "通常，pipeline 接口需要的样板代码更少，如下所示。以下展示了一个使用 pipeline 进行多轮对话的基本示例："
 
-#: ../../Qwen/source/inference/transformers.md:44
-#: 970a2d7d3090478580bf41085235ec13
+#: ../../source/inference/transformers.md:44 2054af41b1de457a9f14ef6f8117772c
 msgid "There are some important parameters creating the pipeline:"
 msgstr "创建 pipeline 时有一些重要的参数："
 
-#: ../../Qwen/source/inference/transformers.md:45
-#: 7a6748475636475c83a23e0f2649d145
+#: ../../source/inference/transformers.md:45 0127b56b938c496f91a8cc1642af1590
 msgid "**Model**: `model_name_or_path` could be a model ID like `Qwen/Qwen3-8B` or a local path."
 msgstr "**模型**：`model_name_or_path` 可以是像 `Qwen/Qwen3-8B` 这样的模型 ID，也可以是本地路径。"
 
-#: ../../Qwen/source/inference/transformers.md:47
-#: 5836c86d2c9e46f1a29d8a827bae7266
+#: ../../source/inference/transformers.md:47 374ac106d4374722a5428c492a1865f8
 msgid "To download model files to a local directory, you could use"
 msgstr "要将模型文件下载到本地目录，可以使用"
 
-#: ../../Qwen/source/inference/transformers.md:51
-#: ee52b7ed97df4d3d8eee53879369a8a0
+#: ../../source/inference/transformers.md:51 47239a7ef1124d22802c8f7d0d87b251
 msgid "You can also download model files using ModelScope if you are in mainland China"
 msgstr "如果您在中国大陆，还可以使用 ModelScope 下载模型文件"
 
-#: ../../Qwen/source/inference/transformers.md:55
-#: 0fe0e5f3d5d044f584d89008a0f89b0e
-msgid "**Device Placement**: `device_map=\"auto\"` will load the model parameters to multiple devices automatically, if available.  It relies on the `accelerate` pacakge. If you would like to use a single device, you can pass `device` instead of device_map. `device=-1` or `device=\"cpu\"` indicates using CPU, `device=\"cuda\"` indicates using the current GPU, and `device=\"cuda:1\"` or `device=1` indicates using the second GPU. Do not use `device_map` and `device` at the same time!"
+#: ../../source/inference/transformers.md:55 e787e9221bdc4e6aaf7f98ed97e726da
+msgid "**Device Placement**: `device_map=\"auto\"` will load the model parameters to multiple devices automatically, if available.  It relies on the `accelerate` package. If you would like to use a single device, you can pass `device` instead of device_map. `device=-1` or `device=\"cpu\"` indicates using CPU, `device=\"cuda\"` indicates using the current GPU, and `device=\"cuda:1\"` or `device=1` indicates using the second GPU. Do not use `device_map` and `device` at the same time!"
 msgstr "**设备分配**：如果可用，`device_map=\"auto\"` 将自动将模型参数加载到多个设备上。它依赖于 `accelerate` 包。如果您想使用单个设备，可以传递 `device` 而不是 `device_map`。`device=-1` 或 `device=\"cpu\"` 表示使用 CPU，`device=\"cuda\"` 表示使用当前 GPU，`device=\"cuda:1\"` 或 `device=1` 表示使用第二个 GPU。不要同时使用 `device_map` 和 `device`！"
 
-#: ../../Qwen/source/inference/transformers.md:60
-#: b304ed147f944a47b89bb27bc4b6142f
+#: ../../source/inference/transformers.md:60 91247cdab1f142559217047bf9d36024
 msgid "**Compute Precision**: `torch_dtype=\"auto\"` will determine automatically the data type to use based on the original precision of the checkpoint and the precision your device supports. For modern devices, the precision determined will be `bfloat16`."
 msgstr "**计算精度**：`torch_dtype=\"auto\"` 将根据检查点的原始精度和设备支持的精度自动确定要使用的数据类型。对于现代设备，确定的精度将是 `bfloat16`。"
 
-#: ../../Qwen/source/inference/transformers.md:63
-#: 13295d55b1dd493887c9f0aab35ebfcd
+#: ../../source/inference/transformers.md:63 65b419de7e784e8d8790aa319ad28c42
 msgid "If you don't pass `torch_dtype=\"auto\"`, the default data type is `float32`, which will take double the memory and be slower in computation."
 msgstr "如果您不传递 `torch_dtype=\"auto\"`，默认数据类型为 `float32`，这将占用两倍的内存并且计算速度较慢。"
 
-#: ../../Qwen/source/inference/transformers.md:66
-#: 280ff00b4ccd4e59be8d798cd7d4377d
-msgid "Calls to the text generation pipleine will use the generation configuration from the model file, e.g., `generation_config.json`.  Those configuration could be overridden by passing arguments directly to the call. The default is equivalent to"
+#: ../../source/inference/transformers.md:66 7e6c5bcd15bd4c62a4a3ff9f4643bf8e
+msgid "Calls to the text generation pipeline will use the generation configuration from the model file, e.g., `generation_config.json`.  This configuration could be overridden by passing arguments directly to the call. The default is equivalent to"
 msgstr "调用文本生成 pipeline 时，将使用模型文件中的生成配置，例如 `generation_config.json`。这些配置可以通过直接向调用传递参数来覆盖。默认配置等效于"
 
-#: ../../Qwen/source/inference/transformers.md:73
-#: f3cd39b62e8848dd8493086915577cd2
+#: ../../source/inference/transformers.md:73 3bc839021fe14d9c999929da1ee45547
 msgid "For the best practices in configuring generation parameters, please see the model card."
 msgstr "有关配置生成参数的最佳实践，请参阅模型卡片。"
 
-#: ../../Qwen/source/inference/transformers.md:75
-#: c69916ddab134eadbb509748b73bb515
+#: ../../source/inference/transformers.md:75 5cc87eccca0e4fb4bb67c2deafc72569
 msgid "Thinking & Non-Thinking Mode"
 msgstr "思考与非思考模式"
 
-#: ../../Qwen/source/inference/transformers.md:77
-#: e23485edb6654b588965a22a20332dce
+#: ../../source/inference/transformers.md:77 5f78a0a90ae341c2ab26b525d8f618bb
 msgid "By default, Qwen3 model will think before response. It is also true for the `pipeline()` interface. To switch between thinking and non-thinking mode, two methods can be used"
 msgstr "默认情况下，Qwen3 模型会在回复前进行思考，`pipeline()` 接口也是如此。要切换思考与非思考模式，可以使用以下两种方法："
 
-#: ../../Qwen/source/inference/transformers.md:80
-#: 3597031da80f43f5883b499eb42e153f
-msgid "Append a final assistant message, containing only `<think>\\n\\n</think>\\n\\n`.  This method is stateless, meaning it will only work for that single turn.  It will also strictly prevented the model from generating thinking content. For example,"
+#: ../../source/inference/transformers.md:80 2055152940d54de7ad900f6bfd2b0186
+msgid "Append a final assistant message, containing only `<think>\\n\\n</think>\\n\\n`.  This method is stateless, meaning it will only work for that single turn.  It will also strictly prevent the model from generating thinking content. For example,"
 msgstr "追加一条仅包含 `<think>\\n\\n</think>\\n\\n` 的最终助手 (assistant) 消息。此方法是无状态的，意味着它仅对当前轮对话生效，并且会严格阻止模型生成思考内容。例如："
 
-#: ../../Qwen/source/inference/transformers.md:97
-#: 5c4b107221d14749a0c61541068be791
-msgid "Add to the user (or the system) message, `/no_think` to disable thinking and `/think` to enable thinking. This method is stateful, meaning the model will follow the most recent instruction in multi-turn conversations. You can also use instructions in natural language."
+#: ../../source/inference/transformers.md:97 8c9c833fa8004aecb65eef07212a140b
+msgid "Add to the user (or the system) message, `/no_think` to disable thinking and `/think` to enable thinking. This method is stateful, meaning the model will follow the most recent instruction in multi-turn conversations."
 msgstr "在用户 (user) 或系统 (system) 消息中添加 `/no_think` 以禁用思考、添加 `/think` 以启用思考。此方法是有状态的，意味着在多轮对话中，模型将遵循最近的指令。您还可以使用自然语言指令。"
 
-#: ../../Qwen/source/inference/transformers.md:113
-#: c93fb1cf4f5849128d0fe52f86a74aca
+#: ../../source/inference/transformers.md:113 957c3c1fa49a4b119c7fc78fa9419e45
 msgid "Parsing Thinking Content"
 msgstr "解析思考内容"
 
-#: ../../Qwen/source/inference/transformers.md:115
-#: 32af8e0e86e646d1900ddb45b6b576e9
+#: ../../source/inference/transformers.md:115 938849b04bf649918c233707e408d21a
 msgid "If you would like a more structured assistant message format, you can use the following function to extract the thinking content into a field named `reasoning_content` which is similar to the format used by vLLM, SGLang, etc."
 msgstr "如果您希望获得更结构化的助手消息格式，可以使用以下函数将思考内容提取到名为 `reasoning_content` 的字段中，该字段的格式类似于 vLLM、SGLang 等使用的格式。"
 
-#: ../../Qwen/source/inference/transformers.md:131
-#: ae7a948b483c4e3d973301698cfc82e6
+#: ../../source/inference/transformers.md:131 e46bd3b0ec974011b7c658ab29b2fdc1
 msgid "Parsing Tool Calls"
 msgstr "解析工具调用"
 
-#: ../../Qwen/source/inference/transformers.md:133
-#: 9798bad1fc1d49e28c8576a67ea59044
+#: ../../source/inference/transformers.md:133 d3d893f89e4149db823e418a5bd2d773
 msgid "For tool calling with Transformers, please refer to [our guide on Function Calling](../framework/function_call.md#hugging-face-transformers)."
 msgstr "有关使用 Transformers 进行工具调用的信息，请参阅[函数调用指南](../framework/function_call.md#hugging-face-transformers)。"
 
-#: ../../Qwen/source/inference/transformers.md:135
-#: 555f509828dc4e5ab201530f04168b44
+#: ../../source/inference/transformers.md:135 304b7ec8d3d446b6ada27d48f128660d
 msgid "Serving Quantized models"
 msgstr "使用量化模型"
 
-#: ../../Qwen/source/inference/transformers.md:137
-#: bb57ca974bda4158b1c3efe90b72d557
+#: ../../source/inference/transformers.md:137 b5f3ee666c3c475ba5282fd3bb184bbc
 msgid "Qwen3 comes with two types of pre-quantized models, FP8 and AWQ. The command serving those models are the same as the original models except for the name change:"
 msgstr "Qwen3 提供了两种类型的预量化模型：FP8 和 AWQ。使用这些模型的命令与原始模型相同，只是名称有所更改："
 
-#: ../../Qwen/source/inference/transformers.md:155
-#: 091c7fd44b804573be565b59f4498a5d
+#: ../../source/inference/transformers.md:155 6e6eb31d2af94ce1bc9a44d973d6febc
 msgid "FP8 computation is supported on NVIDIA GPUs with compute capability > 8.9, that is, Ada Lovelace, Hopper, and later GPUs."
 msgstr "FP8 计算在计算能力 > 8.9 的 NVIDIA GPU 上受支持，即 Ada Lovelace、Hopper 及更新的 GPU。"
 
-#: ../../Qwen/source/inference/transformers.md:157
-#: 468b4de54b0c436086877aeb58894345
+#: ../../source/inference/transformers.md:157 780916506f034d5bb663a2aa69083ee3
 msgid "For better performance, make sure `triton` and a CUDA compiler compatible with the CUDA version of `torch` in your environment are installed."
 msgstr "为了获得更好的性能，请确保安装了 `triton` 和与环境中 `torch` 的 CUDA 版本兼容的 CUDA 编译器。"
 
-#: ../../Qwen/source/inference/transformers.md:161
-#: 4c26b8d556764c28813e27713fa14962
-msgid "As of 4.51.0, there are issues with Tranformers when running those checkpoints **across GPUs**. The following method could be used to work around those issues:"
+#: ../../source/inference/transformers.md:161 17ad788596ef464db2b333ec10c91742
+msgid "As of 4.51.0, there are issues with Transformers when running those checkpoints **across GPUs**. The following method could be used to work around those issues:"
 msgstr "在 4.51.0 版本中，在**跨 GPU**的情况下运行 FP8 存在一些与 Transformers 相关的问题。可以使用以下方法来解决这些问题："
 
-#: ../../Qwen/source/inference/transformers.md:163
-#: 67ef3f3b2a6c461aaa5a40d4867e8f7b
-msgid "Set the environmnt variable `CUDA_LAUNCH_BLOCKING=1` before running the script; or"
+#: ../../source/inference/transformers.md:163 2e4c2a9ab6864d7ca8a0f477dc888f75
+msgid "Set the environment variable `CUDA_LAUNCH_BLOCKING=1` before running the script; or"
 msgstr "在运行脚本之前设置环境变量 `CUDA_LAUNCH_BLOCKING=1`；或者"
 
-#: ../../Qwen/source/inference/transformers.md:164
-#: 25d447166ecb4e069a7cdc3f4c2844d8
+#: ../../source/inference/transformers.md:164 328f9a6a90094a3ca8c7f824ffbe641b
 msgid "Uncomment [this line](https://github.com/huggingface/transformers/blob/0720e206c6ba28887e4d60ef60a6a089f6c1cc76/src/transformers/integrations/finegrained_fp8.py#L340) in your local installation of `transformers`."
 msgstr "取消注释您本地安装的 `transformers` 中的[这一行](https://github.com/huggingface/transformers/blob/0720e206c6ba28887e4d60ef60a6a089f6c1cc76/src/transformers/integrations/finegrained_fp8.py#L340)。"
 
-#: ../../Qwen/source/inference/transformers.md:169
-#: 4405b99bd1a941e2b7243a860e65ed1f
+#: ../../source/inference/transformers.md:168 a8ab4a05e34e4fd1b816388ca1c4614f
 msgid "Enabling Long Context"
 msgstr "启用长上下文"
 
-#: ../../Qwen/source/inference/transformers.md:171
-#: 5b50bba7f4eb48f6a0e3f408ddc476ea
+#: ../../source/inference/transformers.md:170 15c36696b02a45829c0158fc644af96f
 msgid "The maximum context length in pre-training for Qwen3 models is 32,768 tokens. It can be extended to 131,072 tokens with RoPE scaling techniques. We have validated the performance with YaRN."
 msgstr "Qwen3 模型在预训练中的最大上下文长度为 32,768 个 token。通过 RoPE 缩放技术，它可以扩展到 131,072 个 token。我们已使用 YaRN 验证了性能。"
 
-#: ../../Qwen/source/inference/transformers.md:175
-#: 32af7906e1ae44f282e22f3eb656bc47
+#: ../../source/inference/transformers.md:174 ff0ec1adc3e647f4b5ecf29adc14a5c6
 msgid "Transformers supports YaRN, which can be enabled either by modifying the model files or overriding the default arguments when loading the model."
 msgstr "Transformers 支持 YaRN，可以通过修改模型文件或在加载模型时覆盖默认参数来启用。"
 
-#: ../../Qwen/source/inference/transformers.md:177
-#: 4d80b834eb444b65885583b6a0db6a93
-msgid "Modifying the model files: In the config.json file, add the rope_scaling fields:"
-msgstr "修改模型文件：在 config.json 文件中，添加 rope_scaling 字段："
+#: ../../source/inference/transformers.md:176 a28d0e27841343d7a3c94fd5f047b671
+msgid "Modifying the model files: In the `config.json` file, add the rope_scaling fields:"
+msgstr "修改模型文件：在 `config.json` 文件中，添加 rope_scaling 字段："
 
-#: ../../Qwen/source/inference/transformers.md:188
-#: 432eb2b9ed054ea3b5a6597ffc207b53
+#: ../../source/inference/transformers.md:187 50430e65309e453282eec582c6d74493
 msgid "Overriding the default arguments:"
 msgstr "覆盖默认参数："
 
-#: ../../Qwen/source/inference/transformers.md:210
-#: 9d7651802c2344fa987f709a7ac87c08
+#: ../../source/inference/transformers.md:209 62f158e126984c04a39ad039d42a4dc0
 msgid "Transformers implements static YaRN, which means the scaling factor remains constant regardless of input length, **potentially impacting performance on shorter texts.** We advise adding the `rope_scaling` configuration only when processing long contexts is required.  It is also recommended to modify the `factor` as needed. For example, if the typical context length for your application is 65,536 tokens, it would be better to set `factor` as 2.0."
 msgstr "Transformers 实现了静态 YaRN，这意味着无论输入长度如何，缩放因子保持不变，**这可能会对较短文本的性能产生影响。** 我们建议仅在需要处理长上下文时添加 `rope_scaling` 配置。还建议根据需要修改 `factor`。例如，如果您的应用程序的典型上下文长度为 65,536 个 token，则最好将 `factor` 设置为 2.0。"
 
-#: ../../Qwen/source/inference/transformers.md:216
-#: dcc2913c11534349a3aa28988055044c
+#: ../../source/inference/transformers.md:215 1c816d18902b4fad8eaaa3598459cc65
 msgid "Streaming Generation"
 msgstr "流式输出"
 
-#: ../../Qwen/source/inference/transformers.md:218
-#: 23238ec6181e498fa754f6d3ea363f52
+#: ../../source/inference/transformers.md:217 2b79e8f552ae4399aa580e4b00ebc6bd
 msgid "With the help of `TextStreamer`, you can modify your chatting with Qwen3 to streaming mode.  It will print the response as being generated to the console or the terminal."
 msgstr "借助 `TextStreamer` ，您可以将与 Qwen3 的对话切换到流式传输模式。下面是一个关于如何使用它的示例："
 
-#: ../../Qwen/source/inference/transformers.md:238
-#: 4a6ba39c851b4296907f624a38766570
+#: ../../source/inference/transformers.md:237 113734a6f14141a9a11cb3536cd37471
 msgid "Besides using `TextStreamer`, we can also use `TextIteratorStreamer` which stores print-ready text in a queue, to be used by a downstream application as an iterator:"
 msgstr "除了使用 `TextStreamer` 之外，我们还可以使用 `TextIteratorStreamer` ，它将可打印的文本存储在一个队列中，以便下游应用程序作为迭代器来使用："
 
-#: ../../Qwen/source/inference/transformers.md:267
-#: 4c6797668ec84bf4866c6e3be2350e82
+#: ../../source/inference/transformers.md:266 51fb3a808ca7448694b0cab5582025e3
 msgid "Batch Generation"
 msgstr "批处理"
 
-#: ../../Qwen/source/inference/transformers.md:270
-#: 132f318ada71477192c48cefc7eeb229
+#: ../../source/inference/transformers.md:269 13ec723ad16648f593bdd5d75f125f93
 msgid "Batching is not automatically a win for performance."
 msgstr "批处理不总能提速。"
 
-#: ../../Qwen/source/inference/transformers.md:296
-#: 3371e43683aa4c6284e08193a40110c4
+#: ../../source/inference/transformers.md:295 1afe856936ef4a19a386f4ab9704dd0e
 msgid "FAQ"
 msgstr "常见问题解答"
 
-#: ../../Qwen/source/inference/transformers.md:298
-#: 5b68ed1d7a1e48ef9b0943de038e7ebc
-msgid "You may find distributed inference with Transformers is not as fast as you would imagine. Transformers with `device_map=\"auto\"` does not apply tensor parallelism and it only uses one GPU at a time. For Transformers with tensor parallelism, please refer to [its documentation](https://huggingface.co/docs/transformers/v4.51.3/en/perf_infer_gpu_multi)."
+#: ../../source/inference/transformers.md:297 7175bda60e7a4796b9279b48116f819f
+msgid "You may find distributed inference with Transformers is not as fast as you would imagine. Transformers with `device_map=\"auto\"` does not apply tensor parallelism, and it only uses one GPU at a time. For Transformers with tensor parallelism, please refer to [its documentation](https://huggingface.co/docs/transformers/v4.51.3/en/perf_infer_gpu_multi)."
 msgstr "您可能会发现使用 Transformers 进行分布式推理的速度不如预期。Transformers 使用 `device_map=\"auto\"` 时并未应用张量并行 (Tensor Parallelism)，且一次仅使用一个 GPU。如需支持张量并行的 Transformers，请参阅[其文档](https://huggingface.co/docs/transformers/v4.51.3/en/perf_infer_gpu_multi)。"
 
 #~ msgid "The most significant but also the simplest usage of Qwen2.5 is to chat with it using the `transformers` library.  In this document, we show how to chat with `Qwen2.5-7B-Instruct`, in either streaming mode or not."

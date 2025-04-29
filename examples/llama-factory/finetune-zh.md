@@ -166,7 +166,7 @@ model = AutoModelForCausalLM.from_pretrained(
 )
 tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
 
-prompt = "Give me a short introduction to large language model."
+prompt = "Give me a short introduction to large language models."
 messages = [
     {"role": "system", "content": "You are a helpful assistant."},
     {"role": "user", "content": prompt}

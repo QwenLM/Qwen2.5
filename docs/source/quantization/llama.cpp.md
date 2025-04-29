@@ -141,7 +141,7 @@ It might be helpful to look at the difference and grab a sense of how that kind 
 In this guide, we demonstrate how to conduct quantization and evaluate the perplexity with llama.cpp.
 For more information, please visit the [llama.cpp GitHub repo](https://github.com/ggml-org/llama.cpp).
 
-We usually quantize the fp16 model to 4, 5, 6, and 8-bit models with different quantization mixtures, but sometimes a particular mixture just does not work, so we don't provide those in our HuggingFace Hub.
+We usually quantize the fp16 model to 4, 5, 6, and 8-bit models with different quantization mixtures, but sometimes a particular mixture just does not work, so we don't provide those in our Hugging Face Hub.
 However, others in the community may have success, so if you haven't found what you need in our repos, look around.
 
 Enjoy your freshly quantized models!

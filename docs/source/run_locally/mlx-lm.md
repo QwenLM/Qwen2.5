@@ -1,11 +1,11 @@
-# MLX-LM
+# MLX LM
 
 :::{attention}
 To be updated for Qwen3.
 :::
 
 [mlx-lm](https://github.com/ml-explore/mlx-examples/tree/main/llms) helps you run LLMs locally on Apple Silicon. 
-It is available at MacOS. 
+It is available at macOS. 
 It has already supported Qwen models and this time, we have also provided checkpoints that you can directly use with it.
 
 ## Prerequisites
@@ -35,7 +35,7 @@ from mlx_lm import load, generate
 
 model, tokenizer = load('Qwen/Qwen2.5-7B-Instruct-MLX', tokenizer_config={"eos_token": "<|im_end|>"})
 
-prompt = "Give me a short introduction to large language model."
+prompt = "Give me a short introduction to large language models."
 messages = [
     {"role": "system", "content": "You are Qwen, created by Alibaba Cloud. You are a helpful assistant."},
     {"role": "user", "content": prompt}
@@ -51,7 +51,7 @@ response = generate(model, tokenizer, prompt=text, verbose=True, top_p=0.8, temp
 
 ## Make Your MLX files
 
-You can make mlx files with just one command:
+You can make MLX files with just one command:
 
 ```bash
 mlx_lm.convert --hf-path Qwen/Qwen2.5-7B-Instruct --mlx-path mlx/Qwen2.5-7B-Instruct/ -q
