@@ -106,7 +106,7 @@ print(tokenizer.decode(output_ids, skip_special_tokens=True))
 By default, Qwen3 models will think before response.
 This could be controlled by
 - `enable_thinking=False`: Passing `enable_thinking=False` to `tokenizer.apply_chat_template` will strictly prevent the model from generating thinking content.
-- `/think` and `/nothink` instructions: Use those words in the system or user message to signify whether Qwen3 should think. In multi-turn conversations, the latest instruction is followed.
+- `/think` and `/no_think` instructions: Use those words in the system or user message to signify whether Qwen3 should think. In multi-turn conversations, the latest instruction is followed.
 
 
 
