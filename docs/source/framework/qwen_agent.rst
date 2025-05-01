@@ -5,7 +5,7 @@ Qwen-Agent
 developing LLM applications based on the instruction following, tool
 usage, planning, and memory capabilities of Qwen.
 
-This is a tutorial on using Qwen-Agent to quickly experience the agentic
+This is the simplest tutorial on using Qwen-Agent to quickly experience the agentic
 capabilities of Qwen3. For more detailed information, please refer to
 `Qwen-Agent <https://github.com/QwenLM/Qwen-Agent>`__ repository.
 
