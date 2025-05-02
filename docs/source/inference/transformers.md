@@ -32,11 +32,11 @@ generator = pipeline(
 messages = [
     {"role": "user", "content": "Give me a short introduction to large language models."},
 ]
-messages = generator(messages, max_new_tokens=32768)[0]{"generated_text"}
+messages = generator(messages, max_new_tokens=32768)[0]["generated_text"]
 # print(messages[-1]["content"])
 
 messages.append({"role": "user", "content": "In a single sentence."})
-messages = generator(messages, max_new_tokens=32768)[0]{"generated_text"}
+messages = generator(messages, max_new_tokens=32768)[0]["generated_text"]
 # print(messages[-1]["content"])
 ```
 
@@ -86,11 +86,11 @@ To switch between thinking and non-thinking mode, two methods can be used
         {"role": "user", "content": "Give me a short introduction to large language models."},
         {"role": "assistant", "content": "<think>\n\n</think>\n\n"},
     ]
-    messages = generator(messages, max_new_tokens=32768)[0]{"generated_text"}
+    messages = generator(messages, max_new_tokens=32768)[0]["generated_text"]
     # print(messages[-1]["content"])
 
     messages.append({"role": "user", "content": "In a single sentence."})
-    messages = generator(messages, max_new_tokens=32768)[0]{"generated_text"}
+    messages = generator(messages, max_new_tokens=32768)[0]["generated_text"]
     # print(messages[-1]["content"])
     ```
     
@@ -101,11 +101,11 @@ To switch between thinking and non-thinking mode, two methods can be used
     messages = [
         {"role": "user", "content": "Give me a short introduction to large language models./no_think"},
     ]
-    messages = generator(messages, max_new_tokens=32768)[0]{"generated_text"}
+    messages = generator(messages, max_new_tokens=32768)[0]["generated_text"]
     # print(messages[-1]["content"])
 
     messages.append({"role": "user", "content": "In a single sentence./think"})
-    messages = generator(messages, max_new_tokens=32768)[0]{"generated_text"}
+    messages = generator(messages, max_new_tokens=32768)[0]["generated_text"]
     # print(messages[-1]["content"])
     ```
 
