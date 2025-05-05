@@ -106,7 +106,7 @@ msgid "If you need to train in an offline environment, you can manually download
 msgstr "如果需要在离线环境下进行训练，可以手动下载模型和数据集，并指定 ``--model <model-path>`` 和 ``--dataset <dataset-dir>``。数据集可以在 `Modelscope Hub <https://modelscope.cn/datasets/swift/self-cognition>`__ 上找到。"
 
 #: ../../source/training/ms_swift.rst:88 6c58a8c6d331440897f59e40e9d990f0
-msgid "For the meaning of each parameter in the training script, please refer to the `command-line arguments documentation <https://swift.readthedocs.io/en/latest/Instruction/Command-line-parameters.html>`__."
+msgid "For the meaning of each parameter in the training script, please refer to the `Command-line parameters documentation <https://swift.readthedocs.io/en/latest/Instruction/Command-line-parameters.html>`__."
 msgstr "关于训练脚本中各参数的含义，请参考 `命令行参数文档 <https://swift.readthedocs.io/zh-cn/latest/Instruction/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0.html>`__。"
 
 #: ../../source/training/ms_swift.rst:118 828aaccf188a4c799cff883437ec45a7

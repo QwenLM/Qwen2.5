@@ -85,7 +85,7 @@ After training, the model will identify itself as "swift-robot," trained by "swi
 
 If you need to train in an offline environment, you can manually download the model and dataset and specify ``--model <model-path>`` and ``--dataset <dataset-dir>``. The dataset can be found on `Modelscope Hub <https://modelscope.cn/datasets/swift/self-cognition>`__.
 
-For the meaning of each parameter in the training script, please refer to the `command-line arguments documentation <https://swift.readthedocs.io/en/latest/Instruction/Command-line-parameters.html>`__.
+For the meaning of each parameter in the training script, please refer to the `Command-line parameters documentation <https://swift.readthedocs.io/en/latest/Instruction/Command-line-parameters.html>`__.
 
 .. code-block:: bash
 
