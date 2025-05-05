@@ -246,7 +246,7 @@ During the training process, we use vLLM to accelerate the sampling process. By 
         --rlhf_type grpo \
         --model Qwen/Qwen3-8B \
         --train_type full \
-        --dataset AI-MO/NuminaMath-TIR \
+        --dataset 'AI-MO/NuminaMath-TIR#5000' \
         --torch_dtype bfloat16 \
         --num_train_epochs 1 \
         --per_device_train_batch_size 2 \
@@ -260,7 +260,7 @@ During the training process, we use vLLM to accelerate the sampling process. By 
         --dataloader_num_workers 4 \
         --max_completion_length 4096 \
         --vllm_max_model_len 8192 \
-        --reward_funcs accuracy format \
+        --reward_funcs accuracy \
         --num_generations 16 \
         --use_vllm true \
         --vllm_gpu_memory_utilization 0.4 \
