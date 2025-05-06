@@ -1,0 +1,109 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Qwen Team
+# This file is distributed under the same license as the Qwen package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-06 15:36+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/training/verl.rst:2 8ccbab46458e46deaf4bfc583aa10716
+msgid "verl"
+msgstr ""
+
+#: ../../source/training/verl.rst:4 f841d3c0e5504293adbb39822662ee85
+msgid "verl is a flexible, efficient and production-ready RL training library for large language models (LLMs)."
+msgstr "verl 是一个灵活、高效且被广泛使用的强化学习（RL）训练库，专为大型语言模型（LLM）设计。"
+
+#: ../../source/training/verl.rst:6 a03cb5cd4a0f473fa3e27a9a10ea4caa
+msgid "verl is the open-source version of `HybridFlow: A Flexible and Efficient RLHF Framework <https://arxiv.org/abs/2409.19256v2>`__ paper."
+msgstr "verl 是论文 `HybridFlow: A Flexible and Efficient RLHF Framework <https://arxiv.org/abs/2409.19256v2>`__ 的开源实现"
+
+#: ../../source/training/verl.rst:8 a06f186852f14a259744ff0c6988ae1f
+msgid "GitHub repository: `verl <https://github.com/volcengine/verl>`__"
+msgstr "仓库地址：`verl <https://github.com/volcengine/verl>`__"
+
+#: ../../source/training/verl.rst:10 030e3a53c6d5418bb5169a28694baf0d
+msgid "verl is flexible and easy to use with:"
+msgstr "verl 的灵活性和易用性体现在以下几个方面："
+
+#: ../../source/training/verl.rst:12 7869a61cb8ab4f8189f2b55a3db267e5
+msgid "**Easy extension of diverse RL algorithms**: The hybrid-controller programming model enables flexible representation and efficient execution of complex Post-Training dataflows. Build RL dataflows such as GRPO, PPO in a few lines of code."
+msgstr "**支持多样化的强化学习算法扩展**：verl 采用混合编程模型，结合了单一控制器和多控制器的优势，能够灵活表示和高效执行复杂的后训练数据流。用户只需几行代码即可构建强化学习数据流，例如 PPO、GRPO 等。"
+
+#: ../../source/training/verl.rst:13 b7085e0bde804462bee248398347936b
+msgid "**Seamless integration of existing LLM infra with modular APIs**: Decouples computation and data dependencies, enabling seamless integration with existing LLM frameworks, such as FSDP, Megatron-LM, vLLM, SGLang, etc"
+msgstr "**与现有大语言模型基础设施无缝集成**：verl 通过模块化 API 解耦计算和数据依赖，支持与 PyTorch FSDP、Megatron-LM、vLLM 等现有大语言模型框架无缝集成，且用户可以轻松扩展到其他训练和推理框架。"
+
+#: ../../source/training/verl.rst:14 029fc6736f2943a0b0bfaa2e5bd99841
+msgid "**Flexible device mapping**: Supports various placement of models onto different sets of GPUs for efficient resource utilization and scalability across different cluster sizes."
+msgstr "**灵活的设备映射和并行性**：verl 支持将模型放置到不同 GPU 集合上，以实现高效的资源利用和跨不同集群规模的可扩展性。"
+
+#: ../../source/training/verl.rst:15 12f98aed4e3b464b9c2f8c01464b7055
+msgid "**Ready integration with popular HuggingFace models**: verl supports popular LLM models, including Qwen, Llama, and more."
+msgstr "**与热门 HuggingFace 模型的及时集成**：verl 支持多种流行的 LLM 模型，包括 Qwen、Llama 等。"
+
+#: ../../source/training/verl.rst:17 7200cfe7276e424f920fb2a838fa4168
+msgid "verl is fast with:"
+msgstr "verl 的高效性体现在以下几个方面："
+
+#: ../../source/training/verl.rst:19 bdc4dafc8a92487f9af40b7bff2c65a6
+msgid "**State-of-the-art throughput**: SOTA LLM training and inference engine integrations and SOTA RL throughput."
+msgstr "**最高效的吞吐量**：verl 集成了最先进的 LLM 训练和推理引擎，并实现了最先进的强化学习（RL）吞吐量。"
+
+#: ../../source/training/verl.rst:21 b4f4267fad414512b8e219bc35f4540a
+msgid "**Efficient actor model resharding with 3D-HybridEngine**: Eliminates memory redundancy and significantly reduces communication overhead during transitions between training and generation phases."
+msgstr "**使用 3D-HybridEngine 实现高效的 Actor 模型分片**：消除内存冗余，并显著减少训练和生成阶段转换期间的通信开销。"
+
+#: ../../source/training/verl.rst:23 f7090060715543fe838607e5f95caaa0
+msgid "Next, we will introduce how to use verl for training Qwen3 models."
+msgstr "接下来，我们将介绍如何使用 verl 训练 Qwen3 模型。"
+
+#: ../../source/training/verl.rst:26 ec5cd52c9f4a4dd4b19ee6467e1b2f01
+msgid "Reinforcement Learning (RL)"
+msgstr "强化学习（RL）"
+
+#: ../../source/training/verl.rst:28 5185aa7cd4e046bdb570197977c4feef
+msgid "Now, verl supports various combinations of training frameworks and inference frameworks, including FSDP, Megatron-LM, vLLM, SGLang, etc. verl also supports training with multiple algorithms such as PPO, GRPO, DAPO, etc."
+msgstr "现在，verl 支持多种训练框架和推理框架的组合，包括 FSDP、Megatron-LM、vLLM、SGLang 等。此外，verl 还支持使用多种算法进行训练，例如 PPO、GRPO、DAPO 等。"
+
+#: ../../source/training/verl.rst:31 3404947b3bad4ff684cfb4d851289b2c
+msgid "Step1: Environment and Training Preparation"
+msgstr "第一步：环境和训练准备"
+
+#: ../../source/training/verl.rst:33 133ab5c10d574ab9a11a5049bb1a6e2c
+msgid "You can follow verl's `installation guide <https://verl.readthedocs.io/en/latest/start/install.html>`__ to complete the environment configuration."
+msgstr "你可以按照 verl 的 `安装指南 <https://verl.readthedocs.io/en/latest/start/install.html>`__ 完成环境配置。"
+
+#: ../../source/training/verl.rst:35 65286cf7dd5843d9bf68241e181cd099
+msgid "Data preparation can be done by running the following command:"
+msgstr "数据准备可以通过运行以下命令完成："
+
+#: ../../source/training/verl.rst:43 dca770ee6c6844ef96e509a466d6bc8e
+msgid "Model download can be done using the following command:"
+msgstr "模型下载可以使用以下命令完成："
+
+#: ../../source/training/verl.rst:51 72315853357c42a0bca81f205ef498da
+msgid "Step2: Start Training"
+msgstr "第二步：开始训练"
+
+#: ../../source/training/verl.rst:53 295bc5eeeaf9442aacd6281b234b8084
+msgid "In verl, training frameworks and inference frameworks can be combined freely, as long as the training framework and inference framework themselves support model training and inference tasks, so that verl can support RL-related training."
+msgstr "在 verl 中，训练框架和推理框架可以自由组合，只要训练框架和推理框架本身支持模型训练和推理任务，verl 就能够支持与强化学习（RL）相关的训练。"
+
+#: ../../source/training/verl.rst:55 fb5f2cbd7bb5428c8d9d798fbb926cbc
+msgid "Below is an example using FSDP and vLLM to demonstrate how to train Qwen3 models in verl."
+msgstr "以下是一个使用 FSDP 和 vLLM 的示例，展示如何在 verl 中训练 Qwen3 模型。"
+

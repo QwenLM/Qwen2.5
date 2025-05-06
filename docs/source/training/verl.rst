@@ -16,9 +16,9 @@ verl is flexible and easy to use with:
 
 verl is fast with:
 
-State-of-the-art throughput: SOTA LLM training and inference engine integrations and SOTA RL throughput.
+- **State-of-the-art throughput**: SOTA LLM training and inference engine integrations and SOTA RL throughput.
 
-Efficient actor model resharding with 3D-HybridEngine: Eliminates memory redundancy and significantly reduces communication overhead during transitions between training and generation phases.
+- **Efficient actor model resharding with 3D-HybridEngine**: Eliminates memory redundancy and significantly reduces communication overhead during transitions between training and generation phases.
 
 Next, we will introduce how to use verl for training Qwen3 models.
 
