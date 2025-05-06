@@ -1,96 +1,94 @@
 Qwen-Agent
 ==========
 
-.. attention:: 
-    To be updated for Qwen3.
-
 `Qwen-Agent <https://github.com/QwenLM/Qwen-Agent>`__ is a framework for
 developing LLM applications based on the instruction following, tool
-usage, planning, and memory capabilities of Qwen. It also comes with
-example applications such as Browser Assistant, Code Interpreter, and
-Custom Assistant.
+usage, planning, and memory capabilities of Qwen.
+
+This is the simplest tutorial on using Qwen-Agent to quickly experience the agentic
+capabilities of Qwen3. For more detailed information, please refer to
+`Qwen-Agent <https://github.com/QwenLM/Qwen-Agent>`__ repository.
 
 Installation
 ------------
 
+-  Install the stable version from PyPI:
+
 .. code:: bash
 
-   git clone https://github.com/QwenLM/Qwen-Agent.git
-   cd Qwen-Agent
-   pip install -e ./
+   pip install -U "qwen-agent[gui,rag,code_interpreter,mcp]"
+   # Or use `pip install -U qwen-agent` for the minimal requirements.
+   # The optional requirements, specified in double brackets, are:
+   #   [gui] for Gradio-based GUI support;
+   #   [rag] for RAG support;
+   #   [code_interpreter] for Code Interpreter support;
+   #   [mcp] for MCP support.
 
 Developing Your Own Agent
 -------------------------
 
-Qwen-Agent provides atomic components such as LLMs and prompts, as well
-as high-level components such as Agents. The example below uses the
-Assistant component as an illustration, demonstrating how to add custom
-tools and quickly develop an agent that uses tools.
+Qwen3 excels in tool calling capabilities. Qwen-Agent encapsulates
+tool-calling templates and tool-calling parsers internally, greatly
+reducing coding complexity.
 
-.. code:: py
+To define the available tools, you can use the MCP configuration file,
+use the integrated tool of Qwen-Agent, or integrate other tools by
+yourself.
 
-   import json
-   import os
+.. code:: python
 
-   import json5
-   import urllib.parse
    from qwen_agent.agents import Assistant
-   from qwen_agent.tools.base import BaseTool, register_tool
 
+   # Define LLM
    llm_cfg = {
-       # Use the model service provided by DashScope:
-       'model': 'qwen-max',
-       'model_server': 'dashscope',
-       # 'api_key': 'YOUR_DASHSCOPE_API_KEY',
-       # It will use the `DASHSCOPE_API_KEY' environment variable if 'api_key' is not set here.
+       'model': 'Qwen3-235B-A22B',
 
-       # Use your own model service compatible with OpenAI API:
-       # 'model': 'Qwen/Qwen2.5-7B-Instruct',
-       # 'model_server': 'http://localhost:8000/v1',  # api_base
-       # 'api_key': 'EMPTY',
+       # Use the endpoint provided by Alibaba Model Studio:
+       # 'model_type': 'qwen_dashscope',
+       # 'api_key': os.getenv('DASHSCOPE_API_KEY'),
 
-       # (Optional) LLM hyperparameters for generation:
-       'generate_cfg': {
-           'top_p': 0.8
-       }
+       # Use a custom endpoint compatible with OpenAI API:
+       'model_server': 'http://localhost:8000/v1',  # api_base
+       'api_key': 'EMPTY',
+
+       # Other parameters:
+       # 'generate_cfg': {
+       #     # Add: When the content is `<think>this is the thought</think>this is the answer`
+       #     # Do not add: When the response has been separated by reasoning_content and content
+       #     # This parameter will affect the parsing strategy of tool call
+       #     # 'thought_in_content': True,
+       #
+       #     # When using the Dash Scope API, pass the parameter of whether to enable thinking mode in this way
+       #     'enable_thinking': False,
+       #
+       #     # When using OpenAI API, pass the parameter of whether to enable thinking mode in this way
+       #     # 'extra_body': {
+       #     #     'enable_thinking': False
+       #     # }
+       # },
    }
-   system = 'According to the user\'s request, you first draw a picture and then automatically run code to download the picture ' + \
-             'and select an image operation from the given document to process the image'
 
-   # Add a custom tool named my_image_gen：
-   @register_tool('my_image_gen')
-   class MyImageGen(BaseTool):
-       description = 'AI painting (image generation) service, input text description, and return the image URL drawn based on text information.'
-       parameters = [{
-           'name': 'prompt',
-           'type': 'string',
-           'description': 'Detailed description of the desired image content, in English',
-           'required': True
-       }]
+   # Define Tools
+   tools = [
+       {'mcpServers': {  # You can specify the MCP configuration file
+               'time': {
+                   'command': 'uvx',
+                   'args': ['mcp-server-time', '--local-timezone=Asia/Shanghai']
+               },
+               "fetch": {
+                   "command": "uvx",
+                   "args": ["mcp-server-fetch"]
+               }
+           }
+       },
+     'code_interpreter',  # Built-in tools
+   ]
 
-       def call(self, params: str, **kwargs) -> str:
-           prompt = json5.loads(params)['prompt']
-           prompt = urllib.parse.quote(prompt)
-           return json.dumps(
-               {'image_url': f'https://image.pollinations.ai/prompt/{prompt}'},
-               ensure_ascii=False)
+   # Define Agent
+   bot = Assistant(llm=llm_cfg, function_list=tools)
 
-
-   tools = ['my_image_gen', 'code_interpreter']  # code_interpreter is a built-in tool in Qwen-Agent
-   bot = Assistant(llm=llm_cfg,
-                   system_message=system,
-                   function_list=tools,
-                   files=[os.path.abspath('doc.pdf')])
-
-   messages = []
-   while True:
-       query = input('user question: ')
-       messages.append({'role': 'user', 'content': query})
-       response = []
-       for response in bot.run(messages=messages):
-           print('bot response:', response)
-       messages.extend(response)
-
-The framework also provides more atomic components for developers to
-combine. For additional showcases, please refer to
-`examples <https://github.com/QwenLM/Qwen-Agent/tree/main/examples>`__.
+   # Streaming generation
+   messages = [{'role': 'user', 'content': 'https://qwenlm.github.io/blog/ Introduce the latest developments of Qwen'}]
+   for responses in bot.run(messages=messages):
+       pass
+   print(responses)
