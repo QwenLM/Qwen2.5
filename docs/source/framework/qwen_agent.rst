@@ -5,9 +5,10 @@ Qwen-Agent
 developing LLM applications based on the instruction following, tool
 usage, planning, and memory capabilities of Qwen.
 
-This is the simplest tutorial on using Qwen-Agent to quickly experience the agentic
-capabilities of Qwen3. For more detailed information, please refer to
-`Qwen-Agent <https://github.com/QwenLM/Qwen-Agent>`__ repository.
+This is a simple tutorial on using Qwen-Agent to quickly experience the
+agentic capabilities of Qwen3. For more detailed information, please
+refer to `Qwen-Agent <https://github.com/QwenLM/Qwen-Agent>`__
+repository.
 
 Installation
 ------------
@@ -37,36 +38,51 @@ yourself.
 
 .. code:: python
 
+   import os
    from qwen_agent.agents import Assistant
 
    # Define LLM
    llm_cfg = {
-       'model': 'Qwen3-235B-A22B',
-
-       # Use the endpoint provided by Alibaba Model Studio:
-       # 'model_type': 'qwen_dashscope',
-       # 'api_key': os.getenv('DASHSCOPE_API_KEY'),
-
-       # Use a custom endpoint compatible with OpenAI API:
+       # Use a custom endpoint compatible with OpenAI API by vLLM/SGLang:
+       'model': 'Qwen/Qwen3-32B',
        'model_server': 'http://localhost:8000/v1',  # api_base
        'api_key': 'EMPTY',
 
-       # Other parameters:
        # 'generate_cfg': {
+       #     # When using vLLM/SGLang OAI API, pass the parameter of whether to enable thinking mode in this way
+       #     'extra_body': {
+       #         'chat_template_kwargs': {'enable_thinking': False}
+       #     },
+       #
        #     # Add: When the content is `<think>this is the thought</think>this is the answer`
        #     # Do not add: When the response has been separated by reasoning_content and content
        #     # This parameter will affect the parsing strategy of tool call
        #     # 'thought_in_content': True,
-       #
-       #     # When using the Dash Scope API, pass the parameter of whether to enable thinking mode in this way
-       #     'enable_thinking': False,
-       #
-       #     # When using OpenAI API, pass the parameter of whether to enable thinking mode in this way
-       #     # 'extra_body': {
-       #     #     'enable_thinking': False
-       #     # }
        # },
    }
+   # llm_cfg = {
+   #         # Use the model service provided by DashScope:
+   #         'model': 'qwen3-235b-a22b',
+   #         'model_type': 'qwen_dashscope',
+   #
+   #         # 'generate_cfg': {
+   #         #     # When using the Dash Scope API, pass the parameter of whether to enable thinking mode in this way
+   #         #     'enable_thinking': False,
+   #         # },
+   # }
+   # llm_cfg = {
+   #     # Use the OpenAI-compatible model service provided by DashScope:
+   #     'model': 'qwen3-235b-a22b',
+   #     'model_server': 'https://dashscope.aliyuncs.com/compatible-mode/v1',
+   #     'api_key': os.getenv('DASHSCOPE_API_KEY'),
+   #
+   #     # 'generate_cfg': {
+   #     #     # When using Dash Scope OAI API, pass the parameter of whether to enable thinking mode in this way
+   #     #     'extra_body': {
+   #     #         'enable_thinking': False
+   #     #     },
+   #     # },
+   # }
 
    # Define Tools
    tools = [
@@ -92,3 +108,6 @@ yourself.
    for responses in bot.run(messages=messages):
        pass
    print(responses)
+
+For more detailed examples and MCP cookbooks, please refer to
+`Qwen-Agent <https://github.com/QwenLM/Qwen-Agent>`__ repository.
