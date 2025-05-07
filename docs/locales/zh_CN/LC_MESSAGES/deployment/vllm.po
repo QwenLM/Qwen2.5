@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-06 15:36+0800\n"
+"POT-Creation-Date: 2025-05-07 19:51+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -16,223 +16,224 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: ../../source/deployment/vllm.md:1 70c9b02899b544a880c7641756ae7ec3
+#: ../../source/deployment/vllm.md:1 d5c0a6a59a4e4efdba77515c0c05f04a
 msgid "vLLM"
 msgstr ""
 
-#: ../../source/deployment/vllm.md:3 379ea4e0a3da41ea8b860449e127b7c1
+#: ../../source/deployment/vllm.md:3 56317e0cd3104065a8496366f9bdcb67
 msgid "We recommend you trying [vLLM](https://github.com/vllm-project/vllm) for your deployment of Qwen.  It is simple to use, and it is fast with state-of-the-art serving throughput, efficient management of attention key value memory with PagedAttention, continuous batching of input requests, optimized CUDA kernels, etc.  To learn more about vLLM, please refer to the [paper](https://arxiv.org/abs/2309.06180) and [documentation](https://docs.vllm.ai/)."
 msgstr "我们建议您在部署 Qwen 时尝试使用 [vLLM](https://github.com/vllm-project/vllm)。它易于使用，且具有最先进的服务吞吐量、高效的注意力键值内存管理（通过PagedAttention实现）、连续批处理输入请求、优化的CUDA内核等功能。要了解更多关于vLLM的信息，请参阅 [论文](https://arxiv.org/abs/2309.06180) 和 [文档](https://docs.vllm.ai/)。"
 
-#: ../../source/deployment/vllm.md:7 292687f559bc4ea195857451a1b3a317
+#: ../../source/deployment/vllm.md:7 81077ec6d7594b85b64857ee22883693
 msgid "Environment Setup"
 msgstr "环境配置"
 
-#: ../../source/deployment/vllm.md:9 5ea54c054b904d6bbf7883f6b98c37ce
+#: ../../source/deployment/vllm.md:9 f80ee07832674dbfb3c547d0bd003720
 msgid "By default, you can install `vllm` with pip in a clean environment:"
 msgstr "默认情况下，你可以通过 pip 在新环境中安装 `vllm` ： "
 
-#: ../../source/deployment/vllm.md:15 e16fc29379db48cf9ff0465e507712cc
+#: ../../source/deployment/vllm.md:15 7c0520bacc8941108def669c821603a9
 msgid "Please note that the prebuilt `vllm` has strict dependencies on `torch` and its CUDA versions. Check the note in the official document for installation ([link](https://docs.vllm.ai/en/latest/getting_started/installation.html)) for more help."
 msgstr "请留意预构建的`vllm`对`torch`和其CUDA版本有强依赖。请查看[vLLM官方文档](https://docs.vllm.ai/en/latest/getting_started/installation.html)中的注意事项以获取有关安装的帮助。"
 
-#: ../../source/deployment/vllm.md:18 cbe30504237f40f78496b22ce3a771d5
+#: ../../source/deployment/vllm.md:18 ab785eb82e7f40a08269510d1cb5610d
 msgid "API Service"
 msgstr "API 服务"
 
-#: ../../source/deployment/vllm.md:20 1f704972dc9e40c88768ac896e70698e
+#: ../../source/deployment/vllm.md:20 fa0b4510d60d489c94435c334100e413
 msgid "It is easy to build an OpenAI-compatible API service with vLLM, which can be deployed as a server that implements OpenAI API protocol. By default, it starts the server at `http://localhost:8000`.  You can specify the address with `--host` and `--port` arguments.  Run the command as shown below:"
 msgstr "借助vLLM，构建一个与OpenAI API兼容的API服务十分简便，该服务可以作为实现OpenAI API协议的服务器进行部署。默认情况下，它将在 `http://localhost:8000` 启动服务器。您可以通过 `--host` 和 `--port` 参数来自定义地址。请按照以下所示运行命令："
 
-#: ../../source/deployment/vllm.md:28 4cbe0b603b5a47e9a586e01884544ff5
+#: ../../source/deployment/vllm.md:28 66e317eb19424af7a54eb52093e7945b
 msgid "By default, if the model does not point to a valid local directory, it will download the model files from the Hugging Face Hub. To download model from ModelScope, set the following before running the above command:"
 msgstr "默认情况下，如果模型未指向有效的本地目录，它将从 Hugging Face Hub 下载模型文件。要从 ModelScope 下载模型，请在运行上述命令之前设置以下内容："
 
-#: ../../source/deployment/vllm.md:34 8ba579b5bf2a4ca7af88ac4fa6a520d7
+#: ../../source/deployment/vllm.md:34 4d9631b6922c4f08b9be1ec85a956309
 msgid "For distributed inference with tensor parallelism, it is as simple as"
 msgstr "对于使用张量并行的分布式推理，操作非常简单："
 
-#: ../../source/deployment/vllm.md:38 38452221967d498b8b5c3651d303201c
+#: ../../source/deployment/vllm.md:38 33cc8d44a1434af2af200659add2e57f
 msgid "The above command will use tensor parallelism on 4 GPUs. You should change the number of GPUs according to your demand."
 msgstr "上述命令将在 4 块 GPU 上使用张量并行。您应根据需求调整 GPU 的数量。"
 
-#: ../../source/deployment/vllm.md:41 2ae36246241441bbbfc4eb21836ead23
+#: ../../source/deployment/vllm.md:41 605a634a44e3401ab46c77933aa2817e
 msgid "Basic Usage"
 msgstr "基本用法"
 
-#: ../../source/deployment/vllm.md:43 85dfa0c1ef9448eaa6280f50ebe13a95
+#: ../../source/deployment/vllm.md:43 58fb05b376b545e4892584539004c4c8
 msgid "Then, you can use the [create chat interface](https://platform.openai.com/docs/api-reference/chat/completions/create) to communicate with Qwen:"
 msgstr "然后，您可以利用 [create chat interface](https://platform.openai.com/docs/api-reference/chat/completions/create) 来与Qwen进行对话："
 
-#: ../../source/deployment/vllm.md b2c10d875bad4edc93d04a2edd793edd
-#: ea518babfe57426295d4200b4920ffc8
+#: ../../source/deployment/vllm.md b9a21dd5fe924a36ae4d655aa7c2d127
+#: f95affb6c52340bd8623c319fa8a159f
 msgid "curl"
 msgstr ""
 
-#: ../../source/deployment/vllm.md 0fbc14aabb2443d7ad5de580d8e3cee7
-#: baf1bf4e25c8458f9be227fc8f3b4f4f
+#: ../../source/deployment/vllm.md 3c6242c05b90435dbf1c971ce061e127
+#: 92e58b5637bd4af1bc4df269071a3df5
 msgid "Python"
 msgstr ""
 
-#: ../../source/deployment/vllm.md:63 ../../source/deployment/vllm.md:127
-#: 16d667d5813b4c34be982aa09cd62fbc ff80155434ec49829a8e034a69b89b56
+#: ../../source/deployment/vllm.md:63 ../../source/deployment/vllm.md:129
+#: 12be4f0cf2b9495faee25799b266a799 855aea8cb2fa48f7a63c6a511cb03fd5
 msgid "You can use the API client with the `openai` Python SDK as shown below:"
 msgstr "或者您可以如下面所示使用 `openai` Python SDK中的 API 客户端："
 
-#: ../../source/deployment/vllm.md:91 e6e1b5bebc36452e9e9b5016ba2f21c3
+#: ../../source/deployment/vllm.md:93 85d6fac1e7e24de1983be918b3e0ea3e
 msgid "`vllm` will use the sampling parameters from the `generation_config.json` in the model files."
 msgstr "`vllm` 将使用模型文件中 `generation_config.json` 的采样参数。"
 
-#: ../../source/deployment/vllm.md:93 300a2b53bc744d33b85ecf8eb3a398f1
+#: ../../source/deployment/vllm.md:95 1323928e307d4ed9bcd1e538e61f0d2d
 msgid "While the default sampling parameters would work most of the time for thinking mode, it is recommended to adjust the sampling parameters according to your application,  and always pass the sampling parameters to the API."
 msgstr "虽然默认的采样参数在大多数情况下适用于思考模式，但建议根据您的应用调整采样参数，并始终将采样参数传递给 API。"
 
-#: ../../source/deployment/vllm.md:99 2e798dc420cd4221be0ba5ef16109b8d
+#: ../../source/deployment/vllm.md:101 84e3b8ae27ab4242973d411876f79250
 msgid "Thinking & Non-Thinking Modes"
 msgstr "思考与非思考模式"
 
-#: ../../source/deployment/vllm.md:101 208e39c3f2114ea79c649656f6164c91
+#: ../../source/deployment/vllm.md:103 80dddb284cb8439399ad0e3c2227cc0e
 msgid "Qwen3 models will think before respond. This behavior could be controlled by either the hard switch, which could disable thinking completely, or the soft switch, where the model follows the instruction of the user on whether it should think."
 msgstr "Qwen3 模型会在回复前进行思考。这种行为可以通过硬开关（完全禁用思考）或软开关（模型遵循用户关于是否应该思考的指令）来控制。"
 
-#: ../../source/deployment/vllm.md:104 f0607fd820754924a03a5a548c006b07
+#: ../../source/deployment/vllm.md:106 88d3ca0f6faf4b8b80012f0a1b3a53ea
 msgid "The hard switch is available in vLLM through the following configuration to the API call. To disable thinking, use"
 msgstr "硬开关在 vLLM 中可以通过以下 API 调用配置使用。要禁用思考，请使用"
 
-#: ../../source/deployment/vllm.md:158 734c6dac6a3b4c409af71a1327938aeb
+#: ../../source/deployment/vllm.md:162 bfc88862f9e5470e8d8e213003c310bc
+msgid "Please note that passing `enable_thinking` is not OpenAI API compatible. The exact method may differ among frameworks."
+msgstr "请注意，`enable_thinking`并非OpenAI API定义的参数，具体传入方式可能因推理框架不同而不同。"
+
+#: ../../source/deployment/vllm.md:167 1d3ab8c3e2d24c0d9961b38686661005
 msgid "To completely disable thinking, you could use [a custom chat template](../../source/assets/qwen3_nonthinking.jinja) when starting the model:"
 msgstr "要完全禁用思考，您可以在启动模型时使用[自定义聊天模板](../../source/assets/qwen3_nonthinking.jinja)："
 
-#: ../../source/deployment/vllm.md:164 8242339c014549c1a22209d3fe184229
+#: ../../source/deployment/vllm.md:173 495c3e31b2614dd8bad7f0eba0d48236
 msgid "The chat template prevents the model from generating thinking content, even if the user instructs the model to do so with `/think`."
 msgstr "该聊天模板会阻止模型生成思考内容，即使用户通过 `/think` 指示模型这样做。"
 
-#: ../../source/deployment/vllm.md:169 7c0e133a66dc489b8daf8a1ea05c59d1
+#: ../../source/deployment/vllm.md:178 02a8fc8d1024402ebc4f9449aa2500f3
 msgid "It is recommended to set sampling parameters differently for thinking and non-thinking modes."
 msgstr "建议为思考模式和非思考模式分别设置不同的采样参数。"
 
-#: ../../source/deployment/vllm.md:174 4c58ce97a0ef4d439c0ca06e878e89b8
+#: ../../source/deployment/vllm.md:183 35e320018c0646cb82ad0d2f9fc54ea8
 msgid "Parsing Thinking Content"
 msgstr "解析思考内容"
 
-#: ../../source/deployment/vllm.md:176 3e3e0461d90f43568760882af4779d67
+#: ../../source/deployment/vllm.md:185 efeeeb8ff56e4f37af53bd7a6e440d65
 msgid "vLLM supports parsing the thinking content from the model generation into structured messages:"
 msgstr "vLLM 支持将模型生成的思考内容解析为结构化消息："
 
-#: ../../source/deployment/vllm.md:181 21dcebbad1414c09adb283a8a60d2ca1
+#: ../../source/deployment/vllm.md:190 7fdb9af5391b402280be7aeaa514dcd3
 msgid "The response message will have a field named `reasoning_content` in addition to `content`, containing the thinking content generated by the model."
 msgstr "响应消息除了包含 `content` 字段外，还会有一个名为 `reasoning_content` 的字段，其中包含模型生成的思考内容。"
 
-#: ../../source/deployment/vllm.md:184 60da50b9dbf247c3a71f9e1c73f2dd3f
+#: ../../source/deployment/vllm.md:193 7036cf771a4e4fddbcbf92cc52de59d0
 msgid "Please note that this feature is not OpenAI API compatible."
 msgstr "请注意，此功能与 OpenAI API 规范不一致。"
 
-#: ../../source/deployment/vllm.md:188 c58e3a6d505d4d34b722c58bcd4f825e
+#: ../../source/deployment/vllm.md:197 5e0250bbffa94e7dac6c9278e0d87ab6
 msgid "As of vLLM 0.8.5, `enable_thinking=False` is not compatible with this feature. If you need to pass `enable_thinking=False` to the API, you should disable parsing thinking content."
 msgstr "在 vLLM 0.8.5 版本中，`enable_thinking=False` 与此功能不兼容。如果需要向 API 传递 `enable_thinking=False`，则应禁用解析思考内容。"
 
-#: ../../source/deployment/vllm.md:192 8825ab7c7548454f8ad5a9c9205106cc
+#: ../../source/deployment/vllm.md:201 aa45c227d5d040dea6522bf2a45576b0
 msgid "Parsing Tool Calls"
 msgstr "解析工具调用"
 
-#: ../../source/deployment/vllm.md:194 508d204a475347f99f1cde63519f67ad
+#: ../../source/deployment/vllm.md:203 56c12209324f41fcbed13409de6d0aa5
 msgid "vLLM supports parsing the tool calling content from the model generation into structured messages:"
 msgstr "vLLM 支持将模型生成的工具调用内容解析为结构化消息："
 
-#: ../../source/deployment/vllm.md:199 35c285fc2ae9473485c35ab96bee34bb
+#: ../../source/deployment/vllm.md:208 7a12c4073d874bff81f012d7da241e9c
 msgid "For more information, please refer to [our guide on Function Calling](../framework/function_call.md#vllm)."
 msgstr "详细信息，请参阅[函数调用的指南](../framework/function_call.md#vllm)。"
 
-#: ../../source/deployment/vllm.md:201 278608fece85428cbce451d69aba4295
+#: ../../source/deployment/vllm.md:210 827710cca0954bfaaeaa8a67fef1efa6
 msgid "Structured/JSON Output"
 msgstr "结构化/JSON输出"
 
-#: ../../source/deployment/vllm.md:203 2f614d82085241f6bd2b6e44dc6e6b71
+#: ../../source/deployment/vllm.md:212 ac630e8cc3b04ad8af427e677896b7ee
 msgid "vLLM supports structured/JSON output.  Please refer to [vLLM's documentation](https://docs.vllm.ai/en/stable/serving/openai_compatible_server.html#extra-parameters-for-chat-api) for the `guided_json` parameters. Besides, it is also recommended to instruct the model to generate the specific format in the system message or in your prompt."
 msgstr "vLLM 支持结构化/JSON 输出。请参照[vLLM文档](https://docs.vllm.ai/en/stable/serving/openai_compatible_server.html#extra-parameters-for-chat-api)了解 `guided_json` 参数。此外，也建议在系统消息或用户提示中指示模型生成特定格式，避免仅依赖于推理参数配置。"
 
-#: ../../source/deployment/vllm.md:208 6c97982462cb4f248896783ac52dec3c
+#: ../../source/deployment/vllm.md:217 5534e3b2ef2242c69964016b526e1a01
 msgid "Serving Quantized models"
 msgstr "部署量化模型"
 
-#: ../../source/deployment/vllm.md:210 fa9088a8588043a4bf0185c9cc9cc3b5
+#: ../../source/deployment/vllm.md:219 dbd8323a4bc6415da9fde179b23dac78
 msgid "Qwen3 comes with two types of pre-quantized models, FP8 and AWQ."
 msgstr "Qwen3 提供了两种类型的预量化模型：FP8 和 AWQ。"
 
-#: ../../source/deployment/vllm.md:212 33ef4ea608dd43d49f7ed284d4d4b7a4
+#: ../../source/deployment/vllm.md:221 1aedffe7b0874ac289badc829e035300
 msgid "The command serving those models are the same as the original models except for the name change:"
 msgstr "部署这些模型的命令与原始模型相同，只是名称有所更改："
 
-#: ../../source/deployment/vllm.md:222 902dc486797f4792868cc12a33a07274
+#: ../../source/deployment/vllm.md:231 6d91506e31194076857d992f51d3f336
 msgid "FP8 computation is supported on NVIDIA GPUs with compute capability > 8.9, that is, Ada Lovelace, Hopper, and later GPUs."
 msgstr "FP8 计算在计算能力 > 8.9 的 NVIDIA GPU 上受支持，即 Ada Lovelace、Hopper 及更新的 GPU。"
 
-#: ../../source/deployment/vllm.md:224 4d460be8c9b84a75861b6812588759c0
+#: ../../source/deployment/vllm.md:233 25db4dd5243b4326839ae26671732551
 msgid "FP8 models will run on compute capability > 8.0 (Ampere) as weight-only W8A16, utilizing FP8 Marlin."
 msgstr "\"msgstr \"FP8 模型将在计算能力 > 8.0（Ampere）的 GPU 上以仅权重 W8A16 的形式运行，利用 FP8 Marlin 技术。"
 
-#: ../../source/deployment/vllm.md:228 06f6be07b999419b81f7e5f40f044f19
+#: ../../source/deployment/vllm.md:237 dca096f25d794f88bb446eb2f39f3570
 msgid "If you encountered the following error when deploying the FP8 models, it indicates that the tensor parallel size does not agree with the model weights:"
 msgstr "如果在部署 FP8 模型时遇到以下错误，这表明张量并行大小与模型权重不匹配："
 
-#: ../../source/deployment/vllm.md:235 80673bf3cdf44d7680c30a2ae130f154
-msgid "For now, we recommend lowering the degree of tensor parallel, e.g., `--tensor-parallel-size 4` or enabling expert parallel, e.g., `--tensor-parallel-size 8 --enable-expert-parallel`."
+#: ../../source/deployment/vllm.md:244 609be8d8c32f48c5ade0f1a32873bbf8
+#, fuzzy
+msgid "We recommend lowering the degree of tensor parallel, e.g., `--tensor-parallel-size 4` or enabling expert parallel, e.g., `--tensor-parallel-size 8 --enable-expert-parallel`."
 msgstr "目前，我们建议降低张量并行的程度，例如使用 `--tensor-parallel-size 4`，或者启用专家并行，例如使用 `--tensor-parallel-size 8 --enable-expert-parallel`。"
 
-#: ../../source/deployment/vllm.md:237 79bd1368acf44ad9a2c4d20a65d4bcb3
-msgid "We are currently working on other solutions that would allow this usage."
-msgstr "我们目前正在研究其他解决方案以允许该场景。"
-
-#: ../../source/deployment/vllm.md:240 7439da3ef5d94e9992a9b6086f4faa12
+#: ../../source/deployment/vllm.md:247 027c1c2d8d6a46a78c69451e96b6544a
 msgid "Context Length"
 msgstr "上下文长度"
 
-#: ../../source/deployment/vllm.md:242 31119fe0dc064abb9eabb0f7419bb3c2
+#: ../../source/deployment/vllm.md:249 a9dd53625c294f8682cc2fbedce37f45
 msgid "The context length for Qwen3 models in pretraining is up to 32,768 tokens. To handle context length substantially exceeding 32,768 tokens, RoPE scaling techniques should be applied. We have validated the performance of [YaRN](https://arxiv.org/abs/2309.00071), a technique for enhancing model length extrapolation, ensuring optimal performance on lengthy texts."
 msgstr "Qwen3 模型在预训练中的上下文长度最长为 32,768 个 token。为了处理显著超过 32,768 个 token 的上下文长度，应应用 RoPE 缩放技术。我们已经验证了 [YaRN](https://arxiv.org/abs/2309.00071) 的性能，这是一种增强模型长度外推的技术，可确保在长文本上的最佳性能。"
 
-#: ../../source/deployment/vllm.md:246 69eda61696914d189a205067070206b7
+#: ../../source/deployment/vllm.md:253 988e60ef751944c09274ce28aecf3fac
 msgid "vLLM supports YaRN, which can be configured as"
 msgstr "vLLM 支持 YaRN，可以配置为"
 
-#: ../../source/deployment/vllm.md:252 4b2864f102ca4bce8908ccaa21be15b3
+#: ../../source/deployment/vllm.md:259 7da95eb3121944859d583a7a5885c5c4
 msgid "vLLM implements static YaRN, which means the scaling factor remains constant regardless of input length, **potentially impacting performance on shorter texts.** We advise adding the `rope_scaling` configuration only when processing long contexts is required.  It is also recommended to modify the `factor` as needed. For example, if the typical context length for your application is 65,536 tokens, it would be better to set `factor` as 2.0."
 msgstr "vLLM 实现了静态 YaRN，这意味着无论输入长度如何，缩放因子都保持不变，**这可能会对较短文本的性能产生影响。** 我们建议仅在需要处理长上下文时添加 `rope_scaling` 配置。还建议根据需要调整 `factor`。例如，如果您的应用程序的典型上下文长度为 65,536 个 token，则最好将 `factor` 设置为 2.0。"
 
-#: ../../source/deployment/vllm.md:258 f117e27e480e43a5877689efe1ff0144
+#: ../../source/deployment/vllm.md:265 fa10485203e3408dabb81687868ce059
 msgid "The default `max_position_embeddings` in `config.json` is set to 40,960, which used by vLLM, if `--max-model-len` is not specified. This allocation includes reserving 32,768 tokens for outputs and 8,192 tokens for typical prompts, which is sufficient for most scenarios involving short text processing and leave adequate room for model thinking. If the average context length does not exceed 32,768 tokens, we do not recommend enabling YaRN in this scenario, as it may potentially degrade model performance."
 msgstr "如果未指定 `--max-model-len`，`config.json` 中的默认 `max_position_embeddings` 被设置为 40,960，vLLM 将使用该值。此分配包括为输出保留 32,768 个 token，为典型提示保留 8,192 个 token，这足以应对大多数涉及短文本处理的场景，并为模型思考留出充足空间。如果平均上下文长度不超过 32,768 个 token，我们不建议在此场景中启用 YaRN，因为这可能会降低模型性能。"
 
-#: ../../source/deployment/vllm.md:263 446d4b3115b94f32af6c0c4a9e67d896
+#: ../../source/deployment/vllm.md:270 fe82482bd3e1406998560b372e2707df
 msgid "Python Library"
 msgstr "Python 库使用"
 
-#: ../../source/deployment/vllm.md:265 44df3a83957b448f87ab1517e64d1736
+#: ../../source/deployment/vllm.md:272 82fb6b76e9c24978b9bee04927b3d5d4
 msgid "vLLM can also be directly used as a Python library, which is convenient for offline batch inference but lack some API-only features, such as parsing model generation to structure messages."
 msgstr "vLLM 也可以直接用作 Python 库，这对离线批量推理非常方便，但缺少一些仅限 API 的功能，例如将模型生成解析为结构化消息。"
 
-#: ../../source/deployment/vllm.md:267 16346b6722b548bd86f15a262fdb86ac
+#: ../../source/deployment/vllm.md:274 857f6312cd4e44ccb34197793db59165
 msgid "The following shows the basic usage of vLLM as a library:"
 msgstr "以下展示了将 vLLM 用作库的基本用法："
 
-#: ../../source/deployment/vllm.md:304 009c23f717f248898cc0cb789f3d7c6d
+#: ../../source/deployment/vllm.md:311 de026655e79449f28854a1cbcc182d9f
 msgid "FAQ"
 msgstr "常见问题解答"
 
-#: ../../source/deployment/vllm.md:306 996ddf1f458646da9dc6a10ceb63ac9e
+#: ../../source/deployment/vllm.md:313 30e351b0aebb4e71b187d74895124662
 msgid "You may encounter OOM issues that are pretty annoying. We recommend two arguments for you to make some fix."
 msgstr "您可能会遇到令人烦恼的OOM（内存溢出）问题。我们推荐您尝试两个参数进行修复。"
 
-#: ../../source/deployment/vllm.md:309 e5d3487466ab4d5d9ceed1501ede52f8
+#: ../../source/deployment/vllm.md:316 cc5e992512ff4aa9bdede2e3791264f3
 msgid "The first one is `--max-model-len`. Our provided default `max_position_embedding` is `40960` and thus the maximum length for the serving is also this value, leading to higher requirements of memory. Reducing it to a proper length for yourself often helps with the OOM issue."
 msgstr "第一个参数是 `--max-model-len` 。我们提供的默认最大位置嵌入（`max_position_embedding`）为 40960 ，因此服务时的最大长度也是这个值，这会导致更高的内存需求。将此值适当减小通常有助于解决OOM问题。"
 
-#: ../../source/deployment/vllm.md:312 778a5ff9815c460f8be56841e1fb418d
+#: ../../source/deployment/vllm.md:319 9e8f5e6e064841de8bfa0f581f28c25b
 #, fuzzy
 msgid "Another argument you can pay attention to is `--gpu-memory-utilization`. vLLM will pre-allocate this much GPU memory. By default, it is `0.9`. This is also why you find a vLLM service always takes so much memory. If you are in eager mode (by default it is not), you can level it up to tackle the OOM problem. Otherwise, CUDA Graphs are used, which will use GPU memory not controlled by vLLM, and you should try lowering it. If it doesn't work, you should try `--enforce-eager`, which may slow down inference, or reduce the `--max-model-len`."
 msgstr "另一个您可以关注的参数是 `--gpu-memory-utilization` 。 vLLM将预分配该参数指定比例的显存。默认情况下，该值为 `0.9`。这也是为什么您发现一个vLLM服务总是占用大量内存的原因。如果你使用了eager模式（默认不是），您可以将其调高以应对OOM问题。反之，vLLM会使用CUDA Graphs，而CUDA Graphs会额外占用不受vLLM管理的显存；此时，您应当尝试降低`--gpu-memory-utilization`。如果还是无法解决，可以尝试`--enforce-eager`（这会影响推理效率）或缩小`--max-model-len`。"
 
-#: ../../source/deployment/vllm.md:321 be624642250e405c9b440d39d4a3571d
+#: ../../source/deployment/vllm.md:328 2dd3f6552c53423ca7ce0576047f2ab6
 msgid "For more usage guide with vLLM, please see vLLM's [Qwen3 Usage Guide](https://github.com/vllm-project/vllm/issues/17327)."
 msgstr "有关 vLLM 的更多使用指南，请参阅 vLLM 的[Qwen3 使用指南](https://github.com/vllm-project/vllm/issues/17327)。"
 
@@ -292,4 +293,7 @@ msgstr "有关 vLLM 的更多使用指南，请参阅 vLLM 的[Qwen3 使用指�
 
 #~ msgid "As of vLLM 0.8.5, it is not supported to parse the thinking content and the tool calling from the model generation at the same time."
 #~ msgstr "在 vLLM 0.8.5 版本中，尚不支持同时解析模型生成的思考内容和工具调用。"
+
+#~ msgid "We are currently working on other solutions that would allow this usage."
+#~ msgstr "我们目前正在研究其他解决方案以允许该场景。"
 

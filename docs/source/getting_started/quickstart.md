@@ -156,10 +156,12 @@ chat_response = client.chat.completions.create(
     messages=[
         {"role": "user", "content": "Give me a short introduction to large language models."},
     ],
+    max_tokens=32768,
     temperature=0.6,
     top_p=0.95,
-    top_k=20,
-    max_tokens=32768,
+    extra_body={
+        "top_k": 20,
+    }
 )
 print("Chat response:", chat_response)
 ```

@@ -77,10 +77,12 @@ chat_response = client.chat.completions.create(
     messages=[
         {"role": "user", "content": "Give me a short introduction to large language models."},
     ],
+    max_tokens=32768,
     temperature=0.6,
     top_p=0.95,
-    top_k=20,
-    max_tokens=32768,
+    extra_body={
+        "top_k": 20,
+    }, 
 )
 print("Chat response:", chat_response)
 ```
@@ -139,16 +141,23 @@ chat_response = client.chat.completions.create(
     messages=[
         {"role": "user", "content": "Give me a short introduction to large language models."},
     ],
+    max_tokens=8192,
     temperature=0.7,
     top_p=0.8,
-    top_k=20,
-    max_tokens=8192,
     presence_penalty=1.5,
-    extra_body={"chat_template_kwargs": {"enable_thinking": True}},
+    extra_body={
+        "top_k": 20,
+        "chat_template_kwargs": {"enable_thinking": True},
+    },
 )
 print("Chat response:", chat_response)
 ```
 ::::
+
+:::{note}
+Please note that passing `enable_thinking` is not OpenAI API compatible.
+The exact method may differ among frameworks.
+:::
 
 :::{tip}
 To completely disable thinking, you could use [a custom chat template](../../source/assets/qwen3_nonthinking.jinja) when starting the model:

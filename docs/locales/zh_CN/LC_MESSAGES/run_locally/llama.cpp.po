@@ -361,8 +361,8 @@ msgid "llama-cli"
 msgstr ""
 
 #: ../../source/run_locally/llama.cpp.md:212 4e4e1212c8b84613ad0da20c8e555aac
-msgid "[llama-cli](https://github.com/ggml-org/llama.cpp/tree/master/examples/main) is a console program which can be used to chat with LLMs. Simple run the following command where you place the llama.cpp programs:"
-msgstr "[llama-cli](https://github.com/ggml-org/llama.cpp/tree/master/examples/main) 是一个可用于与大型语言模型聊天的控制台程序。只需在放置 llama.cpp 程序的位置运行以下命令："
+msgid "[llama-cli](https://github.com/ggml-org/llama.cpp/tree/master/tools/main) is a console program which can be used to chat with LLMs. Simple run the following command where you place the llama.cpp programs:"
+msgstr "[llama-cli](https://github.com/ggml-org/llama.cpp/tree/master/tools/main) 是一个可用于与大型语言模型聊天的控制台程序。只需在放置 llama.cpp 程序的位置运行以下命令："
 
 #: ../../source/run_locally/llama.cpp.md:218 076c752f47bc46f1b0cbbf6425146f95
 msgid "Here are some explanations to the above command:"
@@ -397,8 +397,8 @@ msgid "GPU: If the programs are built with GPU support, you can use `-ngl`, whic
 msgstr "GPU：如果程序包含 GPU 支持，您可以使用 `-ngl`，它允许将一些层卸载到 GPU 进行计算。如果有多个 GPU，它会卸载到所有 GPU 上。您可以使用 `-dev` 控制使用的设备，并使用 `-sm` 控制使用的并行类型。例如，`-ngl 99 -dev cuda0,cuda1 -sm row` 表示使用 row 切分将所有层卸载到 GPU 0 和 GPU 1。添加 `-fa` 也可能加速生成。"
 
 #: ../../source/run_locally/llama.cpp.md:232 260ef13ac441480db43d88e837c4b428
-msgid "**Sampling Parameters**: llama.cpp supports [a variety of sampling methods](https://github.com/ggml-org/llama.cpp/tree/master/examples/main#generation-flags) and has default configuration for many of them. It is recommended to adjust those parameters according to the actual case and the recommended parameters from Qwen3 modelcard could be used as a reference. If you encounter repetition and endless generation, it is recommended to pass in addition `--presence-penalty` up to `2.0`."
-msgstr "**采样参数**：llama.cpp 支持[多种采样方法](https://github.com/ggml-org/llama.cpp/tree/master/examples/main#generation-flags)，并对其中许多方法有默认配置。建议根据实际情况调整这些参数，Qwen3 模型卡片中推荐的参数可作为参考。如果您遇到重复和无尽生成的情况，建议额外传递 `--presence-penalty`，最大值为 `2.0`。"
+msgid "**Sampling Parameters**: llama.cpp supports [a variety of sampling methods](https://github.com/ggml-org/llama.cpp/tree/master/tools/main#generation-flags) and has default configuration for many of them. It is recommended to adjust those parameters according to the actual case and the recommended parameters from Qwen3 modelcard could be used as a reference. If you encounter repetition and endless generation, it is recommended to pass in addition `--presence-penalty` up to `2.0`."
+msgstr "**采样参数**：llama.cpp 支持[多种采样方法](https://github.com/ggml-org/llama.cpp/tree/master/tools/main#generation-flags)，并对其中许多方法有默认配置。建议根据实际情况调整这些参数，Qwen3 模型卡片中推荐的参数可作为参考。如果您遇到重复和无尽生成的情况，建议额外传递 `--presence-penalty`，最大值为 `2.0`。"
 
 #: ../../source/run_locally/llama.cpp.md:236 7adb408bb15d4f1a94704ccef38985b5
 msgid "**Context Management**: llama.cpp adopts the \"rotating\" context management by default. The `-c` controls the maximum context length (default 4096, 0 means loaded from model), and `-n` controls the maximum generation length each time (default -1 means infinite until ending, -2 means until context full). When the context is full but the generation doesn't end, the first `--keep` tokens (default 0, -1 means all) from the initial prompt is kept, and the first half of the rest is discarded. Then, the model continues to generate based on the new context tokens. You can set `--no-context-shift` to prevent this rotating behavior and the generation will stop once `-c` is reached."
@@ -417,8 +417,8 @@ msgid "llama-server"
 msgstr ""
 
 #: ../../source/run_locally/llama.cpp.md:251 8633e2b491b44b5e9affa24651305d51
-msgid "[llama-server](https://github.com/ggml-org/llama.cpp/tree/master/examples/server) is a simple HTTP server, including a set of LLM REST APIs and a simple web front end to interact with LLMs using llama.cpp."
-msgstr "[llama-server](https://github.com/ggml-org/llama.cpp/tree/master/examples/server) 是一个简单的 HTTP 服务器，包含一组 LLM REST API 和一个简单的 Web 前端，用于通过 llama.cpp 与大型语言模型交互。"
+msgid "[llama-server](https://github.com/ggml-org/llama.cpp/tree/master/tools/server) is a simple HTTP server, including a set of LLM REST APIs and a simple web front end to interact with LLMs using llama.cpp."
+msgstr "[llama-server](https://github.com/ggml-org/llama.cpp/tree/master/tools/server) 是一个简单的 HTTP 服务器，包含一组 LLM REST API 和一个简单的 Web 前端，用于通过 llama.cpp 与大型语言模型交互。"
 
 #: ../../source/run_locally/llama.cpp.md:253 ef67ce21ceb049b8ada65370e31c56ba
 msgid "The core command is similar to that of llama-cli. In addition, it supports thinking content parsing and tool call parsing."
@@ -498,8 +498,8 @@ msgstr ""
 #~ msgid "The command will only compile the parts needed for `llama-cli`. On macOS, it will enable Metal and Accelerate by default, so you can run with GPUs. On Linux, you won't get GPU support by default, but SIMD-optimization is enabled if available."
 #~ msgstr "该命令只会编译`llama-cli`所需的部件。在macOS上，默认情况下会启用Metal和Accelerate，因此你可以使用GPU运行。在Linux上，默认情况下你无法获得GPU支持，但如果可用，会启用CPU SIMD优化。"
 
-#~ msgid "There are other [example programs](https://github.com/ggerganov/llama.cpp/tree/master/examples) in llama.cpp. You can build them at once with simply (it may take some time):"
-#~ msgstr "在llama.cpp中还有其他的[示例程序](https://github.com/ggerganov/llama.cpp/tree/master/examples)，你可以一次构建它们（可能需要一些时间）："
+#~ msgid "There are other [example programs](https://github.com/ggerganov/llama.cpp/tree/master/tools) in llama.cpp. You can build them at once with simply (it may take some time):"
+#~ msgstr "在llama.cpp中还有其他的[示例程序](https://github.com/ggerganov/llama.cpp/tree/master/tools)，你可以一次构建它们（可能需要一些时间）："
 
 #~ msgid "or you can also compile only the one you need, for example:"
 #~ msgstr "你也可以只编译你需要的，例如："

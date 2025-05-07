@@ -21,13 +21,18 @@ If you don't, check our guide [here](../run_locally/llama.cpp.html#getting-the-p
 Now, suppose you would like to quantize `Qwen3-8B`. 
 You need to first make a GGUF file as shown below:
 ```bash
-python convert-hf-to-gguf.py Qwen/Qwen3-8B --outfile qwen3-8b-f16.gguf
+python convert-hf-to-gguf.py Qwen/Qwen3-8B --outfile Qwen3-8B-F16.gguf
+```
+
+Since Qwen3 are trained using the bfloat16 precision, the following should keep most information on supported machines:
+```bash
+python convert-hf-to-gguf.py Qwen/Qwen3-8B --outtype bf16 --outfile Qwen3-8B-BF16.gguf
 ```
 
 Sometimes, it may be better to use fp32 as the start point for quantization.
 In that case, use
 ```bash
-python convert-hf-to-gguf.py Qwen/Qwen3-8B-Instruct --outtype f32 --outfile qwen3-8b-f32.gguf
+python convert-hf-to-gguf.py Qwen/Qwen3-8B --outtype f32 --outfile Qwen3-8B-F32.gguf
 ```
 
 ## Quantizing the GGUF without Calibration
@@ -35,13 +40,13 @@ python convert-hf-to-gguf.py Qwen/Qwen3-8B-Instruct --outtype f32 --outfile qwen
 For the simplest way, you can directly quantize the model to lower-bits based on your requirements. 
 An example of quantizing the model to 8 bits is shown below:
 ```bash
-./llama-quantize qwen3-8b-f16.gguf qwen3-8b-q8_0.gguf Q8_0
+./llama-quantize Qwen3-8B-F16.gguf Qwen3-8B-Q8_0.gguf Q8_0
 ```
 
 `Q8_0` is a code for a quantization preset.
-You can find all the presets in [the source code of `llama-quantize`](https://github.com/ggml-org/llama.cpp/blob/master/examples/quantize/quantize.cpp).
+You can find all the presets in [the source code of `llama-quantize`](https://github.com/ggml-org/llama.cpp/blob/master/tools/quantize/quantize.cpp).
 Look for the variable `QUANT_OPTIONS`.
-Common ones used for 7B models include `Q8_0`, `Q5_0`, and `Q4_K_M`. 
+Common ones used for 8B models include `Q8_0`, `Q5_K_M`, and `Q4_K_M`. 
 The letter case doesn't matter, so `q8_0` or `q4_K_m` are perfectly fine.
 
 Now you can use the GGUF file of the quantized model with applications based on llama.cpp.
@@ -94,19 +99,19 @@ In this way, it should be possible to achieve similar quality with lower bit-per
 
 ## Quantizing the GGUF with Importance Matrix
 
-Another possible solution is to use the "important matrix"[^imatrix], following [this](https://github.com/ggml-org/llama.cpp/tree/master/examples/imatrix).
+Another possible solution is to use the "important matrix"[^imatrix], following [this](https://github.com/ggml-org/llama.cpp/tree/master/tools/imatrix).
 
 First, you need to compute the importance matrix data of the weights of a model (`-m`) using a calibration dataset (`-f`):
 ```bash
-./llama-imatrix -m qwen3-8b-f16.gguf -f calibration-text.txt --chunk 512 -o qwen3-8b-imatrix.dat -ngl 80
+./llama-imatrix -m Qwen3-8B-F16.gguf -f calibration-text.txt --chunk 512 -o Qwen3-8B-imatrix.dat -ngl 80
 ```
 
 The text is cut in chunks of length `--chunk` for computation.
 Preferably, the text should be representative of the target domain.
-The final results will be saved in a file named `qwen3-8b-imatrix.dat` (`-o`), which can then be used:
+The final results will be saved in a file named `Qwen3-8B-imatrix.dat` (`-o`), which can then be used:
 ```bash
-./llama-quantize --imatrix qwen3-8b-imatrix.data \
-    qwen3-8b-f16.gguf qwen3-8b-q4_k_m.gguf Q4_K_M
+./llama-quantize --imatrix Qwen3-8B-imatrix.dat \
+    Qwen3-8B-F16.gguf Qwen3-8B-Q4_K_M.gguf Q4_K_M
 ```
 
 For lower-bit quantization mixtures for 1-bit or 2-bit, if you do not provide `--imatrix`, a helpful warning will be printed by `llama-quantize`.
@@ -127,10 +132,10 @@ unzip wikitext-2-raw-v1.zip
 
 Then you can run the test with the following command:
 ```bash
-./llama-perplexity -m qwen3-8b-q8_0.gguf -f wiki.test.raw -ngl 80
+./llama-perplexity -m Qwen3-8B-Q8_0.gguf -f wiki.test.raw -ngl 80
 ```
 Wait for some time and you will get the perplexity of the model.
-There are some numbers of different kinds of quantization mixture [here](https://github.com/ggml-org/llama.cpp/blob/master/examples/perplexity/README.md).
+There are some numbers of different kinds of quantization mixture [here](https://github.com/ggml-org/llama.cpp/blob/master/tools/perplexity/README.md).
 It might be helpful to look at the difference and grab a sense of how that kind of quantization might perform.
 
 [^wiki]: It is not a good evaluation dataset for instruct models though, but it is very common and easily accessible.

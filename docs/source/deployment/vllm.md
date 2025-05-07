@@ -33,7 +33,7 @@ export VLLM_USE_MODELSCOPE=true
 
 For distributed inference with tensor parallelism, it is as simple as
 ```shell
-vllm server Qwen/Qwen3-8B --tensor-parallel-size 4
+vllm serve Qwen/Qwen3-8B --tensor-parallel-size 4
 ```
 The above command will use tensor parallelism on 4 GPUs.
 You should change the number of GPUs according to your demand.
@@ -78,10 +78,12 @@ chat_response = client.chat.completions.create(
     messages=[
         {"role": "user", "content": "Give me a short introduction to large language models."},
     ],
+    max_tokens=32768,
     temperature=0.6,
     top_p=0.95,
-    top_k=20,
-    max_tokens=32768,
+    extra_body={
+        "top_k": 20,
+    },
 )
 print("Chat response:", chat_response)
 ```
@@ -142,17 +144,24 @@ chat_response = client.chat.completions.create(
     messages=[
         {"role": "user", "content": "Give me a short introduction to large language models."},
     ],
+    max_tokens=8192,
     temperature=0.7,
     top_p=0.8,
-    top_k=20,
-    max_tokens=8192,
     presence_penalty=1.5,
-    extra_body={"chat_template_kwargs": {"enable_thinking": False}},
+    extra_body={
+        "top_k": 20, 
+        "chat_template_kwargs": {"enable_thinking": False},
+    },
 )
 print("Chat response:", chat_response)
 ```
 ::::
 
+
+:::{note}
+Please note that passing `enable_thinking` is not OpenAI API compatible.
+The exact method may differ among frameworks.
+:::
 
 :::{tip}
 To completely disable thinking, you could use [a custom chat template](../../source/assets/qwen3_nonthinking.jinja) when starting the model:
@@ -232,9 +241,7 @@ File ".../vllm/vllm/model_executor/layers/quantization/fp8.py", line 477, in cre
 ValueError: The output_size of gate's and up's weight = 192 is not divisible by weight quantization block_n = 128.
 ```
 
-For now, we recommend lowering the degree of tensor parallel, e.g., `--tensor-parallel-size 4` or enabling expert parallel, e.g., `--tensor-parallel-size 8 --enable-expert-parallel`.
-
-We are currently working on other solutions that would allow this usage.
+We recommend lowering the degree of tensor parallel, e.g., `--tensor-parallel-size 4` or enabling expert parallel, e.g., `--tensor-parallel-size 8 --enable-expert-parallel`.
 :::
 
 ### Context Length

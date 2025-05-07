@@ -285,7 +285,7 @@ generator.tokenizer.padding_side="left"
 
 batch = [
     [{"role": "user", "content": "Give me a short introduction to large language models."}],
-    [{"role": "user", "content": "Give me a detailed introduction to large language model."}],
+    [{"role": "user", "content": "Give me a detailed introduction to large language models."}],
 ]
 
 results = generator(batch, max_new_tokens=32768, batch_size=2)

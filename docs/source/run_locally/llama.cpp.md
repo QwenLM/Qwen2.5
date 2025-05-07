@@ -197,7 +197,6 @@ The fp16 model could be a bit heavy for running locally, and you can quantize th
 We introduce the method of creating and quantizing GGUF files in [this guide](../quantization/llama.cpp). 
 You can refer to that document for more information.
 
-
 ## Run Qwen with llama.cpp
 
 :::{note}
@@ -209,7 +208,7 @@ The quick workaround is to pass [a custom chat template](../../source/assets/qwe
 
 ### llama-cli
 
-[llama-cli](https://github.com/ggml-org/llama.cpp/tree/master/examples/main) is a console program which can be used to chat with LLMs.
+[llama-cli](https://github.com/ggml-org/llama.cpp/tree/master/tools/main) is a console program which can be used to chat with LLMs.
 Simple run the following command where you place the llama.cpp programs:
 ```shell
 ./llama-cli -hf Qwen/Qwen3-8B-GGUF:Q8_0 --jinja --color -ngl 99 -fa -sm row --temp 0.6 --top-k 20 --top-p 0.95 --min-p 0 -c 40960 -n 32768 --no-context-shift
@@ -229,7 +228,7 @@ Here are some explanations to the above command:
     For example, `-ngl 99 -dev cuda0,cuda1 -sm row` means offload all layers to GPU 0 and GPU1 using the split mode row. 
     Adding `-fa` may also speed up the generation.
 
--   **Sampling Parameters**: llama.cpp supports [a variety of sampling methods](https://github.com/ggml-org/llama.cpp/tree/master/examples/main#generation-flags) and has default configuration for many of them.
+-   **Sampling Parameters**: llama.cpp supports [a variety of sampling methods](https://github.com/ggml-org/llama.cpp/tree/master/tools/main#generation-flags) and has default configuration for many of them.
     It is recommended to adjust those parameters according to the actual case and the recommended parameters from Qwen3 modelcard could be used as a reference.
     If you encounter repetition and endless generation, it is recommended to pass in addition `--presence-penalty` up to `2.0`.
 
@@ -248,7 +247,7 @@ Here are some explanations to the above command:
 
 ### llama-server
 
-[llama-server](https://github.com/ggml-org/llama.cpp/tree/master/examples/server) is a simple HTTP server, including a set of LLM REST APIs and a simple web front end to interact with LLMs using llama.cpp.
+[llama-server](https://github.com/ggml-org/llama.cpp/tree/master/tools/server) is a simple HTTP server, including a set of LLM REST APIs and a simple web front end to interact with LLMs using llama.cpp.
 
 The core command is similar to that of llama-cli.
 In addition, it supports thinking content parsing and tool call parsing.

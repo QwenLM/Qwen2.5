@@ -186,9 +186,10 @@ If you are running on Apple Silicon, [`mlx-lm`](https://github.com/ml-explore/ml
 Look for models ending with MLX on Hugging Face Hub.
 
 
-<!-- ### OpenVINO
+### OpenVINO
 
-Qwen2.5 has already been supported by [OpenVINO toolkit](https://github.com/openvinotoolkit). You can install and run this [chatbot example](https://github.com/OpenVINO-dev-contest/Qwen2.openvino) with Intel CPU, integrated GPU or discrete GPU.  -->
+If you are running on Intel CPU or GPU, [OpenVINO toolkit](https://github.com/openvinotoolkit) supports Qwen3.
+You can follow this [chatbot example](https://github.com/openvinotoolkit/openvino_notebooks/blob/latest/notebooks/llm-chatbot/llm-chatbot.ipynb).
 
 
 <!-- ### Text generation web UI
@@ -260,7 +261,7 @@ We advise you to use training frameworks, including [Axolotl](https://github.com
 
 ## License Agreement
 
-All our open-source models are licensed under Apache 2.0. 
+All our open-weight models are licensed under Apache 2.0. 
 You can find the license files in the respective Hugging Face repositories.
 
 ## Citation
