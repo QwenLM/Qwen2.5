@@ -33,7 +33,7 @@ export VLLM_USE_MODELSCOPE=true
 
 For distributed inference with tensor parallelism, it is as simple as
 ```shell
-vllm server Qwen/Qwen3-8B --tensor-parallel-size 4
+vllm serve Qwen/Qwen3-8B --tensor-parallel-size 4
 ```
 The above command will use tensor parallelism on 4 GPUs.
 You should change the number of GPUs according to your demand.
