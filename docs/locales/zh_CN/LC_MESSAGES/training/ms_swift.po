@@ -1,12 +1,11 @@
 # Copyright (C) 2024, Qwen Team
 # This file is distributed under the same license as the Qwen package.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-28 22:42+0800\n"
+"POT-Creation-Date: 2025-05-06 01:19+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -17,202 +16,245 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: ../../source/training/ms_swift.rst:2 498aef3956544f9b97c7a47c66997ea2
-msgid "SWIFT"
-msgstr ""
+#: ../../source/training/ms_swift.rst:2 f56b16042de24a78855b4b5de21cf8a3
+msgid "MS-SWIFT"
+msgstr "MS-SWIFT"
 
-#: ../../source/training/ms_swift.rst:5 92e3eed8ef984c1e897d6958ddbf552a
-msgid "To be updated for Qwen3."
-msgstr "仍需为Qwen3更新。"
+#: ../../source/training/ms_swift.rst:4 3bcdf9cf78de438d8b29ddc17359c6c1
+msgid "ModelScope SWIFT (**ms-swift**) is the large model and multimodal large model training and deployment framework provided by the `ModelScope community <https://modelscope.cn/>`__."
+msgstr "ModelScope SWIFT (**ms-swift**) 是由 `ModelScope 社区 <https://modelscope.cn/>`__ 提供的大模型和多模态大模型训练部署框架。"
 
-#: ../../source/training/ms_swift.rst:7 0a0330c78d8549d1be55501fdc352a15
-msgid "ModelScope SWIFT (ms-swift) is the official large model and multimodal model training and deployment framework provided by the ModelScope community."
-msgstr "ModelScope SWIFT (ms-swift) 是 ModelScope 社区提供的官方大型模型和多模态模型训练与部署框架。"
-
-#: ../../source/training/ms_swift.rst:9 6e980c27ae67400ca12c11fedf439af8
+#: ../../source/training/ms_swift.rst:6 87c0da54610d4cb4951fdeeec3409515
 msgid "GitHub repository: `ms-swift <https://github.com/modelscope/ms-swift>`__"
-msgstr "GitHub 地址：`ms-swift <https://github.com/modelscope/ms-swift>`__"
+msgstr "GitHub 仓库：`ms-swift <https://github.com/modelscope/ms-swift>`__"
 
-#: ../../source/training/ms_swift.rst:12 8b5caa854cf641c489310f747ed205ba
+#: ../../source/training/ms_swift.rst:8 36693fd1640248a285319478d31f523d
+msgid "Features of using ms-swift for training LLM:"
+msgstr "使用 ms-swift 训练大语言模型的特性："
+
+#: ../../source/training/ms_swift.rst:10 636db9eb124048418427eb7aa6cacfdb
+msgid "**Model Types**: Supports 500+ plain-text large models and 200+ multimodal large models, covering the entire process from training to deployment."
+msgstr "**模型类型**：支持 500+ 纯文本大模型和 200+ 多模态大模型，覆盖从训练到部署全流程。"
+
+#: ../../source/training/ms_swift.rst:11 02ae3715a9824e0f983eae0fa1819094
+msgid "**Hardware Support**: Compatible with CPUs, RTX series GPUs, T4/V100, A10/A100/H100, Ascend NPUs, MPS, and more."
+msgstr "**硬件支持**：兼容 CPU、RTX 系列 GPU、T4/V100、A10/A100/H100、Ascend NPU、MPS 等。"
+
+#: ../../source/training/ms_swift.rst:12 156866942d434deaa9816833ebb61f8e
+msgid "**Training Methods**: Supports full-parameter fine-tuning, LoRA, QLoRA, DoRA, and other techniques."
+msgstr "**训练方法**：支持全参数微调、LoRA、QLoRA、DoRA 等技术。"
+
+#: ../../source/training/ms_swift.rst:13 0b81c3d082a84fb7a7fff71a508f390e
+msgid "**Distributed Training**: Supports distributed training technologies such as DDP, device_map, DeepSpeed ZeRO-2/ZeRO-3, FSDP, and integrates parallelism techniques from Megatron, including Tensor Parallelism, Pipeline Parallelism, Sequence Parallelism, and Expert Parallelism."
+msgstr "**分布式训练**：支持分布式训练技术，如 DDP、device_map、DeepSpeed ZeRO-2/ZeRO-3、FSDP，并集成 Megatron 的并行技术，包括张量并行、流水线并行、序列并行和专家并行。"
+
+#: ../../source/training/ms_swift.rst:14 ea6d505c697640588d1761b3167827fa
+msgid "**RLHF Training**: Supports human alignment methods like DPO, GRPO, DAPO, RM, PPO, KTO, etc., for both plain-text and multimodal large models."
+msgstr "**RLHF 训练**：支持纯文本和多模态大模型的人类对齐方法，如 DPO、GRPO、DAPO、RM、PPO、KTO 等。"
+
+#: ../../source/training/ms_swift.rst:16 de77c28c12b14401b1b8f1eefc49154a
+msgid "This article will demonstrate runnable training demos and provide the format for custom datasets. It includes how to use ms-swift for SFT and GRPO on Qwen3-8B, as well as using Megatron-SWIFT (ms-swift's integration of Megatron-LM) for SFT on Qwen3-30B-A3B. Through expert parallelism technology, MoE model training can be accelerated by nearly 10 times."
+msgstr "本文将介绍可运行的训练示例，并提供自定义数据集的格式。内容包括如何使用 ms-swift 对 Qwen3-8B 进行 SFT 和 GRPO，以及使用 Megatron-SWIFT（ms-swift 集成的 Megatron-LM）对 Qwen3-30B-A3B 进行 SFT。通过专家并行技术，MoE 模型的训练速度可以提升近 10 倍。"
+
+#: ../../source/training/ms_swift.rst:18 a61828bbb64745fc8d349cc9c9f250bb
+msgid "Before starting fine-tuning, ensure your environment is properly set up."
+msgstr "在开始微调之前，请确保您的环境已正确配置。"
+
+#: ../../source/training/ms_swift.rst:35 4d08941214d14d12be23e6ad11a9a408
 msgid "Supervised Fine-Tuning (SFT)"
-msgstr "有监督微调 (SFT)"
+msgstr "监督微调 (SFT)"
 
-#: ../../source/training/ms_swift.rst:14 43999693226b4bc1ba78d7f8addaa01d
-msgid "The SFT script in ms-swift has the following features:"
-msgstr "ms-swift 中的 SFT 训练具有以下特性："
-
-#: ../../source/training/ms_swift.rst:16 98001e42cd2f4f1e874a8aab9b32eca4
-msgid "Flexible training options: single-GPU and multi-GPU support"
-msgstr "支持单卡和多卡分布式训练"
-
-#: ../../source/training/ms_swift.rst:17 4d0fa62cd0364e08b684beca46245de0
-msgid "Efficient tuning methods: full-parameter, LoRA, Q-LoRA, and Dora"
-msgstr "支持全参数微调、LoRA、Q-LoRA 和 DoRA"
-
-#: ../../source/training/ms_swift.rst:18 fa0834b06bd9417193ae6966e1628433
-msgid "Broad model compatibility: supports various LLM and MLLM architectures"
-msgstr "模型兼容性：支持各种 LLM 和 MLLM 架构"
-
-#: ../../source/training/ms_swift.rst:20 0098b181ea6b4724bcec06a864c7972b
-msgid "For detailed model compatibility, see: `Supported Models <https://swift.readthedocs.io/en/latest/Instruction/Supported-models-and-datasets.html>`__"
-msgstr "支持的模型参考：`支持的模型 <https://swift.readthedocs.io/en/latest/Instruction/Supported-models-and-datasets.html>`__"
-
-#: ../../source/training/ms_swift.rst:23 ../../source/training/ms_swift.rst:193
-#: 491064083ea6496489d30443d86e0124 c40c7e8842a94cf7b8abb7006010b343
-msgid "Environment Setup"
-msgstr "环境配置"
-
-#: ../../source/training/ms_swift.rst:25 ../../source/training/ms_swift.rst:195
-#: 118f5e679951486cbbe6123781294450 b303a90f4bbc4158a01727472b14e68f
-msgid "Follow the instructions of `ms-swift <https://github.com/modelscope/ms-swift>`__, and build the environment."
-msgstr "根据 `ms-swift <https://github.com/modelscope/ms-swift>`__ 的说明搭建环境。"
-
-#: ../../source/training/ms_swift.rst:27 f53885ef077d4ac283603fd297b2b2be
-msgid "Optional packages for advanced features::"
-msgstr "可选包：："
-
-#: ../../source/training/ms_swift.rst:33 ../../source/training/ms_swift.rst:205
-#: 4ec49f5d7a1b4a9a9851cafafe9c7623 da2d1da0c3414e03845aae57397a6fdc
+#: ../../source/training/ms_swift.rst:38 ../../source/training/ms_swift.rst:215
+#: 01cc15da93ad43008c43fe9d3c21fc18 1d1a24d4791f44b18e82ed466b6bed40
 msgid "Data Preparation"
 msgstr "数据准备"
 
-#: ../../source/training/ms_swift.rst:35 e8de47b33f6c4196961896fc35c8d038
-msgid "ms-swift supports multiple dataset formats:"
-msgstr "ms-swift 支持多种数据集格式："
+#: ../../source/training/ms_swift.rst:40 2ee5fed8499248d4b9e6acc9678a9d0c
+msgid "The custom dataset format for SFT using ms-swift is as follows (the system field is optional). You can organize it into formats such as JSON, JSONL, or CSV. Specify ``--dataset <dataset_path>`` in the training script."
+msgstr "使用 ms-swift 进行 SFT 的自定义数据集格式如下（system 字段是可选的）。您可以将其组织为 JSON、JSONL 或 CSV 格式。在训练脚本中指定 ``--dataset <dataset_path>``。"
 
-#: ../../source/training/ms_swift.rst:64 5de2bd424af14c52b7d73385caca6fba
+#: ../../source/training/ms_swift.rst:42 1e0153843e6140b6b1dbb211b0fcba2a
 msgid "For complete dataset formatting guidelines, see: `Custom Dataset Documentation <https://swift.readthedocs.io/en/latest/Customization/Custom-dataset.html>`__"
-msgstr "有关完整的数据集格式，请参阅：`自定义数据集文档 <https://swift.readthedocs.io/en/latest/Customization/Custom-dataset.html>`__"
+msgstr "有关完整的数据集格式指南，请参考：`自定义数据集文档 <https://swift.readthedocs.io/zh-cn/latest/Customization/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E9%9B%86.html>`__"
 
-#: ../../source/training/ms_swift.rst:66 26962c82458e4dfbab4192a3d56139dd
-msgid "Pre-built datasets are available at: `Supported Datasets <https://swift.readthedocs.io/en/latest/Instruction/Supported-models-and-datasets.html#datasets>`__"
-msgstr "内置数据集可以查看：`支持的数据集 <https://swift.readthedocs.io/en/latest/Instruction/Supported-models-and-datasets.html#datasets>`__"
+#: ../../source/training/ms_swift.rst:58 2f546c57e96e4ac6b0a57009db0afc86
+msgid "If you want to train using data without a chain of thought but retain the model's reasoning ability, there are two approaches to minimize disruption during fine-tuning:"
+msgstr "如果您想使用不含思维链的数据进行训练，同时保留模型的推理能力，可以通过以下两种方法尽量减少微调期间的干扰："
 
-#: ../../source/training/ms_swift.rst:69 35818d0633704fd3a70482e77a32f892
-msgid "Training Examples"
-msgstr "训练示例"
+#: ../../source/training/ms_swift.rst:60 9d40396e460a4663bb11a9655dbb0a67
+msgid "**Option 1**: During training, specify ``--loss_scale ignore_empty_think`` to ignore the loss calculation for ``<think>\\n\\n</think>\\n\\n``, preventing the loss of reasoning ability. Refer to the training script `here <https://github.com/modelscope/ms-swift/blob/main/examples/train/think_model/qwen3_demo1.sh>`__. The custom dataset format is as follows:"
+msgstr "**选项 1**：在训练期间，指定 ``--loss_scale ignore_empty_think``，以忽略对 ``<think>\\n\\n</think>\\n\\n`` 的损失计算，从而避免推理能力的丧失。训练脚本请参考 `这里 <https://github.com/modelscope/ms-swift/blob/main/examples/train/think_model/qwen3_demo1.sh>`__。自定义数据集格式如下："
 
-#: ../../source/training/ms_swift.rst:72 b019313ad9e541839a91228db979ed13
-msgid "Single-GPU Training"
-msgstr "单卡训练"
+#: ../../source/training/ms_swift.rst:69 dacd19a54895460b81a646c71afb0b41
+msgid "**Option 2**: Add ``/no_think`` to the query in the dataset to avoid the loss of reasoning ability. Refer to the training script `here <https://github.com/modelscope/ms-swift/blob/main/examples/train/think_model/qwen3_demo2.sh>`__. The custom dataset format is as follows:"
+msgstr "**选项 2**：在数据集的查询中添加 ``/no_think``，以避免推理能力的丧失。训练脚本请参考 `这里 <https://github.com/modelscope/ms-swift/blob/main/examples/train/think_model/qwen3_demo2.sh>`__。自定义数据集格式如下："
 
-#: ../../source/training/ms_swift.rst:74 ac147523e4044971b880dc123bcaf21e
-msgid "**LLM Example (Qwen2.5-7B-Instruct):**"
-msgstr "**LLM 示例 (Qwen2.5-7B-Instruct)：**"
+#: ../../source/training/ms_swift.rst:80 20ccdafbd4a24a00894534cb06dcf0b5
+msgid "30-Minute Self-Cognition Fine-Tuning"
+msgstr "30分钟自我认知微调"
 
-#: ../../source/training/ms_swift.rst:104 c3a00f6cd3314912b94ceb13f71539df
-msgid "**MLLM Example (Qwen2.5-VL-7B-Instruct):**"
-msgstr "**MLLM 示例 (Qwen2.5-VL-7B-Instruct)：**"
+#: ../../source/training/ms_swift.rst:82 1c2953bf4c184c6ab200c350ce41b8fb
+msgid "This section introduces a 30-minute self-cognition fine-tuning process for the Qwen3-8B model. The required GPU memory is 22GB, and it can be run on the A10 provided by `ModelScope's free compute resources <https://modelscope.cn/my/mynotebook>`__."
+msgstr "本节将介绍30分钟对 Qwen3-8B 进行自我认知微调。所需GPU显存为 22GB，可以在 ModelScope 提供的 `免费算力 <https://modelscope.cn/my/mynotebook>`__ A10 中运行。"
 
-#: ../../source/training/ms_swift.rst:130
-#: ../../source/training/ms_swift.rst:327 172d134c37604cb6a9b4ff639adbccae
-#: 4f3070b9cb95428d95cde6915ba38023
-msgid "Multi-GPU Training"
-msgstr "多卡训练"
+#: ../../source/training/ms_swift.rst:84 ee7a39c1c60a4672939f85b14cb999c2
+msgid "After training, the model will identify itself as \"swift-robot,\" trained by \"swift,\" instead of its original self-cognition as \"Qwen,\" trained by Alibaba Cloud."
+msgstr "训练后，模型将不再认为自己是由“阿里云”训练的“Qwen”，而是由“swift”训练的“swift-robot”。"
 
-#: ../../source/training/ms_swift.rst:132
-#: ../../source/training/ms_swift.rst:329 49ae85a99b9940c292862841f1216a7b
-#: 5aca8726082640948ba58c6cd13bc602
-msgid "**LLM Example with DeepSpeed:**"
-msgstr "**LLM 示例：**"
+#: ../../source/training/ms_swift.rst:86 4a664de516664171b7501cc02016b182
+msgid "If you need to train in an offline environment, you can manually download the model and dataset and specify ``--model <model-path>`` and ``--dataset <dataset-dir>``. The dataset can be found on `Modelscope Hub <https://modelscope.cn/datasets/swift/self-cognition>`__."
+msgstr "如果需要在离线环境下进行训练，可以手动下载模型和数据集，并指定 ``--model <model-path>`` 和 ``--dataset <dataset-dir>``。数据集可以在 `Modelscope Hub <https://modelscope.cn/datasets/swift/self-cognition>`__ 上找到。"
 
-#: ../../source/training/ms_swift.rst:156
-#: ../../source/training/ms_swift.rst:374 428e4834ff554058b29f682c9a61d4ea
-#: e730333134d54c35bd2c3c01d9009c23
-msgid "**MLLM Example with DeepSpeed:**"
-msgstr "**MLLM 示例：**"
+#: ../../source/training/ms_swift.rst:88 6c58a8c6d331440897f59e40e9d990f0
+msgid "For the meaning of each parameter in the training script, please refer to the `Command-line parameters documentation <https://swift.readthedocs.io/en/latest/Instruction/Command-line-parameters.html>`__."
+msgstr "关于训练脚本中各参数的含义，请参考 `命令行参数文档 <https://swift.readthedocs.io/zh-cn/latest/Instruction/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0.html>`__。"
 
-#: ../../source/training/ms_swift.rst:180 a287c14468ed4625ad50eb75770e4481
+#: ../../source/training/ms_swift.rst:118 828aaccf188a4c799cff883437ec45a7
+msgid "After fine-tuning, you can use the following script to test the fine-tuning results. Note that the ``--adapters`` section needs to be modified to the directory path of the last saved checkpoint:"
+msgstr "微调完成后，可以使用以下脚本来测试微调结果。注意，``--adapters`` 部分需要修改为最后保存检查点的目录路径："
+
+#: ../../source/training/ms_swift.rst:138 95fe33bfeede4548bab75b61aa39caeb
+msgid "By default, ms-swift will use the ModelScope community to download models and datasets. If you want to use the HuggingFace community, you need to additionally specify ``--use_hf true``."
+msgstr "默认情况下，ms-swift 会使用 ModelScope 社区下载模型和数据集。如果想使用 HuggingFace 社区，则需要额外指定 ``--use_hf true``。"
+
+#: ../../source/training/ms_swift.rst:140 e234ec87102f46d797afa37276da872c
+msgid "Merge LoRA weights:"
+msgstr "合并 LoRA 权重："
+
+#: ../../source/training/ms_swift.rst:148 392fa6d6cc2c40379eb9636602cf7b62
+msgid "Push the model to ModelScope/HuggingFace:"
+msgstr "推送模型到 ModelScope/HuggingFace："
+
+#: ../../source/training/ms_swift.rst:161 aafb8a85972d4d09a287c1bc98cec2b5
+msgid "If you want to use multiple GPUs for training, the following provides a demo for multi-GPU training:"
+msgstr "如果要使用多 GPU 进行训练，以下提供了多 GPU 训练的示例："
+
+#: ../../source/training/ms_swift.rst:197 1836d233190241d58dc74ea1b005c180
 msgid "Reinforcement Learning (RL)"
-msgstr "强化学习 (RL)"
+msgstr ""
 
-#: ../../source/training/ms_swift.rst:182 9c4c01d75c264b61965178092f5d4cd2
-msgid "The RL script in ms-swift has the following features:"
-msgstr "ms-swift 中的 RL 训练具有以下特性："
+#: ../../source/training/ms_swift.rst:199 924a7cd8db084432b8cbdc354bf059c9
+msgid "ms-swift supports RLHF methods such as DPO, GRPO, DAPO, PPO, KTO, and more. This section will focus on an example of using ms-swift to perform GRPO training for Qwen3-8B."
+msgstr "ms-swift 支持 DPO、GRPO、DAPO、PPO、KTO 等 RLHF 方法。本章将着重介绍使用 ms-swift 对 Qwen3-8B 进行 GRPO 训练。"
 
-#: ../../source/training/ms_swift.rst:184 22471f86636445e19f1e2cf921f15fac
-msgid "Support single-GPU and multi-GPU training"
-msgstr "支持单卡和多卡分布式训练"
+#: ../../source/training/ms_swift.rst:201 dadf85a72405464884b65e34213fd054
+msgid "For detailed RLHF support information, please refer to: `Supported Features <https://swift.readthedocs.io/en/latest/Instruction/Pre-training-and-Fine-tuning.html>`__."
+msgstr "有关详细的 RLHF 支持信息，请参考：`支持的功能 <https://swift.readthedocs.io/zh-cn/latest/Instruction/%E9%A2%84%E8%AE%AD%E7%BB%83%E4%B8%8E%E5%BE%AE%E8%B0%83.html>`__。"
 
-#: ../../source/training/ms_swift.rst:185 069b9f84ec464a8aa7229bdc17c23648
-msgid "Support full-parameter tuning, LoRA, Q-LoRA, and Dora"
-msgstr "支持全参数微调、LoRA、Q-LoRA 和 DoRA"
+#: ../../source/training/ms_swift.rst:204 160a37c2da92450f90e114175c326fc4
+msgid "Environment Setup"
+msgstr "环境设置"
 
-#: ../../source/training/ms_swift.rst:186 dc6e8583b524406a818cf3491381bc1b
-msgid "Supports multiple RL algorithms including GRPO, DAPO, PPO, DPO, KTO, ORPO, CPO, and SimPO"
-msgstr "支持多种 RL 算法，包括 GRPO、DAPO、PPO、DPO、KTO、ORPO、CPO 和 SimPO"
+#: ../../source/training/ms_swift.rst:206 c8237a27f9b64b0c84e208cf04c34e5e
+msgid "In addition to installing the ms-swift related dependencies introduced above, the following dependencies also need to be installed:"
+msgstr "除了安装上述介绍的 ms-swift 相关依赖项外，还需要安装以下依赖项："
 
-#: ../../source/training/ms_swift.rst:187 5a9368d446294733b009dac7065caa95
-msgid "Supports both large language models (LLM) and multimodal models (MLLM)"
-msgstr "支持大型语言模型 (LLM) 和多模态模型 (MLLM)"
+#: ../../source/training/ms_swift.rst:217 2d456fc1464e4761a1c53d507f0fd343
+msgid "The dataset format for GRPO training using ms-swift is similar to that of SFT, except that the assistant part of the last round is not required. If using accuracy as a reward, a ``solution`` column is needed to calculate the accuracy."
+msgstr "使用 ms-swift 进行 GRPO 训练的数据集格式与 SFT 类似，但不需要最后一轮的 assistant 部分。如果使用 accuracy 作为奖励，则需要一个 ``solution`` 列来计算准确率。"
 
-#: ../../source/training/ms_swift.rst:189 6747ebd5490a42fa9bbe39c71d42de64
-msgid "For detailed support information, please refer to: `Supported Features <https://swift.readthedocs.io/en/latest/Instruction/Pre-training-and-Fine-tuning.html#pre-training-and-fine-tuning>`__"
-msgstr "有关详细支持信息，请参考：`训练支持 <https://swift.readthedocs.io/en/latest/Instruction/Pre-training-and-Fine-tuning.html#pre-training-and-fine-tuning>`__"
-
-#: ../../source/training/ms_swift.rst:196 5c4ebc67dec24fdba825e855d656428f
-msgid "Install these packages (Optional)::"
-msgstr "安装这些软件包 （可选）：："
-
-#: ../../source/training/ms_swift.rst:207 b4dcc1d366304d0abbfa994d76646547
-msgid "ms-swift has built-in preprocessing logic for several datasets, which can be directly used for training via the ``--dataset`` parameter. For supported datasets, please refer to: `Supported Datasets <https://swift.readthedocs.io/en/latest/Instruction/Supported-models-and-datasets.html#datasets>`__"
-msgstr "ms-swift 内置了多个数据集的预处理逻辑，可以通过 ``--dataset`` 参数直接用于训练。有关支持的数据集，请参见：`支持的数据集 <https://swift.readthedocs.io/en/latest/Instruction/Supported-models-and-datasets.html#datasets>`__"
-
-#: ../../source/training/ms_swift.rst:209 24c5befb3f5545a88b84cfa678b2752f
-msgid "You can also use local custom datasets by providing the local dataset path to the ``--dataset`` parameter."
-msgstr "您还可以通过将本地数据集路径提供给 ``--dataset`` 参数来使用本地自定义数据集。"
-
-#: ../../source/training/ms_swift.rst:211 fb274880c62c4cad8243cbbed73f2adc
+#: ../../source/training/ms_swift.rst:219 1f7a4b1f1fa6468fb5b61a3d8a6721a4
 msgid "Example Dataset Formats:"
 msgstr "示例数据集格式："
 
-#: ../../source/training/ms_swift.rst:224 31d062ff29e14c53ad92ca6d5ab81c23
-msgid "Notes on Dataset Requirements"
-msgstr "数据集要求说明"
+#: ../../source/training/ms_swift.rst:227 7c60440ea9104f249ddf33d0df0ec0e7
+msgid "For dataset preparation for other RLHF algorithms, see: `Custom Dataset Documentation <https://swift.readthedocs.io/en/latest/Customization/Custom-dataset.html#rlhf>`__."
+msgstr "关于其他 RLHF 算法的数据集准备，请参考：`自定义数据集文档 <https://swift.readthedocs.io/zh-cn/latest/Customization/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E9%9B%86.html#rlhf>`__。"
 
-#: ../../source/training/ms_swift.rst:226 f6e1dbba72e9450984df10e9da1f4f4c
-msgid "Reward Function Calculation: Depending on the reward function being used, additional columns may be required in the dataset. For example:"
-msgstr "奖励函数计算：根据使用的奖励函数，数据集中可能需要额外的列。例如："
+#: ../../source/training/ms_swift.rst:229 a4baea30a829477db2cb130dd87befa9
+msgid "Notes on Dataset Requirements:"
+msgstr "数据集要求的注意事项："
 
-#: ../../source/training/ms_swift.rst:228 5b6d41c5b1734f1a87358fb5416c5888
-msgid "When using the built-in accuracy/cosine reward, the dataset must include a ``solution`` column to compute accuracy. The other columns in the dataset will also be passed to the `kwargs` of the reward function."
-msgstr "在使用内置的accuracy/cosine奖励时，数据集必须包含一个 solution 列以计算准确性。数据集中的其他列也将传递到奖励函数的 kwargs 中。"
+#: ../../source/training/ms_swift.rst:231 3916d0b0dea4479f9f106efeadd56a5a
+msgid "**Reward Function Calculation**: The dataset format depends on the reward function being used. Additional columns may be required to support specific reward calculations. For instance:"
+msgstr "**奖励函数计算**：数据集格式取决于所使用的奖励函数。可能需要额外的列来支持特定的奖励计算。例如："
 
-#: ../../source/training/ms_swift.rst:231 63ee17a7a6b041a88daee17b96928659
-msgid "Customizing the Reward Function: To tailor the reward function to your specific needs, you can refer to the following resource: `external reward plugin <https://github.com/modelscope/ms-swift/tree/main/examples/train/grpo/plugin>`__"
-msgstr "自定义奖励函数：为了满足您的具体需求，可以参考以下资源：`外部奖励插件 <https://github.com/modelscope/ms-swift/tree/main/examples/train/grpo/plugin>`__"
+#: ../../source/training/ms_swift.rst:233 ea2126332319420b9231b290964384ef
+msgid "When using the built-in accuracy or cosine similarity reward, the dataset must include a ``solution`` column to calculate the accuracy of the responses."
+msgstr "当使用内置的 accuracy 或 cosine 奖励时，数据集必须包含一个 ``solution`` 列以计算回复的准确性。"
 
-#: ../../source/training/ms_swift.rst:235 5b5aa025adbe492788108bfed1ce09a3
-msgid "GRPO Training Examples"
-msgstr "GRPO 训练示例"
+#: ../../source/training/ms_swift.rst:234 ee1305a55b0d478b8180700ed7669bc8
+msgid "Other columns in the dataset will be passed as ``**kwargs`` to the reward function for additional customization."
+msgstr "数据集中的其他列将作为 ``**kwargs`` 传递给奖励函数以实现进一步的自定义。"
 
-#: ../../source/training/ms_swift.rst:238 836b7e6ebcd04288968db7886440374b
-msgid "Single-GPU Configuration"
-msgstr "单卡配置"
+#: ../../source/training/ms_swift.rst:236 b90ed273d5804bef8a94cbb9efb1a007
+msgid "**Customizing the Reward Function**: To adapt the reward function to your specific needs, you can refer to the following resource: `External Reward Plugin <https://github.com/modelscope/ms-swift/tree/main/examples/train/grpo/plugin>`__. This plugin provides examples and templates for implementing custom reward functions."
+msgstr "**自定义奖励函数**：为了根据您的具体需求调整奖励函数，可以参考链接：`外部奖励插件 <https://github.com/modelscope/ms-swift/tree/main/examples/train/grpo/plugin>`__。该插件提供了实现自定义奖励函数的示例和模板。"
 
-#: ../../source/training/ms_swift.rst:240 e9c20b0809904804b2ed1a87986f6af2
-msgid "**LLM (Qwen2.5-7B):**"
-msgstr ""
+#: ../../source/training/ms_swift.rst:238 a0a35ec9ff0a484881055d9399f4d01b
+msgid "During the training process, we use vLLM to accelerate the sampling process. By setting ``num_infer_workers=8``, we deploy a vLLM engine for each device to speed up the sampling process."
+msgstr "在训练过程中，我们使用 vLLM 加速采样过程。通过设置 ``num_infer_workers=8`` ，我们为每个设备部署一个 vLLM 引擎以加快采样速度。"
 
-#: ../../source/training/ms_swift.rst:282 2b6027439b4a423a9f4984a2bb184109
-msgid "**MLLM (Qwen2.5-VL-7B-Instruct):**"
-msgstr ""
+#: ../../source/training/ms_swift.rst:281 2c78e780099f47b3b2381fc1effa5c10
+msgid "Megatron-SWIFT"
+msgstr "Megatron-SWIFT"
 
-#: ../../source/training/ms_swift.rst:422 a0267c6288d44958bde43844c55b692d
-msgid "Model Export"
-msgstr "模型导出"
+#: ../../source/training/ms_swift.rst:283 6c58a8c6d331440897f59e40e9d990f0
+msgid "ms-swift incorporates Megatron parallelism techniques to accelerate the training of large models. The supported models can be found in the `Supported Models Documentation <https://swift.readthedocs.io/en/latest/Instruction/Supported-models-and-datasets.html>`__."
+msgstr "ms-swift 引入了 Megatron 并行技术以加速大模型的训练。支持的模型可以在 `支持的模型文档 <https://swift.readthedocs.io/zh-cn/latest/Instruction/%E6%94%AF%E6%8C%81%E7%9A%84%E6%A8%A1%E5%9E%8B%E5%92%8C%E6%95%B0%E6%8D%AE%E9%9B%86.html>`__ 中找到。"
 
-#: ../../source/training/ms_swift.rst:424 0ad518fadd134498ad3a393397c6d2ae
-msgid "**Merge LoRA Adapters:**"
-msgstr "**合并 LoRA：**"
+#: ../../source/training/ms_swift.rst:285 12719ab9bdfc493c9957d441b4f0afa0
+msgid "For environment preparation and the conversion between HF and MCore model weights, you can refer to the `Megatron-SWIFT Training Documentation <https://swift.readthedocs.io/en/latest/Instruction/Megatron-SWIFT-Training.html>`__. These topics will not be elaborated here."
+msgstr "关于环境准备以及 HF 和 MCore 模型权重的转换，可以参考 `Megatron-SWIFT训练文档 <https://swift.readthedocs.io/zh-cn/latest/Instruction/Megatron-SWIFT%E8%AE%AD%E7%BB%83.html>`__。这里不展开介绍。"
 
-#: ../../source/training/ms_swift.rst:432 1a4a2ca034c44df9b573fdf23eed352e
-msgid "**Push to ModelScope Hub:**"
-msgstr "**推送到 ModelScope Hub：**"
+#: ../../source/training/ms_swift.rst:287 7f98f8a4457441c18019766fec760442
+msgid "We will use Alibaba Cloud DLC to start the training The training environment consists of 2 machines with 8 * 80GiB A800 GPUs. For more information on multi-node startup methods, refer to `here <https://github.com/modelscope/ms-swift/tree/main/examples/train/multi-node>`__."
+msgstr "我们将使用阿里云 DLC 启动训练。训练环境由2台配备8卡 80GiB A800 GPU 组成。关于多节点启动方法的更多信息，请参考 `这里 <https://github.com/modelscope/ms-swift/tree/main/examples/train/multi-node>`__。"
 
-#~ msgid "ms-swift"
-#~ msgstr ""
+#: ../../source/training/ms_swift.rst:327 236565bd68d5438b9397f8fcd5edbcb6
+msgid "The custom dataset format is the same as ``swift sft``, which can be found in the previous section. Simply specify ``--dataset <dataset_path>``."
+msgstr "自定义数据集格式与 ``swift sft`` 相同，详见之前章节。只需指定 ``--dataset <dataset_path>`` 即可。"
 
-#~ msgid "Introduction to ms-swift SFT"
-#~ msgstr "ms-swift SFT 介绍"
+#: ../../source/training/ms_swift.rst:329 8b7f94f907614b85b454aece0e4d43af
+msgid "The following is a comparison of training speed and GPU memory usage between ``megatron sft`` and ``swift sft`` for full-parameter fine-tuning of the Qwen3-30B-A3B model:"
+msgstr "使用 ``megatron sft`` 和 ``swift sft`` 在对 Qwen3-30B-A3B 模型进行全参数微调的训练速度和 GPU 显存使用对比情况如下："
+
+#: ../../source/training/ms_swift.rst:332 d9145506129c4481a0153fb36f4c949a
+msgid "Megatron-LM"
+msgstr "Megatron-LM"
+
+#: ../../source/training/ms_swift.rst:332 7d8f93dcea1d4ba3a888eb3b2caa2a7c
+msgid "DeepSpeed-ZeRO2"
+msgstr "DeepSpeed-ZeRO2"
+
+#: ../../source/training/ms_swift.rst:332 9cc8f43a89cb487e850f67f54453536d
+msgid "DeepSpeed-ZeRO3"
+msgstr "DeepSpeed-ZeRO3"
+
+#: ../../source/training/ms_swift.rst:334 aa66a350812747c3b202a8967164a7f2
+msgid "Training Speed"
+msgstr "训练速度"
+
+#: ../../source/training/ms_swift.rst:334 b8e499ab8007412f97afa3af7a8fca90
+msgid "9.6s/it"
+msgstr "9.6s/it"
+
+#: ../../source/training/ms_swift.rst:334 bb96f5a2fead40f9aa6d84dfb1da034f
+msgid "91.2s/it"
+msgstr "91.2s/it"
+
+#: ../../source/training/ms_swift.rst:336 4ae3de4a8af842819ae213da33dfbc72
+msgid "GPU Memory Usage"
+msgstr "显存使用"
+
+#: ../../source/training/ms_swift.rst:336 6e163d0b619c463b8406154ca712d199
+msgid "16 * 60GiB"
+msgstr "16 * 60GiB"
+
+#: ../../source/training/ms_swift.rst:336 85c3594e4064416db2448007d92ad002
+msgid "OOM"
+msgstr "OOM"
+
+#: ../../source/training/ms_swift.rst:336 3a6109f2291a4868bb5a177fd59ad946
+msgid "16 * 80GiB"
+msgstr "16 * 80GiB"
+
+#: ../../source/training/ms_swift.rst:340 ab29aec49aff407a8ea1090c184b7419
+msgid "Conclusion"
+msgstr "总结"
+
+#: ../../source/training/ms_swift.rst:342 319c9165d3134efeb777ae95708d1ffd
+msgid "The above is the best practice for training Qwen3 series models using ms-swift. If you encounter any difficulties during use, please join the discussion in `this issue <https://github.com/modelscope/ms-swift/issues/4030>`__."
+msgstr "以上为使用 ms-swift 训练 Qwen3 系列模型的最佳实践。如果在使用过程中遇到任何困难，请在 `此 issue <https://github.com/modelscope/ms-swift/issues/4030>`__ 中参与讨论。"
+
 

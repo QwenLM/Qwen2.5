@@ -84,6 +84,7 @@ Join our community by joining our `Discord <https://discord.gg/yPEP2vHTu4>`__ an
 
    training/llama_factory
    training/ms_swift
+   training/verl
 
 .. toctree::
    :maxdepth: 1
