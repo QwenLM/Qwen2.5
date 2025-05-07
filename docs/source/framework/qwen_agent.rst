@@ -61,10 +61,15 @@ yourself.
        #     # When using the Dash Scope API, pass the parameter of whether to enable thinking mode in this way
        #     'enable_thinking': False,
        #
-       #     # When using OpenAI API, pass the parameter of whether to enable thinking mode in this way
+       #     # When using Dash Scope OAI API, pass the parameter of whether to enable thinking mode in this way
        #     # 'extra_body': {
        #     #     'enable_thinking': False
-       #     # }
+       #     # },
+       #
+       #     # When using vLLM/SGLang OAI API, pass the parameter of whether to enable thinking mode in this way
+       #     # 'extra_body': {
+       #     #     'chat_template_kwargs': {'enable_thinking': False}
+       #     # },
        # },
    }
 
@@ -92,3 +97,7 @@ yourself.
    for responses in bot.run(messages=messages):
        pass
    print(responses)
+
+
+For more detailed examples and MCP cookbooks, please refer to
+`Qwen-Agent <https://github.com/QwenLM/Qwen-Agent>`__ repository.
