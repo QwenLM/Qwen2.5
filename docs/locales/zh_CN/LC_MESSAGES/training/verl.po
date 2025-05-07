@@ -104,6 +104,6 @@ msgid "In verl, training frameworks and inference frameworks can be combined fre
 msgstr "在 verl 中，训练框架和推理框架可以自由组合，只要训练框架和推理框架本身支持模型训练和推理任务，verl 就能够支持与强化学习（RL）相关的训练。"
 
 #: ../../source/training/verl.rst:55 fb5f2cbd7bb5428c8d9d798fbb926cbc
-msgid "Below is an example using FSDP and vLLM to demonstrate how to train Qwen3 models in verl."
-msgstr "以下是一个使用 FSDP 和 vLLM 的示例，展示如何在 verl 中训练 Qwen3 模型。"
+msgid "Below is an example using FSDP and vLLM to demonstrate how to train Qwen3 models in verl. We chose Qwen3-1.7B as the example, as it only requires a single 80GB GPU and a machine with more than 64GB of memory to start training."
+msgstr "以下是一个使用 FSDP 和 vLLM 的示例，展示如何在 verl 中训练 Qwen3 模型。我们选择了Qwen3-1.7B作为例子，因为他仅需使用一张80GB显存的显卡，以及大于64G内存的机器即可开始训练。"
 
