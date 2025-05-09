@@ -142,12 +142,7 @@ For additional guides, please refer to [our documentation](https://qwen.readthed
 > For more details, please refer to [our documentation](https://qwen.readthedocs.io/en/latest/run_locally/llama.cpp.html#llama-cli).
 
 > [!IMPORTANT]
-> The chat template uses features that are not supported by the template engine used by llama.cpp.
-> As a result, you may encounter the following errors if the original chat template is used:
-> ```
-> common_chat_templates_init: failed to parse chat template (defaulting to chatml)
-> ```
-> We are working on a proper fix.
+> Our GGUF models include a different but equivalent chat template for compatibility with the template engine used by llama.cpp.
 
 ### Ollama
 
