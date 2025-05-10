@@ -180,6 +180,9 @@ Qwen3 has already been supported by [lmstudio.ai](https://lmstudio.ai/). You can
 If you are running on Apple Silicon, [`mlx-lm`](https://github.com/ml-explore/mlx-lm) also supports Qwen3 (`mlx-lm>=0.24.0`). 
 Look for models ending with MLX on Hugging Face Hub.
 
+#### MNN
+
+Qwen2.5 has already been supported by [MNN](https://github.com/alibaba/MNN). You can export model by [llm-export](https://github.com/wangzhaode/llm-export) and run with mobile devices using CPU or GPU. You can also download Qwen2.5 models from modelscope, model list and mobile demos in [mnn-llm](https://github.com/wangzhaode/mnn-llm).
 
 ### OpenVINO
 
