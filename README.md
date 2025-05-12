@@ -175,6 +175,11 @@ For additional details, please visit [ollama.ai](https://ollama.com/).
 
 Qwen3 has already been supported by [lmstudio.ai](https://lmstudio.ai/). You can directly use LMStudio with our GGUF files.
 
+
+### ExecuTorch
+To export and run on ExecuTorch (iOS, Android, Mac, Linux, and more), please use the following [link](https://github.com/pytorch/executorch/blob/main/examples/models/qwen3/README.md).
+
+
 ### MLX LM
 
 If you are running on Apple Silicon, [`mlx-lm`](https://github.com/ml-explore/mlx-lm) also supports Qwen3 (`mlx-lm>=0.24.0`). 
