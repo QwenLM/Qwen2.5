@@ -289,3 +289,126 @@ If you find our work helpful, feel free to give us a cite.
 
 ## Contact Us
 If you are interested to leave a message to either our research team or product team, join our [Discord](https://discord.gg/z3GAxXZ9Ce) or [WeChat groups](assets/wechat.png)!
+Pasted--DNA-Security-Upload-Assistant-JavaScript-Code-DOM-Elements-const-uploadArea-document-getEle-1747210235334.txt
+// DNA Security Upload Assistant JavaScript Code
+
+// DOM Elements
+const uploadArea = document.getElementById('uploadArea');
+const fileInput = document.getElementById('fileInput');
+const fileList = document.getElementById('fileList');
+const deployBtn = document.getElementById('deployBtn');
+const statusBar = document.getElementById('statusBar');
+const statusText = document.getElementById('statusText');
+const statusIcon = document.getElementById('statusIcon');
+const terminal = document.getElementById('terminal');
+
+// File Storage
+let files = [];
+
+// Copyright Info
+const COPYRIGHT_INFO = {
+  author: "Ervin Remus Radosavlevici",
+  email: "ervin210@icloud.com",
+  year: "2025",
+  product: "DNA SECURITY SYSTEM"
+};
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+  // Check for browser compatibility
+  if (!window.File || !window.FileReader || !window.FileList || !window.Blob) {
+    showStatus('⚠️', 'Your browser does not support the File API. Please use a modern browser.', 'error');
+    return;
+  }
+
+  logToTerminal("DNA Security Upload Assistant v1.0");
+  logToTerminal(`Initializing secure environment...`);
+  logToTerminal(`Copyright ${COPYRIGHT_INFO.year} ${COPYRIGHT_INFO.author}`);
+  logToTerminal(`Contact: ${COPYRIGHT_INFO.email}`);
+  logToTerminal(`All Rights Reserved - Proprietary Software`);
+  logToTerminal(`System ready.`);
+});
+
+// Event Listeners
+uploadArea.addEventListener('dragover', handleDragOver);
+uploadArea.addEventListener('dragleave', handleDragLeave);
+uploadArea.addEventListener('drop', handleDrop);
+uploadArea.addEventListener('click', handleUploadAreaClick);
+fileInput.addEventListener('change', handleFileInputChange);
+deployBtn.addEventListener('click', deployToVercel);
+
+// File Handling Functions
+function handleFiles(fileList) {
+  // Process files...
+}
+
+function addFileToUI(fileObj) {
+  // Add file to UI...
+}
+
+function removeFile(fileId) {
+  // Remove file...
+}
+
+// Deployment Functions
+function deployToVercel() {
+  // Deploy to Vercel...
+}
+
+function simulateFileUpload(fileObj, index, callback) {
+  // Simulate file upload...
+}
+
+function finishDeployment(projectName) {
+  // Finish deployment...
+}
+
+// Utility Functions
+function logToTerminal(message) {
+  const terminalLine = document.createElement('div');
+  terminalLine.className = 'terminal-line';
+  terminalLine.textContent = message;
+  terminal.appendChild(terminalLine);
+  terminal.scrollTop = terminal.scrollHeight;
+}
+
+function showStatus(icon, text, type) {
+  statusIcon.textContent = icon;
+  statusText.textContent = text;
+  statusBar.className = 'status-bar show';
+  setTimeout(() => {
+    statusBar.className = 'status-bar';
+  }, 3000);
+}
+
+// Handle drag over
+function handleDragOver(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  uploadArea.classList.add('dragover');
+}
+
+// Handle drag leave
+function handleDragLeave(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  uploadArea.classList.remove('dragover');
+}
+
+// Handle drop
+function handleDrop(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  uploadArea.classList.remove('dragover');
+  handleFiles(e.dataTransfer.files);
+}
+
+// Handle upload area click
+function handleUploadAreaClick() {
+  fileInput.click();
+}
+
+// Handle file input change
+function handleFileInputChange() {
+  handleFiles(this.files);
+}
