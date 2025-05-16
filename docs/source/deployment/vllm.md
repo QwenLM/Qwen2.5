@@ -221,10 +221,10 @@ Qwen3 comes with two types of pre-quantized models, FP8 and AWQ.
 The command serving those models are the same as the original models except for the name change:
 ```shell
 # For FP8 quantized model
-vllm serve Qwen3/Qwen3-8B-FP8
+vllm serve Qwen/Qwen3-8B-FP8
 
 # For AWQ quantized model
-vllm serve Qwen3/Qwen3-8B-AWQ
+vllm serve Qwen/Qwen3-8B-AWQ
 ```
 
 :::{note}
@@ -252,7 +252,7 @@ We have validated the performance of [YaRN](https://arxiv.org/abs/2309.00071), a
 
 vLLM supports YaRN, which can be configured as
 ```shell
-vllm serve Qwen3/Qwen3-8B --rope-scaling '{"rope_type":"yarn","factor":4.0,"original_max_position_embeddings":32768}' --max-model-len 131072  
+vllm serve Qwen/Qwen3-8B --rope-scaling '{"rope_type":"yarn","factor":4.0,"original_max_position_embeddings":32768}' --max-model-len 131072  
 ```
 
 :::{note}

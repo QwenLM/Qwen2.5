@@ -214,10 +214,10 @@ Qwen3 comes with two types of pre-quantized models, FP8 and AWQ.
 The command serving those models are the same as the original models except for the name change:
 ```shell
 # For FP8 quantized model
-python -m sglang.launch_server --model-path Qwen3/Qwen3-8B-FP8
+python -m sglang.launch_server --model-path Qwen/Qwen3-8B-FP8
 
 # For AWQ quantized model
-python -m sglang.launch_server --model-path Qwen3/Qwen3-8B-AWQ
+python -m sglang.launch_server --model-path Qwen/Qwen3-8B-AWQ
 ```
 
 ### Context Length
@@ -228,7 +228,7 @@ We have validated the performance of [YaRN](https://arxiv.org/abs/2309.00071), a
 
 SGLang supports YaRN, which can be configured as
 ```shell
-python -m sglang.launch_server --model-path Qwen3/Qwen3-8B --json-model-override-args '{"rope_scaling":{"rope_type":"yarn","factor":4.0,"original_max_position_embeddings":32768}}'
+python -m sglang.launch_server --model-path Qwen/Qwen3-8B --json-model-override-args '{"rope_scaling":{"rope_type":"yarn","factor":4.0,"original_max_position_embeddings":32768}}'
 ```
 
 :::{note}
