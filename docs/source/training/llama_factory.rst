@@ -118,8 +118,8 @@ your dataset as follows.
        "tags": {
          "role_tag": "from",
          "content_tag": "value",
-         "user_tag": "user",
-         "assistant_tag": "assistant"
+         "user_tag": "human",
+         "assistant_tag": "gpt"
        }
      }
 
