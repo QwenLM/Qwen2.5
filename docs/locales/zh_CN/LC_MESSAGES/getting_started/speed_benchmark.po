@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-28 19:42+0800\n"
+"POT-Creation-Date: 2025-05-16 18:57+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -18,3305 +18,1556 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:2
-#: 15e2970b0a874ba0a811c88dcc9afa56
+#: ../../source/getting_started/speed_benchmark.md:1
+#: d7da8abe501c46e99fee28d56435b08b
 msgid "Speed Benchmark"
 msgstr "效率评估"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:5
-#: b943913568f3486a8d5f25c46677c6cc
-msgid "To be updated for Qwen3."
-msgstr "仍需为Qwen3更新。"
+#: ../../source/getting_started/speed_benchmark.md:3
+#: 478eb0d956db47ccafda9ec05e9c7253
+msgid "We report the speed performance of bfloat16 models and quantized models (including FP8, GPTQ, AWQ) of the Qwen3 series.  Specifically, we report the inference speed (tokens/s) as well as memory footprint (GB) under different context lengths."
+msgstr "本部分介绍 Qwen3 系列模型（原始模型和量化模型）的效率测试结果，包括推理速度(tokens/s)与不同上下文长度时的显存占用(GB)。"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:7
-#: ea8ddfed427143a3a9931495ff77d2d2
-msgid "This section reports the speed performance of bf16 models, quantized models (including GPTQ-Int4, GPTQ-Int8 and AWQ) of the Qwen2.5 series. Specifically, we report the inference speed (tokens/s) as well as memory footprint (GB) under the conditions of different context lengths."
-msgstr "本部分介绍Qwen2.5系列模型（原始模型和量化模型）的效率测试结果，包括推理速度(tokens/s)与不同上下文长度时的显存占用(GB)。"
+#: ../../source/getting_started/speed_benchmark.md:6
+#: c3e1ab9d5f8b4a54bff5d5a56ea6a2bb
+msgid "Environments"
+msgstr "环境配置"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:12
-#: 321220545e38471981b3b3ee9294ac31
-msgid "The environment of the evaluation with huggingface transformers is:"
-msgstr "测试HuggingFace ``transformers`` 时的环境配置："
-
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:14
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:25
-#: 74436af12fad4f0e8d5b028f6f4d83ec 82d2070795c04fc1b3f2d576ae815ad5
-msgid "NVIDIA A100 80GB"
+#: ../../source/getting_started/speed_benchmark.md:8
+#: 6b7764c599eb4693be742f161daf5cc4
+msgid "Hugging Face Transformers"
 msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:15
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:26
-#: 265372c1791d432fb9433f2c301e0533 adb249c4691b48f29caacdb412aef0ee
-msgid "CUDA 12.1"
+#: ../../source/getting_started/speed_benchmark.md:10
+#: ../../source/getting_started/speed_benchmark.md:25
+#: aa80ee8b1abd4be1b0a9a88cff496938 c43bf971a253469c832f5e874eda86a9
+msgid "**Hardware**:"
+msgstr "**硬件**:"
+
+#: ../../source/getting_started/speed_benchmark.md:11
+#: ../../source/getting_started/speed_benchmark.md:26
+#: 471dbb8bd26c41a58f485dabf6643aa0
+msgid "NVIDIA H20 96GB"
 msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:16
-#: d478f901ae9d449a95f80306ec738ad5
-msgid "Pytorch 2.3.1"
+#: ../../source/getting_started/speed_benchmark.md:12
+#: 04347c8d74a44a18af8fb11cbf47bb42
+msgid "**Software for Non-AutoAWQ**:"
+msgstr "**非AutoAWQ的软件环境**:"
+
+#: ../../source/getting_started/speed_benchmark.md:13
+#: 5bf39b332ff04657838c29c627a0e3a6
+msgid "PyTorch 2.6.0"
 msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:17
-#: 4e0f4dc2cf97448eafa173e4cabe9fff
-msgid "Flash Attention 2.5.8"
+#: ../../source/getting_started/speed_benchmark.md:14
+#: e1ca0b138a5248a59f6fb59331ff09c1
+msgid "Flash Attention 2.7.4"
 msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:18
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:30
-#: 21f8a404846140bd9ac89a0d8c10d256 6f31d384305e47a684e220fdc87e6438
-msgid "Transformers 4.46.0"
+#: ../../source/getting_started/speed_benchmark.md:15
+#: ../../source/getting_started/speed_benchmark.md:19
+#: ../../source/getting_started/speed_benchmark.md:29
+#: c763f81c0b2443d594f7b7c6c1cacce0
+msgid "Transformers 4.51.3"
 msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:19
-#: f06fc8c23d1045c0ba7b6700c88eb8ad
-msgid "AutoGPTQ 0.7.1+cu121 (Compiled from source code)"
+#: ../../source/getting_started/speed_benchmark.md:16
+#: 07c9d4a46b1446d9a334ad590b23ae8c
+msgid "GPTQModel 2.2.0+cu128torch2.6"
 msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:20
-#: e3d2039804344284ac6a31d5533f9c89
-msgid "AutoAWQ 0.2.6"
+#: ../../source/getting_started/speed_benchmark.md:17
+#: a13e8f4aa82f4693af93c20cda549afe
+msgid "**Software for AutoAWQ**:"
+msgstr "**AutoAWQ的软件环境**:"
+
+#: ../../source/getting_started/speed_benchmark.md:18
+#: ../../source/getting_started/speed_benchmark.md:28
+#: 14b90e1a69ce40f6a1edc3eb0fbf92b3
+msgid "PyTorch 2.6.0+cu124"
 msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:23
-#: 5a013085785944d9bfc35ed44f25708b
-msgid "The environment of the evaluation with vLLM is:"
-msgstr "测试vLLM时的环境配置："
-
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:27
-#: 2c8aa18142514f73b6a4fc631a17355a
-msgid "vLLM 0.6.3"
+#: ../../source/getting_started/speed_benchmark.md:20
+#: c8709c79343448838e2e6423ae888b6e
+msgid "AutoAWQ 0.2.9"
 msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:28
-#: e777e67e77ec4694a354e83f8dcfcd01
-msgid "Pytorch 2.4.0"
+#: ../../source/getting_started/speed_benchmark.md:21
+#: c8bd3eae4c8e497197bd3da6e79ded0a
+msgid "AutoAWQ_kernels 0.0.9"
 msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:29
-#: f1004474078144c8ba0c8f43ca492b55
-msgid "Flash Attention 2.6.3"
+#: ../../source/getting_started/speed_benchmark.md:24
+#: cc0dad54e88d4e13857f3a45888b6030
+msgid "SGLang"
 msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:33
-#: c723126f0a2047f78eb8679d81e37a38
-msgid "Notes:"
-msgstr "注意："
+#: ../../source/getting_started/speed_benchmark.md:27
+#: 931979d5babc4459940b65cc29f091b3
+msgid "**Software**:"
+msgstr "**软件环境**:"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:35
-#: de02ff9670834fa185edb0d4b603c53e
-msgid "We use the batch size of 1 and the least number of GPUs as possible for the evaluation."
+#: ../../source/getting_started/speed_benchmark.md:30
+#: 23713b47351b4b82949d982019a725b1
+msgid "SGLang 0.4.6.post1"
+msgstr ""
+
+#: ../../source/getting_started/speed_benchmark.md:31
+#: 8a1e4b407a5e46748b9fcbd29b7624ef
+msgid "SGL-kernel 0.1.0"
+msgstr ""
+
+#: ../../source/getting_started/speed_benchmark.md:32
+#: bc8a5ce98be34cd3987b015f51b607a1
+msgid "vLLM 0.7.2 (Required by SGLang for AWQ quantization)"
+msgstr "vLLM 0.7.2 (被SGLang AWQ量化依赖)"
+
+#: ../../source/getting_started/speed_benchmark.md:34
+msgid "Notes"
+msgstr "备注"
+
+#: ../../source/getting_started/speed_benchmark.md:36
+#: 5b67ede5b69845158d7de45576b5f511
+msgid "**Inference Speed (tokens/s)** is calculated as:"
+msgstr "**推理速度（tokens/s）** 的计算公式为："
+
+#: ../../source/getting_started/speed_benchmark.md:42
+#: 5e23850b08f54a5b93ca312f77ad16cb
+msgid "We use a **batch size of 1** and the **minimum number of GPUs** possible for evaluation."
 msgstr "batch size 设置为1，使用 GPU 数量尽可能少"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:37
-#: 1bb988262ab04123ab4ec57095bfb994
-msgid "We test the speed and memory of generating 2048 tokens with the input lengths of 1, 6144, 14336, 30720, 63488, and 129024 tokens."
-msgstr "我们测试生成2048 tokens时的速度与显存占用，输入长度分别为1、6144、14336、30720、63488、129024 tokens。(超过32K长度仅有 Qwen2-72B-Instuct 与 Qwen2-7B-Instuct 支持)"
-
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:40
-#: 0e38607f735a4aee942ed6629c19aeb3
-msgid "For vLLM, the memory usage is not reported because it pre-allocates all GPU memory. We use ``gpu_memory_utilization=0.9 max_model_len=32768 enforce_eager=False`` by default."
-msgstr "对于vLLM，由于GPU显存预分配，实际显存使用难以评估。默认情况下，统一设定为``gpu_memory_utilization=0.9 max_model_len=32768 enforce_eager=False``。"
-
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:46
-#: 2740febb5a214cc8807b00b8597e4e57
-msgid "0.5B (Transformer)"
-msgstr ""
+#: ../../source/getting_started/speed_benchmark.md:44
+#: 25f5f831928e428a857e76cb66be39dc
+msgid "We test the **speed and memory usage** when generating **2048 tokens**, with input lengths of `1`, `6144`, `14336`, `30720`, `63488`, and `129024` tokens."
+msgstr "我们测试生成2048 tokens时的速度与显存占用，输入长度分别为1、6144、14336、30720、63488、129024 tokens（如受模型支持）。"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:49
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:88
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:128
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:167
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:207
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:246
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:286
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:326
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:383
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:422
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:481
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:523
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:585
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:626
-#: 0d3800fd9320472ead21e1b6ce766960 0daee88c4fcc40d1bf85d9ca7d2d1ed3
-#: 2658cecd188b4aa089bf62746b8bc7c9 2778cc188db8410bbcf0da565d9dafa2
-#: 31d16a9ce3c04e6e8080a94357eb8e40 4a342b7b7bea429e9f280897ae15f149
-#: 556a5c2ccac84fdfbcdf05130669e0f0 695dbc29c02b42f589dfdc08985f0092
-#: 7b44531701144fab88e6accd4037e5f7 8e7437142a1c49afb8421cdc0e533e5c
-#: 9b082527047b459398c0a4825784cb59 a3fc513b2e8e43e69817f52b060766da
-#: b548bbd636054abca043f3fe60129a5e b96a0a6d3a6047d58321cecf1adead4e
-msgid "Model"
-msgstr "模型"
-
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:49
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:88
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:128
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:167
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:207
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:246
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:286
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:326
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:383
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:422
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:481
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:523
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:585
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:626
-#: 18467ba010774755a3aeb9acd845d0d0 1d0852cb78a648db8b7b64a2505145fe
-#: 2e233b37910f4085b827380c3a5cc95a 37f34d499d904fc9b06b61b36328956a
-#: 4077b79878b54ac187ad3e5906b44513 434fd471714f4f3bbff4ebce1ed02260
-#: 58d16b17c4f4439db5a55f63d0550c6a 60a1b825536447c4bafd641a87db51f2
-#: 7c5e1c1bc8144e4da090a64fe92919c6 a2a14e09c63249bb933cad3087eacef8
-#: bd6c5dcfc9d4479385247f5caf4bd963 da2e631809d04389970e4172167401f2
-#: ddf1a9637c084006bc418b13e2061c01 f00ee91c225344b0ae4c7a78128dd4e7
-msgid "Input Length"
-msgstr "输入长度"
-
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:49
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:88
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:128
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:167
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:207
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:246
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:286
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:326
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:383
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:422
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:481
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:523
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:585
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:626
-#: 1657c1e521524c96ab3e321b914de410 16f663d9ba574eabacc50755122d4d51
-#: 1894375562ee4ba693ca418c09c4ed1d 25bf8d0629804415bc1119d3d04af19d
-#: 2924665a3f7a4e9bbdc99cf807489336 312c120349184b12bac02c340f8671b2
-#: 6e4dfbe22352464bad7903057542e36c 75347400d0864b0e87f3f7ac34165e40
-#: 9a26311405cc4e51a07afba1ff187c22 b3f824bbc86d4ec18e090e9e87b5f0b6
-#: ca7a6f03136048f49962c7163ad52963 d0bac2de0ad4486a808091fa444de8d3
-#: eb93a6b940234777b282f5b781fe76d4 ec72d2950327409dadfc2772b21bb663
-msgid "Quantization"
-msgstr "量化"
-
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:49
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:88
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:128
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:167
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:207
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:246
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:286
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:326
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:383
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:422
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:481
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:523
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:585
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:626
-#: 0a9c10c1df394368a9bf7f16e2d133cc 20f68eddfd2d4b2e8bac11698949992f
-#: 3bdff2d2f7084c5dbd81c9e51c4e8cb6 562c19a04e7c4cfdab7ec3f259d8e351
-#: 5c2a0a292a3b45c08bd24b2002501e91 7b7452b5f7c94063b52f0d234e71fd33
-#: 913b0e8e8dc14ee68e385edd7a9bd8fd 99d423566ee24d029e5645e04bb84ddd
-#: a148f164b00c480fb8cf0c0589a03888 a8ad3a93dda04af3a9cadc2796a694b7
-#: c780cefda234439b86c036f72eab0a72 d8579ec8e3fc40709fd436339b3bba6f
-#: e08a842aebf247719fcadf9ccb4899a4 f1477a135092411c8108d3818d49000c
-msgid "GPU Num"
-msgstr "GPU数量"
-
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:49
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:88
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:128
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:167
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:207
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:246
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:286
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:326
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:383
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:422
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:481
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:523
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:585
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:626
-#: 132301b4648a4a78994ffd0047502ffb 1ed10eae6dc24e4085404998cc4f924f
-#: 23275c0026d049abaa05d76c9f9a0cdc 2b680afbd0dc49ac952913245410f952
-#: 2e5293dcc25c47fb9df4f20580151f21 2fea2c25aa474023a6af451e932fd123
-#: 4419eaba8b914d44a1edac7c9f8e18bf 5459abd810f0461da17f1a44f997ca22
-#: 74190c0c15bc4d31a6a55864f01d2904 95814a65c98f42649fc0278c0e16a029
-#: a54fbc300f1c4fa3b04429f4d36b4dd2 e0e571bc5f6a409c9524e74d20c1ba59
-#: e3b3fb7f2078496c87be43456421c2e4 e7a4f3b9a2ee46a689456214c16ee1f0
-msgid "Speed(tokens/s)"
-msgstr "速度 (tokens/s)"
-
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:49
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:128
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:207
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:286
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:383
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:481
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:585
-#: 0d09a9f5937c4df1b3833adbd25aa608 1a2560a4c8814cb28284389b859caf63
-#: 69cc4d5ee89d449482cfd4ad9023324a 7d8bf237f85949119b1809edfb931cc5
-#: abcf9c8943774551b67e33b9763abd22 dda237af9b8d4539803f71fab7823175
-#: de48bc9a7ab344ac873dba2b0a50d20e
-msgid "GPU Memory(GB)"
-msgstr "显存占用 (GB)"
-
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:49
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:128
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:207
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:286
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:326
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:383
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:422
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:481
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:523
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:585
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:626
-#: 1dce6ec0ef864e96b542524a06b05a4e 2691beef5b474c5f8da8504ab2b5274e
-#: 3528cc8b5a304fcf98961542cc3062e8 64bad9a37cc74119947998193ef537a1
-#: 7273dd27f9244b958575b922bab5278a 771fe7364b0c44428775c91cf84ac836
-#: 7ecffcfa9ee74b6d9e85552f5a505e9c 97cd9cfb76cb41b793fceb15ecc9cd6d
-#: a1e3724821b748528f8ae590d3f370cf ae21ba10c9284c1098768ef5fa36a459
-#: cda4575682284b9f8194769030d695d1
-msgid "Note"
-msgstr "注意："
-
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:51
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:90
-#: c71daeff1f804dca9c60f4831582b2c7 db7f5f91dd7f4e0ab83e20a9b598d6f5
-msgid "Qwen2.5-0.5B-Instruct"
-msgstr ""
+#: ../../source/getting_started/speed_benchmark.md:47
+#: 11a1e0c5d8ec462987503d3eddf02e93
+msgid "**For SGLang**:"
+msgstr "**对于SGLang**:"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:51
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:53
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:55
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:57
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:59
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:61
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:63
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:65
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:67
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:69
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:71
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:73
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:75
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:77
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:79
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:81
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:90
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:92
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:94
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:96
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:98
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:100
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:102
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:104
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:106
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:108
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:110
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:112
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:114
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:116
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:118
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:120
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:130
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:132
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:134
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:136
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:138
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:140
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:142
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:144
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:146
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:148
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:150
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:152
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:154
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:156
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:158
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:160
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:169
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:171
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:173
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:175
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:177
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:179
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:181
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:183
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:185
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:187
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:189
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:191
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:193
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:195
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:197
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:199
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:209
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:211
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:213
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:215
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:217
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:219
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:221
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:223
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:225
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:227
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:229
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:231
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:233
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:235
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:237
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:239
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:248
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:250
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:252
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:254
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:256
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:258
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:260
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:262
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:264
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:266
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:268
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:270
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:272
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:274
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:276
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:278
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:288
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:290
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:292
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:294
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:296
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:298
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:300
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:302
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:304
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:306
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:308
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:310
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:312
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:314
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:316
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:318
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:328
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:330
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:332
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:334
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:336
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:338
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:340
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:342
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:344
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:346
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:348
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:350
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:352
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:354
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:356
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:358
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:360
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:362
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:364
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:366
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:368
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:370
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:372
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:374
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:385
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:387
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:389
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:391
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:393
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:395
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:397
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:399
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:401
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:403
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:405
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:407
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:409
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:411
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:413
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:415
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:424
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:426
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:428
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:430
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:432
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:434
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:436
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:438
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:440
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:442
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:444
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:446
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:448
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:450
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:452
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:454
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:456
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:458
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:460
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:462
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:464
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:466
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:468
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:470
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:483
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:485
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:487
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:489
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:491
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:493
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:495
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:497
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:499
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:501
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:503
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:505
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:507
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:509
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:511
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:513
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:525
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:527
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:529
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:531
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:533
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:535
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:537
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:539
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:541
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:543
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:545
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:547
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:551
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:553
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:555
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:559
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:561
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:563
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:567
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:569
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:571
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:587
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:591
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:593
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:599
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:601
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:607
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:609
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:628
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:634
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:644
-#: 004050b870c44233902f4a931ba6b7ca 0087e64dbea04c55b34161fea6d96609
-#: 0190e138080b4fb593089fe84be67f49 0399ee86047345b1acffeb01e5bf765d
-#: 069f3cf9c545472c8eb97c91487a8b1d 0766ab6e940847488c5d140726dee08a
-#: 0793c4db2ef74086bd006023aa3a0b11 08a9bec8b7104ecf9c915fa1ac32699e
-#: 08f3f6b804764c4ab340a8a2bcd22405 09069c21c8104509a81351b3bf0bf79f
-#: 095d6370b91d4003840094c2a73fdec1 0c5ac64b8e5f44a696e5b87f8d2f63b3
-#: 0d1f4a4beb1a485794685d63452fcb83 0dbdbb6a1aef42eb818f6d5b069c39b3
-#: 0f5c4d9fd646426681623dd784a14624 108f6e63c7034b1ea3bdaf04973a23ee
-#: 1192c4ea981d4bd0b7975cb9e13eb790 11e19467a2a94ac180b991348fcaf680
-#: 125aa1af6f2a446b853e56aa535e1ec4 146303d399174036b90f5579a73d223a
-#: 1555d2ede84d464bbb4f4a7c7ed533a5 16211e628dbe49cb95c118f0ec0d16aa
-#: 18b3cada791c42ffba8fab6e1ef24d04 1b4170ac681943348d70fb6a254d318f
-#: 1bb2f628b8da44c495d60d96e6ffcd25 1c78a9eea00345aa91b222192c61b57f
-#: 1d4652545a5941e789f1314ef8932a2e 1db10d28212d49b5ab99d2999bcd9c89
-#: 1e86c36de75d48f2bf7fe17ccf141a8d 1f751e3b878c464cb616bba7c32efb3b
-#: 1f9deac7fce24242a2b1fad24a7ad0fe 21b59eeabe4e41cc8933470471b18124
-#: 22a38b84ca0446e6b586954179796d9c 22bae4394baf455ea14081d604ba3502
-#: 239dcc4750b34cafb6bdb9db3d4db7ae 244ac6fa7d83498fb0a4b1f8c37243e1
-#: 25ba29127e2d442e87a39161a83aaa67 265a73b6f2a04080ab8e4429a0135819
-#: 26c1bee487744245942604a2102fdf36 272d51198eaa4e029c07a8f8264f79b4
-#: 276dd61cc9ce4ed8819f1d4c4b276e25 2aebfb452340469b96f6cb0f4e4be102
-#: 2bd4124ced3a491ab7e992093bfe733f 2c16e57e4e624ba5a3c689db835f21ed
-#: 2c19ceacdfc14e80ac6f89a282317cbb 2f1293191a0147579e4a7a61d2f3ccbf
-#: 31c609844402498bba0950caa3147513 326a335f9fd1408496ab99278cd82f79
-#: 33ec2936cd324655b0df255576283d18 33fc668521af49ad91463d06c06a51d4
-#: 34c3102a5cb64b10ae415cbe0a0c6c71 36271bdd7a824fa08f23bf2b5e6e9c35
-#: 3668da3bbfda4645bfdb01d2616584dc 36cc902c8bb84c958613b7777ec01741
-#: 37f5f1f0d3364b0a8e78088a651bae12 399d4ec6796f4de69b113db548917d0b
-#: 3a7d0d89a3e641f99d5e4e01bbbd053a 3c1da93dabba4aeaa3f7f6919dc5a416
-#: 3f6bb0dac1234df4824123b6980971df 4014ce97bfc847548fd838ac56805bb1
-#: 40280d577d364bb5897b1cce94948a04 407a049c84e24991bbf4539f7f0e98f8
-#: 4166e398923f4f7f9f2a527db209bc34 43484a20a1e24eba92bdc52e2c4b97be
-#: 459842cae7384ae29bac98ce8af43465 468f21ba39d0464d9034f64a33bce568
-#: 4781f9780bcc48a59b8fabc951ef8669 47f16127806340b1b5e378d2d2c815ce
-#: 49647d7237b6469c91b988807d57ddaa 49de3f271c6441af932ce865eba21591
-#: 49e258e9a7a24e42bd7fac56e9b97825 4b3cb38d23e04761818a5d52b0f115f8
-#: 4b6a1eb1888a462697c96dda4dc07f01 4c3f03d181bd454f81b739dab9635887
-#: 4f3e8749ec11409fbdb0adeca0a5b9e6 50036636f0b74b3bb9722f70dd16e660
-#: 50dff419f5124e9fb754673bbacfd647 545edad7273242a8abda88153bb56ff5
-#: 55829e68ece043dc8c44477b676dd8df 570cd5b5da634719aebe39d28dd52d25
-#: 57391e9f0aa545d98a1efc6a97c35362 5a21a7d629054577b9348fd56ff60732
-#: 5c442dfb0f444ee19183ef58a5e037f4 5d7f40999b6b46be8f37868a70bc4b05
-#: 5e064d56238544d495717e79ebe3fbde 5f3960ee8dd3435f88553f581cb2e7fc
-#: 6036b79650b04956afa4f4f24c2e0705 608d7f7675a047daae27408c22edbf6f
-#: 6145ea1263c040b3ad96a7291d0a1da1 621d77aa80fc4ccc8fd9a77760d22939
-#: 626c7ec14bd84b8db6dd86aec4faab9b 62a40b213f514aab999e9cb7633fecc8
-#: 62a8fc78ee7144c1a2ca545fb657dd00 668236b83e224be3be19b6e1542834b3
-#: 66e7065d8bff4cadba93d7e49e28f5b4 671880fd119e4cf58929436e77679523
-#: 69eed85322114d9ea859383fc4831c75 6a5799c6df2d46139a6477d8d72a12a5
-#: 6aabf57be3a842c986358fb67202c11c 6cd7c973a8974f2096ad6aa2a6132cab
-#: 6d782c8ee93d4e1cbb774d25e5f756b4 70e42e8f4d644a9a83f289143306e97c
-#: 712b9a5dfd664565b68f36d1b33b6fcd 71d9e9cd810e445fb0626d82a766cbdb
-#: 739a24ebc4ab44cea8f4953f3fd9b45e 767f36b1085a49d1a8b98e4a1031d525
-#: 7696d65acdc64f62a5158e7c48627529 7705e6acf11147739a33384048dc7600
-#: 771e205929d8414898f7527d5c595c79 77485309a5bc416491c5f99cba091411
-#: 785876e4d7c84b05a0e0f8e81a6e2b01 78cf7b36819345d58a4ccb0074f846c9
-#: 78e784e57675458181b1f991a8a43653 79e4235309c84f8098b0f787b5d39c2b
-#: 7a49aa261fc1409bbc2d656818ab0ce9 7bbe1d4792674f688756f650dd90531a
-#: 7c754b2ba5d94bc8a5ea81ae146cf190 7ccabf54eb194ff9a1b9c9ec6f1a19ea
-#: 7dbdb15bff4745f5ae78ea042ae5831a 7f5f4d11aaeb499e91fc1848330838d7
-#: 813af099a49747daa0ea5fed33dd8c5f 84c49226f1c24fbc9dafbf0c3507f163
-#: 852514144c594b43b69ec7fdba48d51d 85d73f336c3e41d6a8706576d392abc1
-#: 863c357179ae46a493314006d710624e 87cb21eb258f4f9aa1495845aa7c0d6d
-#: 8b54f7f45317454c963970d180c52a28 8de5f37385bf482887ce9ef9e766f73b
-#: 8f023d6f49c34771bc8491e7c01e204f 8f11f3c03f2c43f2b0f29cd54558b311
-#: 8f9cb9f8dc7a4f26994ad9f091d35081 90234aedb000409d856f4af8e70da1d9
-#: 902ba5445dba4834a5283393790f74fb 90a1e25fcf94459fa8f43c23c2df6bd0
-#: 910e6a083c3a465198b0d1a2b3254362 916014a242664103a85d36aa6ae59e04
-#: 92a82e951f784ee7bdfac0bb969e0870 94abb2956e9c4299803eece1ac3db55d
-#: 97bedf7333234cb7ae9bd9300f1145a4 97e6a617bdd345a2a84dc6908058e48d
-#: 98c8ea14ec4342f6ad48a6d44b5c947c 9c32b5a291a842d8b9364e5ce4b009f0
-#: 9c33b7bf4ea74503aed1f06c4be2c0b0 9d98c68ed8004626b88e434c3c3b6058
-#: 9e57190fe54e45ee9bd1889e8934916a 9e9788a59be14895ad4a291cc5f18780
-#: 9efad049e9874db0b70acdf19abaa9ea a1b4961480ac48bda4ef9aa6bdda2b53
-#: a20a15510d6346558ac724878e74c0ab a211e50976994fd7a59c0c5cc018ce6e
-#: a2bfad23e6c3410db342ccd707c56dd5 a38d38efd2af4fd9877ca7b674a213c1
-#: a5cc981777cb474fbf3e1d5683e55a77 a7877201b1894fcd8befe2f68e9ba1f0
-#: aa15f60707484d998b941223889bb9f1 abf8ea3949f547df9c0f5111e68126c4
-#: acadfaf66d974c39a36694be6a1cdbaf acf71f87b4c3425c93607035b45f5cda
-#: ad81e1ab1288459eb50028ff4a0fcbb2 ae97483a84f545ab82e4dc06050b9565
-#: afe9f511dae942a5b56a2a905db5dcf4 b07e439111cb4ba1af2086e1630476d3
-#: b120a81c778a44c69a50d2735cb982d0 b1b00028ed2047d9933d1676e77d0528
-#: b713b8870d5f40179b8b426de714f7fa b788c9ec22fc464f951f895f4a492297
-#: b853d64c89f2464db907043d7058c100 ba57f3e800bd4318baaeeea1b9b25437
-#: bbcf688e47e54345bf6c9c9627a6dc08 bbd24563c0454119be9e045cab784fa7
-#: bc4120e45b1b45a68022476f0cd2ef55 bc9596de311243d389fb89e169594fe8
-#: c07fad76e9cc4235aa5959331f3971aa c22cfc6129104afb8ac4443ce2466384
-#: c2a5d013f4c54105a2378913d0a0b158 c312db100211463988249a33d602fc54
-#: c400676e810f4f29a954b4a4828098ca c4d6c1531dd142e897ccfd6b04dfd198
-#: c50100eb05d74b86b693426e5b4a7484 c6d0b4d609d74d79b82eea37839516a2
-#: c6de0b1b012a434893ff3c35a2a3de48 c70df173fc574fb48976690b442d0e69
-#: ca1a5ded7d02454686e0f4abdbf46d4f caa5e2cfaaac4ccd8a9eb6b3d37081e7
-#: cab1460f044e4df9a64e0807ed27de40 cb01e6cbbe7247ed8aa4bd0a1cf4fcf1
-#: cb086f25908a4414b81f856e712b25b9 cbd21a73a807432087fb0cec7003b006
-#: cdb8a85ceb644aaab49fbe41d1c4d90a d03876bf54a04fb6a5140c4ad3f8c15d
-#: d1e5555794584a6e99200842c351dd35 d21c6dee16c848939844bbdce74a5354
-#: d2a887ac625546dd901d9b945375fd41 d3eb4d2b08814f8fbe84faec2e802654
-#: d40b413976ad4af5ae7f9757ae7e30ed d40dcbcdf8804d4eba69e30d7a1cf822
-#: d4d5a70f30864e98a78172c9a0113ea3 d755fd82bfcc429391770b19e3e43b84
-#: d775043e1bf74f4993b18c7de1b2c3e3 d7bc2a71d91d4348bc12ffc688a29ba4
-#: d8f45e49296a435699d1f936d8b9442f db78cca7bbc34298808df0929f7a72a7
-#: dbceb874cc684ebc829efb78ce703bc7 dbd465638386487187a9286c7d4ad6fc
-#: de1b0e2fc3f34df6aa18ec7e964a9cf2 de50a5cdcdb143b3ae7d24b43eb12b03
-#: deea3077046f47de9f2d4e3171aa03af e0c019034ac947ff8c977ef6be09a84f
-#: e15573096e0441eaa186b9c6cba15d56 e1b147fcbea6419d91a5043a121aa72d
-#: e4cae171971c40a58bfc7ec2a28b4ccf e4da0a9ef6e14a42a84d7241b21a8153
-#: e53213c4447744ce85ddae8a692178b9 e55bd6ad665b4bc8bf76ff477fa396eb
-#: e6b689b8169a4a1b83b71f68ab4922bc e7c50774cd834ac8b683b35ffed29949
-#: e7ca63b493bd4bc79031d17f7d1fc107 e844389615964d0bad31ea881ed8b66a
-#: eb11c8ee408343cc813cf0963011ccf3 ec494d915f1a401c9ed49ffcb490ba56
-#: ecfec3a7f51d45449be9c025a500777a f0b240fa78604a359268f7eedcfa818d
-#: f2958a2bd82b46f2949562177836aed6 f2af8e82a14e4907ac5542c495c0381a
-#: f2fb9166d14a4053b8e8aa12a81a8c4e f32b3d2eaf4a441b880c12096644e578
-#: f62c6d740ea447ab9d42724109a91815 f62cca727dca4267a606cd3d3365f80e
-#: f7ee0419ce9e416fa310375b0132dbdc f87b949186324acb90d74005743eb4da
-#: f8b4435fd6194b2282d4a35118ed8a0b f920421e722e48e3a97d985ccab4a04c
-#: f9fbc3ad43a9496f802630395f05ebae fe81092c0305472f8ec4accc772c36f0
-#: ffc6c14cdf8248e1b5dfeb0124dc9e5b
-msgid "1"
-msgstr ""
+#: ../../source/getting_started/speed_benchmark.md:48
+#: 39a19fc71e414215bfefe47fabd4f103
+msgid "**Memory usage** is not reported because SGLang pre-allocates all GPU memory.   By default, we set `mem_fraction_static=0.85`."
+msgstr "**内存使用情况**未报告，因为 SGLang 会预先分配所有 GPU 内存。默认情况下，我们设置 `mem_fraction_static=0.85`。"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:51
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:59
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:67
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:75
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:90
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:98
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:106
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:114
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:130
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:138
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:146
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:154
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:169
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:177
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:185
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:193
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:209
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:217
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:225
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:233
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:248
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:256
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:264
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:272
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:288
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:296
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:304
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:312
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:328
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:336
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:344
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:352
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:360
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:368
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:385
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:393
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:401
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:409
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:424
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:432
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:440
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:448
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:456
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:464
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:483
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:491
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:499
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:507
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:525
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:533
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:541
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:549
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:557
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:565
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:587
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:595
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:603
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:611
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:628
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:630
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:640
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:650
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:658
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:666
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:674
-#: 0187a5bc6d5e4a8c921bcdd54a3d86ef 03b2c2084287404390755a31b5b6cd54
-#: 0b67fb96a58e4231b8959ca1daca5902 0be21bc4a5b24a75a9ac8b3d0d89423f
-#: 0fa1d6dda02a4261b9875d8ad6b1d4f0 11f4ebf7b6464d10915fd53fc0fc7283
-#: 142cdfc204494fff9d76030b424cdd01 152d2a814a2c473cb061d4576c646837
-#: 168fa1a1ea534041bff4a5c864f398da 218751b6743240e4a6bc231eb2783ba5
-#: 276d6029aca2416eae04c25e24dcd7bb 278c55fc81584c5682aa615ef5872342
-#: 2ddf2872603c436eb3f8f3d19f52a5ed 2e36dcbb2cc749c6b7fa58428d190f15
-#: 2eec2fbeb78141ea8f86db67523c88d2 31116afdf9804ef188c0126ce36e6974
-#: 32aa4aa420b24722a344b40253922934 3692cf66e46049398f571bbd6f7a979e
-#: 3950ab866ce7427681baba920b24f697 39efeff04b0b4e488ca8a016919caaad
-#: 3f293df1b7b447639e2b6094b877a2ee 43fc110e0ccc43a08cf682a73c63f589
-#: 4bef714ab197418b914953e5c67f35de 5188383c08a44ec1970fb906cc279de5
-#: 526cc34db8a042659adb64736c196a09 5d2671d77cb4494e895418cea5e53679
-#: 5d611913c6de4f21a2bf1fce88a5e84e 639e8df2f3bc426eafab1e2063a22e28
-#: 6fc9cd89d0a64a80a9e0066a256748ad 75659406147f4912a999b44044ef50ca
-#: 77e7a0f551f3410a9e91bffe71872dc4 78c4172d61cb4084ab97224f9b0382ac
-#: 7bae0b3e1c7b40bdb79df3fb6dbcf308 7f807186b8f347438366ba841377d7c6
-#: 84d2124c2aa14116a2c9f4d2f6326ade 858659aafa054a30bcf40194f56c2191
-#: 8b70ee6facd44ee69106e197d8878525 8d30050d007e4d458b435da6f6fd20ff
-#: 9508742224314e3d8bf7af1a48c65bbc 9a96025c586f4e20b05ac7462ba49cfc
-#: 9c7f5bade0194fcbb41e79f6aa2e7c0d 9fc633552a7340fdaf712e704cecd3b6
-#: a0534503fce840a0bfdb8ccbcd09b721 a3d9c4953ec043e09eba2c321463a7dd
-#: a60cf673ac974226a427b91637224dab aa918c2646674ff69f1c5b439502f44c
-#: aad41b758405461b8196b0c674d4e926 af0de692dc8640f7bfdf99aacaf696c1
-#: af8a464a4138489bad6f7f90d2843b53 b1b2207c8cfe431e9afbef68bd0a1935
-#: b221750df1674db2bf98012e2524fa18 b93c23b44d044b07b8b574b17139b7f0
-#: bbf9645f2fda41e7aaba6f40a344d6de bfbbcaff52ae4677965e0fbab9c1f8f9
-#: c06984c0c5de490caac6475b2c1e16ee c1ed51d291a6449793a14a34d49275f1
-#: c6e544a56be8478eba5afd694e8ddbd5 d01011fb8196450fa2be92bbb9bce21d
-#: d66d0d4e6d114fa1be64d2fec0a4e034 daf01a908d364efeb1e8376cd55f84cf
-#: f10b58f89f5d430587d95048325fc92c f1555bdb216c4ec388b369c86005fbee
-#: f21875c9ab86487d9a6b82aaa45b9e6d f2465042fd1144e9b2d054230ce1d4c8
-#: fb46c57902d445caa07ffac3603a4091
-msgid "BF16"
-msgstr ""
+#: ../../source/getting_started/speed_benchmark.md:50
+#: 4dc120620fe04f8d929eb9a49e162384
+msgid "We configure `context_length=140000` and enable `enable_mixed_chunk=True`."
+msgstr "我们配置了 `context_length=140000` 并启用了 `enable_mixed_chunk=True`。"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:51
-#: 7b5e3a36f6a043a284ec5055301e9bc8
-msgid "47.40"
-msgstr ""
+#: ../../source/getting_started/speed_benchmark.md:51
+#: f1912315cef646d885132a95c1bbfe61
+msgid "For **AWQ quantization**, we use the **awq_marlin** backend."
+msgstr "对于 **AWQ 量化**，我们使用 **awq_marlin** 后端。"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:51
-#: 102c9db1961c4753a2676ef55b4cdd62
-msgid "0.97"
-msgstr ""
+#: ../../source/getting_started/speed_benchmark.md:52
+#: b71d9ac6ac2a4007b1bf5bcbbcc0a583
+msgid "We set `skip_tokenizer_init=True` and perform generation using `input_ids` instead of raw text prompts."
+msgstr "我们设置 `skip_tokenizer_init=True` 并使用 `input_ids` 进行生成，而不是使用原始文本提示。"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:53
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:61
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:69
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:77
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:92
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:100
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:108
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:116
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:132
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:140
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:148
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:156
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:171
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:179
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:187
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:195
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:211
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:219
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:227
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:235
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:250
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:258
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:266
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:274
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:290
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:298
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:306
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:314
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:330
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:338
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:346
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:354
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:362
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:370
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:387
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:395
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:403
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:411
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:426
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:434
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:442
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:450
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:458
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:466
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:485
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:493
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:501
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:509
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:527
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:535
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:543
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:551
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:559
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:567
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:589
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:597
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:605
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:613
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:632
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:642
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:652
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:660
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:668
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:676
-#: 05a42541d3f84bbe8907b79c47bce543 1021916df4e7427798c523206178ea7f
-#: 178faa6d7a3342a38d67b46da4b63522 188efaea164f483b90eb54365004d664
-#: 220316d41a1a46d4b0808a2667f708cd 238b44852d64437393daf048ea712831
-#: 241b4c595305446aa668e6e006fe4e85 24aefaacddf24fed9e0beb0a1fe42cf0
-#: 25588df142b741a1abd227117302b4ee 26ccf1fd6d514bcd8cab702b85ece8b1
-#: 27ee842afd36468a92eade93f115e693 30346d361fd2463d9760116c95a3eefa
-#: 31758a374f034777b78e094686b73231 390e0cd6adf24bb486a2b0a74ff38c92
-#: 3adbecaaf65243abb8116084c6ec6595 3ff9d0ac031349f49929503c5c589203
-#: 4090bcf01cf94745876397c133ea6fdf 42a10a939b6d4ab0a00fde66ff3ca680
-#: 4f267f4ef0a74914844823f2fe4e816f 55a5ea1a951248b38303fd1d91fc6f45
-#: 581370ace15f466f86fedab33a34a786 5c920896e5134184b1759f59ee91ff7e
-#: 5ea4f0929c134f0797198abbe4fce56a 68f86e78520844e6b841f991dba260df
-#: 6a138b9cf5794f26a16169ee5e91a1c7 6a56951c490649b8afb0b55046a1bc0c
-#: 6def8a436f634c25b0508e3ce4bf5892 6e26e2f0c3784b328d26c4ac3b66203d
-#: 6e303b01c6e949c58f66a212568ec7e9 73120c72875d479380e11a7d00672841
-#: 75b1e27ff2eb42e590ae7c8886a332d2 7a6ed8da05694ecbb5fd3bbec2614c31
-#: 7bd9324b2fa14079a55b85a44f820c1f 80469796054047b0af8e9a9e2e82b52d
-#: 8aea75408cfb471c847cd130de556d94 954a47c396bb4a62b5366190c5f4bf79
-#: 975ebd2751474e1b9440e2ce6b210dc7 98bc2dca66da4d79b2c1189d93fb28d2
-#: 993ee44c1b984989b8274b4ec8585604 9975c8ebdc5943d7ae087521995fab2b
-#: 9f65d55416db4bf091520145dfc736f2 a021c2a23edc44adaf9e27cad0d7a468
-#: a1d647995e5b46f5b35c284fdbfe1cb3 a2f98f670ad34bdfa7c76d07ed606aa8
-#: a3d433970f674f2a8017c5b50265d04f a3f9d42e41114a75a510ab4e017e70ee
-#: addc7deabf1649f0b2c936dae5036113 af5bdeed13a0450c90b5ed38b56ab4f5
-#: b1e820fe88cb4112bab8db8e7ee331ae bdc855477b2d4b43a93a8244b15c6d7d
-#: c66c6c0aa5e14f158d876a454c9335c9 c9445b8212a344d9a92b28bbe30f92f3
-#: ca5c0273837a433e847ff6d23d74a50c cbca22813c7b43d299ab8e5fab9845d4
-#: cd2ff300c0be4cd491c75c3cef51cfbe cdcf9b8b6e2c4a38bbfa5e6b1ea4f807
-#: ce24199ad7a2448ca6282423adbcffb6 d50c80e831a740c092f8b69785e493f8
-#: e67081be3505499298503f4816e56656 e8af8a99134a402b80ff638d53978160
-#: eb85a4ed2dd54dddb1ebe7e3f270a692 ecb7d1f18ad14b33931c939d234ea1f0
-#: f065709afac441268254a04cd99eef78 f1265510b3b2497089fcfdcacf7b2ca8
-msgid "GPTQ-Int8"
-msgstr ""
+#: ../../source/getting_started/speed_benchmark.md:54
+#: 68e13ce181df472fb7ac447baccccd5f
+msgid "**FP8 Performance in Transformers**: The inference speed of Transformers in FP8 mode is currently not optimal and requires further optimization."
+msgstr "**Transformers 中的 FP8 性能**：Transformers 在 FP8 模式下的推理速度目前不够理想，还需要进一步优化。"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:53
-#: 11423407180b44be82420def384b765c
-msgid "35.17"
-msgstr ""
+#: ../../source/getting_started/speed_benchmark.md:56
+#: eba091d7757241eba26249e3b4481358
+msgid "**GPTQ-INT4 Performance in SGLang**: The performance of GPTQ-INT4 in SGLang also needs improvement, and we are actively working with the team to enhance it."
+msgstr "**SGLang 中 GPTQ-INT4 的性能**：SGLang 中 GPTQ-INT4 的性能也需要改进，SGLang团队正提升其表现。"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:53
-#: 1196b144f4da4ab8a9b0fe18247efc47
-msgid "0.64"
-msgstr ""
+#: ../../source/getting_started/speed_benchmark.md:58
+#: 378478a6059142c4baa00ef74101c7f5
+msgid "Results"
+msgstr "结果"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:53
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:61
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:69
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:77
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:132
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:140
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:148
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:156
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:211
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:219
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:227
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:235
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:290
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:298
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:306
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:314
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:387
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:395
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:403
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:411
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:485
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:493
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:501
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:509
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:589
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:597
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:605
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:613
-#: 013d1b40c6ae40dc99e48dacbb8824ff 095d1882d6d24b0fb0dfc53f379d8ff5
-#: 0bd6672b6511428a8eb758a438b6a67e 166ab5c82ec945009f8918afcb69b4c7
-#: 1e03bb0feded479a85cc843d2552f738 28f60cf44044427caebf7a4fafdb3317
-#: 3967d3eead5f4e0cb86cf7b16aa2068e 4e8af5ada1f54045ab70128edb035848
-#: 53022700901043aea02410df922ff5f2 5c360a5acfc7481baed2b3d488a4d7d9
-#: 5d80c9ec79b04217bfee4150a2cde57b 63750b304bc545f39aa7c5f91c36180f
-#: 6604f5723a704317a898a5091d16a3b0 6aa77d8baea24a3dac1ea7f40d2a8545
-#: 6cc7ee00fb6e40298e2e6c46724822ce 708d3f04e2e149c99f231b28acb7f232
-#: 732df26eebef45b5abe97daaf152b560 87ded1a1e4434310a4a5731403a04613
-#: 8c4cd3ebd6854859822c00816ee5f0b6 a4a413c20b0f4428bacec0409b34edca
-#: be01ed05733e4fde8a4551409d05802d c4d69c7e2d6d4eefb6a089dff2ac1a1a
-#: c72ad980b1da4e398f21ebc9d8884dbd c773fc80123945f7b9fa5e9587acbffb
-#: d62ef19a73d64aa5aaf1ce8aeaecc38a e0268ada69784a11957b5f633a6e1ca6
-#: e4dcd51cdeba4d01b2c818dc3b00f3ad ecf5befcd30b4302aad752ac6cd6d112
-msgid "auto_gptq==0.6.0+cu1210"
+#: ../../source/getting_started/speed_benchmark.md:60
+#: e70ceb3f7c51413a9f385a49a32a5f53
+msgid "Qwen3-0.6B (SGLang)"
 msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:55
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:63
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:71
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:79
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:94
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:102
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:110
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:118
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:134
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:142
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:150
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:158
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:173
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:181
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:189
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:197
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:213
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:221
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:229
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:237
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:252
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:260
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:268
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:276
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:292
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:300
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:308
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:316
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:332
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:340
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:348
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:356
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:364
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:372
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:389
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:397
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:405
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:413
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:428
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:436
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:444
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:452
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:460
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:468
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:487
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:495
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:503
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:511
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:529
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:537
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:545
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:553
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:561
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:569
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:591
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:599
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:607
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:615
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:634
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:636
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:644
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:646
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:654
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:662
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:670
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:678
-#: 04e9663c7b2b4e4ea435e4c9462b1790 05f89ea76a7846f88fa9496913a0ae86
-#: 06835d06095549f3ba175adb92811d5b 0898b0a9910e4c29b8b4dc867c6bc1e9
-#: 09135405b9ec49e3b84d0d4acf307245 0e82f54795634a54b7e8085dc3179203
-#: 1d4d4906df9946a98e6791377c812b88 24de7c8b77254d0db35bf0572d07f3b7
-#: 2ac992fb2f3648e7a9d99213337636b4 32b69f934b7a4bdab494714ef936c20c
-#: 352b00561584443da20cb8db2693e2e4 3592145247744da9b4631c97e3457ed1
-#: 38bfcd452ef5411198a156a77b5c9973 3f1883c0e82842a38ccb799b969d8ca5
-#: 4333fcc876f54e1e92f1270471e6acfe 4ccc8a9919454ab19f4b765ec0a8c5e1
-#: 4da28702c6284f58afa6f5a8de7ba695 4f94b1eb712f412bbdb335e0f77bb3c6
-#: 50d883123f0f4fd7bb9ae076610a1d26 51f435f934ad47c0a9e621853a9fe36e
-#: 520c1d30dafb4952822baeae0b522894 521d886efb0541769308674f79bdf1dd
-#: 541fee9d1f0a4ea49fa9ca196dfcf88e 58a72a46fab943da9094a0c2a1651f0c
-#: 5f1d9e513c1d4a9aa75acef36c4d08d3 5f71befd9b084bb3ba870d9f6be161b8
-#: 6dfd2ef4ba5948a0b0eac6d9564e036e 75633e27bff04c3b9e5af9e372cbc717
-#: 77a3660f3817454a9015642780181a00 79d62cc4d0a94f1ba85ce3224e2b0b9d
-#: 7aadfa2355774b30890ac1239643b89b 7ac870470e284768ae4fc1ee573626cf
-#: 7ad8a151669b4e628b0f5841e68504a5 7b6d7832a9634a928c3b122497438d97
-#: 7e83253ea49c4fc0b32c0e9642393366 7ee6e1f43139430c9091d83c8d2fe9e7
-#: 80711f2d88664ec0b54f3341bc6fdfd7 80a97c0c25c34d02b496a6216778cce0
-#: 876f2c85465b43d2b4409c477367cdf0 8828c3b68a404c1aa57b10a11a273358
-#: 8bd922e6938346509b52c125387d1530 8e249c1b08384fdcb341feb200456c9f
-#: 96c0650187e54b808ba84817a250eb84 98ecc925675e4b1f9d5a781ac04473f7
-#: 9c3d4141de45437ebc6ec711dfb6155e 9c96b56a84f449a8ad1588f627356d91
-#: a868d4dd843f4b359540f2fe478ab8c9 abdcbade98114f2eb2f784214633d178
-#: ac47ae4525a04b2088616b48222c1ca9 b29555ec0a604c7386e9625df6ba2d13
-#: b4649b7715ac4b03bea02b54c9d9e285 b9ad8a254a1d4ae582b4988d50dea2a0
-#: bbadc3dfc4c14d96b697303085065f83 be21b0c3fa5448959099882097a72060
-#: be6fcff5e7e34fb09b55d478d2cca1b7 c6fcf05da252434c96a33cf09d68a858
-#: d4d1da8f04fe426bb9bc1c3481627bc3 d535a39ef7924fe3a85e13b9cce2e979
-#: dcbff717b5264110affec708bcdd7924 e51462e7a43849d185e3ce6f6000ba3f
-#: e5c3470a7ba84d11b9b570ef5211241f e6e2e563280d437fbd496fd91f18def1
-#: e79053df14df4cb79676af641d972961 ed529d012a274493a6361e86396a5675
-#: f9091ceacfad4b6abb5273e269dc5c9d fea027dc6c0543a985643fe6770b9200
-msgid "GPTQ-Int4"
+#: ../../source/getting_started/speed_benchmark.md:114
+#: 48d34c54a6f84a679798b6d6e10b9258
+msgid "Qwen3-0.6B (Transformers)"
 msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:55
-#: 629feb238755401a90f5a01b5549ed65
-msgid "50.60"
+#: ../../source/getting_started/speed_benchmark.md:169
+#: 6bbf0e62079c420ea3466b988c613429
+msgid "Qwen3-1.7B (SGLang)"
 msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:55
-#: b661a2357b9f4d6292924a6a8fac51af
-msgid "0.48"
+#: ../../source/getting_started/speed_benchmark.md:225
+#: d0b2aba9331646b28d3a8b2d75385d6c
+msgid "Qwen3-1.7B (Transformers)"
 msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:57
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:65
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:73
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:81
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:96
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:104
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:112
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:120
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:136
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:144
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:152
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:160
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:175
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:183
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:191
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:199
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:215
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:223
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:231
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:239
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:254
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:262
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:270
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:278
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:294
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:302
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:310
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:318
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:334
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:342
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:350
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:358
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:366
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:374
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:391
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:399
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:407
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:415
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:430
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:438
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:446
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:454
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:462
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:470
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:489
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:497
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:505
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:513
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:531
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:539
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:547
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:555
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:563
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:571
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:593
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:601
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:609
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:617
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:638
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:648
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:656
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:664
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:672
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:680
-#: 00ae1e8f6e68408b91120e3f5fe12e26 0278b7327f3f49c29ee45c9669529640
-#: 06a24cece162424391957836c3908dc3 0764598b1ee149dc88066f8083f3c2b8
-#: 09aba84a110640769e2ab231a1751c55 0bc3aa9660074c72be7fac7bc48e9896
-#: 13bb8df9dda54af5903b2c8f2a24f964 1a16e066fe1b445dae9f67d6b9c8b093
-#: 2246463bbf8f4aff8755b11448211bac 23331268f0d74cb7a2d86410d1aae0d4
-#: 25448c3d6b0b4061a1c893e36d675292 283b842a54264925bf4fbd46585ae96c
-#: 2a50122e46d34b04a1fb2eb0a2b9589a 3726e44061a2410cb0ec1f629d44fe5d
-#: 3fe8de4f4e29419b9641479658edd557 40c4374fcf4143999a4d33ae66ba7152
-#: 443a018b8ca44104aa7c64efbd02790d 444ed3fde47a4844872d96ef8ad88913
-#: 466d5f5de058466ea26e610b321a8208 50331b0cdaa94c99b39047d529cbef19
-#: 55b3477fd81845c4bbeea92daabf5021 596916e951ab45e88a17b12788439c85
-#: 5e4856b9ac3f40258cde5b6886069f3f 62a1042ff3564780809aadffb768ee26
-#: 684b05dde1054dfaa497f7c440c1fa98 68e673d95d6a4f02b8a902eb91eda4c2
-#: 695dd775d1f9465fa8b1af17821307ff 6ade2a445a074772a112b5b32088fc76
-#: 705d2af811be49a3b47516274f43660a 755f394f28394b34af28a74d6cd9c290
-#: 7646c4beaab849a19b6c763ad1d182ee 76ceb7a8d2e4401591be7ab6f388d92a
-#: 76d2d27e65fe4c4faddec7b80a607848 7a2aaa7b5d294344826661c522293d38
-#: 7aaca1cea47b42dcb5493436f3827763 7ed659a75a934d84b196534906bd5c41
-#: 82e2b6a540a3431f89c89659bc70ef91 8b0238660306499b9bfba0c282aa7373
-#: 8d4b2b7430b543cd8e55be896f0f3f38 8df02ac807c9410aa8a5026aca90e836
-#: 96d82259bb054cc6add5dc2ddccfaa84 9850ed95902d4b53b34ec4c4f6887068
-#: 9931f4682ff843b0ad3d9a93fe7c9cb6 9c3d1b30462c4f6c81375573756cf358
-#: 9d8503ecd4cf4701a8948df67a4cb00e 9eae857b2a98484989a45ba5041c7ee6
-#: a05e3ae470a342b1b55740466ce00982 a94ee937561a40cd8d5519fc5879095d
-#: afd41c79d4da4daea6fbe3a47a2c9f31 b17f3e5cc47a49559fd1ee6bdba0a8c4
-#: b289b859a08345f2b6615dfe9acd2618 b29109f960fe411f852f14d0cf0e3d96
-#: b7618ed0c17e4f19ba74062f52fc683c b7687cc114fc4e30a49fa8a29a48a516
-#: c3c94a19caff4a1ab7c35b8374c25792 c84272d15fa04c5ca00a0acf8128c0ac
-#: cd3d6429ec534826809dbb32dedcc4bc d1118e19e6cf426f851eb2d01e072fd9
-#: dd32eb658c614de0b24db49fe56c20ca deadb165183a410e8cebe1a08107dfd3
-#: e189016ae67c40139d78c18895eeea03 e73e8540c2124dda9cd3dfe97193c607
-#: ed6288c5910b48539c8e71afe03a4460 fc9f345e86404be1918b0cc814548a6d
-msgid "AWQ"
+#: ../../source/getting_started/speed_benchmark.md:279
+#: 74e433c4044d4a06930966868db14258
+msgid "Qwen3-4B (SGLang)"
 msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:57
-#: a0bc1ca319c84934b36fdbdbba00e465
-msgid "37.09"
+#: ../../source/getting_started/speed_benchmark.md:351
+#: 0fa507ce71d846688e57481c96114d58
+msgid "Qwen3-4B (Transformers)"
 msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:57
-#: 9b5e76fec9c24a9481ea34ff1bc45010
-msgid "0.68"
+#: ../../source/getting_started/speed_benchmark.md:405
+#: dbffaaf4c5274194a1eb1ff640e86dea
+msgid "Qwen3-8B (SGLang)"
 msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:59
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:98
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:138
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:177
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:217
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:256
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:296
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:336
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:393
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:432
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:491
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:533
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:595
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:640
-#: 009cdbacf29d4d8e8da4bac87eafa353 1337f79317654239a250c2ac20c50043
-#: 198a10cab1134b0a9985680f07c0263c 3ed34d5274de4bdd8471c653245f298a
-#: 46b45940b42b47ad9b44b4dddc99e653 7cc280d41e8d4fac847af04379dbcaf0
-#: 82d0c36b743544f5ae8169dbce2f2f9e 8daafc001afb45e0b1bd72bc341b3a4a
-#: 8eb73b66b02e47058940ac3c22ae5c17 9ed68035fda444b280cd081922448986
-#: acbe015187b44f1f8685400ee9e33904 acfd3839ab144a7c9236023e68c1f372
-#: f2dd730ce308495fa91f2e1ce0e18bfa ffed67b39b5a4d019c891dceb38cc511
-msgid "6144"
+#: ../../source/getting_started/speed_benchmark.md:478
+#: f3be6cabb6db49769fd4d7f64e16391f
+msgid "Qwen3-8B (Transformers)"
 msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:59
-#: 7cf82f7c6106450286dfe1932280c66f
-msgid "47.45"
+#: ../../source/getting_started/speed_benchmark.md:533
+#: d08b7dfd146a4853a4d47c8f2a028cc4
+msgid "Qwen3-14B (SGLang)"
 msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:59
-#: 49982cc89a2f4d8684d2559d86e462dd
-msgid "1.23"
+#: ../../source/getting_started/speed_benchmark.md:606
+#: 0fa507ce71d846688e57481c96114d58
+msgid "Qwen3-14B (Transformers)"
 msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:61
-#: fab3837a99594d58a869f5a024cc4740
-msgid "36.47"
+#: ../../source/getting_started/speed_benchmark.md:661
+#: 245c24c8822b4b95aa59bc31d3798e3b
+msgid "Qwen3-32B (SGLang)"
 msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:61
-#: a7f3f3b8edf247da827869b863ced852
-msgid "0.90"
+#: ../../source/getting_started/speed_benchmark.md:735
+#: f3be6cabb6db49769fd4d7f64e16391f
+msgid "Qwen3-32B (Transformers)"
 msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:63
-#: e4b624bc551c4cbb88e5f86134baa92b
-msgid "48.89"
+#: ../../source/getting_started/speed_benchmark.md:789
+#: 35fe65bc8eac4fde92b4614a2875c78d
+msgid "Qwen3-30B-A3B (SGLang)"
 msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:63
-#: 73d8e4c6909245e19ac39990988690f7
-msgid "0.73"
+#: ../../source/getting_started/speed_benchmark.md:861
+#: 31c35c93d04143bc9af6b4966beb6d1b
+msgid "Qwen3-30B-A3B (Transformers)"
 msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:65
-#: 56a34310e1b349958b9af2f284b5090f
-msgid "37.04"
+#: ../../source/getting_started/speed_benchmark.md:916
+#: c6f3063607fe403284c5aae77059b415
+msgid "Qwen3-235B-A22B (SGLang)"
 msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:65
-#: d732132274644028abf604cb8c277c54
-msgid "0.72"
-msgstr ""
+#~ msgid "To be updated for Qwen3."
+#~ msgstr "仍需为Qwen3更新。"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:67
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:106
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:146
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:185
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:225
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:264
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:304
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:344
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:401
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:440
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:499
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:541
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:603
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:650
-#: 05dfb65f355645b2899f88fc85a589a8 07f2cf0a7f1e4c61be46b107d74bc7a8
-#: 0830e2d4d07a4e3798b281c08cd558a6 33e08e87f1e34edfbb8b4ac678d29636
-#: 47c9804609944facbf3078e896875a19 5b86e781168442afafbf44741d1e3cfb
-#: 6875d8909e564c338648c3daab46f5c5 71f18016a417403a94fffb4b68104863
-#: 955d295ff9e4460b80b1f78a67befdd8 b03403473d1b4db9be0cc264efe5c836
-#: c910a578448f458abe76f56cf9bc141f d0202d134f4a4b4885d01fb6af0b1c66
-#: d252bf874eb04c339a1ba000ec1414b0 ead0c46dbe3c4ca587064072ac574705
-msgid "14336"
-msgstr ""
+#~ msgid "The environment of the evaluation with huggingface transformers is:"
+#~ msgstr "测试HuggingFace ``transformers`` 时的环境配置："
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:67
-#: 8c7a2a48e76a4f1a9d1e7df9ffde1f13
-msgid "47.11"
-msgstr ""
+#~ msgid "NVIDIA A100 80GB"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:67
-#: 9b6161192b5246179f2a955699063597
-msgid "1.60"
-msgstr ""
+#~ msgid "CUDA 12.1"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:69
-#: 4892cd9cbf134174b6ff77465855e327
-msgid "35.44"
-msgstr ""
+#~ msgid "Pytorch 2.3.1"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:69
-#: 86dfdfb5386a4708aa407c655aa35cdf
-msgid "1.26"
-msgstr ""
+#~ msgid "Flash Attention 2.5.8"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:71
-#: 88bc181521f042568e62824d7691a28e
-msgid "48.26"
-msgstr ""
+#~ msgid "Transformers 4.46.0"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:71
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:73
-#: 1d2494b97b1c406d8a13174f66d3d7ea 2ada85ef0ac74b9db45a9ab4c22c7f9d
-msgid "1.10"
-msgstr ""
+#~ msgid "AutoGPTQ 0.7.1+cu121 (Compiled from source code)"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:73
-#: a3d015312df8486a958f673dd5540b3a
-msgid "37.14"
-msgstr ""
+#~ msgid "AutoAWQ 0.2.6"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:75
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:114
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:154
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:193
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:233
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:272
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:312
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:352
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:409
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:448
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:507
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:549
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:611
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:658
-#: 0ea7051371974a64b62d5c646b1b39f6 2cb7e33db1874c2e8de26725eeb6d30e
-#: 2dc955911e47467ebc6f8d8e8f00438b 41c9958bbe0c45e3a5294ebcc018e49e
-#: 4769ee6f27bf4d7083865d994de83db7 634568d05ed2451b8cd4572e1e3506c7
-#: 6d405bde32d1451083eb8d4f5e07873e 6dba0bf51ab6484b99e7cb69b8305cb8
-#: 7e4e611ad61446d7b5053c3313c76abc 884977f8a1e647bd8251b6322823cc18
-#: a351fe3592f340638d0a2869a4fa2c55 c0cf78c6ce1249cd945895aa1c28ea9b
-#: d529809e409e4fa881727901cd523114 dc44327da67642d5b54a79a72fe80359
-msgid "30720"
-msgstr ""
+#~ msgid "The environment of the evaluation with vLLM is:"
+#~ msgstr "测试vLLM时的环境配置："
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:75
-#: bcb9b58426e44c98b18a89dfa3e52f8e
-msgid "47.16"
-msgstr ""
+#~ msgid "vLLM 0.6.3"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:75
-#: d4be552d77f74c72ab635263a9856014
-msgid "2.34"
-msgstr ""
+#~ msgid "Pytorch 2.4.0"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:77
-#: 137e804e37154192bdadb0e260e56d7c
-msgid "36.25"
-msgstr ""
+#~ msgid "Flash Attention 2.6.3"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:77
-#: 382b06eb5b9c417ab734b5f8b6d38b7d
-msgid "2.01"
-msgstr ""
+#~ msgid "For vLLM, the memory usage is not reported because it pre-allocates all GPU memory. We use ``gpu_memory_utilization=0.9 max_model_len=32768 enforce_eager=False`` by default."
+#~ msgstr "对于vLLM，由于GPU显存预分配，实际显存使用难以评估。默认情况下，统一设定为``gpu_memory_utilization=0.9 max_model_len=32768 enforce_eager=False``。"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:79
-#: 5fc275b4a5b04d6d8d8f9f6ab89f0db4
-msgid "49.22"
-msgstr ""
+#~ msgid "0.5B (Transformer)"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:79
-#: 9134135b7454451ab3bc19a9726d9561
-msgid "1.85"
-msgstr ""
+#~ msgid "Model"
+#~ msgstr "模型"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:81
-#: 9faaa71b541c42aaa6d70d2ddf7c18f9
-msgid "36.90"
-msgstr ""
+#~ msgid "Input Length"
+#~ msgstr "输入长度"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:81
-#: 5c7c3192f04f49f09ba1e687128356c8
-msgid "1.84"
-msgstr ""
+#~ msgid "Quantization"
+#~ msgstr "量化"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:85
-#: a3f6fcee9c5640babc4b5eabf5b88c25
-msgid "0.5B (vLLM)"
-msgstr ""
+#~ msgid "GPU Num"
+#~ msgstr "GPU数量"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:90
-#: 8ad6a7a9060646bc895949824e36841c
-msgid "311.55"
-msgstr ""
+#~ msgid "Speed(tokens/s)"
+#~ msgstr "速度 (tokens/s)"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:92
-#: 953ee3b503da4795bb1fd49839943b8a
-msgid "257.07"
-msgstr ""
+#~ msgid "GPU Memory(GB)"
+#~ msgstr "显存占用 (GB)"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:94
-#: 8d465e0b7a4b4b55b2a776a7c6c65b16
-msgid "260.93"
-msgstr ""
+#~ msgid "Note"
+#~ msgstr "注意："
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:96
-#: f663227e81ce406d92a3fcd830212046
-msgid "261.95"
-msgstr ""
+#~ msgid "Qwen2.5-0.5B-Instruct"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:98
-#: 83849f7959384eaba9dd51876ae36f87
-msgid "304.79"
-msgstr ""
+#~ msgid "1"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:100
-#: 15ef7f8fd94447fd90b95bab150bdeea
-msgid "254.10"
-msgstr ""
+#~ msgid "BF16"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:102
-#: 5937b73265a142cb8563aad53eaa3691
-msgid "257.33"
-msgstr ""
+#~ msgid "47.40"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:104
-#: a1c8eb8b702140d38a20264edff6a4fd
-msgid "259.80"
-msgstr ""
+#~ msgid "0.97"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:106
-#: 1d60b9a09997456ba14dc698ae4abebd
-msgid "290.28"
-msgstr ""
+#~ msgid "GPTQ-Int8"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:108
-#: 308528a8430241f1bb3f107f627a0a0f
-msgid "243.69"
-msgstr ""
+#~ msgid "35.17"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:110
-#: 888169c1fd1c405687c3cfca214c31fd
-msgid "247.01"
-msgstr ""
+#~ msgid "0.64"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:112
-#: e40fb50ed73c49a2b3f82ebca1fff731
-msgid "249.58"
-msgstr ""
+#~ msgid "auto_gptq==0.6.0+cu1210"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:114
-#: 733262faf4fb45cd87d519b4edae4976
-msgid "264.51"
-msgstr ""
+#~ msgid "GPTQ-Int4"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:116
-#: 5270fd0a61ae462d835b6e703e646bd5
-msgid "223.86"
-msgstr ""
+#~ msgid "50.60"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:118
-#: bb8aed8e18f540adb12258701658ea86
-msgid "226.50"
-msgstr ""
+#~ msgid "0.48"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:120
-#: 5bea8e63075f444a99556dab7c2085d1
-msgid "229.84"
-msgstr ""
+#~ msgid "AWQ"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:125
-#: 4c1779fa371543268441473c511eea00
-msgid "1.5B (Transformer)"
-msgstr ""
+#~ msgid "37.09"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:130
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:169
-#: 2b47649655d3403c8a7bfa72ad59438f 77772cf114fd416f9bdf97c7f767c7d0
-msgid "Qwen2.5-1.5B-Instruct"
-msgstr ""
+#~ msgid "0.68"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:130
-#: 2317a3c491824506bce0dc8f308ed64a
-msgid "39.68"
-msgstr ""
+#~ msgid "6144"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:130
-#: 7b74222442c541a89a196a2d04a1c995
-msgid "2.95"
-msgstr ""
+#~ msgid "47.45"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:132
-#: af0210f522654f73a772664c99ad3c49
-msgid "32.62"
-msgstr ""
+#~ msgid "1.23"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:132
-#: ebfb7961553b444a9104de2d2a43162d
-msgid "1.82"
-msgstr ""
+#~ msgid "36.47"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:134
-#: 3f373b8291654d22a305e8ac0b5bac1b
-msgid "43.33"
-msgstr ""
+#~ msgid "0.90"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:134
-#: 75dd937abe9d4daca3b4a89984a9b078
-msgid "1.18"
-msgstr ""
+#~ msgid "48.89"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:136
-#: 75eae517faca488db106a0dd561dbf7d
-msgid "31.70"
-msgstr ""
+#~ msgid "0.73"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:136
-#: 00604ef3dff44cbfa888a50178fa17c5
-msgid "1.51"
-msgstr ""
+#~ msgid "37.04"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:138
-#: 6c4f1865aefe42809a6fa2411988204c
-msgid "40.88"
-msgstr ""
+#~ msgid "0.72"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:138
-#: eda3010cbba844459135a33045effa7d
-msgid "3.43"
-msgstr ""
+#~ msgid "14336"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:140
-#: b79801dd0f794042b6eba4194ff49675
-msgid "31.46"
-msgstr ""
+#~ msgid "47.11"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:140
-#: 5bf84b4f616041239731a65e072114e8
-msgid "2.30"
-msgstr ""
+#~ msgid "1.60"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:142
-#: ecb5328d5a89408e8cad5d279266d181
-msgid "43.96"
-msgstr ""
+#~ msgid "35.44"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:142
-#: 04cf902f0b0b4c9c92e8d6f201e8284a
-msgid "1.66"
-msgstr ""
+#~ msgid "1.26"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:144
-#: 4df3df3f06614d62b77b869ce135a90e
-msgid "32.30"
-msgstr ""
+#~ msgid "48.26"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:144
-#: 25d4bc8fd75f4778986da18c567968e6
-msgid "1.63"
-msgstr ""
+#~ msgid "1.10"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:146
-#: b5986361e2bc442289618d57681d1934
-msgid "40.43"
-msgstr ""
+#~ msgid "37.14"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:146
-#: b56c6512adca45a182e883b279807bfe
-msgid "4.16"
-msgstr ""
+#~ msgid "30720"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:148
-#: df39a39653e9479f84ede4ccea98cfc4
-msgid "31.06"
-msgstr ""
+#~ msgid "47.16"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:148
-#: a119b069ab274d0e911516ce73273ee0
-msgid "3.03"
-msgstr ""
+#~ msgid "2.34"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:150
-#: 01c289f40ab8446796a16d95d97f7a38
-msgid "43.66"
-msgstr ""
+#~ msgid "36.25"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:150
-#: afe2f3a364394d078c4c52ae6cad5cdc
-msgid "2.39"
-msgstr ""
+#~ msgid "2.01"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:152
-#: f889474d8d334a90ac4f6cad42d70e16
-msgid "32.39"
-msgstr ""
+#~ msgid "49.22"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:152
-#: 977283c361914a6e91ec57451591f400
-msgid "2.36"
-msgstr ""
+#~ msgid "1.85"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:154
-#: 1a0a4dfa1c7c4957970f6026eb50870b
-msgid "38.59"
-msgstr ""
+#~ msgid "36.90"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:154
-#: 3b9acf6ca56f4c6395bccf4b1d8afee2
-msgid "5.62"
-msgstr ""
+#~ msgid "1.84"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:156
-#: 4e0a926dcf39492db47679b90f9302a5
-msgid "31.04"
-msgstr ""
+#~ msgid "0.5B (vLLM)"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:156
-#: 9561feb00871463ebc9af8e3f845e335
-msgid "4.49"
-msgstr ""
+#~ msgid "311.55"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:158
-#: 815fadc5cb074cdfa15a0bd9b949f6b3
-msgid "35.68"
-msgstr ""
+#~ msgid "257.07"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:158
-#: 8339dd4bc73d4ebabfb9813ae6a49d67
-msgid "3.85"
-msgstr ""
+#~ msgid "260.93"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:160
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:401
-#: 08811d687ae14e09bb336f5337cf00f5 279a452c591847d4a64758e9575b4d27
-msgid "31.95"
-msgstr ""
+#~ msgid "261.95"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:160
-#: 788fede2692c4c68a150c04aee3af2cc
-msgid "3.82"
-msgstr ""
+#~ msgid "304.79"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:164
-#: d6835e02c1564c0292dc6c3055603b49
-msgid "1.5B (vLLM)"
-msgstr ""
+#~ msgid "254.10"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:169
-#: f3dd9fb7e85940a994f0724992eca2aa
-msgid "183.33"
-msgstr ""
+#~ msgid "257.33"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:171
-#: 4d36e27e41144a29acd66b7a2eb8264e
-msgid "201.67"
-msgstr ""
+#~ msgid "259.80"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:173
-#: 566569eae862413eaae62378ec60642f
-msgid "217.03"
-msgstr ""
+#~ msgid "290.28"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:175
-#: a0cdffa7e2834b8bbc66a0c5e750155c
-msgid "213.74"
-msgstr ""
+#~ msgid "243.69"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:177
-#: 17fe460794ef429baaff0fc7d7385d33
-msgid "176.68"
-msgstr ""
+#~ msgid "247.01"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:179
-#: c28483d5aa174366813d5139a7fae967
-msgid "192.83"
-msgstr ""
+#~ msgid "249.58"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:181
-#: 78ee7e3f9f784ae696d736ef998eea2f
-msgid "206.63"
-msgstr ""
+#~ msgid "264.51"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:183
-#: 307f7bf98ba445289ca5214054f226f0
-msgid "203.64"
-msgstr ""
+#~ msgid "223.86"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:185
-#: 517cc68aa2104f54afd4065e0bcbd2dc
-msgid "168.69"
-msgstr ""
+#~ msgid "226.50"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:187
-#: 705b401bfbb94547bba99d7497377493
-msgid "183.69"
-msgstr ""
+#~ msgid "229.84"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:189
-#: e55b3f9c71bf4a408c0edb40142f1a70
-msgid "195.88"
-msgstr ""
+#~ msgid "1.5B (Transformer)"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:191
-#: b18ed4384ac0400093621b744a79d07a
-msgid "192.64"
-msgstr ""
+#~ msgid "Qwen2.5-1.5B-Instruct"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:193
-#: 288f88b10f164d488934b44e52d6f7f7
-msgid "152.04"
-msgstr ""
+#~ msgid "39.68"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:195
-#: fef494f0a7864f20a20ecc28d38ed49d
-msgid "162.82"
-msgstr ""
+#~ msgid "2.95"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:197
-#: cf34ed991cf34bfd9dbc65998268fa0d
-msgid "173.57"
-msgstr ""
+#~ msgid "32.62"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:199
-#: 7b4e77ed996945e5b11210aa94f1164e
-msgid "170.20"
-msgstr ""
+#~ msgid "1.82"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:204
-#: 29612d8d31cc46f09b29727561c51155
-msgid "3B (Transformer)"
-msgstr ""
+#~ msgid "43.33"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:209
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:248
-#: 5daa7c1e15b44259b8c76ca8e835c9cb f9988b1c6e94450ab0a9643847292d46
-msgid "Qwen2.5-3B-Instruct"
-msgstr ""
+#~ msgid "1.18"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:209
-#: 0807d2037b47455297ab3687fcb3c33a
-msgid "30.80"
-msgstr ""
+#~ msgid "31.70"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:209
-#: cc3af58a90aa4bd5bfa750b3acbb6735
-msgid "5.95"
-msgstr ""
+#~ msgid "1.51"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:211
-#: 49a46da1fe0a4ccb9970a235cb439876
-msgid "25.69"
-msgstr ""
+#~ msgid "40.88"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:211
-#: 8b4a4859a0c1406399000f00bc6db354
-msgid "3.38"
-msgstr ""
+#~ msgid "3.43"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:213
-#: 52096558c50b49958c30aeac722bbf42
-msgid "35.21"
-msgstr ""
+#~ msgid "31.46"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:213
-#: 1cc8a35645d14e88aaed0d02e8a85236
-msgid "2.06"
-msgstr ""
+#~ msgid "2.30"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:215
-#: 957a98992c524bdd84a056b7bef8ddfd
-msgid "25.29"
-msgstr ""
+#~ msgid "43.96"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:215
-#: 689ecba4fab64dba81093564589bb594
-msgid "2.50"
-msgstr ""
+#~ msgid "1.66"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:217
-#: b2cefb3935a84b2397035912535b597e
-msgid "32.20"
-msgstr ""
+#~ msgid "32.30"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:217
-#: 51964695c1304e858960a1e2c6da46e3
-msgid "6.59"
-msgstr ""
+#~ msgid "1.63"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:219
-#: 9d3e132d27764a5b8c696c976ca3f781
-msgid "24.69"
-msgstr ""
+#~ msgid "40.43"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:219
-#: d31b90bd313b44a2bb03ecc5339df340
-msgid "3.98"
-msgstr ""
+#~ msgid "4.16"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:221
-#: bbac59966e2e4a3b8d03d32578d29234
-msgid "34.47"
-msgstr ""
+#~ msgid "31.06"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:221
-#: 07c1e6d2a08f4f909bc19cb9641b62c3
-msgid "2.67"
-msgstr ""
+#~ msgid "3.03"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:223
-#: 21e61804c449444d833d4de19839348b
-msgid "24.86"
-msgstr ""
+#~ msgid "43.66"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:223
-#: b892f6ef7d8d46bf98e48e62006eacbc
-msgid "2.62"
-msgstr ""
+#~ msgid "2.39"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:225
-#: 31adfd13385f4c6195c7f346debdfce2
-msgid "31.72"
-msgstr ""
+#~ msgid "32.39"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:225
-#: 97102e8713254b7bbb4cc62df3dc13ef
-msgid "7.47"
-msgstr ""
+#~ msgid "2.36"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:227
-#: 5422d3054c0048ac81914ac7becb9b42
-msgid "24.70"
-msgstr ""
+#~ msgid "38.59"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:227
-#: 23ef1837888b405195fbc90dc8bcb571
-msgid "4.89"
-msgstr ""
+#~ msgid "5.62"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:229
-#: cce3841d106e4fe0a359b33edec99bf2
-msgid "34.36"
-msgstr ""
+#~ msgid "31.04"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:229
-#: c6a0812d0b0b4f8f9ddb656f52e3731c
-msgid "3.58"
-msgstr ""
+#~ msgid "4.49"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:231
-#: 6c889655c3cc43a4b167132e64a2f6f9
-msgid "25.19"
-msgstr ""
+#~ msgid "35.68"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:231
-#: 31a4bb37f23b4e4d9437f8dc779b6472
-msgid "3.54"
-msgstr ""
+#~ msgid "3.85"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:233
-#: 96af50cc30974e10a27cf14a2da4811d
-msgid "25.37"
-msgstr ""
+#~ msgid "31.95"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:233
-#: 719843655d5c442cb10b7b5aa4bd2a97
-msgid "9.30"
-msgstr ""
+#~ msgid "3.82"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:235
-#: 70547ac36f3f48238456a7ed58f78688
-msgid "21.67"
-msgstr ""
+#~ msgid "1.5B (vLLM)"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:235
-#: 42910a5aabf540b4bcea07b02a851032
-msgid "6.72"
-msgstr ""
+#~ msgid "183.33"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:237
-#: 978ca61e6d0a4998b64c3154dd66b1d4
-msgid "23.60"
-msgstr ""
+#~ msgid "201.67"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:237
-#: f73642b4e2394fdc9668c9db25f52df9
-msgid "5.41"
-msgstr ""
+#~ msgid "217.03"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:239
-#: 04165880d1684173805853bf7259bcc6
-msgid "24.56"
-msgstr ""
+#~ msgid "213.74"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:239
-#: 34569f818f834c5c8ff784b6ffd99c93
-msgid "5.37"
-msgstr ""
+#~ msgid "176.68"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:243
-#: 220814be8142425e84766a0321be4d5a
-msgid "3B (vLLM)"
-msgstr ""
+#~ msgid "192.83"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:248
-#: f2d9ccca39114b63a5286a6611de8125
-msgid "127.61"
-msgstr ""
+#~ msgid "206.63"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:250
-#: 2a077e8cd8d94d8785264d4cbf9a68dd
-msgid "150.02"
-msgstr ""
+#~ msgid "203.64"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:252
-#: 0400ca4767594ecfb4defd558692c824
-msgid "168.20"
-msgstr ""
+#~ msgid "168.69"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:254
-#: 9d3b059ac69b4a5591ce3ee520a96029
-msgid "165.50"
-msgstr ""
+#~ msgid "183.69"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:256
-#: 3285226c40d84875a54f59c295b551fa
-msgid "123.15"
-msgstr ""
+#~ msgid "195.88"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:258
-#: 8f9f85faeaa2427b809dd31490586b5a
-msgid "143.09"
-msgstr ""
+#~ msgid "192.64"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:260
-#: e096b5debc964ee0878c772decc9422b
-msgid "159.85"
-msgstr ""
+#~ msgid "152.04"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:262
-#: 5486a0cba5304a6099702797d0ae549c
-msgid "156.38"
-msgstr ""
+#~ msgid "162.82"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:264
-#: 66691e93c10c4678946767c7f309da04
-msgid "117.35"
-msgstr ""
+#~ msgid "173.57"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:266
-#: 0671808a30884988a2ecbd069766e7b6
-msgid "135.50"
-msgstr ""
+#~ msgid "170.20"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:268
-#: bb9c6c1190bb40d0bbff3191e0c4498b
-msgid "149.35"
-msgstr ""
+#~ msgid "3B (Transformer)"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:270
-#: ef98f5b0376148008b73c5aecc2fa63b
-msgid "147.75"
-msgstr ""
+#~ msgid "Qwen2.5-3B-Instruct"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:272
-#: 53231a6c550840d8abd9bcd6938a51b9
-msgid "105.88"
-msgstr ""
+#~ msgid "30.80"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:274
-#: 1f6d3b325eb24c659f1d9c3620c8628b
-msgid "118.38"
-msgstr ""
+#~ msgid "5.95"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:276
-#: 548feaba1e574b098b90cdbd84ebc399
-msgid "129.28"
-msgstr ""
+#~ msgid "25.69"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:278
-#: 9199d71ff5174e8d85d70a23ae7f3ec4
-msgid "127.19"
-msgstr ""
+#~ msgid "3.38"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:283
-#: 56e99eb6d72c42689aaf59d789826803
-msgid "7B (Transformer)"
-msgstr ""
+#~ msgid "35.21"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:288
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:328
-#: c59531af032446c18bc0e83534193b9f df1166c61309496aba079d93893e2c73
-msgid "Qwen2.5-7B-Instruct"
-msgstr ""
+#~ msgid "2.06"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:288
-#: 24c881a74ac0458cb5550fc0900bba79
-msgid "40.38"
-msgstr ""
+#~ msgid "25.29"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:288
-#: a7cdbcfaf60b45ea8b6cd5b52ac0d746
-msgid "14.38"
-msgstr ""
+#~ msgid "2.50"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:290
-#: 4a9bf7b3f9e74ceabfc41137dd140a7a
-msgid "31.55"
-msgstr ""
+#~ msgid "32.20"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:290
-#: 38206be6768b4b9880a2182c3c6958f2
-msgid "8.42"
-msgstr ""
+#~ msgid "6.59"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:292
-#: 8cd20063c79e415fa8db65f73f64f0d9
-msgid "43.10"
-msgstr ""
+#~ msgid "24.69"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:292
-#: b37f8a8bcd6540469630d71d413e1c74
-msgid "5.52"
-msgstr ""
+#~ msgid "3.98"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:294
-#: 8a451541cbc24efeb6cf91ac421d42fc
-msgid "32.03"
-msgstr ""
+#~ msgid "34.47"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:294
-#: 05f7cc11f8ef46a08908b3371001e6d9
-msgid "5.39"
-msgstr ""
+#~ msgid "2.67"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:296
-#: 864b5a9dc6844aa28aea1a1da8635051
-msgid "38.76"
-msgstr ""
+#~ msgid "24.86"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:296
-#: 7c6500b87f8b4a22b889c6ffce0c0e87
-msgid "15.38"
-msgstr ""
+#~ msgid "2.62"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:298
-#: 64f2c38e7f8c4166ba938e9bb4466d7d
-msgid "31.26"
-msgstr ""
+#~ msgid "31.72"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:298
-#: d897f533338b4c62bb0d70069a758d32
-msgid "9.43"
-msgstr ""
+#~ msgid "7.47"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:300
-#: f33b03aa4b044164b3d2d75c04d8006d
-msgid "38.27"
-msgstr ""
+#~ msgid "24.70"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:300
-#: 329c1e0c94ea434987fbe24d75cd6a2e
-msgid "6.52"
-msgstr ""
+#~ msgid "4.89"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:302
-#: 7677046faff74313ba2c46c62cf21263
-msgid "32.37"
-msgstr ""
+#~ msgid "34.36"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:302
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:595
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:597
-#: 6284f4a2d24243a28a7303edfa551656 684608e8456a46eba2a061ffdfc03bdc
-#: 7575637305cc49e5bbd65b8c64f102cb
-msgid "6.39"
-msgstr ""
+#~ msgid "3.58"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:304
-#: 20c6ee40a980497da9a42c6903bdc5ca
-msgid "29.78"
-msgstr ""
+#~ msgid "25.19"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:304
-#: 217fcd110e054ed09b81f583efa7e226
-msgid "16.91"
-msgstr ""
+#~ msgid "3.54"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:306
-#: c275314a31984fcba2f269f2ed665919
-msgid "26.86"
-msgstr ""
+#~ msgid "25.37"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:306
-#: d48e57d65be94896a7a354e5a3adcff0
-msgid "10.96"
-msgstr ""
+#~ msgid "9.30"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:308
-#: b3849871d8be4810a4efd55f90d72758
-msgid "28.70"
-msgstr ""
+#~ msgid "21.67"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:308
-#: 3b30c8cf22174fbea359eaafd3d80554
-msgid "8.05"
-msgstr ""
+#~ msgid "6.72"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:310
-#: 6a26d4e6932c47ff9488adbb09892983
-msgid "30.23"
-msgstr ""
+#~ msgid "23.60"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:310
-#: aff7f4b31ebd41dc998571d2485f7c66
-msgid "7.92"
-msgstr ""
+#~ msgid "5.41"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:312
-#: 52197e28b9be4c4aa292556a598a6842
-msgid "18.83"
-msgstr ""
+#~ msgid "24.56"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:312
-#: ac2bc04160e54ec392561dc3fa1b62a6
-msgid "19.97"
-msgstr ""
+#~ msgid "5.37"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:314
-#: af03dc28d6ed4191b76122d847700d65
-msgid "17.59"
-msgstr ""
+#~ msgid "3B (vLLM)"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:314
-#: a74328e0664e45439e47cc1edd31ac5b
-msgid "14.01"
-msgstr ""
+#~ msgid "127.61"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:316
-#: 62f32fcb14ed4047a9f6c05cde7f3139
-msgid "18.45"
-msgstr ""
+#~ msgid "150.02"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:316
-#: bf83072778ef44aeb4ff280d3e8e724a
-msgid "11.11"
-msgstr ""
+#~ msgid "168.20"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:318
-#: 8596ffd1e39b4879bd3fd934d22974ce
-msgid "19.11"
-msgstr ""
+#~ msgid "165.50"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:318
-#: 19eabac83a364622ad98eef88909d151
-msgid "10.98"
-msgstr ""
+#~ msgid "123.15"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:323
-#: 03be9057a5634dceb5abd12098d1a94d
-msgid "7B (vLLM)"
-msgstr ""
+#~ msgid "143.09"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:328
-#: 8b6c550accd74ab7b0376fe5d4f7b28f
-msgid "84.28"
-msgstr ""
+#~ msgid "159.85"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:330
-#: 893e8c4f6ad8422395a14084bda0dcb9
-msgid "122.01"
-msgstr ""
+#~ msgid "156.38"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:332
-#: 0ff410dada7c4eb09377e4e643821669
-msgid "154.05"
-msgstr ""
+#~ msgid "117.35"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:334
-#: 871ced1c25884d8fb340ce3e420bb681
-msgid "148.10"
-msgstr ""
+#~ msgid "135.50"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:336
-#: 8b91ba7dac544e1e865406047454e505
-msgid "80.70"
-msgstr ""
+#~ msgid "149.35"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:338
-#: b36155ad7a1f4f46886b69202391a107
-msgid "112.38"
-msgstr ""
+#~ msgid "147.75"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:340
-#: e83968912eee4144a2a619fdaf2b2e23
-msgid "141.98"
-msgstr ""
+#~ msgid "105.88"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:342
-#: b1e09afc9e444c13a87e05e51533ed03
-msgid "137.64"
-msgstr ""
+#~ msgid "118.38"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:344
-#: e805d3fd9b7b4df88306d9d8d031fa32
-msgid "77.69"
-msgstr ""
+#~ msgid "129.28"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:346
-#: 5288955cf8a749aab0f29781c0a01eed
-msgid "105.25"
-msgstr ""
+#~ msgid "127.19"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:348
-#: 09f607e74caf4469b406af624b1954b0
-msgid "129.35"
-msgstr ""
+#~ msgid "7B (Transformer)"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:350
-#: 1bdd8e6d9c7d412d9d9c262634ba663c
-msgid "124.91"
-msgstr ""
+#~ msgid "Qwen2.5-7B-Instruct"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:352
-#: e3842b73312347fb98c58b26e3e4503f
-msgid "70.33"
-msgstr ""
+#~ msgid "40.38"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:354
-#: de12b0eb3ea14e33ba09e1efaba35c15
-msgid "90.71"
-msgstr ""
+#~ msgid "14.38"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:356
-#: d869b4da1b9d490ab63ab7b63d311811
-msgid "108.30"
-msgstr ""
+#~ msgid "31.55"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:358
-#: e725f7181b764adc97d2dbf3aa04a97b
-msgid "104.66"
-msgstr ""
+#~ msgid "8.42"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:360
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:456
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:557
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:666
-#: 50ce6144945049c08b89fae7f1096bc1 538e4f4bfd6647d0961b53aaeb93cbeb
-#: 6831225e1c2c4493bbc0b94f3284f2ae ae2971e3d03642c8b87d9996a792874e
-msgid "63488"
-msgstr ""
+#~ msgid "43.10"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:360
-#: e0ccc29135df40a8bc52e8eaa7047d0f
-msgid "50.86"
-msgstr ""
+#~ msgid "5.52"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:360
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:362
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:364
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:366
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:456
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:458
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:460
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:462
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:557
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:559
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:561
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:563
-#: 00c26ad47e7e483f812f1a7686ec946c 115475fff86d489f9da9a050d580ac35
-#: 39e209cc54ef4f249a9e10b4d2b59e9a 471c2edbd90f48599720e4835f4ceccb
-#: 5aeecd3e741e4f7eadc58ec109bcc517 6378f5dfc0c748049349bfe281ede172
-#: 67b476001be94ed1939d90892d4fa792 8512c45d834c44b3bc900ea9b03da35e
-#: 87765daec63740a2928bee81a093ab4e a8599ff0fa864ff89a5536828a23bbd6
-#: b6e42477ae4e489bb80dd0da67e257d4 f3b86ac794b9432182cca62e582e218e
-msgid "setting-64k"
-msgstr "[设定3]"
-
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:362
-#: b778e2090cfb4eb0b4fea135fbe7f018
-msgid "60.52"
-msgstr ""
+#~ msgid "32.03"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:364
-#: e8932a3264da487a9d21ef0d46f46ca8
-msgid "67.97"
-msgstr ""
+#~ msgid "5.39"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:366
-#: 4b0a406a6de24339ac3d150668f236f9
-msgid "66.42"
-msgstr ""
+#~ msgid "38.76"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:368
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:464
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:565
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:674
-#: 4b0bcf340b13449d925405d1b6146c0d 4ed666fe3b7b4f2cbeb3724360e7f873
-#: a4c73d02cdce4822af91add6cbfdc9c1 d84244305719472ea8ea3aa5b1f96026
-msgid "129024"
-msgstr ""
+#~ msgid "15.38"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:368
-#: 88281dfdb16f49f196441f8fd83a777a
-msgid "28.94"
-msgstr ""
+#~ msgid "31.26"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:368
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:370
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:372
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:374
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:464
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:466
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:468
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:470
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:565
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:567
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:569
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:571
-#: 0b5ace22aa334ae293e187c274d24af3 23c9d9e6b64547238214fa6855a7f3d4
-#: 287f483703d345d7a197ca9664e0d209 6dc7a99a3fd6403da605b1b4fe3ee0f2
-#: 8a87d97b5f254259ab06b8cde9cb9d31 9af99966e7a14e89a7af2aa01537a0b2
-#: ade5ee0f233f4532902eb97817d9faaf b24e425c9d094dfc800f8f9be1b686c5
-#: d01c429ad2414cfda68d399ae4b1ef3c d279d55974c34202830512a83958f0a7
-#: e829a4c032df4e5e9fb1f15828f19920 e8558dccdc7c4071b9d655f86001bb52
-msgid "vllm==0.6.2, new sample config"
-msgstr ""
+#~ msgid "9.43"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:370
-#: 3049540f3214425987489dbbc60f25e5
-msgid "25.97"
-msgstr ""
+#~ msgid "38.27"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:372
-#: 7999f5b1856e44f791d1b050f0db8332
-msgid "26.37"
-msgstr ""
+#~ msgid "6.52"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:374
-#: ee69d83c04864081b5a1b15cb8db3b04
-msgid "26.57"
-msgstr ""
+#~ msgid "32.37"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:377
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:473
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:577
-#: 241f00f91e934d029960f03c27bd3739 c4780aea46374bdbab1a7ad7460f9691
-#: e26e5864d5c84d888cc9a4ee09f2209e
-msgid "[Setting-64k]=(gpu_memory_utilization=0.9 max_model_len=65536 enforce_eager=False)"
-msgstr "[默认设定]=(gpu_memory_utilization=0.9 max_model_len=32768 enforce_eager=False)"
-
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:378
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:474
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:578
-#: 0dd68ddb0a5645c184f2f9a378c1843b 8f9d36ee815e4c65b6ee9c4bdd6a701d
-#: df4ab6ac46aa4631a3b06c2d2409c0a5
-msgid "[new sample config]: for vLLM, set the following sampling parameters: SamplingParams(temperature=0.7,top_p=0.8,top_k=20,repetition_penalty=1,presence_penalty=0,frequency_penalty=0,max_tokens=out_length)"
-msgstr ""
+#~ msgid "6.39"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:380
-#: 92b7bbe75de343ca9bf5dfe34e1eb018
-msgid "14B (Transformer)"
-msgstr ""
+#~ msgid "29.78"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:385
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:424
-#: 33d36e38b5fa4949b8de55c2bbaf132f 69f3d88ca3cb435f9ad699700e9d8b10
-msgid "Qwen2.5-14B-Instruct"
-msgstr ""
+#~ msgid "16.91"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:385
-#: 338933e55828474387d3671533e441eb
-msgid "24.74"
-msgstr ""
+#~ msgid "26.86"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:385
-#: b5c2b2011e1740829a9ab848c9d1bc67
-msgid "28.08"
-msgstr ""
+#~ msgid "10.96"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:387
-#: 4bec6d1379e247829df14b913f05108e
-msgid "18.84"
-msgstr ""
+#~ msgid "28.70"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:387
-#: ef756d9d57cc43558d26a2e2cdcf5951
-msgid "16.11"
-msgstr ""
+#~ msgid "8.05"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:389
-#: cb18696826a140f4b856bf7e45092436
-msgid "25.89"
-msgstr ""
+#~ msgid "30.23"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:389
-#: 9dfab6d9504c4c0da73b38d301aa9bff
-msgid "9.94"
-msgstr ""
+#~ msgid "7.92"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:391
-#: 66c1a4c3ee854d578fbffd38590a6173
-msgid "19.23"
-msgstr ""
+#~ msgid "18.83"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:391
-#: ce33adff743948feb696c33af18a3766
-msgid "9.79"
-msgstr ""
+#~ msgid "19.97"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:393
-#: 34c1a8fb645b4b9a9fd2d8ce5a67feab
-msgid "20.51"
-msgstr ""
+#~ msgid "17.59"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:393
-#: bb5678c644b541b6a0f5fae43d7c0526
-msgid "29.50"
-msgstr ""
+#~ msgid "14.01"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:395
-#: 87bb23f9e2ac49819434e5ab076922ae
-msgid "17.80"
-msgstr ""
+#~ msgid "18.45"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:395
-#: f0962fa7bf5741209577003ddb4cf5f1
-msgid "17.61"
-msgstr ""
+#~ msgid "11.11"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:397
-#: ab83231e92aa46f5ba1e3f62648318b8
-msgid "20.06"
-msgstr ""
+#~ msgid "19.11"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:397
-#: eb1cdd4e04d64039948029eaf8b4a00b
-msgid "11.36"
-msgstr ""
+#~ msgid "10.98"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:399
-#: 3dcefb1d53274627bca7e625eee85869
-msgid "19.21"
-msgstr ""
+#~ msgid "7B (vLLM)"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:399
-#: 8a1e9eaddca74d09b64f935a94595c67
-msgid "11.22"
-msgstr ""
+#~ msgid "84.28"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:401
-#: 2f6eb0bc7f424e6a9f0ad4460a7a4efa
-msgid "13.92"
-msgstr ""
+#~ msgid "122.01"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:403
-#: 1c1d115e36f44119a97a89ac206e52a0
-msgid "12.66"
-msgstr ""
+#~ msgid "154.05"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:403
-#: e3593e304bbe45bd8418842fd851580b
-msgid "19.98"
-msgstr ""
+#~ msgid "148.10"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:405
-#: ba374bdd369642199b56cfb2a9d0784e
-msgid "13.79"
-msgstr ""
+#~ msgid "80.70"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:405
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:497
-#: 0cd9daa65abb42728d9dcdce24e351af 5bbb032dcaff408fb538e1491f165423
-msgid "13.81"
-msgstr ""
+#~ msgid "112.38"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:407
-#: dd59a5da243240f98a196c8a8ad75954
-msgid "14.17"
-msgstr ""
+#~ msgid "141.98"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:407
-#: 701485096f6f4c1bac865dfc343f9aaa
-msgid "13.67"
-msgstr ""
+#~ msgid "137.64"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:409
-#: e93d854562b343ada25beed98c702c4f
-msgid "8.20"
-msgstr ""
+#~ msgid "77.69"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:409
-#: b43df19558bc4526b4e1c7eef86950e1
-msgid "36.85"
-msgstr ""
+#~ msgid "105.25"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:411
-#: a28d25884edd4b25a2c6609a0831b244
-msgid "7.77"
-msgstr ""
+#~ msgid "129.35"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:411
-#: 1cf634f3eead4b63a3b18221ca1cc276
-msgid "24.88"
-msgstr ""
+#~ msgid "124.91"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:413
-#: 04012ce321284d4b92301661b3d7f54d
-msgid "8.14"
-msgstr ""
+#~ msgid "70.33"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:413
-#: 691467f010c140289335343b4e317885
-msgid "18.71"
-msgstr ""
+#~ msgid "90.71"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:415
-#: 1bcbae57b17f4171901b2cfa61ca31ba
-msgid "8.31"
-msgstr ""
+#~ msgid "108.30"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:415
-#: 1a1f2770dcf34fb08318658c872f2cc7
-msgid "18.57"
-msgstr ""
+#~ msgid "104.66"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:419
-#: 694c73bc709841779cd45459fb251729
-msgid "14B (vLLM)"
-msgstr ""
+#~ msgid "63488"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:424
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:636
-#: 190675eb767d4436a465e37c10dbfbce 64048cd8fa354dff9ec1c8098a9c5d6b
-msgid "46.30"
-msgstr ""
+#~ msgid "50.86"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:426
-#: c309b01f907e4a4889aaab7c03d77c7a
-msgid "70.40"
-msgstr ""
+#~ msgid "setting-64k"
+#~ msgstr "[设定3]"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:428
-#: 34e73fd890db4b92a10bb2787ba967ea
-msgid "98.02"
-msgstr ""
+#~ msgid "60.52"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:430
-#: b11faf7833904f608b8f25e96e33a7e8
-msgid "92.66"
-msgstr ""
+#~ msgid "67.97"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:432
-#: 45bb4137b3c544ec929b1d1b5eed109a
-msgid "43.83"
-msgstr ""
+#~ msgid "66.42"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:434
-#: 6f1d8d18f22e4df38ea4ae324bf69111
-msgid "64.33"
-msgstr ""
+#~ msgid "129024"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:436
-#: ec572c9bc33d419e8e236fc839861a42
-msgid "86.10"
-msgstr ""
+#~ msgid "28.94"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:438
-#: c3a1bb544325403b9176ed8e196f9aae
-msgid "83.11"
-msgstr ""
+#~ msgid "vllm==0.6.2, new sample config"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:440
-#: 9a0d2d7a5ec040819269a01d9b720eee
-msgid "41.91"
-msgstr ""
+#~ msgid "25.97"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:442
-#: 0d8b29f114624260b87d1db16c8ba5bf
-msgid "59.21"
-msgstr ""
+#~ msgid "26.37"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:444
-#: 283793d00d9d4461a627c46ad889ff1e
-msgid "76.85"
-msgstr ""
+#~ msgid "26.57"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:446
-#: d415f7ac9bdd4d86b97d814b4928e53e
-msgid "74.03"
-msgstr ""
+#~ msgid "[Setting-64k]=(gpu_memory_utilization=0.9 max_model_len=65536 enforce_eager=False)"
+#~ msgstr "[默认设定]=(gpu_memory_utilization=0.9 max_model_len=32768 enforce_eager=False)"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:448
-#: 7d901c10446e4eb8a2cad830947e3474
-msgid "37.18"
-msgstr ""
+#~ msgid "[new sample config]: for vLLM, set the following sampling parameters: SamplingParams(temperature=0.7,top_p=0.8,top_k=20,repetition_penalty=1,presence_penalty=0,frequency_penalty=0,max_tokens=out_length)"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:450
-#: 974d590a66ff47bfb0b790dfbfe8fe8c
-msgid "49.23"
-msgstr ""
+#~ msgid "14B (Transformer)"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:452
-#: 529758ddb0d14b4e8fe69d88034c0829
-msgid "60.91"
-msgstr ""
+#~ msgid "Qwen2.5-14B-Instruct"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:454
-#: 3e4501a402574108a70cf1cb72d7623c
-msgid "59.01"
-msgstr ""
+#~ msgid "24.74"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:456
-#: a9d4b6a6e1f544c28c871147fee7e46f
-msgid "26.85"
-msgstr ""
+#~ msgid "28.08"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:458
-#: 9f5ea50357aa474c8142f12b8f3b870a
-msgid "32.83"
-msgstr ""
+#~ msgid "18.84"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:460
-#: ed09f6b07ff64e35bdb359f1d3b66370
-msgid "37.67"
-msgstr ""
+#~ msgid "16.11"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:462
-#: 8b91ca3412bb473abbc0ab2eef544d38
-msgid "36.71"
-msgstr ""
+#~ msgid "25.89"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:464
-#: 0ad36a5039164677b1fb1f1c1b83004a
-msgid "14.53"
-msgstr ""
+#~ msgid "9.94"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:466
-#: 4b0e26b3f1df41a8be6ef38bfd3e5604
-msgid "15.10"
-msgstr ""
+#~ msgid "19.23"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:468
-#: adcacd971a064a03a19874f639fd2804
-msgid "15.13"
-msgstr ""
+#~ msgid "9.79"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:470
-#: 08f646ac94cb48ca80d86d35bf3aab59
-msgid "15.25"
-msgstr ""
+#~ msgid "20.51"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:478
-#: 6187de60c7674655aa4aeb929a040681
-msgid "32B (Transformer)"
-msgstr ""
+#~ msgid "29.50"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:483
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:525
-#: 87e9496da06b46eeb9eb003821e17fc1 df6f5ff00cc3491a8d44f70f76a0ae22
-msgid "Qwen2.5-32B-Instruct"
-msgstr ""
+#~ msgid "17.80"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:483
-#: 1187e6c07e0846c4ba91019dec6fd881
-msgid "17.54"
-msgstr ""
+#~ msgid "17.61"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:483
-#: 0b57fc4aed17424d8b2468ce5f116895
-msgid "61.58"
-msgstr ""
+#~ msgid "20.06"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:485
-#: 8a7ba27ab37547f6a6bfbdbb0b62fa2d
-msgid "14.52"
-msgstr ""
+#~ msgid "11.36"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:485
-#: 274d30ddbed14e839a7942ce65bb25f5
-msgid "33.56"
-msgstr ""
+#~ msgid "19.21"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:487
-#: 73b5e1fe4ec0451280181b26c43b0f61
-msgid "19.20"
-msgstr ""
+#~ msgid "11.22"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:487
-#: a5ca5659f3424b86be625ade3a7a60be
-msgid "18.94"
-msgstr ""
+#~ msgid "13.92"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:489
-#: 00ab7a5ec2484fb9b0ce1ca7e11fec0a
-msgid "14.60"
-msgstr ""
+#~ msgid "12.66"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:489
-#: 50a6bf9efa544f0a8efcc4d0adc892b5
-msgid "18.67"
-msgstr ""
+#~ msgid "19.98"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:491
-#: a6f66b46d37447fd9c1ded781ebc56bb
-msgid "12.49"
-msgstr ""
+#~ msgid "13.79"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:491
-#: 7d4f95aea3f849b0a329135057b8097f
-msgid "63.72"
-msgstr ""
+#~ msgid "13.81"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:493
-#: 7d6c5d94c54e489aa17ed42c7a907f4a
-msgid "11.61"
-msgstr ""
+#~ msgid "14.17"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:493
-#: dd2b7801beb94b4baea41b036dcfc09d
-msgid "35.86"
-msgstr ""
+#~ msgid "13.67"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:495
-#: 80acdcef63444172b32bb11548e0df1c
-msgid "13.42"
-msgstr ""
+#~ msgid "8.20"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:495
-#: b8ba8f9c6830492695568619711000a9
-msgid "21.09"
-msgstr ""
+#~ msgid "36.85"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:497
-#: 29ed0a90af354532a68f101dd869a740
-msgid "20.81"
-msgstr ""
+#~ msgid "7.77"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:499
-#: c8e9d0507b4f4f5bb1db5dc19d905a6a
-msgid "8.95"
-msgstr ""
+#~ msgid "24.88"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:499
-#: de277b24e3a543118cd4924d7369cf48
-msgid "67.31"
-msgstr ""
+#~ msgid "8.14"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:501
-#: e50b322f12284aeb934a9ece4851ea57
-msgid "8.53"
-msgstr ""
+#~ msgid "18.71"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:501
-#: 8f70b6466fbc40b4998021d901b00712
-msgid "39.28"
-msgstr ""
+#~ msgid "8.31"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:503
-#: ea984b7052b744b88ac7126331ca259a
-msgid "9.48"
-msgstr ""
+#~ msgid "18.57"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:503
-#: 4628bc748bc049baaf3ba35256e91f23
-msgid "24.67"
-msgstr ""
+#~ msgid "14B (vLLM)"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:505
-#: 8ad0734da7ad45e4998aeee24bfb6cbf
-msgid "9.71"
-msgstr ""
+#~ msgid "46.30"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:505
-#: ad0f34cbeb904db9858c4d5c91ca2468
-msgid "24.39"
-msgstr ""
+#~ msgid "70.40"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:507
-#: 20f4237587b14cb88a8da4ebab7587e3
-msgid "5.59"
-msgstr ""
+#~ msgid "98.02"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:507
-#: 38d6938125aa4a2da58da0423628e399
-msgid "74.47"
-msgstr ""
+#~ msgid "92.66"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:509
-#: 5c7c9721136d4be1b730b73a440b2ee2
-msgid "5.42"
-msgstr ""
+#~ msgid "43.83"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:509
-#: 2a228f8a1096453cad463f101d2da912
-msgid "46.45"
-msgstr ""
+#~ msgid "64.33"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:511
-#: f277ef5442384d39952e77b11802de9a
-msgid "5.79"
-msgstr ""
+#~ msgid "86.10"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:511
-#: cfbda016e2694bb2917c2500bc8086fb
-msgid "31.84"
-msgstr ""
+#~ msgid "83.11"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:513
-#: d660478e5a494a1089f8ca771fa6f6cf
-msgid "5.85"
-msgstr ""
+#~ msgid "41.91"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:513
-#: 15394742cc55409bab9ebca52602b265
-msgid "31.56"
-msgstr ""
+#~ msgid "59.21"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:520
-#: c3a65729136e4e3aba49f12c6162955e
-msgid "32B (vLLM)"
-msgstr ""
+#~ msgid "76.85"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:525
-#: dc5d038782af4181a9473a2606134b14
-msgid "22.13"
-msgstr ""
+#~ msgid "74.03"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:525
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:533
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:541
-#: 068b2f72584d47b39f1b5081a3ec41d0 39003cc5472c4ee281132b0bbae2b0fc
-#: f8bde774b59644778436b7ed1b1220f5
-msgid "setting1"
-msgstr "[设定3]"
-
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:527
-#: 544f5cbf0b91431e96492201661352a1
-msgid "37.57"
-msgstr ""
+#~ msgid "37.18"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:529
-#: 9f7fa40d209644e5ba834e4548f92cb9
-msgid "55.83"
-msgstr ""
+#~ msgid "49.23"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:531
-#: 88cf119d087c48b389bd01b4b1e488c0
-msgid "51.92"
-msgstr ""
+#~ msgid "60.91"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:533
-#: 6463b2e7cb3e4254b7b34c767e2951d0
-msgid "21.05"
-msgstr ""
+#~ msgid "59.01"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:535
-#: dcb89762e0764f77a074e18b56cb040f
-msgid "34.67"
-msgstr ""
+#~ msgid "26.85"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:537
-#: bb33a31e88cb44fcb75486b2093626fa
-msgid "49.96"
-msgstr ""
+#~ msgid "32.83"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:539
-#: a6966da4828342ff9f9498eb53cf3050
-msgid "46.68"
-msgstr ""
+#~ msgid "37.67"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:541
-#: 3767dac4fecf44e684b4c85e623ab467
-msgid "19.91"
-msgstr ""
+#~ msgid "36.71"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:543
-#: 93963d97949640d38f56ff2bb94d5e65
-msgid "31.89"
-msgstr ""
+#~ msgid "14.53"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:545
-#: 4d5070af41e14faf86dd896ea915b64a
-msgid "44.79"
-msgstr ""
+#~ msgid "15.10"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:547
-#: c57efbb51fd84f5f81d36f6a7d30f411
-msgid "41.83"
-msgstr ""
+#~ msgid "15.13"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:549
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:557
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:565
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:587
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:589
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:595
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:597
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:605
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:613
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:615
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:617
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:628
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:632
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:636
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:638
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:642
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:646
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:648
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:652
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:654
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:656
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:660
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:662
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:664
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:668
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:670
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:672
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:678
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:680
-#: 04a842bad8354ed2b67dbef03040f428 168304fd8ba94efbaf4d7d2141133392
-#: 198178cd5a7747528f3bbd10ffce8c9f 1fd3e4fd78574a6897f656fc7cf1c21c
-#: 21b19938194946bdb1e3c08f9a9e65d7 252accfef1f043fa94db8f7416fb82e4
-#: 29e616ccd970481182ba77bb48e2cf88 34a7967c3941474e8995bf3d72af9b97
-#: 3fa2c7d0eec845a39e77223d196cc55c 664d31a65c3942a5af01983a23e8c627
-#: 69036f8a038c4f40a5637979d42d7607 731e5467166a4342af42cd0ac51d84cc
-#: 747f5d35f48542b39a49ce0a24a0d687 75c3543f06234cf58511661bb60a0c01
-#: 7d5749971c8b45dbb6b281780869a053 8416e10a86144cd394e459eba35fd8f5
-#: 883a579d68a3465090857db825c1a91a 889e6b5c831b4804a18884b2b1203db7
-#: 965366c2247a42469424a9a3d5c44988 99eb73e79fc448caaa84fd2f17964b19
-#: 9e77d837d40448788b772fe0270d27d7 a03f7a47720b48b580c5abad8c8e826d
-#: a12d87a0fd20484c8292bcc9168f5512 ad18e58b25b34e349f03fb0b8330f325
-#: b738b0e096e64a66b11e24be110ee277 d48c3ca204334fbc94b149f143dc7034
-#: e8147654e27547cda3404b254cab3a9b eefe53745e72455a86572ad53b69b056
-#: f4bf1185016f4e7696e2c0592397a669
-msgid "2"
-msgstr ""
+#~ msgid "15.25"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:549
-#: 820041e86bfb41efa8dc85841617881a
-msgid "31.82"
-msgstr ""
+#~ msgid "32B (Transformer)"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:551
-#: 5e4ef5182e0f417d9d2c9405ae51110f
-msgid "26.88"
-msgstr ""
+#~ msgid "Qwen2.5-32B-Instruct"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:553
-#: 435f106050674ed982e291a6a96dd31f
-msgid "35.66"
-msgstr ""
+#~ msgid "17.54"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:555
-#: 59165f45acc04f5ba9db908e1f707c5d
-msgid "33.75"
-msgstr ""
+#~ msgid "61.58"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:557
-#: fe4921cfe9ba447bba5428bb6d68477c
-msgid "24.45"
-msgstr ""
+#~ msgid "14.52"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:559
-#: 2ceca97bf1424b1b9f5dfc08eb74ed11
-msgid "18.60"
-msgstr ""
+#~ msgid "33.56"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:561
-#: 30bf0c9cf06146a1a470e4c5a75e9c28
-msgid "22.72"
-msgstr ""
+#~ msgid "19.20"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:563
-#: e45e23f08f97407781920b4ef5d2b5a6
-msgid "21.79"
-msgstr ""
+#~ msgid "18.94"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:565
-#: 2d31bf4124644faeb2d0265c86b76b98
-msgid "14.31"
-msgstr ""
+#~ msgid "14.60"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:567
-#: 4bad5bc53fa24071ae79ff3a66e2b4e8
-msgid "9.77"
-msgstr ""
+#~ msgid "18.67"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:569
-#: 59fc78b4a54e4b30b83590c0cf55d2c2
-msgid "10.39"
-msgstr ""
+#~ msgid "12.49"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:571
-#: acde06dfa1974cd5bba88b1f91efb950
-msgid "10.34"
-msgstr ""
+#~ msgid "63.72"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:574
-#: 942b8b91b6b045278ab18ef225e4e716
-msgid "For context length 129024, the model needs to be predicted with the following config: \"model_max_length\"=131072"
-msgstr ""
+#~ msgid "11.61"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:575
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:683
-#: 61b86605ec9948e1919424a27af302d6 b72c77ebaf7549edaeec155dc4303e17
-msgid "[Default Setting]=(gpu_memory_utilization=0.9 max_model_len=32768 enforce_eager=False)"
-msgstr "[默认设定]=(gpu_memory_utilization=0.9 max_model_len=32768 enforce_eager=False)"
-
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:576
-#: f9a7440af9174bd9ad6b7cbb9a446e4c
-msgid "[Setting 1]=(gpu_memory_utilization=1.0 max_model_len=32768 enforce_eager=True)"
-msgstr "[设定 3]=(gpu_memory_utilization=1.0 max_model_len=8192 enforce_eager=True)"
-
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:582
-#: 46bf81ba73f147dcabb6849cf3201052
-msgid "72B (Transformer)"
-msgstr ""
+#~ msgid "35.86"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:587
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:628
-#: 91768f34ee6b4eeb94cd5da42c26c0bd e4dd97c84c0c403390c0c69610b73e0d
-msgid "Qwen2.5-72B-Instruct"
-msgstr ""
+#~ msgid "13.42"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:587
-#: 5c47cabeaf474ed588d4c38e4b028097
-msgid "8.73"
-msgstr ""
+#~ msgid "21.09"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:587
-#: 569f321b558d44a58839acd828ae96bd
-msgid "136.20"
-msgstr ""
+#~ msgid "20.81"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:589
-#: f0413098de2f44b0a7234d37fa59b654
-msgid "8.66"
-msgstr ""
+#~ msgid "8.95"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:589
-#: 683101e8658a4688bdc08a0558859f7b
-msgid "72.61"
-msgstr ""
+#~ msgid "67.31"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:591
-#: f7036d248182477e92c7a7abbe395646
-msgid "11.07"
-msgstr ""
+#~ msgid "8.53"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:591
-#: 61f64731ce2f47d4b4bc2cb0a21778d4
-msgid "39.91"
-msgstr ""
+#~ msgid "39.28"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:593
-#: c36abd184cf74037b12e523090cce321
-msgid "11.50"
-msgstr ""
+#~ msgid "9.48"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:593
-#: 5317e202c5334b8c93483684f289fc66
-msgid "39.44"
-msgstr ""
+#~ msgid "24.67"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:595
-#: 0b5dcb5053134e9c862e3b7d8c032fdc
-msgid "140.00"
-msgstr ""
+#~ msgid "9.71"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:597
-#: 0c9a76f57fd044ceaab57ffa3883fac6
-msgid "77.81"
-msgstr ""
+#~ msgid "24.39"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:599
-#: 1875133832db435cabd15c0bc45dee3e
-msgid "7.56"
-msgstr ""
+#~ msgid "5.59"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:599
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:646
-#: 3d2bc391914042148de39eefb840b94a 8c64b1e0e32b48aaa1a7da4968576ca5
-msgid "42.50"
-msgstr ""
+#~ msgid "74.47"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:601
-#: 2cdd652eb82b4b959de116c4ef1594f9
-msgid "8.17"
-msgstr ""
+#~ msgid "5.42"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:601
-#: 1145f18b41564ff9a3701ee8f5b91ae5
-msgid "42.13"
-msgstr ""
+#~ msgid "46.45"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:603
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:611
-#: 10f2b403b1ec4c52b2040310779aa010 4b4fd3701363487bba52acab22070c3e
-msgid "3"
-msgstr ""
+#~ msgid "5.79"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:603
-#: 15752ef061a546a4830e0c0fa3746623
-msgid "4.25"
-msgstr ""
+#~ msgid "31.84"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:603
-#: be9753117c304f6b875beb241499acea
-msgid "149.14"
-msgstr ""
+#~ msgid "5.85"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:605
-#: 177bfb7606df4fa9b2c4d76a596d094e
-msgid "4.66"
-msgstr ""
+#~ msgid "31.56"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:605
-#: 8971c615f1c843669406e93620fb83c8
-msgid "82.55"
-msgstr ""
+#~ msgid "32B (vLLM)"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:607
-#: ec651a2587994931a71cd584c6b60106
-msgid "5.27"
-msgstr ""
+#~ msgid "22.13"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:607
-#: c8b14125b2d44cceae756b97937bc26e
-msgid "46.86"
-msgstr ""
+#~ msgid "setting1"
+#~ msgstr "[设定3]"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:609
-#: cb2116264ea54f1f9c8c504468545115
-msgid "5.57"
-msgstr ""
+#~ msgid "37.57"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:609
-#: 198f6b99f1614dc7b14682cfefccdb80
-msgid "46.38"
-msgstr ""
+#~ msgid "55.83"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:611
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:613
-#: 0a2ef7146f834160b307581169403a30 763d64c6856e4e04bf25657020aaefc5
-msgid "2.94"
-msgstr ""
+#~ msgid "51.92"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:611
-#: 994398398e3f45e39df3773604ec3a43
-msgid "164.79"
-msgstr ""
+#~ msgid "21.05"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:613
-#: 3129aea7c75d41729a42ea7e36a0ab12
-msgid "94.75"
-msgstr ""
+#~ msgid "34.67"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:615
-#: 75afd12832eb494192acc82a5dedd6b6
-msgid "3.14"
-msgstr ""
+#~ msgid "49.96"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:615
-#: f1f6cf8f615342819b23c30082622676
-msgid "62.57"
-msgstr ""
+#~ msgid "46.68"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:617
-#: e465aac3db0e4e71a3845e20cb791677
-msgid "3.23"
-msgstr ""
+#~ msgid "19.91"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:617
-#: 8e595b1b68184a97ae29e53d41b5be09
-msgid "61.64"
-msgstr ""
+#~ msgid "31.89"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:623
-#: 9d4bcba347274fea92f019a978acfc75
-msgid "72B (vLLM)"
-msgstr ""
+#~ msgid "44.79"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:628
-#: 6c68033a6d6c4555b638646e8b30755f
-msgid "18.19"
-msgstr ""
+#~ msgid "41.83"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:628
-#: 16ac2284befb476aaf6f61e6757ce46a
-msgid "Setting 1"
-msgstr "[设定3]"
-
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:630
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:640
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:650
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:658
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:666
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:674
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:676
-#: 00f47e95a8644e729a215fbab8f79533 1c65888e78d44caa964b2b2cc9aaddbc
-#: 3313fc64770e48708415a978295295ae 8a023809a0ae461e817412886a66c234
-#: 97ca85cc013c4eef83f7c1f12dd899d6 ac102e30612c46528f80a3346c093b68
-#: fbca157eadbc4436ab24c66bc43cdbd1
-msgid "4"
-msgstr ""
+#~ msgid "2"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:630
-#: 3394960b4ab8479986a994ff3cb09a53
-msgid "31.37"
-msgstr ""
+#~ msgid "31.82"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:630
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:632
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:634
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:638
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:640
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:642
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:644
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:648
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:650
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:652
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:654
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:656
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:658
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:660
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:662
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:664
-#: 15e47b765995446390cc6d9a8f4181df 1b107cbd953a4334809a06174b468034
-#: 2b4282fdc8904d8794efcf0626b35030 32619cf0332c4e21a62b076dcf6b2a6c
-#: 429fb1a0ecc441b093ad7896513abe06 477d6a3bd1794bf5a1b8d7eaab6a0be4
-#: 64212f42ec2940c0b83de99b44dd9eac 88d6a99ce03c423b95320c97a022e0f3
-#: 8d7678a0072f4d058f4335853a443149 8e6b9d2013504734935372ed8690a4ec
-#: acaa974c2ebe4d2d9345413fc0f75f7a acd9a5e7fc9a4422a9941148ba47b9cc
-#: ae8e497e6ea24b579399fcb0a0c3859f c7532543a7284856bf187256b3bfd632
-#: da3744a0015149a29872277c2e34e03d f885d3562a864b51920c38162f6cf57a
-msgid "Default"
-msgstr ""
+#~ msgid "26.88"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:632
-#: 2a3f347427f24ef6b95fe193fc477c0b
-msgid "31.40"
-msgstr ""
+#~ msgid "35.66"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:634
-#: e9e96b0a5a714b91afd15a31f559540d
-msgid "16.47"
-msgstr ""
+#~ msgid "33.75"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:636
-#: 03142321ea94413f8679595fcf312065
-msgid "Setting 2"
-msgstr "[设定2]"
-
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:638
-#: 5d670ffb973a4d2d8fa07b5a1db7abfb
-msgid "44.30"
-msgstr ""
+#~ msgid "24.45"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:640
-#: a6072ac996434f329fa02e5924a24d16
-msgid "29.90"
-msgstr ""
+#~ msgid "18.60"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:642
-#: fb43ba1f4171450a9d4a80b5b1d2197c
-msgid "29.37"
-msgstr ""
+#~ msgid "22.72"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:644
-#: 354826fb7e994793b018b30cae6273d5
-msgid "13.88"
-msgstr ""
+#~ msgid "21.79"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:646
-#: d008144e052447cda1a5458108d14911
-msgid "Setting 3"
-msgstr "[设定3]"
-
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:648
-#: 8a59bfabdb0249d28dc0927721fc8f2d
-msgid "40.67"
-msgstr ""
+#~ msgid "14.31"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:650
-#: a1b9350ae6124c219cf53a4033cfc076
-msgid "30.10"
-msgstr ""
+#~ msgid "9.77"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:652
-#: c01c56e86a774ad6bb98efa013eb5608
-msgid "27.20"
-msgstr ""
+#~ msgid "10.39"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:654
-#: f2e1e743b27140ac97279ae7dac85c51
-msgid "38.10"
-msgstr ""
+#~ msgid "10.34"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:656
-#: 968a0db4bc144188b542754060c62e6b
-msgid "36.63"
-msgstr ""
+#~ msgid "For context length 129024, the model needs to be predicted with the following config: \"model_max_length\"=131072"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:658
-#: e91d009de1024c58817534bbef9bc008
-msgid "27.53"
-msgstr ""
+#~ msgid "[Default Setting]=(gpu_memory_utilization=0.9 max_model_len=32768 enforce_eager=False)"
+#~ msgstr "[默认设定]=(gpu_memory_utilization=0.9 max_model_len=32768 enforce_eager=False)"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:660
-#: dce88b5c6a4c4908a977f3fb6b5cebfe
-msgid "23.32"
-msgstr ""
+#~ msgid "[Setting 1]=(gpu_memory_utilization=1.0 max_model_len=32768 enforce_eager=True)"
+#~ msgstr "[设定 3]=(gpu_memory_utilization=1.0 max_model_len=8192 enforce_eager=True)"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:662
-#: 0dcb709babd9477f80f9c479da123f0e
-msgid "30.98"
-msgstr ""
+#~ msgid "72B (Transformer)"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:664
-#: c61e42c38b784a24a9c4e2d2625b9882
-msgid "30.02"
-msgstr ""
+#~ msgid "Qwen2.5-72B-Instruct"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:666
-#: d2f8a32da9a448f0a0c43828263f7879
-msgid "20.74"
-msgstr ""
+#~ msgid "8.73"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:666
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:668
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:670
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:672
-#: 3b5a1c59742843b6baab195dbbc9a210 62b65d0e63fa4eb48925a3b02e55ded5
-#: ef9e6861ff4c4a3a9dcf130ea7b7c66d f74ef4dcd1c94cfd860ca19748730cef
-msgid "Setting 4"
-msgstr "[设定3]"
-
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:668
-#: 964f97e07ced4f18912e5375d4f32b46
-msgid "16.27"
-msgstr ""
+#~ msgid "136.20"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:670
-#: 92ce2a8f3f794cc8a3fff6aea1a5c240
-msgid "19.84"
-msgstr ""
+#~ msgid "8.66"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:672
-#: fc2de23e6c2f45e0a6e1f8f9fd69865f
-msgid "19.32"
-msgstr ""
+#~ msgid "72.61"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:674
-#: 0b6fb2697d274581a22bc874082dc0b7
-msgid "12.68"
-msgstr ""
+#~ msgid "11.07"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:674
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:676
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:678
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:680
-#: 15ed72087f634bf282c0fa88d276172a 3b515a0fb51f43aca07377c753098537
-#: 992fa4d8087e46a2a687787aa811e66e 9d280c5a856b48e1bc81b6703a64d6e9
-msgid "Setting 5"
-msgstr "[设定3]"
-
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:676
-#: 58eea16300fb49e08c5f281f20a17746
-msgid "14.11"
-msgstr ""
+#~ msgid "39.91"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:678
-#: 36fdacaae5cd45ecb1b719fb196ecc9a
-msgid "10.11"
-msgstr ""
+#~ msgid "11.50"
+#~ msgstr ""
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:680
-#: 722cf7e2520545d5b08e722364b68971
-msgid "9.88"
-msgstr ""
+#~ msgid "39.44"
+#~ msgstr ""
+
+#~ msgid "140.00"
+#~ msgstr ""
+
+#~ msgid "77.81"
+#~ msgstr ""
+
+#~ msgid "7.56"
+#~ msgstr ""
+
+#~ msgid "42.50"
+#~ msgstr ""
+
+#~ msgid "8.17"
+#~ msgstr ""
+
+#~ msgid "42.13"
+#~ msgstr ""
+
+#~ msgid "3"
+#~ msgstr ""
+
+#~ msgid "4.25"
+#~ msgstr ""
+
+#~ msgid "149.14"
+#~ msgstr ""
+
+#~ msgid "4.66"
+#~ msgstr ""
+
+#~ msgid "82.55"
+#~ msgstr ""
+
+#~ msgid "5.27"
+#~ msgstr ""
+
+#~ msgid "46.86"
+#~ msgstr ""
+
+#~ msgid "5.57"
+#~ msgstr ""
+
+#~ msgid "46.38"
+#~ msgstr ""
+
+#~ msgid "2.94"
+#~ msgstr ""
+
+#~ msgid "164.79"
+#~ msgstr ""
+
+#~ msgid "94.75"
+#~ msgstr ""
+
+#~ msgid "3.14"
+#~ msgstr ""
+
+#~ msgid "62.57"
+#~ msgstr ""
+
+#~ msgid "3.23"
+#~ msgstr ""
+
+#~ msgid "61.64"
+#~ msgstr ""
+
+#~ msgid "72B (vLLM)"
+#~ msgstr ""
+
+#~ msgid "18.19"
+#~ msgstr ""
+
+#~ msgid "Setting 1"
+#~ msgstr "[设定3]"
+
+#~ msgid "4"
+#~ msgstr ""
+
+#~ msgid "31.37"
+#~ msgstr ""
+
+#~ msgid "Default"
+#~ msgstr ""
+
+#~ msgid "31.40"
+#~ msgstr ""
+
+#~ msgid "16.47"
+#~ msgstr ""
+
+#~ msgid "Setting 2"
+#~ msgstr "[设定2]"
+
+#~ msgid "44.30"
+#~ msgstr ""
+
+#~ msgid "29.90"
+#~ msgstr ""
+
+#~ msgid "29.37"
+#~ msgstr ""
+
+#~ msgid "13.88"
+#~ msgstr ""
+
+#~ msgid "Setting 3"
+#~ msgstr "[设定3]"
+
+#~ msgid "40.67"
+#~ msgstr ""
+
+#~ msgid "30.10"
+#~ msgstr ""
+
+#~ msgid "27.20"
+#~ msgstr ""
+
+#~ msgid "38.10"
+#~ msgstr ""
+
+#~ msgid "36.63"
+#~ msgstr ""
+
+#~ msgid "27.53"
+#~ msgstr ""
+
+#~ msgid "23.32"
+#~ msgstr ""
+
+#~ msgid "30.98"
+#~ msgstr ""
+
+#~ msgid "30.02"
+#~ msgstr ""
+
+#~ msgid "20.74"
+#~ msgstr ""
+
+#~ msgid "Setting 4"
+#~ msgstr "[设定3]"
+
+#~ msgid "16.27"
+#~ msgstr ""
+
+#~ msgid "19.84"
+#~ msgstr ""
+
+#~ msgid "19.32"
+#~ msgstr ""
+
+#~ msgid "12.68"
+#~ msgstr ""
+
+#~ msgid "Setting 5"
+#~ msgstr "[设定3]"
+
+#~ msgid "14.11"
+#~ msgstr ""
+
+#~ msgid "10.11"
+#~ msgstr ""
+
+#~ msgid "9.88"
+#~ msgstr ""
+
+#~ msgid "[Setting 1]=(gpu_memory_utilization=0.98 max_model_len=4096 enforce_eager=True)"
+#~ msgstr "[设定 1]=(gpu_memory_utilization=0.98 max_model_len=4096 enforce_eager=True)"
+
+#~ msgid "[Setting 2]=(gpu_memory_utilization=1.0 max_model_len=4096 enforce_eager=True)"
+#~ msgstr "[设定 2]=(gpu_memory_utilization=1.0 max_model_len=4096 enforce_eager=True)"
+
+#~ msgid "[Setting 3]=(gpu_memory_utilization=1.0 max_model_len=8192 enforce_eager=True)"
+#~ msgstr "[设定 3]=(gpu_memory_utilization=1.0 max_model_len=8192 enforce_eager=True)"
+
+#~ msgid "[Setting 4]=(gpu_memory_utilization=0.9 max_model_len=65536 enforce_eager=False)"
+#~ msgstr "[默认设定]=(gpu_memory_utilization=0.9 max_model_len=32768 enforce_eager=False)"
 
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:684
-#: 0f9a1c93969748f2a48c18a69d5681f8
-msgid "[Setting 1]=(gpu_memory_utilization=0.98 max_model_len=4096 enforce_eager=True)"
-msgstr "[设定 1]=(gpu_memory_utilization=0.98 max_model_len=4096 enforce_eager=True)"
-
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:685
-#: 6d5bc59b7e70456f9c2ab2e85599dd1d
-msgid "[Setting 2]=(gpu_memory_utilization=1.0 max_model_len=4096 enforce_eager=True)"
-msgstr "[设定 2]=(gpu_memory_utilization=1.0 max_model_len=4096 enforce_eager=True)"
-
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:686
-#: 9f881e4c985043dc85e6d8af993fdc38
-msgid "[Setting 3]=(gpu_memory_utilization=1.0 max_model_len=8192 enforce_eager=True)"
-msgstr "[设定 3]=(gpu_memory_utilization=1.0 max_model_len=8192 enforce_eager=True)"
-
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:687
-#: 91e2784f053349cd89718c9da941ddb6
-msgid "[Setting 4]=(gpu_memory_utilization=0.9 max_model_len=65536 enforce_eager=False)"
-msgstr "[默认设定]=(gpu_memory_utilization=0.9 max_model_len=32768 enforce_eager=False)"
-
-#: ../../Qwen/source/getting_started/speed_benchmark.rst:688
-#: 17c8714ac88d4b7e97bf99a3fcf8f8fb
-msgid "[Setting 5]=(gpu_memory_utilization=0.9 max_model_len=131072 enforce_eager=False)"
-msgstr "[默认设定]=(gpu_memory_utilization=0.9 max_model_len=32768 enforce_eager=False)"
+#~ msgid "[Setting 5]=(gpu_memory_utilization=0.9 max_model_len=131072 enforce_eager=False)"
+#~ msgstr "[默认设定]=(gpu_memory_utilization=0.9 max_model_len=32768 enforce_eager=False)"
 

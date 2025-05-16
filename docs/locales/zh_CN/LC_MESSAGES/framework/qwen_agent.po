@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-06 15:36+0800\n"
+"POT-Creation-Date: 2025-05-16 18:57+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -18,38 +18,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: ../../source/framework/qwen_agent.rst:2 3198c4ad48b24f04adf4c8163aa43c08
+#: ../../source/framework/qwen_agent.rst:2 74719c4bae294c5ea93e9f8542cef14c
 msgid "Qwen-Agent"
 msgstr "Qwen-Agent"
 
-#: ../../source/framework/qwen_agent.rst:4 89ecd942286b4aa28ce432ce56200fc4
-#, fuzzy
+#: ../../source/framework/qwen_agent.rst:4 2a3d08cd70a34436bf5d9e1617a4d392
 msgid "`Qwen-Agent <https://github.com/QwenLM/Qwen-Agent>`__ is a framework for developing LLM applications based on the instruction following, tool usage, planning, and memory capabilities of Qwen."
-msgstr "`Qwen-Agent <https://github.com/QwenLM/Qwen-Agent>`__ 是一个基于 Qwen 的指令跟随、工具使用、计划和记忆能力来开发 LLM 应用程序的框架。它还附带了一些示例应用程序，例如浏览器助手、代码解释器和自定义助手。"
+msgstr "`Qwen-Agent <https://github.com/QwenLM/Qwen-Agent>`__ 是一个基于 Qwen 的指令跟随、工具使用、计划和记忆能力来开发 LLM 应用程序的框架。"
 
-#: ../../source/framework/qwen_agent.rst:8 d50288d913d8477cbc9f2bde5bf43d69
-msgid "This is the simplest tutorial on using Qwen-Agent to quickly experience the agentic capabilities of Qwen3. For more detailed information, please refer to `Qwen-Agent <https://github.com/QwenLM/Qwen-Agent>`__ repository."
-msgstr ""
+#: ../../source/framework/qwen_agent.rst:8 ada0e9f26c6748768f66c1c62e4b6d75
+msgid "This is a simple tutorial on using Qwen-Agent to quickly experience the agentic capabilities of Qwen3. For more detailed information, please refer to `Qwen-Agent <https://github.com/QwenLM/Qwen-Agent>`__ repository."
+msgstr "本教程展示基于 Qwen-Agent 快速体验 Qwen3 智能体能力的流程。更多信息请参考 `Qwen-Agent <https://github.com/QwenLM/Qwen-Agent>`__ 仓库。"
 
-#: ../../source/framework/qwen_agent.rst:13 a47b6aea184a41a1adb5006d991c3fc1
+#: ../../source/framework/qwen_agent.rst:14 b0997eeb63844471b1637075add23cb0
 msgid "Installation"
 msgstr "安装"
 
-#: ../../source/framework/qwen_agent.rst:15 f0ef1d0172da46e29ec2cc553bcdf0e2
+#: ../../source/framework/qwen_agent.rst:16 b6ba4e319cd24dee88d5cdbde60b096b
 msgid "Install the stable version from PyPI:"
-msgstr ""
+msgstr "从 PyPI 安装 Qwen-Agent 的稳定版本："
 
-#: ../../source/framework/qwen_agent.rst:28 037c935faaf944239b5dd20af89330a5
+#: ../../source/framework/qwen_agent.rst:29 3f5ac104f7a647b99b1146d72fdda96d
 msgid "Developing Your Own Agent"
 msgstr "开发您自己的智能体"
 
-#: ../../source/framework/qwen_agent.rst:30 1834b44a2c9442bc9bf392697acc1044
+#: ../../source/framework/qwen_agent.rst:31 e85c4ea6d3d9406da3823cb4f188ffc4
 msgid "Qwen3 excels in tool calling capabilities. Qwen-Agent encapsulates tool-calling templates and tool-calling parsers internally, greatly reducing coding complexity."
-msgstr ""
+msgstr "Qwen3 在工具调用能力方面表现出色。Qwen-Agent 内部封装了工具调用模板和工具调用解析器，大大降低了编码复杂性。"
 
-#: ../../source/framework/qwen_agent.rst:34 9c9b9e07388648ca9c2257e81558cfd2
+#: ../../source/framework/qwen_agent.rst:35 d63624897ee340fb8d31eeea6a02e995
 msgid "To define the available tools, you can use the MCP configuration file, use the integrated tool of Qwen-Agent, or integrate other tools by yourself."
-msgstr ""
+msgstr "要定义可用的工具，您可以使用 MCP 配置文件，使用 Qwen-Agent 的集成工具，或者自行集成其他工具。"
+
+#: ../../source/framework/qwen_agent.rst:112 ada0e9f26c6748768f66c1c62e4b6d75
+msgid "For more detailed examples and MCP cookbooks, please refer to `Qwen-Agent <https://github.com/QwenLM/Qwen-Agent>`__ repository."
+msgstr "有关更详细的示例和 MCP 使用指南，请参阅 `Qwen-Agent <https://github.com/QwenLM/Qwen-Agent>`__ 仓库。"
 
 #~ msgid "To be updated for Qwen3."
 #~ msgstr "仍需为Qwen3更新。"
@@ -59,4 +62,7 @@ msgstr ""
 
 #~ msgid "The framework also provides more atomic components for developers to combine. For additional showcases, please refer to `examples <https://github.com/QwenLM/Qwen-Agent/tree/main/examples>`__."
 #~ msgstr "该框架还为开发者提供了更多的原子组件以供组合使用。欲了解更多示例，请参见 `examples <https://github.com/QwenLM/Qwen-Agent/tree/main/examples>`__。"
+
+#~ msgid "This is the simplest tutorial on using Qwen-Agent to quickly experience the agentic capabilities of Qwen3. For more detailed information, please refer to `Qwen-Agent <https://github.com/QwenLM/Qwen-Agent>`__ repository."
+#~ msgstr ""
 
