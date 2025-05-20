@@ -27,7 +27,7 @@ Quickstart
 SFT
 ---
 
-We have provided a sample YAML config for SFT with Qwen3-32B-Instruct: `SFT 32B QLoRA config <https://github.com/axolotl-ai-cloud/axolotl/blob/v0.9.2/examples/qwen3/32b-qlora.yaml>`_.
+We have provided a sample YAML config for SFT with Qwen/Qwen3-32B: `SFT 32B QLoRA config <https://github.com/axolotl-ai-cloud/axolotl/blob/v0.9.2/examples/qwen3/32b-qlora.yaml>`_.
 
 .. code:: bash
 
