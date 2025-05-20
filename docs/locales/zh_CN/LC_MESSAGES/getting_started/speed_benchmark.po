@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-05-16 18:57+0800\n"
+"POT-Creation-Date: 2025-05-20 17:08+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.17.0\n"
+"Generated-By: Babel 2.16.0\n"
 
 #: ../../source/getting_started/speed_benchmark.md:1
 #: d7da8abe501c46e99fee28d56435b08b
@@ -124,6 +124,7 @@ msgid "vLLM 0.7.2 (Required by SGLang for AWQ quantization)"
 msgstr "vLLM 0.7.2 (被SGLang AWQ量化依赖)"
 
 #: ../../source/getting_started/speed_benchmark.md:34
+#: 1b5176a8dd9647738f81c3f726f9e9dd
 msgid "Notes"
 msgstr "备注"
 
@@ -131,6 +132,11 @@ msgstr "备注"
 #: 5b67ede5b69845158d7de45576b5f511
 msgid "**Inference Speed (tokens/s)** is calculated as:"
 msgstr "**推理速度（tokens/s）** 的计算公式为："
+
+#: ../../source/getting_started/speed_benchmark.md:38
+#: 8d9cad9e886e4ba09e3a9907eecdc85e
+msgid "\\text{Speed} = \\frac{\\text{tokens}_{\\text{prompt}} + \\text{tokens}_{\\text{generation}}}{\\text{time}}"
+msgstr ""
 
 #: ../../source/getting_started/speed_benchmark.md:42
 #: 5e23850b08f54a5b93ca312f77ad16cb

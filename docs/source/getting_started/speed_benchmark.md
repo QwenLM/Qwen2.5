@@ -35,9 +35,9 @@ Specifically, we report the inference speed (tokens/s) as well as memory footpri
 
 - **Inference Speed (tokens/s)** is calculated as:  
   
-  $$
+  ```{math}
   \text{Speed} = \frac{\text{tokens}_{\text{prompt}} + \text{tokens}_{\text{generation}}}{\text{time}}
-  $$
+  ```
 
 - We use a **batch size of 1** and the **minimum number of GPUs** possible for evaluation.
 

@@ -120,7 +120,8 @@ The CLI tool `modelscope download` can help you solve issues concerning download
 ### llama.cpp
 
 [`llama.cpp`](https://github.com/ggml-org/llama.cpp) enables LLM inference with minimal setup and state-of-the-art performance on a wide range of hardware.
-`llama.cpp>=b5092` is required.
+`llama.cpp>=b5092` is required for the support of Qwen3 architecture.
+`llama.cpp>=b5401` is recommended for the full support of the official Qwen3 chat template.
 
 To use the CLI, run the following in a terminal:
 ```shell
@@ -140,9 +141,6 @@ For additional guides, please refer to [our documentation](https://qwen.readthed
 > llama.cpp adopts "rotating context management" and infinite generation is made possible by evicting earlier tokens.
 > It could configured by parameters and the commands above effectively disable it.
 > For more details, please refer to [our documentation](https://qwen.readthedocs.io/en/latest/run_locally/llama.cpp.html#llama-cli).
-
-> [!IMPORTANT]
-> Our GGUF models include a different but equivalent chat template for compatibility with the template engine used by llama.cpp.
 
 ### Ollama
 

@@ -179,7 +179,6 @@ It is recommended to set sampling parameters differently for thinking and non-th
 :::
 
 
-
 ### Parsing Thinking Content
 
 vLLM supports parsing the thinking content from the model generation into structured messages:
@@ -221,16 +220,14 @@ Qwen3 comes with two types of pre-quantized models, FP8 and AWQ.
 The command serving those models are the same as the original models except for the name change:
 ```shell
 # For FP8 quantized model
-vllm serve Qwen3/Qwen3-8B-FP8
+vllm serve Qwen/Qwen3-8B-FP8
 
 # For AWQ quantized model
-vllm serve Qwen3/Qwen3-8B-AWQ
+vllm serve Qwen/Qwen3-8B-AWQ
 ```
 
 :::{note}
-FP8 computation is supported on NVIDIA GPUs with compute capability > 8.9, that is, Ada Lovelace, Hopper, and later GPUs.
-
-FP8 models will run on compute capability > 8.0 (Ampere) as weight-only W8A16, utilizing FP8 Marlin.
+The FP8 models of Qwen3 are of type w8a8, which is supported on NVIDIA GPUs with compute capability > 8.9, that is, Ada Lovelace, Hopper, and later GPUs.
 :::
 
 :::{note}
@@ -252,7 +249,7 @@ We have validated the performance of [YaRN](https://arxiv.org/abs/2309.00071), a
 
 vLLM supports YaRN, which can be configured as
 ```shell
-vllm serve Qwen3/Qwen3-8B --rope-scaling '{"rope_type":"yarn","factor":4.0,"original_max_position_embeddings":32768}' --max-model-len 131072  
+vllm serve Qwen/Qwen3-8B --rope-scaling '{"rope_type":"yarn","factor":4.0,"original_max_position_embeddings":32768}' --max-model-len 131072  
 ```
 
 :::{note}
@@ -295,6 +292,7 @@ text = tokenizer.apply_chat_template(
     messages,
     tokenize=False,
     add_generation_prompt=True,
+    enable_thinking=True,  # Set to False to strictly disable thinking
 )
 
 # Generate outputs
@@ -307,6 +305,36 @@ for output in outputs:
     print(f"Prompt: {prompt!r}, Generated text: {generated_text!r}")
 ```
 
+Since vLLM v0.9.0, you can also use the `LLM.chat` interface which includes support for `chat_template_kwargs`:
+
+```python
+from vllm import LLM, SamplingParams
+
+# Configurae the sampling parameters (for thinking mode)
+sampling_params = SamplingParams(temperature=0.6, top_p=0.95, top_k=20, max_tokens=32768)
+
+# Initialize the vLLM engine
+llm = LLM(model="Qwen/Qwen3-8B")
+
+# Prepare the input to the model
+prompt = "Give me a short introduction to large language models."
+messages = [
+    {"role": "user", "content": prompt}
+]
+
+# Generate outputs
+outputs = llm.chat(
+    [messages], 
+    sampling_params,
+    chat_template_kwargs={"enable_thinking": True},  # Set to False to strictly disable thinking
+)
+
+# Print the outputs.
+for output in outputs:
+    prompt = output.prompt
+    generated_text = output.outputs[0].text
+    print(f"Prompt: {prompt!r}, Generated text: {generated_text!r}")
+```
 
 ## FAQ
 
