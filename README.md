@@ -206,7 +206,7 @@ Clone [`llamafile`](https://github.com/Mozilla-Ocho/llamafile), run source insta
 ## Deploy Qwen3
 
 Qwen3 is supported by multiple inference frameworks. 
-Here we demonstrate the usage of `SGLang` and `vLLM`.
+Here we demonstrate the usage of `SGLang`, `vLLM` and `TensorRT-LLM`.
 You can also find Qwen3 models from various inference providers, e.g., [Alibaba Cloud Model Studio](https://www.alibabacloud.com/en/product/modelstudio).
 
 ### SGLang
@@ -227,6 +227,15 @@ An OpenAI-compatible API will be available at `http://localhost:30000/v1`.
 
 ```shell
 vllm serve Qwen/Qwen3-8B --port 8000 --enable-reasoning --reasoning-parser deepseek_r1
+```
+An OpenAI-compatible API will be available at `http://localhost:8000/v1`.
+
+### TensorRT-LLM
+
+[TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM) is an open-source LLM inference engine from NVIDIA, which provides optimizations including custom attention kernels, quantization and more on NVIDIA GPUs. Qwen3 is supported in its re-architected [PyTorch backend](https://nvidia.github.io/TensorRT-LLM/torch.html). `tensorrt_llm>=0.20.0rc3` is recommended. Please refer to the [README](https://github.com/NVIDIA/TensorRT-LLM/blob/main/examples/models/core/qwen/README.md#qwen3) page for more details.
+
+```shell
+trtllm-serve Qwen/Qwen3-8B --host localhost --port 8000 --backend pytorch
 ```
 An OpenAI-compatible API will be available at `http://localhost:8000/v1`.
 
