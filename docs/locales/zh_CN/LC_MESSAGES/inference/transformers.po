@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-29 16:40+0800\n"
+"POT-Creation-Date: 2025-05-29 14:27+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.17.0\n"
+"Generated-By: Babel 2.16.0\n"
 
 #: ../../source/inference/transformers.md:1 c178ffb3888f441180ecb4fca79195fd
 msgid "Transformers"
@@ -168,149 +168,38 @@ msgstr "修改模型文件：在 `config.json` 文件中，添加 rope_scaling �
 msgid "Overriding the default arguments:"
 msgstr "覆盖默认参数："
 
-#: ../../source/inference/transformers.md:209 62f158e126984c04a39ad039d42a4dc0
+#: ../../source/inference/transformers.md:210 091b4560600b48aa9ba156da08c27fab
+msgid "As of Transformers 4.52.3, it will use `max_position_embeddings/rope_scaling.original_max_position_embeddings` as the `rope_scaling.factor` regradless of the specified `rope_scaling.factor`. See [this issue](https://github.com/huggingface/transformers/issues/38224) for more information."
+msgstr "在 Transformers 4.52.3 版本中，无论指定的 `rope_scaling.factor` 是多少，它都会使用 `max_position_embeddings/rope_scaling.original_max_position_embeddings` 作为 `rope_scaling.factor`。更多信息请参阅[此问题](https://github.com/huggingface/transformers/issues/38224 )。"
+
+#: ../../source/inference/transformers.md:214 62f158e126984c04a39ad039d42a4dc0
 msgid "Transformers implements static YaRN, which means the scaling factor remains constant regardless of input length, **potentially impacting performance on shorter texts.** We advise adding the `rope_scaling` configuration only when processing long contexts is required.  It is also recommended to modify the `factor` as needed. For example, if the typical context length for your application is 65,536 tokens, it would be better to set `factor` as 2.0."
 msgstr "Transformers 实现了静态 YaRN，这意味着无论输入长度如何，缩放因子保持不变，**这可能会对较短文本的性能产生影响。** 我们建议仅在需要处理长上下文时添加 `rope_scaling` 配置。还建议根据需要修改 `factor`。例如，如果您的应用程序的典型上下文长度为 65,536 个 token，则最好将 `factor` 设置为 2.0。"
 
-#: ../../source/inference/transformers.md:215 1c816d18902b4fad8eaaa3598459cc65
+#: ../../source/inference/transformers.md:220 1c816d18902b4fad8eaaa3598459cc65
 msgid "Streaming Generation"
 msgstr "流式输出"
 
-#: ../../source/inference/transformers.md:217 2b79e8f552ae4399aa580e4b00ebc6bd
+#: ../../source/inference/transformers.md:222 2b79e8f552ae4399aa580e4b00ebc6bd
 msgid "With the help of `TextStreamer`, you can modify your chatting with Qwen3 to streaming mode.  It will print the response as being generated to the console or the terminal."
 msgstr "借助 `TextStreamer` ，您可以将与 Qwen3 的对话切换到流式传输模式。下面是一个关于如何使用它的示例："
 
-#: ../../source/inference/transformers.md:237 113734a6f14141a9a11cb3536cd37471
+#: ../../source/inference/transformers.md:242 113734a6f14141a9a11cb3536cd37471
 msgid "Besides using `TextStreamer`, we can also use `TextIteratorStreamer` which stores print-ready text in a queue, to be used by a downstream application as an iterator:"
 msgstr "除了使用 `TextStreamer` 之外，我们还可以使用 `TextIteratorStreamer` ，它将可打印的文本存储在一个队列中，以便下游应用程序作为迭代器来使用："
 
-#: ../../source/inference/transformers.md:266 51fb3a808ca7448694b0cab5582025e3
+#: ../../source/inference/transformers.md:271 51fb3a808ca7448694b0cab5582025e3
 msgid "Batch Generation"
 msgstr "批处理"
 
-#: ../../source/inference/transformers.md:269 13ec723ad16648f593bdd5d75f125f93
+#: ../../source/inference/transformers.md:274 13ec723ad16648f593bdd5d75f125f93
 msgid "Batching is not automatically a win for performance."
 msgstr "批处理不总能提速。"
 
-#: ../../source/inference/transformers.md:295 1afe856936ef4a19a386f4ab9704dd0e
+#: ../../source/inference/transformers.md:300 1afe856936ef4a19a386f4ab9704dd0e
 msgid "FAQ"
 msgstr "常见问题解答"
 
-#: ../../source/inference/transformers.md:297 7175bda60e7a4796b9279b48116f819f
+#: ../../source/inference/transformers.md:302 7175bda60e7a4796b9279b48116f819f
 msgid "You may find distributed inference with Transformers is not as fast as you would imagine. Transformers with `device_map=\"auto\"` does not apply tensor parallelism, and it only uses one GPU at a time. For Transformers with tensor parallelism, please refer to [its documentation](https://huggingface.co/docs/transformers/v4.51.3/en/perf_infer_gpu_multi)."
 msgstr "您可能会发现使用 Transformers 进行分布式推理的速度不如预期。Transformers 使用 `device_map=\"auto\"` 时并未应用张量并行 (Tensor Parallelism)，且一次仅使用一个 GPU。如需支持张量并行的 Transformers，请参阅[其文档](https://huggingface.co/docs/transformers/v4.51.3/en/perf_infer_gpu_multi)。"
-
-#~ msgid "The most significant but also the simplest usage of Qwen2.5 is to chat with it using the `transformers` library.  In this document, we show how to chat with `Qwen2.5-7B-Instruct`, in either streaming mode or not."
-#~ msgstr "使用 Qwen2.5 最简单的方法就是利用 `transformers` 库与之对话。在本文档中，我们将展示如何在流式模式或非流式模式下与 Qwen2.5-7B-Instruct 进行对话。"
-
-#~ msgid "Select the interface you would like to use:"
-#~ msgstr "选择编程接口"
-
-#~ msgid "Manual"
-#~ msgstr "手动"
-
-#~ msgid "Using `AutoTokenizer` and `AutoModelForCausalLM`."
-#~ msgstr "使用 `AutoTokenzier` 和 `AutoModelForCausalLM`。"
-
-#~ msgid "Pipeline"
-#~ msgstr "流水线"
-
-#~ msgid "Using `pipeline`."
-#~ msgstr "使用 `pipeline`。"
-
-#~ msgid "You can just write several lines of code with `transformers` to chat with Qwen2.5-Instruct.  Essentially, we build the tokenizer and the model with `from_pretrained` method, and we use `generate` method to perform chatting with the help of chat template provided by the tokenizer. Below is an example of how to chat with Qwen2.5-7B-Instruct:"
-#~ msgstr "你只需借助 `transformers` 库编写几行代码，就能与 Qwen2.5-Instruct 进行对话。实质上，我们通过 `from_pretrained` 方法构建 tokenizer 和模型，然后利用 `generate` 方法，在 tokenizer 提供的对话模板 (Chat Template) 的辅助下进行对话。以下是一个如何与 Qwen2.5-7B-Instruct 进行对话的示例："
-
-#~ msgid "To continue the chat, simply append the response to the messages with the role assistant and repeat the procedure. The following shows and example:"
-#~ msgstr "如要继续对话，只需将回复内容以 assistant 为 role 加入 messages ，然后重复以上流程即可。下面为示例："
-
-#~ msgid "Note that the previous method in the original Qwen repo `chat()` is now replaced by `generate()`.  The `apply_chat_template()` function is used to convert the messages into a format that the model can understand.  The `add_generation_prompt` argument is used to add a generation prompt, which refers to `<|im_start|>assistant\\n` to the input. Notably, we apply ChatML template for chat models following our previous practice.  The `max_new_tokens` argument is used to set the maximum length of the response.  The `tokenizer.batch_decode()` function is used to decode the response.  In terms of the input, the above `messages` is an example to show how to format your dialog history and system prompt.  By default, if you do not specify system prompt, we directly use `You are Qwen, created by Alibaba Cloud. You are a helpful assistant.`."
-#~ msgstr "请注意，原 Qwen 仓库中的旧方法 `chat()` 现在已被 `generate()` 方法替代。这里使用了 `apply_chat_template()` 函数将消息转换为模型能够理解的格式。其中的 `add_generation_prompt` 参数用于在输入中添加生成提示，该提示指向 `<|im_start|>assistant\\n` 。尤其需要注意的是，我们遵循先前实践，对 chat 模型应用 ChatML 模板。而 `max_new_tokens` 参数则用于设置响应的最大长度。此外，通过 `tokenizer.batch_decode()` 函数对响应进行解码。关于输入部分，上述的 `messages` 是一个示例，展示了如何格式化对话历史记录和系统提示。默认情况下，如果您没有指定系统提示，我们将直接使用 `You are Qwen, created by Alibaba Cloud. You are a helpful assistant.` 作为系统提示。"
-
-#~ msgid "`transformers` provides a functionality called \"pipeline\" that encapsulates the many operations in common tasks. You can chat with the model in just 4 lines of code:"
-#~ msgstr "`transformers` 同时提供了“流水线” (\"pipeline\") 功能，封装了常用任务的处理流程，仅用4行代码即可开启对话："
-
-#~ msgid "To continue the chat, simply append the response to the messages with the role assistant and repeat the procedure.  The following shows and example:"
-#~ msgstr "如要继续对话，只需将回复内容以 assistant 为 role 加入 messages ，然后重复以上流程即可。下面为示例："
-
-#~ msgid "Batching"
-#~ msgstr "批处理"
-
-#~ msgid "All common `transformers` methods support batched input and output. For basic usage, the following is an example:"
-#~ msgstr "`transformers` 常用方法均支持批处理。以下为基本用法的示例："
-
-#~ msgid "With pipeline, it is simpler:"
-#~ msgstr "使用流水线功能，实现批处理代码更简单："
-
-#~ msgid "Using Flash Attention 2 to Accelerate Generation"
-#~ msgstr "使用 Flash Attention 2 加速生成"
-
-#~ msgid "With the latest `transformers` and `torch`, Flash Attention 2 will be applied by default if applicable.[^fa2] You do not need to request the use of Flash Attention 2 in `transformers` or install the `flash_attn` package. The following is intended for users that cannot use the latest versions for various reasons."
-#~ msgstr "如果您使用最新版本的 `transformers` 和 `torch` ， Flash Attention 2 将在适用时自动应用。[^fa2] 无需指定使用 `transformers` 中的 Flash Attention 2 或安装 `falsh_attn` 包。下面的说明是为无法使用最新版的用户补充的。"
-
-#~ msgid "If you would like to apply Flash Attention 2, you need to install an appropriate version of `flash_attn`. You can find pre-built wheels at [its GitHub repository](https://github.com/Dao-AILab/flash-attention/releases), and you should make sure the Python version, the torch version, and the CUDA version of torch are a match. Otherwise, you need to install from source. Please follow the guides at [its GitHub README](https://github.com/Dao-AILab/flash-attention)."
-#~ msgstr "如果你希望使用 Flash Attention 2 ， 你需要安装 `flash_attn` 。 你可以在其 [GitHub 存储库](https://github.com/Dao-AILab/flash-attention/releases) 找到预编译好的版本。注意选择与 Python 、 torch 和 torch 中 CUDA 版本对应的预编译版本。如无对应，你需要从源代码安装编译，请参考其 [GitHub README](https://github.com/Dao-AILab/flash-attention) 。"
-
-#~ msgid "After a successful installation, you can load the model as shown below:"
-#~ msgstr "成功安装 Flash Attention 2 后，你可以用下面这种方式读取模型："
-
-#~ msgid "Troubleshooting"
-#~ msgstr "问题排查"
-
-#~ msgid "Loading models takes a lot of memory"
-#~ msgstr "模型加载使用大量显存"
-
-#~ msgid "Normally, memory usage after loading the model can be roughly taken as twice the parameter count. For example, a 7B model will take 14GB memory to load. It is because for large language models, the compute dtype is often 16-bit floating point number. Of course, you will need more memory in inference to store the activations."
-#~ msgstr "一般而言，模型加载所需显存可以按参数量乘二计算，例如，7B 模型需要 14GB 显存加载，其原因在于，对于大语言模型，计算所用数据类型为16位浮点数。当然，推理运行时还需要更多显存以记录激活状态。"
-
-#~ msgid "For `transformers`, `torch_dtype=\"auto\"` is recommended and the model will be loaded in `bfloat16` automatically. Otherwise, the model will be loaded in `float32` and it will need double memory. You can also pass `torch.bfloat16` or `torch.float16` as `torch_dtype` explicitly."
-#~ msgstr "对于 `transformers` ，推荐加载时使用 `torch_dtype=\"auto\"` ，这样模型将以 `bfloat16` 数据类型加载。否则，默认会以 `float32` 数据类型加载，所需显存将翻倍。也可以显式传入 `torch.bfloat16` 或 `torch.float16` 作为 `torch_dtype` 。"
-
-#~ msgid "Multi-GPU inference is slow"
-#~ msgstr "多卡推理缓慢"
-
-#~ msgid "`transformers` relies on `accelerate` for multi-GPU inference and the implementation is a kind of naive model parallelism: different GPUs computes different layers of the model. It is enabled by the use of `device_map=\"auto\"` or a customized `device_map` for multiple GPUs."
-#~ msgstr "`transformers` 依赖 `accelerate` 支持多卡推理，其实现为一种简单的模型并行策略：不同的卡计算模型的不同层，分配策略由 `device_map=\"auto\"` 或自定义的 `device_map` 指定。"
-
-#~ msgid "However, this kind of implementation is not efficient as for a single request, only one GPU computes at the same time and the other GPUs just wait. To use all the GPUs, you need to arrange multiple sequences as on a pipeline, making sure each GPU has some work to do. However, that will require concurrency management and load balancing, which is out of the scope of `transformers`. Even if all things are implemented, you can make use of concurrency to improve the total throughput but the latency for each request is not great."
-#~ msgstr "然而，这种实现方式并不高效，因为对于单一请求而言，同时只有单个 GPU 在进行计算而其他 GPU 则处于等待状态。为了充分利用所有的 GPU ，你需要像流水线一样安排多个处理序列，确保每个 GPU 都有一定的工作负载。但是，这将需要进行并发管理和负载均衡，这些超出了 `transformers` 库的范畴。即便实现了所有这些功能，整体吞吐量可以通过提高并发提高，但每个请求的延迟并不会很理想。"
-
-#~ msgid "For Multi-GPU inference, we recommend using specialized inference framework, such as vLLM and TGI, which support tensor parallelism."
-#~ msgstr "对于多卡推理，建议使用专门的推理框架，如 vLLM 和 TGI，这些框架支持张量并行。"
-
-#~ msgid "`RuntimeError: CUDA error: device-side assert triggered`, `Assertion -sizes[i] <= index && index < sizes[i] && \"index out of bounds\" failed.`"
-#~ msgstr "`RuntimeError: CUDA error: device-side assert triggered`, `Assertion -sizes[i] <= index && index < sizes[i] && \"index out of bounds\" failed.`"
-
-#~ msgid "If it works with single GPU but not multiple GPUs, especially if there are PCI-E switches in your system, it could be related to drivers."
-#~ msgstr "如果在单个 GPU上 工作正常，但在多个 GPU 上无法工作，特别是如果你的系统中有 PCI-E switch，这可能与驱动程序有关。"
-
-#~ msgid "Try upgrading the GPU driver."
-#~ msgstr "尝试升级显卡驱动"
-
-#~ msgid "For data center GPUs (e.g., A800, H800, and L40s), please use the data center GPU drivers and upgrade to the latest subrelease, e.g., 535.104.05 to 535.183.01.  You can check the release note at <https://docs.nvidia.com/datacenter/tesla/index.html>, where the issues fixed and known issues are presented."
-#~ msgstr "对于数据中心 GPU （例如， A800 、 H800 和 L40 等），请使用数据中心 GPU 驱动程序并升级到最新子版本，例如从 535.104.05 升级至 535.183.01 。您可以在以下网址查看发布说明：<https://docs.nvidia.com/datacenter/tesla/index.html>，其中列出了已修复的问题和已知问题。"
-
-#~ msgid "For consumer GPUs (e.g., RTX 3090 and RTX 4090), their GPU drivers are released more frequently and focus more on gaming optimization.  There are online reports that 545.29.02 breaks `vllm` and `torch` but 545.29.06 works.  Their release notes are also less helpful in identifying the real issues.  However, in general, the advice is still upgrading the GPU driver."
-#~ msgstr "对于消费级 GPU （例如， RTX 3090 和 RTX 4090 ），它们的 GPU 驱动程序发布的频率更高，并且更侧重于游戏优化。网上有报告称 545.29.02 版本破坏了 `vllm` 和 `torch` 的运行，但 545.29.06 版本可以正常工作。它们的发布说明在识别实际问题方面帮助较小。然而，总体而言，建议仍然是升级 GPU 驱动程序。"
-
-#~ msgid "Try disabling P2P for process hang, but it has negative effect on speed."
-#~ msgstr "尝试禁用 P2P 以解决进程挂起的问题，但这会对速度产生负面影响。"
-
-#~ msgid "Next Step"
-#~ msgstr "下一步"
-
-#~ msgid "Now you can chat with Qwen2.5 in either streaming mode or not.  Continue to read the documentation and try to figure out more advanced usages of model inference!"
-#~ msgstr "现在，你可以选择流式模式或非流式模式与 Qwen2.5 进行对话。继续阅读文档，并尝试探索模型推理的更多高级用法！"
-
-#~ msgid "The attention module for a model in `transformers` typically has three variants: `sdpa`, `flash_attention_2`, and `eager`.    The first two are wrappers around related functions in the `torch` and the `flash_attn` packages.    It defaults to `sdpa` if available."
-#~ msgstr "`transformers` 中模型一般实现3种注意力模块： `sdpa` 、 `flash_attention_2` 和 `eager` 。前两种分别封装了 `torch` 和 `flash_attn` 中的相关实现。`transformers` 默认使用 `sdpa` 版本的注意力模块。"
-
-#~ msgid "In addition, `torch` has integrated three implementations for `sdpa`: `FLASH_ATTENTION` (indicating Flash Attention 2 since version 2.2), `EFFICIENT_ATTENTION` (Memory Efficient Attention), and `MATH`.    It attempts to automatically select the most optimal implementation based on the inputs.    You don't need to install extra packages to use them."
-#~ msgstr "同时， `torch` 包括3种 `sdpa` 实现： `FLASH_ATTENTION` （自 2.2 版本为 Flash Attention 2）、 `EFFICIENT_ATTENTION` (Memory Efficient Attention) 和 `MATH` 。 `torch` 根据输入自动选择最优的实现，你无需额外安装其它包或进行配置。"
-
-#~ msgid "Hence, if applicable, by default, `transformers` uses `sdpa` and `torch` selects `FLASH_ATTENTION`."
-#~ msgstr "因此，在默认情况下，如果适用， `transformers` 使用 `sdpa` 而 `torch` 会选择 `FLASH_ATTENTION` 。"
-
-#~ msgid "If you wish to explicitly select the implementations in `torch`, refer to [this tutorial](https://pytorch.org/tutorials/intermediate/scaled_dot_product_attention_tutorial.html)."
-#~ msgstr "如果你希望显式控制 `torch` 使用的 `sdpa` 实现，请参考 [本教程](https://pytorch.org/tutorials/intermediate/scaled_dot_product_attention_tutorial.html)。 "
-

@@ -177,6 +177,7 @@ Transformers supports YaRN, which can be enabled either by modifying the model f
     ```json
     {
         ...,
+        "max_position_embeddings": 131072,
         "rope_scaling": {
             "rope_type": "yarn",
             "factor": 4.0,
@@ -196,14 +197,19 @@ Transformers supports YaRN, which can be enabled either by modifying the model f
         torch_dtype="auto", 
         device_map="auto",
         model_kwargs={
+            "max_position_embeddings": 131072,
             "rope_scaling": {
                 "rope_type": "yarn",
                 "factor": 4.0,
-                "original_max_position_embeddings": 32768
-            }
+                "original_max_position_embeddings": 32768,
+            },
         }
     )
     ```
+
+:::{attention}
+As of Transformers 4.52.3, it will use `max_position_embeddings/rope_scaling.original_max_position_embeddings` as the `rope_scaling.factor` regradless of the specified `rope_scaling.factor`. See [this issue](https://github.com/huggingface/transformers/issues/38224) for more information.
+:::
 
 :::{note}
 Transformers implements static YaRN, which means the scaling factor remains constant regardless of input length, **potentially impacting performance on shorter texts.**

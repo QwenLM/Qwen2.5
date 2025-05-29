@@ -227,7 +227,9 @@ vllm serve Qwen/Qwen3-8B-AWQ
 ```
 
 :::{note}
-The FP8 models of Qwen3 are of type w8a8, which is supported on NVIDIA GPUs with compute capability > 8.9, that is, Ada Lovelace, Hopper, and later GPUs.
+The FP8 models of Qwen3 are block-wise quant, which is supported on NVIDIA GPUs with compute capability > 8.9, that is, Ada Lovelace, Hopper, and later GPUs and runs as w8a8.
+
+Since vLLM v0.9.0, FP8 Marlin has supported block-wise quants (running as w8a16) and you can also run Qwen3 FP8 models on Ampere cards.
 :::
 
 :::{note}
