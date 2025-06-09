@@ -5,7 +5,7 @@
 <p>
 
 <p align="center">
-          💜 <a href="https://chat.qwen.ai/"><b>Qwen Chat</b></a>&nbsp&nbsp | &nbsp&nbsp🤗 <a href="https://huggingface.co/Qwen">Hugging Face</a>&nbsp&nbsp | &nbsp&nbsp🤖 <a href="https://modelscope.cn/organization/qwen">ModelScope</a>&nbsp&nbsp | &nbsp&nbsp 📑 Paper &nbsp&nbsp | &nbsp&nbsp 📑 <a href="https://qwenlm.github.io/blog/qwen3/">Blog</a> &nbsp&nbsp ｜ &nbsp&nbsp📖 <a href="https://qwen.readthedocs.io/">Documentation</a>
+          💜 <a href="https://chat.qwen.ai/"><b>Qwen Chat</b></a>&nbsp&nbsp | &nbsp&nbsp🤗 <a href="https://huggingface.co/Qwen">Hugging Face</a>&nbsp&nbsp | &nbsp&nbsp🤖 <a href="https://modelscope.cn/organization/qwen">ModelScope</a>&nbsp&nbsp | &nbsp&nbsp 📑 <a href="https://arxiv.org/abs/2505.09388">Paper</a> &nbsp&nbsp | &nbsp&nbsp 📑 <a href="https://qwenlm.github.io/blog/qwen3/">Blog</a> &nbsp&nbsp ｜ &nbsp&nbsp📖 <a href="https://qwen.readthedocs.io/">Documentation</a>
 <br>
 🖥️ <a href="https://huggingface.co/spaces/Qwen/Qwen3-Demo">Demo</a>&nbsp&nbsp | &nbsp&nbsp💬 <a href="https://github.com/QwenLM/Qwen/blob/main/assets/wechat.png">WeChat (微信)</a>&nbsp&nbsp | &nbsp&nbsp🫨 <a href="https://discord.gg/CV4E9rpNSD">Discord</a>&nbsp&nbsp
 </p>
@@ -120,7 +120,8 @@ The CLI tool `modelscope download` can help you solve issues concerning download
 ### llama.cpp
 
 [`llama.cpp`](https://github.com/ggml-org/llama.cpp) enables LLM inference with minimal setup and state-of-the-art performance on a wide range of hardware.
-`llama.cpp>=b5092` is required.
+`llama.cpp>=b5092` is required for the support of Qwen3 architecture.
+`llama.cpp>=b5401` is recommended for the full support of the official Qwen3 chat template.
 
 To use the CLI, run the following in a terminal:
 ```shell
@@ -140,14 +141,6 @@ For additional guides, please refer to [our documentation](https://qwen.readthed
 > llama.cpp adopts "rotating context management" and infinite generation is made possible by evicting earlier tokens.
 > It could configured by parameters and the commands above effectively disable it.
 > For more details, please refer to [our documentation](https://qwen.readthedocs.io/en/latest/run_locally/llama.cpp.html#llama-cli).
-
-> [!IMPORTANT]
-> The chat template uses features that are not supported by the template engine used by llama.cpp.
-> As a result, you may encounter the following errors if the original chat template is used:
-> ```
-> common_chat_templates_init: failed to parse chat template (defaulting to chatml)
-> ```
-> We are working on a proper fix.
 
 ### Ollama
 
@@ -180,15 +173,24 @@ For additional details, please visit [ollama.ai](https://ollama.com/).
 
 Qwen3 has already been supported by [lmstudio.ai](https://lmstudio.ai/). You can directly use LMStudio with our GGUF files.
 
+### ExecuTorch
+
+To export and run on ExecuTorch (iOS, Android, Mac, Linux, and more), please follow this [example](https://github.com/pytorch/executorch/blob/main/examples/models/qwen3/README.md).
+
+### MNN
+
+To export and run on MNN, which supports Qwen3 on mobile devices, please visit [Alibaba MNN](https://github.com/alibaba/MNN).
+
 ### MLX LM
 
 If you are running on Apple Silicon, [`mlx-lm`](https://github.com/ml-explore/mlx-lm) also supports Qwen3 (`mlx-lm>=0.24.0`). 
 Look for models ending with MLX on Hugging Face Hub.
 
 
-<!-- ### OpenVINO
+### OpenVINO
 
-Qwen2.5 has already been supported by [OpenVINO toolkit](https://github.com/openvinotoolkit). You can install and run this [chatbot example](https://github.com/OpenVINO-dev-contest/Qwen2.openvino) with Intel CPU, integrated GPU or discrete GPU.  -->
+If you are running on Intel CPU or GPU, [OpenVINO toolkit](https://github.com/openvinotoolkit) supports Qwen3.
+You can follow this [chatbot example](https://github.com/openvinotoolkit/openvino_notebooks/blob/latest/notebooks/llm-chatbot/llm-chatbot.ipynb).
 
 
 <!-- ### Text generation web UI
@@ -204,7 +206,7 @@ Clone [`llamafile`](https://github.com/Mozilla-Ocho/llamafile), run source insta
 ## Deploy Qwen3
 
 Qwen3 is supported by multiple inference frameworks. 
-Here we demonstrate the usage of `SGLang` and `vLLM`.
+Here we demonstrate the usage of `SGLang`, `vLLM` and `TensorRT-LLM`.
 You can also find Qwen3 models from various inference providers, e.g., [Alibaba Cloud Model Studio](https://www.alibabacloud.com/en/product/modelstudio).
 
 ### SGLang
@@ -225,6 +227,15 @@ An OpenAI-compatible API will be available at `http://localhost:30000/v1`.
 
 ```shell
 vllm serve Qwen/Qwen3-8B --port 8000 --enable-reasoning --reasoning-parser deepseek_r1
+```
+An OpenAI-compatible API will be available at `http://localhost:8000/v1`.
+
+### TensorRT-LLM
+
+[TensorRT-LLM](https://github.com/NVIDIA/TensorRT-LLM) is an open-source LLM inference engine from NVIDIA, which provides optimizations including custom attention kernels, quantization and more on NVIDIA GPUs. Qwen3 is supported in its re-architected [PyTorch backend](https://nvidia.github.io/TensorRT-LLM/torch.html). `tensorrt_llm>=0.20.0rc3` is recommended. Please refer to the [README](https://github.com/NVIDIA/TensorRT-LLM/blob/main/examples/models/core/qwen/README.md#qwen3) page for more details.
+
+```shell
+trtllm-serve Qwen/Qwen3-8B --host localhost --port 8000 --backend pytorch
 ```
 An OpenAI-compatible API will be available at `http://localhost:8000/v1`.
 
@@ -260,7 +271,7 @@ We advise you to use training frameworks, including [Axolotl](https://github.com
 
 ## License Agreement
 
-All our open-source models are licensed under Apache 2.0. 
+All our open-weight models are licensed under Apache 2.0. 
 You can find the license files in the respective Hugging Face repositories.
 
 ## Citation
@@ -268,6 +279,13 @@ You can find the license files in the respective Hugging Face repositories.
 If you find our work helpful, feel free to give us a cite.
 
 ```bibtex
+@article{qwen3,
+    title={Qwen3 Technical Report}, 
+    author={An Yang and Anfeng Li and Baosong Yang and Beichen Zhang and Binyuan Hui and Bo Zheng and Bowen Yu and Chang Gao and Chengen Huang and Chenxu Lv and Chujie Zheng and Dayiheng Liu and Fan Zhou and Fei Huang and Feng Hu and Hao Ge and Haoran Wei and Huan Lin and Jialong Tang and Jian Yang and Jianhong Tu and Jianwei Zhang and Jianxin Yang and Jiaxi Yang and Jing Zhou and Jingren Zhou and Junyang Lin and Kai Dang and Keqin Bao and Kexin Yang and Le Yu and Lianghao Deng and Mei Li and Mingfeng Xue and Mingze Li and Pei Zhang and Peng Wang and Qin Zhu and Rui Men and Ruize Gao and Shixuan Liu and Shuang Luo and Tianhao Li and Tianyi Tang and Wenbiao Yin and Xingzhang Ren and Xinyu Wang and Xinyu Zhang and Xuancheng Ren and Yang Fan and Yang Su and Yichang Zhang and Yinger Zhang and Yu Wan and Yuqiong Liu and Zekun Wang and Zeyu Cui and Zhenru Zhang and Zhipeng Zhou and Zihan Qiu},
+    journal = {arXiv preprint arXiv:2505.09388},
+    year={2025}
+}
+
 @article{qwen2.5,
     title   = {Qwen2.5 Technical Report}, 
     author  = {An Yang and Baosong Yang and Beichen Zhang and Binyuan Hui and Bo Zheng and Bowen Yu and Chengyuan Li and Dayiheng Liu and Fei Huang and Haoran Wei and Huan Lin and Jian Yang and Jianhong Tu and Jianwei Zhang and Jianxin Yang and Jiaxi Yang and Jingren Zhou and Junyang Lin and Kai Dang and Keming Lu and Keqin Bao and Kexin Yang and Le Yu and Mei Li and Mingfeng Xue and Pei Zhang and Qin Zhu and Rui Men and Runji Lin and Tianhao Li and Tingyu Xia and Xingzhang Ren and Xuancheng Ren and Yang Fan and Yang Su and Yichang Zhang and Yu Wan and Yuqiong Liu and Zeyu Cui and Zhenru Zhang and Zihan Qiu},

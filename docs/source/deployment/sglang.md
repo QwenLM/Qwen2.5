@@ -77,10 +77,12 @@ chat_response = client.chat.completions.create(
     messages=[
         {"role": "user", "content": "Give me a short introduction to large language models."},
     ],
+    max_tokens=32768,
     temperature=0.6,
     top_p=0.95,
-    top_k=20,
-    max_tokens=32768,
+    extra_body={
+        "top_k": 20,
+    }, 
 )
 print("Chat response:", chat_response)
 ```
@@ -139,16 +141,23 @@ chat_response = client.chat.completions.create(
     messages=[
         {"role": "user", "content": "Give me a short introduction to large language models."},
     ],
+    max_tokens=8192,
     temperature=0.7,
     top_p=0.8,
-    top_k=20,
-    max_tokens=8192,
     presence_penalty=1.5,
-    extra_body={"chat_template_kwargs": {"enable_thinking": True}},
+    extra_body={
+        "top_k": 20,
+        "chat_template_kwargs": {"enable_thinking": True},
+    },
 )
 print("Chat response:", chat_response)
 ```
 ::::
+
+:::{note}
+Please note that passing `enable_thinking` is not OpenAI API compatible.
+The exact method may differ among frameworks.
+:::
 
 :::{tip}
 To completely disable thinking, you could use [a custom chat template](../../source/assets/qwen3_nonthinking.jinja) when starting the model:
@@ -205,10 +214,10 @@ Qwen3 comes with two types of pre-quantized models, FP8 and AWQ.
 The command serving those models are the same as the original models except for the name change:
 ```shell
 # For FP8 quantized model
-python -m sglang.launch_server --model-path Qwen3/Qwen3-8B-FP8
+python -m sglang.launch_server --model-path Qwen/Qwen3-8B-FP8
 
 # For AWQ quantized model
-python -m sglang.launch_server --model-path Qwen3/Qwen3-8B-AWQ
+python -m sglang.launch_server --model-path Qwen/Qwen3-8B-AWQ
 ```
 
 ### Context Length
@@ -219,7 +228,7 @@ We have validated the performance of [YaRN](https://arxiv.org/abs/2309.00071), a
 
 SGLang supports YaRN, which can be configured as
 ```shell
-python -m sglang.launch_server --model-path Qwen3/Qwen3-8B --json-model-override-args '{"rope_scaling":{"rope_type":"yarn","factor":4.0,"original_max_position_embeddings":32768}}'
+python -m sglang.launch_server --model-path Qwen/Qwen3-8B --json-model-override-args '{"rope_scaling":{"rope_type":"yarn","factor":4.0,"original_max_position_embeddings":32768}}' --context-length 131072
 ```
 
 :::{note}

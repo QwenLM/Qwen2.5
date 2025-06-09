@@ -33,7 +33,7 @@ export VLLM_USE_MODELSCOPE=true
 
 For distributed inference with tensor parallelism, it is as simple as
 ```shell
-vllm server Qwen/Qwen3-8B --tensor-parallel-size 4
+vllm serve Qwen/Qwen3-8B --tensor-parallel-size 4
 ```
 The above command will use tensor parallelism on 4 GPUs.
 You should change the number of GPUs according to your demand.
@@ -78,10 +78,12 @@ chat_response = client.chat.completions.create(
     messages=[
         {"role": "user", "content": "Give me a short introduction to large language models."},
     ],
+    max_tokens=32768,
     temperature=0.6,
     top_p=0.95,
-    top_k=20,
-    max_tokens=32768,
+    extra_body={
+        "top_k": 20,
+    },
 )
 print("Chat response:", chat_response)
 ```
@@ -142,17 +144,24 @@ chat_response = client.chat.completions.create(
     messages=[
         {"role": "user", "content": "Give me a short introduction to large language models."},
     ],
+    max_tokens=8192,
     temperature=0.7,
     top_p=0.8,
-    top_k=20,
-    max_tokens=8192,
     presence_penalty=1.5,
-    extra_body={"chat_template_kwargs": {"enable_thinking": False}},
+    extra_body={
+        "top_k": 20, 
+        "chat_template_kwargs": {"enable_thinking": False},
+    },
 )
 print("Chat response:", chat_response)
 ```
 ::::
 
+
+:::{note}
+Please note that passing `enable_thinking` is not OpenAI API compatible.
+The exact method may differ among frameworks.
+:::
 
 :::{tip}
 To completely disable thinking, you could use [a custom chat template](../../source/assets/qwen3_nonthinking.jinja) when starting the model:
@@ -168,7 +177,6 @@ The chat template prevents the model from generating thinking content, even if t
 :::{tip}
 It is recommended to set sampling parameters differently for thinking and non-thinking modes.
 :::
-
 
 
 ### Parsing Thinking Content
@@ -212,16 +220,16 @@ Qwen3 comes with two types of pre-quantized models, FP8 and AWQ.
 The command serving those models are the same as the original models except for the name change:
 ```shell
 # For FP8 quantized model
-vllm serve Qwen3/Qwen3-8B-FP8
+vllm serve Qwen/Qwen3-8B-FP8
 
 # For AWQ quantized model
-vllm serve Qwen3/Qwen3-8B-AWQ
+vllm serve Qwen/Qwen3-8B-AWQ
 ```
 
 :::{note}
-FP8 computation is supported on NVIDIA GPUs with compute capability > 8.9, that is, Ada Lovelace, Hopper, and later GPUs.
+The FP8 models of Qwen3 are block-wise quant, which is supported on NVIDIA GPUs with compute capability > 8.9, that is, Ada Lovelace, Hopper, and later GPUs and runs as w8a8.
 
-FP8 models will run on compute capability > 8.0 (Ampere) as weight-only W8A16, utilizing FP8 Marlin.
+Since vLLM v0.9.0, FP8 Marlin has supported block-wise quants (running as w8a16) and you can also run Qwen3 FP8 models on Ampere cards.
 :::
 
 :::{note}
@@ -232,9 +240,7 @@ File ".../vllm/vllm/model_executor/layers/quantization/fp8.py", line 477, in cre
 ValueError: The output_size of gate's and up's weight = 192 is not divisible by weight quantization block_n = 128.
 ```
 
-For now, we recommend lowering the degree of tensor parallel, e.g., `--tensor-parallel-size 4` or enabling expert parallel, e.g., `--tensor-parallel-size 8 --enable-expert-parallel`.
-
-We are currently working on other solutions that would allow this usage.
+We recommend lowering the degree of tensor parallel, e.g., `--tensor-parallel-size 4` or enabling expert parallel, e.g., `--tensor-parallel-size 8 --enable-expert-parallel`.
 :::
 
 ### Context Length
@@ -245,7 +251,7 @@ We have validated the performance of [YaRN](https://arxiv.org/abs/2309.00071), a
 
 vLLM supports YaRN, which can be configured as
 ```shell
-vllm serve Qwen3/Qwen3-8B --rope-scaling '{"rope_type":"yarn","factor":4.0,"original_max_position_embeddings":32768}' --max-model-len 131072  
+vllm serve Qwen/Qwen3-8B --rope-scaling '{"rope_type":"yarn","factor":4.0,"original_max_position_embeddings":32768}' --max-model-len 131072  
 ```
 
 :::{note}
@@ -288,6 +294,7 @@ text = tokenizer.apply_chat_template(
     messages,
     tokenize=False,
     add_generation_prompt=True,
+    enable_thinking=True,  # Set to False to strictly disable thinking
 )
 
 # Generate outputs
@@ -300,6 +307,36 @@ for output in outputs:
     print(f"Prompt: {prompt!r}, Generated text: {generated_text!r}")
 ```
 
+Since vLLM v0.9.0, you can also use the `LLM.chat` interface which includes support for `chat_template_kwargs`:
+
+```python
+from vllm import LLM, SamplingParams
+
+# Configurae the sampling parameters (for thinking mode)
+sampling_params = SamplingParams(temperature=0.6, top_p=0.95, top_k=20, max_tokens=32768)
+
+# Initialize the vLLM engine
+llm = LLM(model="Qwen/Qwen3-8B")
+
+# Prepare the input to the model
+prompt = "Give me a short introduction to large language models."
+messages = [
+    {"role": "user", "content": prompt}
+]
+
+# Generate outputs
+outputs = llm.chat(
+    [messages], 
+    sampling_params,
+    chat_template_kwargs={"enable_thinking": True},  # Set to False to strictly disable thinking
+)
+
+# Print the outputs.
+for output in outputs:
+    prompt = output.prompt
+    generated_text = output.outputs[0].text
+    print(f"Prompt: {prompt!r}, Generated text: {generated_text!r}")
+```
 
 ## FAQ
 

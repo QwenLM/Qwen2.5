@@ -48,7 +48,7 @@ Model download can be done using the following command:
 
 
 Step2: Start Training
-++++++++++++++++++++
+++++++++++++++++++++++
 
 In verl, training frameworks and inference frameworks can be combined freely, as long as the training framework and inference framework themselves support model training and inference tasks, so that verl can support RL-related training.
 
@@ -94,3 +94,9 @@ Below is an example using FSDP and vLLM to demonstrate how to train Qwen3 models
         trainer.save_freq=-1 \
         trainer.test_freq=5 \
         trainer.total_epochs=15 $@
+
+
+Finally
+-----------------------------
+
+If you encounter any difficulties during use, please join the discussion at `GitHub <https://github.com/volcengine/verl/discussions>`__.
