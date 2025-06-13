@@ -5,142 +5,116 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-28 19:42+0800\n"
+"POT-Creation-Date: 2025-06-13 17:22+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.17.0\n"
+"Generated-By: Babel 2.16.0\n"
 
-#: ../../Qwen/source/training/llama_factory.rst:2
-#: 7a9018d9e7ee41858ac5c59723365a63
+#: ../../source/training/llama_factory.md:1 d0b05b307a764e27badd1e3851ee03ec
 msgid "LLaMA-Factory"
 msgstr ""
 
-#: ../../Qwen/source/training/llama_factory.rst:5
-#: 6e90d8f392914d029783ed85b510063f
+#: ../../source/training/llama_factory.md:4 72877ac996694cc9b526edd4e9c1dc0b
 msgid "To be updated for Qwen3."
 msgstr "仍需为Qwen3更新。"
 
-#: ../../Qwen/source/training/llama_factory.rst:7
-#: e82fbe9827774824a4259372afda3240
-msgid "Here we provide a script for supervised finetuning Qwen2.5 with `LLaMA-Factory <https://github.com/hiyouga/LLaMA-Factory>`__. This script for supervised finetuning (SFT) has the following features:"
-msgstr "我们将介绍如何使用 `LLaMA-Factory <https://github.com/hiyouga/LLaMA-Factory>`__ 微调 Qwen2.5 模型。本脚本包含如下特点："
+#: ../../source/training/llama_factory.md:7 61f6ef7f9ec1444fb656b86ab4a43985
+msgid "Here we provide a script for supervised finetuning Qwen2.5 with [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory). This script for supervised finetuning (SFT) has the following features:"
+msgstr "我们将介绍如何使用 [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) 微调 Qwen2.5 模型。本脚本包含如下特点："
 
-#: ../../Qwen/source/training/llama_factory.rst:11
-#: 7d37d7835f514ce68b9e4e3054919d3c
+#: ../../source/training/llama_factory.md:11 93803890d14b43028177b43a909ce704
 msgid "Support single-GPU and multi-GPU training;"
 msgstr "支持单卡和多卡分布式训练"
 
-#: ../../Qwen/source/training/llama_factory.rst:13
-#: 232bdd05e26846989ae770a8da52ccc3
+#: ../../source/training/llama_factory.md:12 e3576e61279e4419a9ddd3f6947bd0b7
 msgid "Support full-parameter tuning, LoRA, Q-LoRA, Dora."
 msgstr "支持全参数微调、LoRA、Q-LoRA 和 DoRA 。"
 
-#: ../../Qwen/source/training/llama_factory.rst:15
-#: 0cf21b5d01024a0999a290c5fa0f4e9e
+#: ../../source/training/llama_factory.md:14 54303164dd1940e1808ab0ddb944c951
 msgid "In the following, we introduce more details about the usage of the script."
 msgstr "下文将介绍更多关于脚本的用法。"
 
-#: ../../Qwen/source/training/llama_factory.rst:19
-#: aa67b2029a4449a8838c80545256d4c0
+#: ../../source/training/llama_factory.md:17 0b976ba2d67645b2b07fa974d1e064c4
 msgid "Installation"
 msgstr "安装"
 
-#: ../../Qwen/source/training/llama_factory.rst:21
-#: 2b4a2d1e20c342948e987ce6abad71d0
+#: ../../source/training/llama_factory.md:19 bc2440d2953642258f37115052921826
 msgid "Before you start, make sure you have installed the following packages:"
 msgstr "开始之前，确保你已经安装了以下代码库："
 
-#: ../../Qwen/source/training/llama_factory.rst:23
-#: 488203d62c3143f09325bbe587ef3f7a
-msgid "Follow the instructions of `LLaMA-Factory <https://github.com/hiyouga/LLaMA-Factory>`__, and build the environment."
-msgstr "根据 `LLaMA-Factory <https://github.com/hiyouga/LLaMA-Factory>`__ 官方指引构建好你的环境"
+#: ../../source/training/llama_factory.md:21 d628d70296b94969912c03c18461e22c
+msgid "Follow the instructions of [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory), and build the environment."
+msgstr "根据 [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) 官方指引构建好你的环境"
 
-#: ../../Qwen/source/training/llama_factory.rst:26
-#: 98fc755a8555428fbcf01b547bcc270f
+#: ../../source/training/llama_factory.md:24 d1bc1de0521342e2adb683560a52e05b
 msgid "Install these packages (Optional):"
 msgstr "安装下列代码库（可选）："
 
-#: ../../Qwen/source/training/llama_factory.rst:33
-#: b4d6aa9134de4f35800126a4b71e7a72
-msgid "If you want to use `FlashAttention-2 <https://github.com/Dao-AILab/flash-attention>`__, make sure your CUDA is 11.6 and above."
-msgstr "如你使用 `FlashAttention-2 <https://github.com/Dao-AILab/flash-attention>`__  ，请确保你的CUDA版本在11.6以上。"
+#: ../../source/training/llama_factory.md:31 dc2b9c3ca4da4d4597a47105ec1fd5b0
+msgid "If you want to use [FlashAttention-2](https://github.com/Dao-AILab/flash-attention), make sure your CUDA is 11.6 and above."
+msgstr "如你使用[FlashAttention-2](https://github.com/Dao-AILab/flash-attention)，请确保你的CUDA版本在11.6以上。"
 
-#: ../../Qwen/source/training/llama_factory.rst:38
-#: 5859e0c6dbd24040b05778b6fdea052e
+#: ../../source/training/llama_factory.md:35 c4924b4b72fe4b1a9a50f73b667b9506
 msgid "Data Preparation"
 msgstr "准备数据"
 
-#: ../../Qwen/source/training/llama_factory.rst:40
-#: 6ffed6a5040d48238e5d10b3f984a73a
-msgid "LLaMA-Factory provides several training datasets in ``data`` folder, you can use it directly. If you are using a custom dataset, please prepare your dataset as follows."
-msgstr "LLaMA-Factory 在 ``data`` 文件夹中提供了多个训练数据集，您可以直接使用它们。如果您打算使用自定义数据集，请按照以下方式准备您的数据集。"
+#: ../../source/training/llama_factory.md:37 6195396b9f7549a9950684a17efa4516
+msgid "LLaMA-Factory provides several training datasets in `data` folder, you can use it directly. If you are using a custom dataset, please prepare your dataset as follows."
+msgstr "LLaMA-Factory 在 `data` 文件夹中提供了多个训练数据集，您可以直接使用它们。如果您打算使用自定义数据集，请按照以下方式准备您的数据集。"
 
-#: ../../Qwen/source/training/llama_factory.rst:44
-#: b6d0fcedc5fc40e291255c528bc988fb
-msgid "Organize your data in a **json** file and put your data in ``data`` folder. LLaMA-Factory supports dataset in ``alpaca`` or ``sharegpt`` format."
-msgstr "请将您的数据以 ``json`` 格式进行组织，并将数据放入 data 文件夹中。LLaMA-Factory 支持以 ``alpaca`` 或 ``sharegpt`` 格式的数据集。"
+#: ../../source/training/llama_factory.md:41 6af76880ee36417ebda92078367d98fd
+msgid "Organize your data in a **json** file and put your data in `data` folder. LLaMA-Factory supports dataset in `alpaca` or `sharegpt` format."
+msgstr "请将您的数据以 **json** 格式进行组织，并将数据放入 `data` 文件夹中。LLaMA-Factory 支持以 `alpaca` 或 `sharegpt` 格式的数据集。"
 
-#: ../../Qwen/source/training/llama_factory.rst:48
-#: 2f73d4edea9044a8bd42c9e4e25e992c
-msgid "The dataset in ``alpaca`` format should follow the below format:"
-msgstr "``alpaca`` 格式的数据集应遵循以下格式："
+#: ../../source/training/llama_factory.md:45 e15403384b33491aae4d4176bec80372
+msgid "The dataset in `alpaca` format should follow the below format:"
+msgstr "`alpaca` 格式的数据集应遵循以下格式："
 
-#: ../../Qwen/source/training/llama_factory.rst:65
-#: 0669bfde81294b459125997c0a6e8257
-msgid "The dataset in ``sharegpt`` format should follow the below format:"
-msgstr "``sharegpt`` 格式的数据集应遵循以下格式："
+#: ../../source/training/llama_factory.md:62 3c96d003cbbb4c9d84f2f7b167ac7769
+msgid "The dataset in `sharegpt` format should follow the below format:"
+msgstr "`sharegpt` 格式的数据集应遵循以下格式："
 
-#: ../../Qwen/source/training/llama_factory.rst:86
-#: f1749224279f40bb8b6a3adf517af147
-msgid "Provide your dataset definition in ``data/dataset_info.json`` in the following format ."
-msgstr "在 ``data/dataset_info.json`` 文件中提供您的数据集定义，并采用以下格式："
+#: ../../source/training/llama_factory.md:83 3a63faa0b27b4eed8a749f0c2a675be0
+msgid "Provide your dataset definition in `data/dataset_info.json` in the following format ."
+msgstr "在 `data/dataset_info.json` 文件中提供您的数据集定义，并采用以下格式："
 
-#: ../../Qwen/source/training/llama_factory.rst:89
-#: a7f285a82bbd495ab10b76fb5a2be6fb
-msgid "For ``alpaca`` format dataset, the columns in ``dataset_info.json`` should be:"
-msgstr "对于 ``alpaca`` 格式的数据集，其 ``dataset_info.json`` 文件中的列应为："
+#: ../../source/training/llama_factory.md:86 0a137feb4ce546a0b3088df3351ca062
+msgid "For `alpaca` format dataset, the columns in `dataset_info.json` should be:"
+msgstr "对于 `alpaca` 格式的数据集，其 `dataset_info.json` 文件中的列应为："
 
-#: ../../Qwen/source/training/llama_factory.rst:105
-#: f90f0ba55b93436c9a096afa85489698
-msgid "For ``sharegpt`` format dataset, the columns in ``dataset_info.json`` should be:"
-msgstr "对于 ``sharegpt`` 格式的数据集，``dataset_info.json`` 文件中的列应该包括："
+#: ../../source/training/llama_factory.md:102 ea7871bf433a4d28923766a9d2c6f3d3
+msgid "For `sharegpt` format dataset, the columns in `dataset_info.json` should be:"
+msgstr "对于 `sharegpt` 格式的数据集，`dataset_info.json` 文件中的列应该包括："
 
-#: ../../Qwen/source/training/llama_factory.rst:127
-#: f91215519e61450c9c4c245beb4d26d6
+#: ../../source/training/llama_factory.md:123 6663d2ca92084df0a554790ea925cfc0
 msgid "Training"
 msgstr "训练"
 
-#: ../../Qwen/source/training/llama_factory.rst:129
-#: 1624352503e24ceb927d2dba808df7ae
+#: ../../source/training/llama_factory.md:125 572abdbf356649b99438f85a507139f7
 msgid "Execute the following training command:"
 msgstr "执行下列命令："
 
-#: ../../Qwen/source/training/llama_factory.rst:169
-#: 24676444d9cd42069f3bd760d3c5b0cd
-msgid "and enjoy the training process. To make changes to your training, you can modify the arguments in the training command to adjust the hyperparameters. One argument to note is ``cutoff_len``, which is the maximum length of the training data. Control this parameter to avoid OOM error."
-msgstr "并享受训练过程。若要调整您的训练，您可以通过修改训练命令中的参数来调整超参数。其中一个需要注意的参数是 ``cutoff_len`` ，它代表训练数据的最大长度。通过控制这个参数，可以避免出现OOM（内存溢出）错误。"
+#: ../../source/training/llama_factory.md:165 83648e36173f48d99dbf7bb8540039e9
+msgid "and enjoy the training process. To make changes to your training, you can modify the arguments in the training command to adjust the hyperparameters. One argument to note is `cutoff_len`, which is the maximum length of the training data. Control this parameter to avoid OOM error."
+msgstr "并享受训练过程。若要调整您的训练，您可以通过修改训练命令中的参数来调整超参数。其中一个需要注意的参数是 `cutoff_len` ，它代表训练数据的最大长度。通过控制这个参数，可以避免出现OOM（内存溢出）错误。"
 
-#: ../../Qwen/source/training/llama_factory.rst:176
-#: bd1b02c65c5e4216bde43f8b1dd60ca6
+#: ../../source/training/llama_factory.md:171 c23adcde6f2846399e3f93e6248e5e70
 msgid "Merge LoRA"
 msgstr "合并LoRA"
 
-#: ../../Qwen/source/training/llama_factory.rst:178
-#: b581a862018f412db480ec68be1512fa
+#: ../../source/training/llama_factory.md:173 59e54104161841ff965c92211ff2cb8d
 msgid "If you train your model with LoRA, you probably need to merge adapter parameters to the main branch. Run the following command to perform the merging of LoRA adapters."
 msgstr "如果你使用 LoRA 训练模型，可能需要将adapter参数合并到主分支中。请运行以下命令以执行 LoRA adapter 的合并操作。"
 
-#: ../../Qwen/source/training/llama_factory.rst:194
-#: fee1bd0eca4b41e1bf3efa0d42ee401e
+#: ../../source/training/llama_factory.md:188 cbdc1761ad20462d9e6318105f5bc6c9
 msgid "Conclusion"
 msgstr "结语"
 
-#: ../../Qwen/source/training/llama_factory.rst:196
-#: cfb87dc99dbe4e85a304593333c2241d
+#: ../../source/training/llama_factory.md:190 bbf0315dc269432dba1a08679398477a
 msgid "The above content is the simplest way to use LLaMA-Factory to train Qwen. Feel free to dive into the details by checking the official repo!"
 msgstr "上述内容是使用LLaMA-Factory训练Qwen的最简单方法。 欢迎通过查看官方仓库深入了解详细信息！"
 
