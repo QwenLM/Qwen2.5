@@ -104,19 +104,24 @@ from modelscope import AutoModelForCausalLM, AutoTokenizer
 
 For more information, please refer to [the documentation of `modelscope`](https://www.modelscope.cn/docs).
 
-## vLLM 
+## OpenAI API Compatibility 
 
-vLLM is a fast and easy-to-use framework for LLM inference and serving. 
-In the following, we demonstrate how to build a OpenAI-API compatible API service with vLLM.
+You can serve Qwen3 via OpenAI-compatible APIs using frameworks such as vLLM, SGLang, and interact with the API using common HTTP clients or the OpenAI SDKs.
 
-First, make sure you have `vllm>=0.8.5` installed.
 
-Run the following code to build up a vLLM service. 
-Here we take Qwen3-8B as an example:
+Here we take Qwen3-8B as an example to start the API:
 
-```bash
-vllm serve Qwen/Qwen3-8B --enable-reasoning --reasoning-parser deepseek_r1
-```
+- SGLang (`sglang>=0.4.6.post1` is required):
+
+    ```shell
+    python -m sglang.launch_server --model-path Qwen/Qwen3-8B --port 8000 --reasoning-parser qwen3
+    ```
+
+- vLLM (`vllm>=0.8.5` is recommended):
+
+    ```shell
+    vllm serve Qwen/Qwen3-8B --port 8000 --enable-reasoning --reasoning-parser deepseek_r1
+    ```
 
 Then, you can use the [create chat interface](https://platform.openai.com/docs/api-reference/chat/completions/create) to communicate with Qwen:
 
@@ -167,9 +172,111 @@ print("Chat response:", chat_response)
 ```
 ::::
 
-While the soft switch is always available, the hard switch is also available in vLLM through the following configuration to the API call.
-For more usage, please refer to [our document on vLLM](../deployment/vllm).
+While the soft switch is always available, the hard switch is also available in the API through the following configuration to the API call. For more usage, please refer to our document on [SGLang](../deployment/sglang) and [vLLM](../deployment/vllm).
 
+
+## Thinking Budget
+
+Qwen3 supports the configuration of thinking budget.
+It is achieved by ending the thinking process once the budget is reached and guiding the model to generate the "summary" with an early-stopping prompt.
+
+Since this feature involves customization specific to each model, it is currently not available in the open-source frameworks and only implemented by [the Alibaba Cloud Model Studio API](https://www.alibabacloud.com/help/en/model-studio/deep-thinking#6f0633b9cdts1).
+
+However, with existing open-source frameworks, one can generate twice to implement this feature as follows:
+1. For the first time, generate tokens up to the thinking budget and check if the thinking process is finished. If the thinking process is not finished, append the early-stopping prompt. 
+2. For the second time, continue generation until the end of the content or the upper length limit is fulfilled.
+
+The following snippet shows the implementation with Hugging Face Transformers:
+```python
+import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model_name = "Qwen/Qwen3-8B"
+
+thinking_budget = 16
+max_new_tokens = 32768
+
+# load the tokenizer and the model
+model = AutoModelForCausalLM.from_pretrained(
+    model_name,
+    torch_dtype="auto",
+    device_map="auto"
+)
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+
+# prepare the model input
+prompt = "Give me a short introduction to large language models."
+messages = [
+    {"role": "user", "content": prompt},
+]
+text = tokenizer.apply_chat_template(
+    messages,
+    tokenize=False,
+    add_generation_prompt=True,
+    enable_thinking=True, # Switches between thinking and non-thinking modes. Default is True.
+)
+model_inputs = tokenizer([text], return_tensors="pt").to(model.device)
+
+# first generation until thinking budget
+generated_ids = model.generate(
+    **model_inputs,
+    max_new_tokens=thinking_budget
+)
+output_ids = generated_ids[0][len(model_inputs.input_ids[0]):].tolist() 
+
+# check if the generation has already finished (151645 is <|im_end|>)
+if 151645 not in output_ids:
+    # check if the thinking process has finished (151668 is </think>) 
+    # and prepare the second model input
+    if 151668 not in output_ids:
+        print("thinking budget is reached")
+        early_stopping_text = "\n\nConsidering the limited time by the user, I have to give the solution based on the thinking directly now.\n</think>\n\n"
+        early_stopping_ids = tokenizer([early_stopping_text], return_tensors="pt", return_attention_mask=False).input_ids.to(model.device)
+        input_ids = torch.cat([generated_ids, early_stopping_ids], dim=-1)
+    else:
+        input_ids = generated_ids
+    attention_mask = torch.ones_like(input_ids, dtype=torch.int64)
+
+    # second generation
+    generated_ids = model.generate(
+        input_ids=input_ids,
+        attention_mask=attention_mask,
+        max_new_tokens=max_new_tokens - thinking_budget - early_stopping_ids.size(-1)
+    )
+    output_ids = generated_ids[0][len(model_inputs.input_ids[0]):].tolist() 
+
+# parse thinking content
+try:
+    # rindex finding 151668 (</think>)
+    index = len(output_ids) - output_ids[::-1].index(151668)
+except ValueError:
+    index = 0
+
+thinking_content = tokenizer.decode(output_ids[:index], skip_special_tokens=True).strip("\n")
+content = tokenizer.decode(output_ids[index:], skip_special_tokens=True).strip("\n")
+
+print("thinking content:", thinking_content)
+print("content:", content)
+```
+
+You should see the output in the console like the following
+```text
+thinking budget is reached
+thinking content: <think>
+Okay, the user is asking for a short introduction to large language models
+
+Considering the limited time by the user, I have to give the solution based on the thinking directly now.
+</think>
+content: Large language models (LLMs) are advanced artificial intelligence systems trained on vast amounts of text data to understand and generate human-like language. They can perform tasks such as answering questions, writing stories, coding, and translating languages. LLMs are powered by deep learning techniques and have revolutionized natural language processing by enabling more context-aware and versatile interactions with text. Examples include models like GPT, BERT, and others developed by companies like OpenAI and Alibaba.
+```
+
+:::{note}
+For purpose of demonstration only, `thinking_budget` is set to 16.
+However, `thinking_budget` should not be set to that low in practice.
+We recommend tuning `thinking_budget` based on the latency users can accept and setting it higher than 1024 for meaningful improvements across tasks.
+
+If thinking is not desired at all, developers should make use of the hard switch instead.
+:::
 
 ## Next Step
 
