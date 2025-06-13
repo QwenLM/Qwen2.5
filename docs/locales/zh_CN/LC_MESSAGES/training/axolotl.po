@@ -1,0 +1,196 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Qwen Team
+# This file is distributed under the same license as the Qwen package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-13 17:22+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../source/training/axolotl.md:1 1b87b5a4226b45abbb6838abc839c77f
+msgid "Axolotl"
+msgstr ""
+
+#: ../../source/training/axolotl.md:3 71774faa415944dda99259d64acab46d
+msgid "This guide will help you get started with post-training (SFT, RLHF, RM, PRM) for Qwen3 / Qwen3_MOE using Axolotl, and covers optimizations to enable for better performance."
+msgstr "本指南将帮助您使用 Axolotl 开始对 Qwen3 / Qwen3_MOE 进行后训练（SFT、RLHF、RM、PRM），并涵盖为提升性能而启用的优化。" 
+
+#: ../../source/training/axolotl.md:5 61072e56be004db9b403c1b2bf3f6f86
+msgid "Requirements"
+msgstr "要求"
+
+#: ../../source/training/axolotl.md:7 3ed2a27ad94a49d18b049abfceab7cc9
+msgid "**GPU:** NVIDIA Ampere (or newer) for `bf16` and `Flash Attention`, or AMD GPU"
+msgstr "**GPU:** 适用于 `bf16` 和 `Flash Attention` 的 NVIDIA Ampere（或更新架构），或 AMD GPU"
+
+#: ../../source/training/axolotl.md:8 e1b73a01085240da99d05fcf69fcebec
+msgid "**Python:** ≥3.11"
+msgstr ""
+
+#: ../../source/training/axolotl.md:9 dbe2c77d93064b8eb28e4d4351131887
+msgid "**CUDA:** ≥12.4 (for NVIDIA GPUs)"
+msgstr "**CUDA:** ≥12.4（适用于 NVIDIA GPU）"
+
+#: ../../source/training/axolotl.md:11 58c6d64b99cd4158ae6f2cc924dbac68
+msgid "Installation"
+msgstr "安装"
+
+#: ../../source/training/axolotl.md:13 9156474750754164bf51347eccd7537c
+msgid "You can install Axolotl using PyPI, Conda, Git, Docker, or launch a cloud environment."
+msgstr "您可以使用 PyPI、Conda、Git、Docker 安装 Axolotl，或者启动云环境。"
+
+#: ../../source/training/axolotl.md:16 24099b25e9fa4632b8467c7df11710bb
+msgid "Install PyTorch *before* installing Axolotl to ensure CUDA compatibility."
+msgstr "在安装 Axolotl *之前* 安装 PyTorch，以确保 CUDA 兼容性。"
+
+#: ../../source/training/axolotl.md:19 da17abd4fa654026826ec65f4e34714b
+msgid "For the latest instructions, see the official [Axolotl Installation Guide](https://docs.axolotl.ai/docs/installation.html)."
+msgstr "有关最新说明，请参阅官方 [Axolotl 安装指南](https://docs.axolotl.ai/docs/installation.html)。" 
+
+#: ../../source/training/axolotl.md:21 55210f52b4ba40a5aa3c5ba311a2ab3b
+msgid "Quickstart"
+msgstr "快速入门"
+
+#: ../../source/training/axolotl.md:23 46428d800a7542a48360ca78bbb35f56
+msgid "SFT"
+msgstr "SFT（监督微调）"
+
+#: ../../source/training/axolotl.md:25 34e7a9b5842b467f933f469465518b0d
+msgid "We have provided a sample YAML config for SFT with Qwen/Qwen3-32B: [SFT 32B QLoRA config](https://github.com/axolotl-ai-cloud/axolotl/blob/v0.9.2/examples/qwen3/32b-qlora.yaml)."
+msgstr "我们提供了一个使用 Qwen/Qwen3-32B 进行 SFT 的示例 YAML 配置文件：[SFT 32B QLoRA 配置](https://github.com/axolotl-ai-cloud/axolotl/blob/v0.9.2/examples/qwen3/32b-qlora.yaml)。" 
+
+#: ../../source/training/axolotl.md:37 2baa43f76e164e31a1a49d76cafe98a0
+msgid "To train a smaller model, edit the `base_model` in your config:"
+msgstr "要训练较小的模型，请编辑配置文件中的 `base_model`："
+
+#: ../../source/training/axolotl.md:44 34b2753404214dd5a082c4cd707a1e4f
+msgid "Qwen3 works with all Axolotl features including `Flash Attention`, `bf16`, `LoRA`, `torch_compile`, and `QLoRA`."
+msgstr "Qwen3 可以使用所有 Axolotl 功能，包括 `Flash Attention`、`bf16`、`LoRA`、`torch_compile` 和 `QLoRA`。"
+
+#: ../../source/training/axolotl.md:46 a17d3d2763fd4296ba39aa1f8389c0ff
+msgid "To run on more than single GPU, please take a look at the [Multi-GPU Training Guide](https://docs.axolotl.ai/docs/multi-gpu.html) or [Multi-node Training Guide](https://docs.axolotl.ai/docs/multi-node.html)."
+msgstr "如需在多块 GPU 上运行，请参阅 [多 GPU 训练指南](https://docs.axolotl.ai/docs/multi-gpu.html)  或 [多节点训练指南](https://docs.axolotl.ai/docs/multi-node.html)。" 
+
+#: ../../source/training/axolotl.md:48 87bdbf06d6984fbf801182a9c7c5e223
+msgid "RLHF"
+msgstr "RLHF（基于人类反馈的强化学习）"
+
+#: ../../source/training/axolotl.md:50 0803e7e908024353aa83e561576947cd
+msgid "See the [RLHF Guide](https://docs.axolotl.ai/docs/rlhf.html) for required dataset formats and examples for each method."
+msgstr "请参阅 [RLHF 指南](https://docs.axolotl.ai/docs/rlhf.html)，了解每种方法所需的数据集格式和示例。" 
+
+#: ../../source/training/axolotl.md:52 2c8dd42aca9e40bca82e2ba55ebbc431
+msgid "RM/PRM"
+msgstr "RM/PRM"
+
+#: ../../source/training/axolotl.md:54 237c06d3dc314873908ceb044e20f86d
+msgid "Please refer to the [Reward Modelling Guide](https://docs.axolotl.ai/docs/reward_modelling.html) for required dataset formats and config examples."
+msgstr "请参阅 [奖励建模指南](https://docs.axolotl.ai/docs/reward_modelling.html)，了解所需的数据集格式和配置示例。" 
+
+#: ../../source/training/axolotl.md:56 d9ab3c73710e40c2b16872cb2f83825a
+msgid "Dataset"
+msgstr "数据集"
+
+#: ../../source/training/axolotl.md:58 27d95366d2ab4355bcbe9dd3925ea98b
+msgid "By default, the example config uses the `mlabonne/FineTome-100k` dataset (from HuggingFace Hub). You can substitute any dataset of your own."
+msgstr ""msgstr "默认情况下，示例配置使用 `mlabonne/FineTome-100k` 数据集（来自 HuggingFace Hub）。您可以替换为您自己的任何数据集。"
+
+#: ../../source/training/axolotl.md:60 0820890dd0684961842626ae8f3c204d
+msgid "SFT Dataset Format"
+msgstr "SFT 数据集格式"
+
+#: ../../source/training/axolotl.md:62 9c7cc72200eb48e4b5cf6eaae4adf176
+msgid "Axolotl handles various SFT dataset formats, but the current **recommended** format (for use with `chat_template`) is the OpenAI Messages format:"
+msgstr "Axolotl 支持多种 SFT 数据集格式，但当前**推荐**的格式（用于 `chat_template`）是 OpenAI Messages 格式："
+
+#: ../../source/training/axolotl.md:81 8747795235ae444ebd02f9edeb5e2ee6
+msgid "Use this in your config:"
+msgstr "在您的配置中使用以下内容："
+
+#: ../../source/training/axolotl.md:89 dff75c48b8714b33a518e51198394e90
+msgid "You can also load datasets from multiple sources: HuggingFace Hub, local files, directories, S3, GCS, Azure, etc."
+msgstr "您还可以从多个来源加载数据集：HuggingFace Hub、本地文件、目录、S3、GCS、Azure 等。"
+
+#: ../../source/training/axolotl.md:91 de3c2c02c6b74de48b65cc85e4770280
+msgid "See the [Dataset Loading Guide](https://docs.axolotl.ai/docs/dataset_loading.html) for more details."
+msgstr "更多详细信息，请参阅[数据集加载指南](https://docs.axolotl.ai/docs/dataset_loading.html)。" 
+
+#: ../../source/training/axolotl.md:93 c0d462f8add64d4eb08c94e8abd88901
+msgid "To load different dataset formats, refer to the [SFT Dataset Formats Guide](https://docs.axolotl.ai/docs/dataset-formats/#supervised-fine-tuning-sft)."
+msgstr "要加载不同的数据集格式，请参阅[SFT 数据集格式指南](https://docs.axolotl.ai/docs/dataset-formats/#supervised-fine-tuning-sft)。" 
+
+#: ../../source/training/axolotl.md:95 78bfd0e6be834fb59053c8b79d3e01a2
+msgid "Optimizations"
+msgstr "性能优化"
+
+#: ../../source/training/axolotl.md:97 3b2c2c7c1c344278a858d11e5ee85c68
+msgid "With Qwen3/Qwen3_MOE, you can leverage Axolotl's custom optimizations for improved speed and reduced memory usage:"
+msgstr "通过 Qwen3/Qwen3_MOE，您可以利用 Axolotl 的自定义优化来提升速度并减少内存使用："
+
+#: ../../source/training/axolotl.md:99 5f8736c8f64b4179b17c3817544e6592
+msgid "[Cut Cross Entropy](https://docs.axolotl.ai/docs/custom_integrations.html#cut-cross-entropy)"
+msgstr ""
+
+#: ../../source/training/axolotl.md:100 0fc18a82a08944fcbd116650149c25a2
+msgid "[Liger Kernels](https://docs.axolotl.ai/docs/custom_integrations.html#liger-kernels)"
+msgstr ""
+
+#: ../../source/training/axolotl.md:101 8e1d0b958b5c46fc9586d48ce6fe1f5b
+msgid "(LoRA/QLoRA only): [LoRA Kernels Optimization](https://docs.axolotl.ai/docs/lora_optims.html)"
+msgstr "（仅限 LoRA/QLoRA）：[LoRA Kernels 优化](https://docs.axolotl.ai/docs/lora_optims.html)" 
+
+#: ../../source/training/axolotl.md:103 ef45fbcf05234378b002101dd5f2aeea
+msgid "Additional Suggestions"
+msgstr "附加建议"
+
+#: ../../source/training/axolotl.md:105 f2a5feccb57147f6bbc089d81a76a661
+msgid "Troubleshooting"
+msgstr "故障排除"
+
+#: ../../source/training/axolotl.md:107 0923468a1b75473c9e859969bc4636df
+msgid "Ensure your CUDA version matches your GPU and PyTorch version."
+msgstr "确保您的 CUDA 版本与您的 GPU 和 PyTorch 版本匹配。"
+
+#: ../../source/training/axolotl.md:108 ead86946b9ac4cad8e676dcc9151b6f6
+msgid "If running into out-of-memory issues, try reducing your batch size, enable the optimizations above, or reduce sequence length."
+msgstr "如果遇到内存不足的问题，可以尝试减少批处理大小、启用上述优化或缩短序列长度。"
+
+#: ../../source/training/axolotl.md:109 4a0c5c6c372e40dbbafb625dd721c283
+msgid "Qwen3 MoE may have slower training due to the upstream transformer's handling of MoE layers."
+msgstr "由于上游 Transformer 对 MoE 层的处理，Qwen3 MoE 的训练速度可能会较慢。"
+
+#: ../../source/training/axolotl.md:110 d9d43aa50a044428ab2b6ee60e801e62
+msgid "For help, check the help channel on [Axolotl Discord](https://discord.gg/7m9sfhzaf3) or create a Discussion on [Axolotl GitHub](https://github.com/axolotl-ai-cloud/axolotl)."
+msgstr "如需帮助，请查看 [Axolotl Discord](https://discord.gg/7m9sfhzaf3)  上的帮助频道，或者在 [Axolotl GitHub](https://github.com/axolotl-ai-cloud/axolotl)  上创建讨论。"
+
+#: ../../source/training/axolotl.md:112 1d754e492c05455098ccadb7898d84d2
+msgid "Links"
+msgstr "外部链接"
+
+#: ../../source/training/axolotl.md:114 616dfc422c534617910f19025d01f66f
+msgid "[Axolotl Documentation](https://docs.axolotl.ai/)"
+msgstr ""
+
+#: ../../source/training/axolotl.md:115 5128337d00fb4437bb80829fca7472d1
+msgid "[Axolotl Discord](https://discord.gg/7m9sfhzaf3)"
+msgstr ""
+
+#: ../../source/training/axolotl.md:116 1478f8dbb7e2475b9b45bf20ffc19a23
+msgid "[Axolotl GitHub](https://github.com/axolotl-ai-cloud/axolotl)"
+msgstr ""
+
+#: ../../source/training/axolotl.md:117 0aff5c30b6584517935a568adc11b2db
+msgid "[Axolotl Website](https://axolotl.ai)"
+msgstr ""

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Qwen \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-29 16:35+0800\n"
+"POT-Creation-Date: 2025-06-13 16:36+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh_CN\n"
@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.17.0\n"
+"Generated-By: Babel 2.16.0\n"
 
 #: ../../source/getting_started/quickstart.md:1
 #: a99b6a1db1374218a20b06bcd0c57957
@@ -97,26 +97,31 @@ msgid "For more information, please refer to [the documentation of `modelscope`]
 msgstr "欲获取更多信息，请参考 [`modelscope` 文档](https://www.modelscope.cn/docs)。"
 
 #: ../../source/getting_started/quickstart.md:107
-#: b80911875ed14e298917ba7463f3e9ba
-msgid "vLLM"
+#: 6e3028c50b2146bd932d168662e57620
+msgid "OpenAI API Compatibility"
 msgstr ""
 
 #: ../../source/getting_started/quickstart.md:109
-#: ab451882ec6341069e794e8839bd638a
-msgid "vLLM is a fast and easy-to-use framework for LLM inference and serving.  In the following, we demonstrate how to build a OpenAI-API compatible API service with vLLM."
-msgstr "vLLM 是一个用于 LLM 推理和服务的快速且易于使用的框架。以下，我们将展示如何使用 vLLM 构建一个与 OpenAI 兼容的 API 服务。"
+#: 046b0833e5b744cda72d7a7ef5672cc2
+msgid "You can serve Qwen3 via OpenAI-compatible APIs using frameworks such as vLLM, SGLang, and interact with the API using common HTTP clients or the OpenAI SDKs."
+msgstr ""
 
 #: ../../source/getting_started/quickstart.md:112
-#: 012df4666dc44671a085574b98b119b6
-msgid "First, make sure you have `vllm>=0.8.5` installed."
-msgstr "首先，确保你已经安装 `vLLM>=0.8.5` ："
+#: 1542f3cbe7ba4adab50dfc85da110c36
+msgid "Here we take Qwen3-8B as an example to start the API:"
+msgstr ""
 
 #: ../../source/getting_started/quickstart.md:114
-#: 6eb09fa22e0941a28a73ac59bd40273e
-msgid "Run the following code to build up a vLLM service.  Here we take Qwen3-8B as an example:"
-msgstr "运行以下代码以启动 vLLM 服务。此处我们以 Qwen3-8B 为例："
+#: 4bfa52cf82914d73b0fcbbceafa4ff8a
+msgid "SGLang (`sglang>=0.4.6.post1` is required):"
+msgstr ""
 
-#: ../../source/getting_started/quickstart.md:121
+#: ../../source/getting_started/quickstart.md:120
+#: cc7a9ae4d4fe4b86be41b376d7334024
+msgid "vLLM (`vllm>=0.8.5` is recommended):"
+msgstr ""
+
+#: ../../source/getting_started/quickstart.md:126
 #: 7a690ab7e23f4505a355abd50e647101
 msgid "Then, you can use the [create chat interface](https://platform.openai.com/docs/api-reference/chat/completions/create) to communicate with Qwen:"
 msgstr "然后，可以使用 [\"create chat\" interface](https://platform.openai.com/docs/api-reference/chat/completions/create>) 来与 Qwen 进行交流："
@@ -129,56 +134,72 @@ msgstr ""
 msgid "Python"
 msgstr ""
 
-#: ../../source/getting_started/quickstart.md:141
+#: ../../source/getting_started/quickstart.md:146
 #: f55afdfc6fa54f468b1b554fab082263
 msgid "You can use the API client with the `openai` Python SDK as shown below:"
 msgstr "您可以按照下面所示的方式，使用 `openai` Python SDK中的客户端："
 
-#: ../../source/getting_started/quickstart.md:168
+#: ../../source/getting_started/quickstart.md:175
 #: d0370e64550a4c51b6146ad7dfb52f97
-msgid "While the soft switch is always available, the hard switch is also available in vLLM through the following configuration to the API call. For more usage, please refer to [our document on vLLM](../deployment/vllm)."
-msgstr "虽然软开关始终可用，但硬开关也可以通过以下 API 调用配置在 vLLM 中使用。更多使用说明，请参考[此文档](../deployment/vllm)。"
+msgid "While the soft switch is always available, the hard switch is also available in the API through the following configuration to the API call. For more usage, please refer to our document on [SGLang](../deployment/sglang) and [vLLM](../deployment/vllm)."
+msgstr "虽然软开关始终可用，但硬开关也可以通过以下 API 调用配置在 API 中使用。更多用法，请参阅我们关于 [SGLang](../deployment/sglang) 和 [vLLM](../deployment/vllm) 的文档。"
 
-#: ../../source/getting_started/quickstart.md:172
+#: ../../source/getting_started/quickstart.md:178
+#: e48c576eba5e4c5db9ef0a48882e18c2
+msgid "Thinking Budget"
+msgstr "思考预算"
+
+#: ../../source/getting_started/quickstart.md:180
+#: cc5be59588e34164b7f2e84a7d8b82c0
+msgid "Qwen3 supports the configuration of thinking budget. It is achieved by ending the thinking process once the budget is reached and guiding the model to generate the \"summary\" with an early-stopping prompt."
+msgstr "Qwen3 支持配置思考预算。其实现方式是，一旦达到预算，便结束思考过程，并通过提前停止提示引导模型生成“总结”。"
+
+#: ../../source/getting_started/quickstart.md:183
+#: 8a2760351bc04093adc5017b58ec4981
+msgid "Since this feature involves customization specific to each model, it is currently not available in the open-source frameworks and only implemented by [the Alibaba Cloud Model Studio API](https://www.alibabacloud.com/help/en/model-studio/deep-thinking#6f0633b9cdts1)."
+msgstr "由于此功能涉及针对模型的定制，目前在开源框架中不可用，仅由[阿里云百炼API](https://bailian.console.aliyun.com/?tab=doc#/doc/?type=model&url=https%3A%2F%2Fhelp.aliyun.com%2Fdocument_detail%2F2870973.html&renderType=iframe)实现。" 
+
+#: ../../source/getting_started/quickstart.md:185
+#: 01acc4a8caa443dc8da81862d2e7d6bb
+msgid "However, with existing open-source frameworks, one can generate twice to implement this feature as follows:"
+msgstr "然而，利用现有的开源框架，可以通过两次生成来实现此功能，具体如下："
+
+#: ../../source/getting_started/quickstart.md:186
+#: 677f5e6ad5b1416aa4bbadff3e6537a1
+msgid "For the first time, generate tokens up to the thinking budget and check if the thinking process is finished. If the thinking process is not finished, append the early-stopping prompt."
+msgstr "第一次生成时，生成的token数量达到思考预算，并检查思考过程是否完成。如果思考过程未完成，则追加提前停止提示。"
+
+#: ../../source/getting_started/quickstart.md:187
+#: 479c92c1bc9d4a74b18d5c175d1e6cda
+msgid "For the second time, continue generation until the end of the content or the upper length limit is fulfilled."
+msgstr "第二次生成时，继续生成直到内容结束或达到长度上限。"
+
+#: ../../source/getting_started/quickstart.md:189
+#: dd7834e30f9344ddad21792279ad4732
+msgid "The following snippet shows the implementation with Hugging Face Transformers:"
+msgstr "以下代码片段展示了使用Hugging Face Transformers的实现："
+
+#: ../../source/getting_started/quickstart.md:262
+#: 85f448fb112e4742bc5d4bd05979f30d
+msgid "You should see the output in the console like the following"
+msgstr "您应该会在控制台中看到类似以下的输出："
+
+#: ../../source/getting_started/quickstart.md:274
+#: 4fc4ae8cdbb54c8b97b2da717d61e42e
+msgid "For purpose of demonstration only, `thinking_budget` is set to 16. However, `thinking_budget` should not be set to that low in practice. We recommend tuning `thinking_budget` based on the latency users can accept and setting it higher than 1024 for meaningful improvements across tasks."
+msgstr "出于示例目的，`thinking_budget` 被设置为 16。然而，在实际应用中不应将其设置得如此低。我们建议根据用户可接受的延迟调整 `thinking_budget`，并将其设置为高于 1024，以在各项任务中获得有意义的改进。"
+
+#: ../../source/getting_started/quickstart.md:278
+#: f5b4018640c24a3cb6dd1e958f2860d9
+msgid "If thinking is not desired at all, developers should make use of the hard switch instead."
+msgstr "如果完全不需要思考，开发者应改用硬开关。"
+
+#: ../../source/getting_started/quickstart.md:281
 #: a6bbbe9da06c43c09cd3756e075e6103
 msgid "Next Step"
 msgstr "下一步"
 
-#: ../../source/getting_started/quickstart.md:174
+#: ../../source/getting_started/quickstart.md:283
 #: 40f5270a92bf490ab4fa0d6af2761044
 msgid "Now, you can have fun with Qwen3 models.  Would love to know more about its usage?  Feel free to check other documents in this documentation."
 msgstr "现在，您可以尽情探索 Qwen3 模型的各种用途。若想了解更多，请随时查阅本文档中的其他内容。"
-
-#~ msgid "Hugging Face Transformers & ModelScope"
-#~ msgstr ""
-
-#~ msgid "Install with `pip`:"
-#~ msgstr "使用 `pip` 安装："
-
-#~ msgid "Install with `conda`:"
-#~ msgstr "使用 `conda` 安装："
-
-#~ msgid "Install from source:"
-#~ msgstr "从源代码安装："
-
-#~ msgid "As you can see, it's just standard usage for casual LMs in `transformers`!"
-#~ msgstr "如您所见，与 `transformers` 的常规使用方式无二！"
-
-#~ msgid "Streaming Generation"
-#~ msgstr "流式生成"
-
-#~ msgid "Streaming mode for model chat is simple with the help of `TextStreamer`.  Below we show you an example of how to use it:"
-#~ msgstr "借助 `TextStreamer` ， 模型生成的流式模式变得非常简单。下面我们将展示一个如何使用它的示例："
-
-#~ msgid "It will print the text to the console or the terminal as being generated."
-#~ msgstr "命令行或终端中将屏显生成的文本。"
-
-#~ msgid "vLLM for Deployment"
-#~ msgstr "使用vLLM部署"
-
-#~ msgid "with `vllm>=0.5.3`, you can also use"
-#~ msgstr "如 `vllm>=0.5.3` ，也可以如下启动："
-
-#~ msgid "For more information, please refer to [the documentation of `vllm`](https://docs.vllm.ai/en/stable/)."
-#~ msgstr "欲获取更多信息，请参考 [`vllm` 文档](https://docs.vllm.ai/en/stable/)。"
-
