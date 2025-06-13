@@ -65,6 +65,7 @@ Join our community by joining our `Discord <https://discord.gg/yPEP2vHTu4>`__ an
    deployment/sglang
    deployment/vllm
    deployment/tgi
+   deployment/dstack
    deployment/skypilot
    deployment/openllm
 
