@@ -228,7 +228,7 @@ from transformers import pipeline, TextStreamer
 
 model_name_or_path = "Qwen/Qwen3-8B"
 
-generator = pipeline(
+pipe = pipeline(
     "text-generation", 
     model_name_or_path, 
     torch_dtype="auto", 
@@ -237,7 +237,7 @@ generator = pipeline(
 
 streamer = TextStreamer(pipe.tokenizer, skip_prompt=True, skip_special_tokens=True)
 
-messages= generator(messages, max_new_tokens=32768, streamer=streamer)[0]["generated_text"]
+messages= pipe(messages, max_new_tokens=32768, streamer=streamer)[0]["generated_text"]
 ```
 
 Besides using `TextStreamer`, we can also use `TextIteratorStreamer` which stores print-ready text in a queue, to be used by a downstream application as an iterator:
@@ -246,7 +246,7 @@ from transformers import pipeline, TextIteratorStreamer
 
 model_name_or_path = "Qwen/Qwen3-8B"
 
-generator = pipeline(
+pipe = pipeline(
     "text-generation", 
     model_name_or_path, 
     torch_dtype="auto", 
