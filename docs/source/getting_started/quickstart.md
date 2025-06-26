@@ -216,17 +216,18 @@ text = tokenizer.apply_chat_template(
     enable_thinking=True, # Switches between thinking and non-thinking modes. Default is True.
 )
 model_inputs = tokenizer([text], return_tensors="pt").to(model.device)
+input_length = model_inputs.input_ids.size(-1)
 
 # first generation until thinking budget
 generated_ids = model.generate(
     **model_inputs,
     max_new_tokens=thinking_budget
 )
-output_ids = generated_ids[0][len(model_inputs.input_ids[0]):].tolist() 
+output_ids = generated_ids[0][input_length:].tolist()
 
 # check if the generation has already finished (151645 is <|im_end|>)
 if 151645 not in output_ids:
-    # check if the thinking process has finished (151668 is </think>) 
+    # check if the thinking process has finished (151668 is </think>)
     # and prepare the second model input
     if 151668 not in output_ids:
         print("thinking budget is reached")
@@ -241,9 +242,9 @@ if 151645 not in output_ids:
     generated_ids = model.generate(
         input_ids=input_ids,
         attention_mask=attention_mask,
-        max_new_tokens=max_new_tokens - thinking_budget - early_stopping_ids.size(-1)
+        max_new_tokens=input_length + max_new_tokens - input_ids.size(-1)  # could be negative if max_new_tokens is not large enough (early stopping text is 24 tokens)
     )
-    output_ids = generated_ids[0][len(model_inputs.input_ids[0]):].tolist() 
+    output_ids = generated_ids[0][input_length:].tolist()
 
 # parse thinking content
 try:
