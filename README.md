@@ -77,10 +77,11 @@ For requirements on GPU memory and the respective throughput, see results [here]
 Transformers is a library of pretrained natural language processing for inference and training. 
 The latest version of `transformers` is recommended and `transformers>=4.51.0` is required.
 
-The following contains a code snippet illustrating how to use the model generate content based on given inputs. 
+The following contains a code snippet illustrating how to use Qwen3-235B-A22B-Instruct-2507 to generate content based on given inputs. 
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
-model_name = "Qwen/Qwen3-8B"
+
+model_name = "Qwen/Qwen3-235B-A22B-Instruct-2507"
 
 # load the tokenizer and the model
 tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -91,7 +92,7 @@ model = AutoModelForCausalLM.from_pretrained(
 )
 
 # prepare the model input
-prompt = "Give me a short introduction to large language models."
+prompt = "Give me a short introduction to large language model."
 messages = [
     {"role": "user", "content": prompt}
 ]
@@ -99,26 +100,35 @@ text = tokenizer.apply_chat_template(
     messages,
     tokenize=False,
     add_generation_prompt=True,
-    enable_thinking=True # Switches between thinking and non-thinking modes. Default is True.
 )
 model_inputs = tokenizer([text], return_tensors="pt").to(model.device)
 
 # conduct text completion
 generated_ids = model.generate(
     **model_inputs,
-    max_new_tokens=32768
+    max_new_tokens=16384
 )
 output_ids = generated_ids[0][len(model_inputs.input_ids[0]):].tolist() 
 
-# the result will begin with thinking content in <think></think> tags, followed by the actual response
-print(tokenizer.decode(output_ids, skip_special_tokens=True))
+content = tokenizer.decode(output_ids, skip_special_tokens=True)
+
+print("content:", content)
 ```
 
-By default, Qwen3 models will think before response.
-This could be controlled by
-- `enable_thinking=False`: Passing `enable_thinking=False` to `tokenizer.apply_chat_template` will strictly prevent the model from generating thinking content.
-- `/think` and `/no_think` instructions: Use those words in the system or user message to signify whether Qwen3 should think. In multi-turn conversations, the latest instruction is followed.
+> [!Note]
+> The updated version of Qwen3-235B-A22B, namely **Qwen3-235B-A22B-Instruct-2507** supports **only non-thinking mode** and **does not generate ``<think></think>`` blocks** in its output. Meanwhile, **specifying `enable_thinking=False` is no longer required**.
 
+<details>
+    <summary><b>Switching Thinking/Non-thinking Modes for Previous Qwen3 Hybrid Models</b></summary>
+    <p>
+    By default, Qwen3 models will think before response.
+    This could be controlled by
+        <ul>
+            <li><code>enable_thinking=False</code>: Passing <code>enable_thinking=False</code> to `tokenizer.apply_chat_template` will strictly prevent the model from generating thinking content.</li>
+            <li><code>/think</code> and <code>/no_think</code> instructions: Use those words in the system or user message to signify whether Qwen3 should think. In multi-turn conversations, the latest instruction is followed.</li>
+        </ul>
+    </p>
+</details>
 
 
 ### ModelScope
