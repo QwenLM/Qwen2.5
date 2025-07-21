@@ -25,24 +25,34 @@ To learn more about Qwen3, feel free to read our documentation \[[EN](https://qw
 
 ## Introduction
 
-We are excited to announce the release of Qwen3, the latest addition to the Qwen family of large language models.
-These models represent our most advanced and intelligent systems to date, improving from our experience in building QwQ and Qwen2.5.
-We are making the weights of Qwen3 available to the public, including both dense and Mixture-of-Expert (MoE) models. 
+We are excited to introduce the updated version of the **Qwen3-235B-A22B non-thinking mode**, named **Qwen3-235B-A22B-Instruct-2507**, featuring the following key enhancements:  
 
-The highlights from Qwen3 include:
-- **Dense and Mixture-of-Experts (MoE) models of various sizes**, available in 0.6B, 1.7B, 4B, 8B, 14B, 32B and 30B-A3B, 235B-A22B.
-- **Seamless switching between thinking mode** (for complex logical reasoning, math, and coding) and **non-thinking mode** (for efficient, general-purpose chat), ensuring optimal performance across various scenarios.
-- **Significantly enhancement in reasoning capabilities**, surpassing previous QwQ (in thinking mode) and Qwen2.5 instruct models (in non-thinking mode) on mathematics, code generation, and commonsense logical reasoning.
-- **Superior human preference alignment**, excelling in creative writing, role-playing, multi-turn dialogues, and instruction following, to deliver a more natural, engaging, and immersive conversational experience.
-- **Expertise in agent capabilities**, enabling precise integration with external tools in both thinking and unthinking modes and achieving leading performance among open-source models in complex agent-based tasks.
-- **Support of 100+ languages and dialects** with strong capabilities for **multilingual instruction following** and **translation**.
+- **Significant improvements** in general capabilities, including **instruction following, logical reasoning, text comprehension, mathematics, science, coding and tool usage**.  
+- **Substantial gains** in long-tail knowledge coverage across **multiple languages**.  
+- **Markedly better alignment** with user preferences in **subjective and open-ended tasks**, enabling more helpful responses and higher-quality text generation.  
+- **Enhanced capabilities** in **256K long-context understanding**.
 
-> [!IMPORTANT]
-> Qwen3 models adopt a different naming scheme.
->
-> The post-trained models do not use the "-Instruct" suffix anymore. For example, Qwen3-32B is the newer version of Qwen2.5-32B-Instruct.
->
-> The base models now have names ending with "-Base".
+The updated versions of **more model sizes** and for **thinking mode** are also expected to be released very soon. Stay tuned!
+
+<details>
+    <summary><b>Previous News for Qwen3 Release</b></summary>
+    <p>
+    We are excited to announce the release of Qwen3, the latest addition to the Qwen family of large language models. 
+    These models represent our most advanced and intelligent systems to date, improving from our experience in building QwQ and Qwen2.5.
+    We are making the weights of Qwen3 available to the public, including both dense and Mixture-of-Expert (MoE) models. 
+    <br><br>
+    The highlights from Qwen3 include:
+        <ul>
+            <li><b>Dense and Mixture-of-Experts (MoE) models of various sizes</b>, available in 0.6B, 1.7B, 4B, 8B, 14B, 32B and 30B-A3B, 235B-A22B.</li>
+            <li><b>Seamless switching between thinking mode</b> (for complex logical reasoning, math, and coding) and <b>non-thinking mode</b> (for efficient, general-purpose chat), ensuring optimal performance across various scenarios.</li>
+            <li><b>Significantly enhancement in reasoning capabilities</b>, surpassing previous QwQ (in thinking mode) and Qwen2.5 instruct models (in non-thinking mode) on mathematics, code generation, and commonsense logical reasoning.</li>
+            <li><b>Superior human preference alignment</b>, excelling in creative writing, role-playing, multi-turn dialogues, and instruction following, to deliver a more natural, engaging, and immersive conversational experience.</li>
+            <li><b>Expertise in agent capabilities</b>, enabling precise integration with external tools in both thinking and unthinking modes and achieving leading performance among open-source models in complex agent-based tasks.</li>
+            <li><b>Support of 100+ languages and dialects</b> with strong capabilities for <b>multilingual instruction following</b> and <b>translation</b>.</li>
+        </ul>
+    </p>
+</details>
+<br>
 
 
 ## News
