@@ -34,7 +34,7 @@ We are excited to introduce the updated version of the **Qwen3-235B-A22B non-thi
 
 ![Qwen3-235B-A22B-Instruct-2507](https://qianwen-res.oss-accelerate.aliyuncs.com/Qwen3-235B-A22B-Instruct-2507.jpeg)
 
-The updated versions of **more model sizes** and for **thinking mode** are also expected to be released very soon. Stay tuned🚀
+The updated versions of **more Qwen3 model sizes** and for **thinking mode** are also expected to be released very soon. Stay tuned🚀
 
 <details>
     <summary><b>Previous News for Qwen3 Release</b></summary>
