@@ -30,7 +30,7 @@ We are excited to introduce the updated version of the **Qwen3-235B-A22B non-thi
 - **Significant improvements** in general capabilities, including **instruction following, logical reasoning, text comprehension, mathematics, science, coding and tool usage**.  
 - **Substantial gains** in long-tail knowledge coverage across **multiple languages**.  
 - **Markedly better alignment** with user preferences in **subjective and open-ended tasks**, enabling more helpful responses and higher-quality text generation.  
-- **Enhanced capabilities** in **256K long-context understanding**.
+- **Enhanced capabilities** in **256K-token long-context understanding**.
 
 ![Qwen3-235B-A22B-Instruct-2507](https://qianwen-res.oss-accelerate.aliyuncs.com/Qwen3-235B-A22B-Instruct-2507.jpeg)
 
@@ -54,7 +54,6 @@ The updated versions of **more model sizes** and for **thinking mode** are also 
         </ul>
     </p>
 </details>
-<br>
 
 ## News
 
