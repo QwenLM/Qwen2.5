@@ -1,0 +1,7 @@
+# common
+openai>=0.28.1,<=1.65.5
+packaging
+numpy
+tqdm
+datasets==2.14.6
+pyyaml

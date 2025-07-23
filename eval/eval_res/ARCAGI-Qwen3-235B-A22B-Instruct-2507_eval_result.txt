@@ -1,0 +1,9 @@
+
+--- Evaluation Configuration Information ---
+Model Output File Path: output/ARCAGI-Qwen3-235B-A22B-Instruct-2507.jsonl
+Results Details Path: output/ARCAGI-Qwen3-235B-A22B-Instruct-2507_details.jsonl
+Task Name: arc_agi_1
+--------------------
+
+Task: arc_agi_1, Accuracy: 0.4075
+Evaluation complete!

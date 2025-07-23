@@ -4,3 +4,8 @@ docs/build/
 docs/**/*.mo
 .vscode
 .idea
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
