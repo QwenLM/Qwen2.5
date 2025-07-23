@@ -1,0 +1,26 @@
+# Data from https://github.com/fchollet/ARC-AGI/tree/399030444e0ab0cc8b4e199870fb20b863846f34/data/evaluation
+# Prompt Template from https://www.kaggle.com/code/hansuelijud/template-llama-3-8b-arc-prize-2024-inference?scriptVersionId=182406327&cellId=16
+
+# Input and Output Path
+input_file: "data/arc_agi_1.jsonl"
+output_file: "output/ARCAGI-Qwen3-235B-A22B-Instruct-2507.jsonl"
+
+# Sampling Size for each query
+n_samples: 1
+max_workers: 128
+
+# vLLM server setting
+base_url: 'http://127.0.0.1:8030/v1'
+model_name: 'Qwen/Qwen3-235B-A22B-Instruct-2507'
+
+# Sampling Parameters
+top_p: 0.8
+temperature: 0.7
+top_k: 20
+max_tokens: 32768
+presence_penalty: 1.5
+
+# Eval Parameters
+eval_input_path: output/ARCAGI-Qwen3-235B-A22B-Instruct-2507.jsonl
+details_path: output/ARCAGI-Qwen3-235B-A22B-Instruct-2507_details.jsonl
+task_name: arc_agi_1
