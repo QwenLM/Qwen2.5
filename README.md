@@ -25,6 +25,8 @@ To learn more about Qwen3, feel free to read our documentation \[[EN](https://qw
 
 ## Introduction
 
+### Qwen3-Instruct-2507
+
 We are excited to introduce the updated version of the **Qwen3-235B-A22B non-thinking mode**, named **Qwen3-235B-A22B-Instruct-2507**, featuring the following key enhancements:  
 
 - **Significant improvements** in general capabilities, including **instruction following, logical reasoning, text comprehension, mathematics, science, coding and tool usage**.  
@@ -36,6 +38,19 @@ We are excited to introduce the updated version of the **Qwen3-235B-A22B non-thi
 
 The updated versions of **more Qwen3 model sizes** and for **thinking mode** are also expected to be released very soon. Stay tuned🚀
 
+### Qwen3-Thinking-2507
+
+Over the past three months, we have continued to scale the **thinking capability** of Qwen3-235B-A22B, improving both the **quality and depth** of reasoning. We are pleased to introduce **Qwen3-235B-A22B-Thinking-2507**, featuring the following key enhancements:
+- **Significantly improved performance** on reasoning tasks, including logical reasoning, mathematics, science, coding, and academic benchmarks that typically require human expertise — achieving **state-of-the-art results among open-source thinking models**.
+- **Markedly better general capabilities**, such as instruction following, tool usage, text generation, and alignment with human preferences.
+- **Enhanced 256K long-context understanding** capabilities.
+
+![Qwen3-235B-A22B-Thinking-2507](https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen3-2507/Qwen3-235B-A22B-Thinking-2507.jpeg)
+
+> [!Important]
+> This version has an increased thinking length. We strongly recommend its use in highly complex reasoning tasks with adequate maximum generation length.
+
+### Qwen3
 <details>
     <summary><b>Previous News for Qwen3 Release</b></summary>
     <p>
@@ -55,8 +70,10 @@ The updated versions of **more Qwen3 model sizes** and for **thinking mode** are
     </p>
 </details>
 
+
 ## News
 
+- 2025.07.25: We released the updated version of Qwen3-235B-A22B thinking mode, named Qwen3-235B-A22B-Thinking-2507. Check out the [modelcard](https://huggingface.co/Qwen/Qwen3-235B-A22B-Thinking-2507) for more details!
 - 2025.07.21: We released the updated version of Qwen3-235B-A22B non-thinking mode, named Qwen3-235B-A22B-Instruct-2507, featuring significant enhancements over the previous version and supporting 256K-token long-context understanding. Check our [modelcard](https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507) for more details!
 - 2025.04.29: We released the Qwen3 series. Check our [blog](https://qwenlm.github.io/blog/qwen3) for more details!
 - 2024.09.19: We released the Qwen2.5 series. This time there are 3 extra model sizes: 3B, 14B, and 32B for more possibilities. Check our [blog](https://qwenlm.github.io/blog/qwen2.5) for more!
@@ -76,6 +93,8 @@ For requirements on GPU memory and the respective throughput, see results [here]
 
 Transformers is a library of pretrained natural language processing for inference and training. 
 The latest version of `transformers` is recommended and `transformers>=4.51.0` is required.
+
+#### Qwen3 Instruct
 
 The following contains a code snippet illustrating how to use Qwen3-235B-A22B-Instruct-2507 to generate content based on given inputs. 
 ```python
@@ -117,6 +136,62 @@ print("content:", content)
 
 > [!Note]
 > The updated version of Qwen3-235B-A22B, namely **Qwen3-235B-A22B-Instruct-2507** supports **only non-thinking mode** and **does not generate ``<think></think>`` blocks** in its output. Meanwhile, **specifying `enable_thinking=False` is no longer required**.
+
+
+#### Qwen3 Thinking
+
+The following contains a code snippet illustrating how to use the model generate content based on given inputs. 
+```python
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model_name = "Qwen/Qwen3-235B-A22B-Thinking-2507-FP8"
+
+# load the tokenizer and the model
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForCausalLM.from_pretrained(
+    model_name,
+    torch_dtype="auto",
+    device_map="auto"
+)
+
+# prepare the model input
+prompt = "Give me a short introduction to large language model."
+messages = [
+    {"role": "user", "content": prompt}
+]
+text = tokenizer.apply_chat_template(
+    messages,
+    tokenize=False,
+    add_generation_prompt=True,
+)
+model_inputs = tokenizer([text], return_tensors="pt").to(model.device)
+
+# conduct text completion
+generated_ids = model.generate(
+    **model_inputs,
+    max_new_tokens=32768
+)
+output_ids = generated_ids[0][len(model_inputs.input_ids[0]):].tolist() 
+
+# parsing thinking content
+try:
+    # rindex finding 151668 (</think>)
+    index = len(output_ids) - output_ids[::-1].index(151668)
+except ValueError:
+    index = 0
+
+thinking_content = tokenizer.decode(output_ids[:index], skip_special_tokens=True).strip("\n")
+content = tokenizer.decode(output_ids[index:], skip_special_tokens=True).strip("\n")
+
+print("thinking content:", thinking_content)  # no opening <think> tag
+print("content:", content)
+
+```
+
+> [!Note]
+> The updated version of Qwen3-235B-A22B, namely **Qwen3-235B-A22B-Thinking-2507** supports **only thinking mode**.
+> Additionally, to enforce model thinking, the default chat template automatically includes `<think>`. Therefore, it is normal for the model's output to contain only `</think>` without an explicit opening `<think>` tag.
+
 
 <details>
     <summary><b>Switching Thinking/Non-thinking Modes for Previous Qwen3 Hybrid Models</b></summary>
