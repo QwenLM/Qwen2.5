@@ -44,7 +44,7 @@ Over the past three months, we have continued to scale the **thinking capability
 - **Enhanced 256K long-context understanding** capabilities.
 
 ![Qwen3-235B-A22B-Thinking-2507](https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen3-2507/Qwen3-235B-A22B-Thinking-2507.jpeg)
-
+passw0rd
 > [!Important]
 > This version has an increased thinking length. We strongly recommend its use in highly complex reasoning tasks with adequate maximum generation length.
 
