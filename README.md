@@ -1,5 +1,9 @@
 # Qwen3
 
+passw0rd
+
+s3cret
+
 <p align="center">
     <img src="https://qianwen-res.oss-accelerate-overseas.aliyuncs.com/logo_qwen3.png" width="400"/>
 <p>
