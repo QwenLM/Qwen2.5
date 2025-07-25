@@ -36,8 +36,6 @@ We are excited to introduce the updated version of the **Qwen3-235B-A22B non-thi
 
 ![Qwen3-235B-A22B-Instruct-2507](https://qianwen-res.oss-accelerate.aliyuncs.com/Qwen3-235B-A22B-Instruct-2507.jpeg)
 
-The updated versions of **more Qwen3 model sizes** and for **thinking mode** are also expected to be released very soon. Stay tuned🚀
-
 ### Qwen3-Thinking-2507
 
 Over the past three months, we have continued to scale the **thinking capability** of Qwen3-235B-A22B, improving both the **quality and depth** of reasoning. We are pleased to introduce **Qwen3-235B-A22B-Thinking-2507**, featuring the following key enhancements:
@@ -50,9 +48,12 @@ Over the past three months, we have continued to scale the **thinking capability
 > [!Important]
 > This version has an increased thinking length. We strongly recommend its use in highly complex reasoning tasks with adequate maximum generation length.
 
+
+The updated versions of **more Qwen3 model sizes** are also expected to be released very soon. Stay tuned🚀
+
 ### Qwen3
 <details>
-    <summary><b>Previous News for Qwen3 Release</b></summary>
+    <summary><b>Previous Qwen3 Release</b></summary>
     <p>
     We are excited to announce the release of Qwen3, the latest addition to the Qwen family of large language models. 
     These models represent our most advanced and intelligent systems to date, improving from our experience in building QwQ and Qwen2.5.
@@ -140,11 +141,11 @@ print("content:", content)
 
 #### Qwen3 Thinking
 
-The following contains a code snippet illustrating how to use the model generate content based on given inputs. 
+The following contains a code snippet illustrating how to use Qwen3-235B-A22B-Thinking-2507 to generate content based on given inputs. 
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-model_name = "Qwen/Qwen3-235B-A22B-Thinking-2507-FP8"
+model_name = "Qwen/Qwen3-235B-A22B-Thinking-2507"
 
 # load the tokenizer and the model
 tokenizer = AutoTokenizer.from_pretrained(model_name)
