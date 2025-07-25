@@ -317,15 +317,28 @@ python -m sglang.launch_server --model-path Qwen/Qwen3-8B --port 30000 --reasoni
 ```
 An OpenAI-compatible API will be available at `http://localhost:30000/v1`.
 
+> [!Note]
+> For Qwen3-Thinking-2507, e.g., Qwen3-235B-A22B-Thinking-2507, please use the following command at the moment:
+> ```shell
+> python -m sglang.launch_server --model-path Qwen/Qwen3-235B-A22B-Thinking-2507 --port 30000 --tp 8 --context-length 262144  --reasoning-parser deepseek-r1
+> ```
+
 ### vLLM
 
 [vLLM](https://github.com/vllm-project/vllm) is a high-throughput and memory-efficient inference and serving engine for LLMs.
-`vllm>=0.8.5` is recommended.
+`vllm>=0.9.0` is recommended.
 
 ```shell
-vllm serve Qwen/Qwen3-8B --port 8000 --enable-reasoning --reasoning-parser deepseek_r1
+vllm serve Qwen/Qwen3-8B --port 8000 --enable-reasoning --reasoning-parser qwen3
 ```
 An OpenAI-compatible API will be available at `http://localhost:8000/v1`.
+
+> [!Note]
+> For Qwen3-Thinking-2507, e.g., Qwen3-235B-A22B-Thinking-2507, please use the following command at the moment:
+> ```shell
+> vllm serve Qwen/Qwen3-235B-A22B-Thinking-2507 --port 8000 --tensor-parallel-size 8 --max-model-len 262144 --enable-reasoning --reasoning-parser deepseek_r1
+> ```
+
 
 ### TensorRT-LLM
 
