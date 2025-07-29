@@ -1,0 +1,169 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Qwen Team
+# This file is distributed under the same license as the Qwen package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-28 10:50+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/deployment/dstack.rst:2 dfac4ff2e6e7425290c3cd12a2de701c
+msgid "dstack"
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:4 2438a502621e4637bac3fa19171a5e53
+msgid "`dstack <https://github.com/dstackai/dstack>`__ is an open-source alternative to Kubernetes and Slurm, designed to simplify GPU allocation and AI workload orchestration for ML teams across top clouds, on-prem clusters, and accelerators."
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:7 1ff23a34c6ec4236b5b9d73e7d1d6241
+msgid "Prerequisites"
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:8 5f95e757ef4f4cba85ce773801be340d
+msgid "Before you start, install dstack by following the `installation instructions <https://dstack.ai/docs/installation/>`__. Once dstack server is up, you can initialize your workspace as shown below:"
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:17 ccf222149a8d43d2bf716c2a39956d77
+msgid "Deploy Qwen3-30B-A3B"
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:19 45b4f1af973546ab9651757fcb13b9e9
+msgid "Deploy ``Qwen3-30B-A3B`` on instances available with cloud providers configured in your ``~/.dstack/server/config.yml`` file."
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:21 8565ac9fdb394e32b10269087dfc18c7
+msgid "You can use ``SgLang``, ``TGI`` or ``vLLM`` to serve the model. Here we use ``SgLang`` as an example."
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:23 9ed2f6fbcd3f408fa0d34a3199709122
+msgid "Create a `service <https://dstack.ai/docs/concepts/services/>`__ configuration file named ``serve-30b.dstack.yml`` with the following content:"
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:49 0973beefd01b4c8081a5d4d2113dc7c4
+msgid "For other inference backends such as vLLM or TGI, visit the `dstack Inference Examples <https://dstack.ai/examples/#inference>`__ documentation."
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:51 826cb0f7e041443db0a8382fd918e3b7
+msgid "Go ahead and apply the service configuration:"
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:58 d16702dc64694eeaba319277a3ab4a03
+msgid "Access the Service"
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:60 7edacaff1d53424190978e77cd557190
+msgid "After the service is successfully deployed, you can access the service's endpoint in the following ways:"
+msgstr ""
+
+#: ../../source/deployment/dstack.rst e83ef74bbe7e4e5eaf5f7a10773c9d46
+msgid "CURL"
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:66 9f51986795d3414f96dd65790157e723
+msgid "Access through service endpoint at ``<dstack server URL>/proxy/services/<project name>/<run name>/``"
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:84 9a8130ecf20c4e42ac9994e2145bfcec
+msgid "When starting the dstack server, an admin token is automatically generated:"
+msgstr ""
+
+#: ../../source/deployment/dstack.rst 94c7a3424a19432ebfc0a98eb0725d42
+msgid "Chat UI"
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:93 5c7bb346537b456da005af909a333b09
+msgid "Access through dstack's Chat UI at ``<dstack server URL>/projects/<project name>/models/<run name>/``"
+msgstr ""
+
+#: ../../source/deployment/dstack.rst 11cd02dcfb214277988135c49b839775
+msgid "Gateway"
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:102 e1e19487dd6f4ae8b12f728b39bef5d6
+msgid "Running services for development purposes doesn't require setting up a gateway."
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:104 bf94ccabbeaa491c9827e983e7f9950a
+msgid "However, you'll need a gateway in the following cases:"
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:106 15278aaab8214461b9fa17c95549f1cc
+msgid "To use auto-scaling or rate limits"
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:107 5cf53dda95e24cfda6c3a62e32632461
+msgid "To enable HTTPS for the endpoint and map it to your domain"
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:108 b91006984e1b42298a79360df47c942e
+msgid "If your service requires WebSockets"
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:109 a0ecebb158d048b7bb366e166509ab31
+msgid "If your service cannot work with a path prefix"
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:111 df78b814ee044508979d32d16c6fa418
+msgid "For detailed information about gateway configuration and usage, refer to the `dstack documentation on gateways <https://dstack.ai/docs/concepts/gateways/>`__."
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:114 da366f09f068481898788356a2720d00
+msgid "Replicas and Auto Scaling"
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:116 1814b084b9344951b8fda9bc315ff652
+msgid "You can auto scale the service by specifying additional configurations in the ``serve-30b.dstack.yml``."
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:118 a2ca8abfc03b4008a679e44ed42a6224
+msgid "Set ``replicas: min..max`` to define the minimum and maximum number of replicas"
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:119 8cfabedabf1f4d64bb6708f07852e3f8
+msgid "Configure ``scaling`` rules to determine when to scale up or down"
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:121 fcd56774d834404fa6561d65b46afe74
+msgid "Below is a complete configuration example with auto-scaling enabled:"
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:153 dd2ed9086cf5424ab14b641044da1279
+msgid "The scaling property requires a gateway to be set up."
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:156 3986bd1e05de49048a64cdf4d6782f8a
+msgid "See also"
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:157 7dc365aeac714fa5ba2989f0cb1c7e9c
+msgid "**Fleets**: Create cloud and on-prem clusters using `Fleets <https://dstack.ai/docs/concepts/fleets/>`__."
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:158 5e647ecf87164fccbe9589e3d9c540b9
+msgid "**Dev Environments**: Experiment and test before deploying to production using `Dev Environments <https://dstack.ai/docs/concepts/dev-environments/>`__."
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:159 36774ccbc7e6446a9bfcdf029e13fe58
+msgid "**Tasks**: Schedule single node or distributed training using `Tasks <https://dstack.ai/docs/concepts/tasks/>`__."
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:160 72cc0103fb1e4c82ae284fa1e3633bc4
+msgid "**Services**: Deploy models as secure, auto-scaling OpenAI-compatible endpoints using `Services <https://dstack.ai/docs/concepts/services/>`__."
+msgstr ""
+
+#: ../../source/deployment/dstack.rst:161 ba9f121d4831485e84c3cf922edc3982
+msgid "**Metrics**: Monitor performance with automatically tracked metrics via CLI or UI using `Metrics <https://dstack.ai/docs/guides/metrics/>`__."
+msgstr ""
+

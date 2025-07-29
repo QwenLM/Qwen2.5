@@ -1,0 +1,200 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Qwen Team
+# This file is distributed under the same license as the Qwen package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-28 10:50+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/training/unsloth.md:1 857a9b310ad247a981ec378e5c624e94
+msgid "Unsloth"
+msgstr ""
+
+#: ../../source/training/unsloth.md:3 c75c1a88b89448cea8385c1269709dc0
+#, python-format
+msgid "This guide will teach you how to easily train Qwen3 models with Unsloth. Unsloth simplifies local model training, handling everything from loading and quantization to training, evaluation, running, and deployment with inference engines (Ollama, llama.cpp, vLLM). **Train Qwen** models 2× faster using 70% less VRAM."
+msgstr "本指南将教您如何使用 Unsloth 轻松训练 Qwen3 模型。Unsloth 简化了本地模型训练，涵盖了从加载、量化到训练、评估、运行以及通过推理引擎（如 Ollama、llama.cpp、vLLM）进行部署的所有内容。**训练 Qwen** 模型的速度提升 2 倍，同时使用减少 70% 的显存（VRAM）。"
+
+#: ../../source/training/unsloth.md:5 6ce37469f8434d82b0a1a807e2cc67ff
+msgid "**GitHub repo:** [Unsloth](https://github.com/unslothai/unsloth)"
+msgstr "**GitHub 仓库：** [Unsloth](https://github.com/unslothai/unsloth)"
+
+#: ../../source/training/unsloth.md:7 702fad6892df4185a3a130827d8c10bd
+msgid "⭐ Key Features"
+msgstr "⭐ 主要特性"
+
+#: ../../source/training/unsloth.md:8 7f46ea01deec495ba94b88c72fa5d557
+msgid "Supports full fine-tuning, pretraining, LoRA, QLoRA, 8-bit training & more"
+msgstr "支持全量微调、预训练、LoRA、QLoRA、8-bit 训练等"
+
+#: ../../source/training/unsloth.md:9 9d8a9bc65e6d4c6ba9bd4c25d1c07a4b
+msgid "Single and multi-GPU support (Linux, Windows, Colab, Kaggle; NVIDIA GPUs, soon AMD & Intel)"
+msgstr "支持单 GPU 和多 GPU（Linux、Windows、Colab、Kaggle；NVIDIA GPU，即将支持 AMD 和 Intel）"
+
+#: ../../source/training/unsloth.md:10 2c4fb728cbf443c9b69c58594202fff4
+msgid "Compatible with all transformer models: TTS, multimodal, STT, BERT, RL"
+msgstr "兼容所有 Transformer 模型：TTS、多模态、STT、BERT、RL"
+
+#: ../../source/training/unsloth.md:11 0a81b3f4ee664e2f9d3683d986e3a8e3
+msgid "RLHF support: GRPO, DPO, DAPO, RM, PPO, KTO, etc."
+msgstr "支持 RLHF：GRPO、DPO、DAPO、RM、PPO、KTO 等"
+
+#: ../../source/training/unsloth.md:12 30784cc59fff4cb39b180ea2fae50064
+msgid "Hand-written Triton kernels and a manual backprop engine ensure no accuracy degradation (0% approximation)."
+msgstr "手写 Triton 内核和手动反向传播引擎确保无精度损失（0% 近似）。"
+
+#: ../../source/training/unsloth.md:14 ad482aa635484a67896a0cfa126037a8
+msgid "Quickstart"
+msgstr "快速入门"
+
+#: ../../source/training/unsloth.md:15 884abdd5143c4f8b9e30a8831493e48f
+msgid "**Local Installation (Linux recommended):**"
+msgstr "**本地安装（推荐 Linux）：**"
+
+#: ../../source/training/unsloth.md:21 38492db20dcb4119b6712c633b05e090
+msgid "You can view Unsloth’s full [installation instructions here.](https://docs.unsloth.ai/get-started/installing-+-updating)"
+msgstr "您可以在此处查看 Unsloth 的完整[安装说明\[英文\]](https://docs.unsloth.ai/get-started/installing-+-updating)。"
+
+#: ../../source/training/unsloth.md:23 1fe28bbc6e9d418dbe6d870714d2e8dd
+msgid "Fine-tuning Qwen3 with Unsloth"
+msgstr "使用 Unsloth 微调 Qwen3"
+
+#: ../../source/training/unsloth.md:24 863559c6be5d4b8b9535ccf005d7f4ac
+#, python-format
+msgid "Unsloth makes Qwen3 fine-tuning 2× faster, uses 70% less VRAM, with 8× longer contexts. Qwen3 (14B) fits in a free 16 GB Colab Tesla T4 GPU."
+msgstr "Unsloth 使 Qwen3 的微调速度提升 2 倍，显存（VRAM）使用减少 70%，并支持 8 倍更长的上下文。Qwen3（14B）可轻松运行在免费的 16 GB 显存 Colab Tesla T4 GPU 上。"
+
+#: ../../source/training/unsloth.md:26 34d66ac952624c9e8978e1969fd27633
+#, python-format
+msgid "To retain Qwen3's reasoning capabilities, use a 75% reasoning to 25% non-reasoning dataset ratio (e.g., NVIDIA’s math‑reasoning dataset + Maxime’s FineTome)."
+msgstr "为了保留 Qwen3 的推理能力，建议使用 75% 推理类数据与 25% 非推理类数据的组合（例如，NVIDIA 的数学推理数据集 + Maxime 的 FineTome 数据集）。"
+
+#: ../../source/training/unsloth.md:28 c316c959303040ca952d24729f8fc0a4
+msgid "For more details, see Unsloth’s full [Qwen3 fine-tuning guide](https://docs.unsloth.ai/basics/qwen3-how-to-run-and-fine-tune#fine-tuning-qwen3-with-unsloth)."
+msgstr "更多详细信息，请参阅 Unsloth 完整的[Qwen3 微调指南\[英文\]](https://docs.unsloth.ai/basics/qwen3-how-to-run-and-fine-tune#fine-tuning-qwen3-with-unsloth)。"
+
+#: ../../source/training/unsloth.md:30 581ccade253e4145be58856901aeee91
+msgid "Colab Notebooks"
+msgstr ""
+
+#: ../../source/training/unsloth.md:31 f131a50d6c604bd3aa9a896500bd2cc2
+msgid "[Qwen3 (14B) Reasoning + Conversational](https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Qwen3_(14B)-Reasoning-Conversational.ipynb)"
+msgstr ""
+
+#: ../../source/training/unsloth.md:32 fc6397fddd354fc1a44a4329dd4020d4
+msgid "[Qwen3 (4B) Advanced GRPO LoRA](https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Qwen3_(4B)-GRPO.ipynb)"
+msgstr ""
+
+#: ../../source/training/unsloth.md:33 061f4bf082fd435db514c9355e599453
+msgid "[Qwen3 (14B) Alpaca (Base model)](https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Qwen3_(14B)-Alpaca.ipynb)"
+msgstr ""
+
+#: ../../source/training/unsloth.md:35 c5bb61e8cb7e4e078956e837d033f339
+msgid "**Update Unsloth locally:**"
+msgstr "**在本地更新 Unsloth：**"
+
+#: ../../source/training/unsloth.md:41 4eb073fad2e344dba1f0fb622c18ccd2
+msgid "Fine-tuning Qwen3 MoE Models"
+msgstr "微调 Qwen3 MoE 模型"
+
+#: ../../source/training/unsloth.md:42 22755ac77e144d2aa7e959fa0a86aeaa
+msgid "Supported MoE models include 30B‑A3B and 235B‑A22B. Unsloth fine-tunes the 30B‑A3B model with just 17.5 GB VRAM. Router-layer fine-tuning is disabled by default."
+msgstr "支持的 MoE 模型包括 30B‑A3B 和 235B‑A22B。Unsloth 仅需 17.5 GB 显存即可微调 30B‑A3B 模型。默认情况下禁用路由层（router-layer）的微调。"
+
+#: ../../source/training/unsloth.md:44 19ffbd02f9ab44e78a2eae078de3bc4a
+msgid "Use `FastModel` for MoE fine-tuning:"
+msgstr "对 MoE 模型进行微调时，请使用 `FastModel`："
+
+#: ../../source/training/unsloth.md:58 55c17609e3844f57aa6a7f61b8e0629c
+msgid "Notebook Guide"
+msgstr "Notebook 指南"
+
+#: ../../source/training/unsloth.md:59 2897bf2a487d4f21ac0bcd8d1866f53e
+msgid "For an end-to-end walkthrough, see Unsloth’s [full end-to-end fine-tuning guide](https://docs.unsloth.ai/basics/reinforcement-learning-rl-guide)."
+msgstr "如需端到端的完整操作流程，请参阅 Unsloth 的[完整端到端微调指南\[英文\]](https://docs.unsloth.ai/basics/reinforcement-learning-rl-guide)。"
+
+#: ../../source/training/unsloth.md:61 919bfc2dc5f640a1a2c18af536e38529
+msgid "Open the notebook → click **Runtime ▸ Run all**."
+msgstr "打开 Notebook  → 点击 **Runtime ▸ Run all**。"
+
+#: ../../source/training/unsloth.md:62 76fed20c6fa048728023f2664089d991
+msgid "Adjust settings (e.g., model name, context length) directly in the notebook:"
+msgstr "直接在 Notebook 中调整设置（例如模型名称、上下文长度）："
+
+#: ../../source/training/unsloth.md:63 c60e9857fd4e44b794ccfd2cc5d15cbe
+msgid "`max_seq_length`: Recommended 2048 (Qwen3 supports up to 40960)."
+msgstr "`max_seq_length`：推荐值为 2048（Qwen3 最高支持 40960）。"
+
+#: ../../source/training/unsloth.md:64 e73b7cab67cc4eed802c6af5219f6cc6
+msgid "`load_in_4bit=True`: reduces memory usage by 4×."
+msgstr "`load_in_4bit=True`：将内存使用量减少为原来的四分之一。"
+
+#: ../../source/training/unsloth.md:65 06e12675ca494226a2731a616fbe8c01
+msgid "Enable full fine-tuning (`full_finetuning=True`) or 8-bit training (`load_in_8bit=True`)."
+msgstr "启用全量微调（`full_finetuning=True`）或 8-bit 训练（`load_in_8bit=True`）。"
+
+#: ../../source/training/unsloth.md:67 fcc086506d3f45b1bc0aee524dbc1cfe
+msgid "If you want to use models directly from [ModelScope](https://modelscope.cn/organization/unsloth), use:"
+msgstr "如果您想直接使用来自 [ModelScope](https://modelscope.cn/organization/unsloth) 的模型，请使用："
+
+#: ../../source/training/unsloth.md:85 9d6116efc01d44ff948af4e660045bb5
+msgid "RL & GRPO with Qwen3"
+msgstr "使用 Qwen3 进行强化学习（RL）与 GRPO"
+
+#: ../../source/training/unsloth.md:86 0afdabd0d4bf4ae7936b67de95c3ed3d
+msgid "You can also train Qwen models with reinforcement learning (RL) using Unsloth. Explore Unsloth’s advanced GRPO notebook, featuring proximity-based reward scoring and Hugging Face's Open‑R1 math dataset: [Qwen3 (4B) Advanced GRPO LoRA notebook](https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Qwen3_(4B)-GRPO.ipynb)."
+msgstr "您还可以使用 Unsloth 通过强化学习（RL）来训练 Qwen 模型。探索 Unsloth 的进阶 GRPO Notebook，其中包含基于接近度的奖励评分和 Hugging Face 的 Open‑R1 数学数据集：[Qwen3 (4B) 进阶 GRPO LoRA Notebook](https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Qwen3_(4B)-GRPO.ipynb)。"
+
+#: ../../source/training/unsloth.md:87 4fc6252997454f769562fc37150d5bd1
+msgid "Proximity-based rewards for closer answers"
+msgstr "基于 Proximity 的奖励，对更接近正确答案的回答给予更高奖励"
+
+#: ../../source/training/unsloth.md:88 e38b7b9cb5ed447caeed00e37aa1f7e1
+msgid "Custom GRPO formatting and templates"
+msgstr "自定义 GRPO 格式和模板"
+
+#: ../../source/training/unsloth.md:89 feecf90a36cf40fab79713ed8c84dfa7
+msgid "Enhanced evaluation accuracy with regex matching"
+msgstr "通过正则表达式匹配提高评估准确性"
+
+#: ../../source/training/unsloth.md:91 c176e49b6e4a42a0b89ff7b180faf0bc
+msgid "Resources & Links"
+msgstr "资源与链接"
+
+#: ../../source/training/unsloth.md:92 d29d33008569432bbf59ffae56e62a48
+msgid "That’s how you can easily train Qwen models with Unsloth. If you need any help, join the discussion on Unsloth’s [Discord](https://discord.com/invite/unsloth) or [GitHub](https://github.com/unslothai/unsloth) pages."
+msgstr "这就是使用 Unsloth 轻松训练 Qwen 模型的方法。如果您需要任何帮助，请加入 Unsloth 的 [Discord](https://discord.com/invite/unsloth) 或 [GitHub](https://github.com/unslothai/unsloth) 页面参与讨论。"
+
+#: ../../source/training/unsloth.md:94 ff3536ed471841f7addfbcdb828dc11d
+msgid "**Links:**"
+msgstr "**链接：**"
+
+#: ../../source/training/unsloth.md:95 873de88c8178499f8b0262fe30dbf44c
+msgid "[Unsloth Documentation](https://docs.unsloth.ai/)"
+msgstr "[Unsloth 官方文档](https://docs.unsloth.ai/)"
+
+#: ../../source/training/unsloth.md:96 69437a5a07834f5ab79c96961dc95842
+msgid "[Unsloth Discord](https://discord.com/invite/unsloth)"
+msgstr ""
+
+#: ../../source/training/unsloth.md:97 3e8bbe8da0124e5d8ff71868e19141cd
+msgid "[Unsloth Website](https://unsloth.ai/)"
+msgstr "[Unsloth 官方站点](https://unsloth.ai/)"
+
+#: ../../source/training/unsloth.md:98 35c1f4a1bcf647f096bdee249fcabdaa
+msgid "[Unsloth Reddit](https://www.reddit.com/r/unsloth/)"
+msgstr ""
+

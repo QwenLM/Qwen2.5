@@ -1,0 +1,71 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2024, Qwen Team
+# This file is distributed under the same license as the Qwen package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Qwen \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-13 16:36+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_CN\n"
+"Language-Team: zh_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: ../../source/getting_started/thinking_budget.md:1
+#: 98870c0bf86c4c3b832204258d05c95c
+msgid "Thinking budget"
+msgstr ""
+
+#: ../../source/getting_started/thinking_budget.md:3
+#: f3ac8e3721084db486cd5c8f99c40e68
+msgid "This example demonstrates the inference process with thinking budgets using Qwen3 series models. The process involves two steps:"
+msgstr ""
+
+#: ../../source/getting_started/thinking_budget.md:4
+#: 9e573494a6294fe4b33fb9e20d2648a0
+msgid "the model generates reasoning content within the specified thinking budget"
+msgstr ""
+
+#: ../../source/getting_started/thinking_budget.md:5
+#: 873d4d7b33e54257b32096a23f5bfbac
+msgid "append the reasoning content to the conversation context and call the model again to get the final response"
+msgstr ""
+
+#: ../../source/getting_started/thinking_budget.md:7
+#: 3284c7a085b04934aaa32317c5c1a9b7
+msgid "Environment Setup"
+msgstr ""
+
+#: ../../source/getting_started/thinking_budget.md:9
+#: 0c8eee4d2e06463ab03c7f8330a8ffd0
+msgid "`transformers >= 4.51.0`"
+msgstr ""
+
+#: ../../source/getting_started/thinking_budget.md:10
+#: 1bb85d8dbe9f40d9a9f6da43ea92bc19
+msgid "`openai >= 1.65.0`"
+msgstr ""
+
+#: ../../source/getting_started/thinking_budget.md:12
+#: 1fbbb06af9474e30a50db81b4733f931
+msgid "Basic Usage"
+msgstr ""
+
+#: ../../source/getting_started/thinking_budget.md:14
+#: b365e4aac4c047378fd3b09771987379
+msgid "First, you should start a Qwen3 model in thinking mode. You can refer to [Quickstart](https://github.com/QwenLM/Qwen3/blob/main/docs/source/getting_started/quickstart.md) for more details."
+msgstr ""
+
+#: ../../source/getting_started/thinking_budget.md:16
+#: 259a5805d2e3483aa6f4d056b7c9ce94
+msgid "Then, you can use the following code to call the model with thinking budgets."
+msgstr ""
+
