@@ -1,7 +1,7 @@
 # Quickstart
 
 This guide helps you quickly start using Qwen3. 
-We provide examples of [Hugging Face Transformers](https://github.com/huggingface/transformers) as well as [ModelScope](https://github.com/modelscope/modelscope), and [vLLM](https://github.com/vllm-project/vllm) for deployment.
+We provide examples of [Hugging Face Transformers](https://github.com/huggingface/transformers) as well as [ModelScope](https://github.com/modelscope/modelscope), and [vLLM](https://github.com/vllm-project/vllm) and [SGLang](https://github.com/sgl-project/sglang) for deployment.
 
 You can find Qwen3 models in [the Qwen3 collection](https://huggingface.co/collections/Qwen/qwen3-67dd247413f0e2e4f653967f) at Hugging Face Hub and [the Qwen3 collection](https://www.modelscope.cn/collections/Qwen3-9743180bdc6b48) at ModelScope.
 
@@ -10,6 +10,143 @@ You can find Qwen3 models in [the Qwen3 collection](https://huggingface.co/colle
 To get a quick start with Qwen3, you can try the inference with `transformers` first.
 Make sure that you have installed `transformers>=4.51.0`.
 We advise you to use Python 3.10 or higher, and PyTorch 2.6 or higher.
+
+:::::{tab-set}
+:sync-group: model
+
+::::{tab-item} Qwen3-Instruct-2507
+:sync: instruct
+
+:::{important}
+Qwen3-Instruct-2507 supports **only non-thinking mode** and **does not generate ``<think></think>`` blocks** in its output. 
+Different from Qwen3-2504, **specifying `enable_thinking=False` is no longer required or supported**.
+:::
+
+
+The following contains a code snippet illustrating how to use Qwen3-235B-A22B-Instruct-2507 to generate content based on given inputs. 
+```python
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model_name = "Qwen/Qwen3-235B-A22B-Instruct-2507"
+
+# load the tokenizer and the model
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForCausalLM.from_pretrained(
+    model_name,
+    torch_dtype="auto",
+    device_map="auto"
+)
+
+# prepare the model input
+prompt = "Give me a short introduction to large language model."
+messages = [
+    {"role": "user", "content": prompt}
+]
+text = tokenizer.apply_chat_template(
+    messages,
+    tokenize=False,
+    add_generation_prompt=True,
+)
+model_inputs = tokenizer([text], return_tensors="pt").to(model.device)
+
+# conduct text completion
+generated_ids = model.generate(
+    **model_inputs,
+    max_new_tokens=16384
+)
+output_ids = generated_ids[0][len(model_inputs.input_ids[0]):].tolist() 
+
+content = tokenizer.decode(output_ids, skip_special_tokens=True)
+
+print("content:", content)
+```
+
+:::{Note}
+We recommend `temperature=0.7`, `top_p=0.8`, `top_k=20`, and `min_p=0` for Qwen3-Instruct-2507 models.
+For supported frameworks, adjust `presence_penalty` between 0 and 2 to reduce repetitions.
+However, using a higher value may occasionally result in language mixing and a slight decrease in model performance.
+:::
+
+:::{Note}
+Qwen3-Instruct-2507 may use CoT (chain-of-thoughts) automatically for complex tasks.
+We recommend using an output length of 16,384 tokens for most queries.
+:::
+
+
+::::
+
+
+::::{tab-item} Qwen3-Thinking-2507
+:sync: thinking
+
+:::{important}
+Qwen3-Thinking-2507 supports **only thinking mode**.
+Additionally, to enforce model thinking, the default chat template automatically includes `<think>`. 
+Therefore, it is normal for the model's output to contain only `</think>` without an explicit opening `<think>` tag.
+:::
+
+The following contains a code snippet illustrating how to use Qwen3-235B-A22B-Thinking-2507 to generate content based on given inputs. 
+```python
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model_name = "Qwen/Qwen3-235B-A22B-Thinking-2507"
+
+# load the tokenizer and the model
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForCausalLM.from_pretrained(
+    model_name,
+    torch_dtype="auto",
+    device_map="auto"
+)
+
+# prepare the model input
+prompt = "Give me a short introduction to large language model."
+messages = [
+    {"role": "user", "content": prompt}
+]
+text = tokenizer.apply_chat_template(
+    messages,
+    tokenize=False,
+    add_generation_prompt=True,
+)
+model_inputs = tokenizer([text], return_tensors="pt").to(model.device)
+
+# conduct text completion
+generated_ids = model.generate(
+    **model_inputs,
+    max_new_tokens=32768
+)
+output_ids = generated_ids[0][len(model_inputs.input_ids[0]):].tolist() 
+
+# parsing thinking content
+try:
+    # rindex finding 151668 (</think>)
+    index = len(output_ids) - output_ids[::-1].index(151668)
+except ValueError:
+    index = 0
+
+thinking_content = tokenizer.decode(output_ids[:index], skip_special_tokens=True).strip("\n")
+content = tokenizer.decode(output_ids[index:], skip_special_tokens=True).strip("\n")
+
+print("thinking content:", thinking_content)  # no opening <think> tag
+print("content:", content)
+```
+
+:::{note}
+We recommend `temperature=0.6`, `top_p=0.95`, `top_k=20`, and `min_p=0` for Qwen3-Thinking-2507 models.
+For supported frameworks, adjust `presence_penalty` between 0 and 2 to reduce repetitions.
+However, using a higher value may occasionally result in language mixing and a slight decrease in model performance.
+:::
+
+:::{note}
+Qwen3-Thinking-2507 features increased thinking depth. 
+We strongly recommend its use in highly complex reasoning tasks with adequate maximum generation length.
+:::
+
+::::
+
+::::{tab-item} Qwen3
+:sync: hybrid
 
 The following is a very simple code snippet showing how to run Qwen3-8B:
 
@@ -84,10 +221,12 @@ The model will first generate thinking content wrapped in a `<think>...</think>`
 :::{note}
 For thinking mode, use Temperature=0.6, TopP=0.95, TopK=20, and MinP=0 (the default setting in `generation_config.json`).
 DO NOT use greedy decoding, as it can lead to performance degradation and endless repetitions. 
-For more detailed guidance, please refer to the Best Practices section.
 
 For non-thinking mode, we suggest using Temperature=0.7, TopP=0.8, TopK=20, and MinP=0. 
 :::
+
+::::
+:::::
 
 
 ## ModelScope
@@ -108,6 +247,64 @@ For more information, please refer to [the documentation of `modelscope`](https:
 
 You can serve Qwen3 via OpenAI-compatible APIs using frameworks such as vLLM, SGLang, and interact with the API using common HTTP clients or the OpenAI SDKs.
 
+:::::{tab-set}
+:sync-group: model
+
+::::{tab-item} Qwen3-Instruct-2507
+:sync: instruct
+
+Here we take Qwen3-235B-A22B-Instruct-2507 as an example to start the API:
+
+- SGLang (`sglang>=0.4.6.post1` is required):
+
+    ```shell
+    python -m sglang.launch_server --model-path Qwen/Qwen3-235B-A22B-Instruct-2507 --port 8000 --tp 8 --context-length 262144
+    ```
+
+- vLLM (`vllm>=0.9.0` is recommended):
+
+    ```shell
+    vllm serve Qwen/Qwen3-235B-A22B-Instruct-2507 --port 8000 --tensor-parallel-size 8 --max-model-len 262144
+    ```
+
+:::{note}
+Consider adjusting the context length according to the available GPU memory.
+:::
+
+::::
+
+
+::::{tab-item} Qwen3-Thinking-2507
+:sync: thinking
+
+Here we take Qwen3-235B-A22B-Thinking-2507 as an example to start the API:
+
+- SGLang (`sglang>=0.4.6.post1` is required):
+
+    ```shell
+    python -m sglang.launch_server --model-path Qwen/Qwen3-235B-A22B-Thinking-2507 --port 8000 --tp 8 --context-length 262144  --reasoning-parser deepseek-r1
+    ```
+
+- vLLM (`vllm>=0.9.0` is recommended):
+
+    ```shell
+    vllm serve Qwen/Qwen3-235B-A22B-Thinking-2507 --port 8000 --tensor-parallel-size 8 --max-model-len 262144 --enable-reasoning --reasoning-parser deepseek_r1
+    ```
+
+:::{note}
+Consider adjusting the context length according to the available GPU memory.
+:::
+
+:::{important}
+We are currently working on adapting the `qwen3` reasoning parsers to the new behavior.
+Please follow the command above at the moment.
+:::
+
+::::
+
+
+::::{tab-item} Qwen3
+:sync: hybrid
 
 Here we take Qwen3-8B as an example to start the API:
 
@@ -117,17 +314,151 @@ Here we take Qwen3-8B as an example to start the API:
     python -m sglang.launch_server --model-path Qwen/Qwen3-8B --port 8000 --reasoning-parser qwen3
     ```
 
-- vLLM (`vllm>=0.8.5` is recommended):
+- vLLM (`vllm>=0.9.0` is recommended):
 
     ```shell
-    vllm serve Qwen/Qwen3-8B --port 8000 --enable-reasoning --reasoning-parser deepseek_r1
+    vllm serve Qwen/Qwen3-8B --port 8000 --enable-reasoning --reasoning-parser qwen3
     ```
+::::
+
+:::::
+
 
 Then, you can use the [create chat interface](https://platform.openai.com/docs/api-reference/chat/completions/create) to communicate with Qwen:
 
+
+::::::{tab-set}
+:sync-group: model
+
+:::::{tab-item} Qwen3-Instruct-2507
+:sync: instruct
+
+Here we show the basic command to interact with the chat completion API using Qwen3-235B-A22B-Instruct-2507.
+
 ::::{tab-set}
+:sync-group: api
 
 :::{tab-item} curl
+:sync: curl
+
+```shell
+curl http://localhost:8000/v1/chat/completions -H "Content-Type: application/json" -d '{
+  "model": "Qwen/Qwen3-235B-A22B-Instruct-2507",
+  "messages": [
+    {"role": "user", "content": "Give me a short introduction to large language models."}
+  ],
+  "temperature": 0.7,
+  "top_p": 0.8,
+  "top_k": 20,
+  "max_tokens": 16384
+}'
+```
+:::
+
+:::{tab-item} Python
+:sync: python
+
+You can use the API client with the `openai` Python SDK as shown below:
+
+```python
+from openai import OpenAI
+# Set OpenAI's API key and API base to use vLLM's API server.
+openai_api_key = "EMPTY"
+openai_api_base = "http://localhost:8000/v1"
+
+client = OpenAI(
+    api_key=openai_api_key,
+    base_url=openai_api_base,
+)
+
+chat_response = client.chat.completions.create(
+    model="Qwen/Qwen3-235B-A22B-Instruct-2507",
+    messages=[
+        {"role": "user", "content": "Give me a short introduction to large language models."},
+    ],
+    max_tokens=16384,
+    temperature=0.7,
+    top_p=0.8,
+    extra_body={
+        "top_k": 20,
+    }
+)
+print("Chat response:", chat_response)
+```
+::::
+:::::
+
+:::::{tab-item} Qwen3-Thinking-2507
+:sync: thinking
+
+Here we show the basic command to interact with the chat completion API using Qwen3-235B-A22B-Thinking-2507.
+
+::::{tab-set}
+:sync-group: api
+
+:::{tab-item} curl
+:sync: curl
+
+```shell
+curl http://localhost:8000/v1/chat/completions -H "Content-Type: application/json" -d '{
+  "model": "Qwen/Qwen3-235B-A22B-Thinking-2507",
+  "messages": [
+    {"role": "user", "content": "Give me a short introduction to large language models."}
+  ],
+  "temperature": 0.6,
+  "top_p": 0.95,
+  "top_k": 20,
+  "max_tokens": 32768
+}'
+```
+:::
+
+:::{tab-item} Python
+:sync: python
+
+You can use the API client with the `openai` Python SDK as shown below:
+
+```python
+from openai import OpenAI
+# Set OpenAI's API key and API base to use vLLM's API server.
+openai_api_key = "EMPTY"
+openai_api_base = "http://localhost:8000/v1"
+
+client = OpenAI(
+    api_key=openai_api_key,
+    base_url=openai_api_base,
+)
+
+chat_response = client.chat.completions.create(
+    model="Qwen/Qwen3-235B-A22B-Thinking-2507",
+    messages=[
+        {"role": "user", "content": "Give me a short introduction to large language models."},
+    ],
+    max_tokens=32768,
+    temperature=0.6,
+    top_p=0.95,
+    extra_body={
+        "top_k": 20,
+    }
+)
+print("Chat response:", chat_response)
+```
+::::
+:::::
+
+:::::{tab-item} Qwen3
+:sync: hybrid
+
+Here we show the basic command to interact with the chat completion API using Qwen3-8B.
+
+The default is with thinking enabled:
+
+::::{tab-set}
+:sync-group: api
+
+:::{tab-item} curl
+:sync: curl
+
 ```shell
 curl http://localhost:8000/v1/chat/completions -H "Content-Type: application/json" -d '{
   "model": "Qwen/Qwen3-8B",
@@ -143,6 +474,8 @@ curl http://localhost:8000/v1/chat/completions -H "Content-Type: application/jso
 :::
 
 :::{tab-item} Python
+:sync: python
+
 You can use the API client with the `openai` Python SDK as shown below:
 
 ```python
@@ -170,9 +503,72 @@ chat_response = client.chat.completions.create(
 )
 print("Chat response:", chat_response)
 ```
+:::
 ::::
 
-While the soft switch is always available, the hard switch is also available in the API through the following configuration to the API call. For more usage, please refer to our document on [SGLang](../deployment/sglang) and [vLLM](../deployment/vllm).
+To disable thinking, one could use the soft switch (e.g., appending `/nothink` to the user query).
+The hard switch can also be used as follows:
+
+::::{tab-set}
+:sync-group: api
+
+:::{tab-item} curl
+:sync: curl
+
+```shell
+curl http://localhost:8000/v1/chat/completions -H "Content-Type: application/json" -d '{
+  "model": "Qwen/Qwen3-8B",
+  "messages": [
+    {"role": "user", "content": "Give me a short introduction to large language models."}
+  ],
+  "temperature": 0.7,
+  "top_p": 0.8,
+  "top_k": 20,
+  "max_tokens": 8192,
+  "presence_penalty": 1.5,
+  "chat_template_kwargs": {"enable_thinking": false}
+}'
+```
+:::
+
+:::{tab-item} Python
+:sync: python
+
+You can use the API client with the `openai` Python SDK as shown below:
+
+```python
+from openai import OpenAI
+# Set OpenAI's API key and API base to use vLLM's API server.
+openai_api_key = "EMPTY"
+openai_api_base = "http://localhost:8000/v1"
+
+client = OpenAI(
+    api_key=openai_api_key,
+    base_url=openai_api_base,
+)
+
+chat_response = client.chat.completions.create(
+    model="Qwen/Qwen3-8B",
+    messages=[
+        {"role": "user", "content": "Give me a short introduction to large language models."},
+    ],
+    max_tokens=8192,
+    temperature=0.7,
+    top_p=0.8,
+    presence_penalty=1.5,
+    extra_body={
+        "top_k": 20,
+        "chat_template_kwargs": {"enable_thinking": False},
+    }
+)
+print("Chat response:", chat_response)
+```
+:::
+:::::
+::::::
+
+
+For more usage, please refer to our document on [SGLang](../deployment/sglang) and [vLLM](../deployment/vllm).
 
 
 ## Thinking Budget
