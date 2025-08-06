@@ -27,7 +27,7 @@ To learn more about Qwen3, feel free to read our documentation \[[EN](https://qw
 
 ### Qwen3-2507
 
-Over the past three months, we continued to explore the potential of the Qwen3 families and we are excited to introduce the updated **Qwen3-2507** in two variants Qwen3-Instruct-2507 and Qwen3-Thinking-2507.
+Over the past three months, we continued to explore the potential of the Qwen3 families and we are excited to introduce the updated **Qwen3-2507** in two variants, Qwen3-Instruct-2507 and Qwen3-Thinking-2507, and three sizes, 235B-A22B, 30B-A3B, and 4B.
 
 **Qwen3-Instruct-2507** is the updated version of the previous Qwen3 non-thinking mode, featuring the following key enhancements:  
 
