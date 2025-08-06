@@ -25,35 +25,26 @@ To learn more about Qwen3, feel free to read our documentation \[[EN](https://qw
 
 ## Introduction
 
-### Qwen3-Instruct-2507
+### Qwen3-2507
 
-We are excited to introduce the updated version of the **Qwen3-235B-A22B non-thinking mode**, named **Qwen3-235B-A22B-Instruct-2507**, featuring the following key enhancements:  
+Over the past three months, we continued to explore the potential of the Qwen3 families and we are excited to introduce the updated **Qwen3-2507** in two variants Qwen3-Instruct-2507 and Qwen3-Thinking-2507.
+
+**Qwen3-Instruct-2507** is the updated version of the previous Qwen3 non-thinking mode, featuring the following key enhancements:  
 
 - **Significant improvements** in general capabilities, including **instruction following, logical reasoning, text comprehension, mathematics, science, coding and tool usage**.  
 - **Substantial gains** in long-tail knowledge coverage across **multiple languages**.  
 - **Markedly better alignment** with user preferences in **subjective and open-ended tasks**, enabling more helpful responses and higher-quality text generation.  
 - **Enhanced capabilities** in **256K-token long-context understanding**.
 
-![Qwen3-235B-A22B-Instruct-2507](https://qianwen-res.oss-accelerate.aliyuncs.com/Qwen3-235B-A22B-Instruct-2507.jpeg)
-
-### Qwen3-Thinking-2507
-
-Over the past three months, we have continued to scale the **thinking capability** of Qwen3-235B-A22B, improving both the **quality and depth** of reasoning. We are pleased to introduce **Qwen3-235B-A22B-Thinking-2507**, featuring the following key enhancements:
-- **Significantly improved performance** on reasoning tasks, including logical reasoning, mathematics, science, coding, and academic benchmarks that typically require human expertise — achieving **state-of-the-art results among open-source thinking models**.
+**Qwen3-Thinking-2507** is the continuation of Qwen3 thinking model, with improved quality and depth of reasoning, featuring the following key enhancements:
+- **Significantly improved performance** on reasoning tasks, including logical reasoning, mathematics, science, coding, and academic benchmarks that typically require human expertise — achieving **state-of-the-art results among open-weight thinking models**.
 - **Markedly better general capabilities**, such as instruction following, tool usage, text generation, and alignment with human preferences.
 - **Enhanced 256K long-context understanding** capabilities.
 
-![Qwen3-235B-A22B-Thinking-2507](https://qianwen-res.oss-cn-beijing.aliyuncs.com/Qwen3-2507/Qwen3-235B-A22B-Thinking-2507.jpeg)
 
-> [!Important]
-> This version has an increased thinking length. We strongly recommend its use in highly complex reasoning tasks with adequate maximum generation length.
-
-
-The updated versions of **more Qwen3 model sizes** are also expected to be released very soon. Stay tuned🚀
-
-### Qwen3
 <details>
     <summary><b>Previous Qwen3 Release</b></summary>
+    <h3>Qwen3 (aka Qwen3-2504)</h3>
     <p>
     We are excited to announce the release of Qwen3, the latest addition to the Qwen family of large language models. 
     These models represent our most advanced and intelligent systems to date, improving from our experience in building QwQ and Qwen2.5.
@@ -73,7 +64,9 @@ The updated versions of **more Qwen3 model sizes** are also expected to be relea
 
 
 ## News
-
+- 2025.08.06: The last open release of Qwen3-2507, [Qwen3-4B-Instruct-2507](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507) and [Qwen3-4B-Thinking-2507](https://huggingface.co/Qwen/Qwen3-4B-Thinking-2507) is out!
+- 2025.07.31: Qwen3-30B-A3B-Thinking-2507 is released. Check out the [modelcard](https://huggingface.co/Qwen/Qwen3-30B-A3B-Thinking-2507) for more details!
+- 2025.07.30: Qwen3-30B-A3B-Instruct-2507 is released. Check out the [modelcard](https://huggingface.co/Qwen/Qwen3-30B-A3B-Instruct-2507) for more details!
 - 2025.07.25: We released the updated version of Qwen3-235B-A22B thinking mode, named Qwen3-235B-A22B-Thinking-2507. Check out the [modelcard](https://huggingface.co/Qwen/Qwen3-235B-A22B-Thinking-2507) for more details!
 - 2025.07.21: We released the updated version of Qwen3-235B-A22B non-thinking mode, named Qwen3-235B-A22B-Instruct-2507, featuring significant enhancements over the previous version and supporting 256K-token long-context understanding. Check our [modelcard](https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507) for more details!
 - 2025.04.29: We released the Qwen3 series. Check our [blog](https://qwenlm.github.io/blog/qwen3) for more details!
@@ -84,7 +77,7 @@ The updated versions of **more Qwen3 model sizes** are also expected to be relea
 
 ## Performance
 
-Detailed evaluation results are reported in this [📑 blog](https://qwenlm.github.io/blog/qwen3/).
+Detailed evaluation results are reported in this [📑 blog (Qwen3-2504)](https://qwenlm.github.io/blog/qwen3/) and this [📑 blog (Qwen3-2507) \[coming soon\]]().
 
 For requirements on GPU memory and the respective throughput, see results [here](https://qwen.readthedocs.io/en/latest/getting_started/speed_benchmark.html).
 
@@ -95,13 +88,13 @@ For requirements on GPU memory and the respective throughput, see results [here]
 Transformers is a library of pretrained natural language processing for inference and training. 
 The latest version of `transformers` is recommended and `transformers>=4.51.0` is required.
 
-#### Qwen3 Instruct
+#### Qwen3-Instruct-2507
 
-The following contains a code snippet illustrating how to use Qwen3-235B-A22B-Instruct-2507 to generate content based on given inputs. 
+The following contains a code snippet illustrating how to use Qwen3-30B-A3B-Instruct-2507 to generate content based on given inputs. 
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-model_name = "Qwen/Qwen3-235B-A22B-Instruct-2507"
+model_name = "Qwen/Qwen3-30B-A3B-Instruct-2507"
 
 # load the tokenizer and the model
 tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -136,16 +129,16 @@ print("content:", content)
 ```
 
 > [!Note]
-> The updated version of Qwen3-235B-A22B, namely **Qwen3-235B-A22B-Instruct-2507** supports **only non-thinking mode** and **does not generate ``<think></think>`` blocks** in its output. Meanwhile, **specifying `enable_thinking=False` is no longer required**.
+> Qwen3-Instruct-2507 supports only non-thinking mode and does not generate ``<think></think>`` blocks in its output. Meanwhile, specifying `enable_thinking=False` is no longer required.
 
 
-#### Qwen3 Thinking
+#### Qwen3-Thinking-2507
 
-The following contains a code snippet illustrating how to use Qwen3-235B-A22B-Thinking-2507 to generate content based on given inputs. 
+The following contains a code snippet illustrating how to use Qwen3-30B-A3B-Thinking-2507 to generate content based on given inputs. 
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-model_name = "Qwen/Qwen3-235B-A22B-Thinking-2507"
+model_name = "Qwen/Qwen3-30B-A3B-Thinking-2507"
 
 # load the tokenizer and the model
 tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -190,12 +183,15 @@ print("content:", content)
 ```
 
 > [!Note]
-> The updated version of Qwen3-235B-A22B, namely **Qwen3-235B-A22B-Thinking-2507** supports **only thinking mode**.
+> Qwen3-Thinking-2507 supports only thinking mode.
 > Additionally, to enforce model thinking, the default chat template automatically includes `<think>`. Therefore, it is normal for the model's output to contain only `</think>` without an explicit opening `<think>` tag.
+> 
+> Qwen3-Thinking-2507 also features an increased thinking length. We strongly recommend its use in highly complex reasoning tasks with adequate maximum generation length.
+
 
 
 <details>
-    <summary><b>Switching Thinking/Non-thinking Modes for Previous Qwen3 Hybrid Models</b></summary>
+    <summary><b>Switching Thinking/Non-thinking Modes for Previous Qwen3  Models</b></summary>
     <p>
     By default, Qwen3 models will think before response.
     This could be controlled by
@@ -212,13 +208,13 @@ print("content:", content)
 We strongly advise users especially those in mainland China to use ModelScope. 
 ModelScope adopts a Python API similar to Transformers.
 The CLI tool `modelscope download` can help you solve issues concerning downloading checkpoints.
+For vLLM and SGLang, the environment variable `VLLM_USE_MODELSCOPE=true` and `SGLANG_USE_MODELSCOPE=true` can be used respectively.
 
 
 ### llama.cpp
 
 [`llama.cpp`](https://github.com/ggml-org/llama.cpp) enables LLM inference with minimal setup and state-of-the-art performance on a wide range of hardware.
-`llama.cpp>=b5092` is required for the support of Qwen3 architecture.
-`llama.cpp>=b5401` is recommended for the full support of the official Qwen3 chat template.
+`llama.cpp>=b5401` is recommended for the full support of Qwen3.
 
 To use the CLI, run the following in a terminal:
 ```shell
@@ -234,14 +230,14 @@ A simple web front end will be at `http://localhost:8080` and an OpenAI-compatib
 
 For additional guides, please refer to [our documentation](https://qwen.readthedocs.io/en/latest/run_locally/llama.cpp.html).
 
-> [!TIP]
+> [!Note]
 > llama.cpp adopts "rotating context management" and infinite generation is made possible by evicting earlier tokens.
 > It could configured by parameters and the commands above effectively disable it.
 > For more details, please refer to [our documentation](https://qwen.readthedocs.io/en/latest/run_locally/llama.cpp.html#llama-cli).
 
 ### Ollama
 
-After [installing Ollama](https://ollama.com/), you can initiate the Ollama service with the following command (Ollama v0.6.6 or higher is required):
+After [installing Ollama](https://ollama.com/), you can initiate the Ollama service with the following command (Ollama v0.9.0 or higher is recommended):
 ```shell
 ollama serve
 # You need to keep this service running whenever you are using ollama
@@ -252,6 +248,9 @@ To pull a model checkpoint and run the model, use the `ollama run` command. You 
 ollama run qwen3:8b
 # Setting parameters, type "/set parameter num_ctx 40960" and "/set parameter num_predict 32768"
 # To exit, type "/bye" and press ENTER
+# For Qwen3-2504 models,
+# - To enable thinking, which is the default, type "/set think"
+# - To disable thinking, type "/set nothink"
 ```
 
 You can also access the Ollama service via its OpenAI-compatible API. 
@@ -260,7 +259,13 @@ The API is at `http://localhost:11434/v1/` by default.
 
 For additional details, please visit [ollama.ai](https://ollama.com/).
 
-> [!TIP]
+> [!Note]
+> Ollama's naming may not be consistent with the Qwen's original naming.
+> For example, `qwen3:30b-a3b` in Ollama points to `qwen3:30b-a3b-thinking-2507-q4_K_M` as of August 2025.
+> Please check <https://ollama.com/library/qwen3/tags> before use.
+
+
+> [!Note]
 > Ollama adopts the same "rotating context management" with llama.cpp.
 > However, its default settings (`num_ctx` 2048 and `num_predict` -1), suggesting infinite generation with a 2048-token context,
 > could lead to trouble for Qwen3 models.
@@ -290,55 +295,62 @@ If you are running on Intel CPU or GPU, [OpenVINO toolkit](https://github.com/op
 You can follow this [chatbot example](https://github.com/openvinotoolkit/openvino_notebooks/blob/latest/notebooks/llm-chatbot/llm-chatbot.ipynb).
 
 
-<!-- ### Text generation web UI
-
-You can directly use [`text-generation-webui`](https://github.com/oobabooga/text-generation-webui) for creating a web UI demo. If you use GGUF, remember to install the latest wheel of `llama.cpp` with the support of Qwen2.5. -->
-
-
-<!-- ### llamafile
-
-Clone [`llamafile`](https://github.com/Mozilla-Ocho/llamafile), run source install, and then create your own llamafile with the GGUF file following the guide [here](https://github.com/Mozilla-Ocho/llamafile?tab=readme-ov-file#creating-llamafiles). You are able to run one line of command, say `./qwen.llamafile`, to create a demo. -->
-
-
 ## Deploy Qwen3
 
 Qwen3 is supported by multiple inference frameworks. 
 Here we demonstrate the usage of `SGLang`, `vLLM` and `TensorRT-LLM`.
 You can also find Qwen3 models from various inference providers, e.g., [Alibaba Cloud Model Studio](https://www.alibabacloud.com/en/product/modelstudio).
 
+
 ### SGLang
 
 [SGLang](https://github.com/sgl-project/sglang) is a fast serving framework for large language models and vision language models.
 SGLang could be used to launch a server with OpenAI-compatible API service. 
 `sglang>=0.4.6.post1` is required.
-It is as easy as
+
+For Qwen3-Instruct-2507, 
 ```shell
-python -m sglang.launch_server --model-path Qwen/Qwen3-8B --port 30000 --reasoning-parser qwen3
+python -m sglang.launch_server --model-path Qwen/Qwen3-30B-A3B-Instruct-2507 --port 30000 --context-length 262144
+```
+
+For Qwen3-Thinking-2507,
+```shell
+python -m sglang.launch_server --model-path Qwen/Qwen3-30B-A3B-Thinking-2507 --port 30000 --context-length 262144 --reasoning-parser deepseek-r1
+```
+
+For Qwen3, it is
+```shell
+python -m sglang.launch_server --model-path Qwen/Qwen3-8B --port 30000 --context-length 131072 --reasoning-parser qwen3
 ```
 An OpenAI-compatible API will be available at `http://localhost:30000/v1`.
 
 > [!Note]
-> For Qwen3-Thinking-2507, e.g., Qwen3-235B-A22B-Thinking-2507, please use the following command at the moment:
-> ```shell
-> python -m sglang.launch_server --model-path Qwen/Qwen3-235B-A22B-Thinking-2507 --port 30000 --tp 8 --context-length 262144  --reasoning-parser deepseek-r1
-> ```
+> Due to the preprocessing of API requests in SGLang, which drops all `reasoning_content` fields, the quality of **multi-step tool use with Qwen3 thinking models** may be suboptimal, which requires the existence of the related thinking content. While the fixes are being worked on, as a workdaround, we recommend passing the content as it is, without extracting thinking content, and the chat template will correctly handle the processing.
+
 
 ### vLLM
 
 [vLLM](https://github.com/vllm-project/vllm) is a high-throughput and memory-efficient inference and serving engine for LLMs.
 `vllm>=0.9.0` is recommended.
 
+For Qwen3-Instruct-2507, 
 ```shell
-vllm serve Qwen/Qwen3-8B --port 8000 --enable-reasoning --reasoning-parser qwen3
+vllm serve Qwen/Qwen3-30B-A3B-Instruct-2507 --port 8000 --max-model-len 262144
+```
+
+For Qwen3-Thinking-2507,
+```shell
+vllm serve Qwen/Qwen3-30B-A3B-Thinking-2507 --port 8000 --max-model-len 262144 --enable-reasoning --reasoning-parser deepseek_r1
+```
+
+For Qwen3, it is
+```shell
+vllm serve Qwen/Qwen3-8B --port 8000 --max-model-len 131072 --enable-reasoning --reasoning-parser qwen3
 ```
 An OpenAI-compatible API will be available at `http://localhost:8000/v1`.
 
 > [!Note]
-> For Qwen3-Thinking-2507, e.g., Qwen3-235B-A22B-Thinking-2507, please use the following command at the moment:
-> ```shell
-> vllm serve Qwen/Qwen3-235B-A22B-Thinking-2507 --port 8000 --tensor-parallel-size 8 --max-model-len 262144 --enable-reasoning --reasoning-parser deepseek_r1
-> ```
-
+> Due to the preprocessing of API requests in vLLM, which drops all `reasoning_content` fields, the quality of **multi-step tool use with Qwen3 thinking models** may be suboptimal, which requires the existence of the related thinking content. While the fixes are being worked on, as a workdaround, we recommend passing the content as it is, without extracting thinking content, and the chat template will correctly handle the processing.
 
 ### TensorRT-LLM
 
