@@ -64,7 +64,7 @@ Over the past three months, we continued to explore the potential of the Qwen3 f
 
 
 ## News
-- 2025.08.08: We have updated the modelcards for [Qwen3-235B-A22B](https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507) and [Qwen3-A30B-A3B](https://huggingface.co/Qwen/Qwen3-30B-A3B-Instruct-2507). You can now use these models to handle ultra-long inputs of up to 1 million tokens!
+- 2025.08.08: You can now use Qwen3-2507 to handle ultra-long inputs of **1 million tokens**! See the update modelcards ([235B-A22B-Instruct-2507](https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507), [235B-A22B-Thinking-2507](https://huggingface.co/Qwen/Qwen3-235B-A22B-Thinking-2507), [A30B-A3B-Instruct-2507](https://huggingface.co/Qwen/Qwen3-30B-A3B-Instruct-2507), [A30B-A3B-Thinking-2507](https://huggingface.co/Qwen/Qwen3-30B-A3B-Thinking-2507)) for how to enable this feature.
 - 2025.08.06: The final open release of Qwen3-2507, [Qwen3-4B-Instruct-2507](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507) and [Qwen3-4B-Thinking-2507](https://huggingface.co/Qwen/Qwen3-4B-Thinking-2507), is out!
 - 2025.07.31: Qwen3-30B-A3B-Thinking-2507 is released. Check out the [modelcard](https://huggingface.co/Qwen/Qwen3-30B-A3B-Thinking-2507) for more details!
 - 2025.07.30: Qwen3-30B-A3B-Instruct-2507 is released. Check out the [modelcard](https://huggingface.co/Qwen/Qwen3-30B-A3B-Instruct-2507) for more details!
