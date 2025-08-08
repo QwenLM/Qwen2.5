@@ -34,12 +34,12 @@ Over the past three months, we continued to explore the potential of the Qwen3 f
 - **Significant improvements** in general capabilities, including **instruction following, logical reasoning, text comprehension, mathematics, science, coding and tool usage**.  
 - **Substantial gains** in long-tail knowledge coverage across **multiple languages**.  
 - **Markedly better alignment** with user preferences in **subjective and open-ended tasks**, enabling more helpful responses and higher-quality text generation.  
-- **Enhanced capabilities** in **256K-token long-context understanding**.
+- **Enhanced capabilities** in **256K-token long-context understanding**, extendable up to **1 million tokens**.
 
 **Qwen3-Thinking-2507** is the continuation of Qwen3 thinking model, with improved quality and depth of reasoning, featuring the following key enhancements:
 - **Significantly improved performance** on reasoning tasks, including logical reasoning, mathematics, science, coding, and academic benchmarks that typically require human expertise — achieving **state-of-the-art results among open-weight thinking models**.
 - **Markedly better general capabilities**, such as instruction following, tool usage, text generation, and alignment with human preferences.
-- **Enhanced 256K long-context understanding** capabilities.
+- **Enhanced 256K long-context understanding** capabilities, extendable up to **1 million tokens**.
 
 
 <details>
@@ -64,6 +64,7 @@ Over the past three months, we continued to explore the potential of the Qwen3 f
 
 
 ## News
+- 2025.08.08: We have updated the modelcards for [Qwen3-235B-A22B](https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507) and [Qwen3-A30B-A3B](https://huggingface.co/Qwen/Qwen3-30B-A3B-Instruct-2507). You can now use these models to handle ultra-long inputs of up to 1 million tokens!
 - 2025.08.06: The final open release of Qwen3-2507, [Qwen3-4B-Instruct-2507](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507) and [Qwen3-4B-Thinking-2507](https://huggingface.co/Qwen/Qwen3-4B-Thinking-2507), is out!
 - 2025.07.31: Qwen3-30B-A3B-Thinking-2507 is released. Check out the [modelcard](https://huggingface.co/Qwen/Qwen3-30B-A3B-Thinking-2507) for more details!
 - 2025.07.30: Qwen3-30B-A3B-Instruct-2507 is released. Check out the [modelcard](https://huggingface.co/Qwen/Qwen3-30B-A3B-Instruct-2507) for more details!
